@@ -1,5 +1,7 @@
+#backend/app/auth/auth_router.py
 import os, secrets
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
 from app.dependencies import get_database, get_current_user
 from app.auth.user_service import UserService
 from app.auth.jwt_handler import create_token
@@ -8,7 +10,7 @@ from app.auth.schemas import RegisterRequest, LoginRequest, ResetPasswordRequest
 from app.config import settings
 
 router = APIRouter()
-
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 

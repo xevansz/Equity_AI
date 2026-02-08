@@ -1,5 +1,5 @@
 """Configuration Management"""
-
+#backend/app/config.py
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 
@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     DB_NAME: str = "equity_research"
 
     # JWT
-    SECRET_KEY: str
+    JWT_SECRET_KEY: str
     JWT_EXPIRE_MINUTES: int = 1440
 
     # Admin

@@ -31,3 +31,9 @@ lxml
 # Utils
 python-dotenv
 python-dateutil
+
+black
+isort
+ruff
+flake8
+pre-commit

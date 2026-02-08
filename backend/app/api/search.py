@@ -1,3 +1,5 @@
+#api/search.py
+from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from app.dependencies import get_database
@@ -11,12 +13,23 @@ router = APIRouter()
 
 class SearchRequest(BaseModel):
     query: str
-    symbol: str = None
+    symbol: Optional[str] = None
 
 @router.post("/search")
 async def single_search(request: SearchRequest, db = Depends(get_database)):
     query = request.query
-    symbol = request.symbol or request.query
+    symbol = (request.symbol or request.query).upper()
+
+    # simple alias mapping
+    SYMBOL_ALIASES = {
+    "APPLE": "AAPL",
+    "GOOGLE": "GOOGL",
+    "TESLA": "TSLA",
+    "MICROSOFT": "MSFT",
+    "AMAZON": "AMZN",}
+
+    symbol = SYMBOL_ALIASES.get(symbol, symbol)
+
 
     print("\n" + "=" * 90)
     print("🔍 SINGLE SEARCH API CALLED")

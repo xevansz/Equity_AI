@@ -1,0 +1,27 @@
+python-dotenv
+python-dateutil
+black
+isort
+ruff
+flake8
+pre-commit
+numpy
+pandas
+fastapi[standard]
+uvicorn
+google-generativeai
+
+# Vector Store & Embeddings
+chromadb
+sentence-transformers
+
+# Database
+motor
+pymongo
+
+# Financial Analysis
+yfinance
+
+# NLP & Text Processing
+beautifulsoup4
+lxml

@@ -1,16 +1,22 @@
-[tool.black]
-line-length = 88
-skip-string-normalization = true
+[project]
+name = "backend"
+version = "0.8.3"
+description = "Default template for PDM package"
+authors = [
+    {name = "xevansz", email = "minithbmatthew@gmail.com"},
+]
+dependencies = [
+    "black",
+    "isort",
+    "ruff",
+    "flake8",
+    "pre-commit",
+    "fastapi[standard]>=0.128.7",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
 
-[tool.isort]
-profile = "black"
-line_length = 88
 
-[tool.ruff]
-line-length = 88
-select = ["E", "F", "I", "C", "B", "Q"]
-ignore = ["E203", "W503"]
-
-[tool.flake8]
-max-line-length = 88
-extend-ignore = E203, W503
+[tool.pdm]
+distribution = false

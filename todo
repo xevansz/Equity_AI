@@ -1,0 +1,145 @@
+## Data reliability
+* API fallback system (provider redundancy)
+* rate limit handling + retry queue
+* caching layer for repeated financial queries
+* background refresh jobs for market data
+* stale data detection
+* timestamped data validity checks
+
+## Observability
+* request tracing (per user session)
+* LLM output logging
+* hallucination detection logs
+* API error analytics dashboard
+* performance monitoring
+* data freshness metrics
+
+## Financial safety layer
+* disclaimer injection pipeline
+* uncertainty labeling (“data incomplete”)
+* confidence scoring for responses
+* anomaly detection in generated numbers
+
+Finance must never pretend certainty.
+
+Market Data Engine
+* Raw market intelligence layer.
+* unified price ingestion pipeline
+* OHLC time-series storage
+* corporate actions (splits/dividends)
+* pre-market & after-hours tracking
+* volatility computation
+* liquidity metrics
+* multi-timeframe aggregation
+
+Financial Metrics Engine
+* ratio calculator framework
+* valuation metrics module
+* growth rate analysis
+* balance sheet health scoring
+* cash flow modeling
+* earnings trend detection
+* intrinsic value estimators
+* risk scoring system
+
+Research & Reasoning Layer
+* structured analysis schema
+* asset summary generator
+* bullish vs bearish argument generator
+* catalyst identification engine
+* risk factor extractor
+* historical narrative builder
+* competitor comparison module
+* industry classification engine
+
+News & Sentiment Intelligence
+* Raw headlines are useless without interpretation.
+* news deduplication
+* event clustering
+* sentiment scoring
+* impact classification (minor / material)
+* earnings transcript ingestion
+* executive statement analysis
+* regulatory event detection
+* social sentiment aggregation
+
+Technical Analysis Engine
+* For traders and short-term users.
+* moving averages framework
+* RSI/MACD computation
+* volatility bands
+* support/resistance detection
+* breakout detection
+* trend classification
+* volume anomaly detection
+* pattern recognition layer
+* 
+Fund / ETF Analysis
+* Treat funds as portfolios.
+* holdings ingestion
+* sector allocation engine
+* diversification scoring
+* expense ratio analysis
+* benchmark comparison
+* manager performance history
+* turnover analysis
+* concentration risk scoring
+
+Macro Intelligence Layer
+* Markets live inside macro systems.
+* economic indicator ingestion
+* interest rate tracking
+* inflation modeling
+* yield curve analysis
+* currency strength mapping
+* commodity correlation engine
+* macro event timeline
+* central bank speech analysis
+
+Knowledge Graph / Ontology
+* This is what upgrades your system from chatbot → intelligence engine.
+* company → industry mapping
+* competitor graph
+* supply chain relationships
+* geographic exposure mapping
+* executive network graph
+* institutional ownership graph
+* sector dependency modeling
+* Relationships enable reasoning.
+
+Retrieval & RAG Improvements
+* Make the model grounded and trustworthy.
+* earnings filings ingestion pipeline
+* SEC document indexing
+* annual/quarterly report chunking
+* analyst report ingestion
+* transcript semantic indexing
+* citation tracking
+* source attribution display
+
+Conversational Intelligence
+* intent confidence scoring
+* follow-up memory
+* portfolio awareness
+* clarification prompts
+* user risk profiling
+* adaptive explanation depth
+* beginner vs expert modes
+
+Evaluation & Trustworthiness
+* benchmark financial Q&A dataset
+* Regression tests for responses
+* numeric accuracy tests
+* hallucination audits
+* expert review loop
+* model drift monitoring
+ 
+Product Features (later phase)
+* portfolio tracker
+* alert system
+* watchlists
+* scenario simulations
+* investment journal
+* risk exposure dashboard
+* strategy backtesting
+* paper trading sandbox

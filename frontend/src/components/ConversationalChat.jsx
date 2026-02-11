@@ -33,33 +33,31 @@ const ConversationalChat = () => {
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMsg = {
-      id: messages.length + 1,
-      text: input,
-      sender: 'user'
-    };
-
-    setMessages(prev => [...prev, userMsg]);
+    const userMessage = input;
     setInput('');
+
+    setMessages(prev => [...prev, {
+      id: Date.now(),
+      text: userMessage,
+      sender: 'user'
+    }]);
+
     setLoading(true);
 
     try {
-      const result = await runSearch(input);
+      const result = await runSearch(userMessage);
 
-      const botMsg = {
-        id: messages.length + 2,
-        text: result?.chat?.answer || 'No response available',
+      setMessages(prev => [...prev, {
+        id: Date.now() + 1,
+        text: result?.chat?.answer || "No response available",
         sender: 'bot',
         data: result
-      };
-
-      setMessages(prev => [...prev, botMsg]);
+      }]);
     } catch (err) {
-      setMessages(prev => [
-        ...prev,
+      setMessages(prev => [...prev,
         {
-          id: messages.length + 2,
-          text: 'Something went wrong. Please try again.',
+          id: Date.now() + 1,
+          text: err.response?.data?.message ||  err.message || 'Something went wrong. Please try again.',
           sender: 'bot',
           isError: true
         }

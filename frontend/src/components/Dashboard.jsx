@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-8">
 
-      {/* ✅ ONLY SEARCH BAR IN ENTIRE DASHBOARD */}
+      {/* ONLY SEARCH BAR IN ENTIRE DASHBOARD */}
       <SearchBar onSearch={setQuery} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -18,7 +18,7 @@ const Dashboard = () => {
         
 
         {/* Analysis */}
-        <AnalysisPanel query={query} />
+        <AnalysisPanel data={null} />
       </div>
     </div>
   );

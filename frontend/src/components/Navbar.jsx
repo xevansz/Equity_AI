@@ -22,23 +22,27 @@ const Navbar = () => {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/dashboard" className="text-text hover:text-primary transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/watchlist" className="text-text hover:text-primary transition-colors">
-              Watchlist
-            </Link>
-            
             {user ? (
-              <div className="flex items-center gap-4">
-                <span className="text-textMuted">{user.email}</span>
-                <button
-                  onClick={logout}
-                  className="px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors"
-                >
-                  Sign Out
-                </button>
-              </div>
+              <>
+                <Link to="/dashboard" className="text-text hover:text-primary transition-colors">
+                  Dashboard
+                </Link>
+                <Link to="/watchlist" className="text-text hover:text-primary transition-colors">
+                  Watchlist
+                </Link>
+                <Link to="/chat" className="text-text hover:text-primary transition-colors">
+                  Chat
+                </Link>
+                <div className="flex items-center gap-4">
+                  <span className="text-textMuted">{user.email}</span>
+                  <button
+                    onClick={logout}
+                    className="px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </>
             ) : (
               <div className="flex items-center gap-4">
                 <Link to="/login" className="text-text hover:text-primary transition-colors">

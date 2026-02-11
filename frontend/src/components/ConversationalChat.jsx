@@ -68,7 +68,7 @@ const ConversationalChat = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-background">
+    <div className="flex flex-col h-screen bg-background">
       <div className="bg-secondary border-b border-textMuted/10 p-4">
         <h1 className="text-xl font-bold">Equity Research Assistant</h1>
         <p className="text-sm text-textMuted">Ask me anything about stocks and companies</p>

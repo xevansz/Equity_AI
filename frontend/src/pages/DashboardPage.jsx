@@ -36,18 +36,26 @@ const DashboardPage = () => {
         {/* ✅ SINGLE SEARCH BAR */}
         <SearchBar onSearch={handleSearch} />
 
-        {/* Main Layout */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-          {/* LEFT SIDE */}
-          
+        {loading && (
+        <div className="mt-8 p-8 bg-surface rounded-lg text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <p className="mt-4 text-textMuted">Analyzing...</p>
           </div>
+        )}
 
-          {/* RIGHT SIDE */}
-          <AnalysisPanel data={finalData} />
-        </div>
+        {error && (
+          <div className="mt-8 p-4 bg-error/10 border border-error/20 rounded-lg">
+            <p className="text-error">Error: {error.message} </p>
+          </div>
+        )}
+
+        {!loading && finalData && (
+          <div className="mt-8">
+            <AnalysisPanel data={finalData} />
+          </div>
+        )}
       </div>
-    
+    </div>
   );
 };
 

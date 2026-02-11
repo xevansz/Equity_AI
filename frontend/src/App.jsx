@@ -3,8 +3,6 @@ import React from "react";
 import {
   RouterProvider,
   createBrowserRouter,
-  Routes,
-  Route,
   Outlet,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";

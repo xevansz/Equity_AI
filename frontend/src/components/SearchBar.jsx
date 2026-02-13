@@ -1,16 +1,16 @@
 // SearchBar.jsx
-import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import React, { useState } from 'react'
+import { Search } from 'lucide-react'
 
 const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (query.trim()) {
-      onSearch(query);
+      onSearch(query)
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
         />
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

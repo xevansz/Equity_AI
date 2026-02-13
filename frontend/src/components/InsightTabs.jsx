@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const tabs = [
   { key: 'thesis', label: '🧠 Thesis' },
   { key: 'data', label: '📊 Data' },
   { key: 'risk', label: '⚠️ Risk' },
-];
+]
 
 const InsightTabs = ({ thesis, data, risk }) => {
-  const [active, setActive] = useState('thesis');
+  const [active, setActive] = useState('thesis')
 
   const contentMap = {
     thesis,
     data,
     risk,
-  };
+  }
 
   return (
     <div className="bg-surface rounded-xl border border-textMuted/10 p-4">
@@ -39,7 +39,7 @@ const InsightTabs = ({ thesis, data, risk }) => {
         {contentMap[active] || 'No data available'}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default InsightTabs;
+export default InsightTabs

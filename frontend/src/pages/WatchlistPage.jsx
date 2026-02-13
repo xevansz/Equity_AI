@@ -1,5 +1,5 @@
-import React from 'react';
-import Watchlist from '../components/Watchlist';
+import React from 'react'
+import Watchlist from '../components/Watchlist'
 
 const WatchlistPage = () => {
   return (
@@ -9,11 +9,11 @@ const WatchlistPage = () => {
           <h1 className="text-3xl font-bold mb-2">Watchlist</h1>
           <p className="text-textMuted">Track your favorite stocks</p>
         </div>
-        
+
         <Watchlist />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default WatchlistPage;
+export default WatchlistPage

@@ -1,19 +1,19 @@
-import axios from 'axios';
+import axios from 'axios'
 
 /**
  * Login API
  */
 export async function login(email, password) {
-	const resp = await axios.post('/api/auth/login', { email, password });
-	return resp.data;
+  const resp = await axios.post('/api/auth/login', { email, password })
+  return resp.data
 }
 
 /**
  * Register API
  */
 export async function register(email, password) {
-	const resp = await axios.post('/api/auth/register', { email, password });
-	return resp.data;
+  const resp = await axios.post('/api/auth/register', { email, password })
+  return resp.data
 }
 
 /**
@@ -21,8 +21,8 @@ export async function register(email, password) {
  * Relies on axios.defaults.headers.common['Authorization']
  */
 export async function me() {
-	const resp = await axios.get('/api/auth/me');
-	return resp.data;
+  const resp = await axios.get('/api/auth/me')
+  return resp.data
 }
 
-export default { login, register, me };
+export default { login, register, me }

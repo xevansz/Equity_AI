@@ -1,11 +1,11 @@
 // Navbar.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { TrendingUp, Menu } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { TrendingUp, Menu } from 'lucide-react'
+import { useAuth } from '../hooks/useAuth'
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuth()
 
   return (
     <nav className="bg-secondary border-b border-textMuted/10">
@@ -64,7 +64,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

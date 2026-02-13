@@ -1,45 +1,40 @@
 // src/pages/DashboardPage.jsx
-import React, { useState } from 'react';
-import SearchBar from '../components/SearchBar';
-import AnalysisPanel from '../components/AnalysisPanel';
-import Dashboard from '../components/Dashboard';
-import FinancialCharts from '../components/FinancialCharts';
-import useSearch from '../hooks/useSearch';
+import React, { useState } from 'react'
+import SearchBar from '../components/SearchBar'
+import AnalysisPanel from '../components/AnalysisPanel'
+import useSearch from '../hooks/useSearch'
 
 const DashboardPage = () => {
-  const { data, loading, error, runSearch } = useSearch();
-  const [analysisData, setAnalysisData] = useState(null);
+  const { data, loading, error, runSearch } = useSearch()
+  const [analysisData, setAnalysisData] = useState(null)
 
   const handleSearch = async (query) => {
     try {
-      const res = await runSearch(query);
-      setAnalysisData(res);
+      const res = await runSearch(query)
+      setAnalysisData(res)
     } catch (err) {
-      console.error('Search error', err);
+      console.error('Search error', err)
     }
-  };
+  }
 
-  const finalData = analysisData || data;
+  const finalData = analysisData || data
 
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Research Dashboard</h1>
-          <p className="text-textMuted">
-            Analyze stocks with AI-powered insights
-          </p>
+          <p className="text-textMuted">Analyze stocks with AI-powered insights</p>
         </div>
 
         {/* ✅ SINGLE SEARCH BAR */}
         <SearchBar onSearch={handleSearch} />
 
         {loading && (
-        <div className="mt-8 p-8 bg-surface rounded-lg text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-          <p className="mt-4 text-textMuted">Analyzing...</p>
+          <div className="mt-8 p-8 bg-surface rounded-lg text-center">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <p className="mt-4 text-textMuted">Analyzing...</p>
           </div>
         )}
 
@@ -56,7 +51,7 @@ const DashboardPage = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage

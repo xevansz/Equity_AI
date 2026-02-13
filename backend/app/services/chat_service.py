@@ -1,10 +1,10 @@
 """Chat Service"""
 
 import time
-from app.rag.rag_pipeline import rag_pipeline
-from app.conversational.response_generator import response_generator
-from app.conversational.memory import ConversationMemory
-from app.schemas.chat import ChatRequest, ChatResponse
+from rag.rag_pipeline import rag_pipeline
+from conversational.response_generator import response_generator
+from conversational.memory import ConversationMemory
+from schemas.chat import ChatRequest, ChatResponse
 
 
 class ChatService:
@@ -13,7 +13,7 @@ class ChatService:
 
     # ⏱ Rate limiting (Gemini free tier safety)
     _last_call_time = 0
-    _MIN_INTERVAL_SECONDS = 4   # 1 request every 4 seconds
+    _MIN_INTERVAL_SECONDS = 4  # 1 request every 4 seconds
 
     def __init__(self, db):
         self.memory = ConversationMemory(db)

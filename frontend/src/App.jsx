@@ -1,6 +1,6 @@
 //frontend/src/App.jsx
 import React from 'react'
-import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, Outlet, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -11,15 +11,20 @@ import Login from './auth/Login'
 import Register from './auth/Register'
 import ProtectedRoute from './auth/ProtectedRoute'
 
-const Layout = () => (
-  <div className="min-h-screen bg-background text-text flex flex-col">
-    <Navbar />
-    <main className="flex-grow">
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-)
+const Layout = () => {
+  const location = useLocation()
+  const showFooter = ['/', '/login', '/register'].includes(location.pathname)
+
+  return (
+    <div className="min-h-screen bg-background text-text flex flex-col">
+      <Navbar />
+      <main className="flex-1 min-h-0 flex">
+          <Outlet />
+      </main>
+      {showFooter && <Footer />}
+    </div>
+  )
+}
 
 const router = createBrowserRouter(
   [

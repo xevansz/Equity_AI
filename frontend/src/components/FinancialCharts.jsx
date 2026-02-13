@@ -17,7 +17,7 @@ const formatNumber = (value) => {
 
 const FinancialCharts = ({ chartData }) => {
   if (!chartData || chartData.length === 0) {
-    return <p className="text-textMuted text-sm">No financial data available</p>
+    return <p className="text-muted text-sm">No financial data available</p>
   }
 
   return (

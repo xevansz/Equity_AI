@@ -20,12 +20,12 @@ const DashboardPage = () => {
   const finalData = analysisData || data
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Research Dashboard</h1>
-          <p className="text-textMuted">Analyze stocks with AI-powered insights</p>
+          <p className="text-muted">Analyze stocks with AI-powered insights</p>
         </div>
 
         {/* ✅ SINGLE SEARCH BAR */}
@@ -34,7 +34,7 @@ const DashboardPage = () => {
         {loading && (
           <div className="mt-8 p-8 bg-surface rounded-lg text-center">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-            <p className="mt-4 text-textMuted">Analyzing...</p>
+            <p className="mt-4 text-muted">Analyzing...</p>
           </div>
         )}
 

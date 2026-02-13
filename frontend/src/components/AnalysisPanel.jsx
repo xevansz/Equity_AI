@@ -22,8 +22,8 @@ const AnalysisPanel = ({ data }) => {
 
   if (!data) {
     return (
-      <div className="p-4 bg-surface rounded-lg">
-        <p className="text-textMuted text-sm">Search a stock to view analysis</p>
+      <div className="bg-surface rounded-lg">
+        <p className="text-muted text-sm">Search a stock to view analysis</p>
       </div>
     )
   }
@@ -32,8 +32,8 @@ const AnalysisPanel = ({ data }) => {
 
   return (
     <div className="p-6 bg-surface rounded-lg">
-      <h2 className="text-lg font-semibold mb-3">Analysis</h2>
-      <p className="text-xs text-textMuted mb-4">
+      <h2 className="text-lg font-semibold mb-3 text-text">Analysis</h2>
+      <p className="text-xs text-muted mb-4">
         Query: {data.query} | Symbol: {data.symbol}
       </p>
 
@@ -44,7 +44,7 @@ const AnalysisPanel = ({ data }) => {
             key={t}
             onClick={() => setTab(t)}
             className={`px-3 py-1 rounded text-sm ${
-              tab === t ? 'bg-primary text-black' : 'bg-background text-textMuted'
+              tab === t ? 'bg-primary text-background' : 'bg-background text-muted'
             }`}
           >
             {t === 'thesis' && '💡 Thesis'}
@@ -57,13 +57,13 @@ const AnalysisPanel = ({ data }) => {
       {/* SIDE-BY-SIDE LAYOUT */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* LEFT → RAW API RESPONSE */}
-        <div className="bg-background rounded p-3 text-xs overflow-y-auto overflow-x-hidden max-h-[420px] border border-textMuted/10">
-          <div className="text-textMuted mb-2">Raw API Response</div>
-          <pre className="whitespace-pre-wrap">{JSON.stringify(data, null, 2)}</pre>
+        <div className="bg-background rounded p-3 text-xs overflow-y-auto overflow-x-hidden max-h-[420px] border border-text-muted/10">
+          <div className="text-muted mb-2">Raw API Response</div>
+          <pre className="whitespace-pre-wrap max-w-full overflow-x-auto text-text">{JSON.stringify(data, null, 2)}</pre>
         </div>
 
         {/* RIGHT → TAB CONTENT */}
-        <div className="text-sm">
+        <div className="text-sm text-text">
           {tab === 'thesis' && (
             <div className="whitespace-pre-line leading-relaxed">
               {data.chat?.answer || 'No thesis available'}
@@ -75,13 +75,13 @@ const AnalysisPanel = ({ data }) => {
               {chartData.length > 0 ? (
                 <FinancialCharts chartData={chartData} />
               ) : (
-                <p className="text-textMuted">No financial data available</p>
+                <p className="text-muted">No financial data available</p>
               )}
             </>
           )}
 
           {tab === 'risk' && (
-            <p className="text-textMuted leading-relaxed">
+            <p className="text-muted leading-relaxed">
               {data.research?.risk || 'Risk analysis not available'}
             </p>
           )}

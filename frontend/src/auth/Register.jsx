@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <AuthLayout>
       <div className="max-w-md mx-auto">
-        <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+        <h1 className="text-2xl font-bold mb-6 text-text">Create Account</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
@@ -50,8 +50,8 @@ const Register = () => {
               setEmail(e.target.value)
               if (errors.email) setErrors({ ...errors, email: '' })
             }}
-            className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary ${
-              errors.email ? 'border-error' : 'border-textMuted/20'
+            className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-light-text-muted dark:placeholder-dark-text-muted focus:outline-none focus:border-primary ${
+              errors.email ? 'border-error' : 'border-text-muted/20'
             }`}
           />
           {errors.email && <p className="text-error text-sm mt-1">{errors.email}</p>}
@@ -64,8 +64,8 @@ const Register = () => {
               setPassword(e.target.value)
               if (errors.password) setErrors({ ...errors, password: '' })
             }}
-            className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary ${
-              errors.password ? 'border-error' : 'border-textMuted/20'
+            className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-light-text-muted dark:placeholder-dark-text-muted focus:outline-none focus:border-primary ${
+              errors.password ? 'border-error' : 'border-text-muted/20'
             }`}
             required
           />
@@ -79,8 +79,8 @@ const Register = () => {
               setConfirmPassword(e.target.value)
               if (errors.confirmPassword) setErrors({ ...errors, confirmPassword: '' })
             }}
-            className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary ${
-              errors.confirmPassword ? 'border-error' : 'border-textMuted/20'
+            className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-light-text-muted dark:placeholder-dark-text-muted focus:outline-none focus:border-primary ${
+              errors.confirmPassword ? 'border-error' : 'border-text-muted/20'
             }`}
             required
           />
@@ -90,7 +90,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full px-4 py-2 bg-primary text-background font-semibold rounded-lg hover:bg-primaryDark transition-colors"
+            className="w-full px-4 py-2 bg-primary text-background font-semibold rounded-lg hover:bg-primary/80 transition-colors"
           >
             Sign Up
           </button>
@@ -102,7 +102,7 @@ const Register = () => {
           </div>
         )}
 
-        <p className="text-sm text-textMuted mt-4">
+        <p className="text-sm text-muted mt-4">
           Already have an account?{' '}
           <Link to="/login" className="text-primary hover:underline">
             Sign in

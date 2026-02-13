@@ -1,14 +1,16 @@
 // Navbar.jsx
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { TrendingUp, Menu } from 'lucide-react'
+import { TrendingUp, Menu, X } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
+import ThemeToggle from './ThemeToggle'
 
 const Navbar = () => {
   const { user, logout } = useAuth()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-secondary border-b border-textMuted/10">
+    <nav className="bg-surface border-b border-text-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-3">
@@ -16,8 +18,8 @@ const Navbar = () => {
               <TrendingUp className="w-6 h-6 text-background" />
             </div>
             <div>
-              <h1 className="text-xl font-bold">EquityAI</h1>
-              <p className="text-xs text-textMuted">Research Assistant</p>
+              <h1 className="text-xl font-bold text-text">EquityAI</h1>
+              <p className="text-xs text-muted">Research Assistant</p>
             </div>
           </Link>
 
@@ -34,10 +36,11 @@ const Navbar = () => {
                   Chat
                 </Link>
                 <div className="flex items-center gap-4">
-                  <span className="text-textMuted">{user.email}</span>
+                  <ThemeToggle />
+                  <span className="text-muted">{user.email}</span>
                   <button
                     onClick={logout}
-                    className="px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors"
+                    className="px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors text-text"
                   >
                     Sign Out
                   </button>
@@ -45,12 +48,13 @@ const Navbar = () => {
               </>
             ) : (
               <div className="flex items-center gap-4">
+                <ThemeToggle />
                 <Link to="/login" className="text-text hover:text-primary transition-colors">
                   Sign In
                 </Link>
                 <Link
                   to="/register"
-                  className="px-6 py-2 bg-primary hover:bg-primaryDark text-background font-semibold rounded-lg transition-colors"
+                  className="px-6 py-2 bg-primary hover:bg-primary/80 text-background font-semibold rounded-lg transition-colors"
                 >
                   Get Started
                 </Link>
@@ -58,10 +62,76 @@ const Navbar = () => {
             )}
           </div>
 
-          <button className="md:hidden">
-            <Menu className="w-6 h-6" />
+          <button 
+            className="md:hidden p-2 rounded-lg hover:bg-surface dark:hover:bg-surface transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6 text-text" /> : <Menu className="w-6 h-6 text-text" />}
           </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-secondary dark:bg-secondary border-t border-text-muted/10">
+            <div className="px-4 py-4 space-y-4">
+              {user ? (
+                <>
+                  <Link 
+                    to="/dashboard" 
+                    className="block text-text hover:text-primary transition-colors py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <Link 
+                    to="/watchlist" 
+                    className="block text-text hover:text-primary transition-colors py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Watchlist
+                  </Link>
+                  <Link 
+                    to="/chat" 
+                    className="block text-text hover:text-primary transition-colors py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Chat
+                  </Link>
+                  <div className="pt-4 border-t border-text-muted/10">
+                    <p className="text-muted text-sm mb-3">{user.email}</p>
+                    <button
+                      onClick={() => {
+                        logout()
+                        setIsMobileMenuOpen(false)
+                      }}
+                      className="w-full px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors text-text text-left"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Link 
+                    to="/login" 
+                    className="block text-text hover:text-primary transition-colors py-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="block w-full px-6 py-2 bg-primary hover:bg-primary/80 text-background font-semibold rounded-lg transition-colors text-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   )

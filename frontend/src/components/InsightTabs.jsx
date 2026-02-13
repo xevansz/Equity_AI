@@ -16,7 +16,7 @@ const InsightTabs = ({ thesis, data, risk }) => {
   }
 
   return (
-    <div className="bg-surface rounded-xl border border-textMuted/10 p-4">
+    <div className="bg-surface rounded-xl border border-text-muted/10 p-4">
       {/* Tabs */}
       <div className="flex gap-2 mb-4">
         {tabs.map((t) => (
@@ -26,7 +26,7 @@ const InsightTabs = ({ thesis, data, risk }) => {
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition ${
               active === t.key
                 ? 'bg-primary text-background'
-                : 'bg-background text-textMuted hover:text-text'
+                : 'bg-background text-muted hover:text-text'
             }`}
           >
             {t.label}

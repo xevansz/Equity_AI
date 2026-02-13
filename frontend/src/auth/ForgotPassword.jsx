@@ -20,7 +20,7 @@ const ForgotPassword = () => {
         {sent ? (
           <div className="p-4 bg-primary/10 rounded-lg text-center">
             <p className="text-sm">Reset link sent to {email}</p>
-            <p className="text-xs text-textMuted mt-2">Check your email for instructions.</p>
+            <p className="text-xs text-muted mt-2">Check your email for instructions.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -29,7 +29,7 @@ const ForgotPassword = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-textMuted/20 rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary"
+              className="w-full px-4 py-2 border border-text-muted/20 rounded-lg bg-surface text-text placeholder-text-muted focus:outline-none focus:border-primary"
               required
             />
             <button
@@ -40,7 +40,7 @@ const ForgotPassword = () => {
             </button>
           </form>
         )}
-        <p className="text-sm text-textMuted mt-4">
+        <p className="text-sm text-muted mt-4">
           <Link to="/login" className="text-primary hover:underline">
             Back to Sign In
           </Link>

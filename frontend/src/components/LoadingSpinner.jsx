@@ -1,9 +1,17 @@
 import React from 'react'
 
-const LoadingSpinner = ({ size = 6 }) => (
+const LoadingSpinner = ({ size = 6 }) => {
+  const sizeClasses = {
+    4: 'h-4 w-4',
+    6: 'h-6 w-6',
+    8: 'h-8 w-8',
+    10: 'h-10 w-10',
+    12: 'h-12 w-12',
+  }
+  return (
   <div className="flex items-center justify-center">
     <svg
-      className={`animate-spin h-${size} w-${size} text-primary`}
+      className={`animate-spin ${sizeClasses[size] || sizeClasses[6]} text-primary`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -19,6 +27,7 @@ const LoadingSpinner = ({ size = 6 }) => (
       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
     </svg>
   </div>
-)
+  )
+}
 
 export default LoadingSpinner

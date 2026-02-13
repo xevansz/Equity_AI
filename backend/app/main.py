@@ -9,11 +9,23 @@ from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import os
 
+
+# lifespan rules
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup
+    await init_databases()
+    yield
+    # shutdown
+    await close_databases()
+
+
 # Create FastAPI app (NO comma here!)
 app = FastAPI(
     title="Conversational Equity Research",
     version="1.0.0",
     description="AI powered stock research platform",
+    lifespan=lifespan,
 )
 
 # CORS
@@ -51,18 +63,6 @@ def root():
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
     return FileResponse("app/static/favicon.ico")
-
-
-# lifespan rules
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # startup
-    await init_databases()
-    yield
-    # shutdown
-    await close_databases()
 
 
 # Global error handler

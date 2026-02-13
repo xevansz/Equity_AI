@@ -2,14 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+/* #TODO: Change the color palette for light mode */
+
+:root {
+  --color-background: #FFFFFF;
+  --color-surface: #F9FAFB;
+  --color-text: #111827;
+  --color-text-muted: #6B7280;
+  --color-primary: #6B7280;
+  --color-secondary: #F3F4F6;
+  --color-accent: #658594;
+  --color-success: #87A987;
+  --color-warning: #C4B28A;
+  --color-error: #C4746E;
+}
+
+.dark {
+  --color-background: #181820;
+  --color-surface: #2A2A37;
+  --color-text: #C5C9C5;
+  --color-text-muted: #727169;
+  --color-primary: #7AA89F;
+  --color-secondary: #1F1F28;
+  --color-accent: #658594;
+  --color-success: #87A987;
+  --color-warning: #C4B28A;
+  --color-error: #C4746E;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-text;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Focus ring improvements for accessibility */
+@layer utilities {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+  .focus-ring-inset {
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary;
+  }
 }

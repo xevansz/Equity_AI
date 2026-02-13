@@ -76,10 +76,10 @@ const ConversationalChat = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-background">
-      <div className="bg-secondary border-b border-textMuted/10 p-4">
+    <div className="flex flex-col bg-background flex-1 min-h-0">
+      <div className="bg-secondary border-b border-text-muted/10 p-4">
         <h1 className="text-xl font-bold">Equity Research Assistant</h1>
-        <p className="text-sm text-textMuted">Ask me anything about stocks and companies</p>
+        <p className="text-sm text-muted">Ask me anything about stocks and companies</p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -107,7 +107,7 @@ const ConversationalChat = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="bg-secondary border-t border-textMuted/10 p-4 flex gap-2">
+      <div className="bg-secondary border-t border-text-muted/10 p-4 flex gap-2 mt-auto">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}

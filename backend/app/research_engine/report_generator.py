@@ -1,8 +1,8 @@
+from research_engine.financial_analysis import analyze_financials
+from research_engine.growth_analysis import analyze_growth
+from research_engine.valuation import analyze_valuation
+from research_engine.risk_analysis import analyze_risks
 
-from app.research_engine.financial_analysis import analyze_financials
-from app.research_engine.growth_analysis import analyze_growth
-from app.research_engine.valuation import analyze_valuation
-from app.research_engine.risk_analysis import analyze_risks
 
 def generate_equity_report(symbol: str, db):
     data_cot = analyze_financials(symbol, db)
@@ -15,27 +15,29 @@ def generate_equity_report(symbol: str, db):
         "Data_CoT": data_cot,
         "Thesis_CoT": thesis_cot,
         "Valuation": valuation,
-        "Risk_CoT": risk_cot
+        "Risk_CoT": risk_cot,
     }
 
+
 """Research Report Generator"""
-from app.llm.gemini import gemini
+from llm.gemini import gemini
+
 
 class ReportGenerator:
     async def generate_report(self, symbol: str, analysis_data: dict):
         prompt = f"""
         Generate a comprehensive equity research report for {symbol}:
         
-        Financial Analysis: {analysis_data.get('financial')}
-        Growth Analysis: {analysis_data.get('growth')}
-        Risk Assessment: {analysis_data.get('risk')}
-        Valuation: {analysis_data.get('valuation')}
+        Financial Analysis: {analysis_data.get("financial")}
+        Growth Analysis: {analysis_data.get("growth")}
+        Risk Assessment: {analysis_data.get("risk")}
+        Valuation: {analysis_data.get("valuation")}
         
         Provide executive summary, detailed analysis, and recommendation.
         """
-        
+
         report = await gemini.generate(prompt)
         return report
 
-report_generator = ReportGenerator()
 
+report_generator = ReportGenerator()

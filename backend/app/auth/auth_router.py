@@ -1,13 +1,13 @@
-#backend/app/auth/auth_router.py
-import os, secrets
+# backend/app/auth/auth_router.py
+import os
+import secrets
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from app.dependencies import get_database, get_current_user
-from app.auth.user_service import UserService
-from app.auth.jwt_handler import create_token
-from app.auth.smtp_service import send_email
-from app.auth.schemas import RegisterRequest, LoginRequest, ResetPasswordRequest
-from app.config import settings
+from dependencies import get_database, get_current_user
+from auth.user_service import UserService
+from auth.jwt_handler import create_token
+from auth.smtp_service import send_email
+from auth.schemas import RegisterRequest, LoginRequest, ResetPasswordRequest
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
@@ -15,6 +15,7 @@ ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 otp_store = {}
+
 
 # -------------------------
 # REGISTER
@@ -71,9 +72,7 @@ async def forgot_password(email: str, db=Depends(get_database)):
     otp_store[email] = otp
 
     send_email(
-        to_email=email,
-        subject="Your OTP",
-        body=f"Your password reset OTP is: {otp}"
+        to_email=email, subject="Your OTP", body=f"Your password reset OTP is: {otp}"
     )
 
     return {"message": "OTP sent to your email"}
@@ -92,6 +91,7 @@ async def reset_password(data: ResetPasswordRequest, db=Depends(get_database)):
 
     del otp_store[data.email]
     return {"message": "Password updated successfully"}
+
 
 """
 @router.post("/reset-password")

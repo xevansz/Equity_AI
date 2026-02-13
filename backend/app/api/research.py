@@ -1,14 +1,17 @@
 """Research Report API"""
+
 from fastapi import APIRouter
 from pydantic import BaseModel
-from app.research_engine.report_generator import generate_equity_report
+from research_engine.report_generator import generate_equity_report
 from fastapi import Depends
-from app.dependencies import get_database
+from dependencies import get_database
 
 router = APIRouter()
 
+
 class ResearchRequest(BaseModel):
     symbol: str
+
 
 @router.post("/research")
 async def research(req: ResearchRequest, db=Depends(get_database)):
@@ -24,12 +27,9 @@ async def research(req: ResearchRequest, db=Depends(get_database)):
     return report
 
 
-
-
-
 """@router.post("/research", response_model=ResearchResponse)
 async def generate_research_report(request: ResearchRequest, db = Depends(get_database)):
-    """'''Generate comprehensive research report'''"""
+    """ """Generate comprehensive research report""" """
     try:
         print("\n📊 RESEARCH REQUEST:", request.symbol)
         service = ResearchService(db)

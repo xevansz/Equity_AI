@@ -1,14 +1,15 @@
 """News API"""
+
 from fastapi import APIRouter, HTTPException
-from app.mcp.news_api import NewsAPI
+from mcp.news_api import NewsAPI
 
 router = APIRouter()
+
 
 @router.get("/news/{symbol}")
 async def get_news(symbol: str):
     """Get latest news for symbol"""
     try:
-
         print("\n📰 NEWS REQUEST:", symbol)
         news_api = NewsAPI()
         news = await news_api.fetch_news(symbol)

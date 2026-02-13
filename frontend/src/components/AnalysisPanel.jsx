@@ -1,12 +1,11 @@
 // src/components/AnalysisPanel.jsx
-import React, { useState } from 'react';
-import FinancialCharts from './FinancialCharts';
+import React, { useState } from 'react'
+import FinancialCharts from './FinancialCharts'
 
 const buildChartData = (financial) => {
-  const reports =
-    financial?.financials?.income_statement?.annualReports;
+  const reports = financial?.financials?.income_statement?.annualReports
 
-  if (!Array.isArray(reports)) return [];
+  if (!Array.isArray(reports)) return []
 
   return reports
     .slice(0, 5)
@@ -15,23 +14,21 @@ const buildChartData = (financial) => {
       year: r.fiscalDateEnding?.slice(0, 4),
       revenue: Number(r.totalRevenue),
       profit: Number(r.operatingIncome || r.grossProfit),
-    }));
-};
+    }))
+}
 
 const AnalysisPanel = ({ data }) => {
-  const [tab, setTab] = useState('thesis');
+  const [tab, setTab] = useState('thesis')
 
   if (!data) {
     return (
       <div className="p-4 bg-surface rounded-lg">
-        <p className="text-textMuted text-sm">
-          Search a stock to view analysis
-        </p>
+        <p className="text-textMuted text-sm">Search a stock to view analysis</p>
       </div>
-    );
+    )
   }
 
-  const chartData = buildChartData(data.financial);
+  const chartData = buildChartData(data.financial)
 
   return (
     <div className="p-6 bg-surface rounded-lg">
@@ -47,9 +44,7 @@ const AnalysisPanel = ({ data }) => {
             key={t}
             onClick={() => setTab(t)}
             className={`px-3 py-1 rounded text-sm ${
-              tab === t
-                ? 'bg-primary text-black'
-                : 'bg-background text-textMuted'
+              tab === t ? 'bg-primary text-black' : 'bg-background text-textMuted'
             }`}
           >
             {t === 'thesis' && '💡 Thesis'}
@@ -61,20 +56,14 @@ const AnalysisPanel = ({ data }) => {
 
       {/* SIDE-BY-SIDE LAYOUT */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-
         {/* LEFT → RAW API RESPONSE */}
-       <div className="bg-background rounded p-3 text-xs overflow-y-auto overflow-x-hidden max-h-[420px] border border-textMuted/10">
-
-
+        <div className="bg-background rounded p-3 text-xs overflow-y-auto overflow-x-hidden max-h-[420px] border border-textMuted/10">
           <div className="text-textMuted mb-2">Raw API Response</div>
-          <pre className="whitespace-pre-wrap">
-            {JSON.stringify(data, null, 2)}
-          </pre>
+          <pre className="whitespace-pre-wrap">{JSON.stringify(data, null, 2)}</pre>
         </div>
 
         {/* RIGHT → TAB CONTENT */}
         <div className="text-sm">
-
           {tab === 'thesis' && (
             <div className="whitespace-pre-line leading-relaxed">
               {data.chat?.answer || 'No thesis available'}
@@ -86,9 +75,7 @@ const AnalysisPanel = ({ data }) => {
               {chartData.length > 0 ? (
                 <FinancialCharts chartData={chartData} />
               ) : (
-                <p className="text-textMuted">
-                  No financial data available
-                </p>
+                <p className="text-textMuted">No financial data available</p>
               )}
             </>
           )}
@@ -101,7 +88,7 @@ const AnalysisPanel = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AnalysisPanel;
+export default AnalysisPanel

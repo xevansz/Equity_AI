@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AuthLayout from './AuthLayout';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import AuthLayout from './AuthLayout'
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [sent, setSent] = useState(false);
+  const [email, setEmail] = useState('')
+  const [sent, setSent] = useState(false)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // TODO: Implement password reset logic
-    console.log('Reset email:', email);
-    setSent(true);
-  };
+    console.log('Reset email:', email)
+    setSent(true)
+  }
 
   return (
     <AuthLayout>
@@ -41,11 +41,13 @@ const ForgotPassword = () => {
           </form>
         )}
         <p className="text-sm text-textMuted mt-4">
-          <Link to="/login" className="text-primary hover:underline">Back to Sign In</Link>
+          <Link to="/login" className="text-primary hover:underline">
+            Back to Sign In
+          </Link>
         </p>
       </div>
     </AuthLayout>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

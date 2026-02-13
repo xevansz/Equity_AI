@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   LineChart,
   Line,
@@ -7,28 +7,22 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
-} from 'recharts';
+} from 'recharts'
 
 const formatNumber = (value) => {
-  if (value >= 1_000_000_000) return `${(value / 1e9).toFixed(1)}B`;
-  if (value >= 1_000_000) return `${(value / 1e6).toFixed(1)}M`;
-  return value;
-};
+  if (value >= 1_000_000_000) return `${(value / 1e9).toFixed(1)}B`
+  if (value >= 1_000_000) return `${(value / 1e6).toFixed(1)}M`
+  return value
+}
 
 const FinancialCharts = ({ chartData }) => {
   if (!chartData || chartData.length === 0) {
-    return (
-      <p className="text-textMuted text-sm">
-        No financial data available
-      </p>
-    );
+    return <p className="text-textMuted text-sm">No financial data available</p>
   }
 
   return (
     <div className="h-72 w-full">
-      <h3 className="text-sm font-semibold mb-2">
-        Revenue & Profit (Last 5 Years)
-      </h3>
+      <h3 className="text-sm font-semibold mb-2">Revenue & Profit (Last 5 Years)</h3>
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
@@ -44,7 +38,7 @@ const FinancialCharts = ({ chartData }) => {
         </LineChart>
       </ResponsiveContainer>
     </div>
-  );
-};
+  )
+}
 
-export default FinancialCharts;
+export default FinancialCharts

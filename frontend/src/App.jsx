@@ -1,19 +1,15 @@
 //frontend/src/App.jsx
-import React from "react";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  Outlet,
-} from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import DashboardPage from "./pages/DashboardPage";
-import WatchlistPage from "./pages/WatchlistPage";
-import ChatPage from "./pages/ChatPage";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import ProtectedRoute from "./auth/ProtectedRoute";
+import React from 'react'
+import { RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import DashboardPage from './pages/DashboardPage'
+import WatchlistPage from './pages/WatchlistPage'
+import ChatPage from './pages/ChatPage'
+import Login from './auth/Login'
+import Register from './auth/Register'
+import ProtectedRoute from './auth/ProtectedRoute'
 
 const Layout = () => (
   <div className="min-h-screen bg-background text-text flex flex-col">
@@ -23,18 +19,18 @@ const Layout = () => (
     </main>
     <Footer />
   </div>
-);
+)
 
 const router = createBrowserRouter(
   [
     {
       element: <Layout />,
       children: [
-        { path: "/", element: <HomePage /> },
-        { path: "/login", element: <Login /> },
-        { path: "/register", element: <Register /> },
+        { path: '/', element: <HomePage /> },
+        { path: '/login', element: <Login /> },
+        { path: '/register', element: <Register /> },
         {
-          path: "/dashboard",
+          path: '/dashboard',
           element: (
             <ProtectedRoute>
               <DashboardPage />
@@ -42,7 +38,7 @@ const router = createBrowserRouter(
           ),
         },
         {
-          path: "/watchlist",
+          path: '/watchlist',
           element: (
             <ProtectedRoute>
               <WatchlistPage />
@@ -50,7 +46,7 @@ const router = createBrowserRouter(
           ),
         },
         {
-          path: "/chat",
+          path: '/chat',
           element: (
             <ProtectedRoute>
               <ChatPage />
@@ -65,11 +61,11 @@ const router = createBrowserRouter(
       v7_startTransition: true,
       v7_relativeSplatPath: true,
     },
-  },
-);
+  }
+)
 
 function App() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default App;
+export default App

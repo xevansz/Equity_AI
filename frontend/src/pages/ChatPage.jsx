@@ -1,5 +1,5 @@
-import React from 'react';
-import ConversationalChat from '../components/ConversationalChat';
+import React from 'react'
+import ConversationalChat from '../components/ConversationalChat'
 
 const ChatPage = () => {
   return (
@@ -8,7 +8,7 @@ const ChatPage = () => {
         <ConversationalChat />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChatPage;
+export default ChatPage

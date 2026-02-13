@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import AuthLayout from './AuthLayout';
-import useAuth from '../hooks/useAuth';
-import * as authApi from '../api/auth';
-import { validateRegisterForm } from './validate';
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import AuthLayout from './AuthLayout'
+import useAuth from '../hooks/useAuth'
+import * as authApi from '../api/auth'
+import { validateRegisterForm } from './validate'
 
 const Register = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [errors, setErrors] = useState({});
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [errors, setErrors] = useState({})
 
-  const { login } = useAuth();
+  const { login } = useAuth()
 
-  const handleSubmit =async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-    const validateErrors = validateRegisterForm(email, password, confirmPassword);
+    const validateErrors = validateRegisterForm(email, password, confirmPassword)
 
     if (Object.keys(validateErrors).length > 0) {
-      setErrors(validateErrors);
-      return;
+      setErrors(validateErrors)
+      return
     }
 
-      try {
-        await authApi.register(email, password);
-        // automatically log in after register
-        await login(email, password);
-        navigate('/dashboard');
-      } catch (err) {
-        console.error('Register failed', err);
-        setErrors({
-          general: err.response?.data?.detail || err.message || "registration failed"
-        });
-      }
-  };
+    try {
+      await authApi.register(email, password)
+      // automatically log in after register
+      await login(email, password)
+      navigate('/dashboard')
+    } catch (err) {
+      console.error('Register failed', err)
+      setErrors({
+        general: err.response?.data?.detail || err.message || 'registration failed',
+      })
+    }
+  }
 
   return (
     <AuthLayout>
@@ -47,42 +47,37 @@ const Register = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => {
-              setEmail(e.target.value);
-              if (errors.email) setErrors({ ...errors, email: '' });
+              setEmail(e.target.value)
+              if (errors.email) setErrors({ ...errors, email: '' })
             }}
             className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary ${
               errors.email ? 'border-error' : 'border-textMuted/20'
             }`}
           />
-          {errors.email && (
-            <p className="text-error text-sm mt-1">{errors.email}</p>
-          )}
+          {errors.email && <p className="text-error text-sm mt-1">{errors.email}</p>}
 
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value);
-              if (errors.password) setErrors({ ...errors, password: '' });
+              setPassword(e.target.value)
+              if (errors.password) setErrors({ ...errors, password: '' })
             }}
             className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary ${
               errors.password ? 'border-error' : 'border-textMuted/20'
             }`}
             required
           />
-          {errors.password && (
-            <p className="text-error text-sm mt-1">{errors.password}</p>
-          )}
-
+          {errors.password && <p className="text-error text-sm mt-1">{errors.password}</p>}
 
           <input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => {
-              setConfirmPassword(e.target.value);
-              if (errors.confirmPassword) setErrors({ ...errors, confirmPassword: '' });
+              setConfirmPassword(e.target.value)
+              if (errors.confirmPassword) setErrors({ ...errors, confirmPassword: '' })
             }}
             className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-textMuted focus:outline-none focus:border-primary ${
               errors.confirmPassword ? 'border-error' : 'border-textMuted/20'
@@ -108,11 +103,14 @@ const Register = () => {
         )}
 
         <p className="text-sm text-textMuted mt-4">
-          Already have an account? <Link to="/login" className="text-primary hover:underline">Sign in</Link>
+          Already have an account?{' '}
+          <Link to="/login" className="text-primary hover:underline">
+            Sign in
+          </Link>
         </p>
       </div>
     </AuthLayout>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

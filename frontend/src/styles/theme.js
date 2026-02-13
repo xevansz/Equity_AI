@@ -10,7 +10,7 @@ export const theme = {
     accent: '#60A5FA',
     success: '#10B981',
     warning: '#F59E0B',
-    error: '#EF4444'
+    error: '#EF4444',
   },
   spacing: {
     xs: '0.25rem',
@@ -18,13 +18,13 @@ export const theme = {
     md: '1rem',
     lg: '1.5rem',
     xl: '2rem',
-    '2xl': '3rem'
+    '2xl': '3rem',
   },
   borderRadius: {
     sm: '0.375rem',
     md: '0.5rem',
     lg: '0.75rem',
     xl: '1rem',
-    full: '9999px'
-  }
-};
+    full: '9999px',
+  },
+}

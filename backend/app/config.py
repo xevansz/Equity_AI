@@ -1,12 +1,13 @@
 """Configuration Management"""
-#backend/app/config.py
+
+# backend/app/config.py
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 
 load_dotenv()
 
-class Settings(BaseSettings):
 
+class Settings(BaseSettings):
     # Server
     HOST: str = "0.0.0.0"
     PORT: int = 8000
@@ -27,7 +28,7 @@ class Settings(BaseSettings):
     DB_NAME: str = "equity_research"
 
     # JWT
-    JWT_SECRET_KEY: str
+    JWT_SECRET_KEY: str = "youlikemychinesedecorations?"
     JWT_EXPIRE_MINUTES: int = 1440
 
     # Admin
@@ -39,7 +40,6 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 587
     SMTP_EMAIL: str = ""
     SMTP_PASSWORD: str = ""
-
 
     # Google OAuth
     GOOGLE_CLIENT_ID: str = ""

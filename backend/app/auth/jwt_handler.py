@@ -1,6 +1,6 @@
 import os
 from jose import jwt, JWTError
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 ALGORITHM = "HS256"
@@ -12,7 +12,7 @@ if not JWT_SECRET_KEY:
 
 def create_token(data: dict):
     payload = data.copy()
-    payload["exp"] = datetime.utcnow() + timedelta(minutes=JWT_EXPIRE_MINUTES)
+    payload["exp"] = datetime.timezone(UTC) + timedelta(minutes=JWT_EXPIRE_MINUTES)
     return jwt.encode(payload, JWT_SECRET_KEY, algorithm=ALGORITHM)
 
 

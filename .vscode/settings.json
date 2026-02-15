@@ -2,10 +2,14 @@
   "editor.formatOnSave": true,
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": true,
+    "source.fixAll.ruff": true
   },
 
   "eslint.validate": ["javascript", "javascriptreact"],
 
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
 }

@@ -18,9 +18,6 @@ async def get_financial_data(request: FinancialRequest):
         print(data.financials.keys())
         print("-" * 60)
 
-        service = DataService()
-        data = await service.get_financial_data(request.symbol)
-
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

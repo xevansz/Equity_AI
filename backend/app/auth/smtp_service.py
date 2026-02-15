@@ -1,14 +1,19 @@
 import os
 import smtplib
 from email.mime.text import MIMEText
-from dotenv import load_dotenv
 
-load_dotenv()   # ← THIS IS WHAT YOU WERE MISSING
 
-SMTP_HOST = os.getenv("SMTP_HOST")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))   # default if missing
-SMTP_EMAIL = os.getenv("SMTP_EMAIL")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+def require_env(name: str) -> str:
+    value = os.getenv(name)
+    if not value:
+        raise RuntimeError("No environment variable")
+    return value
+
+
+SMTP_HOST = require_env("SMTP_HOST")
+SMTP_PORT = 587
+SMTP_EMAIL = require_env("SMTP_EMAIL")
+SMTP_PASSWORD = require_env("SMTP_PASSWORD")
 
 
 def send_email(to_email: str, subject: str, body: str):

@@ -22,7 +22,8 @@ class NewsAPI(BaseMCP):
                 },
             )
             return data.get("articles", [])
-        except:
+        except Exception as e:
+            print("Error fetching news:", e)
             return []
 
 

@@ -25,18 +25,3 @@ async def research(req: ResearchRequest, db=Depends(get_database)):
     print("-" * 60)
 
     return report
-
-
-"""@router.post("/research", response_model=ResearchResponse)
-async def generate_research_report(request: ResearchRequest, db = Depends(get_database)):
-    """ """Generate comprehensive research report""" """
-    try:
-        print("\n📊 RESEARCH REQUEST:", request.symbol)
-        service = ResearchService(db)
-        report = await service.generate_report(request.symbol)
-        print("📝 RESEARCH REPORT GENERATED")
-        print(report.report[:500])  # first 500 chars
-        print("-" * 60)
-        return report
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e)) """

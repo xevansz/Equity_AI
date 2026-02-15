@@ -18,9 +18,6 @@ async def get_news(symbol: str):
             print("Top headline:", news[0].get("title"))
         print("-" * 60)
 
-        news_api = NewsAPI()
-        news = await news_api.fetch_news(symbol)
-
         return {"symbol": symbol, "news": news}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

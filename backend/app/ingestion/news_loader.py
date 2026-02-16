@@ -1,6 +1,6 @@
 """News Loader"""
 
-from mcp.news_api import news_api
+from app.mcp.news_api import news_api
 
 
 class NewsLoader:

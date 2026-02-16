@@ -1,9 +1,9 @@
 """Research Service"""
 
-from ingestion.financial_loader import financial_loader
-from research_engine.financial_analysis import financial_analyzer
-from research_engine.report_generator import report_generator
-from schemas.research import ResearchResponse
+from app.ingestion.financial_loader import financial_loader
+from app.research_engine.financial_analysis import financial_analyzer
+from app.research_engine.report_generator import report_generator
+from app.schemas.research import ResearchResponse
 
 
 class ResearchService:

@@ -9,4 +9,5 @@
 * No type hints in any functions, error handling inconsistant
 * finanical metrics - pagination (is required)?
 * Don't use print for logging 
-* 
+* search.py - Remove symbol aliases 
+* all endpoints are public. Auth not enforced

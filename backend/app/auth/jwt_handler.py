@@ -12,7 +12,9 @@ if not JWT_SECRET_KEY:
 
 def create_token(data: dict):
     payload = data.copy()
-    payload["exp"] = datetime.timezone(UTC) + timedelta(minutes=JWT_EXPIRE_MINUTES)
+    payload["exp"] = datetime.now(datetime.timezone(UTC)) + timedelta(
+        minutes=JWT_EXPIRE_MINUTES
+    )
     return jwt.encode(payload, JWT_SECRET_KEY, algorithm=ALGORITHM)
 
 

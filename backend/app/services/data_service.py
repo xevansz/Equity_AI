@@ -1,6 +1,6 @@
-from ingestion.financial_loader import financial_loader
-from schemas.financial import FinancialResponse
-from services.financial_metrics import calculate_top_metrics, clean_rate_limit
+from app.ingestion.financial_loader import financial_loader
+from app.schemas.financial import FinancialResponse
+from app.services.financial_metrics import calculate_top_metrics, clean_rate_limit
 
 
 class DataService:

@@ -1,6 +1,6 @@
 """Query Router"""
 
-from conversational.intent_detector import intent_detector
+from app.conversational.intent_detector import intent_detector
 
 
 class QueryRouter:

@@ -1,18 +1,22 @@
 """Chat API Endpoint"""
 
 from fastapi import APIRouter, HTTPException, Depends
-from schemas.chat import ChatRequest, ChatResponse
-from services.chat_service import ChatService
-from dependencies import get_database
+from app.schemas.chat import ChatRequest, ChatResponse
+from app.services.chat_service import ChatService
+from app.dependencies import get_database, get_current_user
 
 router = APIRouter()
 
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest, db=Depends(get_database)):
+async def chat(
+    request: ChatRequest,
+    db=Depends(get_database),
+    user=Depends(get_current_user),
+):
     """Conversational chat with equity research"""
     try:
-        print("\n📩 CHAT REQUEST:", request.query)
+        print("\nCHAT REQUEST:", request.query)
 
         if db is None:
             raise HTTPException(status_code=503, detail="Database not available")

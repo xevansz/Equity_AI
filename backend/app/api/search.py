@@ -1,40 +1,31 @@
 # api/search.py
-from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
-from dependencies import get_database
-from schemas.chat import ChatRequest
-from services.chat_service import ChatService
-from mcp.news_api import NewsAPI
-from services.data_service import DataService
-from research_engine.report_generator import generate_equity_report
+from app.dependencies import get_database, get_current_user
+from app.schemas.chat import ChatRequest
+from app.services.chat_service import ChatService
+from app.mcp.news_api import NewsAPI
+from app.services.data_service import DataService
+from app.research_engine.report_generator import generate_equity_report
+from app.models.conversation import SearchRequest
+import asyncio
 
 router = APIRouter()
 
 
-class SearchRequest(BaseModel):
-    query: str
-    symbol: Optional[str] = None
-
-
 @router.post("/search")
-async def single_search(request: SearchRequest, db=Depends(get_database)):
+async def single_search(
+    request: SearchRequest,
+    db=Depends(get_database),
+    user=Depends(get_current_user),
+):
     query = request.query
-    symbol = (request.symbol or request.query).upper()
+    symbol = request.symbol or query.upper()
 
-    # simple alias mapping
-    SYMBOL_ALIASES = {
-        "APPLE": "AAPL",
-        "GOOGLE": "GOOGL",
-        "TESLA": "TSLA",
-        "MICROSOFT": "MSFT",
-        "AMAZON": "AMZN",
-    }
-
-    symbol = SYMBOL_ALIASES.get(symbol, symbol)
+    # TODO: Implement intelligent symbol resolver
+    # symbol = await symbol_resolver(query)
 
     print("\n" + "=" * 90)
-    print("🔍 SINGLE SEARCH API CALLED")
+    print("SINGLE SEARCH API CALLED")
     print("Query  :", query)
     print("Symbol :", symbol)
     print("=" * 90)
@@ -49,20 +40,22 @@ async def single_search(request: SearchRequest, db=Depends(get_database)):
         # Chat search
         chat_request = ChatRequest(query=query)
         chat_service = ChatService(db)
-        chat_response = await chat_service.process_query(chat_request)
-        print("✅ CHAT ANSWER:", chat_response.answer)
-
-        # Financial data
+        news_api = NewsAPI()
         data_service = DataService()
-        financial_data = await data_service.get_financial_data(symbol)
 
-        # Research report
+        chat_task = chat_service.process_query(chat_request)
+        financial_task = data_service.get_financial_data(symbol)
+        news_task = news_api.fetch_news(symbol)
+
+        chat_response, financial_data, news = await asyncio.gather(
+            chat_task,
+            financial_task,
+            news_task,
+        )
+
         research_report = generate_equity_report(symbol, db)
 
-        # News
-        news_api = NewsAPI()
-        news = await news_api.fetch_news(symbol)
-        print(f"✅ NEWS ARTICLES FETCHED: {len(news) if news else 0}")
+        print(f"NEWS ARTICLES FETCHED: {len(news) if news else 0}")
 
         return {
             "query": query,

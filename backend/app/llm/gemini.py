@@ -1,7 +1,7 @@
 """Gemini LLM Client"""
 
 from google import genai
-from config import settings
+from app.config import settings
 
 
 class GeminiClient:

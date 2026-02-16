@@ -1,6 +1,6 @@
 """Financial Data Loader"""
 
-from mcp.financial_api import alpha_vantage
+from app.mcp.financial_api import alpha_vantage
 
 
 class FinancialLoader:

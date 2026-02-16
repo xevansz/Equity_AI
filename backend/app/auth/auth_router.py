@@ -3,7 +3,7 @@ import os
 import secrets
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from dependencies import get_database, get_current_user
+from app.dependencies import get_database, get_current_user
 from auth.user_service import UserService
 from auth.jwt_handler import create_token
 from auth.smtp_service import send_email

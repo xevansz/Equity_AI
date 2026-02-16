@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI):
     await close_databases()
 
 
-# Create FastAPI app (NO comma here!)
+# FastAPI app
 app = FastAPI(
     title="Conversational Equity Research",
     version="1.0.0",

@@ -1,6 +1,6 @@
 """RAG Retriever"""
 
-from embeddings.vector_store import vector_store
+from app.embeddings.vector_store import vector_store
 
 
 class Retriever:

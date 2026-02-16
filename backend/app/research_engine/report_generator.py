@@ -1,8 +1,8 @@
-from llm.gemini import gemini
-from research_engine.financial_analysis import analyze_financials
-from research_engine.growth_analysis import analyze_growth
-from research_engine.valuation import analyze_valuation
-from research_engine.risk_analysis import analyze_risks
+from app.llm.gemini import gemini
+from app.research_engine.financial_analysis import analyze_financials
+from app.research_engine.growth_analysis import analyze_growth
+from app.research_engine.valuation import analyze_valuation
+from app.research_engine.risk_analysis import analyze_risks
 
 
 def generate_equity_report(symbol: str, db):

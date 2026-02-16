@@ -1,6 +1,6 @@
 """SEC Filings API"""
 
-from mcp.base import BaseMCP
+from app.mcp.base import BaseMCP
 
 
 class SECAPI(BaseMCP):

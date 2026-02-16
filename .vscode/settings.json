@@ -2,8 +2,8 @@
   "editor.formatOnSave": true,
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.ruff": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.ruff": "explicit"
   },
 
   "eslint.validate": ["javascript", "javascriptreact"],

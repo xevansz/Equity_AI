@@ -1,7 +1,7 @@
 """Database Initialization"""
 
 from motor.motor_asyncio import AsyncIOMotorClient
-from config import settings
+from app.config import settings
 
 
 class Database:

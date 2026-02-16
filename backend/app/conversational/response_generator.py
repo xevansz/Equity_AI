@@ -1,7 +1,7 @@
 """Response Generator"""
 
-from llm.gemini import gemini
-from llm.prompt_templates import CHAT_PROMPT
+from app.llm.gemini import gemini
+from app.llm.prompt_templates import CHAT_PROMPT
 
 
 class ResponseGenerator:

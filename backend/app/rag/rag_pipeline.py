@@ -1,7 +1,7 @@
 """RAG Pipeline Orchestration"""
 
-from rag.retriever import retriever
-from rag.context_builder import context_builder
+from app.rag.retriever import retriever
+from app.rag.context_builder import context_builder
 
 
 class RAGPipeline:

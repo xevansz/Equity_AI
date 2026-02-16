@@ -1,7 +1,7 @@
 """Vector Store Management"""
 
 import chromadb
-from config import settings
+from app.config import settings
 
 
 class VectorStore:

@@ -1,4 +1,4 @@
-from auth.password_utils import hash_password, verify_password
+from app.auth.password_utils import hash_password, verify_password
 
 
 class UserService:

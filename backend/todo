@@ -1,13 +1,11 @@
 * auth_router:
 	* password is stored as plain text
 	* In memory otp store.
-* cors - should close it to frontend
 * base.py - asyncclient never closed
 * report generator is created but never used
-* search.py
-	* hardcoded Symbol aliases
 * No type hints in any functions, error handling inconsistant
 * finanical metrics - pagination (is required)?
 * Don't use print for logging 
-* search.py - Remove symbol aliases 
-* all endpoints are public. Auth not enforced
+* save data
+	* save watchlist data to db
+	* save research dashboard data in cache until user log outs

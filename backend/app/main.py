@@ -13,28 +13,28 @@ import os
 # lifespan rules
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # startup
-    await init_databases()
-    yield
-    # shutdown
-    await close_databases()
+  # startup
+  await init_databases()
+  yield
+  # shutdown
+  await close_databases()
 
 
 # FastAPI app
 app = FastAPI(
-    title="Conversational Equity Research",
-    version="1.0.0",
-    description="AI powered stock research platform",
-    lifespan=lifespan,
+  title="Conversational Equity Research",
+  version="1.0.0",
+  description="AI powered stock research platform",
+  lifespan=lifespan,
 )
 
 # CORS
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+  CORSMiddleware,
+  allow_origins=["http://localhost:3000"],
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
 )
 
 # Routers
@@ -50,29 +50,29 @@ app.include_router(search.router, prefix="/api", tags=["search"])
 # root
 @app.get("/")
 def root():
-    # If a built frontend exists, serve its index.html
-    dist_index = os.path.join(
-        os.path.dirname(__file__), "..", "..", "frontend", "dist", "index.html"
-    )
-    if os.path.exists(dist_index):
-        return FileResponse(dist_index)
-    # If no built frontend, redirect to vite dev server (developer workflow)
-    return RedirectResponse(url="http://localhost:3000/")
+  # If a built frontend exists, serve its index.html
+  dist_index = os.path.join(
+    os.path.dirname(__file__), "..", "..", "frontend", "dist", "index.html"
+  )
+  if os.path.exists(dist_index):
+    return FileResponse(dist_index)
+  # If no built frontend, redirect to vite dev server (developer workflow)
+  return RedirectResponse(url="http://localhost:3000/")
 
 
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
-    return FileResponse("app/static/favicon.ico")
+  return FileResponse("app/static/favicon.ico")
 
 
 # Global error handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
-    return JSONResponse(status_code=500, content={"error": str(exc)})
+  return JSONResponse(status_code=500, content={"error": str(exc)})
 
 
 # Driver code
 if __name__ == "__main__":
-    import uvicorn
+  import uvicorn
 
-    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT)
+  uvicorn.run("app.main:app", host=settings.HOST, port=settings.PORT, reload=True)

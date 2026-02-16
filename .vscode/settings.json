@@ -11,5 +11,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "ruff.configuration": {
+    "indent-width": 2
   }
 }

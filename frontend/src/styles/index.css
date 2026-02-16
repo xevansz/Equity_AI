@@ -5,29 +5,35 @@
 /* #TODO: Change the color palette for light mode */
 
 :root {
-  --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
-  --color-text: #111827;
-  --color-text-muted: #6B7280;
-  --color-primary: #6B7280;
-  --color-secondary: #F3F4F6;
-  --color-accent: #658594;
-  --color-success: #87A987;
-  --color-warning: #C4B28A;
-  --color-error: #C4746E;
+  --color-background: #f2ecbc; /* parchment */
+  --color-surface: #e5ddb0; /* slightly raised panel */
+
+  --color-text: #545464; /* ink gray */
+  --color-text-muted: #8a8980; /* faded ink */
+
+  --color-primary: #5a7785; /* dusty blue */
+  --color-secondary: #6f8c7c; /* soft green */
+  --color-accent: #7e9cd8; /* wave blue */
+
+  --color-success: #6f894e;
+  --color-warning: #b6927b;
+  --color-error: #c84053;
 }
 
 .dark {
   --color-background: #181820;
-  --color-surface: #2A2A37;
-  --color-text: #C5C9C5;
+  --color-surface: #1f1f28;
+
+  --color-text: #c5c9c5;
   --color-text-muted: #727169;
-  --color-primary: #7AA89F;
-  --color-secondary: #1F1F28;
-  --color-accent: #658594;
-  --color-success: #87A987;
-  --color-warning: #C4B28A;
-  --color-error: #C4746E;
+
+  --color-primary: #7aa89f;
+  --color-secondary: #223249;
+  --color-accent: #7e9cd8;
+
+  --color-success: #87a987;
+  --color-warning: #c4b28a;
+  --color-error: #c4746e;
 }
 
 * {
@@ -43,7 +49,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     @apply bg-background text-text;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 }
 

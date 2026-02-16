@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, RedirectResponse
 from app.config import settings
-from app.database import close_databases, init_databases
+from app.database import close_databases, init_databases, create_index_cache
 from app.api import chat, research, financial, news, health, search
 from app.auth.auth_router import router as auth_router
 from fastapi.responses import FileResponse
@@ -15,6 +15,7 @@ import os
 async def lifespan(app: FastAPI):
   # startup
   await init_databases()
+  await create_index_cache()
   yield
   # shutdown
   await close_databases()

@@ -21,11 +21,11 @@ async def single_search(
 ):
   query = request.query
 
-  symbol = await symbol_resolver(query)
+  symbol = await symbol_resolver(query, db)
 
   print("\n" + "=" * 90)
   print("SINGLE SEARCH API CALLED")
-  print("Query  :", query)
+  print("Company Name  :", query)
   print("Symbol :", symbol)
   print("=" * 90)
 

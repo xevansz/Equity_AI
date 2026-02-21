@@ -1,5 +1,0 @@
-sentence-transformers
-pymongo
-yfinance
-beautifulsoup4
-lxml

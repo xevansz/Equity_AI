@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <div className="relative overflow-hidden bg-background w-full">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="text-center">
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-text-muted/20">
             <Zap className="w-4 h-4 text-primary" />

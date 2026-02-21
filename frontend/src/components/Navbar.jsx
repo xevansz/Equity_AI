@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="bg-surface border-b border-text-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-3">
+          <Link to={user ? '/dashboard' : '/'} className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-background" />
             </div>
@@ -62,12 +62,16 @@ const Navbar = () => {
             )}
           </div>
 
-          <button 
+          <button
             className="md:hidden p-2 rounded-lg hover:bg-surface dark:hover:bg-surface transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6 text-text" /> : <Menu className="w-6 h-6 text-text" />}
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-text" />
+            ) : (
+              <Menu className="w-6 h-6 text-text" />
+            )}
           </button>
         </div>
 
@@ -77,22 +81,22 @@ const Navbar = () => {
             <div className="px-4 py-4 space-y-4">
               {user ? (
                 <>
-                  <Link 
-                    to="/dashboard" 
+                  <Link
+                    to="/dashboard"
                     className="block text-text hover:text-primary transition-colors py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Dashboard
                   </Link>
-                  <Link 
-                    to="/watchlist" 
+                  <Link
+                    to="/watchlist"
                     className="block text-text hover:text-primary transition-colors py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Watchlist
                   </Link>
-                  <Link 
-                    to="/chat" 
+                  <Link
+                    to="/chat"
                     className="block text-text hover:text-primary transition-colors py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -113,8 +117,8 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link 
-                    to="/login" 
+                  <Link
+                    to="/login"
                     className="block text-text hover:text-primary transition-colors py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

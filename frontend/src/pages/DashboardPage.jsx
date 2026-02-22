@@ -28,7 +28,6 @@ const DashboardPage = () => {
           <p className="text-muted">Analyze stocks with AI-powered insights</p>
         </div>
 
-        {/* ✅ SINGLE SEARCH BAR */}
         <SearchBar onSearch={handleSearch} />
 
         {loading && (

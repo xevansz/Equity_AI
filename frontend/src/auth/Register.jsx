@@ -17,7 +17,11 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const validateErrors = validateRegisterForm(email, password, confirmPassword)
+    const validateErrors = validateRegisterForm(
+      email,
+      password,
+      confirmPassword
+    )
 
     if (Object.keys(validateErrors).length > 0) {
       setErrors(validateErrors)
@@ -32,7 +36,8 @@ const Register = () => {
     } catch (err) {
       console.error('Register failed', err)
       setErrors({
-        general: err.response?.data?.detail || err.message || 'registration failed',
+        general:
+          err.response?.data?.detail || err.message || 'registration failed',
       })
     }
   }
@@ -54,7 +59,9 @@ const Register = () => {
               errors.email ? 'border-error' : 'border-text-muted/20'
             }`}
           />
-          {errors.email && <p className="text-error text-sm mt-1">{errors.email}</p>}
+          {errors.email && (
+            <p className="text-error text-sm mt-1">{errors.email}</p>
+          )}
 
           <input
             type="password"
@@ -69,7 +76,9 @@ const Register = () => {
             }`}
             required
           />
-          {errors.password && <p className="text-error text-sm mt-1">{errors.password}</p>}
+          {errors.password && (
+            <p className="text-error text-sm mt-1">{errors.password}</p>
+          )}
 
           <input
             type="password"
@@ -77,7 +86,8 @@ const Register = () => {
             value={confirmPassword}
             onChange={(e) => {
               setConfirmPassword(e.target.value)
-              if (errors.confirmPassword) setErrors({ ...errors, confirmPassword: '' })
+              if (errors.confirmPassword)
+                setErrors({ ...errors, confirmPassword: '' })
             }}
             className={`w-full px-4 py-2 border rounded-lg bg-surface text-text placeholder-light-text-muted dark:placeholder-dark-text-muted focus:outline-none focus:border-primary ${
               errors.confirmPassword ? 'border-error' : 'border-text-muted/20'
@@ -101,13 +111,14 @@ const Register = () => {
             <p className="text-error text-sm">{errors.general}</p>
           </div>
         )}
-
-        <p className="text-sm text-muted mt-4">
-          Already have an account?{' '}
-          <Link to="/login" className="text-primary hover:underline">
-            Sign in
-          </Link>
-        </p>
+        <div className="flex flex-row flex-wrap gap-2 mt-4 justify-center">
+          <p className="text-sm text-muted">
+            Already have an account?{' '}
+            <Link to="/login" className="text-primary hover:underline">
+              Sign in
+            </Link>
+          </p>
+        </div>
       </div>
     </AuthLayout>
   )

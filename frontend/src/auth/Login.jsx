@@ -50,7 +50,9 @@ const Login = () => {
               errors.email ? 'border-error' : 'border-text-muted/20'
             }`}
           />
-          {errors.email && <p className="text-error text-sm mt-1">{errors.email}</p>}
+          {errors.email && (
+            <p className="text-error text-sm mt-1">{errors.email}</p>
+          )}
 
           <input
             type="password"
@@ -77,13 +79,22 @@ const Login = () => {
             <p className="text-error text-sm">{errors.general}</p>
           </div>
         )}
-
-        <p className="text-sm text-muted mt-4">
-          Don't have an account?{' '}
-          <Link to="/register" className="text-primary hover:underline">
-            Sign up
-          </Link>
-        </p>
+        <div className="flex flex-row flex-wrap gap-2 mt-4 justify-center">
+          <p className="text-sm text-muted">
+            <Link
+              to="/forgot-password"
+              className="text-primary hover:underline"
+            >
+              Forgot Password?
+            </Link>
+          </p>
+          <p className="text-sm text-blue-500"> &middot; </p>
+          <p className="text-sm text-muted">
+            <Link to="/register" className="text-primary hover:underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
     </AuthLayout>
   )

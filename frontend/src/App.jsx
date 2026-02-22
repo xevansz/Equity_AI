@@ -1,19 +1,28 @@
 //frontend/src/App.jsx
 import React from 'react'
-import { RouterProvider, createBrowserRouter, Outlet, useLocation } from 'react-router-dom'
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Outlet,
+  useLocation,
+} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import DashboardPage from './pages/DashboardPage'
 import WatchlistPage from './pages/WatchlistPage'
 import ChatPage from './pages/ChatPage'
+import PageNotFound from './pages/NotFound'
 import Login from './auth/Login'
+import ForgotPassword from './auth/ForgotPassword'
 import Register from './auth/Register'
 import ProtectedRoute from './auth/ProtectedRoute'
 
 const Layout = () => {
   const location = useLocation()
-  const showFooter = ['/', '/login', '/register'].includes(location.pathname)
+  const showFooter = ['/', '/login', '/register', '/forgot-password'].includes(
+    location.pathname
+  )
 
   return (
     <div className="min-h-screen bg-background text-text flex flex-col">
@@ -34,6 +43,7 @@ const router = createBrowserRouter(
         { path: '/', element: <HomePage /> },
         { path: '/login', element: <Login /> },
         { path: '/register', element: <Register /> },
+        { path: '/forgot-password', element: <ForgotPassword /> },
         {
           path: '/dashboard',
           element: (
@@ -60,6 +70,7 @@ const router = createBrowserRouter(
         },
       ],
     },
+    { path: '*', element: <PageNotFound /> },
   ],
   {
     future: {

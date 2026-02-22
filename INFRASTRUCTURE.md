@@ -270,4 +270,3 @@
 17. **Add Redis** for caching API responses and rate limiting
 18. **Add API rate limiting** middleware (slowapi or similar)
 19. **Add a 404 page** in frontend
-20. **Route ForgotPassword page** in App.jsx

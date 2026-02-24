@@ -1,6 +1,3 @@
-- auth_router:
-  - password is stored as plain text
-  - In memory otp store.
 - report generator is created but never used
 - No type hints in any functions, error handling inconsistant
 - finanical metrics - pagination (is required)?

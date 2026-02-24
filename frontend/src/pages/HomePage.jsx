@@ -45,7 +45,9 @@ const HomePage = () => {
         <div className="text-center">
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-text-muted/20">
             <Zap className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted">Powered by MCP Financial Data + LLMs</span>
+            <span className="text-sm text-muted">
+              Powered by MCP Financial Data + LLMs
+            </span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-text">
@@ -55,8 +57,9 @@ const HomePage = () => {
           </h1>
 
           <p className="text-xl text-muted mb-12 max-w-3xl mx-auto">
-            Transform your investment research with conversational AI. Get comprehensive stock
-            analysis, valuation insights, and risk assessments in seconds—not hours.
+            Transform your investment research with conversational AI. Get
+            comprehensive stock analysis, valuation insights, and risk
+            assessments in seconds—not hours.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -66,9 +69,6 @@ const HomePage = () => {
             >
               Start Researching
               <span>→</span>
-            </button>
-            <button className="px-8 py-4 bg-surface hover:bg-surface/80 text-text font-semibold rounded-lg border border-text-muted/20 transition-colors">
-              View Demo
             </button>
           </div>
         </div>
@@ -83,7 +83,9 @@ const HomePage = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-lg font-semibold mb-0 text-text">{feature.title}</h3>
+              <h3 className="text-lg font-semibold mb-0 text-text">
+                {feature.title}
+              </h3>
               <p className="text-muted text-sm">{feature.description}</p>
             </div>
           ))}

@@ -180,7 +180,6 @@
 - ✅ `ProtectedRoute` — redirects to `/login` if not authenticated
 - ✅ Token stored in localStorage, set as Axios default header
 - ✅ Login/Register with client-side validation
-- ⚠️ `ForgotPassword.jsx` exists but is **not routed** in `App.jsx`
 
 ### API Layer (`api/`)
 
@@ -193,14 +192,6 @@
 - ✅ `AuthContext` — user auth state
 - ✅ `ThemeContext` — light/dark toggle
 - ❌ No global state for watchlist, search results, or dashboard data
-
-### Routing (`App.jsx`)
-
-- ✅ Layout with Navbar + conditional Footer
-- ✅ Protected routes for dashboard, watchlist, chat
-- ✅ Public routes for home, login, register
-- ❌ No 404 page
-- ❌ ForgotPassword page not routed
 
 ---
 
@@ -269,4 +260,4 @@
 16. **Add nginx reverse proxy** with SSL
 17. **Add Redis** for caching API responses and rate limiting
 18. **Add API rate limiting** middleware (slowapi or similar)
-19. **Add a 404 page** in frontend
+19. **Encry password** password stored as a plain text right now

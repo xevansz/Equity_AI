@@ -8,6 +8,9 @@ from app.auth.auth_router import router as auth_router
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import os
+from app.mcp.financial_api import alpha_vantage
+from app.mcp.news_api import news_api
+from app.mcp.sec_api import sec_api
 
 
 # lifespan rules
@@ -19,6 +22,9 @@ async def lifespan(app: FastAPI):
   yield
   # shutdown
   await close_databases()
+  await alpha_vantage.close()
+  await news_api.close()
+  await sec_api.close()
 
 
 # FastAPI app

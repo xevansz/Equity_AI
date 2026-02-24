@@ -63,7 +63,7 @@ async def single_search(
         "answer": chat_response.answer,
         "sources": chat_response.sources if hasattr(chat_response, "sources") else [],
       },
-      "financial": financial_data.dict()
+      "financial": financial_data.model_dump()
       if hasattr(financial_data, "dict")
       else financial_data,
       "research": research_report,

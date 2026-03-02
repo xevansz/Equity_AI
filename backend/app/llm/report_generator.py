@@ -2,7 +2,7 @@ from app.llm.gemini import gemini
 from app.research_engine.financial_analysis import analyze_financials
 from app.research_engine.growth_analysis import analyze_growth
 from app.research_engine.risk_analysis import analyze_risks
-from app.research_engine.valuation import analyze_valuation
+from app.research_engine.valuation_engine import analyze_valuation
 
 
 def generate_equity_report(symbol: str, db):

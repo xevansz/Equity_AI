@@ -1,7 +1,6 @@
 from pydantic import BaseModel, EmailStr
 
 
-# Used when returning user info (no password!)
 class UserOut(BaseModel):
     id: str | None
     email: EmailStr
@@ -24,3 +23,13 @@ class LoginRequest(BaseModel):
 class TokenData(BaseModel):
     email: EmailStr
     role: str
+
+
+class ResetPasswordRequest(BaseModel):
+    email: EmailStr
+    otp: str
+    new_password: str
+
+
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr

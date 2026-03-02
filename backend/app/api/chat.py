@@ -1,14 +1,14 @@
 """Chat API Endpoint"""
 
-from backend.app import database
-from backend.app.models.user import User
 from fastapi import APIRouter, Depends, HTTPException
 
+from app import database
 from app.dependencies import get_current_user, get_database
+from app.models.user import User
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.services.chat_service import ChatService
 
-router = APIRouter()
+router = APIRouter(tags=["chat"])
 
 
 @router.post("/chat", response_model=ChatResponse)

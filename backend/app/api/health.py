@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 
 from app.dependencies import get_database
 
-router = APIRouter()
+router = APIRouter(tags=["health"])
 
 
 @router.get("/health")

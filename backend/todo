@@ -1,6 +1,0 @@
-- report generator is created but never used
-- No type hints in any functions, error handling inconsistant
-- finanical metrics - pagination (is required)?
-- save data
-  - save watchlist data to db
-  - save research dashboard data in cache until user log outs

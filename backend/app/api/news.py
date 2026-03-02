@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from app.dependencies import get_current_user
 from app.mcp.news_api import NewsAPI
 
-router = APIRouter()
+router = APIRouter(tags=["news"])
 
 
 @router.get("/news/{symbol}")

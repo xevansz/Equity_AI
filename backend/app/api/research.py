@@ -1,16 +1,12 @@
 """Research Report API"""
 
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel
 
 from app.dependencies import get_current_user, get_database
-from app.research_engine.report_generator import generate_equity_report
+from app.llm.report_generator import generate_equity_report
+from app.schemas.research import ResearchRequest
 
-router = APIRouter()
-
-
-class ResearchRequest(BaseModel):
-    symbol: str
+router = APIRouter(tags=["research"])
 
 
 @router.post("/research")

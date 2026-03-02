@@ -4,15 +4,15 @@ import asyncio
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.dependencies import get_current_user, get_database
+from app.llm.report_generator import generate_equity_report
 from app.llm.symbol_resolver import symbol_resolver
 from app.mcp.news_api import NewsAPI
 from app.models.conversation import SearchRequest
-from app.research_engine.report_generator import generate_equity_report
 from app.schemas.chat import ChatRequest
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
 
-router = APIRouter()
+router = APIRouter(tags=["search"])
 
 
 @router.post("/search")

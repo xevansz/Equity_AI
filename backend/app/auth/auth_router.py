@@ -6,17 +6,17 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 
 from app.auth.jwt_handler import create_token
-from app.auth.schemas import (
+from app.auth.smtp_service import send_email
+from app.auth.user_service import UserService
+from app.dependencies import get_current_user, get_database
+from app.schemas.user import (
     ForgotPasswordRequest,
     LoginRequest,
     RegisterRequest,
     ResetPasswordRequest,
 )
-from app.auth.smtp_service import send_email
-from app.auth.user_service import UserService
-from app.dependencies import get_current_user, get_database
 
-router = APIRouter()
+router = APIRouter(tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")

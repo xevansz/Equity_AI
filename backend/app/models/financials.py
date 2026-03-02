@@ -1,5 +1,7 @@
 """Financial Data Models"""
+
 from pydantic import BaseModel
+
 
 class FinancialStatement(BaseModel):
     symbol: str

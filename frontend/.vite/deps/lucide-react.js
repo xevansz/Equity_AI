@@ -1377,11 +1377,17 @@ var createLucideIcon = (iconName, iconNode) => {
           strokeWidth: absoluteStrokeWidth
             ? (Number(strokeWidth) * 24) / Number(size)
             : strokeWidth,
-          className: ['lucide', `lucide-${toKebabCase(iconName)}`, className].join(' '),
+          className: [
+            'lucide',
+            `lucide-${toKebabCase(iconName)}`,
+            className,
+          ].join(' '),
           ...rest,
         },
         [
-          ...iconNode.map(([tag, attrs]) => (0, import_react.createElement)(tag, attrs)),
+          ...iconNode.map(([tag, attrs]) =>
+            (0, import_react.createElement)(tag, attrs)
+          ),
           ...(Array.isArray(children) ? children : [children]),
         ]
       )
@@ -1401,7 +1407,10 @@ var Accessibility = createLucideIcon('Accessibility', [
 
 // node_modules/lucide-react/dist/esm/icons/activity-square.js
 var ActivitySquare = createLucideIcon('ActivitySquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M17 12h-2l-2 5-2-10-2 5H7', key: '15hlnc' }],
 ])
 
@@ -1420,7 +1429,13 @@ var AirVent = createLucideIcon('AirVent', [
     },
   ],
   ['path', { d: 'M6 8h12', key: '6g4wlu' }],
-  ['path', { d: 'M18.3 17.7a2.5 2.5 0 0 1-3.16 3.83 2.53 2.53 0 0 1-1.14-2V12', key: '1bo8pg' }],
+  [
+    'path',
+    {
+      d: 'M18.3 17.7a2.5 2.5 0 0 1-3.16 3.83 2.53 2.53 0 0 1-1.14-2V12',
+      key: '1bo8pg',
+    },
+  ],
   ['path', { d: 'M6.6 15.6A2 2 0 1 0 10 17v-5', key: 't9h90c' }],
 ])
 
@@ -1489,7 +1504,18 @@ var AlarmPlus = createLucideIcon('AlarmPlus', [
 
 // node_modules/lucide-react/dist/esm/icons/album.js
 var Album = createLucideIcon('Album', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['polyline', { points: '11 3 11 11 14 8 17 11 17 3', key: '1wcwz3' }],
 ])
 
@@ -1505,7 +1531,8 @@ var AlertOctagon = createLucideIcon('AlertOctagon', [
   [
     'polygon',
     {
-      points: '7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2',
+      points:
+        '7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2',
       key: 'h1p8hx',
     },
   ],
@@ -1553,79 +1580,157 @@ var AlignCenter = createLucideIcon('AlignCenter', [
 
 // node_modules/lucide-react/dist/esm/icons/align-end-horizontal.js
 var AlignEndHorizontal = createLucideIcon('AlignEndHorizontal', [
-  ['rect', { width: '6', height: '16', x: '4', y: '2', rx: '2', key: 'z5wdxg' }],
-  ['rect', { width: '6', height: '9', x: '14', y: '9', rx: '2', key: 'um7a8w' }],
+  [
+    'rect',
+    { width: '6', height: '16', x: '4', y: '2', rx: '2', key: 'z5wdxg' },
+  ],
+  [
+    'rect',
+    { width: '6', height: '9', x: '14', y: '9', rx: '2', key: 'um7a8w' },
+  ],
   ['path', { d: 'M22 22H2', key: '19qnx5' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-end-vertical.js
 var AlignEndVertical = createLucideIcon('AlignEndVertical', [
-  ['rect', { width: '16', height: '6', x: '2', y: '4', rx: '2', key: '10wcwx' }],
-  ['rect', { width: '9', height: '6', x: '9', y: '14', rx: '2', key: '4p5bwg' }],
+  [
+    'rect',
+    { width: '16', height: '6', x: '2', y: '4', rx: '2', key: '10wcwx' },
+  ],
+  [
+    'rect',
+    { width: '9', height: '6', x: '9', y: '14', rx: '2', key: '4p5bwg' },
+  ],
   ['path', { d: 'M22 22V2', key: '12ipfv' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-distribute-center.js
-var AlignHorizontalDistributeCenter = createLucideIcon('AlignHorizontalDistributeCenter', [
-  ['rect', { width: '6', height: '14', x: '4', y: '5', rx: '2', key: '1wwnby' }],
-  ['rect', { width: '6', height: '10', x: '14', y: '7', rx: '2', key: '1fe6j6' }],
-  ['path', { d: 'M17 22v-5', key: '4b6g73' }],
-  ['path', { d: 'M17 7V2', key: 'hnrr36' }],
-  ['path', { d: 'M7 22v-3', key: '1r4jpn' }],
-  ['path', { d: 'M7 5V2', key: 'liy1u9' }],
-])
+var AlignHorizontalDistributeCenter = createLucideIcon(
+  'AlignHorizontalDistributeCenter',
+  [
+    [
+      'rect',
+      { width: '6', height: '14', x: '4', y: '5', rx: '2', key: '1wwnby' },
+    ],
+    [
+      'rect',
+      { width: '6', height: '10', x: '14', y: '7', rx: '2', key: '1fe6j6' },
+    ],
+    ['path', { d: 'M17 22v-5', key: '4b6g73' }],
+    ['path', { d: 'M17 7V2', key: 'hnrr36' }],
+    ['path', { d: 'M7 22v-3', key: '1r4jpn' }],
+    ['path', { d: 'M7 5V2', key: 'liy1u9' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-distribute-end.js
-var AlignHorizontalDistributeEnd = createLucideIcon('AlignHorizontalDistributeEnd', [
-  ['rect', { width: '6', height: '14', x: '4', y: '5', rx: '2', key: '1wwnby' }],
-  ['rect', { width: '6', height: '10', x: '14', y: '7', rx: '2', key: '1fe6j6' }],
-  ['path', { d: 'M10 2v20', key: 'uyc634' }],
-  ['path', { d: 'M20 2v20', key: '1tx262' }],
-])
+var AlignHorizontalDistributeEnd = createLucideIcon(
+  'AlignHorizontalDistributeEnd',
+  [
+    [
+      'rect',
+      { width: '6', height: '14', x: '4', y: '5', rx: '2', key: '1wwnby' },
+    ],
+    [
+      'rect',
+      { width: '6', height: '10', x: '14', y: '7', rx: '2', key: '1fe6j6' },
+    ],
+    ['path', { d: 'M10 2v20', key: 'uyc634' }],
+    ['path', { d: 'M20 2v20', key: '1tx262' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-distribute-start.js
-var AlignHorizontalDistributeStart = createLucideIcon('AlignHorizontalDistributeStart', [
-  ['rect', { width: '6', height: '14', x: '4', y: '5', rx: '2', key: '1wwnby' }],
-  ['rect', { width: '6', height: '10', x: '14', y: '7', rx: '2', key: '1fe6j6' }],
-  ['path', { d: 'M4 2v20', key: 'gtpd5x' }],
-  ['path', { d: 'M14 2v20', key: 'tg6bpw' }],
-])
+var AlignHorizontalDistributeStart = createLucideIcon(
+  'AlignHorizontalDistributeStart',
+  [
+    [
+      'rect',
+      { width: '6', height: '14', x: '4', y: '5', rx: '2', key: '1wwnby' },
+    ],
+    [
+      'rect',
+      { width: '6', height: '10', x: '14', y: '7', rx: '2', key: '1fe6j6' },
+    ],
+    ['path', { d: 'M4 2v20', key: 'gtpd5x' }],
+    ['path', { d: 'M14 2v20', key: 'tg6bpw' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-justify-center.js
-var AlignHorizontalJustifyCenter = createLucideIcon('AlignHorizontalJustifyCenter', [
-  ['rect', { width: '6', height: '14', x: '2', y: '5', rx: '2', key: 'dy24zr' }],
-  ['rect', { width: '6', height: '10', x: '16', y: '7', rx: '2', key: '13zkjt' }],
-  ['path', { d: 'M12 2v20', key: 't6zp3m' }],
-])
+var AlignHorizontalJustifyCenter = createLucideIcon(
+  'AlignHorizontalJustifyCenter',
+  [
+    [
+      'rect',
+      { width: '6', height: '14', x: '2', y: '5', rx: '2', key: 'dy24zr' },
+    ],
+    [
+      'rect',
+      { width: '6', height: '10', x: '16', y: '7', rx: '2', key: '13zkjt' },
+    ],
+    ['path', { d: 'M12 2v20', key: 't6zp3m' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-justify-end.js
 var AlignHorizontalJustifyEnd = createLucideIcon('AlignHorizontalJustifyEnd', [
-  ['rect', { width: '6', height: '14', x: '2', y: '5', rx: '2', key: 'dy24zr' }],
-  ['rect', { width: '6', height: '10', x: '12', y: '7', rx: '2', key: '1ht384' }],
+  [
+    'rect',
+    { width: '6', height: '14', x: '2', y: '5', rx: '2', key: 'dy24zr' },
+  ],
+  [
+    'rect',
+    { width: '6', height: '10', x: '12', y: '7', rx: '2', key: '1ht384' },
+  ],
   ['path', { d: 'M22 2v20', key: '40qfg1' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-justify-start.js
-var AlignHorizontalJustifyStart = createLucideIcon('AlignHorizontalJustifyStart', [
-  ['rect', { width: '6', height: '14', x: '6', y: '5', rx: '2', key: 'hsirpf' }],
-  ['rect', { width: '6', height: '10', x: '16', y: '7', rx: '2', key: '13zkjt' }],
-  ['path', { d: 'M2 2v20', key: '1ivd8o' }],
-])
+var AlignHorizontalJustifyStart = createLucideIcon(
+  'AlignHorizontalJustifyStart',
+  [
+    [
+      'rect',
+      { width: '6', height: '14', x: '6', y: '5', rx: '2', key: 'hsirpf' },
+    ],
+    [
+      'rect',
+      { width: '6', height: '10', x: '16', y: '7', rx: '2', key: '13zkjt' },
+    ],
+    ['path', { d: 'M2 2v20', key: '1ivd8o' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-space-around.js
-var AlignHorizontalSpaceAround = createLucideIcon('AlignHorizontalSpaceAround', [
-  ['rect', { width: '6', height: '10', x: '9', y: '7', rx: '2', key: 'yn7j0q' }],
-  ['path', { d: 'M4 22V2', key: 'tsjzd3' }],
-  ['path', { d: 'M20 22V2', key: '1bnhr8' }],
-])
+var AlignHorizontalSpaceAround = createLucideIcon(
+  'AlignHorizontalSpaceAround',
+  [
+    [
+      'rect',
+      { width: '6', height: '10', x: '9', y: '7', rx: '2', key: 'yn7j0q' },
+    ],
+    ['path', { d: 'M4 22V2', key: 'tsjzd3' }],
+    ['path', { d: 'M20 22V2', key: '1bnhr8' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-horizontal-space-between.js
-var AlignHorizontalSpaceBetween = createLucideIcon('AlignHorizontalSpaceBetween', [
-  ['rect', { width: '6', height: '14', x: '3', y: '5', rx: '2', key: 'j77dae' }],
-  ['rect', { width: '6', height: '10', x: '15', y: '7', rx: '2', key: 'bq30hj' }],
-  ['path', { d: 'M3 2v20', key: '1d2pfg' }],
-  ['path', { d: 'M21 2v20', key: 'p059bm' }],
-])
+var AlignHorizontalSpaceBetween = createLucideIcon(
+  'AlignHorizontalSpaceBetween',
+  [
+    [
+      'rect',
+      { width: '6', height: '14', x: '3', y: '5', rx: '2', key: 'j77dae' },
+    ],
+    [
+      'rect',
+      { width: '6', height: '10', x: '15', y: '7', rx: '2', key: 'bq30hj' },
+    ],
+    ['path', { d: 'M3 2v20', key: '1d2pfg' }],
+    ['path', { d: 'M21 2v20', key: 'p059bm' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-justify.js
 var AlignJustify = createLucideIcon('AlignJustify', [
@@ -1650,76 +1755,145 @@ var AlignRight = createLucideIcon('AlignRight', [
 
 // node_modules/lucide-react/dist/esm/icons/align-start-horizontal.js
 var AlignStartHorizontal = createLucideIcon('AlignStartHorizontal', [
-  ['rect', { width: '6', height: '16', x: '4', y: '6', rx: '2', key: '1n4dg1' }],
-  ['rect', { width: '6', height: '9', x: '14', y: '6', rx: '2', key: '17khns' }],
+  [
+    'rect',
+    { width: '6', height: '16', x: '4', y: '6', rx: '2', key: '1n4dg1' },
+  ],
+  [
+    'rect',
+    { width: '6', height: '9', x: '14', y: '6', rx: '2', key: '17khns' },
+  ],
   ['path', { d: 'M22 2H2', key: 'fhrpnj' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-start-vertical.js
 var AlignStartVertical = createLucideIcon('AlignStartVertical', [
-  ['rect', { width: '9', height: '6', x: '6', y: '14', rx: '2', key: 'lpm2y7' }],
-  ['rect', { width: '16', height: '6', x: '6', y: '4', rx: '2', key: 'rdj6ps' }],
+  [
+    'rect',
+    { width: '9', height: '6', x: '6', y: '14', rx: '2', key: 'lpm2y7' },
+  ],
+  [
+    'rect',
+    { width: '16', height: '6', x: '6', y: '4', rx: '2', key: 'rdj6ps' },
+  ],
   ['path', { d: 'M2 2v20', key: '1ivd8o' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-distribute-center.js
-var AlignVerticalDistributeCenter = createLucideIcon('AlignVerticalDistributeCenter', [
-  ['rect', { width: '14', height: '6', x: '5', y: '14', rx: '2', key: 'jmoj9s' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '4', rx: '2', key: 'aza5on' }],
-  ['path', { d: 'M22 7h-5', key: 'o2endc' }],
-  ['path', { d: 'M7 7H1', key: '105l6j' }],
-  ['path', { d: 'M22 17h-3', key: '1lwga1' }],
-  ['path', { d: 'M5 17H2', key: '1gx9xc' }],
-])
+var AlignVerticalDistributeCenter = createLucideIcon(
+  'AlignVerticalDistributeCenter',
+  [
+    [
+      'rect',
+      { width: '14', height: '6', x: '5', y: '14', rx: '2', key: 'jmoj9s' },
+    ],
+    [
+      'rect',
+      { width: '10', height: '6', x: '7', y: '4', rx: '2', key: 'aza5on' },
+    ],
+    ['path', { d: 'M22 7h-5', key: 'o2endc' }],
+    ['path', { d: 'M7 7H1', key: '105l6j' }],
+    ['path', { d: 'M22 17h-3', key: '1lwga1' }],
+    ['path', { d: 'M5 17H2', key: '1gx9xc' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-distribute-end.js
-var AlignVerticalDistributeEnd = createLucideIcon('AlignVerticalDistributeEnd', [
-  ['rect', { width: '14', height: '6', x: '5', y: '14', rx: '2', key: 'jmoj9s' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '4', rx: '2', key: 'aza5on' }],
-  ['path', { d: 'M2 20h20', key: 'owomy5' }],
-  ['path', { d: 'M2 10h20', key: '1ir3d8' }],
-])
+var AlignVerticalDistributeEnd = createLucideIcon(
+  'AlignVerticalDistributeEnd',
+  [
+    [
+      'rect',
+      { width: '14', height: '6', x: '5', y: '14', rx: '2', key: 'jmoj9s' },
+    ],
+    [
+      'rect',
+      { width: '10', height: '6', x: '7', y: '4', rx: '2', key: 'aza5on' },
+    ],
+    ['path', { d: 'M2 20h20', key: 'owomy5' }],
+    ['path', { d: 'M2 10h20', key: '1ir3d8' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-distribute-start.js
-var AlignVerticalDistributeStart = createLucideIcon('AlignVerticalDistributeStart', [
-  ['rect', { width: '14', height: '6', x: '5', y: '14', rx: '2', key: 'jmoj9s' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '4', rx: '2', key: 'aza5on' }],
-  ['path', { d: 'M2 14h20', key: 'myj16y' }],
-  ['path', { d: 'M2 4h20', key: 'mda7wb' }],
-])
+var AlignVerticalDistributeStart = createLucideIcon(
+  'AlignVerticalDistributeStart',
+  [
+    [
+      'rect',
+      { width: '14', height: '6', x: '5', y: '14', rx: '2', key: 'jmoj9s' },
+    ],
+    [
+      'rect',
+      { width: '10', height: '6', x: '7', y: '4', rx: '2', key: 'aza5on' },
+    ],
+    ['path', { d: 'M2 14h20', key: 'myj16y' }],
+    ['path', { d: 'M2 4h20', key: 'mda7wb' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-justify-center.js
-var AlignVerticalJustifyCenter = createLucideIcon('AlignVerticalJustifyCenter', [
-  ['rect', { width: '14', height: '6', x: '5', y: '16', rx: '2', key: '1i8z2d' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '2', rx: '2', key: 'ypihtt' }],
-  ['path', { d: 'M2 12h20', key: '9i4pu4' }],
-])
+var AlignVerticalJustifyCenter = createLucideIcon(
+  'AlignVerticalJustifyCenter',
+  [
+    [
+      'rect',
+      { width: '14', height: '6', x: '5', y: '16', rx: '2', key: '1i8z2d' },
+    ],
+    [
+      'rect',
+      { width: '10', height: '6', x: '7', y: '2', rx: '2', key: 'ypihtt' },
+    ],
+    ['path', { d: 'M2 12h20', key: '9i4pu4' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-justify-end.js
 var AlignVerticalJustifyEnd = createLucideIcon('AlignVerticalJustifyEnd', [
-  ['rect', { width: '14', height: '6', x: '5', y: '12', rx: '2', key: '4l4tp2' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '2', rx: '2', key: 'ypihtt' }],
+  [
+    'rect',
+    { width: '14', height: '6', x: '5', y: '12', rx: '2', key: '4l4tp2' },
+  ],
+  [
+    'rect',
+    { width: '10', height: '6', x: '7', y: '2', rx: '2', key: 'ypihtt' },
+  ],
   ['path', { d: 'M2 22h20', key: '272qi7' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-justify-start.js
 var AlignVerticalJustifyStart = createLucideIcon('AlignVerticalJustifyStart', [
-  ['rect', { width: '14', height: '6', x: '5', y: '16', rx: '2', key: '1i8z2d' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '6', rx: '2', key: '13squh' }],
+  [
+    'rect',
+    { width: '14', height: '6', x: '5', y: '16', rx: '2', key: '1i8z2d' },
+  ],
+  [
+    'rect',
+    { width: '10', height: '6', x: '7', y: '6', rx: '2', key: '13squh' },
+  ],
   ['path', { d: 'M2 2h20', key: '1ennik' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-space-around.js
 var AlignVerticalSpaceAround = createLucideIcon('AlignVerticalSpaceAround', [
-  ['rect', { width: '10', height: '6', x: '7', y: '9', rx: '2', key: 'b1zbii' }],
+  [
+    'rect',
+    { width: '10', height: '6', x: '7', y: '9', rx: '2', key: 'b1zbii' },
+  ],
   ['path', { d: 'M22 20H2', key: '1p1f7z' }],
   ['path', { d: 'M22 4H2', key: '1b7qnq' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/align-vertical-space-between.js
 var AlignVerticalSpaceBetween = createLucideIcon('AlignVerticalSpaceBetween', [
-  ['rect', { width: '14', height: '6', x: '5', y: '15', rx: '2', key: '1w91an' }],
-  ['rect', { width: '10', height: '6', x: '7', y: '3', rx: '2', key: '17wqzy' }],
+  [
+    'rect',
+    { width: '14', height: '6', x: '5', y: '15', rx: '2', key: '1w91an' },
+  ],
+  [
+    'rect',
+    { width: '10', height: '6', x: '7', y: '3', rx: '2', key: '17wqzy' },
+  ],
   ['path', { d: 'M2 21h20', key: '1nyx9w' }],
   ['path', { d: 'M2 3h20', key: '91anmk' }],
 ])
@@ -1802,7 +1976,10 @@ var Aperture = createLucideIcon('Aperture', [
 
 // node_modules/lucide-react/dist/esm/icons/app-window.js
 var AppWindow = createLucideIcon('AppWindow', [
-  ['rect', { x: '2', y: '4', width: '20', height: '16', rx: '2', key: 'izxlao' }],
+  [
+    'rect',
+    { x: '2', y: '4', width: '20', height: '16', rx: '2', key: 'izxlao' },
+  ],
   ['path', { d: 'M10 4v4', key: 'pp8u80' }],
   ['path', { d: 'M2 8h20', key: 'd11cs7' }],
   ['path', { d: 'M6 4v4', key: '1svtjw' }],
@@ -1822,7 +1999,10 @@ var Apple = createLucideIcon('Apple', [
 
 // node_modules/lucide-react/dist/esm/icons/archive-restore.js
 var ArchiveRestore = createLucideIcon('ArchiveRestore', [
-  ['rect', { width: '20', height: '5', x: '2', y: '3', rx: '1', key: '1wp1u1' }],
+  [
+    'rect',
+    { width: '20', height: '5', x: '2', y: '3', rx: '1', key: '1wp1u1' },
+  ],
   ['path', { d: 'M4 8v11a2 2 0 0 0 2 2h2', key: 'tvwodi' }],
   ['path', { d: 'M20 8v11a2 2 0 0 1-2 2h-2', key: '1gkqxj' }],
   ['path', { d: 'm9 15 3-3 3 3', key: '1pd0qc' }],
@@ -1831,7 +2011,10 @@ var ArchiveRestore = createLucideIcon('ArchiveRestore', [
 
 // node_modules/lucide-react/dist/esm/icons/archive-x.js
 var ArchiveX = createLucideIcon('ArchiveX', [
-  ['rect', { width: '20', height: '5', x: '2', y: '3', rx: '1', key: '1wp1u1' }],
+  [
+    'rect',
+    { width: '20', height: '5', x: '2', y: '3', rx: '1', key: '1wp1u1' },
+  ],
   ['path', { d: 'M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8', key: '1s80jp' }],
   ['path', { d: 'm9.5 17 5-5', key: 'nakeu6' }],
   ['path', { d: 'm9.5 12 5 5', key: '1hccrj' }],
@@ -1839,7 +2022,10 @@ var ArchiveX = createLucideIcon('ArchiveX', [
 
 // node_modules/lucide-react/dist/esm/icons/archive.js
 var Archive = createLucideIcon('Archive', [
-  ['rect', { width: '20', height: '5', x: '2', y: '3', rx: '1', key: '1wp1u1' }],
+  [
+    'rect',
+    { width: '20', height: '5', x: '2', y: '3', rx: '1', key: '1wp1u1' },
+  ],
   ['path', { d: 'M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8', key: '1s80jp' }],
   ['path', { d: 'M10 12h4', key: 'a56b0p' }],
 ])
@@ -1912,7 +2098,10 @@ var ArrowBigUp = createLucideIcon('ArrowBigUp', [
 var ArrowDown01 = createLucideIcon('ArrowDown01', [
   ['path', { d: 'm3 16 4 4 4-4', key: '1co6wj' }],
   ['path', { d: 'M7 20V4', key: '1yoxec' }],
-  ['rect', { x: '15', y: '4', width: '4', height: '6', ry: '2', key: '1bwicg' }],
+  [
+    'rect',
+    { x: '15', y: '4', width: '4', height: '6', ry: '2', key: '1bwicg' },
+  ],
   ['path', { d: 'M17 20v-6h-2', key: '1qp1so' }],
   ['path', { d: 'M15 20h4', key: '1j968p' }],
 ])
@@ -1923,7 +2112,10 @@ var ArrowDown10 = createLucideIcon('ArrowDown10', [
   ['path', { d: 'M7 20V4', key: '1yoxec' }],
   ['path', { d: 'M17 10V4h-2', key: 'zcsr5x' }],
   ['path', { d: 'M15 10h4', key: 'id2lce' }],
-  ['rect', { x: '15', y: '14', width: '4', height: '6', ry: '2', key: '33xykx' }],
+  [
+    'rect',
+    { x: '15', y: '14', width: '4', height: '6', ry: '2', key: '33xykx' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/arrow-down-a-z.js
@@ -1958,7 +2150,10 @@ var ArrowDownLeftFromCircle = createLucideIcon('ArrowDownLeftFromCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-down-left-square.js
 var ArrowDownLeftSquare = createLucideIcon('ArrowDownLeftSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm16 8-8 8', key: '166keh' }],
   ['path', { d: 'M16 16H8V8', key: '1w2ppm' }],
 ])
@@ -1987,7 +2182,10 @@ var ArrowDownRightFromCircle = createLucideIcon('ArrowDownRightFromCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-down-right-square.js
 var ArrowDownRightSquare = createLucideIcon('ArrowDownRightSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm8 8 8 8', key: '1imecy' }],
   ['path', { d: 'M16 8v8H8', key: '1lbpgo' }],
 ])
@@ -2000,7 +2198,10 @@ var ArrowDownRight = createLucideIcon('ArrowDownRight', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-down-square.js
 var ArrowDownSquare = createLucideIcon('ArrowDownSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M12 8v8', key: 'napkw2' }],
   ['path', { d: 'm8 12 4 4 4-4', key: 'k98ssh' }],
 ])
@@ -2075,7 +2276,10 @@ var ArrowLeftRight = createLucideIcon('ArrowLeftRight', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-left-square.js
 var ArrowLeftSquare = createLucideIcon('ArrowLeftSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm12 8-4 4 4 4', key: '15vm53' }],
   ['path', { d: 'M16 12H8', key: '1fr5h0' }],
 ])
@@ -2117,7 +2321,10 @@ var ArrowRightLeft = createLucideIcon('ArrowRightLeft', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-right-square.js
 var ArrowRightSquare = createLucideIcon('ArrowRightSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 12h8', key: '1wcyev' }],
   ['path', { d: 'm12 16 4-4-4-4', key: '1i9zcv' }],
 ])
@@ -2139,7 +2346,10 @@ var ArrowRight = createLucideIcon('ArrowRight', [
 var ArrowUp01 = createLucideIcon('ArrowUp01', [
   ['path', { d: 'm3 8 4-4 4 4', key: '11wl7u' }],
   ['path', { d: 'M7 4v16', key: '1glfcx' }],
-  ['rect', { x: '15', y: '4', width: '4', height: '6', ry: '2', key: '1bwicg' }],
+  [
+    'rect',
+    { x: '15', y: '4', width: '4', height: '6', ry: '2', key: '1bwicg' },
+  ],
   ['path', { d: 'M17 20v-6h-2', key: '1qp1so' }],
   ['path', { d: 'M15 20h4', key: '1j968p' }],
 ])
@@ -2150,7 +2360,10 @@ var ArrowUp10 = createLucideIcon('ArrowUp10', [
   ['path', { d: 'M7 4v16', key: '1glfcx' }],
   ['path', { d: 'M17 10V4h-2', key: 'zcsr5x' }],
   ['path', { d: 'M15 10h4', key: 'id2lce' }],
-  ['rect', { x: '15', y: '14', width: '4', height: '6', ry: '2', key: '33xykx' }],
+  [
+    'rect',
+    { x: '15', y: '14', width: '4', height: '6', ry: '2', key: '33xykx' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/arrow-up-a-z.js
@@ -2200,7 +2413,10 @@ var ArrowUpLeftFromCircle = createLucideIcon('ArrowUpLeftFromCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-up-left-square.js
 var ArrowUpLeftSquare = createLucideIcon('ArrowUpLeftSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 16V8h8', key: '19xb1h' }],
   ['path', { d: 'M16 16 8 8', key: '1qdy8n' }],
 ])
@@ -2229,7 +2445,10 @@ var ArrowUpRightFromCircle = createLucideIcon('ArrowUpRightFromCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-up-right-square.js
 var ArrowUpRightSquare = createLucideIcon('ArrowUpRightSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 8h8v8', key: 'b65dnt' }],
   ['path', { d: 'm8 16 8-8', key: '13b9ih' }],
 ])
@@ -2242,7 +2461,10 @@ var ArrowUpRight = createLucideIcon('ArrowUpRight', [
 
 // node_modules/lucide-react/dist/esm/icons/arrow-up-square.js
 var ArrowUpSquare = createLucideIcon('ArrowUpSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm16 12-4-4-4 4', key: '177agl' }],
   ['path', { d: 'M12 16V8', key: '1sbj14' }],
 ])
@@ -2376,7 +2598,10 @@ var Baby = createLucideIcon('Baby', [
 var Backpack = createLucideIcon('Backpack', [
   [
     'path',
-    { d: 'M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z', key: 'wvr1b5' },
+    {
+      d: 'M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z',
+      key: 'wvr1b5',
+    },
   ],
   ['path', { d: 'M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2', key: 'donm21' }],
   ['path', { d: 'M8 21v-5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5', key: 'xk3gvk' }],
@@ -2611,7 +2836,10 @@ var Badge = createLucideIcon('Badge', [
 var BaggageClaim = createLucideIcon('BaggageClaim', [
   ['path', { d: 'M22 18H6a2 2 0 0 1-2-2V7a2 2 0 0 0-2-2', key: '4irg2o' }],
   ['path', { d: 'M17 14V4a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v10', key: '14fcyx' }],
-  ['rect', { width: '13', height: '8', x: '8', y: '6', rx: '1', key: 'o6oiis' }],
+  [
+    'rect',
+    { width: '13', height: '8', x: '8', y: '6', rx: '1', key: 'o6oiis' },
+  ],
   ['circle', { cx: '18', cy: '20', r: '2', key: 't9985n' }],
   ['circle', { cx: '9', cy: '20', r: '2', key: 'e5v82j' }],
 ])
@@ -2636,7 +2864,10 @@ var Banana = createLucideIcon('Banana', [
 
 // node_modules/lucide-react/dist/esm/icons/banknote.js
 var Banknote = createLucideIcon('Banknote', [
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' }],
+  [
+    'rect',
+    { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' },
+  ],
   ['circle', { cx: '12', cy: '12', r: '2', key: '1c9p78' }],
   ['path', { d: 'M6 12h.01M18 12h.01', key: '113zkx' }],
 ])
@@ -2667,15 +2898,27 @@ var BarChart4 = createLucideIcon('BarChart4', [
 // node_modules/lucide-react/dist/esm/icons/bar-chart-big.js
 var BarChartBig = createLucideIcon('BarChartBig', [
   ['path', { d: 'M3 3v18h18', key: '1s2lah' }],
-  ['rect', { width: '4', height: '7', x: '7', y: '10', rx: '1', key: '14u6mf' }],
-  ['rect', { width: '4', height: '12', x: '15', y: '5', rx: '1', key: 'b3pek6' }],
+  [
+    'rect',
+    { width: '4', height: '7', x: '7', y: '10', rx: '1', key: '14u6mf' },
+  ],
+  [
+    'rect',
+    { width: '4', height: '12', x: '15', y: '5', rx: '1', key: 'b3pek6' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bar-chart-horizontal-big.js
 var BarChartHorizontalBig = createLucideIcon('BarChartHorizontalBig', [
   ['path', { d: 'M3 3v18h18', key: '1s2lah' }],
-  ['rect', { width: '12', height: '4', x: '7', y: '5', rx: '1', key: '936jl1' }],
-  ['rect', { width: '7', height: '4', x: '7', y: '13', rx: '1', key: 'jqfkpy' }],
+  [
+    'rect',
+    { width: '12', height: '4', x: '7', y: '5', rx: '1', key: '936jl1' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '4', x: '7', y: '13', rx: '1', key: 'jqfkpy' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bar-chart-horizontal.js
@@ -2734,7 +2977,18 @@ var BatteryCharging = createLucideIcon('BatteryCharging', [
 
 // node_modules/lucide-react/dist/esm/icons/battery-full.js
 var BatteryFull = createLucideIcon('BatteryFull', [
-  ['rect', { width: '16', height: '10', x: '2', y: '7', rx: '2', ry: '2', key: '1w10f2' }],
+  [
+    'rect',
+    {
+      width: '16',
+      height: '10',
+      x: '2',
+      y: '7',
+      rx: '2',
+      ry: '2',
+      key: '1w10f2',
+    },
+  ],
   ['line', { x1: '22', x2: '22', y1: '11', y2: '13', key: '4dh1rd' }],
   ['line', { x1: '6', x2: '6', y1: '11', y2: '13', key: '1wd6dw' }],
   ['line', { x1: '10', x2: '10', y1: '11', y2: '13', key: 'haxvl5' }],
@@ -2743,14 +2997,36 @@ var BatteryFull = createLucideIcon('BatteryFull', [
 
 // node_modules/lucide-react/dist/esm/icons/battery-low.js
 var BatteryLow = createLucideIcon('BatteryLow', [
-  ['rect', { width: '16', height: '10', x: '2', y: '7', rx: '2', ry: '2', key: '1w10f2' }],
+  [
+    'rect',
+    {
+      width: '16',
+      height: '10',
+      x: '2',
+      y: '7',
+      rx: '2',
+      ry: '2',
+      key: '1w10f2',
+    },
+  ],
   ['line', { x1: '22', x2: '22', y1: '11', y2: '13', key: '4dh1rd' }],
   ['line', { x1: '6', x2: '6', y1: '11', y2: '13', key: '1wd6dw' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/battery-medium.js
 var BatteryMedium = createLucideIcon('BatteryMedium', [
-  ['rect', { width: '16', height: '10', x: '2', y: '7', rx: '2', ry: '2', key: '1w10f2' }],
+  [
+    'rect',
+    {
+      width: '16',
+      height: '10',
+      x: '2',
+      y: '7',
+      rx: '2',
+      ry: '2',
+      key: '1w10f2',
+    },
+  ],
   ['line', { x1: '22', x2: '22', y1: '11', y2: '13', key: '4dh1rd' }],
   ['line', { x1: '6', x2: '6', y1: '11', y2: '13', key: '1wd6dw' }],
   ['line', { x1: '10', x2: '10', y1: '11', y2: '13', key: 'haxvl5' }],
@@ -2767,7 +3043,18 @@ var BatteryWarning = createLucideIcon('BatteryWarning', [
 
 // node_modules/lucide-react/dist/esm/icons/battery.js
 var Battery = createLucideIcon('Battery', [
-  ['rect', { width: '16', height: '10', x: '2', y: '7', rx: '2', ry: '2', key: '1w10f2' }],
+  [
+    'rect',
+    {
+      width: '16',
+      height: '10',
+      x: '2',
+      y: '7',
+      rx: '2',
+      ry: '2',
+      key: '1w10f2',
+    },
+  ],
   ['line', { x1: '22', x2: '22', y1: '11', y2: '13', key: '4dh1rd' }],
 ])
 
@@ -2787,7 +3074,13 @@ var BeanOff = createLucideIcon('BeanOff', [
       key: 'bq3udt',
     },
   ],
-  ['path', { d: 'M10.75 5.093A6 6 0 0 1 22 8c0 2.411-.61 4.68-1.683 6.66', key: '17ccse' }],
+  [
+    'path',
+    {
+      d: 'M10.75 5.093A6 6 0 0 1 22 8c0 2.411-.61 4.68-1.683 6.66',
+      key: '17ccse',
+    },
+  ],
   [
     'path',
     {
@@ -2884,7 +3177,10 @@ var BellDot = createLucideIcon('BellDot', [
 var BellMinus = createLucideIcon('BellMinus', [
   [
     'path',
-    { d: 'M18.4 12c.8 3.8 2.6 5 2.6 5H3s3-2 3-9c0-3.3 2.7-6 6-6 1.8 0 3.4.8 4.5 2', key: 'eck70s' },
+    {
+      d: 'M18.4 12c.8 3.8 2.6 5 2.6 5H3s3-2 3-9c0-3.3 2.7-6 6-6 1.8 0 3.4.8 4.5 2',
+      key: 'eck70s',
+    },
   ],
   ['path', { d: 'M10.3 21a1.94 1.94 0 0 0 3.4 0', key: 'qgo35s' }],
   ['path', { d: 'M15 8h6', key: '8ybuxh' }],
@@ -2936,7 +3232,10 @@ var Bike = createLucideIcon('Bike', [
 
 // node_modules/lucide-react/dist/esm/icons/binary.js
 var Binary = createLucideIcon('Binary', [
-  ['rect', { x: '14', y: '14', width: '4', height: '6', rx: '2', key: 'p02svl' }],
+  [
+    'rect',
+    { x: '14', y: '14', width: '4', height: '6', rx: '2', key: 'p02svl' },
+  ],
   ['rect', { x: '6', y: '4', width: '4', height: '6', rx: '2', key: 'xm4xkj' }],
   ['path', { d: 'M6 20h4', key: '1i6q5t' }],
   ['path', { d: 'M14 10h4', key: 'ru81e7' }],
@@ -2947,11 +3246,26 @@ var Binary = createLucideIcon('Binary', [
 // node_modules/lucide-react/dist/esm/icons/biohazard.js
 var Biohazard = createLucideIcon('Biohazard', [
   ['circle', { cx: '12', cy: '11.9', r: '2', key: 'e8h31w' }],
-  ['path', { d: 'M6.7 3.4c-.9 2.5 0 5.2 2.2 6.7C6.5 9 3.7 9.6 2 11.6', key: '17bolr' }],
+  [
+    'path',
+    { d: 'M6.7 3.4c-.9 2.5 0 5.2 2.2 6.7C6.5 9 3.7 9.6 2 11.6', key: '17bolr' },
+  ],
   ['path', { d: 'm8.9 10.1 1.4.8', key: '15ezny' }],
-  ['path', { d: 'M17.3 3.4c.9 2.5 0 5.2-2.2 6.7 2.4-1.2 5.2-.6 6.9 1.5', key: 'wtwa5u' }],
+  [
+    'path',
+    {
+      d: 'M17.3 3.4c.9 2.5 0 5.2-2.2 6.7 2.4-1.2 5.2-.6 6.9 1.5',
+      key: 'wtwa5u',
+    },
+  ],
   ['path', { d: 'm15.1 10.1-1.4.8', key: '1r0b28' }],
-  ['path', { d: 'M16.7 20.8c-2.6-.4-4.6-2.6-4.7-5.3-.2 2.6-2.1 4.8-4.7 5.2', key: 'm7qszh' }],
+  [
+    'path',
+    {
+      d: 'M16.7 20.8c-2.6-.4-4.6-2.6-4.7-5.3-.2 2.6-2.1 4.8-4.7 5.2',
+      key: 'm7qszh',
+    },
+  ],
   ['path', { d: 'M12 13.9v1.6', key: 'zfyyim' }],
   ['path', { d: 'M13.5 5.4c-1-.2-2-.2-3 0', key: '1bi9q0' }],
   ['path', { d: 'M17 16.4c.7-.7 1.2-1.6 1.5-2.5', key: '1rhjqw' }],
@@ -2961,7 +3275,10 @@ var Biohazard = createLucideIcon('Biohazard', [
 // node_modules/lucide-react/dist/esm/icons/bird.js
 var Bird = createLucideIcon('Bird', [
   ['path', { d: 'M16 7h.01', key: '1kdx03' }],
-  ['path', { d: 'M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20', key: 'oj1oa8' }],
+  [
+    'path',
+    { d: 'M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20', key: 'oj1oa8' },
+  ],
   ['path', { d: 'm20 7 2 .5-2 .5', key: '12nv4d' }],
   ['path', { d: 'M10 18v3', key: '1yea0a' }],
   ['path', { d: 'M14 17.75V21', key: '1pymcb' }],
@@ -2992,7 +3309,10 @@ var Blinds = createLucideIcon('Blinds', [
 
 // node_modules/lucide-react/dist/esm/icons/blocks.js
 var Blocks = createLucideIcon('Blocks', [
-  ['rect', { width: '7', height: '7', x: '14', y: '3', rx: '1', key: '6d4xhi' }],
+  [
+    'rect',
+    { width: '7', height: '7', x: '14', y: '3', rx: '1', key: '6d4xhi' },
+  ],
   [
     'path',
     {
@@ -3060,14 +3380,26 @@ var Bone = createLucideIcon('Bone', [
 
 // node_modules/lucide-react/dist/esm/icons/book-a.js
 var BookA = createLucideIcon('BookA', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'm8 13 4-7 4 7', key: '4rari8' }],
   ['path', { d: 'M9.1 11h5.7', key: '1gkovt' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-audio.js
 var BookAudio = createLucideIcon('BookAudio', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M8 8v3', key: '1qzp49' }],
   ['path', { d: 'M12 6v7', key: '1f6ttz' }],
   ['path', { d: 'M16 8v3', key: 'gejaml' }],
@@ -3075,7 +3407,13 @@ var BookAudio = createLucideIcon('BookAudio', [
 
 // node_modules/lucide-react/dist/esm/icons/book-check.js
 var BookCheck = createLucideIcon('BookCheck', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'm9 9.5 2 2 4-4', key: '1dth82' }],
 ])
 
@@ -3083,7 +3421,10 @@ var BookCheck = createLucideIcon('BookCheck', [
 var BookCopy = createLucideIcon('BookCopy', [
   ['path', { d: 'M2 16V4a2 2 0 0 1 2-2h11', key: 'spzkk5' }],
   ['path', { d: 'M5 14H4a2 2 0 1 0 0 4h1', key: '16gqf9' }],
-  ['path', { d: 'M22 18H11a2 2 0 1 0 0 4h11V6H11a2 2 0 0 0-2 2v12', key: '1owzki' }],
+  [
+    'path',
+    { d: 'M22 18H11a2 2 0 1 0 0 4h11V6H11a2 2 0 0 0-2 2v12', key: '1owzki' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-dashed.js
@@ -3103,14 +3444,26 @@ var BookDashed = createLucideIcon('BookDashed', [
 
 // node_modules/lucide-react/dist/esm/icons/book-down.js
 var BookDown = createLucideIcon('BookDown', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M12 13V7', key: 'h0r20n' }],
   ['path', { d: 'm9 10 3 3 3-3', key: 'zt5b4y' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-headphones.js
 var BookHeadphones = createLucideIcon('BookHeadphones', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['circle', { cx: '9', cy: '12', r: '1', key: '1vctgf' }],
   ['path', { d: 'M8 12v-2a4 4 0 0 1 8 0v2', key: '1vsqkj' }],
   ['circle', { cx: '15', cy: '12', r: '1', key: '1tmaij' }],
@@ -3118,7 +3471,13 @@ var BookHeadphones = createLucideIcon('BookHeadphones', [
 
 // node_modules/lucide-react/dist/esm/icons/book-heart.js
 var BookHeart = createLucideIcon('BookHeart', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   [
     'path',
     {
@@ -3130,7 +3489,13 @@ var BookHeart = createLucideIcon('BookHeart', [
 
 // node_modules/lucide-react/dist/esm/icons/book-image.js
 var BookImage = createLucideIcon('BookImage', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['circle', { cx: '10', cy: '8', r: '2', key: '2qkj4p' }],
   ['path', { d: 'm20 13.7-2.1-2.1c-.8-.8-2-.8-2.8 0L9.7 17', key: '160say' }],
 ])
@@ -3148,27 +3513,51 @@ var BookKey = createLucideIcon('BookKey', [
 var BookLock = createLucideIcon('BookLock', [
   ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H10', key: '18wgow' }],
   ['path', { d: 'M20 15v7H6.5a2.5 2.5 0 0 1 0-5H20', key: 'dpch1j' }],
-  ['rect', { width: '8', height: '5', x: '12', y: '6', rx: '1', key: '9nqwug' }],
+  [
+    'rect',
+    { width: '8', height: '5', x: '12', y: '6', rx: '1', key: '9nqwug' },
+  ],
   ['path', { d: 'M18 6V4a2 2 0 1 0-4 0v2', key: '1aquzs' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-marked.js
 var BookMarked = createLucideIcon('BookMarked', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['polyline', { points: '10 2 10 10 13 7 16 10 16 2', key: '13o6vz' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-minus.js
 var BookMinus = createLucideIcon('BookMinus', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M9 10h6', key: '9gxzsh' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-open-check.js
 var BookOpenCheck = createLucideIcon('BookOpenCheck', [
-  ['path', { d: 'M8 3H2v15h7c1.7 0 3 1.3 3 3V7c0-2.2-1.8-4-4-4Z', key: '1i8u0n' }],
+  [
+    'path',
+    { d: 'M8 3H2v15h7c1.7 0 3 1.3 3 3V7c0-2.2-1.8-4-4-4Z', key: '1i8u0n' },
+  ],
   ['path', { d: 'm16 12 2 2 4-4', key: 'mdajum' }],
-  ['path', { d: 'M22 6V3h-6c-2.2 0-4 1.8-4 4v14c0-1.7 1.3-3 3-3h7v-2.3', key: 'jb5l51' }],
+  [
+    'path',
+    {
+      d: 'M22 6V3h-6c-2.2 0-4 1.8-4 4v14c0-1.7 1.3-3 3-3h7v-2.3',
+      key: 'jb5l51',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-open-text.js
@@ -3189,21 +3578,39 @@ var BookOpen = createLucideIcon('BookOpen', [
 
 // node_modules/lucide-react/dist/esm/icons/book-plus.js
 var BookPlus = createLucideIcon('BookPlus', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M9 10h6', key: '9gxzsh' }],
   ['path', { d: 'M12 7v6', key: 'lw1j43' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-text.js
 var BookText = createLucideIcon('BookText', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M8 7h6', key: '1f0q6e' }],
   ['path', { d: 'M8 11h8', key: 'vwpz6n' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-type.js
 var BookType = createLucideIcon('BookType', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M16 8V6H8v2', key: 'x8j6u4' }],
   ['path', { d: 'M12 6v7', key: '1f6ttz' }],
   ['path', { d: 'M10 13h4', key: 'ytezjc' }],
@@ -3220,59 +3627,98 @@ var BookUp2 = createLucideIcon('BookUp2', [
 
 // node_modules/lucide-react/dist/esm/icons/book-up.js
 var BookUp = createLucideIcon('BookUp', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'M12 13V7', key: 'h0r20n' }],
   ['path', { d: 'm9 10 3-3 3 3', key: '11gsxs' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-user.js
 var BookUser = createLucideIcon('BookUser', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['circle', { cx: '12', cy: '8', r: '2', key: '1822b1' }],
   ['path', { d: 'M15 13a3 3 0 1 0-6 0', key: '10j68g' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book-x.js
 var BookX = createLucideIcon('BookX', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
   ['path', { d: 'm14.5 7-5 5', key: 'dy991v' }],
   ['path', { d: 'm9.5 7 5 5', key: 's45iea' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/book.js
 var Book = createLucideIcon('Book', [
-  ['path', { d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20', key: 't4utmx' }],
+  [
+    'path',
+    {
+      d: 'M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20',
+      key: 't4utmx',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bookmark-check.js
 var BookmarkCheck = createLucideIcon('BookmarkCheck', [
-  ['path', { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z', key: '169p4p' }],
+  [
+    'path',
+    { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z', key: '169p4p' },
+  ],
   ['path', { d: 'm9 10 2 2 4-4', key: '1gnqz4' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bookmark-minus.js
 var BookmarkMinus = createLucideIcon('BookmarkMinus', [
-  ['path', { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z', key: '1fy3hk' }],
+  [
+    'path',
+    { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z', key: '1fy3hk' },
+  ],
   ['line', { x1: '15', x2: '9', y1: '10', y2: '10', key: '1gty7f' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bookmark-plus.js
 var BookmarkPlus = createLucideIcon('BookmarkPlus', [
-  ['path', { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z', key: '1fy3hk' }],
+  [
+    'path',
+    { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z', key: '1fy3hk' },
+  ],
   ['line', { x1: '12', x2: '12', y1: '7', y2: '13', key: '1cppfj' }],
   ['line', { x1: '15', x2: '9', y1: '10', y2: '10', key: '1gty7f' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bookmark-x.js
 var BookmarkX = createLucideIcon('BookmarkX', [
-  ['path', { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z', key: '169p4p' }],
+  [
+    'path',
+    { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z', key: '169p4p' },
+  ],
   ['path', { d: 'm14.5 7.5-5 5', key: '3lb6iw' }],
   ['path', { d: 'm9.5 7.5 5 5', key: 'ko136h' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bookmark.js
 var Bookmark = createLucideIcon('Bookmark', [
-  ['path', { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z', key: '1fy3hk' }],
+  [
+    'path',
+    { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z', key: '1fy3hk' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/boom-box.js
@@ -3281,7 +3727,10 @@ var BoomBox = createLucideIcon('BoomBox', [
   ['path', { d: 'M8 8v1', key: 'xcqmfk' }],
   ['path', { d: 'M12 8v1', key: '1rj8u4' }],
   ['path', { d: 'M16 8v1', key: '1q12zr' }],
-  ['rect', { width: '20', height: '12', x: '2', y: '9', rx: '2', key: 'igpb89' }],
+  [
+    'rect',
+    { width: '20', height: '12', x: '2', y: '9', rx: '2', key: 'igpb89' },
+  ],
   ['circle', { cx: '8', cy: '15', r: '2', key: 'fa4a8s' }],
   ['circle', { cx: '16', cy: '15', r: '2', key: '14c3ya' }],
 ])
@@ -3289,7 +3738,10 @@ var BoomBox = createLucideIcon('BoomBox', [
 // node_modules/lucide-react/dist/esm/icons/bot.js
 var Bot = createLucideIcon('Bot', [
   ['path', { d: 'M12 8V4H8', key: 'hb8ula' }],
-  ['rect', { width: '16', height: '12', x: '4', y: '8', rx: '2', key: 'enze0r' }],
+  [
+    'rect',
+    { width: '16', height: '12', x: '4', y: '8', rx: '2', key: 'enze0r' },
+  ],
   ['path', { d: 'M2 14h2', key: 'vft8re' }],
   ['path', { d: 'M20 14h2', key: '4cs60a' }],
   ['path', { d: 'M15 13v2', key: '1xurst' }],
@@ -3363,7 +3815,10 @@ var Boxes = createLucideIcon('Boxes', [
 var Braces = createLucideIcon('Braces', [
   [
     'path',
-    { d: 'M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1', key: 'ezmyqa' },
+    {
+      d: 'M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1',
+      key: 'ezmyqa',
+    },
   ],
   [
     'path',
@@ -3439,20 +3894,46 @@ var Brain = createLucideIcon('Brain', [
 
 // node_modules/lucide-react/dist/esm/icons/briefcase.js
 var Briefcase = createLucideIcon('Briefcase', [
-  ['rect', { width: '20', height: '14', x: '2', y: '7', rx: '2', ry: '2', key: 'eto64e' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '14',
+      x: '2',
+      y: '7',
+      rx: '2',
+      ry: '2',
+      key: 'eto64e',
+    },
+  ],
   ['path', { d: 'M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16', key: 'zwj3tp' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/bring-to-front.js
 var BringToFront = createLucideIcon('BringToFront', [
   ['rect', { x: '8', y: '8', width: '8', height: '8', rx: '2', key: 'yj20xf' }],
-  ['path', { d: 'M4 10a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2', key: '1ltk23' }],
-  ['path', { d: 'M14 20a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2', key: '1q24h9' }],
+  [
+    'path',
+    { d: 'M4 10a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2', key: '1ltk23' },
+  ],
+  [
+    'path',
+    {
+      d: 'M14 20a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2',
+      key: '1q24h9',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/brush.js
 var Brush = createLucideIcon('Brush', [
-  ['path', { d: 'm9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08', key: '1styjt' }],
+  [
+    'path',
+    {
+      d: 'm9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08',
+      key: '1styjt',
+    },
+  ],
   [
     'path',
     {
@@ -3469,7 +3950,10 @@ var BugOff = createLucideIcon('BugOff', [
   ['path', { d: 'M22 13h-4v-2a4 4 0 0 0-4-4h-1.3', key: '1ou0bd' }],
   ['path', { d: 'M20.97 5c0 2.1-1.6 3.8-3.5 4', key: '18gb23' }],
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
-  ['path', { d: 'M7.7 7.7A4 4 0 0 0 6 11v3a6 6 0 0 0 11.13 3.13', key: '1njkjs' }],
+  [
+    'path',
+    { d: 'M7.7 7.7A4 4 0 0 0 6 11v3a6 6 0 0 0 11.13 3.13', key: '1njkjs' },
+  ],
   ['path', { d: 'M12 20v-8', key: 'i3yub9' }],
   ['path', { d: 'M6 13H2', key: '82j7cp' }],
   ['path', { d: 'M3 21c0-2.1 1.7-3.9 3.8-4', key: '4p0ekp' }],
@@ -3480,7 +3964,13 @@ var BugPlay = createLucideIcon('BugPlay', [
   ['path', { d: 'm8 2 1.88 1.88', key: 'fmnt4t' }],
   ['path', { d: 'M14.12 3.88 16 2', key: 'qol33r' }],
   ['path', { d: 'M9 7.13v-1a3.003 3.003 0 1 1 6 0v1', key: 'd7y7pr' }],
-  ['path', { d: 'M18 11a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v3a6.1 6.1 0 0 0 2 4.5', key: '1tjixy' }],
+  [
+    'path',
+    {
+      d: 'M18 11a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v3a6.1 6.1 0 0 0 2 4.5',
+      key: '1tjixy',
+    },
+  ],
   ['path', { d: 'M6.53 9C4.6 8.8 3 7.1 3 5', key: '32zzws' }],
   ['path', { d: 'M6 13H2', key: '82j7cp' }],
   ['path', { d: 'M3 21c0-2.1 1.7-3.9 3.8-4', key: '4p0ekp' }],
@@ -3522,7 +4012,18 @@ var Building2 = createLucideIcon('Building2', [
 
 // node_modules/lucide-react/dist/esm/icons/building.js
 var Building = createLucideIcon('Building', [
-  ['rect', { width: '16', height: '20', x: '4', y: '2', rx: '2', ry: '2', key: '76otgf' }],
+  [
+    'rect',
+    {
+      width: '16',
+      height: '20',
+      x: '4',
+      y: '2',
+      rx: '2',
+      ry: '2',
+      key: '76otgf',
+    },
+  ],
   ['path', { d: 'M9 22v-4h6v4', key: 'r93iot' }],
   ['path', { d: 'M8 6h.01', key: '1dz90k' }],
   ['path', { d: 'M16 6h.01', key: '1x0f13' }],
@@ -3540,7 +4041,10 @@ var BusFront = createLucideIcon('BusFront', [
   ['path', { d: 'M4 6 2 7', key: '1mqr15' }],
   ['path', { d: 'M10 6h4', key: '1itunk' }],
   ['path', { d: 'm22 7-2-1', key: '1umjhc' }],
-  ['rect', { width: '16', height: '16', x: '4', y: '3', rx: '2', key: '1wxw4b' }],
+  [
+    'rect',
+    { width: '16', height: '16', x: '4', y: '3', rx: '2', key: '1wxw4b' },
+  ],
   ['path', { d: 'M4 11h16', key: 'mpoxn0' }],
   ['path', { d: 'M8 15h.01', key: 'a7atzg' }],
   ['path', { d: 'M16 15h.01', key: 'rnfrdf' }],
@@ -3571,7 +4075,10 @@ var CableCar = createLucideIcon('CableCar', [
   ['path', { d: 'M14 2h.01', key: '1k8aa1' }],
   ['path', { d: 'm2 9 20-5', key: '1kz0j5' }],
   ['path', { d: 'M12 12V6.5', key: '1vbrij' }],
-  ['rect', { width: '16', height: '10', x: '4', y: '12', rx: '3', key: 'if91er' }],
+  [
+    'rect',
+    { width: '16', height: '10', x: '4', y: '12', rx: '3', key: 'if91er' },
+  ],
   ['path', { d: 'M9 12v5', key: '3anwtq' }],
   ['path', { d: 'M15 12v5', key: '5xh3zn' }],
   ['path', { d: 'M4 17h16', key: 'g4d7ey' }],
@@ -3582,7 +4089,10 @@ var Cable = createLucideIcon('Cable', [
   ['path', { d: 'M4 9a2 2 0 0 1-2-2V5h6v2a2 2 0 0 1-2 2Z', key: '1s6oa5' }],
   ['path', { d: 'M3 5V3', key: '1k5hjh' }],
   ['path', { d: 'M7 5V3', key: '1t1388' }],
-  ['path', { d: 'M19 15V6.5a3.5 3.5 0 0 0-7 0v11a3.5 3.5 0 0 1-7 0V9', key: '1ytv72' }],
+  [
+    'path',
+    { d: 'M19 15V6.5a3.5 3.5 0 0 0-7 0v11a3.5 3.5 0 0 1-7 0V9', key: '1ytv72' },
+  ],
   ['path', { d: 'M17 21v-2', key: 'ds4u3f' }],
   ['path', { d: 'M21 21v-2', key: 'eo0ou' }],
   ['path', { d: 'M22 19h-6v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2Z', key: 'sdz6o8' }],
@@ -3593,7 +4103,10 @@ var CakeSlice = createLucideIcon('CakeSlice', [
   ['circle', { cx: '9', cy: '7', r: '2', key: '1305pl' }],
   [
     'path',
-    { d: 'M7.2 7.9 3 11v9c0 .6.4 1 1 1h16c.6 0 1-.4 1-1v-9c0-2-3-6-7-8l-3.6 2.6', key: 'xle13f' },
+    {
+      d: 'M7.2 7.9 3 11v9c0 .6.4 1 1 1h16c.6 0 1-.4 1-1v-9c0-2-3-6-7-8l-3.6 2.6',
+      key: 'xle13f',
+    },
   ],
   ['path', { d: 'M16 13H3', key: '1wpj08' }],
   ['path', { d: 'M16 17H3', key: '3lvfcd' }],
@@ -3602,7 +4115,13 @@ var CakeSlice = createLucideIcon('CakeSlice', [
 // node_modules/lucide-react/dist/esm/icons/cake.js
 var Cake = createLucideIcon('Cake', [
   ['path', { d: 'M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8', key: '1w3rig' }],
-  ['path', { d: 'M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1', key: 'n2jgmb' }],
+  [
+    'path',
+    {
+      d: 'M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1',
+      key: 'n2jgmb',
+    },
+  ],
   ['path', { d: 'M2 21h20', key: '1nyx9w' }],
   ['path', { d: 'M7 8v3', key: '1qtyvj' }],
   ['path', { d: 'M12 8v3', key: 'hwp4zt' }],
@@ -3614,7 +4133,10 @@ var Cake = createLucideIcon('Cake', [
 
 // node_modules/lucide-react/dist/esm/icons/calculator.js
 var Calculator = createLucideIcon('Calculator', [
-  ['rect', { width: '16', height: '20', x: '4', y: '2', rx: '2', key: '1nb95v' }],
+  [
+    'rect',
+    { width: '16', height: '20', x: '4', y: '2', rx: '2', key: '1nb95v' },
+  ],
   ['line', { x1: '8', x2: '16', y1: '6', y2: '6', key: 'x4nwl0' }],
   ['line', { x1: '16', x2: '16', y1: '14', y2: '18', key: 'wjye3r' }],
   ['path', { d: 'M16 10h.01', key: '1m94wz' }],
@@ -3628,7 +4150,13 @@ var Calculator = createLucideIcon('Calculator', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-check-2.js
 var CalendarCheck2 = createLucideIcon('CalendarCheck2', [
-  ['path', { d: 'M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8', key: 'bce9hv' }],
+  [
+    'path',
+    {
+      d: 'M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8',
+      key: 'bce9hv',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3637,7 +4165,18 @@ var CalendarCheck2 = createLucideIcon('CalendarCheck2', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-check.js
 var CalendarCheck = createLucideIcon('CalendarCheck', [
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', ry: '2', key: 'eu3xkr' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: 'eu3xkr',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3646,7 +4185,13 @@ var CalendarCheck = createLucideIcon('CalendarCheck', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-clock.js
 var CalendarClock = createLucideIcon('CalendarClock', [
-  ['path', { d: 'M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5', key: '1osxxc' }],
+  [
+    'path',
+    {
+      d: 'M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5',
+      key: '1osxxc',
+    },
+  ],
   ['path', { d: 'M16 2v4', key: '4m81vk' }],
   ['path', { d: 'M8 2v4', key: '1cmpym' }],
   ['path', { d: 'M3 10h5', key: 'r794hk' }],
@@ -3656,7 +4201,18 @@ var CalendarClock = createLucideIcon('CalendarClock', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-days.js
 var CalendarDays = createLucideIcon('CalendarDays', [
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', ry: '2', key: 'eu3xkr' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: 'eu3xkr',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3670,7 +4226,13 @@ var CalendarDays = createLucideIcon('CalendarDays', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-heart.js
 var CalendarHeart = createLucideIcon('CalendarHeart', [
-  ['path', { d: 'M21 10V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h7', key: '1sfrvf' }],
+  [
+    'path',
+    {
+      d: 'M21 10V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h7',
+      key: '1sfrvf',
+    },
+  ],
   ['path', { d: 'M16 2v4', key: '4m81vk' }],
   ['path', { d: 'M8 2v4', key: '1cmpym' }],
   ['path', { d: 'M3 10h18', key: '8toen8' }],
@@ -3685,7 +4247,13 @@ var CalendarHeart = createLucideIcon('CalendarHeart', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-minus.js
 var CalendarMinus = createLucideIcon('CalendarMinus', [
-  ['path', { d: 'M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8', key: '3spt84' }],
+  [
+    'path',
+    {
+      d: 'M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8',
+      key: '3spt84',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3696,7 +4264,10 @@ var CalendarMinus = createLucideIcon('CalendarMinus', [
 var CalendarOff = createLucideIcon('CalendarOff', [
   [
     'path',
-    { d: 'M4.18 4.18A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18', key: '1feomx' },
+    {
+      d: 'M4.18 4.18A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18',
+      key: '1feomx',
+    },
   ],
   ['path', { d: 'M21 15.5V6a2 2 0 0 0-2-2H9.5', key: 'yhw86o' }],
   ['path', { d: 'M16 2v4', key: '4m81vk' }],
@@ -3707,7 +4278,13 @@ var CalendarOff = createLucideIcon('CalendarOff', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-plus.js
 var CalendarPlus = createLucideIcon('CalendarPlus', [
-  ['path', { d: 'M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8', key: '3spt84' }],
+  [
+    'path',
+    {
+      d: 'M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8',
+      key: '3spt84',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3717,7 +4294,18 @@ var CalendarPlus = createLucideIcon('CalendarPlus', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-range.js
 var CalendarRange = createLucideIcon('CalendarRange', [
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', ry: '2', key: 'eu3xkr' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: 'eu3xkr',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3729,7 +4317,13 @@ var CalendarRange = createLucideIcon('CalendarRange', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-search.js
 var CalendarSearch = createLucideIcon('CalendarSearch', [
-  ['path', { d: 'M21 12V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h7.5', key: '18ncp8' }],
+  [
+    'path',
+    {
+      d: 'M21 12V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h7.5',
+      key: '18ncp8',
+    },
+  ],
   ['path', { d: 'M16 2v4', key: '4m81vk' }],
   ['path', { d: 'M8 2v4', key: '1cmpym' }],
   ['path', { d: 'M3 10h18', key: '8toen8' }],
@@ -3739,7 +4333,13 @@ var CalendarSearch = createLucideIcon('CalendarSearch', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-x-2.js
 var CalendarX2 = createLucideIcon('CalendarX2', [
-  ['path', { d: 'M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8', key: '3spt84' }],
+  [
+    'path',
+    {
+      d: 'M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8',
+      key: '3spt84',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3749,7 +4349,18 @@ var CalendarX2 = createLucideIcon('CalendarX2', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar-x.js
 var CalendarX = createLucideIcon('CalendarX', [
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', ry: '2', key: 'eu3xkr' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: 'eu3xkr',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3759,7 +4370,18 @@ var CalendarX = createLucideIcon('CalendarX', [
 
 // node_modules/lucide-react/dist/esm/icons/calendar.js
 var Calendar = createLucideIcon('Calendar', [
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', ry: '2', key: 'eu3xkr' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: 'eu3xkr',
+    },
+  ],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '6', key: 'm3sa8f' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '6', key: '18kwsl' }],
   ['line', { x1: '3', x2: '21', y1: '10', y2: '10', key: 'xt86sb' }],
@@ -3791,7 +4413,10 @@ var CandlestickChart = createLucideIcon('CandlestickChart', [
   ['rect', { width: '4', height: '6', x: '7', y: '9', rx: '1', key: 'f4fvz0' }],
   ['path', { d: 'M9 15v2', key: 'r5rk32' }],
   ['path', { d: 'M17 3v2', key: '1l2re6' }],
-  ['rect', { width: '4', height: '8', x: '15', y: '5', rx: '1', key: 'z38je5' }],
+  [
+    'rect',
+    { width: '4', height: '8', x: '15', y: '5', rx: '1', key: 'z38je5' },
+  ],
   ['path', { d: 'M17 13v3', key: '5l0wba' }],
   ['path', { d: 'M3 3v18h18', key: '1s2lah' }],
 ])
@@ -3816,7 +4441,10 @@ var CandyOff = createLucideIcon('CandyOff', [
   ['path', { d: 'm8.5 8.5-1 1a4.95 4.95 0 0 0 7 7l1-1', key: '1ff4ui' }],
   [
     'path',
-    { d: 'M11.843 6.187A4.947 4.947 0 0 1 16.5 7.5a4.947 4.947 0 0 1 1.313 4.657', key: '1sbrv4' },
+    {
+      d: 'M11.843 6.187A4.947 4.947 0 0 1 16.5 7.5a4.947 4.947 0 0 1 1.313 4.657',
+      key: '1sbrv4',
+    },
   ],
   ['path', { d: 'M14 16.5V14', key: '1maf8j' }],
   ['path', { d: 'M14 6.5v1.843', key: '1a6u6t' }],
@@ -3840,16 +4468,28 @@ var CandyOff = createLucideIcon('CandyOff', [
 
 // node_modules/lucide-react/dist/esm/icons/candy.js
 var Candy = createLucideIcon('Candy', [
-  ['path', { d: 'm9.5 7.5-2 2a4.95 4.95 0 1 0 7 7l2-2a4.95 4.95 0 1 0-7-7Z', key: 'ue6khb' }],
+  [
+    'path',
+    {
+      d: 'm9.5 7.5-2 2a4.95 4.95 0 1 0 7 7l2-2a4.95 4.95 0 1 0-7-7Z',
+      key: 'ue6khb',
+    },
+  ],
   ['path', { d: 'M14 6.5v10', key: '5xnk7c' }],
   ['path', { d: 'M10 7.5v10', key: '1uew51' }],
   [
     'path',
-    { d: 'm16 7 1-5 1.37.68A3 3 0 0 0 19.7 3H21v1.3c0 .46.1.92.32 1.33L22 7l-5 1', key: 'b9cp6k' },
+    {
+      d: 'm16 7 1-5 1.37.68A3 3 0 0 0 19.7 3H21v1.3c0 .46.1.92.32 1.33L22 7l-5 1',
+      key: 'b9cp6k',
+    },
   ],
   [
     'path',
-    { d: 'm8 17-1 5-1.37-.68A3 3 0 0 0 4.3 21H3v-1.3a3 3 0 0 0-.32-1.33L2 17l5-1', key: '5lney8' },
+    {
+      d: 'm8 17-1 5-1.37-.68A3 3 0 0 0 4.3 21H3v-1.3a3 3 0 0 0-.32-1.33L2 17l5-1',
+      key: '5lney8',
+    },
   ],
 ])
 
@@ -3857,11 +4497,17 @@ var Candy = createLucideIcon('Candy', [
 var CarFront = createLucideIcon('CarFront', [
   [
     'path',
-    { d: 'm21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8', key: '1imjwt' },
+    {
+      d: 'm21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8',
+      key: '1imjwt',
+    },
   ],
   ['path', { d: 'M7 14h.01', key: '1qa3f1' }],
   ['path', { d: 'M17 14h.01', key: '7oqj8z' }],
-  ['rect', { width: '18', height: '8', x: '3', y: '10', rx: '2', key: 'a7itu8' }],
+  [
+    'rect',
+    { width: '18', height: '8', x: '3', y: '10', rx: '2', key: 'a7itu8' },
+  ],
   ['path', { d: 'M5 18v2', key: 'ppbyun' }],
   ['path', { d: 'M19 18v2', key: 'gy7782' }],
 ])
@@ -3871,11 +4517,17 @@ var CarTaxiFront = createLucideIcon('CarTaxiFront', [
   ['path', { d: 'M10 2h4', key: 'n1abiw' }],
   [
     'path',
-    { d: 'm21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8', key: '1imjwt' },
+    {
+      d: 'm21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8',
+      key: '1imjwt',
+    },
   ],
   ['path', { d: 'M7 14h.01', key: '1qa3f1' }],
   ['path', { d: 'M17 14h.01', key: '7oqj8z' }],
-  ['rect', { width: '18', height: '8', x: '3', y: '10', rx: '2', key: 'a7itu8' }],
+  [
+    'rect',
+    { width: '18', height: '8', x: '3', y: '10', rx: '2', key: 'a7itu8' },
+  ],
   ['path', { d: 'M5 18v2', key: 'ppbyun' }],
   ['path', { d: 'M19 18v2', key: 'gy7782' }],
 ])
@@ -3898,7 +4550,13 @@ var Car = createLucideIcon('Car', [
 var Caravan = createLucideIcon('Caravan', [
   ['rect', { width: '4', height: '4', x: '2', y: '9', key: '1vcvhd' }],
   ['rect', { width: '4', height: '10', x: '10', y: '9', key: '1b7ev2' }],
-  ['path', { d: 'M18 19V9a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v8a2 2 0 0 0 2 2h2', key: '19jm3t' }],
+  [
+    'path',
+    {
+      d: 'M18 19V9a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v8a2 2 0 0 0 2 2h2',
+      key: '19jm3t',
+    },
+  ],
   ['circle', { cx: '8', cy: '19', r: '2', key: 't8fc5s' }],
   ['path', { d: 'M10 19h12v-2', key: '1yu2qx' }],
 ])
@@ -3912,8 +4570,20 @@ var Carrot = createLucideIcon('Carrot', [
       key: 'rfqxbe',
     },
   ],
-  ['path', { d: 'M22 9s-1.33-2-3.5-2C16.86 7 15 9 15 9s1.33 2 3.5 2S22 9 22 9z', key: '6b25w4' }],
-  ['path', { d: 'M15 2s-2 1.33-2 3.5S15 9 15 9s2-1.84 2-3.5C17 3.33 15 2 15 2z', key: 'fn65lo' }],
+  [
+    'path',
+    {
+      d: 'M22 9s-1.33-2-3.5-2C16.86 7 15 9 15 9s1.33 2 3.5 2S22 9 22 9z',
+      key: '6b25w4',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M15 2s-2 1.33-2 3.5S15 9 15 9s2-1.84 2-3.5C17 3.33 15 2 15 2z',
+      key: 'fn65lo',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/case-lower.js
@@ -3936,21 +4606,39 @@ var CaseSensitive = createLucideIcon('CaseSensitive', [
 var CaseUpper = createLucideIcon('CaseUpper', [
   ['path', { d: 'm3 15 4-8 4 8', key: '1vwr6u' }],
   ['path', { d: 'M4 13h6', key: '1r9ots' }],
-  ['path', { d: 'M15 11h4.5a2 2 0 0 1 0 4H15V7h4a2 2 0 0 1 0 4', key: '1sqfas' }],
+  [
+    'path',
+    { d: 'M15 11h4.5a2 2 0 0 1 0 4H15V7h4a2 2 0 0 1 0 4', key: '1sqfas' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/cassette-tape.js
 var CassetteTape = createLucideIcon('CassetteTape', [
-  ['rect', { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' }],
+  [
+    'rect',
+    { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' },
+  ],
   ['circle', { cx: '8', cy: '10', r: '2', key: '1xl4ub' }],
   ['path', { d: 'M8 12h8', key: '1wcyev' }],
   ['circle', { cx: '16', cy: '10', r: '2', key: 'r14t7q' }],
-  ['path', { d: 'm6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3', key: 'l01ucn' }],
+  [
+    'path',
+    {
+      d: 'm6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3',
+      key: 'l01ucn',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/cast.js
 var Cast = createLucideIcon('Cast', [
-  ['path', { d: 'M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6', key: '3zrzxg' }],
+  [
+    'path',
+    {
+      d: 'M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6',
+      key: '3zrzxg',
+    },
+  ],
   ['path', { d: 'M2 12a9 9 0 0 1 8 8', key: 'g6cvee' }],
   ['path', { d: 'M2 16a5 5 0 0 1 4 4', key: '1y1dii' }],
   ['line', { x1: '2', x2: '2.01', y1: '20', y2: '20', key: 'xu2jvo' }],
@@ -3958,7 +4646,10 @@ var Cast = createLucideIcon('Cast', [
 
 // node_modules/lucide-react/dist/esm/icons/castle.js
 var Castle = createLucideIcon('Castle', [
-  ['path', { d: 'M22 20v-9H2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z', key: '109fe4' }],
+  [
+    'path',
+    { d: 'M22 20v-9H2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z', key: '109fe4' },
+  ],
   ['path', { d: 'M18 11V4H6v7', key: 'mon5oj' }],
   ['path', { d: 'M15 22v-4a3 3 0 0 0-3-3v0a3 3 0 0 0-3 3v4', key: 'jdggr9' }],
   ['path', { d: 'M22 11V9', key: '3zbp94' }],
@@ -4003,18 +4694,29 @@ var CheckCircle = createLucideIcon('CheckCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/check-square-2.js
 var CheckSquare2 = createLucideIcon('CheckSquare2', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm9 12 2 2 4-4', key: 'dzmm74' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/check-square.js
 var CheckSquare = createLucideIcon('CheckSquare', [
   ['path', { d: 'm9 11 3 3L22 4', key: '1pflzl' }],
-  ['path', { d: 'M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11', key: '1jnkn4' }],
+  [
+    'path',
+    {
+      d: 'M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11',
+      key: '1jnkn4',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/check.js
-var Check = createLucideIcon('Check', [['path', { d: 'M20 6 9 17l-5-5', key: '1gmf2c' }]])
+var Check = createLucideIcon('Check', [
+  ['path', { d: 'M20 6 9 17l-5-5', key: '1gmf2c' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/chef-hat.js
 var ChefHat = createLucideIcon('ChefHat', [
@@ -4030,10 +4732,31 @@ var ChefHat = createLucideIcon('ChefHat', [
 
 // node_modules/lucide-react/dist/esm/icons/cherry.js
 var Cherry = createLucideIcon('Cherry', [
-  ['path', { d: 'M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-2-5 .24-5 3Z', key: 'cvxqlc' }],
-  ['path', { d: 'M12 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-2-5 .24-5 3Z', key: '1ostrc' }],
-  ['path', { d: 'M7 14c3.22-2.91 4.29-8.75 5-12 1.66 2.38 4.94 9 5 12', key: 'hqx58h' }],
-  ['path', { d: 'M22 9c-4.29 0-7.14-2.33-10-7 5.71 0 10 4.67 10 7Z', key: 'eykp1o' }],
+  [
+    'path',
+    {
+      d: 'M2 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-2-5 .24-5 3Z',
+      key: 'cvxqlc',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M12 17a5 5 0 0 0 10 0c0-2.76-2.5-5-5-3-2.5-2-5 .24-5 3Z',
+      key: '1ostrc',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M7 14c3.22-2.91 4.29-8.75 5-12 1.66 2.38 4.94 9 5 12',
+      key: 'hqx58h',
+    },
+  ],
+  [
+    'path',
+    { d: 'M22 9c-4.29 0-7.14-2.33-10-7 5.71 0 10 4.67 10 7Z', key: 'eykp1o' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/chevron-down-circle.js
@@ -4044,12 +4767,17 @@ var ChevronDownCircle = createLucideIcon('ChevronDownCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/chevron-down-square.js
 var ChevronDownSquare = createLucideIcon('ChevronDownSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm16 10-4 4-4-4', key: '894hmk' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/chevron-down.js
-var ChevronDown = createLucideIcon('ChevronDown', [['path', { d: 'm6 9 6 6 6-6', key: 'qrunsl' }]])
+var ChevronDown = createLucideIcon('ChevronDown', [
+  ['path', { d: 'm6 9 6 6 6-6', key: 'qrunsl' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/chevron-first.js
 var ChevronFirst = createLucideIcon('ChevronFirst', [
@@ -4071,7 +4799,10 @@ var ChevronLeftCircle = createLucideIcon('ChevronLeftCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/chevron-left-square.js
 var ChevronLeftSquare = createLucideIcon('ChevronLeftSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm14 16-4-4 4-4', key: 'ojs7w8' }],
 ])
 
@@ -4088,7 +4819,10 @@ var ChevronRightCircle = createLucideIcon('ChevronRightCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/chevron-right-square.js
 var ChevronRightSquare = createLucideIcon('ChevronRightSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm10 8 4 4-4 4', key: '1wy4r4' }],
 ])
 
@@ -4105,12 +4839,17 @@ var ChevronUpCircle = createLucideIcon('ChevronUpCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/chevron-up-square.js
 var ChevronUpSquare = createLucideIcon('ChevronUpSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm8 14 4-4 4 4', key: 'fy2ptz' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/chevron-up.js
-var ChevronUp = createLucideIcon('ChevronUp', [['path', { d: 'm18 15-6-6-6 6', key: '153udz' }]])
+var ChevronUp = createLucideIcon('ChevronUp', [
+  ['path', { d: 'm18 15-6-6-6 6', key: '153udz' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/chevrons-down-up.js
 var ChevronsDownUp = createLucideIcon('ChevronsDownUp', [
@@ -4171,7 +4910,10 @@ var Chrome = createLucideIcon('Chrome', [
 
 // node_modules/lucide-react/dist/esm/icons/church.js
 var Church = createLucideIcon('Church', [
-  ['path', { d: 'm18 7 4 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9l4-2', key: 'gy5gyo' }],
+  [
+    'path',
+    { d: 'm18 7 4 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9l4-2', key: 'gy5gyo' },
+  ],
   ['path', { d: 'M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4', key: 'cpkuc4' }],
   ['path', { d: 'M18 22V5l-6-3-6 3v17', key: '1hsnhq' }],
   ['path', { d: 'M12 7v5', key: 'ma6bk' }],
@@ -4281,7 +5023,10 @@ var CircleUserRound = createLucideIcon('CircleUserRound', [
 var CircleUser = createLucideIcon('CircleUser', [
   ['circle', { cx: '12', cy: '12', r: '10', key: '1mglay' }],
   ['circle', { cx: '12', cy: '10', r: '3', key: 'ilqhr7' }],
-  ['path', { d: 'M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662', key: '154egf' }],
+  [
+    'path',
+    { d: 'M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662', key: '154egf' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/circle.js
@@ -4291,7 +5036,10 @@ var Circle = createLucideIcon('Circle', [
 
 // node_modules/lucide-react/dist/esm/icons/circuit-board.js
 var CircuitBoard = createLucideIcon('CircuitBoard', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M11 9h4a2 2 0 0 0 2-2V3', key: '1ve2rv' }],
   ['circle', { cx: '9', cy: '9', r: '2', key: 'af1f0g' }],
   ['path', { d: 'M7 21v-4a2 2 0 0 1 2-2h4', key: '1fwkro' }],
@@ -4316,7 +5064,10 @@ var Citrus = createLucideIcon('Citrus', [
 var Clapperboard = createLucideIcon('Clapperboard', [
   [
     'path',
-    { d: 'M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z', key: '1tn4o7' },
+    {
+      d: 'M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z',
+      key: '1tn4o7',
+    },
   ],
   ['path', { d: 'm6.2 5.3 3.1 3.9', key: 'iuk76l' }],
   ['path', { d: 'm12.4 3.4 3.1 4', key: '6hsd6n' }],
@@ -4325,7 +5076,18 @@ var Clapperboard = createLucideIcon('Clapperboard', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-check.js
 var ClipboardCheck = createLucideIcon('ClipboardCheck', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
   [
     'path',
     {
@@ -4338,8 +5100,25 @@ var ClipboardCheck = createLucideIcon('ClipboardCheck', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-copy.js
 var ClipboardCopy = createLucideIcon('ClipboardCopy', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
-  ['path', { d: 'M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2', key: '4jdomd' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2',
+      key: '4jdomd',
+    },
+  ],
   ['path', { d: 'M16 4h2a2 2 0 0 1 2 2v4', key: '3hqy98' }],
   ['path', { d: 'M21 14H11', key: '1bme5i' }],
   ['path', { d: 'm15 10-4 4 4 4', key: '5dvupr' }],
@@ -4347,10 +5126,24 @@ var ClipboardCopy = createLucideIcon('ClipboardCopy', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-edit.js
 var ClipboardEdit = createLucideIcon('ClipboardEdit', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
   [
     'path',
-    { d: 'M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z', key: '1rgxu8' },
+    {
+      d: 'M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z',
+      key: '1rgxu8',
+    },
   ],
   ['path', { d: 'M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5.5', key: 'cereej' }],
   ['path', { d: 'M4 13.5V6a2 2 0 0 1 2-2h2', key: '5ua5vh' }],
@@ -4358,7 +5151,18 @@ var ClipboardEdit = createLucideIcon('ClipboardEdit', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-list.js
 var ClipboardList = createLucideIcon('ClipboardList', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
   [
     'path',
     {
@@ -4376,7 +5180,10 @@ var ClipboardList = createLucideIcon('ClipboardList', [
 var ClipboardPaste = createLucideIcon('ClipboardPaste', [
   [
     'path',
-    { d: 'M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1Z', key: '1pp7kr' },
+    {
+      d: 'M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1Z',
+      key: '1pp7kr',
+    },
   ],
   [
     'path',
@@ -4390,19 +5197,50 @@ var ClipboardPaste = createLucideIcon('ClipboardPaste', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-signature.js
 var ClipboardSignature = createLucideIcon('ClipboardSignature', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
-  ['path', { d: 'M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5', key: '1but9f' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5',
+      key: '1but9f',
+    },
+  ],
   ['path', { d: 'M16 4h2a2 2 0 0 1 1.73 1', key: '1p8n7l' }],
   [
     'path',
-    { d: 'M18.42 9.61a2.1 2.1 0 1 1 2.97 2.97L16.95 17 13 18l.99-3.95 4.43-4.44Z', key: 'johvi5' },
+    {
+      d: 'M18.42 9.61a2.1 2.1 0 1 1 2.97 2.97L16.95 17 13 18l.99-3.95 4.43-4.44Z',
+      key: 'johvi5',
+    },
   ],
   ['path', { d: 'M8 18h1', key: '13wk12' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-type.js
 var ClipboardType = createLucideIcon('ClipboardType', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
   [
     'path',
     {
@@ -4417,7 +5255,18 @@ var ClipboardType = createLucideIcon('ClipboardType', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard-x.js
 var ClipboardX = createLucideIcon('ClipboardX', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
   [
     'path',
     {
@@ -4431,7 +5280,18 @@ var ClipboardX = createLucideIcon('ClipboardX', [
 
 // node_modules/lucide-react/dist/esm/icons/clipboard.js
 var Clipboard = createLucideIcon('Clipboard', [
-  ['rect', { width: '8', height: '4', x: '8', y: '2', rx: '1', ry: '1', key: 'tgr4d6' }],
+  [
+    'rect',
+    {
+      width: '8',
+      height: '4',
+      x: '8',
+      y: '2',
+      rx: '1',
+      ry: '1',
+      key: 'tgr4d6',
+    },
+  ],
   [
     'path',
     {
@@ -4522,7 +5382,13 @@ var Clock = createLucideIcon('Clock', [
 // node_modules/lucide-react/dist/esm/icons/cloud-cog.js
 var CloudCog = createLucideIcon('CloudCog', [
   ['circle', { cx: '12', cy: '17', r: '3', key: '1spfwm' }],
-  ['path', { d: 'M4.2 15.1A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.2', key: 'zaobp' }],
+  [
+    'path',
+    {
+      d: 'M4.2 15.1A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.2',
+      key: 'zaobp',
+    },
+  ],
   ['path', { d: 'm15.7 18.4-.9-.3', key: '4qxpbn' }],
   ['path', { d: 'm9.2 15.9-.9-.3', key: '17q7o2' }],
   ['path', { d: 'm10.6 20.7.3-.9', key: '1pf4s2' }],
@@ -4535,7 +5401,13 @@ var CloudCog = createLucideIcon('CloudCog', [
 
 // node_modules/lucide-react/dist/esm/icons/cloud-drizzle.js
 var CloudDrizzle = createLucideIcon('CloudDrizzle', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M8 19v1', key: '1dk2by' }],
   ['path', { d: 'M8 14v1', key: '84yxot' }],
   ['path', { d: 'M16 19v1', key: 'v220m7' }],
@@ -4546,14 +5418,26 @@ var CloudDrizzle = createLucideIcon('CloudDrizzle', [
 
 // node_modules/lucide-react/dist/esm/icons/cloud-fog.js
 var CloudFog = createLucideIcon('CloudFog', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M16 17H7', key: 'pygtm1' }],
   ['path', { d: 'M17 21H9', key: '1u2q02' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/cloud-hail.js
 var CloudHail = createLucideIcon('CloudHail', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M16 14v2', key: 'a1is7l' }],
   ['path', { d: 'M8 14v2', key: '1e9m6t' }],
   ['path', { d: 'M16 20h.01', key: 'xwek51' }],
@@ -4564,7 +5448,13 @@ var CloudHail = createLucideIcon('CloudHail', [
 
 // node_modules/lucide-react/dist/esm/icons/cloud-lightning.js
 var CloudLightning = createLucideIcon('CloudLightning', [
-  ['path', { d: 'M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973', key: '1cez44' }],
+  [
+    'path',
+    {
+      d: 'M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973',
+      key: '1cez44',
+    },
+  ],
   ['path', { d: 'm13 12-3 5h4l-3 5', key: '1t22er' }],
 ])
 
@@ -4585,22 +5475,43 @@ var CloudMoonRain = createLucideIcon('CloudMoonRain', [
 // node_modules/lucide-react/dist/esm/icons/cloud-moon.js
 var CloudMoon = createLucideIcon('CloudMoon', [
   ['path', { d: 'M13 16a3 3 0 1 1 0 6H7a5 5 0 1 1 4.9-6Z', key: 'p44pc9' }],
-  ['path', { d: 'M10.1 9A6 6 0 0 1 16 4a4.24 4.24 0 0 0 6 6 6 6 0 0 1-3 5.197', key: '16nha0' }],
+  [
+    'path',
+    {
+      d: 'M10.1 9A6 6 0 0 1 16 4a4.24 4.24 0 0 0 6 6 6 6 0 0 1-3 5.197',
+      key: '16nha0',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/cloud-off.js
 var CloudOff = createLucideIcon('CloudOff', [
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
-  ['path', { d: 'M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193', key: 'yfwify' }],
   [
     'path',
-    { d: 'M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07', key: 'jlfiyv' },
+    {
+      d: 'M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193',
+      key: 'yfwify',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07',
+      key: 'jlfiyv',
+    },
   ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/cloud-rain-wind.js
 var CloudRainWind = createLucideIcon('CloudRainWind', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'm9.2 22 3-7', key: 'sb5f6j' }],
   ['path', { d: 'm9 13-3 7', key: '500co5' }],
   ['path', { d: 'm17 13-3 7', key: '8t2fiy' }],
@@ -4608,7 +5519,13 @@ var CloudRainWind = createLucideIcon('CloudRainWind', [
 
 // node_modules/lucide-react/dist/esm/icons/cloud-rain.js
 var CloudRain = createLucideIcon('CloudRain', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M16 14v6', key: '1j4efv' }],
   ['path', { d: 'M8 14v6', key: '17c4r9' }],
   ['path', { d: 'M12 16v6', key: 'c8a4gj' }],
@@ -4616,7 +5533,13 @@ var CloudRain = createLucideIcon('CloudRain', [
 
 // node_modules/lucide-react/dist/esm/icons/cloud-snow.js
 var CloudSnow = createLucideIcon('CloudSnow', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M8 15h.01', key: 'a7atzg' }],
   ['path', { d: 'M8 19h.01', key: 'puxtts' }],
   ['path', { d: 'M12 17h.01', key: 'p32p05' }],
@@ -4649,13 +5572,25 @@ var CloudSun = createLucideIcon('CloudSun', [
 
 // node_modules/lucide-react/dist/esm/icons/cloud.js
 var Cloud = createLucideIcon('Cloud', [
-  ['path', { d: 'M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z', key: 'p7xjir' }],
+  [
+    'path',
+    { d: 'M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z', key: 'p7xjir' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/cloudy.js
 var Cloudy = createLucideIcon('Cloudy', [
-  ['path', { d: 'M17.5 21H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z', key: 'gqqjvc' }],
-  ['path', { d: 'M22 10a3 3 0 0 0-3-3h-2.207a5.502 5.502 0 0 0-10.702.5', key: '1p2s76' }],
+  [
+    'path',
+    { d: 'M17.5 21H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z', key: 'gqqjvc' },
+  ],
+  [
+    'path',
+    {
+      d: 'M22 10a3 3 0 0 0-3-3h-2.207a5.502 5.502 0 0 0-10.702.5',
+      key: '1p2s76',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/clover.js
@@ -4718,7 +5653,10 @@ var Code = createLucideIcon('Code', [
 
 // node_modules/lucide-react/dist/esm/icons/codepen.js
 var Codepen = createLucideIcon('Codepen', [
-  ['polygon', { points: '12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2', key: 'srzb37' }],
+  [
+    'polygon',
+    { points: '12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2', key: 'srzb37' },
+  ],
   ['line', { x1: '12', x2: '12', y1: '22', y2: '15.5', key: '1t73f2' }],
   ['polyline', { points: '22 8.5 12 15.5 2 8.5', key: 'ajlxae' }],
   ['polyline', { points: '2 15.5 12 8.5 22 15.5', key: 'susrui' }],
@@ -4778,7 +5716,18 @@ var Coins = createLucideIcon('Coins', [
 
 // node_modules/lucide-react/dist/esm/icons/columns.js
 var Columns = createLucideIcon('Columns', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '12', x2: '12', y1: '3', y2: '21', key: '1efggb' }],
 ])
 
@@ -4789,21 +5738,33 @@ var Combine = createLucideIcon('Combine', [
   ['path', { d: 'M20 2c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2', key: 'k86dmt' }],
   ['path', { d: 'M10 18H5c-1.7 0-3-1.3-3-3v-1', key: '6vokjl' }],
   ['polyline', { points: '7 21 10 18 7 15', key: '1k02g0' }],
-  ['rect', { width: '8', height: '8', x: '14', y: '14', rx: '2', key: '1fa9i4' }],
+  [
+    'rect',
+    { width: '8', height: '8', x: '14', y: '14', rx: '2', key: '1fa9i4' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/command.js
 var Command = createLucideIcon('Command', [
   [
     'path',
-    { d: 'M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3', key: '11bfej' },
+    {
+      d: 'M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3',
+      key: '11bfej',
+    },
   ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/compass.js
 var Compass = createLucideIcon('Compass', [
   ['circle', { cx: '12', cy: '12', r: '10', key: '1mglay' }],
-  ['polygon', { points: '16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76', key: 'm9r19z' }],
+  [
+    'polygon',
+    {
+      points: '16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76',
+      key: 'm9r19z',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/component.js
@@ -4816,15 +5777,24 @@ var Component = createLucideIcon('Component', [
 
 // node_modules/lucide-react/dist/esm/icons/computer.js
 var Computer = createLucideIcon('Computer', [
-  ['rect', { width: '14', height: '8', x: '5', y: '2', rx: '2', key: 'wc9tft' }],
-  ['rect', { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' }],
+  [
+    'rect',
+    { width: '14', height: '8', x: '5', y: '2', rx: '2', key: 'wc9tft' },
+  ],
+  [
+    'rect',
+    { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' },
+  ],
   ['path', { d: 'M6 18h2', key: 'rwmk9e' }],
   ['path', { d: 'M12 18h6', key: 'aqd8w3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/concierge-bell.js
 var ConciergeBell = createLucideIcon('ConciergeBell', [
-  ['path', { d: 'M2 18a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2H2v-2Z', key: '1co3i8' }],
+  [
+    'path',
+    { d: 'M2 18a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2H2v-2Z', key: '1co3i8' },
+  ],
   ['path', { d: 'M20 16a8 8 0 1 0-16 0', key: '1pa543' }],
   ['path', { d: 'M12 4v4', key: '1bq03y' }],
   ['path', { d: 'M10 4h4', key: '1xpv9s' }],
@@ -4832,13 +5802,19 @@ var ConciergeBell = createLucideIcon('ConciergeBell', [
 
 // node_modules/lucide-react/dist/esm/icons/cone.js
 var Cone = createLucideIcon('Cone', [
-  ['path', { d: 'm20.9 18.55-8-15.98a1 1 0 0 0-1.8 0l-8 15.98', key: '53pte7' }],
+  [
+    'path',
+    { d: 'm20.9 18.55-8-15.98a1 1 0 0 0-1.8 0l-8 15.98', key: '53pte7' },
+  ],
   ['ellipse', { cx: '12', cy: '19', rx: '9', ry: '3', key: '1ji25f' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/construction.js
 var Construction = createLucideIcon('Construction', [
-  ['rect', { x: '2', y: '6', width: '20', height: '8', rx: '1', key: '1estib' }],
+  [
+    'rect',
+    { x: '2', y: '6', width: '20', height: '8', rx: '1', key: '1estib' },
+  ],
   ['path', { d: 'M17 14v7', key: '7m2elx' }],
   ['path', { d: 'M7 14v7', key: '1cm7wv' }],
   ['path', { d: 'M17 3v3', key: '1v4jwn' }],
@@ -4852,7 +5828,10 @@ var Construction = createLucideIcon('Construction', [
 var Contact2 = createLucideIcon('Contact2', [
   ['path', { d: 'M16 18a4 4 0 0 0-8 0', key: '1lzouq' }],
   ['circle', { cx: '12', cy: '11', r: '3', key: 'itu57m' }],
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', key: '1hopcy' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '4', rx: '2', key: '1hopcy' },
+  ],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '4', key: '1ff9gb' }],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '4', key: '1ufoma' }],
 ])
@@ -4860,7 +5839,10 @@ var Contact2 = createLucideIcon('Contact2', [
 // node_modules/lucide-react/dist/esm/icons/contact.js
 var Contact = createLucideIcon('Contact', [
   ['path', { d: 'M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2', key: '1mghuy' }],
-  ['rect', { width: '18', height: '18', x: '3', y: '4', rx: '2', key: '1hopcy' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '4', rx: '2', key: '1hopcy' },
+  ],
   ['circle', { cx: '12', cy: '10', r: '2', key: '1yojzk' }],
   ['line', { x1: '8', x2: '8', y1: '2', y2: '4', key: '1ff9gb' }],
   ['line', { x1: '16', x2: '16', y1: '2', y2: '4', key: '1ufoma' }],
@@ -4889,7 +5871,10 @@ var Contrast = createLucideIcon('Contrast', [
 
 // node_modules/lucide-react/dist/esm/icons/cookie.js
 var Cookie = createLucideIcon('Cookie', [
-  ['path', { d: 'M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5', key: 'laymnq' }],
+  [
+    'path',
+    { d: 'M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5', key: 'laymnq' },
+  ],
   ['path', { d: 'M8.5 8.5v.01', key: 'ue8clq' }],
   ['path', { d: 'M16 15.5v.01', key: '14dtrp' }],
   ['path', { d: 'M12 12v.01', key: 'u5ubse' }],
@@ -4900,44 +5885,146 @@ var Cookie = createLucideIcon('Cookie', [
 // node_modules/lucide-react/dist/esm/icons/copy-check.js
 var CopyCheck = createLucideIcon('CopyCheck', [
   ['path', { d: 'm12 15 2 2 4-4', key: '2c609p' }],
-  ['rect', { width: '14', height: '14', x: '8', y: '8', rx: '2', ry: '2', key: '17jyea' }],
-  ['path', { d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2', key: 'zix9uf' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '14',
+      x: '8',
+      y: '8',
+      rx: '2',
+      ry: '2',
+      key: '17jyea',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+      key: 'zix9uf',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/copy-minus.js
 var CopyMinus = createLucideIcon('CopyMinus', [
   ['line', { x1: '12', x2: '18', y1: '15', y2: '15', key: '1nscbv' }],
-  ['rect', { width: '14', height: '14', x: '8', y: '8', rx: '2', ry: '2', key: '17jyea' }],
-  ['path', { d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2', key: 'zix9uf' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '14',
+      x: '8',
+      y: '8',
+      rx: '2',
+      ry: '2',
+      key: '17jyea',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+      key: 'zix9uf',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/copy-plus.js
 var CopyPlus = createLucideIcon('CopyPlus', [
   ['line', { x1: '15', x2: '15', y1: '12', y2: '18', key: '1p7wdc' }],
   ['line', { x1: '12', x2: '18', y1: '15', y2: '15', key: '1nscbv' }],
-  ['rect', { width: '14', height: '14', x: '8', y: '8', rx: '2', ry: '2', key: '17jyea' }],
-  ['path', { d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2', key: 'zix9uf' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '14',
+      x: '8',
+      y: '8',
+      rx: '2',
+      ry: '2',
+      key: '17jyea',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+      key: 'zix9uf',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/copy-slash.js
 var CopySlash = createLucideIcon('CopySlash', [
   ['line', { x1: '12', x2: '18', y1: '18', y2: '12', key: 'ebkxgr' }],
-  ['rect', { width: '14', height: '14', x: '8', y: '8', rx: '2', ry: '2', key: '17jyea' }],
-  ['path', { d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2', key: 'zix9uf' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '14',
+      x: '8',
+      y: '8',
+      rx: '2',
+      ry: '2',
+      key: '17jyea',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+      key: 'zix9uf',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/copy-x.js
 var CopyX = createLucideIcon('CopyX', [
   ['line', { x1: '12', x2: '18', y1: '12', y2: '18', key: '1rg63v' }],
   ['line', { x1: '12', x2: '18', y1: '18', y2: '12', key: 'ebkxgr' }],
-  ['rect', { width: '14', height: '14', x: '8', y: '8', rx: '2', ry: '2', key: '17jyea' }],
-  ['path', { d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2', key: 'zix9uf' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '14',
+      x: '8',
+      y: '8',
+      rx: '2',
+      ry: '2',
+      key: '17jyea',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+      key: 'zix9uf',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/copy.js
 var Copy = createLucideIcon('Copy', [
-  ['rect', { width: '14', height: '14', x: '8', y: '8', rx: '2', ry: '2', key: '17jyea' }],
-  ['path', { d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2', key: 'zix9uf' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '14',
+      x: '8',
+      y: '8',
+      rx: '2',
+      ry: '2',
+      key: '17jyea',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+      key: 'zix9uf',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/copyleft.js
@@ -5002,7 +6089,10 @@ var CornerUpRight = createLucideIcon('CornerUpRight', [
 
 // node_modules/lucide-react/dist/esm/icons/cpu.js
 var Cpu = createLucideIcon('Cpu', [
-  ['rect', { x: '4', y: '4', width: '16', height: '16', rx: '2', key: '1vbyd7' }],
+  [
+    'rect',
+    { x: '4', y: '4', width: '16', height: '16', rx: '2', key: '1vbyd7' },
+  ],
   ['rect', { x: '9', y: '9', width: '6', height: '6', key: 'o3kz5p' }],
   ['path', { d: 'M15 2v2', key: '13l42r' }],
   ['path', { d: 'M15 20v2', key: '15mkzm' }],
@@ -5019,17 +6109,26 @@ var CreativeCommons = createLucideIcon('CreativeCommons', [
   ['circle', { cx: '12', cy: '12', r: '10', key: '1mglay' }],
   [
     'path',
-    { d: 'M10 9.3a2.8 2.8 0 0 0-3.5 1 3.1 3.1 0 0 0 0 3.4 2.7 2.7 0 0 0 3.5 1', key: '1ss3eq' },
+    {
+      d: 'M10 9.3a2.8 2.8 0 0 0-3.5 1 3.1 3.1 0 0 0 0 3.4 2.7 2.7 0 0 0 3.5 1',
+      key: '1ss3eq',
+    },
   ],
   [
     'path',
-    { d: 'M17 9.3a2.8 2.8 0 0 0-3.5 1 3.1 3.1 0 0 0 0 3.4 2.7 2.7 0 0 0 3.5 1', key: '1od56t' },
+    {
+      d: 'M17 9.3a2.8 2.8 0 0 0-3.5 1 3.1 3.1 0 0 0 0 3.4 2.7 2.7 0 0 0 3.5 1',
+      key: '1od56t',
+    },
   ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/credit-card.js
 var CreditCard = createLucideIcon('CreditCard', [
-  ['rect', { width: '20', height: '14', x: '2', y: '5', rx: '2', key: 'ynyp8z' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '5', rx: '2', key: 'ynyp8z' },
+  ],
   ['line', { x1: '2', x2: '22', y1: '10', y2: '10', key: '1b3vmo' }],
 ])
 
@@ -5106,9 +6205,18 @@ var Cuboid = createLucideIcon('Cuboid', [
 
 // node_modules/lucide-react/dist/esm/icons/cup-soda.js
 var CupSoda = createLucideIcon('CupSoda', [
-  ['path', { d: 'm6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8', key: '8166m8' }],
+  [
+    'path',
+    {
+      d: 'm6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8',
+      key: '8166m8',
+    },
+  ],
   ['path', { d: 'M5 8h14', key: 'pcz4l3' }],
-  ['path', { d: 'M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0', key: 'yjz344' }],
+  [
+    'path',
+    { d: 'M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0', key: 'yjz344' },
+  ],
   ['path', { d: 'm12 8 1-6h2', key: '3ybfa4' }],
 ])
 
@@ -5161,7 +6269,10 @@ var Database = createLucideIcon('Database', [
 
 // node_modules/lucide-react/dist/esm/icons/delete.js
 var Delete = createLucideIcon('Delete', [
-  ['path', { d: 'M20 5H9l-7 7 7 7h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z', key: '1oy587' }],
+  [
+    'path',
+    { d: 'M20 5H9l-7 7 7 7h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z', key: '1oy587' },
+  ],
   ['line', { x1: '18', x2: '12', y1: '9', y2: '15', key: '1olkx5' }],
   ['line', { x1: '12', x2: '18', y1: '9', y2: '15', key: '1n50pc' }],
 ])
@@ -5201,20 +6312,53 @@ var Diamond = createLucideIcon('Diamond', [
 
 // node_modules/lucide-react/dist/esm/icons/dice-1.js
 var Dice1 = createLucideIcon('Dice1', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M12 12h.01', key: '1mp3jc' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/dice-2.js
 var Dice2 = createLucideIcon('Dice2', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M15 9h.01', key: 'x1ddxp' }],
   ['path', { d: 'M9 15h.01', key: 'fzyn71' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/dice-3.js
 var Dice3 = createLucideIcon('Dice3', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M16 8h.01', key: 'cr5u4v' }],
   ['path', { d: 'M12 12h.01', key: '1mp3jc' }],
   ['path', { d: 'M8 16h.01', key: '18s6g9' }],
@@ -5222,7 +6366,18 @@ var Dice3 = createLucideIcon('Dice3', [
 
 // node_modules/lucide-react/dist/esm/icons/dice-4.js
 var Dice4 = createLucideIcon('Dice4', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M16 8h.01', key: 'cr5u4v' }],
   ['path', { d: 'M8 8h.01', key: '1e4136' }],
   ['path', { d: 'M8 16h.01', key: '18s6g9' }],
@@ -5231,7 +6386,18 @@ var Dice4 = createLucideIcon('Dice4', [
 
 // node_modules/lucide-react/dist/esm/icons/dice-5.js
 var Dice5 = createLucideIcon('Dice5', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M16 8h.01', key: 'cr5u4v' }],
   ['path', { d: 'M8 8h.01', key: '1e4136' }],
   ['path', { d: 'M8 16h.01', key: '18s6g9' }],
@@ -5241,7 +6407,18 @@ var Dice5 = createLucideIcon('Dice5', [
 
 // node_modules/lucide-react/dist/esm/icons/dice-6.js
 var Dice6 = createLucideIcon('Dice6', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M16 8h.01', key: 'cr5u4v' }],
   ['path', { d: 'M16 12h.01', key: '1l6xoz' }],
   ['path', { d: 'M16 16h.01', key: '1f9h7w' }],
@@ -5252,10 +6429,24 @@ var Dice6 = createLucideIcon('Dice6', [
 
 // node_modules/lucide-react/dist/esm/icons/dices.js
 var Dices = createLucideIcon('Dices', [
-  ['rect', { width: '12', height: '12', x: '2', y: '10', rx: '2', ry: '2', key: '6agr2n' }],
+  [
+    'rect',
+    {
+      width: '12',
+      height: '12',
+      x: '2',
+      y: '10',
+      rx: '2',
+      ry: '2',
+      key: '6agr2n',
+    },
+  ],
   [
     'path',
-    { d: 'm17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6', key: '1o487t' },
+    {
+      d: 'm17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6',
+      key: '1o487t',
+    },
   ],
   ['path', { d: 'M6 18h.01', key: 'uhywen' }],
   ['path', { d: 'M10 14h.01', key: 'ssrbsk' }],
@@ -5287,7 +6478,10 @@ var Disc3 = createLucideIcon('Disc3', [
 
 // node_modules/lucide-react/dist/esm/icons/disc-album.js
 var DiscAlbum = createLucideIcon('DiscAlbum', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['circle', { cx: '12', cy: '12', r: '5', key: 'nd82uf' }],
   ['path', { d: 'M12 12h.01', key: '1mp3jc' }],
 ])
@@ -5308,7 +6502,18 @@ var DivideCircle = createLucideIcon('DivideCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/divide-square.js
 var DivideSquare = createLucideIcon('DivideSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '8', x2: '16', y1: '12', y2: '12', key: '1jonct' }],
   ['line', { x1: '12', x2: '12', y1: '16', y2: '16', key: 'aqc6ln' }],
   ['line', { x1: '12', x2: '12', y1: '8', y2: '8', key: '1mkcni' }],
@@ -5323,8 +6528,20 @@ var Divide = createLucideIcon('Divide', [
 
 // node_modules/lucide-react/dist/esm/icons/dna-off.js
 var DnaOff = createLucideIcon('DnaOff', [
-  ['path', { d: 'M15 2c-1.35 1.5-2.092 3-2.5 4.5M9 22c1.35-1.5 2.092-3 2.5-4.5', key: 'sxiaad' }],
-  ['path', { d: 'M2 15c3.333-3 6.667-3 10-3m10-3c-1.5 1.35-3 2.092-4.5 2.5', key: 'yn4bs1' }],
+  [
+    'path',
+    {
+      d: 'M15 2c-1.35 1.5-2.092 3-2.5 4.5M9 22c1.35-1.5 2.092-3 2.5-4.5',
+      key: 'sxiaad',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M2 15c3.333-3 6.667-3 10-3m10-3c-1.5 1.35-3 2.092-4.5 2.5',
+      key: 'yn4bs1',
+    },
+  ],
   ['path', { d: 'm17 6-2.5-2.5', key: '5cdfhj' }],
   ['path', { d: 'm14 8-1.5-1.5', key: '1ohn8i' }],
   ['path', { d: 'm7 18 2.5 2.5', key: '16tu1a' }],
@@ -5382,7 +6599,10 @@ var Dog = createLucideIcon('Dog', [
 // node_modules/lucide-react/dist/esm/icons/dollar-sign.js
 var DollarSign = createLucideIcon('DollarSign', [
   ['line', { x1: '12', x2: '12', y1: '2', y2: '22', key: '7eqyqh' }],
-  ['path', { d: 'M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', key: '1b0p4s' }],
+  [
+    'path',
+    { d: 'M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', key: '1b0p4s' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/donut.js
@@ -5420,11 +6640,19 @@ var DoorOpen = createLucideIcon('DoorOpen', [
 ])
 
 // node_modules/lucide-react/dist/esm/icons/dot.js
-var Dot = createLucideIcon('Dot', [['circle', { cx: '12.1', cy: '12.1', r: '1', key: '18d7e5' }]])
+var Dot = createLucideIcon('Dot', [
+  ['circle', { cx: '12.1', cy: '12.1', r: '1', key: '18d7e5' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/download-cloud.js
 var DownloadCloud = createLucideIcon('DownloadCloud', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M12 12v9', key: '192myk' }],
   ['path', { d: 'm8 17 4 4 4-4', key: '1ul180' }],
 ])
@@ -5451,7 +6679,10 @@ var Drama = createLucideIcon('Drama', [
   ['path', { d: 'M14 6h.01', key: 'k028ub' }],
   ['path', { d: 'M18 6h.01', key: '1v4wsw' }],
   ['path', { d: 'M6.5 13.1h.01', key: '1748ia' }],
-  ['path', { d: 'M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3', key: '172yzv' }],
+  [
+    'path',
+    { d: 'M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3', key: '172yzv' },
+  ],
   ['path', { d: 'M17.4 9.9c-.8.8-2 .8-2.8 0', key: '1obv0w' }],
   [
     'path',
@@ -5542,16 +6773,37 @@ var Dumbbell = createLucideIcon('Dumbbell', [
 
 // node_modules/lucide-react/dist/esm/icons/ear-off.js
 var EarOff = createLucideIcon('EarOff', [
-  ['path', { d: 'M6 18.5a3.5 3.5 0 1 0 7 0c0-1.57.92-2.52 2.04-3.46', key: '1qngmn' }],
+  [
+    'path',
+    { d: 'M6 18.5a3.5 3.5 0 1 0 7 0c0-1.57.92-2.52 2.04-3.46', key: '1qngmn' },
+  ],
   ['path', { d: 'M6 8.5c0-.75.13-1.47.36-2.14', key: 'b06bma' }],
-  ['path', { d: 'M8.8 3.15A6.5 6.5 0 0 1 19 8.5c0 1.63-.44 2.81-1.09 3.76', key: 'g10hsz' }],
-  ['path', { d: 'M12.5 6A2.5 2.5 0 0 1 15 8.5M10 13a2 2 0 0 0 1.82-1.18', key: 'ygzou7' }],
+  [
+    'path',
+    {
+      d: 'M8.8 3.15A6.5 6.5 0 0 1 19 8.5c0 1.63-.44 2.81-1.09 3.76',
+      key: 'g10hsz',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M12.5 6A2.5 2.5 0 0 1 15 8.5M10 13a2 2 0 0 0 1.82-1.18',
+      key: 'ygzou7',
+    },
+  ],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/ear.js
 var Ear = createLucideIcon('Ear', [
-  ['path', { d: 'M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0', key: '1dfaln' }],
+  [
+    'path',
+    {
+      d: 'M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0',
+      key: '1dfaln',
+    },
+  ],
   ['path', { d: 'M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4', key: '1qnva7' }],
 ])
 
@@ -5646,7 +6898,13 @@ var Expand = createLucideIcon('Expand', [
 
 // node_modules/lucide-react/dist/esm/icons/external-link.js
 var ExternalLink = createLucideIcon('ExternalLink', [
-  ['path', { d: 'M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6', key: 'a6xqqp' }],
+  [
+    'path',
+    {
+      d: 'M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6',
+      key: 'a6xqqp',
+    },
+  ],
   ['polyline', { points: '15 3 21 3 21 9', key: 'mznyad' }],
   ['line', { x1: '10', x2: '21', y1: '14', y2: '3', key: '18c3s4' }],
 ])
@@ -5663,14 +6921,20 @@ var EyeOff = createLucideIcon('EyeOff', [
   ],
   [
     'path',
-    { d: 'M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61', key: '1jreej' },
+    {
+      d: 'M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61',
+      key: '1jreej',
+    },
   ],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/eye.js
 var Eye = createLucideIcon('Eye', [
-  ['path', { d: 'M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z', key: 'rwhkz3' }],
+  [
+    'path',
+    { d: 'M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z', key: 'rwhkz3' },
+  ],
   ['circle', { cx: '12', cy: '12', r: '3', key: '1v7zrd' }],
 ])
 
@@ -5678,7 +6942,10 @@ var Eye = createLucideIcon('Eye', [
 var Facebook = createLucideIcon('Facebook', [
   [
     'path',
-    { d: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z', key: '1jg4f8' },
+    {
+      d: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z',
+      key: '1jg4f8',
+    },
   ],
 ])
 
@@ -5716,7 +6983,10 @@ var FastForward = createLucideIcon('FastForward', [
 
 // node_modules/lucide-react/dist/esm/icons/feather.js
 var Feather = createLucideIcon('Feather', [
-  ['path', { d: 'M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z', key: 'u4sw5n' }],
+  [
+    'path',
+    { d: 'M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z', key: 'u4sw5n' },
+  ],
   ['line', { x1: '16', x2: '2', y1: '8', y2: '22', key: '1c47m2' }],
   ['line', { x1: '17.5', x2: '9', y1: '15', y2: '15', key: '2fj3pr' }],
 ])
@@ -5736,11 +7006,32 @@ var FerrisWheel = createLucideIcon('FerrisWheel', [
 
 // node_modules/lucide-react/dist/esm/icons/figma.js
 var Figma = createLucideIcon('Figma', [
-  ['path', { d: 'M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z', key: '1340ok' }],
+  [
+    'path',
+    {
+      d: 'M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z',
+      key: '1340ok',
+    },
+  ],
   ['path', { d: 'M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z', key: '1hz3m3' }],
-  ['path', { d: 'M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z', key: '1oz8n2' }],
-  ['path', { d: 'M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z', key: '1ff65i' }],
-  ['path', { d: 'M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z', key: 'pdip6e' }],
+  [
+    'path',
+    { d: 'M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z', key: '1oz8n2' },
+  ],
+  [
+    'path',
+    {
+      d: 'M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z',
+      key: '1ff65i',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z',
+      key: 'pdip6e',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/file-archive.js
@@ -5761,7 +7052,10 @@ var FileArchive = createLucideIcon('FileArchive', [
 
 // node_modules/lucide-react/dist/esm/icons/file-audio-2.js
 var FileAudio2 = createLucideIcon('FileAudio2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v2', key: 'fkyf72' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v2', key: 'fkyf72' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M2 17v-3a4 4 0 0 1 8 0v3', key: '1ggdre' }],
   ['circle', { cx: '9', cy: '17', r: '1', key: 'bc1fq4' }],
@@ -5787,7 +7081,10 @@ var FileAudio = createLucideIcon('FileAudio', [
 var FileAxis3d = createLucideIcon('FileAxis3d', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M8 10v8h8', key: 'tlaukw' }],
@@ -5798,7 +7095,10 @@ var FileAxis3d = createLucideIcon('FileAxis3d', [
 var FileBadge2 = createLucideIcon('FileBadge2', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['path', { d: 'M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z', key: '13rien' }],
   ['path', { d: 'm14 12.5 1 5.5-3-1-3 1 1-5.5', key: '14xlky' }],
@@ -5806,7 +7106,10 @@ var FileBadge2 = createLucideIcon('FileBadge2', [
 
 // node_modules/lucide-react/dist/esm/icons/file-badge.js
 var FileBadge = createLucideIcon('FileBadge', [
-  ['path', { d: 'M4 7V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-6', key: 'qtddq0' }],
+  [
+    'path',
+    { d: 'M4 7V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-6', key: 'qtddq0' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M5 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z', key: 'u0c8gj' }],
   ['path', { d: 'M7 16.5 8 22l-3-1-3 1 1-5.5', key: '5gm2nr' }],
@@ -5816,7 +7119,10 @@ var FileBadge = createLucideIcon('FileBadge', [
 var FileBarChart2 = createLucideIcon('FileBarChart2', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M12 18v-6', key: '17g6i2' }],
@@ -5828,7 +7134,10 @@ var FileBarChart2 = createLucideIcon('FileBarChart2', [
 var FileBarChart = createLucideIcon('FileBarChart', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M12 18v-4', key: 'q1q25u' }],
@@ -5838,7 +7147,13 @@ var FileBarChart = createLucideIcon('FileBarChart', [
 
 // node_modules/lucide-react/dist/esm/icons/file-box.js
 var FileBox = createLucideIcon('FileBox', [
-  ['path', { d: 'M14.5 22H18a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: 'h7jej2' }],
+  [
+    'path',
+    {
+      d: 'M14.5 22H18a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4',
+      key: 'h7jej2',
+    },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   [
     'path',
@@ -5854,7 +7169,10 @@ var FileBox = createLucideIcon('FileBox', [
 
 // node_modules/lucide-react/dist/esm/icons/file-check-2.js
 var FileCheck2 = createLucideIcon('FileCheck2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm3 15 2 2 4-4', key: '1lhrkk' }],
 ])
@@ -5863,7 +7181,10 @@ var FileCheck2 = createLucideIcon('FileCheck2', [
 var FileCheck = createLucideIcon('FileCheck', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm9 15 2 2 4-4', key: '1grp1n' }],
@@ -5885,7 +7206,10 @@ var FileClock = createLucideIcon('FileClock', [
 
 // node_modules/lucide-react/dist/esm/icons/file-code-2.js
 var FileCode2 = createLucideIcon('FileCode2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm9 18 3-3-3-3', key: '112psh' }],
   ['path', { d: 'm5 12-3 3 3 3', key: 'oke12k' }],
@@ -5895,7 +7219,10 @@ var FileCode2 = createLucideIcon('FileCode2', [
 var FileCode = createLucideIcon('FileCode', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm10 13-2 2 2 2', key: '17smn8' }],
@@ -5916,7 +7243,10 @@ var FileCog = createLucideIcon('FileCog', [
   ['path', { d: 'M14 2v6h6', key: '1kof46' }],
   [
     'path',
-    { d: 'M4 5.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-1.5', key: 'xwe04' },
+    {
+      d: 'M4 5.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-1.5',
+      key: 'xwe04',
+    },
   ],
 ])
 
@@ -5924,7 +7254,10 @@ var FileCog = createLucideIcon('FileCog', [
 var FileDiff = createLucideIcon('FileDiff', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['path', { d: 'M12 13V7', key: 'h0r20n' }],
   ['path', { d: 'M9 10h6', key: '9gxzsh' }],
@@ -5933,9 +7266,15 @@ var FileDiff = createLucideIcon('FileDiff', [
 
 // node_modules/lucide-react/dist/esm/icons/file-digit.js
 var FileDigit = createLucideIcon('FileDigit', [
-  ['rect', { width: '4', height: '6', x: '2', y: '12', rx: '2', key: 'jm304g' }],
+  [
+    'rect',
+    { width: '4', height: '6', x: '2', y: '12', rx: '2', key: 'jm304g' },
+  ],
   ['path', { d: 'M14 2v6h6', key: '1kof46' }],
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['path', { d: 'M10 12h2v6', key: '12zw74' }],
   ['path', { d: 'M10 18h4', key: '1ulq68' }],
 ])
@@ -5944,7 +7283,10 @@ var FileDigit = createLucideIcon('FileDigit', [
 var FileDown = createLucideIcon('FileDown', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M12 18v-6', key: '17g6i2' }],
@@ -5953,17 +7295,29 @@ var FileDown = createLucideIcon('FileDown', [
 
 // node_modules/lucide-react/dist/esm/icons/file-edit.js
 var FileEdit = createLucideIcon('FileEdit', [
-  ['path', { d: 'M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5', key: '1bg6eb' }],
+  [
+    'path',
+    {
+      d: 'M4 13.5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-5.5',
+      key: '1bg6eb',
+    },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   [
     'path',
-    { d: 'M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z', key: '1rgxu8' },
+    {
+      d: 'M10.42 12.61a2.1 2.1 0 1 1 2.97 2.97L7.95 21 4 22l.99-3.95 5.43-5.44Z',
+      key: '1rgxu8',
+    },
   ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/file-heart.js
 var FileHeart = createLucideIcon('FileHeart', [
-  ['path', { d: 'M4 6V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: 'dba9qu' }],
+  [
+    'path',
+    { d: 'M4 6V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: 'dba9qu' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   [
     'path',
@@ -5978,7 +7332,10 @@ var FileHeart = createLucideIcon('FileHeart', [
 var FileImage = createLucideIcon('FileImage', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['circle', { cx: '10', cy: '13', r: '2', key: '6v46hv' }],
@@ -5987,7 +7344,10 @@ var FileImage = createLucideIcon('FileImage', [
 
 // node_modules/lucide-react/dist/esm/icons/file-input.js
 var FileInput = createLucideIcon('FileInput', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M2 15h10', key: 'jfw4w8' }],
   ['path', { d: 'm9 18 3-3-3-3', key: '112psh' }],
@@ -5995,15 +7355,24 @@ var FileInput = createLucideIcon('FileInput', [
 
 // node_modules/lucide-react/dist/esm/icons/file-json-2.js
 var FileJson2 = createLucideIcon('FileJson2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   [
     'path',
-    { d: 'M4 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1', key: 'fq0c9t' },
+    {
+      d: 'M4 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1',
+      key: 'fq0c9t',
+    },
   ],
   [
     'path',
-    { d: 'M8 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1', key: '4gibmv' },
+    {
+      d: 'M8 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1',
+      key: '4gibmv',
+    },
   ],
 ])
 
@@ -6011,22 +7380,34 @@ var FileJson2 = createLucideIcon('FileJson2', [
 var FileJson = createLucideIcon('FileJson', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   [
     'path',
-    { d: 'M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1', key: '1oajmo' },
+    {
+      d: 'M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1',
+      key: '1oajmo',
+    },
   ],
   [
     'path',
-    { d: 'M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1', key: 'mpwhp6' },
+    {
+      d: 'M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1',
+      key: 'mpwhp6',
+    },
   ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/file-key-2.js
 var FileKey2 = createLucideIcon('FileKey2', [
-  ['path', { d: 'M4 10V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: '1nw5t3' }],
+  [
+    'path',
+    { d: 'M4 10V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: '1nw5t3' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['circle', { cx: '4', cy: '16', r: '2', key: '1ehqvc' }],
   ['path', { d: 'm10 10-4.5 4.5', key: '7fwrp6' }],
@@ -6037,7 +7418,10 @@ var FileKey2 = createLucideIcon('FileKey2', [
 var FileKey = createLucideIcon('FileKey', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['circle', { cx: '10', cy: '16', r: '2', key: '4ckbqe' }],
   ['path', { d: 'm16 10-4.5 4.5', key: '7p3ebg' }],
@@ -6048,7 +7432,10 @@ var FileKey = createLucideIcon('FileKey', [
 var FileLineChart = createLucideIcon('FileLineChart', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm16 13-3.5 3.5-2-2L8 17', key: 'zz7yod' }],
@@ -6056,9 +7443,15 @@ var FileLineChart = createLucideIcon('FileLineChart', [
 
 // node_modules/lucide-react/dist/esm/icons/file-lock-2.js
 var FileLock2 = createLucideIcon('FileLock2', [
-  ['path', { d: 'M4 5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: 'gwd2r9' }],
+  [
+    'path',
+    { d: 'M4 5V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: 'gwd2r9' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
-  ['rect', { width: '8', height: '5', x: '2', y: '13', rx: '1', key: '10y5wo' }],
+  [
+    'rect',
+    { width: '8', height: '5', x: '2', y: '13', rx: '1', key: '10y5wo' },
+  ],
   ['path', { d: 'M8 13v-2a2 2 0 1 0-4 0v2', key: '1pdxzg' }],
 ])
 
@@ -6066,15 +7459,24 @@ var FileLock2 = createLucideIcon('FileLock2', [
 var FileLock = createLucideIcon('FileLock', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
-  ['rect', { width: '8', height: '6', x: '8', y: '12', rx: '1', key: '3yr8at' }],
+  [
+    'rect',
+    { width: '8', height: '6', x: '8', y: '12', rx: '1', key: '3yr8at' },
+  ],
   ['path', { d: 'M15 12v-2a3 3 0 1 0-6 0v2', key: '1nqnhw' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/file-minus-2.js
 var FileMinus2 = createLucideIcon('FileMinus2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M3 15h6', key: '4e2qda' }],
 ])
@@ -6083,7 +7485,10 @@ var FileMinus2 = createLucideIcon('FileMinus2', [
 var FileMinus = createLucideIcon('FileMinus', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['line', { x1: '9', x2: '15', y1: '15', y2: '15', key: '110plj' }],
@@ -6093,13 +7498,22 @@ var FileMinus = createLucideIcon('FileMinus', [
 var FileMusic = createLucideIcon('FileMusic', [
   ['circle', { cx: '14', cy: '16', r: '2', key: '1bzzi3' }],
   ['circle', { cx: '6', cy: '18', r: '2', key: '1fncim' }],
-  ['path', { d: 'M4 12.4V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-7.5', key: 'skc018' }],
+  [
+    'path',
+    {
+      d: 'M4 12.4V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2h-7.5',
+      key: 'skc018',
+    },
+  ],
   ['path', { d: 'M8 18v-7.7L16 9v7', key: '1oie6o' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/file-output.js
 var FileOutput = createLucideIcon('FileOutput', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M2 15h10', key: 'jfw4w8' }],
   ['path', { d: 'm5 12-3 3 3 3', key: 'oke12k' }],
@@ -6107,7 +7521,10 @@ var FileOutput = createLucideIcon('FileOutput', [
 
 // node_modules/lucide-react/dist/esm/icons/file-pie-chart.js
 var FilePieChart = createLucideIcon('FilePieChart', [
-  ['path', { d: 'M16 22h2a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3', key: 'zhyrez' }],
+  [
+    'path',
+    { d: 'M16 22h2a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3', key: 'zhyrez' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M4.04 11.71a5.84 5.84 0 1 0 8.2 8.29', key: 'f1t5jc' }],
   ['path', { d: 'M13.83 16A5.83 5.83 0 0 0 8 10.17V16h5.83Z', key: '7q54ec' }],
@@ -6115,7 +7532,10 @@ var FilePieChart = createLucideIcon('FilePieChart', [
 
 // node_modules/lucide-react/dist/esm/icons/file-plus-2.js
 var FilePlus2 = createLucideIcon('FilePlus2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M3 15h6', key: '4e2qda' }],
   ['path', { d: 'M6 12v6', key: '1u72j0' }],
@@ -6125,7 +7545,10 @@ var FilePlus2 = createLucideIcon('FilePlus2', [
 var FilePlus = createLucideIcon('FilePlus', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['line', { x1: '12', x2: '12', y1: '18', y2: '12', key: '1tsf04' }],
@@ -6136,7 +7559,10 @@ var FilePlus = createLucideIcon('FilePlus', [
 var FileQuestion = createLucideIcon('FileQuestion', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   [
     'path',
@@ -6150,7 +7576,13 @@ var FileQuestion = createLucideIcon('FileQuestion', [
 
 // node_modules/lucide-react/dist/esm/icons/file-scan.js
 var FileScan = createLucideIcon('FileScan', [
-  ['path', { d: 'M20 10V7.5L14.5 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h4.5', key: 'uvikde' }],
+  [
+    'path',
+    {
+      d: 'M20 10V7.5L14.5 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h4.5',
+      key: 'uvikde',
+    },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M16 22a2 2 0 0 1-2-2', key: '1wqh5n' }],
   ['path', { d: 'M20 22a2 2 0 0 0 2-2', key: '1l9q4k' }],
@@ -6162,7 +7594,10 @@ var FileScan = createLucideIcon('FileScan', [
 var FileSearch2 = createLucideIcon('FileSearch2', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['circle', { cx: '11.5', cy: '14.5', r: '2.5', key: '1bq0ko' }],
@@ -6171,7 +7606,10 @@ var FileSearch2 = createLucideIcon('FileSearch2', [
 
 // node_modules/lucide-react/dist/esm/icons/file-search.js
 var FileSearch = createLucideIcon('FileSearch', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3', key: 'am10z3' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3', key: 'am10z3' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M5 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6z', key: 'ychnub' }],
   ['path', { d: 'm9 18-1.5-1.5', key: '1j6qii' }],
@@ -6181,12 +7619,18 @@ var FileSearch = createLucideIcon('FileSearch', [
 var FileSignature = createLucideIcon('FileSignature', [
   [
     'path',
-    { d: 'M20 19.5v.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8.5L18 5.5', key: 'kd5d3' },
+    {
+      d: 'M20 19.5v.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8.5L18 5.5',
+      key: 'kd5d3',
+    },
   ],
   ['path', { d: 'M8 18h1', key: '13wk12' }],
   [
     'path',
-    { d: 'M18.42 9.61a2.1 2.1 0 1 1 2.97 2.97L16.95 17 13 18l.99-3.95 4.43-4.44Z', key: 'johvi5' },
+    {
+      d: 'M18.42 9.61a2.1 2.1 0 1 1 2.97 2.97L16.95 17 13 18l.99-3.95 4.43-4.44Z',
+      key: 'johvi5',
+    },
   ],
 ])
 
@@ -6194,7 +7638,10 @@ var FileSignature = createLucideIcon('FileSignature', [
 var FileSpreadsheet = createLucideIcon('FileSpreadsheet', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M8 13h2', key: 'yr2amv' }],
@@ -6219,7 +7666,10 @@ var FileStack = createLucideIcon('FileStack', [
 
 // node_modules/lucide-react/dist/esm/icons/file-symlink.js
 var FileSymlink = createLucideIcon('FileSymlink', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v7', key: '138uzh' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v7', key: '138uzh' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm10 18 3-3-3-3', key: '18f6ys' }],
   ['path', { d: 'M4 18v-1a2 2 0 0 1 2-2h6', key: '5uz2rn' }],
@@ -6229,7 +7679,10 @@ var FileSymlink = createLucideIcon('FileSymlink', [
 var FileTerminal = createLucideIcon('FileTerminal', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm8 16 2-2-2-2', key: '10vzyd' }],
@@ -6240,7 +7693,10 @@ var FileTerminal = createLucideIcon('FileTerminal', [
 var FileText = createLucideIcon('FileText', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['line', { x1: '16', x2: '8', y1: '13', y2: '13', key: '14keom' }],
@@ -6250,7 +7706,10 @@ var FileText = createLucideIcon('FileText', [
 
 // node_modules/lucide-react/dist/esm/icons/file-type-2.js
 var FileType2 = createLucideIcon('FileType2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M2 13v-1h6v1', key: '1dh9dg' }],
   ['path', { d: 'M4 18h2', key: '1xrofg' }],
@@ -6261,7 +7720,10 @@ var FileType2 = createLucideIcon('FileType2', [
 var FileType = createLucideIcon('FileType', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M9 13v-1h6v1', key: '1bb014' }],
@@ -6273,7 +7735,10 @@ var FileType = createLucideIcon('FileType', [
 var FileUp = createLucideIcon('FileUp', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M12 12v6', key: '3ahymv' }],
@@ -6282,17 +7747,26 @@ var FileUp = createLucideIcon('FileUp', [
 
 // node_modules/lucide-react/dist/esm/icons/file-video-2.js
 var FileVideo2 = createLucideIcon('FileVideo2', [
-  ['path', { d: 'M4 8V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: '1nti49' }],
+  [
+    'path',
+    { d: 'M4 8V4a2 2 0 0 1 2-2h8.5L20 7.5V20a2 2 0 0 1-2 2H4', key: '1nti49' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm10 15.5 4 2.5v-6l-4 2.5', key: 't7cp39' }],
-  ['rect', { width: '8', height: '6', x: '2', y: '12', rx: '1', key: '1a6c1e' }],
+  [
+    'rect',
+    { width: '8', height: '6', x: '2', y: '12', rx: '1', key: '1a6c1e' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/file-video.js
 var FileVideo = createLucideIcon('FileVideo', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm10 11 5 3-5 3v-6Z', key: '7ntvm4' }],
@@ -6302,7 +7776,10 @@ var FileVideo = createLucideIcon('FileVideo', [
 var FileVolume2 = createLucideIcon('FileVolume2', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'M11.5 13.5c.32.4.5.94.5 1.5s-.18 1.1-.5 1.5', key: 'joawwx' }],
@@ -6312,7 +7789,10 @@ var FileVolume2 = createLucideIcon('FileVolume2', [
 
 // node_modules/lucide-react/dist/esm/icons/file-volume.js
 var FileVolume = createLucideIcon('FileVolume', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3', key: 'am10z3' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3', key: 'am10z3' },
+  ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['path', { d: 'm7 10-3 2H2v4h2l3 2v-8Z', key: 'tazg57' }],
   ['path', { d: 'M11 11c.64.8 1 1.87 1 3s-.36 2.2-1 3', key: '1yej3m' }],
@@ -6322,7 +7802,10 @@ var FileVolume = createLucideIcon('FileVolume', [
 var FileWarning = createLucideIcon('FileWarning', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['path', { d: 'M12 9v4', key: 'juzpu7' }],
   ['path', { d: 'M12 17h.01', key: 'p32p05' }],
@@ -6330,7 +7813,10 @@ var FileWarning = createLucideIcon('FileWarning', [
 
 // node_modules/lucide-react/dist/esm/icons/file-x-2.js
 var FileX2 = createLucideIcon('FileX2', [
-  ['path', { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' }],
+  [
+    'path',
+    { d: 'M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4', key: '702lig' },
+  ],
   ['path', { d: 'M14 2v6h6', key: '1kof46' }],
   ['path', { d: 'm3 12.5 5 5', key: '1qls4r' }],
   ['path', { d: 'm8 12.5-5 5', key: 'b853mi' }],
@@ -6340,7 +7826,10 @@ var FileX2 = createLucideIcon('FileX2', [
 var FileX = createLucideIcon('FileX', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
   ['line', { x1: '9.5', x2: '14.5', y1: '12.5', y2: '17.5', key: 'izs6du' }],
@@ -6351,7 +7840,10 @@ var FileX = createLucideIcon('FileX', [
 var File = createLucideIcon('File', [
   [
     'path',
-    { d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z', key: '1nnpy2' },
+    {
+      d: 'M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z',
+      key: '1nnpy2',
+    },
   ],
   ['polyline', { points: '14 2 14 8 20 8', key: '1ew0cm' }],
 ])
@@ -6365,13 +7857,19 @@ var Files = createLucideIcon('Files', [
       key: 'cennsq',
     },
   ],
-  ['path', { d: 'M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8', key: 'ms809a' }],
+  [
+    'path',
+    { d: 'M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8', key: 'ms809a' },
+  ],
   ['path', { d: 'M15 2v5h5', key: 'qq6kwv' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/film.js
 var Film = createLucideIcon('Film', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M7 3v18', key: 'bbkbws' }],
   ['path', { d: 'M3 7.5h4', key: 'zfgn84' }],
   ['path', { d: 'M3 12h18', key: '1i2n21' }],
@@ -6390,7 +7888,10 @@ var FilterX = createLucideIcon('FilterX', [
 
 // node_modules/lucide-react/dist/esm/icons/filter.js
 var Filter = createLucideIcon('Filter', [
-  ['polygon', { points: '22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3', key: '1yg77f' }],
+  [
+    'polygon',
+    { points: '22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3', key: '1yg77f' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/fingerprint.js
@@ -6456,11 +7957,17 @@ var Fish = createLucideIcon('Fish', [
   ],
   [
     'path',
-    { d: 'M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4', key: '1kjonw' },
+    {
+      d: 'M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4',
+      key: '1kjonw',
+    },
   ],
   [
     'path',
-    { d: 'm16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98', key: '1zlm23' },
+    {
+      d: 'm16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98',
+      key: '1zlm23',
+    },
   ],
 ])
 
@@ -6484,7 +7991,13 @@ var FlagTriangleRight = createLucideIcon('FlagTriangleRight', [
 
 // node_modules/lucide-react/dist/esm/icons/flag.js
 var Flag = createLucideIcon('Flag', [
-  ['path', { d: 'M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z', key: 'i9b6wo' }],
+  [
+    'path',
+    {
+      d: 'M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z',
+      key: 'i9b6wo',
+    },
+  ],
   ['line', { x1: '4', x2: '4', y1: '22', y2: '15', key: '1cm3nv' }],
 ])
 
@@ -6514,7 +8027,13 @@ var Flame = createLucideIcon('Flame', [
 
 // node_modules/lucide-react/dist/esm/icons/flashlight-off.js
 var FlashlightOff = createLucideIcon('FlashlightOff', [
-  ['path', { d: 'M16 16v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V10c0-2-2-2-2-4', key: '1r120k' }],
+  [
+    'path',
+    {
+      d: 'M16 16v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V10c0-2-2-2-2-4',
+      key: '1r120k',
+    },
+  ],
   ['path', { d: 'M7 2h11v4c0 2-2 2-2 4v1', key: 'dz1920' }],
   ['line', { x1: '11', x2: '18', y1: '6', y2: '6', key: 'bi1vpe' }],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
@@ -6623,7 +8142,10 @@ var Flower2 = createLucideIcon('Flower2', [
   ['circle', { cx: '12', cy: '8', r: '2', key: '1822b1' }],
   ['path', { d: 'M12 10v12', key: '6ubwww' }],
   ['path', { d: 'M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z', key: '9hd38g' }],
-  ['path', { d: 'M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z', key: 'ufn41s' }],
+  [
+    'path',
+    { d: 'M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z', key: 'ufn41s' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/flower.js
@@ -6773,7 +8295,10 @@ var FolderDown = createLucideIcon('FolderDown', [
 
 // node_modules/lucide-react/dist/esm/icons/folder-edit.js
 var FolderEdit = createLucideIcon('FolderEdit', [
-  ['path', { d: 'M8.4 10.6a2.1 2.1 0 1 1 2.99 2.98L6 19l-4 1 1-3.9Z', key: '10ocjb' }],
+  [
+    'path',
+    { d: 'M8.4 10.6a2.1 2.1 0 1 1 2.99 2.98L6 19l-4 1 1-3.9Z', key: '10ocjb' },
+  ],
   [
     'path',
     {
@@ -6872,7 +8397,10 @@ var FolderKey = createLucideIcon('FolderKey', [
 
 // node_modules/lucide-react/dist/esm/icons/folder-lock.js
 var FolderLock = createLucideIcon('FolderLock', [
-  ['rect', { width: '8', height: '5', x: '14', y: '17', rx: '1', key: '19aais' }],
+  [
+    'rect',
+    { width: '8', height: '5', x: '14', y: '17', rx: '1', key: '19aais' },
+  ],
   [
     'path',
     {
@@ -7008,12 +8536,18 @@ var FolderSync = createLucideIcon('FolderSync', [
   ['path', { d: 'M12 10v4h4', key: '1czhmt' }],
   [
     'path',
-    { d: 'm12 14 1.5-1.5c.9-.9 2.2-1.5 3.5-1.5s2.6.6 3.5 1.5c.4.4.8 1 1 1.5', key: '25wejs' },
+    {
+      d: 'm12 14 1.5-1.5c.9-.9 2.2-1.5 3.5-1.5s2.6.6 3.5 1.5c.4.4.8 1 1 1.5',
+      key: '25wejs',
+    },
   ],
   ['path', { d: 'M22 22v-4h-4', key: '1ewp4q' }],
   [
     'path',
-    { d: 'm22 18-1.5 1.5c-.9.9-2.1 1.5-3.5 1.5s-2.6-.6-3.5-1.5c-.4-.4-.8-1-1-1.5', key: 'vlp1j8' },
+    {
+      d: 'm22 18-1.5 1.5c-.9.9-2.1 1.5-3.5 1.5s-2.6-.6-3.5-1.5c-.4-.4-.8-1-1-1.5',
+      key: 'vlp1j8',
+    },
   ],
 ])
 
@@ -7111,12 +8645,18 @@ var Forklift = createLucideIcon('Forklift', [
   ['path', { d: 'M12 12H5a2 2 0 0 0-2 2v5', key: '7zsz91' }],
   ['circle', { cx: '13', cy: '19', r: '2', key: 'wjnkru' }],
   ['circle', { cx: '5', cy: '19', r: '2', key: 'v8kfzx' }],
-  ['path', { d: 'M8 19h3m5-17v17h6M6 12V7c0-1.1.9-2 2-2h3l5 5', key: '13bk1p' }],
+  [
+    'path',
+    { d: 'M8 19h3m5-17v17h6M6 12V7c0-1.1.9-2 2-2h3l5 5', key: '13bk1p' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/form-input.js
 var FormInput = createLucideIcon('FormInput', [
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' }],
+  [
+    'rect',
+    { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' },
+  ],
   ['path', { d: 'M12 12h.01', key: '1mp3jc' }],
   ['path', { d: 'M17 12h.01', key: '1m0b6t' }],
   ['path', { d: 'M7 12h.01', key: 'eqddd0' }],
@@ -7169,12 +8709,26 @@ var Fullscreen = createLucideIcon('Fullscreen', [
   ['path', { d: 'M17 3h2a2 2 0 0 1 2 2v2', key: '4qcy5o' }],
   ['path', { d: 'M21 17v2a2 2 0 0 1-2 2h-2', key: '6vwrx8' }],
   ['path', { d: 'M7 21H5a2 2 0 0 1-2-2v-2', key: 'ioqczr' }],
-  ['rect', { width: '10', height: '8', x: '7', y: '8', rx: '1', key: 'vys8me' }],
+  [
+    'rect',
+    { width: '10', height: '8', x: '7', y: '8', rx: '1', key: 'vys8me' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/function-square.js
 var FunctionSquare = createLucideIcon('FunctionSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M9 17c2 0 2.8-1 2.8-2.8V10c0-2 1-3.3 3.2-3', key: 'm1af9g' }],
   ['path', { d: 'M9 11.2h5.7', key: '3zgcl2' }],
 ])
@@ -7183,19 +8737,28 @@ var FunctionSquare = createLucideIcon('FunctionSquare', [
 var GalleryHorizontalEnd = createLucideIcon('GalleryHorizontalEnd', [
   ['path', { d: 'M2 7v10', key: 'a2pl2d' }],
   ['path', { d: 'M6 5v14', key: '1kq3d7' }],
-  ['rect', { width: '12', height: '18', x: '10', y: '3', rx: '2', key: '13i7bc' }],
+  [
+    'rect',
+    { width: '12', height: '18', x: '10', y: '3', rx: '2', key: '13i7bc' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/gallery-horizontal.js
 var GalleryHorizontal = createLucideIcon('GalleryHorizontal', [
   ['path', { d: 'M2 3v18', key: 'pzttux' }],
-  ['rect', { width: '12', height: '18', x: '6', y: '3', rx: '2', key: 'btr8bg' }],
+  [
+    'rect',
+    { width: '12', height: '18', x: '6', y: '3', rx: '2', key: 'btr8bg' },
+  ],
   ['path', { d: 'M22 3v18', key: '6jf3v' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/gallery-thumbnails.js
 var GalleryThumbnails = createLucideIcon('GalleryThumbnails', [
-  ['rect', { width: '18', height: '14', x: '3', y: '3', rx: '2', key: '74y24f' }],
+  [
+    'rect',
+    { width: '18', height: '14', x: '3', y: '3', rx: '2', key: '74y24f' },
+  ],
   ['path', { d: 'M4 21h1', key: '16zlid' }],
   ['path', { d: 'M9 21h1', key: '15o7lz' }],
   ['path', { d: 'M14 21h1', key: 'v9vybs' }],
@@ -7206,13 +8769,19 @@ var GalleryThumbnails = createLucideIcon('GalleryThumbnails', [
 var GalleryVerticalEnd = createLucideIcon('GalleryVerticalEnd', [
   ['path', { d: 'M7 2h10', key: 'nczekb' }],
   ['path', { d: 'M5 6h14', key: 'u2x4p' }],
-  ['rect', { width: '18', height: '12', x: '3', y: '10', rx: '2', key: 'l0tzu3' }],
+  [
+    'rect',
+    { width: '18', height: '12', x: '3', y: '10', rx: '2', key: 'l0tzu3' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/gallery-vertical.js
 var GalleryVertical = createLucideIcon('GalleryVertical', [
   ['path', { d: 'M3 2h18', key: '15qxfx' }],
-  ['rect', { width: '18', height: '12', x: '3', y: '6', rx: '2', key: '1439r6' }],
+  [
+    'rect',
+    { width: '18', height: '12', x: '3', y: '6', rx: '2', key: '1439r6' },
+  ],
   ['path', { d: 'M3 22h18', key: '8prr45' }],
 ])
 
@@ -7237,12 +8806,18 @@ var Gamepad = createLucideIcon('Gamepad', [
   ['line', { x1: '8', x2: '8', y1: '10', y2: '14', key: '1i6ji0' }],
   ['line', { x1: '15', x2: '15.01', y1: '13', y2: '13', key: 'dqpgro' }],
   ['line', { x1: '18', x2: '18.01', y1: '11', y2: '11', key: 'meh2c' }],
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' }],
+  [
+    'rect',
+    { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/gantt-chart-square.js
 var GanttChartSquare = createLucideIcon('GanttChartSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M9 8h7', key: 'kbo1nt' }],
   ['path', { d: 'M8 12h6', key: 'ikassy' }],
   ['path', { d: 'M11 16h5', key: 'oq65wt' }],
@@ -7475,7 +9050,10 @@ var Gitlab = createLucideIcon('Gitlab', [
 var GlassWater = createLucideIcon('GlassWater', [
   [
     'path',
-    { d: 'M15.2 22H8.8a2 2 0 0 1-2-1.79L5 3h14l-1.81 17.21A2 2 0 0 1 15.2 22Z', key: '48rfw3' },
+    {
+      d: 'M15.2 22H8.8a2 2 0 0 1-2-1.79L5 3h14l-1.81 17.21A2 2 0 0 1 15.2 22Z',
+      key: '48rfw3',
+    },
   ],
   ['path', { d: 'M6 12a5 5 0 0 1 6 0 5 5 0 0 0 6 0', key: 'mjntcy' }],
 ])
@@ -7501,7 +9079,10 @@ var Globe2 = createLucideIcon('Globe2', [
   ],
   [
     'path',
-    { d: 'M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05', key: 'xsiumc' },
+    {
+      d: 'M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05',
+      key: 'xsiumc',
+    },
   ],
   ['circle', { cx: '12', cy: '12', r: '10', key: '1mglay' }],
 ])
@@ -7509,7 +9090,10 @@ var Globe2 = createLucideIcon('Globe2', [
 // node_modules/lucide-react/dist/esm/icons/globe.js
 var Globe = createLucideIcon('Globe', [
   ['circle', { cx: '12', cy: '12', r: '10', key: '1mglay' }],
-  ['path', { d: 'M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20', key: '13o1zl' }],
+  [
+    'path',
+    { d: 'M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20', key: '13o1zl' },
+  ],
   ['path', { d: 'M2 12h20', key: '9i4pu4' }],
 ])
 
@@ -7528,7 +9112,10 @@ var Grab = createLucideIcon('Grab', [
   ['path', { d: 'M6 14v0a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0', key: '16yk7l' }],
   [
     'path',
-    { d: 'M18 11v0a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8 2 2 0 1 1 4 0', key: 'nzvb1c' },
+    {
+      d: 'M18 11v0a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8 2 2 0 1 1 4 0',
+      key: 'nzvb1c',
+    },
   ],
 ])
 
@@ -7553,14 +9140,20 @@ var Grape = createLucideIcon('Grape', [
 
 // node_modules/lucide-react/dist/esm/icons/grid-2x2.js
 var Grid2x2 = createLucideIcon('Grid2x2', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M3 12h18', key: '1i2n21' }],
   ['path', { d: 'M12 3v18', key: '108xh3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/grid-3x3.js
 var Grid3x3 = createLucideIcon('Grid3x3', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M3 9h18', key: '1pudct' }],
   ['path', { d: 'M3 15h18', key: '5xshup' }],
   ['path', { d: 'M9 3v18', key: 'fh3hqa' }],
@@ -7607,12 +9200,21 @@ var Group = createLucideIcon('Group', [
   ['path', { d: 'M21 17v2c0 1.1-.9 2-2 2h-2', key: '144t0e' }],
   ['path', { d: 'M7 21H5c-1.1 0-2-.9-2-2v-2', key: 'rtnfgi' }],
   ['rect', { width: '7', height: '5', x: '7', y: '7', rx: '1', key: '1eyiv7' }],
-  ['rect', { width: '7', height: '5', x: '10', y: '12', rx: '1', key: '1qlmkx' }],
+  [
+    'rect',
+    { width: '7', height: '5', x: '10', y: '12', rx: '1', key: '1qlmkx' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/guitar.js
 var Guitar = createLucideIcon('Guitar', [
-  ['path', { d: 'm20 7 1.7-1.7a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0L17 4v3Z', key: '15ixgv' }],
+  [
+    'path',
+    {
+      d: 'm20 7 1.7-1.7a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0L17 4v3Z',
+      key: '15ixgv',
+    },
+  ],
   ['path', { d: 'm17 7-5.1 5.1', key: 'l9guh7' }],
   ['circle', { cx: '11.5', cy: '12.5', r: '.5', key: '1evg0a' }],
   [
@@ -7629,7 +9231,10 @@ var Guitar = createLucideIcon('Guitar', [
 var Hammer = createLucideIcon('Hammer', [
   [
     'path',
-    { d: 'm15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9', key: '1afvon' },
+    {
+      d: 'm15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9',
+      key: '1afvon',
+    },
   ],
   ['path', { d: 'M17.64 15 22 10.64', key: 'zsji6s' }],
   [
@@ -7643,7 +9248,10 @@ var Hammer = createLucideIcon('Hammer', [
 
 // node_modules/lucide-react/dist/esm/icons/hand-metal.js
 var HandMetal = createLucideIcon('HandMetal', [
-  ['path', { d: 'M18 12.5V10a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v1.4', key: '7eki13' }],
+  [
+    'path',
+    { d: 'M18 12.5V10a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v1.4', key: '7eki13' },
+  ],
   ['path', { d: 'M14 11V9a2 2 0 1 0-4 0v2', key: '94qvcw' }],
   ['path', { d: 'M10 10.5V5a2 2 0 1 0-4 0v9', key: 'm1ah89' }],
   [
@@ -7673,7 +9281,10 @@ var Hand = createLucideIcon('Hand', [
 var HardDriveDownload = createLucideIcon('HardDriveDownload', [
   ['path', { d: 'M12 2v8', key: '1q4o3n' }],
   ['path', { d: 'm16 6-4 4-4-4', key: '6wukr' }],
-  ['rect', { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' }],
+  [
+    'rect',
+    { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' },
+  ],
   ['path', { d: 'M6 18h.01', key: 'uhywen' }],
   ['path', { d: 'M10 18h.01', key: 'h775k' }],
 ])
@@ -7682,7 +9293,10 @@ var HardDriveDownload = createLucideIcon('HardDriveDownload', [
 var HardDriveUpload = createLucideIcon('HardDriveUpload', [
   ['path', { d: 'm16 6-4-4-4 4', key: '13yo43' }],
   ['path', { d: 'M12 2v8', key: '1q4o3n' }],
-  ['rect', { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' }],
+  [
+    'rect',
+    { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' },
+  ],
   ['path', { d: 'M6 18h.01', key: 'uhywen' }],
   ['path', { d: 'M10 18h.01', key: 'h775k' }],
 ])
@@ -7768,7 +9382,10 @@ var Heading3 = createLucideIcon('Heading3', [
   ['path', { d: 'M4 12h8', key: '17cfdx' }],
   ['path', { d: 'M4 18V6', key: '1rz3zl' }],
   ['path', { d: 'M12 18V6', key: 'zqpxq5' }],
-  ['path', { d: 'M17.5 10.5c1.7-1 3.5 0 3.5 1.5a2 2 0 0 1-2 2', key: '68ncm8' }],
+  [
+    'path',
+    { d: 'M17.5 10.5c1.7-1 3.5 0 3.5 1.5a2 2 0 0 1-2 2', key: '68ncm8' },
+  ],
   ['path', { d: 'M17 17.5c2 1.5 4 .3 4-1.5a2 2 0 0 0-2-2', key: '1ejuhz' }],
 ])
 
@@ -7789,7 +9406,10 @@ var Heading5 = createLucideIcon('Heading5', [
   ['path', { d: 'M17 13v-3h4', key: '1nvgqp' }],
   [
     'path',
-    { d: 'M17 17.7c.4.2.8.3 1.3.3 1.5 0 2.7-1.1 2.7-2.5S19.8 13 18.3 13H17', key: '2nebdn' },
+    {
+      d: 'M17 17.7c.4.2.8.3 1.3.3 1.5 0 2.7-1.1 2.7-2.5S19.8 13 18.3 13H17',
+      key: '2nebdn',
+    },
   ],
 ])
 
@@ -7857,7 +9477,10 @@ var HeartOff = createLucideIcon('HeartOff', [
   ['line', { x1: '2', y1: '2', x2: '22', y2: '22', key: '1w4vcy' }],
   [
     'path',
-    { d: 'M16.5 16.5 12 21l-7-7c-1.5-1.45-3-3.2-3-5.5a5.5 5.5 0 0 1 2.14-4.35', key: '3mpagl' },
+    {
+      d: 'M16.5 16.5 12 21l-7-7c-1.5-1.45-3-3.2-3-5.5a5.5 5.5 0 0 1 2.14-4.35',
+      key: '3mpagl',
+    },
   ],
   [
     'path',
@@ -7924,29 +9547,53 @@ var Hexagon = createLucideIcon('Hexagon', [
 // node_modules/lucide-react/dist/esm/icons/highlighter.js
 var Highlighter = createLucideIcon('Highlighter', [
   ['path', { d: 'm9 11-6 6v3h9l3-3', key: '1a3l36' }],
-  ['path', { d: 'm22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4', key: '14a9rk' }],
+  [
+    'path',
+    {
+      d: 'm22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4',
+      key: '14a9rk',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/history.js
 var History = createLucideIcon('History', [
-  ['path', { d: 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', key: '1357e3' }],
+  [
+    'path',
+    { d: 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', key: '1357e3' },
+  ],
   ['path', { d: 'M3 3v5h5', key: '1xhq8a' }],
   ['path', { d: 'M12 7v5l4 2', key: '1fdv2h' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/home.js
 var Home = createLucideIcon('Home', [
-  ['path', { d: 'm3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z', key: 'y5dka4' }],
+  [
+    'path',
+    { d: 'm3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z', key: 'y5dka4' },
+  ],
   ['polyline', { points: '9 22 9 12 15 12 15 22', key: 'e2us08' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/hop-off.js
 var HopOff = createLucideIcon('HopOff', [
-  ['path', { d: 'M17.5 5.5C19 7 20.5 9 21 11c-1.323.265-2.646.39-4.118.226', key: '10j95a' }],
-  ['path', { d: 'M5.5 17.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-8.5', key: '1mqyjd' }],
+  [
+    'path',
+    {
+      d: 'M17.5 5.5C19 7 20.5 9 21 11c-1.323.265-2.646.39-4.118.226',
+      key: '10j95a',
+    },
+  ],
+  [
+    'path',
+    { d: 'M5.5 17.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-8.5', key: '1mqyjd' },
+  ],
   ['path', { d: 'M17.5 17.5c-2.5 0-4 0-6-1', key: '11elt5' }],
   ['path', { d: 'M20 11.5c1 1.5 2 3.5 2 4.5', key: '13ezvz' }],
-  ['path', { d: 'M11.5 20c1.5 1 3.5 2 4.5 2 .5-1.5 0-3-.5-4.5', key: '1ufrz1' }],
+  [
+    'path',
+    { d: 'M11.5 20c1.5 1 3.5 2 4.5 2 .5-1.5 0-3-.5-4.5', key: '1ufrz1' },
+  ],
   ['path', { d: 'M22 22c-2 0-3.5-.5-5.5-1.5', key: '1n8vbj' }],
   [
     'path',
@@ -7960,12 +9607,24 @@ var HopOff = createLucideIcon('HopOff', [
 
 // node_modules/lucide-react/dist/esm/icons/hop.js
 var Hop = createLucideIcon('Hop', [
-  ['path', { d: 'M17.5 5.5C19 7 20.5 9 21 11c-2.5.5-5 .5-8.5-1', key: 'l0z2za' }],
-  ['path', { d: 'M5.5 17.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-8.5', key: '1mqyjd' }],
+  [
+    'path',
+    { d: 'M17.5 5.5C19 7 20.5 9 21 11c-2.5.5-5 .5-8.5-1', key: 'l0z2za' },
+  ],
+  [
+    'path',
+    { d: 'M5.5 17.5C7 19 9 20.5 11 21c.5-2.5.5-5-1-8.5', key: '1mqyjd' },
+  ],
   ['path', { d: 'M16.5 11.5c1 2 1 3.5 1 6-2.5 0-4 0-6-1', key: '10xoad' }],
   ['path', { d: 'M20 11.5c1 1.5 2 3.5 2 4.5-1.5.5-3 0-4.5-.5', key: '1a4gpx' }],
-  ['path', { d: 'M11.5 20c1.5 1 3.5 2 4.5 2 .5-1.5 0-3-.5-4.5', key: '1ufrz1' }],
-  ['path', { d: 'M20.5 16.5c1 2 1.5 3.5 1.5 5.5-2 0-3.5-.5-5.5-1.5', key: '1ok5d2' }],
+  [
+    'path',
+    { d: 'M11.5 20c1.5 1 3.5 2 4.5 2 .5-1.5 0-3-.5-4.5', key: '1ufrz1' },
+  ],
+  [
+    'path',
+    { d: 'M20.5 16.5c1 2 1.5 3.5 1.5 5.5-2 0-3.5-.5-5.5-1.5', key: '1ok5d2' },
+  ],
   [
     'path',
     {
@@ -7985,7 +9644,10 @@ var Hotel = createLucideIcon('Hotel', [
       key: 'p9z69c',
     },
   ],
-  ['path', { d: 'm9 16 .348-.24c1.465-1.013 3.84-1.013 5.304 0L15 16', key: '1bvcvh' }],
+  [
+    'path',
+    { d: 'm9 16 .348-.24c1.465-1.013 3.84-1.013 5.304 0L15 16', key: '1bvcvh' },
+  ],
   ['path', { d: 'M8 7h.01', key: '1vti4s' }],
   ['path', { d: 'M16 7h.01', key: '1kdx03' }],
   ['path', { d: 'M12 7h.01', key: '1ivr5q' }],
@@ -8008,7 +9670,10 @@ var Hourglass = createLucideIcon('Hourglass', [
   ],
   [
     'path',
-    { d: 'M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2', key: '1vvvr6' },
+    {
+      d: 'M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2',
+      key: '1vvvr6',
+    },
   ],
 ])
 
@@ -8035,7 +9700,13 @@ var IceCream = createLucideIcon('IceCream', [
 // node_modules/lucide-react/dist/esm/icons/image-down.js
 var ImageDown = createLucideIcon('ImageDown', [
   ['circle', { cx: '9', cy: '9', r: '2', key: 'af1f0g' }],
-  ['path', { d: 'M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10.8', key: 'sqts6f' }],
+  [
+    'path',
+    {
+      d: 'M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10.8',
+      key: 'sqts6f',
+    },
+  ],
   ['path', { d: 'm21 15-3.1-3.1a2 2 0 0 0-2.814.014L6 21', key: '1h47z9' }],
   ['path', { d: 'm14 19.5 3 3v-6', key: '1x9jmo' }],
   ['path', { d: 'm17 22.5 3-3', key: 'xzuz0n' }],
@@ -8043,7 +9714,13 @@ var ImageDown = createLucideIcon('ImageDown', [
 
 // node_modules/lucide-react/dist/esm/icons/image-minus.js
 var ImageMinus = createLucideIcon('ImageMinus', [
-  ['path', { d: 'M21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7', key: 'm87ecr' }],
+  [
+    'path',
+    {
+      d: 'M21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7',
+      key: 'm87ecr',
+    },
+  ],
   ['line', { x1: '16', x2: '22', y1: '5', y2: '5', key: 'ez7e4s' }],
   ['circle', { cx: '9', cy: '9', r: '2', key: 'af1f0g' }],
   ['path', { d: 'm21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21', key: '1xmnt7' }],
@@ -8067,7 +9744,13 @@ var ImageOff = createLucideIcon('ImageOff', [
 
 // node_modules/lucide-react/dist/esm/icons/image-plus.js
 var ImagePlus = createLucideIcon('ImagePlus', [
-  ['path', { d: 'M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7', key: '31hg93' }],
+  [
+    'path',
+    {
+      d: 'M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7',
+      key: '31hg93',
+    },
+  ],
   ['line', { x1: '16', x2: '22', y1: '5', y2: '5', key: 'ez7e4s' }],
   ['line', { x1: '19', x2: '19', y1: '2', y2: '8', key: '1gkr8c' }],
   ['circle', { cx: '9', cy: '9', r: '2', key: 'af1f0g' }],
@@ -8076,7 +9759,18 @@ var ImagePlus = createLucideIcon('ImagePlus', [
 
 // node_modules/lucide-react/dist/esm/icons/image.js
 var Image = createLucideIcon('Image', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['circle', { cx: '9', cy: '9', r: '2', key: 'af1f0g' }],
   ['path', { d: 'm21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21', key: '1xmnt7' }],
 ])
@@ -8143,8 +9837,22 @@ var Info = createLucideIcon('Info', [
 
 // node_modules/lucide-react/dist/esm/icons/instagram.js
 var Instagram = createLucideIcon('Instagram', [
-  ['rect', { width: '20', height: '20', x: '2', y: '2', rx: '5', ry: '5', key: '2e1cvw' }],
-  ['path', { d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', key: '9exkf1' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '20',
+      x: '2',
+      y: '2',
+      rx: '5',
+      ry: '5',
+      key: '2e1cvw',
+    },
+  ],
+  [
+    'path',
+    { d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', key: '9exkf1' },
+  ],
   ['line', { x1: '17.5', x2: '17.51', y1: '6.5', y2: '6.5', key: 'r4j83e' }],
 ])
 
@@ -8157,7 +9865,10 @@ var Italic = createLucideIcon('Italic', [
 
 // node_modules/lucide-react/dist/esm/icons/iteration-ccw.js
 var IterationCcw = createLucideIcon('IterationCcw', [
-  ['path', { d: 'M20 10c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8h8', key: '4znkd0' }],
+  [
+    'path',
+    { d: 'M20 10c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8h8', key: '4znkd0' },
+  ],
   ['polyline', { points: '16 14 20 18 16 22', key: '11njsm' }],
 ])
 
@@ -8209,7 +9920,10 @@ var KanbanSquareDashed = createLucideIcon('KanbanSquareDashed', [
 
 // node_modules/lucide-react/dist/esm/icons/kanban-square.js
 var KanbanSquare = createLucideIcon('KanbanSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 7v7', key: '1x2jlm' }],
   ['path', { d: 'M12 7v4', key: 'xawao1' }],
   ['path', { d: 'M16 7v9', key: '1hp2iy' }],
@@ -8224,7 +9938,13 @@ var Kanban = createLucideIcon('Kanban', [
 
 // node_modules/lucide-react/dist/esm/icons/key-round.js
 var KeyRound = createLucideIcon('KeyRound', [
-  ['path', { d: 'M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z', key: '167ctg' }],
+  [
+    'path',
+    {
+      d: 'M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z',
+      key: '167ctg',
+    },
+  ],
   ['circle', { cx: '16.5', cy: '7.5', r: '.5', key: '1kog09' }],
 ])
 
@@ -8238,7 +9958,10 @@ var KeySquare = createLucideIcon('KeySquare', [
     },
   ],
   ['path', { d: 'm14 7 3 3', key: '1r5n42' }],
-  ['path', { d: 'M9.4 10.6 2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4', key: '1ym3zm' }],
+  [
+    'path',
+    { d: 'M9.4 10.6 2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4', key: '1ym3zm' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/key.js
@@ -8250,7 +9973,10 @@ var Key = createLucideIcon('Key', [
 
 // node_modules/lucide-react/dist/esm/icons/keyboard-music.js
 var KeyboardMusic = createLucideIcon('KeyboardMusic', [
-  ['rect', { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' }],
+  [
+    'rect',
+    { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' },
+  ],
   ['path', { d: 'M6 8h4', key: 'utf9t1' }],
   ['path', { d: 'M14 8h.01', key: '1primd' }],
   ['path', { d: 'M18 8h.01', key: 'emo2bl' }],
@@ -8263,7 +9989,18 @@ var KeyboardMusic = createLucideIcon('KeyboardMusic', [
 
 // node_modules/lucide-react/dist/esm/icons/keyboard.js
 var Keyboard = createLucideIcon('Keyboard', [
-  ['rect', { width: '20', height: '16', x: '2', y: '4', rx: '2', ry: '2', key: '15u882' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '16',
+      x: '2',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: '15u882',
+    },
+  ],
   ['path', { d: 'M6 8h.001', key: '1ej0i3' }],
   ['path', { d: 'M10 8h.001', key: '1x2st2' }],
   ['path', { d: 'M14 8h.001', key: '1vkmyp' }],
@@ -8353,7 +10090,18 @@ var Languages = createLucideIcon('Languages', [
 
 // node_modules/lucide-react/dist/esm/icons/laptop-2.js
 var Laptop2 = createLucideIcon('Laptop2', [
-  ['rect', { width: '18', height: '12', x: '3', y: '4', rx: '2', ry: '2', key: '1qhy41' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '12',
+      x: '3',
+      y: '4',
+      rx: '2',
+      ry: '2',
+      key: '1qhy41',
+    },
+  ],
   ['line', { x1: '2', x2: '22', y1: '20', y2: '20', key: 'ni3hll' }],
 ])
 
@@ -8462,30 +10210,57 @@ var Layers = createLucideIcon('Layers', [
       key: '8b97xw',
     },
   ],
-  ['path', { d: 'm22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65', key: 'dd6zsq' }],
-  ['path', { d: 'm22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65', key: 'ep9fru' }],
+  [
+    'path',
+    { d: 'm22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65', key: 'dd6zsq' },
+  ],
+  [
+    'path',
+    { d: 'm22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65', key: 'ep9fru' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/layout-dashboard.js
 var LayoutDashboard = createLucideIcon('LayoutDashboard', [
   ['rect', { width: '7', height: '9', x: '3', y: '3', rx: '1', key: '10lvy0' }],
-  ['rect', { width: '7', height: '5', x: '14', y: '3', rx: '1', key: '16une8' }],
-  ['rect', { width: '7', height: '9', x: '14', y: '12', rx: '1', key: '1hutg5' }],
-  ['rect', { width: '7', height: '5', x: '3', y: '16', rx: '1', key: 'ldoo1y' }],
+  [
+    'rect',
+    { width: '7', height: '5', x: '14', y: '3', rx: '1', key: '16une8' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '9', x: '14', y: '12', rx: '1', key: '1hutg5' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '5', x: '3', y: '16', rx: '1', key: 'ldoo1y' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/layout-grid.js
 var LayoutGrid = createLucideIcon('LayoutGrid', [
   ['rect', { width: '7', height: '7', x: '3', y: '3', rx: '1', key: '1g98yp' }],
-  ['rect', { width: '7', height: '7', x: '14', y: '3', rx: '1', key: '6d4xhi' }],
-  ['rect', { width: '7', height: '7', x: '14', y: '14', rx: '1', key: 'nxv5o0' }],
-  ['rect', { width: '7', height: '7', x: '3', y: '14', rx: '1', key: '1bb6yr' }],
+  [
+    'rect',
+    { width: '7', height: '7', x: '14', y: '3', rx: '1', key: '6d4xhi' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '7', x: '14', y: '14', rx: '1', key: 'nxv5o0' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '7', x: '3', y: '14', rx: '1', key: '1bb6yr' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/layout-list.js
 var LayoutList = createLucideIcon('LayoutList', [
   ['rect', { width: '7', height: '7', x: '3', y: '3', rx: '1', key: '1g98yp' }],
-  ['rect', { width: '7', height: '7', x: '3', y: '14', rx: '1', key: '1bb6yr' }],
+  [
+    'rect',
+    { width: '7', height: '7', x: '3', y: '14', rx: '1', key: '1bb6yr' },
+  ],
   ['path', { d: 'M14 4h7', key: '3xa0d5' }],
   ['path', { d: 'M14 9h7', key: '1icrd9' }],
   ['path', { d: 'M14 15h7', key: '1mj8o2' }],
@@ -8495,27 +10270,62 @@ var LayoutList = createLucideIcon('LayoutList', [
 // node_modules/lucide-react/dist/esm/icons/layout-panel-left.js
 var LayoutPanelLeft = createLucideIcon('LayoutPanelLeft', [
   ['rect', { width: '7', height: '18', x: '3', y: '3', rx: '1', key: '2obqm' }],
-  ['rect', { width: '7', height: '7', x: '14', y: '3', rx: '1', key: '6d4xhi' }],
-  ['rect', { width: '7', height: '7', x: '14', y: '14', rx: '1', key: 'nxv5o0' }],
+  [
+    'rect',
+    { width: '7', height: '7', x: '14', y: '3', rx: '1', key: '6d4xhi' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '7', x: '14', y: '14', rx: '1', key: 'nxv5o0' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/layout-panel-top.js
 var LayoutPanelTop = createLucideIcon('LayoutPanelTop', [
-  ['rect', { width: '18', height: '7', x: '3', y: '3', rx: '1', key: 'f1a2em' }],
-  ['rect', { width: '7', height: '7', x: '3', y: '14', rx: '1', key: '1bb6yr' }],
-  ['rect', { width: '7', height: '7', x: '14', y: '14', rx: '1', key: 'nxv5o0' }],
+  [
+    'rect',
+    { width: '18', height: '7', x: '3', y: '3', rx: '1', key: 'f1a2em' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '7', x: '3', y: '14', rx: '1', key: '1bb6yr' },
+  ],
+  [
+    'rect',
+    { width: '7', height: '7', x: '14', y: '14', rx: '1', key: 'nxv5o0' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/layout-template.js
 var LayoutTemplate = createLucideIcon('LayoutTemplate', [
-  ['rect', { width: '18', height: '7', x: '3', y: '3', rx: '1', key: 'f1a2em' }],
-  ['rect', { width: '9', height: '7', x: '3', y: '14', rx: '1', key: 'jqznyg' }],
-  ['rect', { width: '5', height: '7', x: '16', y: '14', rx: '1', key: 'q5h2i8' }],
+  [
+    'rect',
+    { width: '18', height: '7', x: '3', y: '3', rx: '1', key: 'f1a2em' },
+  ],
+  [
+    'rect',
+    { width: '9', height: '7', x: '3', y: '14', rx: '1', key: 'jqznyg' },
+  ],
+  [
+    'rect',
+    { width: '5', height: '7', x: '16', y: '14', rx: '1', key: 'q5h2i8' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/layout.js
 var Layout = createLucideIcon('Layout', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '9', y2: '9', key: '1vqk6q' }],
   ['line', { x1: '9', x2: '9', y1: '21', y2: '9', key: 'wpwpyp' }],
 ])
@@ -8529,7 +10339,10 @@ var Leaf = createLucideIcon('Leaf', [
       key: 'nnexq3',
     },
   ],
-  ['path', { d: 'M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12', key: 'mt58a7' }],
+  [
+    'path',
+    { d: 'M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12', key: 'mt58a7' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/leafy-green.js
@@ -8546,7 +10359,10 @@ var LeafyGreen = createLucideIcon('LeafyGreen', [
 
 // node_modules/lucide-react/dist/esm/icons/library-big.js
 var LibraryBig = createLucideIcon('LibraryBig', [
-  ['rect', { width: '8', height: '18', x: '3', y: '3', rx: '1', key: 'oynpb5' }],
+  [
+    'rect',
+    { width: '8', height: '18', x: '3', y: '3', rx: '1', key: 'oynpb5' },
+  ],
   ['path', { d: 'M7 3v18', key: 'bbkbws' }],
   [
     'path',
@@ -8559,7 +10375,10 @@ var LibraryBig = createLucideIcon('LibraryBig', [
 
 // node_modules/lucide-react/dist/esm/icons/library-square.js
 var LibrarySquare = createLucideIcon('LibrarySquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M7 7v10', key: 'd5nglc' }],
   ['path', { d: 'M11 7v10', key: 'pptsnr' }],
   ['path', { d: 'm15 7 2 10', key: '1m7qm5' }],
@@ -8594,9 +10413,18 @@ var Ligature = createLucideIcon('Ligature', [
 
 // node_modules/lucide-react/dist/esm/icons/lightbulb-off.js
 var LightbulbOff = createLucideIcon('LightbulbOff', [
-  ['path', { d: 'M16.8 11.2c.8-.9 1.2-2 1.2-3.2a6 6 0 0 0-9.3-5', key: '1fkcox' }],
+  [
+    'path',
+    { d: 'M16.8 11.2c.8-.9 1.2-2 1.2-3.2a6 6 0 0 0-9.3-5', key: '1fkcox' },
+  ],
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
-  ['path', { d: 'M6.3 6.3a4.67 4.67 0 0 0 1.2 5.2c.7.7 1.3 1.5 1.5 2.5', key: '10m8kw' }],
+  [
+    'path',
+    {
+      d: 'M6.3 6.3a4.67 4.67 0 0 0 1.2 5.2c.7.7 1.3 1.5 1.5 2.5',
+      key: '10m8kw',
+    },
+  ],
   ['path', { d: 'M9 18h6', key: 'x1upvd' }],
   ['path', { d: 'M10 22h4', key: 'ceow96' }],
 ])
@@ -8637,8 +10465,20 @@ var Link2 = createLucideIcon('Link2', [
 
 // node_modules/lucide-react/dist/esm/icons/link.js
 var Link = createLucideIcon('Link', [
-  ['path', { d: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71', key: '1cjeqo' }],
-  ['path', { d: 'M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71', key: '19qd67' }],
+  [
+    'path',
+    {
+      d: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71',
+      key: '1cjeqo',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
+      key: '19qd67',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/linkedin.js
@@ -8690,7 +10530,10 @@ var ListMinus = createLucideIcon('ListMinus', [
 // node_modules/lucide-react/dist/esm/icons/list-music.js
 var ListMusic = createLucideIcon('ListMusic', [
   ['path', { d: 'M21 15V6', key: 'h1cx4g' }],
-  ['path', { d: 'M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z', key: '8saifv' }],
+  [
+    'path',
+    { d: 'M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z', key: '8saifv' },
+  ],
   ['path', { d: 'M12 12H3', key: '18klou' }],
   ['path', { d: 'M16 6H3', key: '1wxfjs' }],
   ['path', { d: 'M12 18H3', key: '11ftsu' }],
@@ -8794,7 +10637,10 @@ var Loader = createLucideIcon('Loader', [
   ['line', { x1: '12', x2: '12', y1: '2', y2: '6', key: 'gza1u7' }],
   ['line', { x1: '12', x2: '12', y1: '18', y2: '22', key: '1qhbu9' }],
   ['line', { x1: '4.93', x2: '7.76', y1: '4.93', y2: '7.76', key: 'xae44r' }],
-  ['line', { x1: '16.24', x2: '19.07', y1: '16.24', y2: '19.07', key: 'bxnmvf' }],
+  [
+    'line',
+    { x1: '16.24', x2: '19.07', y1: '16.24', y2: '19.07', key: 'bxnmvf' },
+  ],
   ['line', { x1: '2', x2: '6', y1: '12', y2: '12', key: '89khin' }],
   ['line', { x1: '18', x2: '22', y1: '12', y2: '12', key: 'pb8tfm' }],
   ['line', { x1: '4.93', x2: '7.76', y1: '19.07', y2: '16.24', key: '1uxjnu' }],
@@ -8846,13 +10692,27 @@ var Locate = createLucideIcon('Locate', [
 // node_modules/lucide-react/dist/esm/icons/lock-keyhole.js
 var LockKeyhole = createLucideIcon('LockKeyhole', [
   ['circle', { cx: '12', cy: '16', r: '1', key: '1au0dj' }],
-  ['rect', { x: '3', y: '10', width: '18', height: '12', rx: '2', key: '6s8ecr' }],
+  [
+    'rect',
+    { x: '3', y: '10', width: '18', height: '12', rx: '2', key: '6s8ecr' },
+  ],
   ['path', { d: 'M7 10V7a5 5 0 0 1 10 0v3', key: '1pqi11' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/lock.js
 var Lock = createLucideIcon('Lock', [
-  ['rect', { width: '18', height: '11', x: '3', y: '11', rx: '2', ry: '2', key: '1w4ew1' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '11',
+      x: '3',
+      y: '11',
+      rx: '2',
+      ry: '2',
+      key: '1w4ew1',
+    },
+  ],
   ['path', { d: 'M7 11V7a5 5 0 0 1 10 0v4', key: 'fwvmzm' }],
 ])
 
@@ -8874,7 +10734,10 @@ var LogOut = createLucideIcon('LogOut', [
 var Lollipop = createLucideIcon('Lollipop', [
   ['circle', { cx: '11', cy: '11', r: '8', key: '4ej97u' }],
   ['path', { d: 'm21 21-4.3-4.3', key: '1qie3q' }],
-  ['path', { d: 'M11 11a2 2 0 0 0 4 0 4 4 0 0 0-8 0 6 6 0 0 0 12 0', key: '107gwy' }],
+  [
+    'path',
+    { d: 'M11 11a2 2 0 0 0 4 0 4 4 0 0 0-8 0 6 6 0 0 0 12 0', key: '107gwy' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/luggage.js
@@ -8894,7 +10757,10 @@ var Luggage = createLucideIcon('Luggage', [
 
 // node_modules/lucide-react/dist/esm/icons/m-square.js
 var MSquare = createLucideIcon('MSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 16V8l4 4 4-4v8', key: '141u4e' }],
 ])
 
@@ -8913,14 +10779,26 @@ var Magnet = createLucideIcon('Magnet', [
 
 // node_modules/lucide-react/dist/esm/icons/mail-check.js
 var MailCheck = createLucideIcon('MailCheck', [
-  ['path', { d: 'M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8', key: '12jkf8' }],
+  [
+    'path',
+    {
+      d: 'M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8',
+      key: '12jkf8',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   ['path', { d: 'm16 19 2 2 4-4', key: '1b14m6' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/mail-minus.js
 var MailMinus = createLucideIcon('MailMinus', [
-  ['path', { d: 'M22 15V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8', key: 'fuxbkv' }],
+  [
+    'path',
+    {
+      d: 'M22 15V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8',
+      key: 'fuxbkv',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   ['path', { d: 'M16 19h6', key: 'xwg31i' }],
 ])
@@ -8939,7 +10817,13 @@ var MailOpen = createLucideIcon('MailOpen', [
 
 // node_modules/lucide-react/dist/esm/icons/mail-plus.js
 var MailPlus = createLucideIcon('MailPlus', [
-  ['path', { d: 'M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8', key: '12jkf8' }],
+  [
+    'path',
+    {
+      d: 'M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8',
+      key: '12jkf8',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   ['path', { d: 'M19 16v6', key: 'tddt3s' }],
   ['path', { d: 'M16 19h6', key: 'xwg31i' }],
@@ -8947,7 +10831,13 @@ var MailPlus = createLucideIcon('MailPlus', [
 
 // node_modules/lucide-react/dist/esm/icons/mail-question.js
 var MailQuestion = createLucideIcon('MailQuestion', [
-  ['path', { d: 'M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5', key: 'e61zoh' }],
+  [
+    'path',
+    {
+      d: 'M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5',
+      key: 'e61zoh',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   [
     'path',
@@ -8961,7 +10851,13 @@ var MailQuestion = createLucideIcon('MailQuestion', [
 
 // node_modules/lucide-react/dist/esm/icons/mail-search.js
 var MailSearch = createLucideIcon('MailSearch', [
-  ['path', { d: 'M22 12.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h7.5', key: 'w80f2v' }],
+  [
+    'path',
+    {
+      d: 'M22 12.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h7.5',
+      key: 'w80f2v',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   ['path', { d: 'M18 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6v0Z', key: 'mgbru4' }],
   ['circle', { cx: '18', cy: '18', r: '3', key: '1xkwt0' }],
@@ -8970,7 +10866,13 @@ var MailSearch = createLucideIcon('MailSearch', [
 
 // node_modules/lucide-react/dist/esm/icons/mail-warning.js
 var MailWarning = createLucideIcon('MailWarning', [
-  ['path', { d: 'M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5', key: 'e61zoh' }],
+  [
+    'path',
+    {
+      d: 'M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5',
+      key: 'e61zoh',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   ['path', { d: 'M20 14v4', key: '1hm744' }],
   ['path', { d: 'M20 22v.01', key: '12bgn6' }],
@@ -8978,7 +10880,13 @@ var MailWarning = createLucideIcon('MailWarning', [
 
 // node_modules/lucide-react/dist/esm/icons/mail-x.js
 var MailX = createLucideIcon('MailX', [
-  ['path', { d: 'M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h9', key: '1j9vog' }],
+  [
+    'path',
+    {
+      d: 'M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h9',
+      key: '1j9vog',
+    },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
   ['path', { d: 'm17 17 4 4', key: '1b3523' }],
   ['path', { d: 'm21 17-4 4', key: 'uinynz' }],
@@ -8986,7 +10894,10 @@ var MailX = createLucideIcon('MailX', [
 
 // node_modules/lucide-react/dist/esm/icons/mail.js
 var Mail = createLucideIcon('Mail', [
-  ['rect', { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' }],
+  [
+    'rect',
+    { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' },
+  ],
   ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7', key: '1ocrg3' }],
 ])
 
@@ -9006,7 +10917,10 @@ var Mailbox = createLucideIcon('Mailbox', [
 
 // node_modules/lucide-react/dist/esm/icons/mails.js
 var Mails = createLucideIcon('Mails', [
-  ['rect', { width: '16', height: '13', x: '6', y: '4', rx: '2', key: '1drq3f' }],
+  [
+    'rect',
+    { width: '16', height: '13', x: '6', y: '4', rx: '2', key: '1drq3f' },
+  ],
   ['path', { d: 'm22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7', key: 'xn252p' }],
   ['path', { d: 'M2 8v11c0 1.1.9 2 2 2h14', key: 'n13cji' }],
 ])
@@ -9015,7 +10929,10 @@ var Mails = createLucideIcon('Mails', [
 var MapPinOff = createLucideIcon('MapPinOff', [
   [
     'path',
-    { d: 'M5.43 5.43A8.06 8.06 0 0 0 4 10c0 6 8 12 8 12a29.94 29.94 0 0 0 5-5', key: '12a8pk' },
+    {
+      d: 'M5.43 5.43A8.06 8.06 0 0 0 4 10c0 6 8 12 8 12a29.94 29.94 0 0 0 5-5',
+      key: '12a8pk',
+    },
   ],
   [
     'path',
@@ -9026,7 +10943,10 @@ var MapPinOff = createLucideIcon('MapPinOff', [
   ],
   [
     'path',
-    { d: 'M9.13 9.13A2.78 2.78 0 0 0 9 10a3 3 0 0 0 3 3 2.78 2.78 0 0 0 .87-.13', key: 'erynq7' },
+    {
+      d: 'M9.13 9.13A2.78 2.78 0 0 0 9 10a3 3 0 0 0 3 3 2.78 2.78 0 0 0 .87-.13',
+      key: 'erynq7',
+    },
   ],
   ['path', { d: 'M14.9 9.25a3 3 0 0 0-2.15-2.16', key: '1hwwmx' }],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
@@ -9034,13 +10954,19 @@ var MapPinOff = createLucideIcon('MapPinOff', [
 
 // node_modules/lucide-react/dist/esm/icons/map-pin.js
 var MapPin = createLucideIcon('MapPin', [
-  ['path', { d: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z', key: '2oe9fu' }],
+  [
+    'path',
+    { d: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z', key: '2oe9fu' },
+  ],
   ['circle', { cx: '12', cy: '10', r: '3', key: 'ilqhr7' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/map-pinned.js
 var MapPinned = createLucideIcon('MapPinned', [
-  ['path', { d: 'M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0', key: 'yrbn30' }],
+  [
+    'path',
+    { d: 'M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0', key: 'yrbn30' },
+  ],
   ['circle', { cx: '12', cy: '8', r: '2', key: '1822b1' }],
   [
     'path',
@@ -9053,7 +10979,10 @@ var MapPinned = createLucideIcon('MapPinned', [
 
 // node_modules/lucide-react/dist/esm/icons/map.js
 var Map = createLucideIcon('Map', [
-  ['polygon', { points: '3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21', key: 'ok2ie8' }],
+  [
+    'polygon',
+    { points: '3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21', key: 'ok2ie8' },
+  ],
   ['line', { x1: '9', x2: '9', y1: '3', y2: '18', key: 'w34qz5' }],
   ['line', { x1: '15', x2: '15', y1: '6', y2: '21', key: 'volv9a' }],
 ])
@@ -9140,7 +11069,10 @@ var MemoryStick = createLucideIcon('MemoryStick', [
 
 // node_modules/lucide-react/dist/esm/icons/menu-square.js
 var MenuSquare = createLucideIcon('MenuSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M7 8h10', key: '1jw688' }],
   ['path', { d: 'M7 12h10', key: 'b7w52i' }],
   ['path', { d: 'M7 16h10', key: 'wp8him' }],
@@ -9179,25 +11111,49 @@ var MessageSquareDashed = createLucideIcon('MessageSquareDashed', [
 
 // node_modules/lucide-react/dist/esm/icons/message-square-plus.js
 var MessageSquarePlus = createLucideIcon('MessageSquarePlus', [
-  ['path', { d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', key: '1lielz' }],
+  [
+    'path',
+    {
+      d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
+      key: '1lielz',
+    },
+  ],
   ['line', { x1: '9', x2: '15', y1: '10', y2: '10', key: '1lj1wd' }],
   ['line', { x1: '12', x2: '12', y1: '7', y2: '13', key: '1cppfj' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/message-square.js
 var MessageSquare = createLucideIcon('MessageSquare', [
-  ['path', { d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', key: '1lielz' }],
+  [
+    'path',
+    {
+      d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
+      key: '1lielz',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/messages-square.js
 var MessagesSquare = createLucideIcon('MessagesSquare', [
-  ['path', { d: 'M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z', key: '16vlm8' }],
-  ['path', { d: 'M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1', key: '1cx29u' }],
+  [
+    'path',
+    {
+      d: 'M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z',
+      key: '16vlm8',
+    },
+  ],
+  [
+    'path',
+    { d: 'M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1', key: '1cx29u' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/mic-2.js
 var Mic2 = createLucideIcon('Mic2', [
-  ['path', { d: 'm12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12', key: 'zoua8r' }],
+  [
+    'path',
+    { d: 'm12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12', key: 'zoua8r' },
+  ],
   ['circle', { cx: '17', cy: '7', r: '5', key: '1fomce' }],
 ])
 
@@ -9213,7 +11169,13 @@ var MicOff = createLucideIcon('MicOff', [
 
 // node_modules/lucide-react/dist/esm/icons/mic.js
 var Mic = createLucideIcon('Mic', [
-  ['path', { d: 'M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z', key: '131961' }],
+  [
+    'path',
+    {
+      d: 'M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z',
+      key: '131961',
+    },
+  ],
   ['path', { d: 'M19 10v2a7 7 0 0 1-14 0v-2', key: '1vc78b' }],
   ['line', { x1: '12', x2: '12', y1: '19', y2: '22', key: 'x3vr5v' }],
 ])
@@ -9230,7 +11192,10 @@ var Microscope = createLucideIcon('Microscope', [
 
 // node_modules/lucide-react/dist/esm/icons/microwave.js
 var Microwave = createLucideIcon('Microwave', [
-  ['rect', { width: '20', height: '15', x: '2', y: '4', rx: '2', key: '2no95f' }],
+  [
+    'rect',
+    { width: '20', height: '15', x: '2', y: '4', rx: '2', key: '2no95f' },
+  ],
   ['rect', { width: '8', height: '7', x: '6', y: '8', rx: '1', key: 'zh9wx' }],
   ['path', { d: 'M18 8v7', key: 'o5zi4n' }],
   ['path', { d: 'M6 19v2', key: '1loha6' }],
@@ -9239,7 +11204,13 @@ var Microwave = createLucideIcon('Microwave', [
 
 // node_modules/lucide-react/dist/esm/icons/milestone.js
 var Milestone = createLucideIcon('Milestone', [
-  ['path', { d: 'M18 6H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h13l4-3.5L18 6Z', key: '1mp5s7' }],
+  [
+    'path',
+    {
+      d: 'M18 6H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h13l4-3.5L18 6Z',
+      key: '1mp5s7',
+    },
+  ],
   ['path', { d: 'M12 13v8', key: '1l5pq0' }],
   ['path', { d: 'M12 3v3', key: '1n5kay' }],
 ])
@@ -9254,7 +11225,13 @@ var MilkOff = createLucideIcon('MilkOff', [
       key: 'y0ejgx',
     },
   ],
-  ['path', { d: 'M7 15a6.47 6.47 0 0 1 5 0 6.472 6.472 0 0 0 3.435.435', key: 'iaxqsy' }],
+  [
+    'path',
+    {
+      d: 'M7 15a6.47 6.47 0 0 1 5 0 6.472 6.472 0 0 0 3.435.435',
+      key: 'iaxqsy',
+    },
+  ],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
 ])
 
@@ -9268,7 +11245,10 @@ var Milk = createLucideIcon('Milk', [
       key: 'qtp12x',
     },
   ],
-  ['path', { d: 'M7 15a6.472 6.472 0 0 1 5 0 6.47 6.47 0 0 0 5 0', key: 'ygeh44' }],
+  [
+    'path',
+    { d: 'M7 15a6.472 6.472 0 0 1 5 0 6.47 6.47 0 0 0 5 0', key: 'ygeh44' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/minimize-2.js
@@ -9295,17 +11275,25 @@ var MinusCircle = createLucideIcon('MinusCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/minus-square.js
 var MinusSquare = createLucideIcon('MinusSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 12h8', key: '1wcyev' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/minus.js
-var Minus = createLucideIcon('Minus', [['path', { d: 'M5 12h14', key: '1ays0h' }]])
+var Minus = createLucideIcon('Minus', [
+  ['path', { d: 'M5 12h14', key: '1ays0h' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/monitor-check.js
 var MonitorCheck = createLucideIcon('MonitorCheck', [
   ['path', { d: 'm9 10 2 2 4-4', key: '1gnqz4' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
@@ -9313,7 +11301,13 @@ var MonitorCheck = createLucideIcon('MonitorCheck', [
 // node_modules/lucide-react/dist/esm/icons/monitor-dot.js
 var MonitorDot = createLucideIcon('MonitorDot', [
   ['circle', { cx: '19', cy: '6', r: '3', key: '108a5v' }],
-  ['path', { d: 'M22 12v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9', key: '1fet9y' }],
+  [
+    'path',
+    {
+      d: 'M22 12v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9',
+      key: '1fet9y',
+    },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
@@ -9322,7 +11316,10 @@ var MonitorDot = createLucideIcon('MonitorDot', [
 var MonitorDown = createLucideIcon('MonitorDown', [
   ['path', { d: 'M12 13V7', key: 'h0r20n' }],
   ['path', { d: 'm15 10-3 3-3-3', key: 'lzhmyn' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
@@ -9340,7 +11337,10 @@ var MonitorOff = createLucideIcon('MonitorOff', [
 var MonitorPause = createLucideIcon('MonitorPause', [
   ['path', { d: 'M10 13V7', key: '1u13u9' }],
   ['path', { d: 'M14 13V7', key: '1vj9om' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
@@ -9348,24 +11348,39 @@ var MonitorPause = createLucideIcon('MonitorPause', [
 // node_modules/lucide-react/dist/esm/icons/monitor-play.js
 var MonitorPlay = createLucideIcon('MonitorPlay', [
   ['path', { d: 'm10 7 5 3-5 3Z', key: '29ljg6' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/monitor-smartphone.js
 var MonitorSmartphone = createLucideIcon('MonitorSmartphone', [
-  ['path', { d: 'M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8', key: '10dyio' }],
+  [
+    'path',
+    {
+      d: 'M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8',
+      key: '10dyio',
+    },
+  ],
   ['path', { d: 'M10 19v-3.96 3.15', key: '1irgej' }],
   ['path', { d: 'M7 19h5', key: 'qswx4l' }],
-  ['rect', { width: '6', height: '10', x: '16', y: '12', rx: '2', key: '1egngj' }],
+  [
+    'rect',
+    { width: '6', height: '10', x: '16', y: '12', rx: '2', key: '1egngj' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/monitor-speaker.js
 var MonitorSpeaker = createLucideIcon('MonitorSpeaker', [
   ['path', { d: 'M5.5 20H8', key: '1k40s5' }],
   ['path', { d: 'M17 9h.01', key: '1j24nn' }],
-  ['rect', { width: '10', height: '16', x: '12', y: '4', rx: '2', key: 'ixliua' }],
+  [
+    'rect',
+    { width: '10', height: '16', x: '12', y: '4', rx: '2', key: 'ixliua' },
+  ],
   ['path', { d: 'M8 6H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4', key: '1mp6e1' }],
   ['circle', { cx: '17', cy: '15', r: '1', key: 'tqvash' }],
 ])
@@ -9373,7 +11388,10 @@ var MonitorSpeaker = createLucideIcon('MonitorSpeaker', [
 // node_modules/lucide-react/dist/esm/icons/monitor-stop.js
 var MonitorStop = createLucideIcon('MonitorStop', [
   ['rect', { x: '9', y: '7', width: '6', height: '6', key: '4xvc6r' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
@@ -9382,7 +11400,10 @@ var MonitorStop = createLucideIcon('MonitorStop', [
 var MonitorUp = createLucideIcon('MonitorUp', [
   ['path', { d: 'm9 10 3-3 3 3', key: '11gsxs' }],
   ['path', { d: 'M12 13V7', key: 'h0r20n' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
@@ -9391,14 +11412,20 @@ var MonitorUp = createLucideIcon('MonitorUp', [
 var MonitorX = createLucideIcon('MonitorX', [
   ['path', { d: 'm14.5 12.5-5-5', key: '1jahn5' }],
   ['path', { d: 'm9.5 12.5 5-5', key: '1k2t7b' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/monitor.js
 var Monitor = createLucideIcon('Monitor', [
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
   ['line', { x1: '8', x2: '16', y1: '21', y2: '21', key: '1svkeh' }],
   ['line', { x1: '12', x2: '12', y1: '17', y2: '21', key: 'vw1qmm' }],
 ])
@@ -9434,7 +11461,10 @@ var MountainSnow = createLucideIcon('MountainSnow', [
   ['path', { d: 'm8 3 4 8 5-5 5 15H2L8 3z', key: 'otkl63' }],
   [
     'path',
-    { d: 'M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19', key: '1pvmmp' },
+    {
+      d: 'M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19',
+      key: '1pvmmp',
+    },
   ],
 ])
 
@@ -9473,7 +11503,13 @@ var MousePointerSquareDashed = createLucideIcon('MousePointerSquareDashed', [
 
 // node_modules/lucide-react/dist/esm/icons/mouse-pointer-square.js
 var MousePointerSquare = createLucideIcon('MousePointerSquare', [
-  ['path', { d: 'M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6', key: '14rsvq' }],
+  [
+    'path',
+    {
+      d: 'M21 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6',
+      key: '14rsvq',
+    },
+  ],
   ['path', { d: 'm12 12 4 10 1.7-4.3L22 16Z', key: '64ilsv' }],
 ])
 
@@ -9485,7 +11521,10 @@ var MousePointer = createLucideIcon('MousePointer', [
 
 // node_modules/lucide-react/dist/esm/icons/mouse.js
 var Mouse = createLucideIcon('Mouse', [
-  ['rect', { x: '5', y: '2', width: '14', height: '20', rx: '7', key: '11ol66' }],
+  [
+    'rect',
+    { x: '5', y: '2', width: '14', height: '20', rx: '7', key: '11ol66' },
+  ],
   ['path', { d: 'M12 6v4', key: '16clxf' }],
 ])
 
@@ -9636,8 +11675,14 @@ var Navigation = createLucideIcon('Navigation', [
 
 // node_modules/lucide-react/dist/esm/icons/network.js
 var Network = createLucideIcon('Network', [
-  ['rect', { x: '16', y: '16', width: '6', height: '6', rx: '1', key: '4q2zg0' }],
-  ['rect', { x: '2', y: '16', width: '6', height: '6', rx: '1', key: '8cvhb9' }],
+  [
+    'rect',
+    { x: '16', y: '16', width: '6', height: '6', rx: '1', key: '4q2zg0' },
+  ],
+  [
+    'rect',
+    { x: '2', y: '16', width: '6', height: '6', rx: '1', key: '8cvhb9' },
+  ],
   ['rect', { x: '9', y: '2', width: '6', height: '6', rx: '1', key: '1egb70' }],
   ['path', { d: 'M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3', key: '1jsf9p' }],
   ['path', { d: 'M12 12V8', key: '2874zd' }],
@@ -9710,7 +11755,8 @@ var Octagon = createLucideIcon('Octagon', [
   [
     'polygon',
     {
-      points: '7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2',
+      points:
+        '7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2',
       key: 'h1p8hx',
     },
   ],
@@ -9742,7 +11788,13 @@ var Outdent = createLucideIcon('Outdent', [
 // node_modules/lucide-react/dist/esm/icons/package-2.js
 var Package2 = createLucideIcon('Package2', [
   ['path', { d: 'M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z', key: '1ront0' }],
-  ['path', { d: 'm3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9', key: '19h2x1' }],
+  [
+    'path',
+    {
+      d: 'm3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9',
+      key: '19h2x1',
+    },
+  ],
   ['path', { d: 'M12 3v6', key: '1holv5' }],
 ])
 
@@ -9867,18 +11919,30 @@ var Package = createLucideIcon('Package', [
 var PaintBucket = createLucideIcon('PaintBucket', [
   [
     'path',
-    { d: 'm19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z', key: 'irua1i' },
+    {
+      d: 'm19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z',
+      key: 'irua1i',
+    },
   ],
   ['path', { d: 'm5 2 5 5', key: '1lls2c' }],
   ['path', { d: 'M2 13h15', key: '1hkzvu' }],
-  ['path', { d: 'M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4 .3 1.6 2 2.4 2 4Z', key: 'xk76lq' }],
+  [
+    'path',
+    {
+      d: 'M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4 .3 1.6 2 2.4 2 4Z',
+      key: 'xk76lq',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/paintbrush-2.js
 var Paintbrush2 = createLucideIcon('Paintbrush2', [
   [
     'path',
-    { d: 'M14 19.9V16h3a2 2 0 0 0 2-2v-2H5v2c0 1.1.9 2 2 2h3v3.9a2 2 0 1 0 4 0Z', key: '1c8kta' },
+    {
+      d: 'M14 19.9V16h3a2 2 0 0 0 2-2v-2H5v2c0 1.1.9 2 2 2h3v3.9a2 2 0 1 0 4 0Z',
+      key: '1c8kta',
+    },
   ],
   ['path', { d: 'M6 12V2h12v10', key: '1esbnf' }],
   ['path', { d: 'M14 2v4', key: 'qmzblu' }],
@@ -9915,10 +11979,16 @@ var Palette = createLucideIcon('Palette', [
 
 // node_modules/lucide-react/dist/esm/icons/palmtree.js
 var Palmtree = createLucideIcon('Palmtree', [
-  ['path', { d: 'M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4', key: 'foxbe7' }],
   [
     'path',
-    { d: 'M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3', key: '18arnh' },
+    { d: 'M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4', key: 'foxbe7' },
+  ],
+  [
+    'path',
+    {
+      d: 'M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3',
+      key: '18arnh',
+    },
   ],
   [
     'path',
@@ -9927,19 +11997,36 @@ var Palmtree = createLucideIcon('Palmtree', [
       key: 'epoumf',
     },
   ],
-  ['path', { d: 'M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14', key: 'ft0feo' }],
+  [
+    'path',
+    { d: 'M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14', key: 'ft0feo' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-bottom-close.js
 var PanelBottomClose = createLucideIcon('PanelBottomClose', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '15', y2: '15', key: 'o2sbyz' }],
   ['path', { d: 'm15 8-3 3-3-3', key: '1oxy1z' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-bottom-inactive.js
 var PanelBottomInactive = createLucideIcon('PanelBottomInactive', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M14 15h1', key: '171nev' }],
   ['path', { d: 'M19 15h2', key: '1vnucp' }],
   ['path', { d: 'M3 15h2', key: '8bym0q' }],
@@ -9948,27 +12035,63 @@ var PanelBottomInactive = createLucideIcon('PanelBottomInactive', [
 
 // node_modules/lucide-react/dist/esm/icons/panel-bottom-open.js
 var PanelBottomOpen = createLucideIcon('PanelBottomOpen', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '15', y2: '15', key: 'o2sbyz' }],
   ['path', { d: 'm9 10 3-3 3 3', key: '11gsxs' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-bottom.js
 var PanelBottom = createLucideIcon('PanelBottom', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '15', y2: '15', key: 'o2sbyz' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-left-close.js
 var PanelLeftClose = createLucideIcon('PanelLeftClose', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M9 3v18', key: 'fh3hqa' }],
   ['path', { d: 'm16 15-3-3 3-3', key: '14y99z' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-left-inactive.js
 var PanelLeftInactive = createLucideIcon('PanelLeftInactive', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M9 14v1', key: 'askpd8' }],
   ['path', { d: 'M9 19v2', key: '16tejx' }],
   ['path', { d: 'M9 3v2', key: '1noubl' }],
@@ -9977,27 +12100,63 @@ var PanelLeftInactive = createLucideIcon('PanelLeftInactive', [
 
 // node_modules/lucide-react/dist/esm/icons/panel-left-open.js
 var PanelLeftOpen = createLucideIcon('PanelLeftOpen', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'M9 3v18', key: 'fh3hqa' }],
   ['path', { d: 'm14 9 3 3-3 3', key: '8010ee' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-left.js
 var PanelLeft = createLucideIcon('PanelLeft', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '9', x2: '9', y1: '3', y2: '21', key: '13tij5' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-right-close.js
 var PanelRightClose = createLucideIcon('PanelRightClose', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '15', x2: '15', y1: '3', y2: '21', key: '1hpv9i' }],
   ['path', { d: 'm8 9 3 3-3 3', key: '12hl5m' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-right-inactive.js
 var PanelRightInactive = createLucideIcon('PanelRightInactive', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M15 14v1', key: 'ilsfch' }],
   ['path', { d: 'M15 19v2', key: '1fst2f' }],
   ['path', { d: 'M15 3v2', key: 'z204g4' }],
@@ -10006,27 +12165,63 @@ var PanelRightInactive = createLucideIcon('PanelRightInactive', [
 
 // node_modules/lucide-react/dist/esm/icons/panel-right-open.js
 var PanelRightOpen = createLucideIcon('PanelRightOpen', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '15', x2: '15', y1: '3', y2: '21', key: '1hpv9i' }],
   ['path', { d: 'm10 15-3-3 3-3', key: '1pgupc' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-right.js
 var PanelRight = createLucideIcon('PanelRight', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '15', x2: '15', y1: '3', y2: '21', key: '1hpv9i' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-top-close.js
 var PanelTopClose = createLucideIcon('PanelTopClose', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '9', y2: '9', key: '1vqk6q' }],
   ['path', { d: 'm9 16 3-3 3 3', key: '1idcnm' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-top-inactive.js
 var PanelTopInactive = createLucideIcon('PanelTopInactive', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M14 9h1', key: 'l0svgy' }],
   ['path', { d: 'M19 9h2', key: 'te2zfg' }],
   ['path', { d: 'M3 9h2', key: '1h4ldw' }],
@@ -10035,14 +12230,36 @@ var PanelTopInactive = createLucideIcon('PanelTopInactive', [
 
 // node_modules/lucide-react/dist/esm/icons/panel-top-open.js
 var PanelTopOpen = createLucideIcon('PanelTopOpen', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '9', y2: '9', key: '1vqk6q' }],
   ['path', { d: 'm15 14-3 3-3-3', key: 'g215vf' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/panel-top.js
 var PanelTop = createLucideIcon('PanelTop', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '9', y2: '9', key: '1vqk6q' }],
 ])
 
@@ -10094,7 +12311,13 @@ var ParkingMeter = createLucideIcon('ParkingMeter', [
 
 // node_modules/lucide-react/dist/esm/icons/parking-square-off.js
 var ParkingSquareOff = createLucideIcon('ParkingSquareOff', [
-  ['path', { d: 'M3.6 3.6A2 2 0 0 1 5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-.59 1.41', key: '9l1ft6' }],
+  [
+    'path',
+    {
+      d: 'M3.6 3.6A2 2 0 0 1 5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-.59 1.41',
+      key: '9l1ft6',
+    },
+  ],
   ['path', { d: 'M3 8.7V19a2 2 0 0 0 2 2h10.3', key: '17knke' }],
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
   ['path', { d: 'M13 13a3 3 0 1 0 0-6H9v2', key: 'uoagbd' }],
@@ -10103,7 +12326,10 @@ var ParkingSquareOff = createLucideIcon('ParkingSquareOff', [
 
 // node_modules/lucide-react/dist/esm/icons/parking-square.js
 var ParkingSquare = createLucideIcon('ParkingSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M9 17V7h4a3 3 0 0 1 0 6H9', key: '1dfk2c' }],
 ])
 
@@ -10123,11 +12349,17 @@ var PartyPopper = createLucideIcon('PartyPopper', [
   ],
   [
     'path',
-    { d: 'm22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17', key: '1pd0s7' },
+    {
+      d: 'm22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17',
+      key: '1pd0s7',
+    },
   ],
   [
     'path',
-    { d: 'm11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7', key: 'zq5xbz' },
+    {
+      d: 'm11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7',
+      key: 'zq5xbz',
+    },
   ],
   [
     'path',
@@ -10151,7 +12383,10 @@ var PauseOctagon = createLucideIcon('PauseOctagon', [
   ['path', { d: 'M14 15V9', key: '1muqhk' }],
   [
     'path',
-    { d: 'M7.714 2h8.572L22 7.714v8.572L16.286 22H7.714L2 16.286V7.714L7.714 2z', key: '1m7qra' },
+    {
+      d: 'M7.714 2h8.572L22 7.714v8.572L16.286 22H7.714L2 16.286V7.714L7.714 2z',
+      key: '1m7qra',
+    },
   ],
 ])
 
@@ -10177,7 +12412,10 @@ var PawPrint = createLucideIcon('PawPrint', [
 
 // node_modules/lucide-react/dist/esm/icons/pc-case.js
 var PcCase = createLucideIcon('PcCase', [
-  ['rect', { width: '14', height: '20', x: '5', y: '2', rx: '2', key: '1uq1d7' }],
+  [
+    'rect',
+    { width: '14', height: '20', x: '5', y: '2', rx: '2', key: '1uq1d7' },
+  ],
   ['path', { d: 'M15 14h.01', key: '1kp3bh' }],
   ['path', { d: 'M9 6h6', key: 'dgm16u' }],
   ['path', { d: 'M9 10h6', key: '9gxzsh' }],
@@ -10186,13 +12424,25 @@ var PcCase = createLucideIcon('PcCase', [
 // node_modules/lucide-react/dist/esm/icons/pen-line.js
 var PenLine = createLucideIcon('PenLine', [
   ['path', { d: 'M12 20h9', key: 't2du7b' }],
-  ['path', { d: 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z', key: 'ymcmye' }],
+  [
+    'path',
+    { d: 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z', key: 'ymcmye' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/pen-square.js
 var PenSquare = createLucideIcon('PenSquare', [
-  ['path', { d: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7', key: '1qinfi' }],
-  ['path', { d: 'M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z', key: 'w2jsv5' }],
+  [
+    'path',
+    {
+      d: 'M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7',
+      key: '1qinfi',
+    },
+  ],
+  [
+    'path',
+    { d: 'M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z', key: 'w2jsv5' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/pen-tool.js
@@ -10205,13 +12455,19 @@ var PenTool = createLucideIcon('PenTool', [
 
 // node_modules/lucide-react/dist/esm/icons/pen.js
 var Pen = createLucideIcon('Pen', [
-  ['path', { d: 'M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z', key: '5qss01' }],
+  [
+    'path',
+    { d: 'M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z', key: '5qss01' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/pencil-line.js
 var PencilLine = createLucideIcon('PencilLine', [
   ['path', { d: 'M12 20h9', key: 't2du7b' }],
-  ['path', { d: 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z', key: 'ymcmye' }],
+  [
+    'path',
+    { d: 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z', key: 'ymcmye' },
+  ],
   ['path', { d: 'm15 5 3 3', key: '1w25hb' }],
 ])
 
@@ -10220,10 +12476,19 @@ var PencilRuler = createLucideIcon('PencilRuler', [
   ['path', { d: 'm15 5 4 4', key: '1mk7zo' }],
   [
     'path',
-    { d: 'M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13', key: 'orapub' },
+    {
+      d: 'M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13',
+      key: 'orapub',
+    },
   ],
   ['path', { d: 'm8 6 2-2', key: '115y1s' }],
-  ['path', { d: 'm2 22 5.5-1.5L21.17 6.83a2.82 2.82 0 0 0-4-4L3.5 16.5Z', key: 'hes763' }],
+  [
+    'path',
+    {
+      d: 'm2 22 5.5-1.5L21.17 6.83a2.82 2.82 0 0 0-4-4L3.5 16.5Z',
+      key: 'hes763',
+    },
+  ],
   ['path', { d: 'm18 16 2-2', key: 'ee94s4' }],
   [
     'path',
@@ -10236,7 +12501,10 @@ var PencilRuler = createLucideIcon('PencilRuler', [
 
 // node_modules/lucide-react/dist/esm/icons/pencil.js
 var Pencil = createLucideIcon('Pencil', [
-  ['path', { d: 'M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z', key: '5qss01' }],
+  [
+    'path',
+    { d: 'M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z', key: '5qss01' },
+  ],
   ['path', { d: 'm15 5 4 4', key: '1mk7zo' }],
 ])
 
@@ -10275,7 +12543,10 @@ var PercentDiamond = createLucideIcon('PercentDiamond', [
 
 // node_modules/lucide-react/dist/esm/icons/percent-square.js
 var PercentSquare = createLucideIcon('PercentSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm15 9-6 6', key: '1uzhvr' }],
   ['path', { d: 'M9 9h.01', key: '1q5me6' }],
   ['path', { d: 'M15 15h.01', key: 'lqbp3k' }],
@@ -10386,7 +12657,10 @@ var Phone = createLucideIcon('Phone', [
 
 // node_modules/lucide-react/dist/esm/icons/pi-square.js
 var PiSquare = createLucideIcon('PiSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M7 7h10', key: 'udp07y' }],
   ['path', { d: 'M10 7v10', key: 'i1d9ee' }],
   ['path', { d: 'M16 17a2 2 0 0 1-2-2V7', key: 'ftwdc7' }],
@@ -10417,8 +12691,17 @@ var Piano = createLucideIcon('Piano', [
 
 // node_modules/lucide-react/dist/esm/icons/picture-in-picture-2.js
 var PictureInPicture2 = createLucideIcon('PictureInPicture2', [
-  ['path', { d: 'M21 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h4', key: 'daa4of' }],
-  ['rect', { width: '10', height: '7', x: '12', y: '13', rx: '2', key: '1nb8gs' }],
+  [
+    'path',
+    {
+      d: 'M21 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h4',
+      key: 'daa4of',
+    },
+  ],
+  [
+    'rect',
+    { width: '10', height: '7', x: '12', y: '13', rx: '2', key: '1nb8gs' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/picture-in-picture.js
@@ -10430,7 +12713,10 @@ var PictureInPicture = createLucideIcon('PictureInPicture', [
       key: 'bcd8fb',
     },
   ],
-  ['rect', { width: '10', height: '7', x: '12', y: '13.5', ry: '2', key: '136fx3' }],
+  [
+    'rect',
+    { width: '10', height: '7', x: '12', y: '13.5', ry: '2', key: '136fx3' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/pie-chart.js
@@ -10454,7 +12740,10 @@ var PiggyBank = createLucideIcon('PiggyBank', [
 
 // node_modules/lucide-react/dist/esm/icons/pilcrow-square.js
 var PilcrowSquare = createLucideIcon('PilcrowSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M12 12H9.5a2.5 2.5 0 0 1 0-5H17', key: '1l9586' }],
   ['path', { d: 'M12 7v10', key: 'jspqdw' }],
   ['path', { d: 'M16 7v10', key: 'lavkr4' }],
@@ -10471,7 +12760,10 @@ var Pilcrow = createLucideIcon('Pilcrow', [
 var Pill = createLucideIcon('Pill', [
   [
     'path',
-    { d: 'm10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z', key: 'wa1lgi' },
+    {
+      d: 'm10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z',
+      key: 'wa1lgi',
+    },
   ],
   ['path', { d: 'm8.5 8.5 7 7', key: 'rvfmvr' }],
 ])
@@ -10480,7 +12772,13 @@ var Pill = createLucideIcon('Pill', [
 var PinOff = createLucideIcon('PinOff', [
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
   ['line', { x1: '12', x2: '12', y1: '17', y2: '22', key: '1jrz49' }],
-  ['path', { d: 'M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V17h12', key: '13x2n8' }],
+  [
+    'path',
+    {
+      d: 'M9 9v1.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V17h12',
+      key: '13x2n8',
+    },
+  ],
   ['path', { d: 'M15 9.34V6h1a2 2 0 0 0 0-4H7.89', key: 'reo3ki' }],
 ])
 
@@ -10561,12 +12859,17 @@ var PlayCircle = createLucideIcon('PlayCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/play-square.js
 var PlaySquare = createLucideIcon('PlaySquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm9 8 6 4-6 4Z', key: 'f1r3lt' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/play.js
-var Play = createLucideIcon('Play', [['polygon', { points: '5 3 19 12 5 21 5 3', key: '191637' }]])
+var Play = createLucideIcon('Play', [
+  ['polygon', { points: '5 3 19 12 5 21 5 3', key: '191637' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/plug-2.js
 var Plug2 = createLucideIcon('Plug2', [
@@ -10582,7 +12885,10 @@ var PlugZap2 = createLucideIcon('PlugZap2', [
   ['path', { d: 'm13 2-2 2.5h3L12 7', key: '1me98u' }],
   ['path', { d: 'M10 14v-3', key: '1mllf3' }],
   ['path', { d: 'M14 14v-3', key: '1l3fkq' }],
-  ['path', { d: 'M11 19c-1.7 0-3-1.3-3-3v-2h8v2c0 1.7-1.3 3-3 3Z', key: 'jd5pat' }],
+  [
+    'path',
+    { d: 'M11 19c-1.7 0-3-1.3-3-3v-2h8v2c0 1.7-1.3 3-3 3Z', key: 'jd5pat' },
+  ],
   ['path', { d: 'M12 22v-3', key: 'kmzjlo' }],
 ])
 
@@ -10590,7 +12896,10 @@ var PlugZap2 = createLucideIcon('PlugZap2', [
 var PlugZap = createLucideIcon('PlugZap', [
   [
     'path',
-    { d: 'M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z', key: 'goz73y' },
+    {
+      d: 'M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z',
+      key: 'goz73y',
+    },
   ],
   ['path', { d: 'm2 22 3-3', key: '19mgm9' }],
   ['path', { d: 'M7.5 13.5 10 11', key: '7xgeeb' }],
@@ -10615,7 +12924,10 @@ var PlusCircle = createLucideIcon('PlusCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/plus-square.js
 var PlusSquare = createLucideIcon('PlusSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M8 12h8', key: '1wcyev' }],
   ['path', { d: 'M12 8v8', key: 'napkw2' }],
 ])
@@ -10628,10 +12940,19 @@ var Plus = createLucideIcon('Plus', [
 
 // node_modules/lucide-react/dist/esm/icons/pocket-knife.js
 var PocketKnife = createLucideIcon('PocketKnife', [
-  ['path', { d: 'M3 2v1c0 1 2 1 2 2S3 6 3 7s2 1 2 2-2 1-2 2 2 1 2 2', key: '19w3oe' }],
+  [
+    'path',
+    { d: 'M3 2v1c0 1 2 1 2 2S3 6 3 7s2 1 2 2-2 1-2 2 2 1 2 2', key: '19w3oe' },
+  ],
   ['path', { d: 'M18 6h.01', key: '1v4wsw' }],
   ['path', { d: 'M6 18h.01', key: 'uhywen' }],
-  ['path', { d: 'M20.83 8.83a4 4 0 0 0-5.66-5.66l-12 12a4 4 0 1 0 5.66 5.66Z', key: '6fykxj' }],
+  [
+    'path',
+    {
+      d: 'M20.83 8.83a4 4 0 0 0-5.66-5.66l-12 12a4 4 0 1 0 5.66 5.66Z',
+      key: '6fykxj',
+    },
+  ],
   ['path', { d: 'M18 11.66V22a4 4 0 0 0 4-4V6', key: '1utzek' }],
 ])
 
@@ -10733,9 +13054,15 @@ var PowerOff = createLucideIcon('PowerOff', [
 
 // node_modules/lucide-react/dist/esm/icons/power-square.js
 var PowerSquare = createLucideIcon('PowerSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M12 7v5', key: 'ma6bk' }],
-  ['path', { d: 'M8 9a5.14 5.14 0 0 0 4 8 4.95 4.95 0 0 0 4-8', key: '15eubv' }],
+  [
+    'path',
+    { d: 'M8 9a5.14 5.14 0 0 0 4 8 4.95 4.95 0 0 0 4-8', key: '15eubv' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/power.js
@@ -10806,8 +13133,14 @@ var Pyramid = createLucideIcon('Pyramid', [
 // node_modules/lucide-react/dist/esm/icons/qr-code.js
 var QrCode = createLucideIcon('QrCode', [
   ['rect', { width: '5', height: '5', x: '3', y: '3', rx: '1', key: '1tu5fj' }],
-  ['rect', { width: '5', height: '5', x: '16', y: '3', rx: '1', key: '1v8r4q' }],
-  ['rect', { width: '5', height: '5', x: '3', y: '16', rx: '1', key: '1x03jg' }],
+  [
+    'rect',
+    { width: '5', height: '5', x: '16', y: '3', rx: '1', key: '1v8r4q' },
+  ],
+  [
+    'rect',
+    { width: '5', height: '5', x: '3', y: '16', rx: '1', key: '1x03jg' },
+  ],
   ['path', { d: 'M21 16h-3a2 2 0 0 0-2 2v3', key: '177gqh' }],
   ['path', { d: 'M21 21v.01', key: 'ents32' }],
   ['path', { d: 'M12 7v3a2 2 0 0 1-2 2H7', key: '8crl2c' }],
@@ -10894,7 +13227,10 @@ var Radiation = createLucideIcon('Radiation', [
 var RadioReceiver = createLucideIcon('RadioReceiver', [
   ['path', { d: 'M5 16v2', key: 'g5qcv5' }],
   ['path', { d: 'M19 16v2', key: '1gbaio' }],
-  ['rect', { width: '20', height: '8', x: '2', y: '8', rx: '2', key: 'vjsjur' }],
+  [
+    'rect',
+    { width: '20', height: '8', x: '2', y: '8', rx: '2', key: 'vjsjur' },
+  ],
   ['path', { d: 'M18 12h0', key: '1ucjzd' }],
 ])
 
@@ -10963,8 +13299,14 @@ var Rat = createLucideIcon('Rat', [
 
 // node_modules/lucide-react/dist/esm/icons/ratio.js
 var Ratio = createLucideIcon('Ratio', [
-  ['rect', { width: '12', height: '20', x: '6', y: '2', rx: '2', key: '1oxtiu' }],
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' }],
+  [
+    'rect',
+    { width: '12', height: '20', x: '6', y: '2', rx: '2', key: '1oxtiu' },
+  ],
+  [
+    'rect',
+    { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/receipt.js
@@ -10982,12 +13324,18 @@ var Receipt = createLucideIcon('Receipt', [
 
 // node_modules/lucide-react/dist/esm/icons/rectangle-horizontal.js
 var RectangleHorizontal = createLucideIcon('RectangleHorizontal', [
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' }],
+  [
+    'rect',
+    { width: '20', height: '12', x: '2', y: '6', rx: '2', key: '9lu3g6' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/rectangle-vertical.js
 var RectangleVertical = createLucideIcon('RectangleVertical', [
-  ['rect', { width: '12', height: '20', x: '6', y: '2', rx: '2', key: '1oxtiu' }],
+  [
+    'rect',
+    { width: '12', height: '20', x: '6', y: '2', rx: '2', key: '1oxtiu' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/recycle.js
@@ -11021,7 +13369,13 @@ var Recycle = createLucideIcon('Recycle', [
 // node_modules/lucide-react/dist/esm/icons/redo-2.js
 var Redo2 = createLucideIcon('Redo2', [
   ['path', { d: 'm15 14 5-5-5-5', key: '12vg1m' }],
-  ['path', { d: 'M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13', key: '19mnr4' }],
+  [
+    'path',
+    {
+      d: 'M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13',
+      key: '19mnr4',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/redo-dot.js
@@ -11048,18 +13402,36 @@ var RefreshCcwDot = createLucideIcon('RefreshCcwDot', [
 
 // node_modules/lucide-react/dist/esm/icons/refresh-ccw.js
 var RefreshCcw = createLucideIcon('RefreshCcw', [
-  ['path', { d: 'M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', key: '14sxne' }],
+  [
+    'path',
+    { d: 'M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', key: '14sxne' },
+  ],
   ['path', { d: 'M3 3v5h5', key: '1xhq8a' }],
-  ['path', { d: 'M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16', key: '1hlbsb' }],
+  [
+    'path',
+    { d: 'M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16', key: '1hlbsb' },
+  ],
   ['path', { d: 'M16 16h5v5', key: 'ccwih5' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/refresh-cw-off.js
 var RefreshCwOff = createLucideIcon('RefreshCwOff', [
-  ['path', { d: 'M21 8L18.74 5.74A9.75 9.75 0 0 0 12 3C11 3 10.03 3.16 9.13 3.47', key: '1krf6h' }],
+  [
+    'path',
+    {
+      d: 'M21 8L18.74 5.74A9.75 9.75 0 0 0 12 3C11 3 10.03 3.16 9.13 3.47',
+      key: '1krf6h',
+    },
+  ],
   ['path', { d: 'M8 16H3v5', key: '1cv678' }],
   ['path', { d: 'M3 12C3 9.51 4 7.26 5.64 5.64', key: 'ruvoct' }],
-  ['path', { d: 'm3 16 2.26 2.26A9.75 9.75 0 0 0 12 21c2.49 0 4.74-1 6.36-2.64', key: '19q130' }],
+  [
+    'path',
+    {
+      d: 'm3 16 2.26 2.26A9.75 9.75 0 0 0 12 21c2.49 0 4.74-1 6.36-2.64',
+      key: '19q130',
+    },
+  ],
   ['path', { d: 'M21 12c0 1-.16 1.97-.47 2.87', key: '4w8emr' }],
   ['path', { d: 'M21 3v5h-5', key: '1q7to0' }],
   ['path', { d: 'M22 22 2 2', key: '1r8tn9' }],
@@ -11067,9 +13439,15 @@ var RefreshCwOff = createLucideIcon('RefreshCwOff', [
 
 // node_modules/lucide-react/dist/esm/icons/refresh-cw.js
 var RefreshCw = createLucideIcon('RefreshCw', [
-  ['path', { d: 'M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8', key: 'v9h5vc' }],
+  [
+    'path',
+    { d: 'M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8', key: 'v9h5vc' },
+  ],
   ['path', { d: 'M21 3v5h-5', key: '1q7to0' }],
-  ['path', { d: 'M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16', key: '3uifl3' }],
+  [
+    'path',
+    { d: 'M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16', key: '3uifl3' },
+  ],
   ['path', { d: 'M8 16H3v5', key: '1cv678' }],
 ])
 
@@ -11077,7 +13455,10 @@ var RefreshCw = createLucideIcon('RefreshCw', [
 var Refrigerator = createLucideIcon('Refrigerator', [
   [
     'path',
-    { d: 'M5 6a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6Z', key: 'fpq118' },
+    {
+      d: 'M5 6a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6Z',
+      key: 'fpq118',
+    },
   ],
   ['path', { d: 'M5 10h14', key: 'elsbfy' }],
   ['path', { d: 'M15 7v6', key: '1nx30x' }],
@@ -11090,7 +13471,10 @@ var Regex = createLucideIcon('Regex', [
   ['path', { d: 'm12.67 10.5 8.66-5', key: '1dkfa6' }],
   [
     'path',
-    { d: 'M9 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2z', key: 'swwfx4' },
+    {
+      d: 'M9 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2z',
+      key: 'swwfx4',
+    },
   ],
 ])
 
@@ -11136,7 +13520,10 @@ var ReplaceAll = createLucideIcon('ReplaceAll', [
   ['path', { d: 'M16 10c-1.1 0-2-.9-2-2', key: '821ux0' }],
   ['path', { d: 'm3 7 3 3 3-3', key: 'x25e72' }],
   ['path', { d: 'M6 10V5c0-1.7 1.3-3 3-3h1', key: '13af7h' }],
-  ['rect', { width: '8', height: '8', x: '2', y: '14', rx: '2', key: '17ihk4' }],
+  [
+    'rect',
+    { width: '8', height: '8', x: '2', y: '14', rx: '2', key: '17ihk4' },
+  ],
   ['path', { d: 'M14 14c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2', key: '1w9p8c' }],
   ['path', { d: 'M20 14c1.1 0 2 .9 2 2v4c0 1.1-.9 2-2 2', key: 'm45eaa' }],
 ])
@@ -11149,7 +13536,10 @@ var Replace = createLucideIcon('Replace', [
   ['path', { d: 'M16 10c-1.1 0-2-.9-2-2', key: '821ux0' }],
   ['path', { d: 'm3 7 3 3 3-3', key: 'x25e72' }],
   ['path', { d: 'M6 10V5c0-1.7 1.3-3 3-3h1', key: '13af7h' }],
-  ['rect', { width: '8', height: '8', x: '2', y: '14', rx: '2', key: '17ihk4' }],
+  [
+    'rect',
+    { width: '8', height: '8', x: '2', y: '14', rx: '2', key: '17ihk4' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/reply-all.js
@@ -11189,7 +13579,13 @@ var Ribbon = createLucideIcon('Ribbon', [
   ],
   ['path', { d: 'm9.35 14.53 2.64-3.31', key: '1wfi09' }],
   ['path', { d: 'm11.97 18.04 2.99 4 3.54-2.54-3.93-5', key: '1ezyge' }],
-  ['path', { d: 'M14 8c0 1-1 2-2.01 3.22C11 10 10 9 10 8a2 2 0 1 1 4 0', key: 'aw0zq5' }],
+  [
+    'path',
+    {
+      d: 'M14 8c0 1-1 2-2.01 3.22C11 10 10 9 10 8a2 2 0 1 1 4 0',
+      key: 'aw0zq5',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/rocket.js
@@ -11228,7 +13624,13 @@ var RollerCoaster = createLucideIcon('RollerCoaster', [
   ['path', { d: 'M18 5v4', key: '1tajlv' }],
   ['path', { d: 'M18 19v-6', key: 'ielfq3' }],
   ['path', { d: 'M22 19V9', key: '158nzp' }],
-  ['path', { d: 'M2 19V9a4 4 0 0 1 4-4c2 0 4 1.33 6 4s4 4 6 4a4 4 0 1 0-3-6.65', key: '1930oh' }],
+  [
+    'path',
+    {
+      d: 'M2 19V9a4 4 0 0 1 4-4c2 0 4 1.33 6 4s4 4 6 4a4 4 0 1 0-3-6.65',
+      key: '1930oh',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/rotate-3d.js
@@ -11252,13 +13654,19 @@ var Rotate3d = createLucideIcon('Rotate3d', [
 
 // node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
 var RotateCcw = createLucideIcon('RotateCcw', [
-  ['path', { d: 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', key: '1357e3' }],
+  [
+    'path',
+    { d: 'M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', key: '1357e3' },
+  ],
   ['path', { d: 'M3 3v5h5', key: '1xhq8a' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/rotate-cw.js
 var RotateCw = createLucideIcon('RotateCw', [
-  ['path', { d: 'M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8', key: '1p45f6' }],
+  [
+    'path',
+    { d: 'M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8', key: '1p45f6' },
+  ],
   ['path', { d: 'M21 3v5h-5', key: '1q7to0' }],
 ])
 
@@ -11276,13 +13684,19 @@ var RouteOff = createLucideIcon('RouteOff', [
 // node_modules/lucide-react/dist/esm/icons/route.js
 var Route = createLucideIcon('Route', [
   ['circle', { cx: '6', cy: '19', r: '3', key: '1kj8tv' }],
-  ['path', { d: 'M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15', key: '1d8sl' }],
+  [
+    'path',
+    { d: 'M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15', key: '1d8sl' },
+  ],
   ['circle', { cx: '18', cy: '5', r: '3', key: 'gq8acd' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/router.js
 var Router = createLucideIcon('Router', [
-  ['rect', { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' }],
+  [
+    'rect',
+    { width: '20', height: '8', x: '2', y: '14', rx: '2', key: 'w68u3i' },
+  ],
   ['path', { d: 'M6.01 18H6', key: '19vcac' }],
   ['path', { d: 'M10.01 18H10', key: 'uamcmx' }],
   ['path', { d: 'M15 10v4', key: 'qjz1xs' }],
@@ -11292,7 +13706,18 @@ var Router = createLucideIcon('Router', [
 
 // node_modules/lucide-react/dist/esm/icons/rows.js
 var Rows = createLucideIcon('Rows', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '12', y2: '12', key: '10d38w' }],
 ])
 
@@ -11343,7 +13768,10 @@ var Salad = createLucideIcon('Salad', [
     },
   ],
   ['path', { d: 'm13 12 4-4', key: '1hckqy' }],
-  ['path', { d: 'M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2', key: '1p4srx' }],
+  [
+    'path',
+    { d: 'M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2', key: '1p4srx' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/sandwich.js
@@ -11357,7 +13785,10 @@ var Sandwich = createLucideIcon('Sandwich', [
     },
   ],
   ['path', { d: 'm3 11 7.77-6.04a2 2 0 0 1 2.46 0L21 11H3Z', key: '1oe7l6' }],
-  ['path', { d: 'M12.97 19.77 7 15h12.5l-3.75 4.5a2 2 0 0 1-2.78.27Z', key: '1ts2ri' }],
+  [
+    'path',
+    { d: 'M12.97 19.77 7 15h12.5l-3.75 4.5a2 2 0 0 1-2.78.27Z', key: '1ts2ri' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/satellite-dish.js
@@ -11379,7 +13810,13 @@ var Satellite = createLucideIcon('Satellite', [
 
 // node_modules/lucide-react/dist/esm/icons/save-all.js
 var SaveAll = createLucideIcon('SaveAll', [
-  ['path', { d: 'M6 4a2 2 0 0 1 2-2h10l4 4v10.2a2 2 0 0 1-2 1.8H8a2 2 0 0 1-2-2Z', key: '1unput' }],
+  [
+    'path',
+    {
+      d: 'M6 4a2 2 0 0 1 2-2h10l4 4v10.2a2 2 0 0 1-2 1.8H8a2 2 0 0 1-2-2Z',
+      key: '1unput',
+    },
+  ],
   ['path', { d: 'M10 2v4h6', key: '1p5sg6' }],
   ['path', { d: 'M18 18v-7h-8v7', key: '1oniuk' }],
   ['path', { d: 'M18 22H4a2 2 0 0 1-2-2V6', key: 'pblm9e' }],
@@ -11387,7 +13824,13 @@ var SaveAll = createLucideIcon('SaveAll', [
 
 // node_modules/lucide-react/dist/esm/icons/save.js
 var Save = createLucideIcon('Save', [
-  ['path', { d: 'M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z', key: '1owoqh' }],
+  [
+    'path',
+    {
+      d: 'M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z',
+      key: '1owoqh',
+    },
+  ],
   ['polyline', { points: '17 21 17 13 7 13 7 21', key: '1md35c' }],
   ['polyline', { points: '7 3 7 8 15 8', key: '8nz8an' }],
 ])
@@ -11402,8 +13845,14 @@ var Scale3d = createLucideIcon('Scale3d', [
 
 // node_modules/lucide-react/dist/esm/icons/scale.js
 var Scale = createLucideIcon('Scale', [
-  ['path', { d: 'm16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z', key: '7g6ntu' }],
-  ['path', { d: 'm2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z', key: 'ijws7r' }],
+  [
+    'path',
+    { d: 'm16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z', key: '7g6ntu' },
+  ],
+  [
+    'path',
+    { d: 'm2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z', key: 'ijws7r' },
+  ],
   ['path', { d: 'M7 21h10', key: '1b0cd5' }],
   ['path', { d: 'M12 3v18', key: '108xh3' }],
   ['path', { d: 'M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2', key: '3gwbw2' }],
@@ -11500,7 +13949,13 @@ var ScatterChart = createLucideIcon('ScatterChart', [
 // node_modules/lucide-react/dist/esm/icons/school-2.js
 var School2 = createLucideIcon('School2', [
   ['circle', { cx: '12', cy: '10', r: '1', key: '1gnqs8' }],
-  ['path', { d: 'M22 20V8h-4l-6-4-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z', key: '8z0lq4' }],
+  [
+    'path',
+    {
+      d: 'M22 20V8h-4l-6-4-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z',
+      key: '8z0lq4',
+    },
+  ],
   ['path', { d: 'M6 17v.01', key: 'roodi6' }],
   ['path', { d: 'M6 13v.01', key: '67c122' }],
   ['path', { d: 'M18 17v.01', key: '12ktxm' }],
@@ -11511,7 +13966,10 @@ var School2 = createLucideIcon('School2', [
 // node_modules/lucide-react/dist/esm/icons/school.js
 var School = createLucideIcon('School', [
   ['path', { d: 'm4 6 8-4 8 4', key: '1q0ilc' }],
-  ['path', { d: 'm18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2', key: '1vwozw' }],
+  [
+    'path',
+    { d: 'm18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2', key: '1vwozw' },
+  ],
   ['path', { d: 'M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4', key: 'cpkuc4' }],
   ['path', { d: 'M18 5v17', key: '1sw6gf' }],
   ['path', { d: 'M6 5v17', key: '1xfsm0' }],
@@ -11530,23 +13988,32 @@ var ScissorsLineDashed = createLucideIcon('ScissorsLineDashed', [
 ])
 
 // node_modules/lucide-react/dist/esm/icons/scissors-square-dashed-bottom.js
-var ScissorsSquareDashedBottom = createLucideIcon('ScissorsSquareDashedBottom', [
+var ScissorsSquareDashedBottom = createLucideIcon(
+  'ScissorsSquareDashedBottom',
   [
-    'path',
-    { d: 'M4 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2', key: '1vzg26' },
-  ],
-  ['path', { d: 'M10 22H8', key: 'euku7a' }],
-  ['path', { d: 'M16 22h-2', key: '18d249' }],
-  ['circle', { cx: '8', cy: '8', r: '2', key: '14cg06' }],
-  ['path', { d: 'M9.414 9.414 12 12', key: 'qz4lzr' }],
-  ['path', { d: 'M14.8 14.8 18 18', key: '11flf1' }],
-  ['circle', { cx: '8', cy: '16', r: '2', key: '1acxsx' }],
-  ['path', { d: 'm18 6-8.586 8.586', key: '11kzk1' }],
-])
+    [
+      'path',
+      {
+        d: 'M4 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2',
+        key: '1vzg26',
+      },
+    ],
+    ['path', { d: 'M10 22H8', key: 'euku7a' }],
+    ['path', { d: 'M16 22h-2', key: '18d249' }],
+    ['circle', { cx: '8', cy: '8', r: '2', key: '14cg06' }],
+    ['path', { d: 'M9.414 9.414 12 12', key: 'qz4lzr' }],
+    ['path', { d: 'M14.8 14.8 18 18', key: '11flf1' }],
+    ['circle', { cx: '8', cy: '16', r: '2', key: '1acxsx' }],
+    ['path', { d: 'm18 6-8.586 8.586', key: '11kzk1' }],
+  ]
+)
 
 // node_modules/lucide-react/dist/esm/icons/scissors-square.js
 var ScissorsSquare = createLucideIcon('ScissorsSquare', [
-  ['rect', { width: '20', height: '20', x: '2', y: '2', rx: '2', key: '1btzen' }],
+  [
+    'rect',
+    { width: '20', height: '20', x: '2', y: '2', rx: '2', key: '1btzen' },
+  ],
   ['circle', { cx: '8', cy: '8', r: '2', key: '14cg06' }],
   ['path', { d: 'M9.414 9.414 12 12', key: 'qz4lzr' }],
   ['path', { d: 'M14.8 14.8 18 18', key: '11flf1' }],
@@ -11565,7 +14032,13 @@ var Scissors = createLucideIcon('Scissors', [
 
 // node_modules/lucide-react/dist/esm/icons/screen-share-off.js
 var ScreenShareOff = createLucideIcon('ScreenShareOff', [
-  ['path', { d: 'M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3', key: 'i8wdob' }],
+  [
+    'path',
+    {
+      d: 'M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3',
+      key: 'i8wdob',
+    },
+  ],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'm22 3-5 5', key: '12jva0' }],
@@ -11574,7 +14047,13 @@ var ScreenShareOff = createLucideIcon('ScreenShareOff', [
 
 // node_modules/lucide-react/dist/esm/icons/screen-share.js
 var ScreenShare = createLucideIcon('ScreenShare', [
-  ['path', { d: 'M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3', key: 'i8wdob' }],
+  [
+    'path',
+    {
+      d: 'M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3',
+      key: 'i8wdob',
+    },
+  ],
   ['path', { d: 'M8 21h8', key: '1ev6f3' }],
   ['path', { d: 'M12 17v4', key: '1riwvh' }],
   ['path', { d: 'm17 8 5-5', key: 'fqif7o' }],
@@ -11585,7 +14064,10 @@ var ScreenShare = createLucideIcon('ScreenShare', [
 var ScrollText = createLucideIcon('ScrollText', [
   [
     'path',
-    { d: 'M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4', key: '13a6an' },
+    {
+      d: 'M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4',
+      key: '13a6an',
+    },
   ],
   ['path', { d: 'M19 17V5a2 2 0 0 0-2-2H4', key: 'zz82l3' }],
   ['path', { d: 'M15 8h-5', key: '1khuty' }],
@@ -11596,7 +14078,10 @@ var ScrollText = createLucideIcon('ScrollText', [
 var Scroll = createLucideIcon('Scroll', [
   [
     'path',
-    { d: 'M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4', key: '13a6an' },
+    {
+      d: 'M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4',
+      key: '13a6an',
+    },
   ],
   ['path', { d: 'M19 17V5a2 2 0 0 0-2-2H4', key: 'zz82l3' }],
 ])
@@ -11645,7 +14130,10 @@ var SendHorizontal = createLucideIcon('SendHorizontal', [
 
 // node_modules/lucide-react/dist/esm/icons/send-to-back.js
 var SendToBack = createLucideIcon('SendToBack', [
-  ['rect', { x: '14', y: '14', width: '8', height: '8', rx: '2', key: '1b0bso' }],
+  [
+    'rect',
+    { x: '14', y: '14', width: '8', height: '8', rx: '2', key: '1b0bso' },
+  ],
   ['rect', { x: '2', y: '2', width: '8', height: '8', rx: '2', key: '1x09vl' }],
   ['path', { d: 'M7 14v1a2 2 0 0 0 2 2h1', key: 'pao6x6' }],
   ['path', { d: 'M14 7h1a2 2 0 0 1 2 2v1', key: '19tdru' }],
@@ -11724,17 +14212,48 @@ var ServerCrash = createLucideIcon('ServerCrash', [
 // node_modules/lucide-react/dist/esm/icons/server-off.js
 var ServerOff = createLucideIcon('ServerOff', [
   ['path', { d: 'M7 2h13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-5', key: 'bt2siv' }],
-  ['path', { d: 'M10 10 2.5 2.5C2 2 2 2.5 2 5v3a2 2 0 0 0 2 2h6z', key: '1hjrv1' }],
+  [
+    'path',
+    { d: 'M10 10 2.5 2.5C2 2 2 2.5 2 5v3a2 2 0 0 0 2 2h6z', key: '1hjrv1' },
+  ],
   ['path', { d: 'M22 17v-1a2 2 0 0 0-2-2h-1', key: '1iynyr' }],
-  ['path', { d: 'M4 14a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16.5l1-.5.5.5-8-8H4z', key: '161ggg' }],
+  [
+    'path',
+    {
+      d: 'M4 14a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16.5l1-.5.5.5-8-8H4z',
+      key: '161ggg',
+    },
+  ],
   ['path', { d: 'M6 18h.01', key: 'uhywen' }],
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/server.js
 var Server = createLucideIcon('Server', [
-  ['rect', { width: '20', height: '8', x: '2', y: '2', rx: '2', ry: '2', key: 'ngkwjq' }],
-  ['rect', { width: '20', height: '8', x: '2', y: '14', rx: '2', ry: '2', key: 'iecqi9' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '8',
+      x: '2',
+      y: '2',
+      rx: '2',
+      ry: '2',
+      key: 'ngkwjq',
+    },
+  ],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '8',
+      x: '2',
+      y: '14',
+      rx: '2',
+      ry: '2',
+      key: 'iecqi9',
+    },
+  ],
   ['line', { x1: '6', x2: '6.01', y1: '6', y2: '6', key: '16zg32' }],
   ['line', { x1: '6', x2: '6.01', y1: '18', y2: '18', key: 'nzw8ys' }],
 ])
@@ -11768,7 +14287,10 @@ var Shapes = createLucideIcon('Shapes', [
       key: '1bo67w',
     },
   ],
-  ['rect', { x: '3', y: '14', width: '7', height: '7', rx: '1', key: '1bkyp8' }],
+  [
+    'rect',
+    { x: '3', y: '14', width: '7', height: '7', rx: '1', key: '1bkyp8' },
+  ],
   ['circle', { cx: '17.5', cy: '17.5', r: '3.5', key: 'w3z12y' }],
 ])
 
@@ -11777,7 +14299,10 @@ var Share2 = createLucideIcon('Share2', [
   ['circle', { cx: '18', cy: '5', r: '3', key: 'gq8acd' }],
   ['circle', { cx: '6', cy: '12', r: '3', key: 'w7nqdw' }],
   ['circle', { cx: '18', cy: '19', r: '3', key: '1xt0gg' }],
-  ['line', { x1: '8.59', x2: '15.42', y1: '13.51', y2: '17.49', key: '47mynk' }],
+  [
+    'line',
+    { x1: '8.59', x2: '15.42', y1: '13.51', y2: '17.49', key: '47mynk' },
+  ],
   ['line', { x1: '15.41', x2: '8.59', y1: '6.51', y2: '10.49', key: '1n3mei' }],
 ])
 
@@ -11790,7 +14315,18 @@ var Share = createLucideIcon('Share', [
 
 // node_modules/lucide-react/dist/esm/icons/sheet.js
 var Sheet = createLucideIcon('Sheet', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['line', { x1: '3', x2: '21', y1: '9', y2: '9', key: '1vqk6q' }],
   ['line', { x1: '3', x2: '21', y1: '15', y2: '15', key: 'o2sbyz' }],
   ['line', { x1: '9', x2: '9', y1: '9', y2: '21', key: '1ib60c' }],
@@ -11851,7 +14387,13 @@ var ShieldMinus = createLucideIcon('ShieldMinus', [
 var ShieldOff = createLucideIcon('ShieldOff', [
   ['path', { d: 'M19.7 14a6.9 6.9 0 0 0 .3-2V5l-8-3-3.2 1.2', key: '342pvf' }],
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
-  ['path', { d: 'M4.7 4.7 4 5v7c0 6 8 10 8 10a20.3 20.3 0 0 0 5.62-4.38', key: 'p0ycf4' }],
+  [
+    'path',
+    {
+      d: 'M4.7 4.7 4 5v7c0 6 8 10 8 10a20.3 20.3 0 0 0 5.62-4.38',
+      key: 'p0ycf4',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/shield-plus.js
@@ -11905,7 +14447,10 @@ var Ship = createLucideIcon('Ship', [
   ],
   [
     'path',
-    { d: 'M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76', key: 'fp8vka' },
+    {
+      d: 'M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76',
+      key: 'fp8vka',
+    },
   ],
   ['path', { d: 'M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6', key: 'qpkstq' }],
   ['path', { d: 'M12 10v4', key: '1kjpxc' }],
@@ -11925,7 +14470,10 @@ var Shirt = createLucideIcon('Shirt', [
 
 // node_modules/lucide-react/dist/esm/icons/shopping-bag.js
 var ShoppingBag = createLucideIcon('ShoppingBag', [
-  ['path', { d: 'M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z', key: 'hou9p0' }],
+  [
+    'path',
+    { d: 'M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z', key: 'hou9p0' },
+  ],
   ['path', { d: 'M3 6h18', key: 'd0wm0j' }],
   ['path', { d: 'M16 10a4 4 0 0 1-8 0', key: '1ltviw' }],
 ])
@@ -11935,7 +14483,13 @@ var ShoppingBasket = createLucideIcon('ShoppingBasket', [
   ['path', { d: 'm5 11 4-7', key: '116ra9' }],
   ['path', { d: 'm19 11-4-7', key: 'cnml18' }],
   ['path', { d: 'M2 11h20', key: '3eubbj' }],
-  ['path', { d: 'm3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8c.9 0 1.8-.7 2-1.6l1.7-7.4', key: '1x2lvw' }],
+  [
+    'path',
+    {
+      d: 'm3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8c.9 0 1.8-.7 2-1.6l1.7-7.4',
+      key: '1x2lvw',
+    },
+  ],
   ['path', { d: 'm9 11 1 9', key: '1ojof7' }],
   ['path', { d: 'M4.5 15.5h15', key: '13mye1' }],
   ['path', { d: 'm15 11-1 9', key: '5wnq3a' }],
@@ -11960,7 +14514,10 @@ var Shovel = createLucideIcon('Shovel', [
   ['path', { d: 'M9.5 14.5 16 8', key: '1smz5x' }],
   [
     'path',
-    { d: 'm17 2 5 5-.5.5a3.53 3.53 0 0 1-5 0s0 0 0 0a3.53 3.53 0 0 1 0-5L17 2', key: '1q8uv5' },
+    {
+      d: 'm17 2 5 5-.5.5a3.53 3.53 0 0 1-5 0s0 0 0 0a3.53 3.53 0 0 1 0-5L17 2',
+      key: '1q8uv5',
+    },
   ],
 ])
 
@@ -11991,14 +14548,23 @@ var Shrub = createLucideIcon('Shrub', [
   ['path', { d: 'M12 22v-7l-2-2', key: 'eqv9mc' }],
   [
     'path',
-    { d: 'M17 8v.8A6 6 0 0 1 13.8 20v0H10v0A6.5 6.5 0 0 1 7 8h0a5 5 0 0 1 10 0Z', key: '12jcau' },
+    {
+      d: 'M17 8v.8A6 6 0 0 1 13.8 20v0H10v0A6.5 6.5 0 0 1 7 8h0a5 5 0 0 1 10 0Z',
+      key: '12jcau',
+    },
   ],
   ['path', { d: 'm14 14-2 2', key: '847xa2' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/shuffle.js
 var Shuffle = createLucideIcon('Shuffle', [
-  ['path', { d: 'M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22', key: '1wmou1' }],
+  [
+    'path',
+    {
+      d: 'M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22',
+      key: '1wmou1',
+    },
+  ],
   ['path', { d: 'm18 2 4 4-4 4', key: 'pucp1d' }],
   ['path', { d: 'M2 6h1.9c1.5 0 2.9.9 3.6 2.2', key: '10bdb2' }],
   ['path', { d: 'M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8', key: 'vgxac0' }],
@@ -12007,12 +14573,17 @@ var Shuffle = createLucideIcon('Shuffle', [
 
 // node_modules/lucide-react/dist/esm/icons/sigma-square.js
 var SigmaSquare = createLucideIcon('SigmaSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M16 8.9V7H8l4 5-4 5h8v-1.9', key: '9nih0i' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/sigma.js
-var Sigma = createLucideIcon('Sigma', [['path', { d: 'M18 7V4H6l6 8-6 8h12v-3', key: 'zis8ev' }]])
+var Sigma = createLucideIcon('Sigma', [
+  ['path', { d: 'M18 7V4H6l6 8-6 8h12v-3', key: 'zis8ev' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/signal-high.js
 var SignalHigh = createLucideIcon('SignalHigh', [
@@ -12036,7 +14607,9 @@ var SignalMedium = createLucideIcon('SignalMedium', [
 ])
 
 // node_modules/lucide-react/dist/esm/icons/signal-zero.js
-var SignalZero = createLucideIcon('SignalZero', [['path', { d: 'M2 20h.01', key: '4haj6o' }]])
+var SignalZero = createLucideIcon('SignalZero', [
+  ['path', { d: 'M2 20h.01', key: '4haj6o' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/signal.js
 var Signal = createLucideIcon('Signal', [
@@ -12065,7 +14638,10 @@ var Signpost = createLucideIcon('Signpost', [
 // node_modules/lucide-react/dist/esm/icons/siren.js
 var Siren = createLucideIcon('Siren', [
   ['path', { d: 'M7 12a5 5 0 0 1 5-5v0a5 5 0 0 1 5 5v6H7v-6Z', key: 'rmc51c' }],
-  ['path', { d: 'M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2H5v-2Z', key: 'yyvmjy' }],
+  [
+    'path',
+    { d: 'M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2H5v-2Z', key: 'yyvmjy' },
+  ],
   ['path', { d: 'M21 12h1', key: 'jtio3y' }],
   ['path', { d: 'M18.5 4.5 18 5', key: 'g5sp9y' }],
   ['path', { d: 'M2 12h1', key: '1uaihz' }],
@@ -12092,28 +14668,54 @@ var Skull = createLucideIcon('Skull', [
   ['circle', { cx: '15', cy: '12', r: '1', key: '1tmaij' }],
   ['path', { d: 'M8 20v2h8v-2', key: 'ded4og' }],
   ['path', { d: 'm12.5 17-.5-1-.5 1h1z', key: '3me087' }],
-  ['path', { d: 'M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20', key: 'xq9p5u' }],
+  [
+    'path',
+    {
+      d: 'M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20',
+      key: 'xq9p5u',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/slack.js
 var Slack = createLucideIcon('Slack', [
-  ['rect', { width: '3', height: '8', x: '13', y: '2', rx: '1.5', key: 'diqz80' }],
+  [
+    'rect',
+    { width: '3', height: '8', x: '13', y: '2', rx: '1.5', key: 'diqz80' },
+  ],
   ['path', { d: 'M19 8.5V10h1.5A1.5 1.5 0 1 0 19 8.5', key: '183iwg' }],
-  ['rect', { width: '3', height: '8', x: '8', y: '14', rx: '1.5', key: 'hqg7r1' }],
+  [
+    'rect',
+    { width: '3', height: '8', x: '8', y: '14', rx: '1.5', key: 'hqg7r1' },
+  ],
   ['path', { d: 'M5 15.5V14H3.5A1.5 1.5 0 1 0 5 15.5', key: '76g71w' }],
-  ['rect', { width: '8', height: '3', x: '14', y: '13', rx: '1.5', key: '1kmz0a' }],
+  [
+    'rect',
+    { width: '8', height: '3', x: '14', y: '13', rx: '1.5', key: '1kmz0a' },
+  ],
   ['path', { d: 'M15.5 19H14v1.5a1.5 1.5 0 1 0 1.5-1.5', key: 'jc4sz0' }],
-  ['rect', { width: '8', height: '3', x: '2', y: '8', rx: '1.5', key: '1omvl4' }],
+  [
+    'rect',
+    { width: '8', height: '3', x: '2', y: '8', rx: '1.5', key: '1omvl4' },
+  ],
   ['path', { d: 'M8.5 5H10V3.5A1.5 1.5 0 1 0 8.5 5', key: '16f3cl' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/slash.js
-var Slash = createLucideIcon('Slash', [['path', { d: 'M22 2 2 22', key: 'y4kqgn' }]])
+var Slash = createLucideIcon('Slash', [
+  ['path', { d: 'M22 2 2 22', key: 'y4kqgn' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/slice.js
 var Slice = createLucideIcon('Slice', [
   ['path', { d: 'm8 14-6 6h9v-3', key: 'zo3j9a' }],
-  ['path', { d: 'M18.37 3.63 8 14l3 3L21.37 6.63a2.12 2.12 0 1 0-3-3Z', key: '1dzx0j' }],
+  [
+    'path',
+    {
+      d: 'M18.37 3.63 8 14l3 3L21.37 6.63a2.12 2.12 0 1 0-3-3Z',
+      key: '1dzx0j',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js
@@ -12144,13 +14746,27 @@ var Sliders = createLucideIcon('Sliders', [
 
 // node_modules/lucide-react/dist/esm/icons/smartphone-charging.js
 var SmartphoneCharging = createLucideIcon('SmartphoneCharging', [
-  ['rect', { width: '14', height: '20', x: '5', y: '2', rx: '2', ry: '2', key: '1yt0o3' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '20',
+      x: '5',
+      y: '2',
+      rx: '2',
+      ry: '2',
+      key: '1yt0o3',
+    },
+  ],
   ['path', { d: 'M12.667 8 10 12h4l-2.667 4', key: 'h9lk2d' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/smartphone-nfc.js
 var SmartphoneNfc = createLucideIcon('SmartphoneNfc', [
-  ['rect', { width: '7', height: '12', x: '2', y: '6', rx: '1', key: '5nje8w' }],
+  [
+    'rect',
+    { width: '7', height: '12', x: '2', y: '6', rx: '1', key: '5nje8w' },
+  ],
   ['path', { d: 'M13 8.32a7.43 7.43 0 0 1 0 7.36', key: '1g306n' }],
   ['path', { d: 'M16.46 6.21a11.76 11.76 0 0 1 0 11.58', key: 'uqvjvo' }],
   ['path', { d: 'M19.91 4.1a15.91 15.91 0 0 1 .01 15.8', key: 'ujntz3' }],
@@ -12158,7 +14774,18 @@ var SmartphoneNfc = createLucideIcon('SmartphoneNfc', [
 
 // node_modules/lucide-react/dist/esm/icons/smartphone.js
 var Smartphone = createLucideIcon('Smartphone', [
-  ['rect', { width: '14', height: '20', x: '5', y: '2', rx: '2', ry: '2', key: '1yt0o3' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '20',
+      x: '5',
+      y: '2',
+      rx: '2',
+      ry: '2',
+      key: '1yt0o3',
+    },
+  ],
   ['path', { d: 'M12 18h.01', key: 'mhygvu' }],
 ])
 
@@ -12182,7 +14809,10 @@ var Smile = createLucideIcon('Smile', [
 
 // node_modules/lucide-react/dist/esm/icons/snail.js
 var Snail = createLucideIcon('Snail', [
-  ['path', { d: 'M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0', key: 'hneq2s' }],
+  [
+    'path',
+    { d: 'M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0', key: 'hneq2s' },
+  ],
   ['circle', { cx: '10', cy: '13', r: '8', key: '194lz3' }],
   ['path', { d: 'M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6', key: 'ixqyt7' }],
   ['path', { d: 'M18 3 19.1 5.2', key: '9tjm43' }],
@@ -12235,7 +14865,10 @@ var Soup = createLucideIcon('Soup', [
   ],
   [
     'path',
-    { d: 'M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62', key: '97tijn' },
+    {
+      d: 'M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62',
+      key: '97tijn',
+    },
   ],
 ])
 
@@ -12284,7 +14917,10 @@ var Sparkles = createLucideIcon('Sparkles', [
 
 // node_modules/lucide-react/dist/esm/icons/speaker.js
 var Speaker = createLucideIcon('Speaker', [
-  ['rect', { width: '16', height: '20', x: '4', y: '2', rx: '2', key: '1nb95v' }],
+  [
+    'rect',
+    { width: '16', height: '20', x: '4', y: '2', rx: '2', key: '1nb95v' },
+  ],
   ['path', { d: 'M12 6h.01', key: '1vi96p' }],
   ['circle', { cx: '12', cy: '14', r: '4', key: '1jruaj' }],
   ['path', { d: 'M12 14h.01', key: '1etili' }],
@@ -12361,7 +14997,10 @@ var SprayCan = createLucideIcon('SprayCan', [
   ['path', { d: 'M7 9h.01', key: '19b3jx' }],
   ['path', { d: 'M3 11h.01', key: '1eifu7' }],
   ['rect', { width: '4', height: '4', x: '15', y: '5', key: 'mri9e4' }],
-  ['path', { d: 'm19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2', key: 'aib6hk' }],
+  [
+    'path',
+    { d: 'm19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2', key: 'aib6hk' },
+  ],
   ['path', { d: 'm13 14 8-2', key: '1d7bmk' }],
   ['path', { d: 'm13 19 8-2', key: '1y2vml' }],
 ])
@@ -12388,7 +15027,10 @@ var Sprout = createLucideIcon('Sprout', [
 
 // node_modules/lucide-react/dist/esm/icons/square-asterisk.js
 var SquareAsterisk = createLucideIcon('SquareAsterisk', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M12 8v8', key: 'napkw2' }],
   ['path', { d: 'm8.5 14 7-4', key: '12hpby' }],
   ['path', { d: 'm8.5 10 7 4', key: 'wwy2dy' }],
@@ -12396,7 +15038,10 @@ var SquareAsterisk = createLucideIcon('SquareAsterisk', [
 
 // node_modules/lucide-react/dist/esm/icons/square-code.js
 var SquareCode = createLucideIcon('SquareCode', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'm10 10-2 2 2 2', key: 'p6et6i' }],
   ['path', { d: 'm14 14 2-2-2-2', key: 'm075q2' }],
 ])
@@ -12407,7 +15052,10 @@ var SquareDashedBottomCode = createLucideIcon('SquareDashedBottomCode', [
   ['path', { d: 'm14 14 2-2-2-2', key: 'm075q2' }],
   [
     'path',
-    { d: 'M5 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2', key: 'as5y1o' },
+    {
+      d: 'M5 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2',
+      key: 'as5y1o',
+    },
   ],
   ['path', { d: 'M9 21h1', key: '15o7lz' }],
   ['path', { d: 'M14 21h1', key: 'v9vybs' }],
@@ -12417,7 +15065,10 @@ var SquareDashedBottomCode = createLucideIcon('SquareDashedBottomCode', [
 var SquareDashedBottom = createLucideIcon('SquareDashedBottom', [
   [
     'path',
-    { d: 'M5 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2', key: 'as5y1o' },
+    {
+      d: 'M5 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2',
+      key: 'as5y1o',
+    },
   ],
   ['path', { d: 'M9 21h1', key: '15o7lz' }],
   ['path', { d: 'M14 21h1', key: 'v9vybs' }],
@@ -12425,47 +15076,80 @@ var SquareDashedBottom = createLucideIcon('SquareDashedBottom', [
 
 // node_modules/lucide-react/dist/esm/icons/square-dot.js
 var SquareDot = createLucideIcon('SquareDot', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['circle', { cx: '12', cy: '12', r: '1', key: '41hilf' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/square-equal.js
 var SquareEqual = createLucideIcon('SquareEqual', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M7 10h10', key: '1101jm' }],
   ['path', { d: 'M7 14h10', key: '1mhdw3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/square-slash.js
 var SquareSlash = createLucideIcon('SquareSlash', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['line', { x1: '9', x2: '15', y1: '15', y2: '9', key: '1dfufj' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/square-stack.js
 var SquareStack = createLucideIcon('SquareStack', [
-  ['path', { d: 'M4 10c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2', key: '4i38lg' }],
-  ['path', { d: 'M10 16c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2', key: 'mlte4a' }],
-  ['rect', { width: '8', height: '8', x: '14', y: '14', rx: '2', key: '1fa9i4' }],
+  [
+    'path',
+    {
+      d: 'M4 10c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2',
+      key: '4i38lg',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M10 16c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2',
+      key: 'mlte4a',
+    },
+  ],
+  [
+    'rect',
+    { width: '8', height: '8', x: '14', y: '14', rx: '2', key: '1fa9i4' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/square-user-round.js
 var SquareUserRound = createLucideIcon('SquareUserRound', [
   ['path', { d: 'M18 21a6 6 0 0 0-12 0', key: 'kaz2du' }],
   ['circle', { cx: '12', cy: '11', r: '4', key: '1gt34v' }],
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/square-user.js
 var SquareUser = createLucideIcon('SquareUser', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['circle', { cx: '12', cy: '10', r: '3', key: 'ilqhr7' }],
   ['path', { d: 'M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2', key: '1m6ac2' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/square.js
 var Square = createLucideIcon('Square', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/squirrel.js
@@ -12477,7 +15161,13 @@ var Squirrel = createLucideIcon('Squirrel', [
       key: '980v8a',
     },
   ],
-  ['path', { d: 'M16 20c0-1.7 1.3-3 3-3h1a2 2 0 0 0 2-2v-2a4 4 0 0 0-4-4V4', key: '19wibc' }],
+  [
+    'path',
+    {
+      d: 'M16 20c0-1.7 1.3-3 3-3h1a2 2 0 0 0 2-2v-2a4 4 0 0 0-4-4V4',
+      key: '19wibc',
+    },
+  ],
   ['path', { d: 'M15.2 22a3 3 0 0 0-2.2-5', key: '13bpac' }],
   ['path', { d: 'M18 13h.01', key: '9veqaj' }],
 ])
@@ -12494,7 +15184,10 @@ var Stamp = createLucideIcon('Stamp', [
   ],
   [
     'path',
-    { d: 'M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-3-3c-1.66 0-3 1-3 3s1 2 1 3.5V13', key: 'cnxgux' },
+    {
+      d: 'M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-3-3c-1.66 0-3 1-3 3s1 2 1 3.5V13',
+      key: 'cnxgux',
+    },
   ],
 ])
 
@@ -12505,8 +15198,17 @@ var StarHalf = createLucideIcon('StarHalf', [
 
 // node_modules/lucide-react/dist/esm/icons/star-off.js
 var StarOff = createLucideIcon('StarOff', [
-  ['path', { d: 'M8.34 8.34 2 9.27l5 4.87L5.82 21 12 17.77 18.18 21l-.59-3.43', key: '16m0ql' }],
-  ['path', { d: 'M18.42 12.76 22 9.27l-6.91-1L12 2l-1.44 2.91', key: '1vt8nq' }],
+  [
+    'path',
+    {
+      d: 'M8.34 8.34 2 9.27l5 4.87L5.82 21 12 17.77 18.18 21l-.59-3.43',
+      key: '16m0ql',
+    },
+  ],
+  [
+    'path',
+    { d: 'M18.42 12.76 22 9.27l-6.91-1L12 2l-1.44 2.91', key: '1vt8nq' },
+  ],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
 ])
 
@@ -12551,7 +15253,10 @@ var Stethoscope = createLucideIcon('Stethoscope', [
 var Sticker = createLucideIcon('Sticker', [
   [
     'path',
-    { d: 'M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z', key: '1wis1t' },
+    {
+      d: 'M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z',
+      key: '1wis1t',
+    },
   ],
   ['path', { d: 'M15 3v6h6', key: 'edgan2' }],
   ['path', { d: 'M10 16s.8 1 2 1c1.3 0 2-1 2-1', key: '1vvgv3' }],
@@ -12563,7 +15268,10 @@ var Sticker = createLucideIcon('Sticker', [
 var StickyNote = createLucideIcon('StickyNote', [
   [
     'path',
-    { d: 'M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z', key: '1wis1t' },
+    {
+      d: 'M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z',
+      key: '1wis1t',
+    },
   ],
   ['path', { d: 'M15 3v6h6', key: 'edgan2' }],
 ])
@@ -12576,7 +15284,13 @@ var StopCircle = createLucideIcon('StopCircle', [
 
 // node_modules/lucide-react/dist/esm/icons/store.js
 var Store = createLucideIcon('Store', [
-  ['path', { d: 'm2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7', key: 'ztvudi' }],
+  [
+    'path',
+    {
+      d: 'm2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7',
+      key: 'ztvudi',
+    },
+  ],
   ['path', { d: 'M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8', key: '1b2hhj' }],
   ['path', { d: 'M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4', key: '2ebpfo' }],
   ['path', { d: 'M2 7h20', key: '1fcdvo' }],
@@ -12591,14 +15305,26 @@ var Store = createLucideIcon('Store', [
 
 // node_modules/lucide-react/dist/esm/icons/stretch-horizontal.js
 var StretchHorizontal = createLucideIcon('StretchHorizontal', [
-  ['rect', { width: '20', height: '6', x: '2', y: '4', rx: '2', key: 'qdearl' }],
-  ['rect', { width: '20', height: '6', x: '2', y: '14', rx: '2', key: '1xrn6j' }],
+  [
+    'rect',
+    { width: '20', height: '6', x: '2', y: '4', rx: '2', key: 'qdearl' },
+  ],
+  [
+    'rect',
+    { width: '20', height: '6', x: '2', y: '14', rx: '2', key: '1xrn6j' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/stretch-vertical.js
 var StretchVertical = createLucideIcon('StretchVertical', [
-  ['rect', { width: '6', height: '20', x: '4', y: '2', rx: '2', key: '19qu7m' }],
-  ['rect', { width: '6', height: '20', x: '14', y: '2', rx: '2', key: '24v0nk' }],
+  [
+    'rect',
+    { width: '6', height: '20', x: '4', y: '2', rx: '2', key: '19qu7m' },
+  ],
+  [
+    'rect',
+    { width: '6', height: '20', x: '14', y: '2', rx: '2', key: '24v0nk' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/strikethrough.js
@@ -12627,7 +15353,13 @@ var Subtitles = createLucideIcon('Subtitles', [
   ['path', { d: 'M15 13h2', key: 'vgjay3' }],
   ['path', { d: 'M7 9h2', key: '1q072n' }],
   ['path', { d: 'M13 9h4', key: 'o7fxw0' }],
-  ['path', { d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z', key: '5somay' }],
+  [
+    'path',
+    {
+      d: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z',
+      key: '5somay',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/sun-dim.js
@@ -12774,7 +15506,13 @@ var Swords = createLucideIcon('Swords', [
 var Syringe = createLucideIcon('Syringe', [
   ['path', { d: 'm18 2 4 4', key: '22kx64' }],
   ['path', { d: 'm17 7 3-3', key: '1w1zoj' }],
-  ['path', { d: 'M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5', key: '1exhtz' }],
+  [
+    'path',
+    {
+      d: 'M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5',
+      key: '1exhtz',
+    },
+  ],
   ['path', { d: 'm9 11 4 4', key: 'rovt3i' }],
   ['path', { d: 'm5 19-3 3', key: '59f2uf' }],
   ['path', { d: 'm14 4 6 6', key: 'yqp9t2' }],
@@ -12794,7 +15532,10 @@ var Table2 = createLucideIcon('Table2', [
 // node_modules/lucide-react/dist/esm/icons/table-properties.js
 var TableProperties = createLucideIcon('TableProperties', [
   ['path', { d: 'M15 3v18', key: '14nvp0' }],
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M21 9H3', key: '1338ky' }],
   ['path', { d: 'M21 15H3', key: '9uk58r' }],
 ])
@@ -12802,21 +15543,44 @@ var TableProperties = createLucideIcon('TableProperties', [
 // node_modules/lucide-react/dist/esm/icons/table.js
 var Table = createLucideIcon('Table', [
   ['path', { d: 'M12 3v18', key: '108xh3' }],
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M3 9h18', key: '1pudct' }],
   ['path', { d: 'M3 15h18', key: '5xshup' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/tablet-smartphone.js
 var TabletSmartphone = createLucideIcon('TabletSmartphone', [
-  ['rect', { width: '10', height: '14', x: '3', y: '8', rx: '2', key: '1vrsiq' }],
-  ['path', { d: 'M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4', key: '1j4zmg' }],
+  [
+    'rect',
+    { width: '10', height: '14', x: '3', y: '8', rx: '2', key: '1vrsiq' },
+  ],
+  [
+    'path',
+    {
+      d: 'M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4',
+      key: '1j4zmg',
+    },
+  ],
   ['path', { d: 'M8 18h.01', key: 'lrp35t' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/tablet.js
 var Tablet = createLucideIcon('Tablet', [
-  ['rect', { width: '16', height: '20', x: '4', y: '2', rx: '2', ry: '2', key: '76otgf' }],
+  [
+    'rect',
+    {
+      width: '16',
+      height: '20',
+      x: '4',
+      y: '2',
+      rx: '2',
+      ry: '2',
+      key: '76otgf',
+    },
+  ],
   ['line', { x1: '12', x2: '12.01', y1: '18', y2: '18', key: '1dp563' }],
 ])
 
@@ -12854,7 +15618,9 @@ var Tags = createLucideIcon('Tags', [
 ])
 
 // node_modules/lucide-react/dist/esm/icons/tally-1.js
-var Tally1 = createLucideIcon('Tally1', [['path', { d: 'M4 4v16', key: '6qkkli' }]])
+var Tally1 = createLucideIcon('Tally1', [
+  ['path', { d: 'M4 4v16', key: '6qkkli' }],
+])
 
 // node_modules/lucide-react/dist/esm/icons/tally-2.js
 var Tally2 = createLucideIcon('Tally2', [
@@ -12924,7 +15690,18 @@ var Tent = createLucideIcon('Tent', [
 var TerminalSquare = createLucideIcon('TerminalSquare', [
   ['path', { d: 'm7 11 2-2-2-2', key: '1lz0vl' }],
   ['path', { d: 'M11 13h4', key: '1p7l4v' }],
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/terminal.js
@@ -12937,7 +15714,10 @@ var Terminal = createLucideIcon('Terminal', [
 var TestTube2 = createLucideIcon('TestTube2', [
   [
     'path',
-    { d: 'M21 7 6.82 21.18a2.83 2.83 0 0 1-3.99-.01v0a2.83 2.83 0 0 1 0-4L17 3', key: 'dg8b2p' },
+    {
+      d: 'M21 7 6.82 21.18a2.83 2.83 0 0 1-3.99-.01v0a2.83 2.83 0 0 1 0-4L17 3',
+      key: 'dg8b2p',
+    },
   ],
   ['path', { d: 'm16 2 6 6', key: '1gw87d' }],
   ['path', { d: 'M12 16H4', key: '1cjfip' }],
@@ -12945,15 +15725,33 @@ var TestTube2 = createLucideIcon('TestTube2', [
 
 // node_modules/lucide-react/dist/esm/icons/test-tube.js
 var TestTube = createLucideIcon('TestTube', [
-  ['path', { d: 'M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5h0c-1.4 0-2.5-1.1-2.5-2.5V2', key: '187lwq' }],
+  [
+    'path',
+    {
+      d: 'M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5h0c-1.4 0-2.5-1.1-2.5-2.5V2',
+      key: '187lwq',
+    },
+  ],
   ['path', { d: 'M8.5 2h7', key: 'csnxdl' }],
   ['path', { d: 'M14.5 16h-5', key: '1ox875' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/test-tubes.js
 var TestTubes = createLucideIcon('TestTubes', [
-  ['path', { d: 'M9 2v17.5A2.5 2.5 0 0 1 6.5 22v0A2.5 2.5 0 0 1 4 19.5V2', key: '12z67u' }],
-  ['path', { d: 'M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5v0a2.5 2.5 0 0 1-2.5-2.5V2', key: '1q2nfy' }],
+  [
+    'path',
+    {
+      d: 'M9 2v17.5A2.5 2.5 0 0 1 6.5 22v0A2.5 2.5 0 0 1 4 19.5V2',
+      key: '12z67u',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5v0a2.5 2.5 0 0 1-2.5-2.5V2',
+      key: '1q2nfy',
+    },
+  ],
   ['path', { d: 'M3 2h7', key: '7s29d5' }],
   ['path', { d: 'M14 2h7', key: '7sicin' }],
   ['path', { d: 'M9 16H4', key: '1bfye3' }],
@@ -13112,13 +15910,35 @@ var Timer = createLucideIcon('Timer', [
 
 // node_modules/lucide-react/dist/esm/icons/toggle-left.js
 var ToggleLeft = createLucideIcon('ToggleLeft', [
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '6', ry: '6', key: 'f2vt7d' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '12',
+      x: '2',
+      y: '6',
+      rx: '6',
+      ry: '6',
+      key: 'f2vt7d',
+    },
+  ],
   ['circle', { cx: '8', cy: '12', r: '2', key: '1nvbw3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/toggle-right.js
 var ToggleRight = createLucideIcon('ToggleRight', [
-  ['rect', { width: '20', height: '12', x: '2', y: '6', rx: '6', ry: '6', key: 'f2vt7d' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '12',
+      x: '2',
+      y: '6',
+      rx: '6',
+      ry: '6',
+      key: 'f2vt7d',
+    },
+  ],
   ['circle', { cx: '16', cy: '12', r: '2', key: '4ma0v8' }],
 ])
 
@@ -13149,7 +15969,10 @@ var TouchpadOff = createLucideIcon('TouchpadOff', [
 
 // node_modules/lucide-react/dist/esm/icons/touchpad.js
 var Touchpad = createLucideIcon('Touchpad', [
-  ['rect', { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' }],
+  [
+    'rect',
+    { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' },
+  ],
   ['path', { d: 'M2 14h20', key: 'myj16y' }],
   ['path', { d: 'M12 20v-6', key: '1rm09r' }],
 ])
@@ -13158,7 +15981,10 @@ var Touchpad = createLucideIcon('Touchpad', [
 var TowerControl = createLucideIcon('TowerControl', [
   [
     'path',
-    { d: 'M18.2 12.27 20 6H4l1.8 6.27a1 1 0 0 0 .95.73h10.5a1 1 0 0 0 .96-.73Z', key: '1pledb' },
+    {
+      d: 'M18.2 12.27 20 6H4l1.8 6.27a1 1 0 0 0 .95.73h10.5a1 1 0 0 0 .96-.73Z',
+      key: '1pledb',
+    },
   ],
   ['path', { d: 'M8 13v9', key: 'hmv0ci' }],
   ['path', { d: 'M16 22v-9', key: 'ylnf1u' }],
@@ -13170,7 +15996,10 @@ var TowerControl = createLucideIcon('TowerControl', [
 
 // node_modules/lucide-react/dist/esm/icons/toy-brick.js
 var ToyBrick = createLucideIcon('ToyBrick', [
-  ['rect', { width: '18', height: '12', x: '3', y: '8', rx: '1', key: '158fvp' }],
+  [
+    'rect',
+    { width: '18', height: '12', x: '3', y: '8', rx: '1', key: '158fvp' },
+  ],
   ['path', { d: 'M10 8V5c0-.6-.4-1-1-1H6a1 1 0 0 0-1 1v3', key: 's0042v' }],
   ['path', { d: 'M19 8V5c0-.6-.4-1-1-1h-3a1 1 0 0 0-1 1v3', key: '9wmeh2' }],
 ])
@@ -13191,7 +16020,10 @@ var Tractor = createLucideIcon('Tractor', [
 // node_modules/lucide-react/dist/esm/icons/traffic-cone.js
 var TrafficCone = createLucideIcon('TrafficCone', [
   ['path', { d: 'M9.3 6.2a4.55 4.55 0 0 0 5.4 0', key: 'flyxqv' }],
-  ['path', { d: 'M7.9 10.7c.9.8 2.4 1.3 4.1 1.3s3.2-.5 4.1-1.3', key: '1nlxxg' }],
+  [
+    'path',
+    { d: 'M7.9 10.7c.9.8 2.4 1.3 4.1 1.3s3.2-.5 4.1-1.3', key: '1nlxxg' },
+  ],
   [
     'path',
     {
@@ -13214,7 +16046,13 @@ var TrainFrontTunnel = createLucideIcon('TrainFrontTunnel', [
   ['path', { d: 'M15 6.8v1.4a3 2.8 0 1 1-6 0V6.8', key: 'm8q3n9' }],
   ['path', { d: 'M10 15h.01', key: '44in9x' }],
   ['path', { d: 'M14 15h.01', key: '5mohn5' }],
-  ['path', { d: 'M10 19a4 4 0 0 1-4-4v-3a6 6 0 1 1 12 0v3a4 4 0 0 1-4 4Z', key: 'hckbmu' }],
+  [
+    'path',
+    {
+      d: 'M10 19a4 4 0 0 1-4-4v-3a6 6 0 1 1 12 0v3a4 4 0 0 1-4 4Z',
+      key: 'hckbmu',
+    },
+  ],
   ['path', { d: 'm9 19-2 3', key: 'iij7hm' }],
   ['path', { d: 'm15 19 2 3', key: 'npx8sa' }],
 ])
@@ -13224,7 +16062,13 @@ var TrainFront = createLucideIcon('TrainFront', [
   ['path', { d: 'M8 3.1V7a4 4 0 0 0 8 0V3.1', key: '1v71zp' }],
   ['path', { d: 'm9 15-1-1', key: '1yrq24' }],
   ['path', { d: 'm15 15 1-1', key: '1t0d6s' }],
-  ['path', { d: 'M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z', key: '1p0hjs' }],
+  [
+    'path',
+    {
+      d: 'M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z',
+      key: '1p0hjs',
+    },
+  ],
   ['path', { d: 'm8 19-2 3', key: '13i0xs' }],
   ['path', { d: 'm16 19 2 3', key: 'xo31yx' }],
 ])
@@ -13242,7 +16086,10 @@ var TrainTrack = createLucideIcon('TrainTrack', [
 
 // node_modules/lucide-react/dist/esm/icons/tram-front.js
 var TramFront = createLucideIcon('TramFront', [
-  ['rect', { width: '16', height: '16', x: '4', y: '3', rx: '2', key: '1wxw4b' }],
+  [
+    'rect',
+    { width: '16', height: '16', x: '4', y: '3', rx: '2', key: '1wxw4b' },
+  ],
   ['path', { d: 'M4 11h16', key: 'mpoxn0' }],
   ['path', { d: 'M12 3v8', key: '1h2ygw' }],
   ['path', { d: 'm8 19-2 3', key: '13i0xs' }],
@@ -13295,7 +16142,10 @@ var TreePine = createLucideIcon('TreePine', [
 var Trees = createLucideIcon('Trees', [
   [
     'path',
-    { d: 'M10 10v.2A3 3 0 0 1 8.9 16v0H5v0h0a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z', key: 'yh07w9' },
+    {
+      d: 'M10 10v.2A3 3 0 0 1 8.9 16v0H5v0h0a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z',
+      key: 'yh07w9',
+    },
   ],
   ['path', { d: 'M7 16v6', key: '1a82de' }],
   ['path', { d: 'M13 19v3', key: '13sx9i' }],
@@ -13310,7 +16160,18 @@ var Trees = createLucideIcon('Trees', [
 
 // node_modules/lucide-react/dist/esm/icons/trello.js
 var Trello = createLucideIcon('Trello', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['rect', { width: '3', height: '9', x: '7', y: '7', key: '14n3xi' }],
   ['rect', { width: '3', height: '5', x: '14', y: '7', key: 's4azjd' }],
 ])
@@ -13342,7 +16203,10 @@ var TriangleRight = createLucideIcon('TriangleRight', [
 var Triangle = createLucideIcon('Triangle', [
   [
     'path',
-    { d: 'M13.73 4a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z', key: '14u9p9' },
+    {
+      d: 'M13.73 4a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z',
+      key: '14u9p9',
+    },
   ],
 ])
 
@@ -13351,14 +16215,32 @@ var Trophy = createLucideIcon('Trophy', [
   ['path', { d: 'M6 9H4.5a2.5 2.5 0 0 1 0-5H6', key: '17hqa7' }],
   ['path', { d: 'M18 9h1.5a2.5 2.5 0 0 0 0-5H18', key: 'lmptdp' }],
   ['path', { d: 'M4 22h16', key: '57wxv0' }],
-  ['path', { d: 'M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22', key: '1nw9bq' }],
-  ['path', { d: 'M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22', key: '1np0yb' }],
+  [
+    'path',
+    {
+      d: 'M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22',
+      key: '1nw9bq',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22',
+      key: '1np0yb',
+    },
+  ],
   ['path', { d: 'M18 2H6v7a6 6 0 0 0 12 0V2Z', key: 'u46fv3' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/truck.js
 var Truck = createLucideIcon('Truck', [
-  ['path', { d: 'M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11', key: 'hs4xqm' }],
+  [
+    'path',
+    {
+      d: 'M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11',
+      key: 'hs4xqm',
+    },
+  ],
   ['path', { d: 'M14 9h4l4 4v4c0 .6-.4 1-1 1h-2', key: '11fp61' }],
   ['circle', { cx: '7', cy: '18', r: '2', key: '19iecd' }],
   ['path', { d: 'M15 18H9', key: '1lyqi6' }],
@@ -13382,12 +16264,26 @@ var Turtle = createLucideIcon('Turtle', [
 // node_modules/lucide-react/dist/esm/icons/tv-2.js
 var Tv2 = createLucideIcon('Tv2', [
   ['path', { d: 'M7 21h10', key: '1b0cd5' }],
-  ['rect', { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' }],
+  [
+    'rect',
+    { width: '20', height: '14', x: '2', y: '3', rx: '2', key: '48i651' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/tv.js
 var Tv = createLucideIcon('Tv', [
-  ['rect', { width: '20', height: '15', x: '2', y: '7', rx: '2', ry: '2', key: '10ag99' }],
+  [
+    'rect',
+    {
+      width: '20',
+      height: '15',
+      x: '2',
+      y: '7',
+      rx: '2',
+      ry: '2',
+      key: '10ag99',
+    },
+  ],
   ['polyline', { points: '17 2 12 7 7 2', key: '11pgbg' }],
 ])
 
@@ -13417,7 +16313,13 @@ var Type = createLucideIcon('Type', [
 // node_modules/lucide-react/dist/esm/icons/umbrella-off.js
 var UmbrellaOff = createLucideIcon('UmbrellaOff', [
   ['path', { d: 'M12 2v1', key: '11qlp1' }],
-  ['path', { d: 'M15.5 21a1.85 1.85 0 0 1-3.5-1v-8H2a10 10 0 0 1 3.428-6.575', key: 'eki10q' }],
+  [
+    'path',
+    {
+      d: 'M15.5 21a1.85 1.85 0 0 1-3.5-1v-8H2a10 10 0 0 1 3.428-6.575',
+      key: 'eki10q',
+    },
+  ],
   ['path', { d: 'M17.5 12H22A10 10 0 0 0 9.004 3.455', key: 'n2ayka' }],
   ['path', { d: 'm2 2 20 20', key: '1ooewy' }],
 ])
@@ -13438,7 +16340,13 @@ var Underline = createLucideIcon('Underline', [
 // node_modules/lucide-react/dist/esm/icons/undo-2.js
 var Undo2 = createLucideIcon('Undo2', [
   ['path', { d: 'M9 14 4 9l5-5', key: '102s5s' }],
-  ['path', { d: 'M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11', key: 'llx8ln' }],
+  [
+    'path',
+    {
+      d: 'M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11',
+      key: 'llx8ln',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/undo-dot.js
@@ -13481,12 +16389,18 @@ var UnfoldVertical = createLucideIcon('UnfoldVertical', [
 // node_modules/lucide-react/dist/esm/icons/ungroup.js
 var Ungroup = createLucideIcon('Ungroup', [
   ['rect', { width: '8', height: '6', x: '5', y: '4', rx: '1', key: 'nzclkv' }],
-  ['rect', { width: '8', height: '6', x: '11', y: '14', rx: '1', key: '4tytwb' }],
+  [
+    'rect',
+    { width: '8', height: '6', x: '11', y: '14', rx: '1', key: '4tytwb' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/unlink-2.js
 var Unlink2 = createLucideIcon('Unlink2', [
-  ['path', { d: 'M15 7h2a5 5 0 0 1 0 10h-2m-6 0H7A5 5 0 0 1 7 7h2', key: '1re2ne' }],
+  [
+    'path',
+    { d: 'M15 7h2a5 5 0 0 1 0 10h-2m-6 0H7A5 5 0 0 1 7 7h2', key: '1re2ne' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/unlink.js
@@ -13514,13 +16428,27 @@ var Unlink = createLucideIcon('Unlink', [
 // node_modules/lucide-react/dist/esm/icons/unlock-keyhole.js
 var UnlockKeyhole = createLucideIcon('UnlockKeyhole', [
   ['circle', { cx: '12', cy: '16', r: '1', key: '1au0dj' }],
-  ['rect', { x: '3', y: '10', width: '18', height: '12', rx: '2', key: '6s8ecr' }],
+  [
+    'rect',
+    { x: '3', y: '10', width: '18', height: '12', rx: '2', key: '6s8ecr' },
+  ],
   ['path', { d: 'M7 10V7a5 5 0 0 1 9.33-2.5', key: 'car5b7' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/unlock.js
 var Unlock = createLucideIcon('Unlock', [
-  ['rect', { width: '18', height: '11', x: '3', y: '11', rx: '2', ry: '2', key: '1w4ew1' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '11',
+      x: '3',
+      y: '11',
+      rx: '2',
+      ry: '2',
+      key: '1w4ew1',
+    },
+  ],
   ['path', { d: 'M7 11V7a5 5 0 0 1 9.9-1', key: '1mm8w8' }],
 ])
 
@@ -13530,19 +16458,31 @@ var Unplug = createLucideIcon('Unplug', [
   ['path', { d: 'm2 22 3-3', key: '19mgm9' }],
   [
     'path',
-    { d: 'M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z', key: 'goz73y' },
+    {
+      d: 'M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z',
+      key: 'goz73y',
+    },
   ],
   ['path', { d: 'M7.5 13.5 10 11', key: '7xgeeb' }],
   ['path', { d: 'M10.5 16.5 13 14', key: '10btkg' }],
   [
     'path',
-    { d: 'm12 6 6 6 2.3-2.3a2.4 2.4 0 0 0 0-3.4l-2.6-2.6a2.4 2.4 0 0 0-3.4 0Z', key: '1snsnr' },
+    {
+      d: 'm12 6 6 6 2.3-2.3a2.4 2.4 0 0 0 0-3.4l-2.6-2.6a2.4 2.4 0 0 0-3.4 0Z',
+      key: '1snsnr',
+    },
   ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/upload-cloud.js
 var UploadCloud = createLucideIcon('UploadCloud', [
-  ['path', { d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242', key: '1pljnt' }],
+  [
+    'path',
+    {
+      d: 'M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242',
+      key: '1pljnt',
+    },
+  ],
   ['path', { d: 'M12 12v9', key: '192myk' }],
   ['path', { d: 'm16 16-4-4-4 4', key: '119tzi' }],
 ])
@@ -13684,10 +16624,19 @@ var Users = createLucideIcon('Users', [
 
 // node_modules/lucide-react/dist/esm/icons/utensils-crossed.js
 var UtensilsCrossed = createLucideIcon('UtensilsCrossed', [
-  ['path', { d: 'm16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8', key: 'n7qcjb' }],
   [
     'path',
-    { d: 'M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7', key: 'd0u48b' },
+    {
+      d: 'm16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8',
+      key: 'n7qcjb',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7',
+      key: 'd0u48b',
+    },
   ],
   ['path', { d: 'm2.1 21.8 6.4-6.3', key: 'yn04lh' }],
   ['path', { d: 'm19 5-7 7', key: '194lzd' }],
@@ -13697,7 +16646,10 @@ var UtensilsCrossed = createLucideIcon('UtensilsCrossed', [
 var Utensils = createLucideIcon('Utensils', [
   ['path', { d: 'M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2', key: 'cjf0a3' }],
   ['path', { d: 'M7 2v20', key: '1473qp' }],
-  ['path', { d: 'M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7', key: '1ogz0v' }],
+  [
+    'path',
+    { d: 'M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7', key: '1ogz0v' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/utility-pole.js
@@ -13721,7 +16673,10 @@ var Variable = createLucideIcon('Variable', [
 
 // node_modules/lucide-react/dist/esm/icons/vegan.js
 var Vegan = createLucideIcon('Vegan', [
-  ['path', { d: 'M2 2a26.6 26.6 0 0 1 10 20c.9-6.82 1.5-9.5 4-14', key: 'qiv7li' }],
+  [
+    'path',
+    { d: 'M2 2a26.6 26.6 0 0 1 10 20c.9-6.82 1.5-9.5 4-14', key: 'qiv7li' },
+  ],
   ['path', { d: 'M16 8c4 0 6-2 6-6-4 0-6 2-6 6', key: 'n7eohy' }],
   ['path', { d: 'M17.41 3.6a10 10 0 1 0 3 3', key: '1dion0' }],
 ])
@@ -13752,25 +16707,48 @@ var VibrateOff = createLucideIcon('VibrateOff', [
 var Vibrate = createLucideIcon('Vibrate', [
   ['path', { d: 'm2 8 2 2-2 2 2 2-2 2', key: 'sv1b1' }],
   ['path', { d: 'm22 8-2 2 2 2-2 2 2 2', key: '101i4y' }],
-  ['rect', { width: '8', height: '14', x: '8', y: '5', rx: '1', key: '1oyrl4' }],
+  [
+    'rect',
+    { width: '8', height: '14', x: '8', y: '5', rx: '1', key: '1oyrl4' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/video-off.js
 var VideoOff = createLucideIcon('VideoOff', [
   ['path', { d: 'M10.66 6H14a2 2 0 0 1 2 2v2.34l1 1L22 8v8', key: 'ubwiq0' }],
-  ['path', { d: 'M16 16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2l10 10Z', key: '1l10zd' }],
+  [
+    'path',
+    {
+      d: 'M16 16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2l10 10Z',
+      key: '1l10zd',
+    },
+  ],
   ['line', { x1: '2', x2: '22', y1: '2', y2: '22', key: 'a6p6uj' }],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/video.js
 var Video = createLucideIcon('Video', [
   ['path', { d: 'm22 8-6 4 6 4V8Z', key: '50v9me' }],
-  ['rect', { width: '14', height: '12', x: '2', y: '6', rx: '2', ry: '2', key: '1rqjg6' }],
+  [
+    'rect',
+    {
+      width: '14',
+      height: '12',
+      x: '2',
+      y: '6',
+      rx: '2',
+      ry: '2',
+      key: '1rqjg6',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/videotape.js
 var Videotape = createLucideIcon('Videotape', [
-  ['rect', { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' }],
+  [
+    'rect',
+    { width: '20', height: '16', x: '2', y: '4', rx: '2', key: '18n3k1' },
+  ],
   ['path', { d: 'M2 8h20', key: 'd11cs7' }],
   ['circle', { cx: '8', cy: '14', r: '2', key: '1k2qr5' }],
   ['path', { d: 'M8 12h8', key: '1wcyev' }],
@@ -13781,7 +16759,10 @@ var Videotape = createLucideIcon('Videotape', [
 var View = createLucideIcon('View', [
   [
     'path',
-    { d: 'M5 12s2.545-5 7-5c4.454 0 7 5 7 5s-2.546 5-7 5c-4.455 0-7-5-7-5z', key: 'vptub8' },
+    {
+      d: 'M5 12s2.545-5 7-5c4.454 0 7 5 7 5s-2.546 5-7 5c-4.455 0-7-5-7-5z',
+      key: 'vptub8',
+    },
   ],
   ['path', { d: 'M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2z', key: '10lhjs' }],
   ['path', { d: 'M21 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2', key: 'mrq65r' }],
@@ -13841,7 +16822,10 @@ var Wallet2 = createLucideIcon('Wallet2', [
 
 // node_modules/lucide-react/dist/esm/icons/wallet-cards.js
 var WalletCards = createLucideIcon('WalletCards', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' }],
+  [
+    'rect',
+    { width: '18', height: '18', x: '3', y: '3', rx: '2', key: 'afitv7' },
+  ],
   ['path', { d: 'M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2', key: '4125el' }],
   [
     'path',
@@ -13924,9 +16908,18 @@ var Watch = createLucideIcon('Watch', [
   ['polyline', { points: '12 10 12 12 13 13', key: '19dquz' }],
   [
     'path',
-    { d: 'm16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05', key: '18k57s' },
+    {
+      d: 'm16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05',
+      key: '18k57s',
+    },
   ],
-  ['path', { d: 'm7.88 16.36.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05', key: '16ny36' }],
+  [
+    'path',
+    {
+      d: 'm7.88 16.36.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05',
+      key: '16ny36',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/waves.js
@@ -13982,8 +16975,20 @@ var Webhook = createLucideIcon('Webhook', [
       key: 'q3hayz',
     },
   ],
-  ['path', { d: 'm6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06', key: '1go1hn' }],
-  ['path', { d: 'm12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8', key: 'qlwsc0' }],
+  [
+    'path',
+    {
+      d: 'm6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06',
+      key: '1go1hn',
+    },
+  ],
+  [
+    'path',
+    {
+      d: 'm12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8',
+      key: 'qlwsc0',
+    },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/weight.js
@@ -14011,11 +17016,17 @@ var WheatOff = createLucideIcon('WheatOff', [
   ],
   [
     'path',
-    { d: 'm8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97', key: '4wz8re' },
+    {
+      d: 'm8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97',
+      key: '4wz8re',
+    },
   ],
   [
     'path',
-    { d: 'M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62', key: 'rves66' },
+    {
+      d: 'M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62',
+      key: 'rves66',
+    },
   ],
   ['path', { d: 'M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z', key: '19rau1' }],
   [
@@ -14147,7 +17158,10 @@ var Wine = createLucideIcon('Wine', [
   ['path', { d: 'M12 15v7', key: 't2xh3l' }],
   [
     'path',
-    { d: 'M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z', key: '10ffi3' },
+    {
+      d: 'M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z',
+      key: '10ffi3',
+    },
   ],
 ])
 
@@ -14155,7 +17169,10 @@ var Wine = createLucideIcon('Wine', [
 var Workflow = createLucideIcon('Workflow', [
   ['rect', { width: '8', height: '8', x: '3', y: '3', rx: '2', key: 'by2w9f' }],
   ['path', { d: 'M7 11v4a2 2 0 0 0 2 2h4', key: 'xkn7yn' }],
-  ['rect', { width: '8', height: '8', x: '13', y: '13', rx: '2', key: '1cgmvn' }],
+  [
+    'rect',
+    { width: '8', height: '8', x: '13', y: '13', rx: '2', key: '1cgmvn' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/wrap-text.js
@@ -14189,7 +17206,8 @@ var XOctagon = createLucideIcon('XOctagon', [
   [
     'polygon',
     {
-      points: '7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2',
+      points:
+        '7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2',
       key: 'h1p8hx',
     },
   ],
@@ -14199,7 +17217,18 @@ var XOctagon = createLucideIcon('XOctagon', [
 
 // node_modules/lucide-react/dist/esm/icons/x-square.js
 var XSquare = createLucideIcon('XSquare', [
-  ['rect', { width: '18', height: '18', x: '3', y: '3', rx: '2', ry: '2', key: '1m3agn' }],
+  [
+    'rect',
+    {
+      width: '18',
+      height: '18',
+      x: '3',
+      y: '3',
+      rx: '2',
+      ry: '2',
+      key: '1m3agn',
+    },
+  ],
   ['path', { d: 'm15 9-6 6', key: '1uzhvr' }],
   ['path', { d: 'm9 9 6 6', key: 'z0biqf' }],
 ])
@@ -14232,7 +17261,10 @@ var ZapOff = createLucideIcon('ZapOff', [
 
 // node_modules/lucide-react/dist/esm/icons/zap.js
 var Zap = createLucideIcon('Zap', [
-  ['polygon', { points: '13 2 3 14 12 14 11 22 21 10 12 10 13 2', key: '45s27k' }],
+  [
+    'polygon',
+    { points: '13 2 3 14 12 14 11 22 21 10 12 10 13 2', key: '45s27k' },
+  ],
 ])
 
 // node_modules/lucide-react/dist/esm/icons/zoom-in.js

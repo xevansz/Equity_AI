@@ -10,9 +10,12 @@ var require_scheduler_development = __commonJS({
         'use strict'
         if (
           typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === 'function'
+          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart ===
+            'function'
         ) {
-          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error())
+          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(
+            new Error()
+          )
         }
         var enableSchedulerDebugging = false
         var enableProfiling = false
@@ -90,7 +93,8 @@ var require_scheduler_development = __commonJS({
         var IdlePriority = 5
         function markTaskErrored(task, ms) {}
         var hasPerformanceNow =
-          typeof performance === 'object' && typeof performance.now === 'function'
+          typeof performance === 'object' &&
+          typeof performance.now === 'function'
         if (hasPerformanceNow) {
           var localPerformance = performance
           exports.unstable_now = function () {
@@ -117,9 +121,12 @@ var require_scheduler_development = __commonJS({
         var isPerformingWork = false
         var isHostCallbackScheduled = false
         var isHostTimeoutScheduled = false
-        var localSetTimeout = typeof setTimeout === 'function' ? setTimeout : null
-        var localClearTimeout = typeof clearTimeout === 'function' ? clearTimeout : null
-        var localSetImmediate = typeof setImmediate !== 'undefined' ? setImmediate : null
+        var localSetTimeout =
+          typeof setTimeout === 'function' ? setTimeout : null
+        var localClearTimeout =
+          typeof clearTimeout === 'function' ? clearTimeout : null
+        var localSetImmediate =
+          typeof setImmediate !== 'undefined' ? setImmediate : null
         var isInputPending =
           typeof navigator !== 'undefined' &&
           navigator.scheduling !== void 0 &&
@@ -151,7 +158,10 @@ var require_scheduler_development = __commonJS({
             } else {
               var firstTimer = peek(timerQueue)
               if (firstTimer !== null) {
-                requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime)
+                requestHostTimeout(
+                  handleTimeout,
+                  firstTimer.startTime - currentTime
+                )
               }
             }
           }
@@ -200,7 +210,8 @@ var require_scheduler_development = __commonJS({
             if (typeof callback === 'function') {
               currentTask.callback = null
               currentPriorityLevel = currentTask.priorityLevel
-              var didUserCallbackTimeout = currentTask.expirationTime <= currentTime
+              var didUserCallbackTimeout =
+                currentTask.expirationTime <= currentTime
               var continuationCallback = callback(didUserCallbackTimeout)
               currentTime = exports.unstable_now()
               if (typeof continuationCallback === 'function') {
@@ -221,7 +232,10 @@ var require_scheduler_development = __commonJS({
           } else {
             var firstTimer = peek(timerQueue)
             if (firstTimer !== null) {
-              requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime)
+              requestHostTimeout(
+                handleTimeout,
+                firstTimer.startTime - currentTime
+              )
             }
             return false
           }
@@ -445,7 +459,8 @@ var require_scheduler_development = __commonJS({
         exports.unstable_cancelCallback = unstable_cancelCallback
         exports.unstable_continueExecution = unstable_continueExecution
         exports.unstable_forceFrameRate = forceFrameRate
-        exports.unstable_getCurrentPriorityLevel = unstable_getCurrentPriorityLevel
+        exports.unstable_getCurrentPriorityLevel =
+          unstable_getCurrentPriorityLevel
         exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode
         exports.unstable_next = unstable_next
         exports.unstable_pauseExecution = unstable_pauseExecution
@@ -456,7 +471,8 @@ var require_scheduler_development = __commonJS({
         exports.unstable_wrapCallback = unstable_wrapCallback
         if (
           typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function'
+          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop ===
+            'function'
         ) {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error())
         }
@@ -486,13 +502,17 @@ var require_react_dom_development = __commonJS({
         'use strict'
         if (
           typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === 'function'
+          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart ===
+            'function'
         ) {
-          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error())
+          __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(
+            new Error()
+          )
         }
         var React = require_react()
         var Scheduler = require_scheduler()
-        var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
+        var ReactSharedInternals =
+          React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
         var suppressWarning = false
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -503,7 +523,9 @@ var require_react_dom_development = __commonJS({
           {
             if (!suppressWarning) {
               for (
-                var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1;
+                var _len = arguments.length,
+                  args = new Array(_len > 1 ? _len - 1 : 0),
+                  _key = 1;
                 _key < _len;
                 _key++
               ) {
@@ -531,7 +553,8 @@ var require_react_dom_development = __commonJS({
         }
         function printWarning(level, format, args) {
           {
-            var ReactDebugCurrentFrame2 = ReactSharedInternals.ReactDebugCurrentFrame
+            var ReactDebugCurrentFrame2 =
+              ReactSharedInternals.ReactDebugCurrentFrame
             var stack = ReactDebugCurrentFrame2.getStackAddendum()
             if (stack !== '') {
               format += '%s'
@@ -541,7 +564,11 @@ var require_react_dom_development = __commonJS({
               return String(item)
             })
             argsWithFormat.unshift('Warning: ' + format)
-            Function.prototype.apply.call(console[level], console, argsWithFormat)
+            Function.prototype.apply.call(
+              console[level],
+              console,
+              argsWithFormat
+            )
           }
         }
         var FunctionComponent = 0
@@ -616,9 +643,12 @@ var require_react_dom_development = __commonJS({
         var hasOwnProperty = Object.prototype.hasOwnProperty
         function typeName(value) {
           {
-            var hasToStringTag = typeof Symbol === 'function' && Symbol.toStringTag
+            var hasToStringTag =
+              typeof Symbol === 'function' && Symbol.toStringTag
             var type =
-              (hasToStringTag && value[Symbol.toStringTag]) || value.constructor.name || 'Object'
+              (hasToStringTag && value[Symbol.toStringTag]) ||
+              value.constructor.name ||
+              'Object'
             return type
           }
         }
@@ -714,7 +744,8 @@ var require_react_dom_development = __commonJS({
         var ATTRIBUTE_NAME_START_CHAR =
           ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD'
         var ATTRIBUTE_NAME_CHAR =
-          ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040'
+          ATTRIBUTE_NAME_START_CHAR +
+          '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040'
         var VALID_ATTRIBUTE_NAME_REGEX = new RegExp(
           '^[' + ATTRIBUTE_NAME_START_CHAR + '][' + ATTRIBUTE_NAME_CHAR + ']*$'
         )
@@ -737,7 +768,11 @@ var require_react_dom_development = __commonJS({
           }
           return false
         }
-        function shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag) {
+        function shouldIgnoreAttribute(
+          name,
+          propertyInfo,
+          isCustomComponentTag
+        ) {
           if (propertyInfo !== null) {
             return propertyInfo.type === RESERVED
           }
@@ -753,7 +788,12 @@ var require_react_dom_development = __commonJS({
           }
           return false
         }
-        function shouldRemoveAttributeWithWarning(name, value, propertyInfo, isCustomComponentTag) {
+        function shouldRemoveAttributeWithWarning(
+          name,
+          value,
+          propertyInfo,
+          isCustomComponentTag
+        ) {
           if (propertyInfo !== null && propertyInfo.type === RESERVED) {
             return false
           }
@@ -776,11 +816,23 @@ var require_react_dom_development = __commonJS({
               return false
           }
         }
-        function shouldRemoveAttribute(name, value, propertyInfo, isCustomComponentTag) {
+        function shouldRemoveAttribute(
+          name,
+          value,
+          propertyInfo,
+          isCustomComponentTag
+        ) {
           if (value === null || typeof value === 'undefined') {
             return true
           }
-          if (shouldRemoveAttributeWithWarning(name, value, propertyInfo, isCustomComponentTag)) {
+          if (
+            shouldRemoveAttributeWithWarning(
+              name,
+              value,
+              propertyInfo,
+              isCustomComponentTag
+            )
+          ) {
             return true
           }
           if (isCustomComponentTag) {
@@ -813,7 +865,9 @@ var require_react_dom_development = __commonJS({
           removeEmptyString
         ) {
           this.acceptsBooleans =
-            type === BOOLEANISH_STRING || type === BOOLEAN || type === OVERLOADED_BOOLEAN
+            type === BOOLEANISH_STRING ||
+            type === BOOLEAN ||
+            type === OVERLOADED_BOOLEAN
           this.attributeName = attributeName
           this.attributeNamespace = attributeNamespace
           this.mustUseProperty = mustUseProperty
@@ -873,29 +927,14 @@ var require_react_dom_development = __commonJS({
             false
           )
         })
-        ;['contentEditable', 'draggable', 'spellCheck', 'value'].forEach(function (name) {
-          properties[name] = new PropertyInfoRecord(
-            name,
-            BOOLEANISH_STRING,
-            false,
-            // mustUseProperty
-            name.toLowerCase(),
-            // attributeName
-            null,
-            // attributeNamespace
-            false,
-            // sanitizeURL
-            false
-          )
-        })
-        ;['autoReverse', 'externalResourcesRequired', 'focusable', 'preserveAlpha'].forEach(
+        ;['contentEditable', 'draggable', 'spellCheck', 'value'].forEach(
           function (name) {
             properties[name] = new PropertyInfoRecord(
               name,
               BOOLEANISH_STRING,
               false,
               // mustUseProperty
-              name,
+              name.toLowerCase(),
               // attributeName
               null,
               // attributeNamespace
@@ -905,6 +944,26 @@ var require_react_dom_development = __commonJS({
             )
           }
         )
+        ;[
+          'autoReverse',
+          'externalResourcesRequired',
+          'focusable',
+          'preserveAlpha',
+        ].forEach(function (name) {
+          properties[name] = new PropertyInfoRecord(
+            name,
+            BOOLEANISH_STRING,
+            false,
+            // mustUseProperty
+            name,
+            // attributeName
+            null,
+            // attributeNamespace
+            false,
+            // sanitizeURL
+            false
+          )
+        })
         ;[
           'allowFullScreen',
           'async',
@@ -1199,21 +1258,23 @@ var require_react_dom_development = __commonJS({
           // sanitizeURL
           false
         )
-        ;['src', 'href', 'action', 'formAction'].forEach(function (attributeName) {
-          properties[attributeName] = new PropertyInfoRecord(
-            attributeName,
-            STRING,
-            false,
-            // mustUseProperty
-            attributeName.toLowerCase(),
-            // attributeName
-            null,
-            // attributeNamespace
-            true,
-            // sanitizeURL
-            true
-          )
-        })
+        ;['src', 'href', 'action', 'formAction'].forEach(
+          function (attributeName) {
+            properties[attributeName] = new PropertyInfoRecord(
+              attributeName,
+              STRING,
+              false,
+              // mustUseProperty
+              attributeName.toLowerCase(),
+              // attributeName
+              null,
+              // attributeNamespace
+              true,
+              // sanitizeURL
+              true
+            )
+          }
+        )
         var isJavaScriptProtocol =
           /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*\:/i
         var didWarn = false
@@ -1248,7 +1309,9 @@ var require_react_dom_development = __commonJS({
                   if (value === '') {
                     return true
                   }
-                  if (shouldRemoveAttribute(name, expected, propertyInfo, false)) {
+                  if (
+                    shouldRemoveAttribute(name, expected, propertyInfo, false)
+                  ) {
                     return value
                   }
                   if (value === '' + expected) {
@@ -1257,7 +1320,9 @@ var require_react_dom_development = __commonJS({
                   return value
                 }
               } else if (node.hasAttribute(attributeName)) {
-                if (shouldRemoveAttribute(name, expected, propertyInfo, false)) {
+                if (
+                  shouldRemoveAttribute(name, expected, propertyInfo, false)
+                ) {
                   return node.getAttribute(attributeName)
                 }
                 if (propertyInfo.type === BOOLEAN) {
@@ -1275,7 +1340,12 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function getValueForAttribute(node, name, expected, isCustomComponentTag) {
+        function getValueForAttribute(
+          node,
+          name,
+          expected,
+          isCustomComponentTag
+        ) {
           {
             if (!isAttributeNameSafe(name)) {
               return
@@ -1298,7 +1368,14 @@ var require_react_dom_development = __commonJS({
           if (shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag)) {
             return
           }
-          if (shouldRemoveAttribute(name, value, propertyInfo, isCustomComponentTag)) {
+          if (
+            shouldRemoveAttribute(
+              name,
+              value,
+              propertyInfo,
+              isCustomComponentTag
+            )
+          ) {
             value = null
           }
           if (isCustomComponentTag || propertyInfo === null) {
@@ -1333,7 +1410,10 @@ var require_react_dom_development = __commonJS({
           } else {
             var _type = propertyInfo.type
             var attributeValue
-            if (_type === BOOLEAN || (_type === OVERLOADED_BOOLEAN && value === true)) {
+            if (
+              _type === BOOLEAN ||
+              (_type === OVERLOADED_BOOLEAN && value === true)
+            ) {
               attributeValue = ''
             } else {
               {
@@ -1347,7 +1427,11 @@ var require_react_dom_development = __commonJS({
               }
             }
             if (attributeNamespace) {
-              node.setAttributeNS(attributeNamespace, attributeName, attributeValue)
+              node.setAttributeNS(
+                attributeNamespace,
+                attributeName,
+                attributeValue
+              )
             } else {
               node.setAttribute(attributeName, attributeValue)
             }
@@ -1459,7 +1543,9 @@ var require_react_dom_development = __commonJS({
               })
             }
             if (disabledDepth < 0) {
-              error('disabledDepth fell below zero. This is a bug in React. Please file an issue.')
+              error(
+                'disabledDepth fell below zero. This is a bug in React. Please file an issue.'
+              )
             }
           }
         }
@@ -1553,7 +1639,8 @@ var require_react_dom_development = __commonJS({
                       s--
                       c--
                       if (c < 0 || sampleLines[s] !== controlLines[c]) {
-                        var _frame = '\n' + sampleLines[s].replace(' at new ', ' at ')
+                        var _frame =
+                          '\n' + sampleLines[s].replace(' at new ', ' at ')
                         if (fn.displayName && _frame.includes('<anonymous>')) {
                           _frame = _frame.replace('<anonymous>', fn.displayName)
                         }
@@ -1624,13 +1711,21 @@ var require_react_dom_development = __commonJS({
               case REACT_FORWARD_REF_TYPE:
                 return describeFunctionComponentFrame(type.render)
               case REACT_MEMO_TYPE:
-                return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn)
+                return describeUnknownElementTypeFrameInDEV(
+                  type.type,
+                  source,
+                  ownerFn
+                )
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type
                 var payload = lazyComponent._payload
                 var init = lazyComponent._init
                 try {
-                  return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn)
+                  return describeUnknownElementTypeFrameInDEV(
+                    init(payload),
+                    source,
+                    ownerFn
+                  )
                 } catch (x) {}
               }
             }
@@ -1680,7 +1775,9 @@ var require_react_dom_development = __commonJS({
             return displayName
           }
           var functionName = innerType.displayName || innerType.name || ''
-          return functionName !== '' ? wrapperName + '(' + functionName + ')' : wrapperName
+          return functionName !== ''
+            ? wrapperName + '(' + functionName + ')'
+            : wrapperName
         }
         function getContextName(type) {
           return type.displayName || 'Context'
@@ -1750,7 +1847,9 @@ var require_react_dom_development = __commonJS({
           var functionName = innerType.displayName || innerType.name || ''
           return (
             outerType.displayName ||
-            (functionName !== '' ? wrapperName + '(' + functionName + ')' : wrapperName)
+            (functionName !== ''
+              ? wrapperName + '(' + functionName + ')'
+              : wrapperName)
           )
         }
         function getContextName$1(type) {
@@ -1909,7 +2008,14 @@ var require_react_dom_development = __commonJS({
                 'You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.'
               )
             }
-            if (!(props.onChange || props.readOnly || props.disabled || props.checked == null)) {
+            if (
+              !(
+                props.onChange ||
+                props.readOnly ||
+                props.disabled ||
+                props.checked == null
+              )
+            ) {
               error(
                 'You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.'
               )
@@ -1945,7 +2051,10 @@ var require_react_dom_development = __commonJS({
         }
         function trackValueOnNode(node) {
           var valueField = isCheckable(node) ? 'checked' : 'value'
-          var descriptor = Object.getOwnPropertyDescriptor(node.constructor.prototype, valueField)
+          var descriptor = Object.getOwnPropertyDescriptor(
+            node.constructor.prototype,
+            valueField
+          )
           {
             checkFormFieldValueStringCoercion(node[valueField])
           }
@@ -2041,7 +2150,8 @@ var require_react_dom_development = __commonJS({
             defaultChecked: void 0,
             defaultValue: void 0,
             value: void 0,
-            checked: checked != null ? checked : node._wrapperState.initialChecked,
+            checked:
+              checked != null ? checked : node._wrapperState.initialChecked,
           })
           return hostProps
         }
@@ -2074,10 +2184,14 @@ var require_react_dom_development = __commonJS({
             }
           }
           var node = element
-          var defaultValue = props.defaultValue == null ? '' : props.defaultValue
+          var defaultValue =
+            props.defaultValue == null ? '' : props.defaultValue
           node._wrapperState = {
-            initialChecked: props.checked != null ? props.checked : props.defaultChecked,
-            initialValue: getToStringValue(props.value != null ? props.value : defaultValue),
+            initialChecked:
+              props.checked != null ? props.checked : props.defaultChecked,
+            initialValue: getToStringValue(
+              props.value != null ? props.value : defaultValue
+            ),
             controlled: isControlled(props),
           }
         }
@@ -2092,13 +2206,21 @@ var require_react_dom_development = __commonJS({
           var node = element
           {
             var controlled = isControlled(props)
-            if (!node._wrapperState.controlled && controlled && !didWarnUncontrolledToControlled) {
+            if (
+              !node._wrapperState.controlled &&
+              controlled &&
+              !didWarnUncontrolledToControlled
+            ) {
               error(
                 'A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components'
               )
               didWarnUncontrolledToControlled = true
             }
-            if (node._wrapperState.controlled && !controlled && !didWarnControlledToUncontrolled) {
+            if (
+              node._wrapperState.controlled &&
+              !controlled &&
+              !didWarnControlledToUncontrolled
+            ) {
               error(
                 'A component is changing a controlled input to be uncontrolled. This is likely caused by the value changing from a defined to undefined, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components'
               )
@@ -2127,7 +2249,11 @@ var require_react_dom_development = __commonJS({
             if (props.hasOwnProperty('value')) {
               setDefaultValue(node, props.type, value)
             } else if (props.hasOwnProperty('defaultValue')) {
-              setDefaultValue(node, props.type, getToStringValue(props.defaultValue))
+              setDefaultValue(
+                node,
+                props.type,
+                getToStringValue(props.defaultValue)
+              )
             }
           }
           {
@@ -2138,7 +2264,10 @@ var require_react_dom_development = __commonJS({
         }
         function postMountWrapper(element, props, isHydrating2) {
           var node = element
-          if (props.hasOwnProperty('value') || props.hasOwnProperty('defaultValue')) {
+          if (
+            props.hasOwnProperty('value') ||
+            props.hasOwnProperty('defaultValue')
+          ) {
             var type = props.type
             var isButton = type === 'submit' || type === 'reset'
             if (isButton && (props.value === void 0 || props.value === null)) {
@@ -2221,7 +2350,10 @@ var require_react_dom_development = __commonJS({
         function validateProps(element, props) {
           {
             if (props.value == null) {
-              if (typeof props.children === 'object' && props.children !== null) {
+              if (
+                typeof props.children === 'object' &&
+                props.children !== null
+              ) {
                 React.Children.forEach(props.children, function (child) {
                   if (child == null) {
                     return
@@ -2255,7 +2387,10 @@ var require_react_dom_development = __commonJS({
         }
         function postMountWrapper$1(element, props) {
           if (props.value != null) {
-            element.setAttribute('value', toString(getToStringValue(props.value)))
+            element.setAttribute(
+              'value',
+              toString(getToStringValue(props.value))
+            )
           }
         }
         var isArrayImpl = Array.isArray
@@ -2308,7 +2443,9 @@ var require_react_dom_development = __commonJS({
               selectedValue['$' + selectedValues[i]] = true
             }
             for (var _i = 0; _i < options2.length; _i++) {
-              var selected = selectedValue.hasOwnProperty('$' + options2[_i].value)
+              var selected = selectedValue.hasOwnProperty(
+                '$' + options2[_i].value
+              )
               if (options2[_i].selected !== selected) {
                 options2[_i].selected = selected
               }
@@ -2383,7 +2520,12 @@ var require_react_dom_development = __commonJS({
             if (props.defaultValue != null) {
               updateOptions(node, !!props.multiple, props.defaultValue, true)
             } else {
-              updateOptions(node, !!props.multiple, props.multiple ? [] : '', false)
+              updateOptions(
+                node,
+                !!props.multiple,
+                props.multiple ? [] : '',
+                false
+              )
             }
           }
         }
@@ -2398,7 +2540,9 @@ var require_react_dom_development = __commonJS({
         function getHostProps$2(element, props) {
           var node = element
           if (props.dangerouslySetInnerHTML != null) {
-            throw new Error('`dangerouslySetInnerHTML` does not make sense on <textarea>.')
+            throw new Error(
+              '`dangerouslySetInnerHTML` does not make sense on <textarea>.'
+            )
           }
           var hostProps = assign({}, props, {
             value: void 0,
@@ -2411,7 +2555,11 @@ var require_react_dom_development = __commonJS({
           var node = element
           {
             checkControlledValueProps('textarea', props)
-            if (props.value !== void 0 && props.defaultValue !== void 0 && !didWarnValDefaultVal) {
+            if (
+              props.value !== void 0 &&
+              props.defaultValue !== void 0 &&
+              !didWarnValDefaultVal
+            ) {
               error(
                 '%s contains a textarea with both value and defaultValue props. Textarea elements must be either controlled or uncontrolled (specify either the value prop, or the defaultValue prop, but not both). Decide between using a controlled or uncontrolled textarea and remove one of these props. More info: https://reactjs.org/link/controlled-components',
                 getCurrentFiberOwnerNameInDevOrNull() || 'A component'
@@ -2437,7 +2585,9 @@ var require_react_dom_development = __commonJS({
                 }
                 if (isArray(children)) {
                   if (children.length > 1) {
-                    throw new Error('<textarea> can only have at most one child.')
+                    throw new Error(
+                      '<textarea> can only have at most one child.'
+                    )
                   }
                   children = children[0]
                 }
@@ -2516,23 +2666,27 @@ var require_react_dom_development = __commonJS({
           }
         }
         var reusableSVGContainer
-        var setInnerHTML = createMicrosoftUnsafeLocalFunction(function (node, html) {
-          if (node.namespaceURI === SVG_NAMESPACE) {
-            if (!('innerHTML' in node)) {
-              reusableSVGContainer = reusableSVGContainer || document.createElement('div')
-              reusableSVGContainer.innerHTML = '<svg>' + html.valueOf().toString() + '</svg>'
-              var svgNode = reusableSVGContainer.firstChild
-              while (node.firstChild) {
-                node.removeChild(node.firstChild)
+        var setInnerHTML = createMicrosoftUnsafeLocalFunction(
+          function (node, html) {
+            if (node.namespaceURI === SVG_NAMESPACE) {
+              if (!('innerHTML' in node)) {
+                reusableSVGContainer =
+                  reusableSVGContainer || document.createElement('div')
+                reusableSVGContainer.innerHTML =
+                  '<svg>' + html.valueOf().toString() + '</svg>'
+                var svgNode = reusableSVGContainer.firstChild
+                while (node.firstChild) {
+                  node.removeChild(node.firstChild)
+                }
+                while (svgNode.firstChild) {
+                  node.appendChild(svgNode.firstChild)
+                }
+                return
               }
-              while (svgNode.firstChild) {
-                node.appendChild(svgNode.firstChild)
-              }
-              return
             }
+            node.innerHTML = html
           }
-          node.innerHTML = html
-        })
+        )
         var ELEMENT_NODE = 1
         var TEXT_NODE = 3
         var COMMENT_NODE = 8
@@ -2541,7 +2695,11 @@ var require_react_dom_development = __commonJS({
         var setTextContent = function (node, text) {
           if (text) {
             var firstChild = node.firstChild
-            if (firstChild && firstChild === node.lastChild && firstChild.nodeType === TEXT_NODE) {
+            if (
+              firstChild &&
+              firstChild === node.lastChild &&
+              firstChild.nodeType === TEXT_NODE
+            ) {
               firstChild.nodeValue = text
               return
             }
@@ -2590,13 +2748,21 @@ var require_react_dom_development = __commonJS({
             'borderTopStyle',
             'borderTopWidth',
           ],
-          borderBlockEnd: ['borderBlockEndColor', 'borderBlockEndStyle', 'borderBlockEndWidth'],
+          borderBlockEnd: [
+            'borderBlockEndColor',
+            'borderBlockEndStyle',
+            'borderBlockEndWidth',
+          ],
           borderBlockStart: [
             'borderBlockStartColor',
             'borderBlockStartStyle',
             'borderBlockStartWidth',
           ],
-          borderBottom: ['borderBottomColor', 'borderBottomStyle', 'borderBottomWidth'],
+          borderBottom: [
+            'borderBottomColor',
+            'borderBottomStyle',
+            'borderBottomWidth',
+          ],
           borderColor: [
             'borderBottomColor',
             'borderLeftColor',
@@ -2610,7 +2776,11 @@ var require_react_dom_development = __commonJS({
             'borderImageSource',
             'borderImageWidth',
           ],
-          borderInlineEnd: ['borderInlineEndColor', 'borderInlineEndStyle', 'borderInlineEndWidth'],
+          borderInlineEnd: [
+            'borderInlineEndColor',
+            'borderInlineEndStyle',
+            'borderInlineEndWidth',
+          ],
           borderInlineStart: [
             'borderInlineStartColor',
             'borderInlineStartStyle',
@@ -2623,7 +2793,11 @@ var require_react_dom_development = __commonJS({
             'borderTopLeftRadius',
             'borderTopRightRadius',
           ],
-          borderRight: ['borderRightColor', 'borderRightStyle', 'borderRightWidth'],
+          borderRight: [
+            'borderRightColor',
+            'borderRightStyle',
+            'borderRightWidth',
+          ],
           borderStyle: [
             'borderBottomStyle',
             'borderLeftStyle',
@@ -2677,13 +2851,22 @@ var require_react_dom_development = __commonJS({
             'gridTemplateColumns',
             'gridTemplateRows',
           ],
-          gridArea: ['gridColumnEnd', 'gridColumnStart', 'gridRowEnd', 'gridRowStart'],
+          gridArea: [
+            'gridColumnEnd',
+            'gridColumnStart',
+            'gridRowEnd',
+            'gridRowStart',
+          ],
           gridColumn: ['gridColumnEnd', 'gridColumnStart'],
           gridColumnGap: ['columnGap'],
           gridGap: ['columnGap', 'rowGap'],
           gridRow: ['gridRowEnd', 'gridRowStart'],
           gridRowGap: ['rowGap'],
-          gridTemplate: ['gridTemplateAreas', 'gridTemplateColumns', 'gridTemplateRows'],
+          gridTemplate: [
+            'gridTemplateAreas',
+            'gridTemplateColumns',
+            'gridTemplateRows',
+          ],
           listStyle: ['listStyleImage', 'listStylePosition', 'listStyleType'],
           margin: ['marginBottom', 'marginLeft', 'marginRight', 'marginTop'],
           marker: ['markerEnd', 'markerMid', 'markerStart'],
@@ -2701,11 +2884,20 @@ var require_react_dom_development = __commonJS({
           maskPosition: ['maskPositionX', 'maskPositionY'],
           outline: ['outlineColor', 'outlineStyle', 'outlineWidth'],
           overflow: ['overflowX', 'overflowY'],
-          padding: ['paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop'],
+          padding: [
+            'paddingBottom',
+            'paddingLeft',
+            'paddingRight',
+            'paddingTop',
+          ],
           placeContent: ['alignContent', 'justifyContent'],
           placeItems: ['alignItems', 'justifyItems'],
           placeSelf: ['alignSelf', 'justifySelf'],
-          textDecoration: ['textDecorationColor', 'textDecorationLine', 'textDecorationStyle'],
+          textDecoration: [
+            'textDecorationColor',
+            'textDecorationLine',
+            'textDecorationStyle',
+          ],
           textEmphasis: ['textEmphasisColor', 'textEmphasisStyle'],
           transition: [
             'transitionDelay',
@@ -2771,7 +2963,8 @@ var require_react_dom_development = __commonJS({
           })
         })
         function dangerousStyleValue(name, value, isCustomProperty) {
-          var isEmpty = value == null || typeof value === 'boolean' || value === ''
+          var isEmpty =
+            value == null || typeof value === 'boolean' || value === ''
           if (isEmpty) {
             return ''
           }
@@ -2791,7 +2984,10 @@ var require_react_dom_development = __commonJS({
         var uppercasePattern = /([A-Z])/g
         var msPattern = /^ms-/
         function hyphenateStyleName(name) {
-          return name.replace(uppercasePattern, '-$1').toLowerCase().replace(msPattern, '-ms-')
+          return name
+            .replace(uppercasePattern, '-$1')
+            .toLowerCase()
+            .replace(msPattern, '-ms-')
         }
         var warnValidStyle = function () {}
         {
@@ -2809,7 +3005,10 @@ var require_react_dom_development = __commonJS({
             })
           }
           var warnHyphenatedStyleName = function (name) {
-            if (warnedStyleNames.hasOwnProperty(name) && warnedStyleNames[name]) {
+            if (
+              warnedStyleNames.hasOwnProperty(name) &&
+              warnedStyleNames[name]
+            ) {
               return
             }
             warnedStyleNames[name] = true
@@ -2823,7 +3022,10 @@ var require_react_dom_development = __commonJS({
             )
           }
           var warnBadVendoredStyleName = function (name) {
-            if (warnedStyleNames.hasOwnProperty(name) && warnedStyleNames[name]) {
+            if (
+              warnedStyleNames.hasOwnProperty(name) &&
+              warnedStyleNames[name]
+            ) {
               return
             }
             warnedStyleNames[name] = true
@@ -2834,7 +3036,10 @@ var require_react_dom_development = __commonJS({
             )
           }
           var warnStyleValueWithSemicolon = function (name, value) {
-            if (warnedStyleValues.hasOwnProperty(value) && warnedStyleValues[value]) {
+            if (
+              warnedStyleValues.hasOwnProperty(value) &&
+              warnedStyleValues[value]
+            ) {
               return
             }
             warnedStyleValues[value] = true
@@ -2849,14 +3054,20 @@ var require_react_dom_development = __commonJS({
               return
             }
             warnedForNaNValue = true
-            error('`NaN` is an invalid value for the `%s` css style property.', name)
+            error(
+              '`NaN` is an invalid value for the `%s` css style property.',
+              name
+            )
           }
           var warnStyleValueIsInfinity = function (name, value) {
             if (warnedForInfinityValue) {
               return
             }
             warnedForInfinityValue = true
-            error('`Infinity` is an invalid value for the `%s` css style property.', name)
+            error(
+              '`Infinity` is an invalid value for the `%s` css style property.',
+              name
+            )
           }
           warnValidStyle = function (name, value) {
             if (name.indexOf('-') > -1) {
@@ -2888,8 +3099,16 @@ var require_react_dom_development = __commonJS({
               if (styleValue != null) {
                 var isCustomProperty = styleName.indexOf('--') === 0
                 serialized +=
-                  delimiter + (isCustomProperty ? styleName : hyphenateStyleName(styleName)) + ':'
-                serialized += dangerousStyleValue(styleName, styleValue, isCustomProperty)
+                  delimiter +
+                  (isCustomProperty
+                    ? styleName
+                    : hyphenateStyleName(styleName)) +
+                  ':'
+                serialized += dangerousStyleValue(
+                  styleName,
+                  styleValue,
+                  isCustomProperty
+                )
                 delimiter = ';'
               }
             }
@@ -2908,7 +3127,11 @@ var require_react_dom_development = __commonJS({
                 warnValidStyle$1(styleName, styles[styleName])
               }
             }
-            var styleValue = dangerousStyleValue(styleName, styles[styleName], isCustomProperty)
+            var styleValue = dangerousStyleValue(
+              styleName,
+              styles[styleName],
+              isCustomProperty
+            )
             if (styleName === 'float') {
               styleName = 'cssFloat'
             }
@@ -2932,7 +3155,10 @@ var require_react_dom_development = __commonJS({
           }
           return expanded
         }
-        function validateShorthandPropertyCollisionInDev(styleUpdates, nextStyles) {
+        function validateShorthandPropertyCollisionInDev(
+          styleUpdates,
+          nextStyles
+        ) {
           {
             if (!nextStyles) {
               return
@@ -2951,7 +3177,9 @@ var require_react_dom_development = __commonJS({
                 warnedAbout[warningKey] = true
                 error(
                   "%s a style property during rerender (%s) when a conflicting property is set (%s) can lead to styling bugs. To avoid this, don't mix shorthand and non-shorthand properties for the same value; instead, replace the shorthand with separate values.",
-                  isValueEmpty(styleUpdates[originalKey]) ? 'Removing' : 'Updating',
+                  isValueEmpty(styleUpdates[originalKey])
+                    ? 'Removing'
+                    : 'Updating',
                   originalKey,
                   correctOriginalKey
                 )
@@ -2989,7 +3217,10 @@ var require_react_dom_development = __commonJS({
             return
           }
           if (voidElementTags[tag]) {
-            if (props.children != null || props.dangerouslySetInnerHTML != null) {
+            if (
+              props.children != null ||
+              props.dangerouslySetInnerHTML != null
+            ) {
               throw new Error(
                 tag +
                   ' is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.'
@@ -2998,7 +3229,9 @@ var require_react_dom_development = __commonJS({
           }
           if (props.dangerouslySetInnerHTML != null) {
             if (props.children != null) {
-              throw new Error('Can only set one of `children` or `props.dangerouslySetInnerHTML`.')
+              throw new Error(
+                'Can only set one of `children` or `props.dangerouslySetInnerHTML`.'
+              )
             }
             if (
               typeof props.dangerouslySetInnerHTML !== 'object' ||
@@ -3594,15 +3827,22 @@ var require_react_dom_development = __commonJS({
         }
         var warnedProperties = {}
         var rARIA = new RegExp('^(aria)-[' + ATTRIBUTE_NAME_CHAR + ']*$')
-        var rARIACamel = new RegExp('^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$')
+        var rARIACamel = new RegExp(
+          '^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$'
+        )
         function validateProperty(tagName, name) {
           {
-            if (hasOwnProperty.call(warnedProperties, name) && warnedProperties[name]) {
+            if (
+              hasOwnProperty.call(warnedProperties, name) &&
+              warnedProperties[name]
+            ) {
               return true
             }
             if (rARIACamel.test(name)) {
               var ariaName = 'aria-' + name.slice(4).toLowerCase()
-              var correctName = ariaProperties.hasOwnProperty(ariaName) ? ariaName : null
+              var correctName = ariaProperties.hasOwnProperty(ariaName)
+                ? ariaName
+                : null
               if (correctName == null) {
                 error(
                   'Invalid ARIA attribute `%s`. ARIA attributes follow the pattern aria-* and must be lowercase.',
@@ -3612,7 +3852,11 @@ var require_react_dom_development = __commonJS({
                 return true
               }
               if (name !== correctName) {
-                error('Invalid ARIA attribute `%s`. Did you mean `%s`?', name, correctName)
+                error(
+                  'Invalid ARIA attribute `%s`. Did you mean `%s`?',
+                  name,
+                  correctName
+                )
                 warnedProperties[name] = true
                 return true
               }
@@ -3627,7 +3871,11 @@ var require_react_dom_development = __commonJS({
                 return false
               }
               if (name !== standardName) {
-                error('Unknown ARIA attribute `%s`. Did you mean `%s`?', name, standardName)
+                error(
+                  'Unknown ARIA attribute `%s`. Did you mean `%s`?',
+                  name,
+                  standardName
+                )
                 warnedProperties[name] = true
                 return true
               }
@@ -3698,13 +3946,21 @@ var require_react_dom_development = __commonJS({
           var EVENT_NAME_REGEX = /^on./
           var INVALID_EVENT_NAME_REGEX = /^on[^A-Z]/
           var rARIA$1 = new RegExp('^(aria)-[' + ATTRIBUTE_NAME_CHAR + ']*$')
-          var rARIACamel$1 = new RegExp('^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$')
+          var rARIACamel$1 = new RegExp(
+            '^(aria)[A-Z][' + ATTRIBUTE_NAME_CHAR + ']*$'
+          )
           validateProperty$1 = function (tagName, name, value, eventRegistry) {
-            if (hasOwnProperty.call(warnedProperties$1, name) && warnedProperties$1[name]) {
+            if (
+              hasOwnProperty.call(warnedProperties$1, name) &&
+              warnedProperties$1[name]
+            ) {
               return true
             }
             var lowerCasedName = name.toLowerCase()
-            if (lowerCasedName === 'onfocusin' || lowerCasedName === 'onfocusout') {
+            if (
+              lowerCasedName === 'onfocusin' ||
+              lowerCasedName === 'onfocusout'
+            ) {
               error(
                 'React uses onFocus and onBlur instead of onFocusIn and onFocusOut. All React events are normalized to bubble, so onFocusIn and onFocusOut are not needed/supported by React.'
               )
@@ -3712,12 +3968,16 @@ var require_react_dom_development = __commonJS({
               return true
             }
             if (eventRegistry != null) {
-              var registrationNameDependencies2 = eventRegistry.registrationNameDependencies,
-                possibleRegistrationNames2 = eventRegistry.possibleRegistrationNames
+              var registrationNameDependencies2 =
+                  eventRegistry.registrationNameDependencies,
+                possibleRegistrationNames2 =
+                  eventRegistry.possibleRegistrationNames
               if (registrationNameDependencies2.hasOwnProperty(name)) {
                 return true
               }
-              var registrationName = possibleRegistrationNames2.hasOwnProperty(lowerCasedName)
+              var registrationName = possibleRegistrationNames2.hasOwnProperty(
+                lowerCasedName
+              )
                 ? possibleRegistrationNames2[lowerCasedName]
                 : null
               if (registrationName != null) {
@@ -3730,7 +3990,10 @@ var require_react_dom_development = __commonJS({
                 return true
               }
               if (EVENT_NAME_REGEX.test(name)) {
-                error('Unknown event handler property `%s`. It will be ignored.', name)
+                error(
+                  'Unknown event handler property `%s`. It will be ignored.',
+                  name
+                )
                 warnedProperties$1[name] = true
                 return true
               }
@@ -3783,11 +4046,16 @@ var require_react_dom_development = __commonJS({
               return true
             }
             var propertyInfo = getPropertyInfo(name)
-            var isReserved = propertyInfo !== null && propertyInfo.type === RESERVED
+            var isReserved =
+              propertyInfo !== null && propertyInfo.type === RESERVED
             if (possibleStandardNames.hasOwnProperty(lowerCasedName)) {
               var standardName = possibleStandardNames[lowerCasedName]
               if (standardName !== name) {
-                error('Invalid DOM property `%s`. Did you mean `%s`?', name, standardName)
+                error(
+                  'Invalid DOM property `%s`. Did you mean `%s`?',
+                  name,
+                  standardName
+                )
                 warnedProperties$1[name] = true
                 return true
               }
@@ -3831,7 +4099,9 @@ var require_react_dom_development = __commonJS({
             if (isReserved) {
               return true
             }
-            if (shouldRemoveAttributeWithWarning(name, value, propertyInfo, false)) {
+            if (
+              shouldRemoveAttributeWithWarning(name, value, propertyInfo, false)
+            ) {
               warnedProperties$1[name] = true
               return false
             }
@@ -3860,7 +4130,12 @@ var require_react_dom_development = __commonJS({
           {
             var unknownProps = []
             for (var key in props) {
-              var isValid = validateProperty$1(type, key, props[key], eventRegistry)
+              var isValid = validateProperty$1(
+                type,
+                key,
+                props[key],
+                eventRegistry
+              )
               if (!isValid) {
                 unknownProps.push(key)
               }
@@ -3943,7 +4218,11 @@ var require_react_dom_development = __commonJS({
           var stateNode = internalInstance.stateNode
           if (stateNode) {
             var _props = getFiberCurrentPropsFromNode(stateNode)
-            restoreImpl(internalInstance.stateNode, internalInstance.type, _props)
+            restoreImpl(
+              internalInstance.stateNode,
+              internalInstance.type,
+              _props
+            )
           }
         }
         function setRestoreImplementation(impl) {
@@ -4011,7 +4290,12 @@ var require_react_dom_development = __commonJS({
           flushSyncImpl = _flushSyncImpl
         }
         function isInteractive(tag) {
-          return tag === 'button' || tag === 'input' || tag === 'select' || tag === 'textarea'
+          return (
+            tag === 'button' ||
+            tag === 'input' ||
+            tag === 'select' ||
+            tag === 'textarea'
+          )
         }
         function shouldPreventMouseEvent(name, type, props) {
           switch (name) {
@@ -4070,7 +4354,17 @@ var require_react_dom_development = __commonJS({
             passiveBrowserEventsSupported = false
           }
         }
-        function invokeGuardedCallbackProd(name, func, context, a, b, c, d, e, f) {
+        function invokeGuardedCallbackProd(
+          name,
+          func,
+          context,
+          a,
+          b,
+          c,
+          d,
+          e,
+          f
+        ) {
           var funcArgs = Array.prototype.slice.call(arguments, 3)
           try {
             func.apply(context, funcArgs)
@@ -4107,10 +4401,16 @@ var require_react_dom_development = __commonJS({
               var didCall = false
               var didError = true
               var windowEvent = window.event
-              var windowEventDescriptor = Object.getOwnPropertyDescriptor(window, 'event')
+              var windowEventDescriptor = Object.getOwnPropertyDescriptor(
+                window,
+                'event'
+              )
               function restoreAfterDispatch() {
                 fakeNode.removeEventListener(evtType, callCallback2, false)
-                if (typeof window.event !== 'undefined' && window.hasOwnProperty('event')) {
+                if (
+                  typeof window.event !== 'undefined' &&
+                  window.hasOwnProperty('event')
+                ) {
                   window.event = windowEvent
                 }
               }
@@ -4127,7 +4427,11 @@ var require_react_dom_development = __commonJS({
               function handleWindowError(event) {
                 error2 = event.error
                 didSetError = true
-                if (error2 === null && event.colno === 0 && event.lineno === 0) {
+                if (
+                  error2 === null &&
+                  event.colno === 0 &&
+                  event.lineno === 0
+                ) {
                   isCrossOriginError = true
                 }
                 if (event.defaultPrevented) {
@@ -4182,7 +4486,17 @@ var require_react_dom_development = __commonJS({
           caughtError = null
           invokeGuardedCallbackImpl$1.apply(reporter, arguments)
         }
-        function invokeGuardedCallbackAndCatchFirstError(name, func, context, a, b, c, d, e, f) {
+        function invokeGuardedCallbackAndCatchFirstError(
+          name,
+          func,
+          context,
+          a,
+          b,
+          c,
+          d,
+          e,
+          f
+        ) {
           invokeGuardedCallback.apply(this, arguments)
           if (hasError) {
             var error2 = clearCaughtError()
@@ -4269,7 +4583,8 @@ var require_react_dom_development = __commonJS({
         var StoreConsistency =
           /*             */
           16384
-        var LifecycleEffectMask = Passive | Update | Callback | Ref | Snapshot | StoreConsistency
+        var LifecycleEffectMask =
+          Passive | Update | Callback | Ref | Snapshot | StoreConsistency
         var HostEffectMask =
           /*               */
           32767
@@ -4305,7 +4620,13 @@ var require_react_dom_development = __commonJS({
           // flag logic (see #20043)
           Update | Snapshot | 0
         var MutationMask =
-          Placement | Update | ChildDeletion | ContentReset | Ref | Hydrating | Visibility
+          Placement |
+          Update |
+          ChildDeletion |
+          ContentReset |
+          Ref |
+          Hydrating |
+          Visibility
         var LayoutMask = Update | Callback | Ref | Visibility
         var PassiveMask = Passive | ChildDeletion
         var StaticMask = LayoutStatic | PassiveStatic | RefStatic
@@ -4483,7 +4804,9 @@ var require_react_dom_development = __commonJS({
         }
         function findCurrentHostFiber(parent) {
           var currentParent = findCurrentFiberUsingSlowPath(parent)
-          return currentParent !== null ? findCurrentHostFiberImpl(currentParent) : null
+          return currentParent !== null
+            ? findCurrentHostFiberImpl(currentParent)
+            : null
         }
         function findCurrentHostFiberImpl(node) {
           if (node.tag === HostComponent || node.tag === HostText) {
@@ -4533,12 +4856,14 @@ var require_react_dom_development = __commonJS({
         var LowPriority = Scheduler.unstable_LowPriority
         var IdlePriority = Scheduler.unstable_IdlePriority
         var unstable_yieldValue = Scheduler.unstable_yieldValue
-        var unstable_setDisableYieldValue = Scheduler.unstable_setDisableYieldValue
+        var unstable_setDisableYieldValue =
+          Scheduler.unstable_setDisableYieldValue
         var rendererID = null
         var injectedHook = null
         var injectedProfilingHooks = null
         var hasLoggedError = false
-        var isDevToolsPresent = typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined'
+        var isDevToolsPresent =
+          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined'
         function injectInternals(internals) {
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
             return false
@@ -4577,7 +4902,10 @@ var require_react_dom_development = __commonJS({
         }
         function onScheduleRoot(root2, children) {
           {
-            if (injectedHook && typeof injectedHook.onScheduleFiberRoot === 'function') {
+            if (
+              injectedHook &&
+              typeof injectedHook.onScheduleFiberRoot === 'function'
+            ) {
               try {
                 injectedHook.onScheduleFiberRoot(rendererID, root2, children)
               } catch (err) {
@@ -4590,7 +4918,10 @@ var require_react_dom_development = __commonJS({
           }
         }
         function onCommitRoot(root2, eventPriority) {
-          if (injectedHook && typeof injectedHook.onCommitFiberRoot === 'function') {
+          if (
+            injectedHook &&
+            typeof injectedHook.onCommitFiberRoot === 'function'
+          ) {
             try {
               var didError = (root2.current.flags & DidCapture) === DidCapture
               if (enableProfilerTimer) {
@@ -4612,9 +4943,19 @@ var require_react_dom_development = __commonJS({
                     schedulerPriority = NormalPriority
                     break
                 }
-                injectedHook.onCommitFiberRoot(rendererID, root2, schedulerPriority, didError)
+                injectedHook.onCommitFiberRoot(
+                  rendererID,
+                  root2,
+                  schedulerPriority,
+                  didError
+                )
               } else {
-                injectedHook.onCommitFiberRoot(rendererID, root2, void 0, didError)
+                injectedHook.onCommitFiberRoot(
+                  rendererID,
+                  root2,
+                  void 0,
+                  didError
+                )
               }
             } catch (err) {
               {
@@ -4627,7 +4968,10 @@ var require_react_dom_development = __commonJS({
           }
         }
         function onPostCommitRoot(root2) {
-          if (injectedHook && typeof injectedHook.onPostCommitFiberRoot === 'function') {
+          if (
+            injectedHook &&
+            typeof injectedHook.onPostCommitFiberRoot === 'function'
+          ) {
             try {
               injectedHook.onPostCommitFiberRoot(rendererID, root2)
             } catch (err) {
@@ -4641,7 +4985,10 @@ var require_react_dom_development = __commonJS({
           }
         }
         function onCommitUnmount(fiber) {
-          if (injectedHook && typeof injectedHook.onCommitFiberUnmount === 'function') {
+          if (
+            injectedHook &&
+            typeof injectedHook.onCommitFiberUnmount === 'function'
+          ) {
             try {
               injectedHook.onCommitFiberUnmount(rendererID, fiber)
             } catch (err) {
@@ -4660,7 +5007,10 @@ var require_react_dom_development = __commonJS({
               unstable_setDisableYieldValue(newIsStrictMode)
               setSuppressWarning(newIsStrictMode)
             }
-            if (injectedHook && typeof injectedHook.setStrictMode === 'function') {
+            if (
+              injectedHook &&
+              typeof injectedHook.setStrictMode === 'function'
+            ) {
               try {
                 injectedHook.setStrictMode(rendererID, newIsStrictMode)
               } catch (err) {
@@ -4713,7 +5063,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentRenderStarted === 'function'
+              typeof injectedProfilingHooks.markComponentRenderStarted ===
+                'function'
             ) {
               injectedProfilingHooks.markComponentRenderStarted(fiber)
             }
@@ -4723,7 +5074,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentRenderStopped === 'function'
+              typeof injectedProfilingHooks.markComponentRenderStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markComponentRenderStopped()
             }
@@ -4733,9 +5085,12 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentPassiveEffectMountStarted === 'function'
+              typeof injectedProfilingHooks.markComponentPassiveEffectMountStarted ===
+                'function'
             ) {
-              injectedProfilingHooks.markComponentPassiveEffectMountStarted(fiber)
+              injectedProfilingHooks.markComponentPassiveEffectMountStarted(
+                fiber
+              )
             }
           }
         }
@@ -4743,7 +5098,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentPassiveEffectMountStopped === 'function'
+              typeof injectedProfilingHooks.markComponentPassiveEffectMountStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markComponentPassiveEffectMountStopped()
             }
@@ -4753,9 +5109,12 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStarted === 'function'
+              typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStarted ===
+                'function'
             ) {
-              injectedProfilingHooks.markComponentPassiveEffectUnmountStarted(fiber)
+              injectedProfilingHooks.markComponentPassiveEffectUnmountStarted(
+                fiber
+              )
             }
           }
         }
@@ -4763,7 +5122,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStopped === 'function'
+              typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markComponentPassiveEffectUnmountStopped()
             }
@@ -4773,9 +5133,12 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentLayoutEffectMountStarted === 'function'
+              typeof injectedProfilingHooks.markComponentLayoutEffectMountStarted ===
+                'function'
             ) {
-              injectedProfilingHooks.markComponentLayoutEffectMountStarted(fiber)
+              injectedProfilingHooks.markComponentLayoutEffectMountStarted(
+                fiber
+              )
             }
           }
         }
@@ -4783,7 +5146,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentLayoutEffectMountStopped === 'function'
+              typeof injectedProfilingHooks.markComponentLayoutEffectMountStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markComponentLayoutEffectMountStopped()
             }
@@ -4793,9 +5157,12 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStarted === 'function'
+              typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStarted ===
+                'function'
             ) {
-              injectedProfilingHooks.markComponentLayoutEffectUnmountStarted(fiber)
+              injectedProfilingHooks.markComponentLayoutEffectUnmountStarted(
+                fiber
+              )
             }
           }
         }
@@ -4803,7 +5170,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStopped === 'function'
+              typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markComponentLayoutEffectUnmountStopped()
             }
@@ -4815,7 +5183,11 @@ var require_react_dom_development = __commonJS({
               injectedProfilingHooks !== null &&
               typeof injectedProfilingHooks.markComponentErrored === 'function'
             ) {
-              injectedProfilingHooks.markComponentErrored(fiber, thrownValue, lanes)
+              injectedProfilingHooks.markComponentErrored(
+                fiber,
+                thrownValue,
+                lanes
+              )
             }
           }
         }
@@ -4823,9 +5195,14 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markComponentSuspended === 'function'
+              typeof injectedProfilingHooks.markComponentSuspended ===
+                'function'
             ) {
-              injectedProfilingHooks.markComponentSuspended(fiber, wakeable, lanes)
+              injectedProfilingHooks.markComponentSuspended(
+                fiber,
+                wakeable,
+                lanes
+              )
             }
           }
         }
@@ -4833,7 +5210,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markLayoutEffectsStarted === 'function'
+              typeof injectedProfilingHooks.markLayoutEffectsStarted ===
+                'function'
             ) {
               injectedProfilingHooks.markLayoutEffectsStarted(lanes)
             }
@@ -4843,7 +5221,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markLayoutEffectsStopped === 'function'
+              typeof injectedProfilingHooks.markLayoutEffectsStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markLayoutEffectsStopped()
             }
@@ -4853,7 +5232,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markPassiveEffectsStarted === 'function'
+              typeof injectedProfilingHooks.markPassiveEffectsStarted ===
+                'function'
             ) {
               injectedProfilingHooks.markPassiveEffectsStarted(lanes)
             }
@@ -4863,7 +5243,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markPassiveEffectsStopped === 'function'
+              typeof injectedProfilingHooks.markPassiveEffectsStopped ===
+                'function'
             ) {
               injectedProfilingHooks.markPassiveEffectsStopped()
             }
@@ -4913,7 +5294,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markForceUpdateScheduled === 'function'
+              typeof injectedProfilingHooks.markForceUpdateScheduled ===
+                'function'
             ) {
               injectedProfilingHooks.markForceUpdateScheduled(fiber, lane)
             }
@@ -4923,7 +5305,8 @@ var require_react_dom_development = __commonJS({
           {
             if (
               injectedProfilingHooks !== null &&
-              typeof injectedProfilingHooks.markStateUpdateScheduled === 'function'
+              typeof injectedProfilingHooks.markStateUpdateScheduled ===
+                'function'
             ) {
               injectedProfilingHooks.markStateUpdateScheduled(fiber, lane)
             }
@@ -5154,7 +5537,9 @@ var require_react_dom_development = __commonJS({
               return OffscreenLane
             default:
               {
-                error('Should have found matching lanes. This is a bug in React.')
+                error(
+                  'Should have found matching lanes. This is a bug in React.'
+                )
               }
               return lanes
           }
@@ -5205,7 +5590,8 @@ var require_react_dom_development = __commonJS({
               nextLane >= wipLane || // Default priority updates should not interrupt transition updates. The
               // only difference between default updates and transition updates is that
               // default updates do not support refresh transitions.
-              (nextLane === DefaultLane && (wipLane & TransitionLanes) !== NoLanes)
+              (nextLane === DefaultLane &&
+                (wipLane & TransitionLanes) !== NoLanes)
             ) {
               return wipLanes
             }
@@ -5279,7 +5665,9 @@ var require_react_dom_development = __commonJS({
               return NoTimestamp
             default:
               {
-                error('Should have found matching lanes. This is a bug in React.')
+                error(
+                  'Should have found matching lanes. This is a bug in React.'
+                )
               }
               return NoTimestamp
           }
@@ -5295,8 +5683,14 @@ var require_react_dom_development = __commonJS({
             var lane = 1 << index2
             var expirationTime = expirationTimes[index2]
             if (expirationTime === NoTimestamp) {
-              if ((lane & suspendedLanes) === NoLanes || (lane & pingedLanes) !== NoLanes) {
-                expirationTimes[index2] = computeExpirationTime(lane, currentTime)
+              if (
+                (lane & suspendedLanes) === NoLanes ||
+                (lane & pingedLanes) !== NoLanes
+              ) {
+                expirationTimes[index2] = computeExpirationTime(
+                  lane,
+                  currentTime
+                )
               }
             } else if (expirationTime <= currentTime) {
               root2.expiredLanes |= lane
@@ -5335,7 +5729,10 @@ var require_react_dom_development = __commonJS({
         }
         function includesBlockingLane(root2, lanes) {
           var SyncDefaultLanes =
-            InputContinuousHydrationLane | InputContinuousLane | DefaultHydrationLane | DefaultLane
+            InputContinuousHydrationLane |
+            InputContinuousLane |
+            DefaultHydrationLane |
+            DefaultLane
           return (lanes & SyncDefaultLanes) !== NoLanes
         }
         function includesExpiredLane(root2, lanes) {
@@ -5710,7 +6107,10 @@ var require_react_dom_development = __commonJS({
           targetContainer,
           nativeEvent
         ) {
-          if (existingQueuedEvent === null || existingQueuedEvent.nativeEvent !== nativeEvent) {
+          if (
+            existingQueuedEvent === null ||
+            existingQueuedEvent.nativeEvent !== nativeEvent
+          ) {
             var queuedEvent = createQueuedReplayableEvent(
               blockedOn,
               domEventName,
@@ -5728,7 +6128,10 @@ var require_react_dom_development = __commonJS({
           }
           existingQueuedEvent.eventSystemFlags |= eventSystemFlags
           var targetContainers = existingQueuedEvent.targetContainers
-          if (targetContainer !== null && targetContainers.indexOf(targetContainer) === -1) {
+          if (
+            targetContainer !== null &&
+            targetContainers.indexOf(targetContainer) === -1
+          ) {
             targetContainers.push(targetContainer)
           }
           return existingQueuedEvent
@@ -5822,9 +6225,12 @@ var require_react_dom_development = __commonJS({
                 var instance = getSuspenseInstanceFromFiber(nearestMounted)
                 if (instance !== null) {
                   queuedTarget.blockedOn = instance
-                  attemptHydrationAtPriority(queuedTarget.priority, function () {
-                    attemptHydrationAtCurrentPriority(nearestMounted)
-                  })
+                  attemptHydrationAtPriority(
+                    queuedTarget.priority,
+                    function () {
+                      attemptHydrationAtCurrentPriority(nearestMounted)
+                    }
+                  )
                   return
                 }
               } else if (tag === HostRoot) {
@@ -5848,7 +6254,10 @@ var require_react_dom_development = __commonJS({
           var i = 0
           for (; i < queuedExplicitHydrationTargets.length; i++) {
             if (
-              !isHigherEventPriority(updatePriority, queuedExplicitHydrationTargets[i].priority)
+              !isHigherEventPriority(
+                updatePriority,
+                queuedExplicitHydrationTargets[i].priority
+              )
             ) {
               break
             }
@@ -5874,7 +6283,10 @@ var require_react_dom_development = __commonJS({
             if (nextBlockedOn === null) {
               {
                 var nativeEvent = queuedEvent.nativeEvent
-                var nativeEventClone = new nativeEvent.constructor(nativeEvent.type, nativeEvent)
+                var nativeEventClone = new nativeEvent.constructor(
+                  nativeEvent.type,
+                  nativeEvent
+                )
                 setReplayingEvent(nativeEventClone)
                 nativeEvent.target.dispatchEvent(nativeEventClone)
                 resetReplayingEvent()
@@ -5891,20 +6303,33 @@ var require_react_dom_development = __commonJS({
           }
           return true
         }
-        function attemptReplayContinuousQueuedEventInMap(queuedEvent, key, map) {
+        function attemptReplayContinuousQueuedEventInMap(
+          queuedEvent,
+          key,
+          map
+        ) {
           if (attemptReplayContinuousQueuedEvent(queuedEvent)) {
             map.delete(key)
           }
         }
         function replayUnblockedEvents() {
           hasScheduledReplayAttempt = false
-          if (queuedFocus !== null && attemptReplayContinuousQueuedEvent(queuedFocus)) {
+          if (
+            queuedFocus !== null &&
+            attemptReplayContinuousQueuedEvent(queuedFocus)
+          ) {
             queuedFocus = null
           }
-          if (queuedDrag !== null && attemptReplayContinuousQueuedEvent(queuedDrag)) {
+          if (
+            queuedDrag !== null &&
+            attemptReplayContinuousQueuedEvent(queuedDrag)
+          ) {
             queuedDrag = null
           }
-          if (queuedMouse !== null && attemptReplayContinuousQueuedEvent(queuedMouse)) {
+          if (
+            queuedMouse !== null &&
+            attemptReplayContinuousQueuedEvent(queuedMouse)
+          ) {
             queuedMouse = null
           }
           queuedPointers.forEach(attemptReplayContinuousQueuedEventInMap)
@@ -5964,7 +6389,8 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        var ReactCurrentBatchConfig = ReactSharedInternals.ReactCurrentBatchConfig
+        var ReactCurrentBatchConfig =
+          ReactSharedInternals.ReactCurrentBatchConfig
         var _enabled = true
         function setEnabled(enabled) {
           _enabled = !!enabled
@@ -5991,33 +6417,63 @@ var require_react_dom_development = __commonJS({
               listenerWrapper = dispatchEvent
               break
           }
-          return listenerWrapper.bind(null, domEventName, eventSystemFlags, targetContainer)
+          return listenerWrapper.bind(
+            null,
+            domEventName,
+            eventSystemFlags,
+            targetContainer
+          )
         }
-        function dispatchDiscreteEvent(domEventName, eventSystemFlags, container, nativeEvent) {
+        function dispatchDiscreteEvent(
+          domEventName,
+          eventSystemFlags,
+          container,
+          nativeEvent
+        ) {
           var previousPriority = getCurrentUpdatePriority()
           var prevTransition = ReactCurrentBatchConfig.transition
           ReactCurrentBatchConfig.transition = null
           try {
             setCurrentUpdatePriority(DiscreteEventPriority)
-            dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent)
+            dispatchEvent(
+              domEventName,
+              eventSystemFlags,
+              container,
+              nativeEvent
+            )
           } finally {
             setCurrentUpdatePriority(previousPriority)
             ReactCurrentBatchConfig.transition = prevTransition
           }
         }
-        function dispatchContinuousEvent(domEventName, eventSystemFlags, container, nativeEvent) {
+        function dispatchContinuousEvent(
+          domEventName,
+          eventSystemFlags,
+          container,
+          nativeEvent
+        ) {
           var previousPriority = getCurrentUpdatePriority()
           var prevTransition = ReactCurrentBatchConfig.transition
           ReactCurrentBatchConfig.transition = null
           try {
             setCurrentUpdatePriority(ContinuousEventPriority)
-            dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent)
+            dispatchEvent(
+              domEventName,
+              eventSystemFlags,
+              container,
+              nativeEvent
+            )
           } finally {
             setCurrentUpdatePriority(previousPriority)
             ReactCurrentBatchConfig.transition = prevTransition
           }
         }
-        function dispatchEvent(domEventName, eventSystemFlags, targetContainer, nativeEvent) {
+        function dispatchEvent(
+          domEventName,
+          eventSystemFlags,
+          targetContainer,
+          nativeEvent
+        ) {
           if (!_enabled) {
             return
           }
@@ -6246,14 +6702,24 @@ var require_react_dom_development = __commonJS({
           target.addEventListener(eventType, listener, true)
           return listener
         }
-        function addEventCaptureListenerWithPassiveFlag(target, eventType, listener, passive) {
+        function addEventCaptureListenerWithPassiveFlag(
+          target,
+          eventType,
+          listener,
+          passive
+        ) {
           target.addEventListener(eventType, listener, {
             capture: true,
             passive,
           })
           return listener
         }
-        function addEventBubbleListenerWithPassiveFlag(target, eventType, listener, passive) {
+        function addEventBubbleListenerWithPassiveFlag(
+          target,
+          eventType,
+          listener,
+          passive
+        ) {
           target.addEventListener(eventType, listener, {
             passive,
           })
@@ -6453,7 +6919,9 @@ var require_react_dom_development = __commonJS({
           buttons: 0,
           relatedTarget: function (event) {
             if (event.relatedTarget === void 0)
-              return event.fromElement === event.srcElement ? event.toElement : event.fromElement
+              return event.fromElement === event.srcElement
+                ? event.toElement
+                : event.fromElement
             return event.relatedTarget
           },
           movementX: function (event) {
@@ -6484,17 +6952,25 @@ var require_react_dom_development = __commonJS({
           elapsedTime: 0,
           pseudoElement: 0,
         })
-        var SyntheticAnimationEvent = createSyntheticEvent(AnimationEventInterface)
+        var SyntheticAnimationEvent = createSyntheticEvent(
+          AnimationEventInterface
+        )
         var ClipboardEventInterface = assign({}, EventInterface, {
           clipboardData: function (event) {
-            return 'clipboardData' in event ? event.clipboardData : window.clipboardData
+            return 'clipboardData' in event
+              ? event.clipboardData
+              : window.clipboardData
           },
         })
-        var SyntheticClipboardEvent = createSyntheticEvent(ClipboardEventInterface)
+        var SyntheticClipboardEvent = createSyntheticEvent(
+          ClipboardEventInterface
+        )
         var CompositionEventInterface = assign({}, EventInterface, {
           data: 0,
         })
-        var SyntheticCompositionEvent = createSyntheticEvent(CompositionEventInterface)
+        var SyntheticCompositionEvent = createSyntheticEvent(
+          CompositionEventInterface
+        )
         var SyntheticInputEvent = SyntheticCompositionEvent
         var normalizeKey = {
           Esc: 'Escape',
@@ -6616,7 +7092,9 @@ var require_react_dom_development = __commonJS({
             return 0
           },
         })
-        var SyntheticKeyboardEvent = createSyntheticEvent(KeyboardEventInterface)
+        var SyntheticKeyboardEvent = createSyntheticEvent(
+          KeyboardEventInterface
+        )
         var PointerEventInterface = assign({}, MouseEventInterface, {
           pointerId: 0,
           width: 0,
@@ -6646,7 +7124,9 @@ var require_react_dom_development = __commonJS({
           elapsedTime: 0,
           pseudoElement: 0,
         })
-        var SyntheticTransitionEvent = createSyntheticEvent(TransitionEventInterface)
+        var SyntheticTransitionEvent = createSyntheticEvent(
+          TransitionEventInterface
+        )
         var WheelEventInterface = assign({}, MouseEventInterface, {
           deltaX: function (event) {
             return 'deltaX' in event
@@ -6682,10 +7162,12 @@ var require_react_dom_development = __commonJS({
         if (canUseDOM && 'documentMode' in document) {
           documentMode = document.documentMode
         }
-        var canUseTextInputEvent = canUseDOM && 'TextEvent' in window && !documentMode
+        var canUseTextInputEvent =
+          canUseDOM && 'TextEvent' in window && !documentMode
         var useFallbackCompositionData =
           canUseDOM &&
-          (!canUseCompositionEvent || (documentMode && documentMode > 8 && documentMode <= 11))
+          (!canUseCompositionEvent ||
+            (documentMode && documentMode > 8 && documentMode <= 11))
         var SPACEBAR_CODE = 32
         var SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE)
         function registerEvents() {
@@ -6723,7 +7205,9 @@ var require_react_dom_development = __commonJS({
         var hasSpaceKeypress = false
         function isKeypressCommand(nativeEvent) {
           return (
-            (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) && // ctrlKey && altKey is equivalent to AltGr, and is not a command.
+            (nativeEvent.ctrlKey ||
+              nativeEvent.altKey ||
+              nativeEvent.metaKey) && // ctrlKey && altKey is equivalent to AltGr, and is not a command.
             !(nativeEvent.ctrlKey && nativeEvent.altKey)
           )
         }
@@ -6738,7 +7222,9 @@ var require_react_dom_development = __commonJS({
           }
         }
         function isFallbackCompositionStart(domEventName, nativeEvent) {
-          return domEventName === 'keydown' && nativeEvent.keyCode === START_KEYCODE
+          return (
+            domEventName === 'keydown' && nativeEvent.keyCode === START_KEYCODE
+          )
         }
         function isFallbackCompositionEnd(domEventName, nativeEvent) {
           switch (domEventName) {
@@ -6843,7 +7329,8 @@ var require_react_dom_development = __commonJS({
           if (isComposing) {
             if (
               domEventName === 'compositionend' ||
-              (!canUseCompositionEvent && isFallbackCompositionEnd(domEventName, nativeEvent))
+              (!canUseCompositionEvent &&
+                isFallbackCompositionEnd(domEventName, nativeEvent))
             ) {
               var chars = getData()
               reset()
@@ -6865,7 +7352,8 @@ var require_react_dom_development = __commonJS({
               }
               return null
             case 'compositionend':
-              return useFallbackCompositionData && !isUsingKoreanIME(nativeEvent)
+              return useFallbackCompositionData &&
+                !isUsingKoreanIME(nativeEvent)
                 ? null
                 : nativeEvent.data
             default:
@@ -6888,7 +7376,10 @@ var require_react_dom_development = __commonJS({
           if (!chars) {
             return null
           }
-          var listeners = accumulateTwoPhaseListeners(targetInst, 'onBeforeInput')
+          var listeners = accumulateTwoPhaseListeners(
+            targetInst,
+            'onBeforeInput'
+          )
           if (listeners.length > 0) {
             var event = new SyntheticInputEvent(
               'onBeforeInput',
@@ -6980,11 +7471,22 @@ var require_react_dom_development = __commonJS({
             'selectionchange',
           ])
         }
-        function createAndAccumulateChangeEvent(dispatchQueue, inst, nativeEvent, target) {
+        function createAndAccumulateChangeEvent(
+          dispatchQueue,
+          inst,
+          nativeEvent,
+          target
+        ) {
           enqueueStateRestore(target)
           var listeners = accumulateTwoPhaseListeners(inst, 'onChange')
           if (listeners.length > 0) {
-            var event = new SyntheticEvent('onChange', 'change', null, nativeEvent, target)
+            var event = new SyntheticEvent(
+              'onChange',
+              'change',
+              null,
+              nativeEvent,
+              target
+            )
             dispatchQueue.push({
               event,
               listeners,
@@ -6995,7 +7497,10 @@ var require_react_dom_development = __commonJS({
         var activeElementInst = null
         function shouldUseChangeEvent(elem) {
           var nodeName = elem.nodeName && elem.nodeName.toLowerCase()
-          return nodeName === 'select' || (nodeName === 'input' && elem.type === 'file')
+          return (
+            nodeName === 'select' ||
+            (nodeName === 'input' && elem.type === 'file')
+          )
         }
         function manualDispatchChangeEvent(nativeEvent) {
           var dispatchQueue = []
@@ -7024,7 +7529,8 @@ var require_react_dom_development = __commonJS({
         var isInputEventSupported = false
         if (canUseDOM) {
           isInputEventSupported =
-            isEventSupported('input') && (!document.documentMode || document.documentMode > 9)
+            isEventSupported('input') &&
+            (!document.documentMode || document.documentMode > 9)
         }
         function startWatchingForValueChange(target, targetInst) {
           activeElement = target
@@ -7047,7 +7553,11 @@ var require_react_dom_development = __commonJS({
             manualDispatchChangeEvent(nativeEvent)
           }
         }
-        function handleEventsForInputEventPolyfill(domEventName, target, targetInst) {
+        function handleEventsForInputEventPolyfill(
+          domEventName,
+          target,
+          targetInst
+        ) {
           if (domEventName === 'focusin') {
             stopWatchingForValueChange()
             startWatchingForValueChange(target, targetInst)
@@ -7117,7 +7627,12 @@ var require_react_dom_development = __commonJS({
           if (getTargetInstFunc) {
             var inst = getTargetInstFunc(domEventName, targetInst)
             if (inst) {
-              createAndAccumulateChangeEvent(dispatchQueue, inst, nativeEvent, nativeEventTarget)
+              createAndAccumulateChangeEvent(
+                dispatchQueue,
+                inst,
+                nativeEvent,
+                nativeEventTarget
+              )
               return
             }
           }
@@ -7143,12 +7658,17 @@ var require_react_dom_development = __commonJS({
           eventSystemFlags,
           targetContainer
         ) {
-          var isOverEvent = domEventName === 'mouseover' || domEventName === 'pointerover'
-          var isOutEvent = domEventName === 'mouseout' || domEventName === 'pointerout'
+          var isOverEvent =
+            domEventName === 'mouseover' || domEventName === 'pointerover'
+          var isOutEvent =
+            domEventName === 'mouseout' || domEventName === 'pointerout'
           if (isOverEvent && !isReplayingEvent(nativeEvent)) {
             var related = nativeEvent.relatedTarget || nativeEvent.fromElement
             if (related) {
-              if (getClosestInstanceFromNode(related) || isContainerMarkedAsRoot(related)) {
+              if (
+                getClosestInstanceFromNode(related) ||
+                isContainerMarkedAsRoot(related)
+              ) {
                 return
               }
             }
@@ -7175,7 +7695,10 @@ var require_react_dom_development = __commonJS({
             to = _related ? getClosestInstanceFromNode(_related) : null
             if (to !== null) {
               var nearestMounted = getNearestMountedFiber(to)
-              if (to !== nearestMounted || (to.tag !== HostComponent && to.tag !== HostText)) {
+              if (
+                to !== nearestMounted ||
+                (to.tag !== HostComponent && to.tag !== HostText)
+              ) {
                 to = null
               }
             }
@@ -7221,10 +7744,18 @@ var require_react_dom_development = __commonJS({
             enterEvent.relatedTarget = fromNode
             enter = enterEvent
           }
-          accumulateEnterLeaveTwoPhaseListeners(dispatchQueue, leave, enter, from, to)
+          accumulateEnterLeaveTwoPhaseListeners(
+            dispatchQueue,
+            leave,
+            enter,
+            from,
+            to
+          )
         }
         function is(x, y) {
-          return (x === y && (x !== 0 || 1 / x === 1 / y)) || (x !== x && y !== y)
+          return (
+            (x === y && (x !== 0 || 1 / x === 1 / y)) || (x !== x && y !== y)
+          )
         }
         var objectIs = typeof Object.is === 'function' ? Object.is : is
         function shallowEqual(objA, objB) {
@@ -7329,10 +7860,16 @@ var require_react_dom_development = __commonJS({
           outer: while (true) {
             var next = null
             while (true) {
-              if (node === anchorNode && (anchorOffset === 0 || node.nodeType === TEXT_NODE)) {
+              if (
+                node === anchorNode &&
+                (anchorOffset === 0 || node.nodeType === TEXT_NODE)
+              ) {
                 start = length + anchorOffset
               }
-              if (node === focusNode && (focusOffset === 0 || node.nodeType === TEXT_NODE)) {
+              if (
+                node === focusNode &&
+                (focusOffset === 0 || node.nodeType === TEXT_NODE)
+              ) {
                 end = length + focusOffset
               }
               if (node.nodeType === TEXT_NODE) {
@@ -7348,10 +7885,16 @@ var require_react_dom_development = __commonJS({
               if (node === outerNode) {
                 break outer
               }
-              if (parentNode === anchorNode && ++indexWithinAnchor === anchorOffset) {
+              if (
+                parentNode === anchorNode &&
+                ++indexWithinAnchor === anchorOffset
+              ) {
                 start = length
               }
-              if (parentNode === focusNode && ++indexWithinFocus === focusOffset) {
+              if (
+                parentNode === focusNode &&
+                ++indexWithinFocus === focusOffset
+              ) {
                 end = length
               }
               if ((next = node.nextSibling) !== null) {
@@ -7379,7 +7922,8 @@ var require_react_dom_development = __commonJS({
           var selection = win.getSelection()
           var length = node.textContent.length
           var start = Math.min(offsets.start, length)
-          var end = offsets.end === void 0 ? start : Math.min(offsets.end, length)
+          var end =
+            offsets.end === void 0 ? start : Math.min(offsets.end, length)
           if (!selection.extend && start > end) {
             var temp = end
             end = start
@@ -7431,7 +7975,9 @@ var require_react_dom_development = __commonJS({
         }
         function isInDocument(node) {
           return (
-            node && node.ownerDocument && containsNode(node.ownerDocument.documentElement, node)
+            node &&
+            node.ownerDocument &&
+            containsNode(node.ownerDocument.documentElement, node)
           )
         }
         function isSameOriginFrame(iframe) {
@@ -7481,8 +8027,14 @@ var require_react_dom_development = __commonJS({
           var curFocusedElem = getActiveElementDeep()
           var priorFocusedElem = priorSelectionInformation.focusedElem
           var priorSelectionRange = priorSelectionInformation.selectionRange
-          if (curFocusedElem !== priorFocusedElem && isInDocument(priorFocusedElem)) {
-            if (priorSelectionRange !== null && hasSelectionCapabilities(priorFocusedElem)) {
+          if (
+            curFocusedElem !== priorFocusedElem &&
+            isInDocument(priorFocusedElem)
+          ) {
+            if (
+              priorSelectionRange !== null &&
+              hasSelectionCapabilities(priorFocusedElem)
+            ) {
               setSelection(priorFocusedElem, priorSelectionRange)
             }
             var ancestors = []
@@ -7562,7 +8114,8 @@ var require_react_dom_development = __commonJS({
               end: node.selectionEnd,
             }
           } else {
-            var win = (node.ownerDocument && node.ownerDocument.defaultView) || window
+            var win =
+              (node.ownerDocument && node.ownerDocument.defaultView) || window
             var selection = win.getSelection()
             return {
               anchorNode: selection.anchorNode,
@@ -7579,15 +8132,29 @@ var require_react_dom_development = __commonJS({
               ? eventTarget
               : eventTarget.ownerDocument
         }
-        function constructSelectEvent(dispatchQueue, nativeEvent, nativeEventTarget) {
+        function constructSelectEvent(
+          dispatchQueue,
+          nativeEvent,
+          nativeEventTarget
+        ) {
           var doc = getEventTargetDocument(nativeEventTarget)
-          if (mouseDown || activeElement$1 == null || activeElement$1 !== getActiveElement(doc)) {
+          if (
+            mouseDown ||
+            activeElement$1 == null ||
+            activeElement$1 !== getActiveElement(doc)
+          ) {
             return
           }
           var currentSelection = getSelection$1(activeElement$1)
-          if (!lastSelection || !shallowEqual(lastSelection, currentSelection)) {
+          if (
+            !lastSelection ||
+            !shallowEqual(lastSelection, currentSelection)
+          ) {
             lastSelection = currentSelection
-            var listeners = accumulateTwoPhaseListeners(activeElementInst$1, 'onSelect')
+            var listeners = accumulateTwoPhaseListeners(
+              activeElementInst$1,
+              'onSelect'
+            )
             if (listeners.length > 0) {
               var event = new SyntheticEvent(
                 'onSelect',
@@ -7616,7 +8183,10 @@ var require_react_dom_development = __commonJS({
           var targetNode = targetInst ? getNodeFromInstance(targetInst) : window
           switch (domEventName) {
             case 'focusin':
-              if (isTextInputElement(targetNode) || targetNode.contentEditable === 'true') {
+              if (
+                isTextInputElement(targetNode) ||
+                targetNode.contentEditable === 'true'
+              ) {
                 activeElement$1 = targetNode
                 activeElementInst$1 = targetInst
                 lastSelection = null
@@ -7634,7 +8204,11 @@ var require_react_dom_development = __commonJS({
             case 'mouseup':
             case 'dragend':
               mouseDown = false
-              constructSelectEvent(dispatchQueue, nativeEvent, nativeEventTarget)
+              constructSelectEvent(
+                dispatchQueue,
+                nativeEvent,
+                nativeEventTarget
+              )
               break
             case 'selectionchange':
               if (skipSelectionChangeEvent) {
@@ -7642,7 +8216,11 @@ var require_react_dom_development = __commonJS({
               }
             case 'keydown':
             case 'keyup':
-              constructSelectEvent(dispatchQueue, nativeEvent, nativeEventTarget)
+              constructSelectEvent(
+                dispatchQueue,
+                nativeEvent,
+                nativeEventTarget
+              )
           }
         }
         function makePrefixMap(styleProp, eventName) {
@@ -7686,7 +8264,8 @@ var require_react_dom_development = __commonJS({
           return eventName
         }
         var ANIMATION_END = getVendorPrefixedEventName('animationend')
-        var ANIMATION_ITERATION = getVendorPrefixedEventName('animationiteration')
+        var ANIMATION_ITERATION =
+          getVendorPrefixedEventName('animationiteration')
         var ANIMATION_START = getVendorPrefixedEventName('animationstart')
         var TRANSITION_END = getVendorPrefixedEventName('transitionend')
         var topLevelEventsToReactNames = /* @__PURE__ */ new Map()
@@ -7768,7 +8347,8 @@ var require_react_dom_development = __commonJS({
           for (var i = 0; i < simpleEventPluginEvents.length; i++) {
             var eventName = simpleEventPluginEvents[i]
             var domEventName = eventName.toLowerCase()
-            var capitalizedEvent = eventName[0].toUpperCase() + eventName.slice(1)
+            var capitalizedEvent =
+              eventName[0].toUpperCase() + eventName.slice(1)
             registerSimpleEvent(domEventName, 'on' + capitalizedEvent)
           }
           registerSimpleEvent(ANIMATION_END, 'onAnimationEnd')
@@ -7930,10 +8510,34 @@ var require_react_dom_development = __commonJS({
           var shouldProcessPolyfillPlugins =
             (eventSystemFlags & SHOULD_NOT_PROCESS_POLYFILL_EVENT_PLUGINS) === 0
           if (shouldProcessPolyfillPlugins) {
-            extractEvents$2(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget)
-            extractEvents$1(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget)
-            extractEvents$3(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget)
-            extractEvents(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget)
+            extractEvents$2(
+              dispatchQueue,
+              domEventName,
+              targetInst,
+              nativeEvent,
+              nativeEventTarget
+            )
+            extractEvents$1(
+              dispatchQueue,
+              domEventName,
+              targetInst,
+              nativeEvent,
+              nativeEventTarget
+            )
+            extractEvents$3(
+              dispatchQueue,
+              domEventName,
+              targetInst,
+              nativeEvent,
+              nativeEventTarget
+            )
+            extractEvents(
+              dispatchQueue,
+              domEventName,
+              targetInst,
+              nativeEvent,
+              nativeEventTarget
+            )
           }
         }
         var mediaEventTypes = [
@@ -7963,7 +8567,9 @@ var require_react_dom_development = __commonJS({
           'waiting',
         ]
         var nonDelegatedEvents = new Set(
-          ['cancel', 'close', 'invalid', 'load', 'scroll', 'toggle'].concat(mediaEventTypes)
+          ['cancel', 'close', 'invalid', 'load', 'scroll', 'toggle'].concat(
+            mediaEventTypes
+          )
         )
         function executeDispatch(event, listener, currentTarget) {
           var type = event.type || 'unknown-event'
@@ -7971,7 +8577,11 @@ var require_react_dom_development = __commonJS({
           invokeGuardedCallbackAndCatchFirstError(type, listener, void 0, event)
           event.currentTarget = null
         }
-        function processDispatchQueueItemsInOrder(event, dispatchListeners, inCapturePhase) {
+        function processDispatchQueueItemsInOrder(
+          event,
+          dispatchListeners,
+          inCapturePhase
+        ) {
           var previousInstance
           if (inCapturePhase) {
             for (var i = dispatchListeners.length - 1; i >= 0; i--) {
@@ -7979,7 +8589,10 @@ var require_react_dom_development = __commonJS({
                 instance = _dispatchListeners$i.instance,
                 currentTarget = _dispatchListeners$i.currentTarget,
                 listener = _dispatchListeners$i.listener
-              if (instance !== previousInstance && event.isPropagationStopped()) {
+              if (
+                instance !== previousInstance &&
+                event.isPropagationStopped()
+              ) {
                 return
               }
               executeDispatch(event, listener, currentTarget)
@@ -7991,7 +8604,10 @@ var require_react_dom_development = __commonJS({
                 _instance = _dispatchListeners$_i.instance,
                 _currentTarget = _dispatchListeners$_i.currentTarget,
                 _listener = _dispatchListeners$_i.listener
-              if (_instance !== previousInstance && event.isPropagationStopped()) {
+              if (
+                _instance !== previousInstance &&
+                event.isPropagationStopped()
+              ) {
                 return
               }
               executeDispatch(event, _listener, _currentTarget)
@@ -8039,7 +8655,10 @@ var require_react_dom_development = __commonJS({
           }
           var isCapturePhaseListener = false
           var listenerSet = getEventListenerSet(targetElement)
-          var listenerSetKey = getListenerSetKey(domEventName, isCapturePhaseListener)
+          var listenerSetKey = getListenerSetKey(
+            domEventName,
+            isCapturePhaseListener
+          )
           if (!listenerSet.has(listenerSetKey)) {
             addTrappedEventListener(
               targetElement,
@@ -8050,9 +8669,16 @@ var require_react_dom_development = __commonJS({
             listenerSet.add(listenerSetKey)
           }
         }
-        function listenToNativeEvent(domEventName, isCapturePhaseListener, target) {
+        function listenToNativeEvent(
+          domEventName,
+          isCapturePhaseListener,
+          target
+        ) {
           {
-            if (nonDelegatedEvents.has(domEventName) && !isCapturePhaseListener) {
+            if (
+              nonDelegatedEvents.has(domEventName) &&
+              !isCapturePhaseListener
+            ) {
               error(
                 'Did not expect a listenToNativeEvent() call for "%s" in the bubble phase. This is a bug in React. Please file an issue.',
                 domEventName
@@ -8063,9 +8689,15 @@ var require_react_dom_development = __commonJS({
           if (isCapturePhaseListener) {
             eventSystemFlags |= IS_CAPTURE_PHASE
           }
-          addTrappedEventListener(target, domEventName, eventSystemFlags, isCapturePhaseListener)
+          addTrappedEventListener(
+            target,
+            domEventName,
+            eventSystemFlags,
+            isCapturePhaseListener
+          )
         }
-        var listeningMarker = '_reactListening' + Math.random().toString(36).slice(2)
+        var listeningMarker =
+          '_reactListening' + Math.random().toString(36).slice(2)
         function listenToAllSupportedEvents(rootContainerElement) {
           if (!rootContainerElement[listeningMarker]) {
             rootContainerElement[listeningMarker] = true
@@ -8122,7 +8754,11 @@ var require_react_dom_development = __commonJS({
                 isPassiveListener
               )
             } else {
-              unsubscribeListener = addEventCaptureListener(targetContainer, domEventName, listener)
+              unsubscribeListener = addEventCaptureListener(
+                targetContainer,
+                domEventName,
+                listener
+              )
             }
           } else {
             if (isPassiveListener !== void 0) {
@@ -8133,7 +8769,11 @@ var require_react_dom_development = __commonJS({
                 isPassiveListener
               )
             } else {
-              unsubscribeListener = addEventBubbleListener(targetContainer, domEventName, listener)
+              unsubscribeListener = addEventBubbleListener(
+                targetContainer,
+                domEventName,
+                listener
+              )
             }
           }
         }
@@ -8175,7 +8815,12 @@ var require_react_dom_development = __commonJS({
                       var grandTag = grandNode.tag
                       if (grandTag === HostRoot || grandTag === HostPortal) {
                         var grandContainer = grandNode.stateNode.containerInfo
-                        if (isMatchingRootContainer(grandContainer, targetContainerNode)) {
+                        if (
+                          isMatchingRootContainer(
+                            grandContainer,
+                            targetContainerNode
+                          )
+                        ) {
                           return
                         }
                       }
@@ -8237,7 +8882,13 @@ var require_react_dom_development = __commonJS({
               if (reactEventName !== null) {
                 var listener = getListener(instance, reactEventName)
                 if (listener != null) {
-                  listeners.push(createDispatchListener(instance, listener, lastHostComponent))
+                  listeners.push(
+                    createDispatchListener(
+                      instance,
+                      listener,
+                      lastHostComponent
+                    )
+                  )
                 }
               }
             }
@@ -8260,11 +8911,23 @@ var require_react_dom_development = __commonJS({
               var currentTarget = stateNode
               var captureListener = getListener(instance, captureName)
               if (captureListener != null) {
-                listeners.unshift(createDispatchListener(instance, captureListener, currentTarget))
+                listeners.unshift(
+                  createDispatchListener(
+                    instance,
+                    captureListener,
+                    currentTarget
+                  )
+                )
               }
               var bubbleListener = getListener(instance, reactName)
               if (bubbleListener != null) {
-                listeners.push(createDispatchListener(instance, bubbleListener, currentTarget))
+                listeners.push(
+                  createDispatchListener(
+                    instance,
+                    bubbleListener,
+                    currentTarget
+                  )
+                )
               }
             }
             instance = instance.return
@@ -8304,7 +8967,10 @@ var require_react_dom_development = __commonJS({
           }
           var depth = depthA
           while (depth--) {
-            if (nodeA === nodeB || (nodeB !== null && nodeA === nodeB.alternate)) {
+            if (
+              nodeA === nodeB ||
+              (nodeB !== null && nodeA === nodeB.alternate)
+            ) {
               return nodeA
             }
             nodeA = getParent(nodeA)
@@ -8339,13 +9005,23 @@ var require_react_dom_development = __commonJS({
                 var captureListener = getListener(instance, registrationName)
                 if (captureListener != null) {
                   listeners.unshift(
-                    createDispatchListener(instance, captureListener, currentTarget)
+                    createDispatchListener(
+                      instance,
+                      captureListener,
+                      currentTarget
+                    )
                   )
                 }
               } else if (!inCapturePhase) {
                 var bubbleListener = getListener(instance, registrationName)
                 if (bubbleListener != null) {
-                  listeners.push(createDispatchListener(instance, bubbleListener, currentTarget))
+                  listeners.push(
+                    createDispatchListener(
+                      instance,
+                      bubbleListener,
+                      currentTarget
+                    )
+                  )
                 }
               }
             }
@@ -8367,10 +9043,22 @@ var require_react_dom_development = __commonJS({
         ) {
           var common = from && to ? getLowestCommonAncestor(from, to) : null
           if (from !== null) {
-            accumulateEnterLeaveListenersForEvent(dispatchQueue, leaveEvent, from, common, false)
+            accumulateEnterLeaveListenersForEvent(
+              dispatchQueue,
+              leaveEvent,
+              from,
+              common,
+              false
+            )
           }
           if (to !== null && enterEvent !== null) {
-            accumulateEnterLeaveListenersForEvent(dispatchQueue, enterEvent, to, common, true)
+            accumulateEnterLeaveListenersForEvent(
+              dispatchQueue,
+              enterEvent,
+              to,
+              common,
+              true
+            )
           }
         }
         function getListenerSetKey(domEventName, capture) {
@@ -8411,12 +9099,18 @@ var require_react_dom_development = __commonJS({
             })
           }
           canDiffStyleForHydrationWarning = canUseDOM && !document.documentMode
-          warnForPropDifference = function (propName, serverValue, clientValue) {
+          warnForPropDifference = function (
+            propName,
+            serverValue,
+            clientValue
+          ) {
             if (didWarnInvalidHydration) {
               return
             }
-            var normalizedClientValue = normalizeMarkupForTextOrAttribute(clientValue)
-            var normalizedServerValue = normalizeMarkupForTextOrAttribute(serverValue)
+            var normalizedClientValue =
+              normalizeMarkupForTextOrAttribute(clientValue)
+            var normalizedServerValue =
+              normalizeMarkupForTextOrAttribute(serverValue)
             if (normalizedServerValue === normalizedClientValue) {
               return
             }
@@ -8459,7 +9153,10 @@ var require_react_dom_development = __commonJS({
             var testElement =
               parent.namespaceURI === HTML_NAMESPACE
                 ? parent.ownerDocument.createElement(parent.tagName)
-                : parent.ownerDocument.createElementNS(parent.namespaceURI, parent.tagName)
+                : parent.ownerDocument.createElementNS(
+                    parent.namespaceURI,
+                    parent.tagName
+                  )
             testElement.innerHTML = html
             return testElement.innerHTML
           }
@@ -8475,9 +9172,16 @@ var require_react_dom_development = __commonJS({
             .replace(NORMALIZE_NEWLINES_REGEX, '\n')
             .replace(NORMALIZE_NULL_AND_REPLACEMENT_REGEX, '')
         }
-        function checkForUnmatchedText(serverText, clientText, isConcurrentMode, shouldWarnDev) {
-          var normalizedClientText = normalizeMarkupForTextOrAttribute(clientText)
-          var normalizedServerText = normalizeMarkupForTextOrAttribute(serverText)
+        function checkForUnmatchedText(
+          serverText,
+          clientText,
+          isConcurrentMode,
+          shouldWarnDev
+        ) {
+          var normalizedClientText =
+            normalizeMarkupForTextOrAttribute(clientText)
+          var normalizedServerText =
+            normalizeMarkupForTextOrAttribute(serverText)
           if (normalizedServerText === normalizedClientText) {
             return
           }
@@ -8554,7 +9258,12 @@ var require_react_dom_development = __commonJS({
                 }
               }
             } else if (nextProp != null) {
-              setValueForProperty(domElement, propKey, nextProp, isCustomComponentTag)
+              setValueForProperty(
+                domElement,
+                propKey,
+                nextProp,
+                isCustomComponentTag
+              )
             }
           }
         }
@@ -8574,13 +9283,24 @@ var require_react_dom_development = __commonJS({
             } else if (propKey === CHILDREN) {
               setTextContent(domElement, propValue)
             } else {
-              setValueForProperty(domElement, propKey, propValue, isCustomComponentTag)
+              setValueForProperty(
+                domElement,
+                propKey,
+                propValue,
+                isCustomComponentTag
+              )
             }
           }
         }
-        function createElement(type, props, rootContainerElement, parentNamespace) {
+        function createElement(
+          type,
+          props,
+          rootContainerElement,
+          parentNamespace
+        ) {
           var isCustomComponentTag
-          var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement)
+          var ownerDocument =
+            getOwnerDocumentFromRootContainer(rootContainerElement)
           var domElement
           var namespaceURI = parentNamespace
           if (namespaceURI === HTML_NAMESPACE) {
@@ -8623,7 +9343,8 @@ var require_react_dom_development = __commonJS({
             if (namespaceURI === HTML_NAMESPACE) {
               if (
                 !isCustomComponentTag &&
-                Object.prototype.toString.call(domElement) === '[object HTMLUnknownElement]' &&
+                Object.prototype.toString.call(domElement) ===
+                  '[object HTMLUnknownElement]' &&
                 !hasOwnProperty.call(warnedUnknownTags, type)
               ) {
                 warnedUnknownTags[type] = true
@@ -8637,9 +9358,16 @@ var require_react_dom_development = __commonJS({
           return domElement
         }
         function createTextNode(text, rootContainerElement) {
-          return getOwnerDocumentFromRootContainer(rootContainerElement).createTextNode(text)
+          return getOwnerDocumentFromRootContainer(
+            rootContainerElement
+          ).createTextNode(text)
         }
-        function setInitialProperties(domElement, tag, rawProps, rootContainerElement) {
+        function setInitialProperties(
+          domElement,
+          tag,
+          rawProps,
+          rootContainerElement
+        ) {
           var isCustomComponentTag = isCustomComponent(tag, rawProps)
           {
             validatePropertiesInDevelopment(tag, rawProps)
@@ -8731,7 +9459,13 @@ var require_react_dom_development = __commonJS({
               break
           }
         }
-        function diffProperties(domElement, tag, lastRawProps, nextRawProps, rootContainerElement) {
+        function diffProperties(
+          domElement,
+          tag,
+          lastRawProps,
+          nextRawProps,
+          rootContainerElement
+        ) {
           {
             validatePropertiesInDevelopment(tag, nextRawProps)
           }
@@ -8787,7 +9521,10 @@ var require_react_dom_development = __commonJS({
                   styleUpdates[styleName] = ''
                 }
               }
-            } else if (propKey === DANGEROUSLY_SET_INNER_HTML || propKey === CHILDREN);
+            } else if (
+              propKey === DANGEROUSLY_SET_INNER_HTML ||
+              propKey === CHILDREN
+            );
             else if (
               propKey === SUPPRESS_CONTENT_EDITABLE_WARNING ||
               propKey === SUPPRESS_HYDRATION_WARNING
@@ -8858,8 +9595,14 @@ var require_react_dom_development = __commonJS({
                 }
               }
             } else if (propKey === CHILDREN) {
-              if (typeof nextProp === 'string' || typeof nextProp === 'number') {
-                ;(updatePayload = updatePayload || []).push(propKey, '' + nextProp)
+              if (
+                typeof nextProp === 'string' ||
+                typeof nextProp === 'number'
+              ) {
+                ;(updatePayload = updatePayload || []).push(
+                  propKey,
+                  '' + nextProp
+                )
               }
             } else if (
               propKey === SUPPRESS_CONTENT_EDITABLE_WARNING ||
@@ -8883,14 +9626,27 @@ var require_react_dom_development = __commonJS({
           }
           if (styleUpdates) {
             {
-              validateShorthandPropertyCollisionInDev(styleUpdates, nextProps[STYLE])
+              validateShorthandPropertyCollisionInDev(
+                styleUpdates,
+                nextProps[STYLE]
+              )
             }
             ;(updatePayload = updatePayload || []).push(STYLE, styleUpdates)
           }
           return updatePayload
         }
-        function updateProperties(domElement, updatePayload, tag, lastRawProps, nextRawProps) {
-          if (tag === 'input' && nextRawProps.type === 'radio' && nextRawProps.name != null) {
+        function updateProperties(
+          domElement,
+          updatePayload,
+          tag,
+          lastRawProps,
+          nextRawProps
+        ) {
+          if (
+            tag === 'input' &&
+            nextRawProps.type === 'radio' &&
+            nextRawProps.name != null
+          ) {
             updateChecked(domElement, nextRawProps)
           }
           var wasCustomComponentTag = isCustomComponent(tag, lastRawProps)
@@ -9077,20 +9833,41 @@ var require_react_dom_development = __commonJS({
                     warnForPropDifference(propKey, serverValue, expectedStyle)
                   }
                 }
-              } else if (isCustomComponentTag && !enableCustomElementPropertySupport) {
+              } else if (
+                isCustomComponentTag &&
+                !enableCustomElementPropertySupport
+              ) {
                 extraAttributeNames.delete(propKey.toLowerCase())
-                serverValue = getValueForAttribute(domElement, propKey, nextProp)
+                serverValue = getValueForAttribute(
+                  domElement,
+                  propKey,
+                  nextProp
+                )
                 if (nextProp !== serverValue) {
                   warnForPropDifference(propKey, serverValue, nextProp)
                 }
               } else if (
-                !shouldIgnoreAttribute(propKey, propertyInfo, isCustomComponentTag) &&
-                !shouldRemoveAttribute(propKey, nextProp, propertyInfo, isCustomComponentTag)
+                !shouldIgnoreAttribute(
+                  propKey,
+                  propertyInfo,
+                  isCustomComponentTag
+                ) &&
+                !shouldRemoveAttribute(
+                  propKey,
+                  nextProp,
+                  propertyInfo,
+                  isCustomComponentTag
+                )
               ) {
                 var isMismatchDueToBadCasing = false
                 if (propertyInfo !== null) {
                   extraAttributeNames.delete(propertyInfo.attributeName)
-                  serverValue = getValueForProperty(domElement, propKey, nextProp, propertyInfo)
+                  serverValue = getValueForProperty(
+                    domElement,
+                    propKey,
+                    nextProp,
+                    propertyInfo
+                  )
                 } else {
                   var ownNamespace = parentNamespace
                   if (ownNamespace === HTML_NAMESPACE) {
@@ -9106,7 +9883,11 @@ var require_react_dom_development = __commonJS({
                     }
                     extraAttributeNames.delete(propKey)
                   }
-                  serverValue = getValueForAttribute(domElement, propKey, nextProp)
+                  serverValue = getValueForAttribute(
+                    domElement,
+                    propKey,
+                    nextProp
+                  )
                 }
                 var dontWarnCustomElement = enableCustomElementPropertySupport
                 if (
@@ -9328,7 +10109,16 @@ var require_react_dom_development = __commonJS({
             'title',
           ]
           var buttonScopeTags = inScopeTags.concat(['button'])
-          var impliedEndTags = ['dd', 'dt', 'li', 'option', 'optgroup', 'p', 'rp', 'rt']
+          var impliedEndTags = [
+            'dd',
+            'dt',
+            'li',
+            'option',
+            'optgroup',
+            'p',
+            'rp',
+            'rt',
+          ]
           var emptyAncestorInfo = {
             current: null,
             formTag: null,
@@ -9404,7 +10194,12 @@ var require_react_dom_development = __commonJS({
               case 'tbody':
               case 'thead':
               case 'tfoot':
-                return tag === 'tr' || tag === 'style' || tag === 'script' || tag === 'template'
+                return (
+                  tag === 'tr' ||
+                  tag === 'style' ||
+                  tag === 'script' ||
+                  tag === 'template'
+                )
               case 'colgroup':
                 return tag === 'col' || tag === 'template'
               case 'table':
@@ -9536,11 +10331,15 @@ var require_react_dom_development = __commonJS({
             var parentTag = parentInfo && parentInfo.tag
             if (childText != null) {
               if (childTag != null) {
-                error('validateDOMNesting: when childText is passed, childTag should be null')
+                error(
+                  'validateDOMNesting: when childText is passed, childTag should be null'
+                )
               }
               childTag = '#text'
             }
-            var invalidParent = isTagValidWithParent(childTag, parentTag) ? null : parentInfo
+            var invalidParent = isTagValidWithParent(childTag, parentTag)
+              ? null
+              : parentInfo
             var invalidAncestor = invalidParent
               ? null
               : findInvalidAncestorForTag(childTag, ancestorInfo)
@@ -9606,12 +10405,16 @@ var require_react_dom_development = __commonJS({
             case DOCUMENT_FRAGMENT_NODE: {
               type = nodeType === DOCUMENT_NODE ? '#document' : '#fragment'
               var root2 = rootContainerInstance.documentElement
-              namespace = root2 ? root2.namespaceURI : getChildNamespace(null, '')
+              namespace = root2
+                ? root2.namespaceURI
+                : getChildNamespace(null, '')
               break
             }
             default: {
               var container =
-                nodeType === COMMENT_NODE ? rootContainerInstance.parentNode : rootContainerInstance
+                nodeType === COMMENT_NODE
+                  ? rootContainerInstance.parentNode
+                  : rootContainerInstance
               var ownNamespace = container.namespaceURI || null
               type = container.tagName
               namespace = getChildNamespace(ownNamespace, type)
@@ -9627,11 +10430,21 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function getChildHostContext(parentHostContext, type, rootContainerInstance) {
+        function getChildHostContext(
+          parentHostContext,
+          type,
+          rootContainerInstance
+        ) {
           {
             var parentHostContextDev = parentHostContext
-            var namespace = getChildNamespace(parentHostContextDev.namespace, type)
-            var ancestorInfo = updatedAncestorInfo(parentHostContextDev.ancestorInfo, type)
+            var namespace = getChildNamespace(
+              parentHostContextDev.namespace,
+              type
+            )
+            var ancestorInfo = updatedAncestorInfo(
+              parentHostContextDev.ancestorInfo,
+              type
+            )
             return {
               namespace,
               ancestorInfo,
@@ -9665,14 +10478,25 @@ var require_react_dom_development = __commonJS({
           {
             var hostContextDev = hostContext
             validateDOMNesting(type, null, hostContextDev.ancestorInfo)
-            if (typeof props.children === 'string' || typeof props.children === 'number') {
+            if (
+              typeof props.children === 'string' ||
+              typeof props.children === 'number'
+            ) {
               var string = '' + props.children
-              var ownAncestorInfo = updatedAncestorInfo(hostContextDev.ancestorInfo, type)
+              var ownAncestorInfo = updatedAncestorInfo(
+                hostContextDev.ancestorInfo,
+                type
+              )
               validateDOMNesting(null, string, ownAncestorInfo)
             }
             parentNamespace = hostContextDev.namespace
           }
-          var domElement = createElement(type, props, rootContainerInstance, parentNamespace)
+          var domElement = createElement(
+            type,
+            props,
+            rootContainerInstance,
+            parentNamespace
+          )
           precacheFiberNode(internalInstanceHandle, domElement)
           updateFiberProps(domElement, props)
           return domElement
@@ -9712,10 +10536,14 @@ var require_react_dom_development = __commonJS({
             var hostContextDev = hostContext
             if (
               typeof newProps.children !== typeof oldProps.children &&
-              (typeof newProps.children === 'string' || typeof newProps.children === 'number')
+              (typeof newProps.children === 'string' ||
+                typeof newProps.children === 'number')
             ) {
               var string = '' + newProps.children
-              var ownAncestorInfo = updatedAncestorInfo(hostContextDev.ancestorInfo, type)
+              var ownAncestorInfo = updatedAncestorInfo(
+                hostContextDev.ancestorInfo,
+                type
+              )
               validateDOMNesting(null, string, ownAncestorInfo)
             }
           }
@@ -9753,8 +10581,10 @@ var require_react_dom_development = __commonJS({
           }
           return getEventPriority(currentEvent.type)
         }
-        var scheduleTimeout = typeof setTimeout === 'function' ? setTimeout : void 0
-        var cancelTimeout = typeof clearTimeout === 'function' ? clearTimeout : void 0
+        var scheduleTimeout =
+          typeof setTimeout === 'function' ? setTimeout : void 0
+        var cancelTimeout =
+          typeof clearTimeout === 'function' ? clearTimeout : void 0
         var noTimeout = -1
         var localPromise = typeof Promise === 'function' ? Promise : void 0
         var scheduleMicrotask =
@@ -9762,7 +10592,10 @@ var require_react_dom_development = __commonJS({
             ? queueMicrotask
             : typeof localPromise !== 'undefined'
               ? function (callback) {
-                  return localPromise.resolve(null).then(callback).catch(handleErrorInNextTick)
+                  return localPromise
+                    .resolve(null)
+                    .then(callback)
+                    .catch(handleErrorInNextTick)
                 }
               : scheduleTimeout
         function handleErrorInNextTick(error2) {
@@ -9770,7 +10603,12 @@ var require_react_dom_development = __commonJS({
             throw error2
           })
         }
-        function commitMount(domElement, type, newProps, internalInstanceHandle) {
+        function commitMount(
+          domElement,
+          type,
+          newProps,
+          internalInstanceHandle
+        ) {
           switch (type) {
             case 'button':
             case 'input':
@@ -9873,7 +10711,10 @@ var require_react_dom_development = __commonJS({
           } while (node)
           retryIfBlockedOn(suspenseInstance)
         }
-        function clearSuspenseBoundaryFromContainer(container, suspenseInstance) {
+        function clearSuspenseBoundaryFromContainer(
+          container,
+          suspenseInstance
+        ) {
           if (container.nodeType === COMMENT_NODE) {
             clearSuspenseBoundary(container.parentNode, suspenseInstance)
           } else if (container.nodeType === ELEMENT_NODE) {
@@ -9897,7 +10738,9 @@ var require_react_dom_development = __commonJS({
           instance = instance
           var styleProp = props[STYLE$1]
           var display =
-            styleProp !== void 0 && styleProp !== null && styleProp.hasOwnProperty('display')
+            styleProp !== void 0 &&
+            styleProp !== null &&
+            styleProp.hasOwnProperty('display')
               ? styleProp.display
               : null
           instance.style.display = dangerousStyleValue('display', display)
@@ -10012,7 +10855,8 @@ var require_react_dom_development = __commonJS({
             var hostContextDev = hostContext
             parentNamespace = hostContextDev.namespace
           }
-          var isConcurrentMode = (internalInstanceHandle.mode & ConcurrentMode) !== NoMode
+          var isConcurrentMode =
+            (internalInstanceHandle.mode & ConcurrentMode) !== NoMode
           return diffHydratedProperties(
             instance,
             type,
@@ -10023,15 +10867,26 @@ var require_react_dom_development = __commonJS({
             shouldWarnDev
           )
         }
-        function hydrateTextInstance(textInstance, text, internalInstanceHandle, shouldWarnDev) {
+        function hydrateTextInstance(
+          textInstance,
+          text,
+          internalInstanceHandle,
+          shouldWarnDev
+        ) {
           precacheFiberNode(internalInstanceHandle, textInstance)
-          var isConcurrentMode = (internalInstanceHandle.mode & ConcurrentMode) !== NoMode
+          var isConcurrentMode =
+            (internalInstanceHandle.mode & ConcurrentMode) !== NoMode
           return diffHydratedText(textInstance, text)
         }
-        function hydrateSuspenseInstance(suspenseInstance, internalInstanceHandle) {
+        function hydrateSuspenseInstance(
+          suspenseInstance,
+          internalInstanceHandle
+        ) {
           precacheFiberNode(internalInstanceHandle, suspenseInstance)
         }
-        function getNextHydratableInstanceAfterSuspenseInstance(suspenseInstance) {
+        function getNextHydratableInstanceAfterSuspenseInstance(
+          suspenseInstance
+        ) {
           var node = suspenseInstance.nextSibling
           var depth = 0
           while (node) {
@@ -10095,7 +10950,12 @@ var require_react_dom_development = __commonJS({
           isConcurrentMode
         ) {
           var shouldWarnDev = true
-          checkForUnmatchedText(textInstance.nodeValue, text, isConcurrentMode, shouldWarnDev)
+          checkForUnmatchedText(
+            textInstance.nodeValue,
+            text,
+            isConcurrentMode,
+            shouldWarnDev
+          )
         }
         function didNotMatchHydratedTextInstance(
           parentType,
@@ -10107,10 +10967,18 @@ var require_react_dom_development = __commonJS({
         ) {
           if (parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true) {
             var shouldWarnDev = true
-            checkForUnmatchedText(textInstance.nodeValue, text, isConcurrentMode, shouldWarnDev)
+            checkForUnmatchedText(
+              textInstance.nodeValue,
+              text,
+              isConcurrentMode,
+              shouldWarnDev
+            )
           }
         }
-        function didNotHydrateInstanceWithinContainer(parentContainer, instance) {
+        function didNotHydrateInstanceWithinContainer(
+          parentContainer,
+          instance
+        ) {
           {
             if (instance.nodeType === ELEMENT_NODE) {
               warnForDeletedHydratableElement(parentContainer, instance)
@@ -10120,7 +10988,10 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function didNotHydrateInstanceWithinSuspenseInstance(parentInstance, instance) {
+        function didNotHydrateInstanceWithinSuspenseInstance(
+          parentInstance,
+          instance
+        ) {
           {
             var parentNode = parentInstance.parentNode
             if (parentNode !== null) {
@@ -10141,7 +11012,10 @@ var require_react_dom_development = __commonJS({
           isConcurrentMode
         ) {
           {
-            if (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true) {
+            if (
+              isConcurrentMode ||
+              parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true
+            ) {
               if (instance.nodeType === ELEMENT_NODE) {
                 warnForDeletedHydratableElement(parentInstance, instance)
               } else if (instance.nodeType === COMMENT_NODE);
@@ -10151,26 +11025,42 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function didNotFindHydratableInstanceWithinContainer(parentContainer, type, props) {
+        function didNotFindHydratableInstanceWithinContainer(
+          parentContainer,
+          type,
+          props
+        ) {
           {
             warnForInsertedHydratedElement(parentContainer, type)
           }
         }
-        function didNotFindHydratableTextInstanceWithinContainer(parentContainer, text) {
+        function didNotFindHydratableTextInstanceWithinContainer(
+          parentContainer,
+          text
+        ) {
           {
             warnForInsertedHydratedText(parentContainer, text)
           }
         }
-        function didNotFindHydratableInstanceWithinSuspenseInstance(parentInstance, type, props) {
+        function didNotFindHydratableInstanceWithinSuspenseInstance(
+          parentInstance,
+          type,
+          props
+        ) {
           {
             var parentNode = parentInstance.parentNode
-            if (parentNode !== null) warnForInsertedHydratedElement(parentNode, type)
+            if (parentNode !== null)
+              warnForInsertedHydratedElement(parentNode, type)
           }
         }
-        function didNotFindHydratableTextInstanceWithinSuspenseInstance(parentInstance, text) {
+        function didNotFindHydratableTextInstanceWithinSuspenseInstance(
+          parentInstance,
+          text
+        ) {
           {
             var parentNode = parentInstance.parentNode
-            if (parentNode !== null) warnForInsertedHydratedText(parentNode, text)
+            if (parentNode !== null)
+              warnForInsertedHydratedText(parentNode, text)
           }
         }
         function didNotFindHydratableInstance(
@@ -10182,7 +11072,10 @@ var require_react_dom_development = __commonJS({
           isConcurrentMode
         ) {
           {
-            if (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true) {
+            if (
+              isConcurrentMode ||
+              parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true
+            ) {
               warnForInsertedHydratedElement(parentInstance, type)
             }
           }
@@ -10195,7 +11088,10 @@ var require_react_dom_development = __commonJS({
           isConcurrentMode
         ) {
           {
-            if (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true) {
+            if (
+              isConcurrentMode ||
+              parentProps[SUPPRESS_HYDRATION_WARNING$1] !== true
+            ) {
               warnForInsertedHydratedText(parentInstance, text)
             }
           }
@@ -10244,10 +11140,15 @@ var require_react_dom_development = __commonJS({
           }
           var parentNode = targetNode.parentNode
           while (parentNode) {
-            targetInst = parentNode[internalContainerInstanceKey] || parentNode[internalInstanceKey]
+            targetInst =
+              parentNode[internalContainerInstanceKey] ||
+              parentNode[internalInstanceKey]
             if (targetInst) {
               var alternate = targetInst.alternate
-              if (targetInst.child !== null || (alternate !== null && alternate.child !== null)) {
+              if (
+                targetInst.child !== null ||
+                (alternate !== null && alternate.child !== null)
+              ) {
                 var suspenseInstance = getParentSuspenseInstance(targetNode)
                 while (suspenseInstance !== null) {
                   var targetSuspenseInst = suspenseInstance[internalInstanceKey]
@@ -10265,7 +11166,8 @@ var require_react_dom_development = __commonJS({
           return null
         }
         function getInstanceFromNode(node) {
-          var inst = node[internalInstanceKey] || node[internalContainerInstanceKey]
+          var inst =
+            node[internalInstanceKey] || node[internalContainerInstanceKey]
           if (inst) {
             if (
               inst.tag === HostComponent ||
@@ -10295,12 +11197,14 @@ var require_react_dom_development = __commonJS({
         function getEventListenerSet(node) {
           var elementListenerSet = node[internalEventHandlersKey]
           if (elementListenerSet === void 0) {
-            elementListenerSet = node[internalEventHandlersKey] = /* @__PURE__ */ new Set()
+            elementListenerSet = node[internalEventHandlersKey] =
+              /* @__PURE__ */ new Set()
           }
           return elementListenerSet
         }
         var loggedTypeFailures = {}
-        var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame
+        var ReactDebugCurrentFrame$1 =
+          ReactSharedInternals.ReactDebugCurrentFrame
         function setCurrentlyValidatingElement(element) {
           {
             if (element) {
@@ -10316,7 +11220,13 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function checkPropTypes(typeSpecs, values, location, componentName, element) {
+        function checkPropTypes(
+          typeSpecs,
+          values,
+          location,
+          componentName,
+          element
+        ) {
           {
             var has2 = Function.call.bind(hasOwnProperty)
             for (var typeSpecName in typeSpecs) {
@@ -10359,7 +11269,10 @@ var require_react_dom_development = __commonJS({
                   )
                   setCurrentlyValidatingElement(null)
                 }
-                if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+                if (
+                  error$1 instanceof Error &&
+                  !(error$1.message in loggedTypeFailures)
+                ) {
                   loggedTypeFailures[error$1.message] = true
                   setCurrentlyValidatingElement(element)
                   error('Failed %s type: %s', location, error$1.message)
@@ -10418,7 +11331,11 @@ var require_react_dom_development = __commonJS({
         var contextStackCursor = createCursor(emptyContextObject)
         var didPerformWorkStackCursor = createCursor(false)
         var previousContext = emptyContextObject
-        function getUnmaskedContext(workInProgress2, Component, didPushOwnContextIfProvider) {
+        function getUnmaskedContext(
+          workInProgress2,
+          Component,
+          didPushOwnContextIfProvider
+        ) {
           {
             if (didPushOwnContextIfProvider && isContextProvider(Component)) {
               return previousContext
@@ -10429,7 +11346,8 @@ var require_react_dom_development = __commonJS({
         function cacheContext(workInProgress2, unmaskedContext, maskedContext) {
           {
             var instance = workInProgress2.stateNode
-            instance.__reactInternalMemoizedUnmaskedChildContext = unmaskedContext
+            instance.__reactInternalMemoizedUnmaskedChildContext =
+              unmaskedContext
             instance.__reactInternalMemoizedMaskedChildContext = maskedContext
           }
         }
@@ -10443,7 +11361,8 @@ var require_react_dom_development = __commonJS({
             var instance = workInProgress2.stateNode
             if (
               instance &&
-              instance.__reactInternalMemoizedUnmaskedChildContext === unmaskedContext
+              instance.__reactInternalMemoizedUnmaskedChildContext ===
+                unmaskedContext
             ) {
               return instance.__reactInternalMemoizedMaskedChildContext
             }
@@ -10501,7 +11420,8 @@ var require_react_dom_development = __commonJS({
             var childContextTypes = type.childContextTypes
             if (typeof instance.getChildContext !== 'function') {
               {
-                var componentName = getComponentNameFromFiber(fiber) || 'Unknown'
+                var componentName =
+                  getComponentNameFromFiber(fiber) || 'Unknown'
                 if (!warnedAboutMissingGetChildContext[componentName]) {
                   warnedAboutMissingGetChildContext[componentName] = true
                   error(
@@ -10526,7 +11446,12 @@ var require_react_dom_development = __commonJS({
             }
             {
               var name = getComponentNameFromFiber(fiber) || 'Unknown'
-              checkPropTypes(childContextTypes, childContext, 'child context', name)
+              checkPropTypes(
+                childContextTypes,
+                childContext,
+                'child context',
+                name
+              )
             }
             return assign({}, parentContext, childContext)
           }
@@ -10535,10 +11460,20 @@ var require_react_dom_development = __commonJS({
           {
             var instance = workInProgress2.stateNode
             var memoizedMergedChildContext =
-              (instance && instance.__reactInternalMemoizedMergedChildContext) || emptyContextObject
+              (instance &&
+                instance.__reactInternalMemoizedMergedChildContext) ||
+              emptyContextObject
             previousContext = contextStackCursor.current
-            push(contextStackCursor, memoizedMergedChildContext, workInProgress2)
-            push(didPerformWorkStackCursor, didPerformWorkStackCursor.current, workInProgress2)
+            push(
+              contextStackCursor,
+              memoizedMergedChildContext,
+              workInProgress2
+            )
+            push(
+              didPerformWorkStackCursor,
+              didPerformWorkStackCursor.current,
+              workInProgress2
+            )
             return true
           }
         }
@@ -10551,7 +11486,11 @@ var require_react_dom_development = __commonJS({
               )
             }
             if (didChange) {
-              var mergedContext = processChildContext(workInProgress2, type, previousContext)
+              var mergedContext = processChildContext(
+                workInProgress2,
+                type,
+                previousContext
+              )
               instance.__reactInternalMemoizedMergedChildContext = mergedContext
               pop(didPerformWorkStackCursor, workInProgress2)
               pop(contextStackCursor, workInProgress2)
@@ -10578,7 +11517,8 @@ var require_react_dom_development = __commonJS({
                 case ClassComponent: {
                   var Component = node.type
                   if (isContextProvider(Component)) {
-                    return node.stateNode.__reactInternalMemoizedMergedChildContext
+                    return node.stateNode
+                      .__reactInternalMemoizedMergedChildContext
                   }
                   break
                 }
@@ -10746,7 +11686,10 @@ var require_react_dom_development = __commonJS({
             return null
           }
         }
-        function restoreSuspendedTreeContext(workInProgress2, suspendedContext) {
+        function restoreSuspendedTreeContext(
+          workInProgress2,
+          suspendedContext
+        ) {
           warnIfNotHydrating()
           idStack[idStackIndex++] = treeContextId
           idStack[idStackIndex++] = treeContextOverflow
@@ -10758,7 +11701,9 @@ var require_react_dom_development = __commonJS({
         function warnIfNotHydrating() {
           {
             if (!getIsHydrating()) {
-              error('Expected to be hydrating. This is a bug in React. Please file an issue.')
+              error(
+                'Expected to be hydrating. This is a bug in React. Please file an issue.'
+              )
             }
           }
         }
@@ -10770,7 +11715,9 @@ var require_react_dom_development = __commonJS({
         function warnIfHydrating() {
           {
             if (isHydrating) {
-              error('We should not be hydrating here. This is a bug in React. Please file a bug.')
+              error(
+                'We should not be hydrating here. This is a bug in React. Please file a bug.'
+              )
             }
           }
         }
@@ -10786,7 +11733,8 @@ var require_react_dom_development = __commonJS({
         }
         function enterHydrationState(fiber) {
           var parentInstance = fiber.stateNode.containerInfo
-          nextHydratableInstance = getFirstHydratableChildWithinContainer(parentInstance)
+          nextHydratableInstance =
+            getFirstHydratableChildWithinContainer(parentInstance)
           hydrationParentFiber = fiber
           isHydrating = true
           hydrationErrors = null
@@ -10798,7 +11746,8 @@ var require_react_dom_development = __commonJS({
           suspenseInstance,
           treeContext
         ) {
-          nextHydratableInstance = getFirstHydratableChildWithinSuspenseInstance(suspenseInstance)
+          nextHydratableInstance =
+            getFirstHydratableChildWithinSuspenseInstance(suspenseInstance)
           hydrationParentFiber = fiber
           isHydrating = true
           hydrationErrors = null
@@ -10812,11 +11761,15 @@ var require_react_dom_development = __commonJS({
           {
             switch (returnFiber.tag) {
               case HostRoot: {
-                didNotHydrateInstanceWithinContainer(returnFiber.stateNode.containerInfo, instance)
+                didNotHydrateInstanceWithinContainer(
+                  returnFiber.stateNode.containerInfo,
+                  instance
+                )
                 break
               }
               case HostComponent: {
-                var isConcurrentMode = (returnFiber.mode & ConcurrentMode) !== NoMode
+                var isConcurrentMode =
+                  (returnFiber.mode & ConcurrentMode) !== NoMode
                 didNotHydrateInstance(
                   returnFiber.type,
                   returnFiber.memoizedProps,
@@ -10830,7 +11783,10 @@ var require_react_dom_development = __commonJS({
               case SuspenseComponent: {
                 var suspenseState = returnFiber.memoizedState
                 if (suspenseState.dehydrated !== null)
-                  didNotHydrateInstanceWithinSuspenseInstance(suspenseState.dehydrated, instance)
+                  didNotHydrateInstanceWithinSuspenseInstance(
+                    suspenseState.dehydrated,
+                    instance
+                  )
                 break
               }
             }
@@ -10861,11 +11817,17 @@ var require_react_dom_development = __commonJS({
                   case HostComponent:
                     var type = fiber.type
                     var props = fiber.pendingProps
-                    didNotFindHydratableInstanceWithinContainer(parentContainer, type)
+                    didNotFindHydratableInstanceWithinContainer(
+                      parentContainer,
+                      type
+                    )
                     break
                   case HostText:
                     var text = fiber.pendingProps
-                    didNotFindHydratableTextInstanceWithinContainer(parentContainer, text)
+                    didNotFindHydratableTextInstanceWithinContainer(
+                      parentContainer,
+                      text
+                    )
                     break
                 }
                 break
@@ -10878,7 +11840,8 @@ var require_react_dom_development = __commonJS({
                   case HostComponent: {
                     var _type = fiber.type
                     var _props = fiber.pendingProps
-                    var isConcurrentMode = (returnFiber.mode & ConcurrentMode) !== NoMode
+                    var isConcurrentMode =
+                      (returnFiber.mode & ConcurrentMode) !== NoMode
                     didNotFindHydratableInstance(
                       parentType,
                       parentProps,
@@ -10892,7 +11855,8 @@ var require_react_dom_development = __commonJS({
                   }
                   case HostText: {
                     var _text = fiber.pendingProps
-                    var _isConcurrentMode = (returnFiber.mode & ConcurrentMode) !== NoMode
+                    var _isConcurrentMode =
+                      (returnFiber.mode & ConcurrentMode) !== NoMode
                     didNotFindHydratableTextInstance(
                       parentType,
                       parentProps,
@@ -10914,7 +11878,10 @@ var require_react_dom_development = __commonJS({
                     case HostComponent:
                       var _type2 = fiber.type
                       var _props2 = fiber.pendingProps
-                      didNotFindHydratableInstanceWithinSuspenseInstance(_parentInstance, _type2)
+                      didNotFindHydratableInstanceWithinSuspenseInstance(
+                        _parentInstance,
+                        _type2
+                      )
                       break
                     case HostText:
                       var _text2 = fiber.pendingProps
@@ -10969,7 +11936,8 @@ var require_react_dom_development = __commonJS({
                   retryLane: OffscreenLane,
                 }
                 fiber.memoizedState = suspenseState
-                var dehydratedFragment = createFiberFromDehydratedFragment(suspenseInstance)
+                var dehydratedFragment =
+                  createFiberFromDehydratedFragment(suspenseInstance)
                 dehydratedFragment.return = fiber
                 fiber.child = dehydratedFragment
                 hydrationParentFiber = fiber
@@ -10983,7 +11951,10 @@ var require_react_dom_development = __commonJS({
           }
         }
         function shouldClientRenderOnMismatch(fiber) {
-          return (fiber.mode & ConcurrentMode) !== NoMode && (fiber.flags & DidCapture) === NoFlags
+          return (
+            (fiber.mode & ConcurrentMode) !== NoMode &&
+            (fiber.flags & DidCapture) === NoFlags
+          )
         }
         function throwOnHydrationMismatch(fiber) {
           throw new Error(
@@ -11019,10 +11990,17 @@ var require_react_dom_development = __commonJS({
               hydrationParentFiber = fiber
               return
             }
-            deleteHydratableInstance(prevHydrationParentFiber, firstAttemptedInstance)
+            deleteHydratableInstance(
+              prevHydrationParentFiber,
+              firstAttemptedInstance
+            )
           }
         }
-        function prepareToHydrateHostInstance(fiber, rootContainerInstance, hostContext) {
+        function prepareToHydrateHostInstance(
+          fiber,
+          rootContainerInstance,
+          hostContext
+        ) {
           var instance = fiber.stateNode
           var shouldWarnIfMismatchDev = !didSuspendOrErrorDEV
           var updatePayload = hydrateInstance(
@@ -11043,14 +12021,19 @@ var require_react_dom_development = __commonJS({
         function prepareToHydrateHostTextInstance(fiber) {
           var textInstance = fiber.stateNode
           var textContent = fiber.memoizedProps
-          var shouldUpdate = hydrateTextInstance(textInstance, textContent, fiber)
+          var shouldUpdate = hydrateTextInstance(
+            textInstance,
+            textContent,
+            fiber
+          )
           if (shouldUpdate) {
             var returnFiber = hydrationParentFiber
             if (returnFiber !== null) {
               switch (returnFiber.tag) {
                 case HostRoot: {
                   var parentContainer = returnFiber.stateNode.containerInfo
-                  var isConcurrentMode = (returnFiber.mode & ConcurrentMode) !== NoMode
+                  var isConcurrentMode =
+                    (returnFiber.mode & ConcurrentMode) !== NoMode
                   didNotMatchHydratedContainerTextInstance(
                     parentContainer,
                     textInstance,
@@ -11064,7 +12047,8 @@ var require_react_dom_development = __commonJS({
                   var parentType = returnFiber.type
                   var parentProps = returnFiber.memoizedProps
                   var parentInstance = returnFiber.stateNode
-                  var _isConcurrentMode2 = (returnFiber.mode & ConcurrentMode) !== NoMode
+                  var _isConcurrentMode2 =
+                    (returnFiber.mode & ConcurrentMode) !== NoMode
                   didNotMatchHydratedTextInstance(
                     parentType,
                     parentProps,
@@ -11083,7 +12067,8 @@ var require_react_dom_development = __commonJS({
         }
         function prepareToHydrateHostSuspenseInstance(fiber) {
           var suspenseState = fiber.memoizedState
-          var suspenseInstance = suspenseState !== null ? suspenseState.dehydrated : null
+          var suspenseInstance =
+            suspenseState !== null ? suspenseState.dehydrated : null
           if (!suspenseInstance) {
             throw new Error(
               'Expected to have a hydrated suspense instance. This error is likely caused by a bug in React. Please file an issue.'
@@ -11093,13 +12078,16 @@ var require_react_dom_development = __commonJS({
         }
         function skipPastDehydratedSuspenseInstance(fiber) {
           var suspenseState = fiber.memoizedState
-          var suspenseInstance = suspenseState !== null ? suspenseState.dehydrated : null
+          var suspenseInstance =
+            suspenseState !== null ? suspenseState.dehydrated : null
           if (!suspenseInstance) {
             throw new Error(
               'Expected to have a hydrated suspense instance. This error is likely caused by a bug in React. Please file an issue.'
             )
           }
-          return getNextHydratableInstanceAfterSuspenseInstance(suspenseInstance)
+          return getNextHydratableInstanceAfterSuspenseInstance(
+            suspenseInstance
+          )
         }
         function popToNextHostParent(fiber) {
           var parent = fiber.return
@@ -11183,7 +12171,8 @@ var require_react_dom_development = __commonJS({
             hydrationErrors.push(error2)
           }
         }
-        var ReactCurrentBatchConfig$1 = ReactSharedInternals.ReactCurrentBatchConfig
+        var ReactCurrentBatchConfig$1 =
+          ReactSharedInternals.ReactCurrentBatchConfig
         var NoTransition = null
         function requestCurrentTransition() {
           return ReactCurrentBatchConfig$1.transition
@@ -11221,7 +12210,10 @@ var require_react_dom_development = __commonJS({
           var pendingComponentWillUpdateWarnings = []
           var pendingUNSAFE_ComponentWillUpdateWarnings = []
           var didWarnAboutUnsafeLifecycles = /* @__PURE__ */ new Set()
-          ReactStrictModeWarnings.recordUnsafeLifecycleWarnings = function (fiber, instance) {
+          ReactStrictModeWarnings.recordUnsafeLifecycleWarnings = function (
+            fiber,
+            instance
+          ) {
             if (didWarnAboutUnsafeLifecycles.has(fiber.type)) {
               return
             }
@@ -11239,7 +12231,8 @@ var require_react_dom_development = __commonJS({
             }
             if (
               typeof instance.componentWillReceiveProps === 'function' &&
-              instance.componentWillReceiveProps.__suppressDeprecationWarning !== true
+              instance.componentWillReceiveProps
+                .__suppressDeprecationWarning !== true
             ) {
               pendingComponentWillReceivePropsWarnings.push(fiber)
             }
@@ -11262,109 +12255,141 @@ var require_react_dom_development = __commonJS({
               pendingUNSAFE_ComponentWillUpdateWarnings.push(fiber)
             }
           }
-          ReactStrictModeWarnings.flushPendingUnsafeLifecycleWarnings = function () {
-            var componentWillMountUniqueNames = /* @__PURE__ */ new Set()
-            if (pendingComponentWillMountWarnings.length > 0) {
-              pendingComponentWillMountWarnings.forEach(function (fiber) {
-                componentWillMountUniqueNames.add(getComponentNameFromFiber(fiber) || 'Component')
-                didWarnAboutUnsafeLifecycles.add(fiber.type)
-              })
-              pendingComponentWillMountWarnings = []
-            }
-            var UNSAFE_componentWillMountUniqueNames = /* @__PURE__ */ new Set()
-            if (pendingUNSAFE_ComponentWillMountWarnings.length > 0) {
-              pendingUNSAFE_ComponentWillMountWarnings.forEach(function (fiber) {
-                UNSAFE_componentWillMountUniqueNames.add(
-                  getComponentNameFromFiber(fiber) || 'Component'
+          ReactStrictModeWarnings.flushPendingUnsafeLifecycleWarnings =
+            function () {
+              var componentWillMountUniqueNames = /* @__PURE__ */ new Set()
+              if (pendingComponentWillMountWarnings.length > 0) {
+                pendingComponentWillMountWarnings.forEach(function (fiber) {
+                  componentWillMountUniqueNames.add(
+                    getComponentNameFromFiber(fiber) || 'Component'
+                  )
+                  didWarnAboutUnsafeLifecycles.add(fiber.type)
+                })
+                pendingComponentWillMountWarnings = []
+              }
+              var UNSAFE_componentWillMountUniqueNames =
+                /* @__PURE__ */ new Set()
+              if (pendingUNSAFE_ComponentWillMountWarnings.length > 0) {
+                pendingUNSAFE_ComponentWillMountWarnings.forEach(
+                  function (fiber) {
+                    UNSAFE_componentWillMountUniqueNames.add(
+                      getComponentNameFromFiber(fiber) || 'Component'
+                    )
+                    didWarnAboutUnsafeLifecycles.add(fiber.type)
+                  }
                 )
-                didWarnAboutUnsafeLifecycles.add(fiber.type)
-              })
-              pendingUNSAFE_ComponentWillMountWarnings = []
-            }
-            var componentWillReceivePropsUniqueNames = /* @__PURE__ */ new Set()
-            if (pendingComponentWillReceivePropsWarnings.length > 0) {
-              pendingComponentWillReceivePropsWarnings.forEach(function (fiber) {
-                componentWillReceivePropsUniqueNames.add(
-                  getComponentNameFromFiber(fiber) || 'Component'
+                pendingUNSAFE_ComponentWillMountWarnings = []
+              }
+              var componentWillReceivePropsUniqueNames =
+                /* @__PURE__ */ new Set()
+              if (pendingComponentWillReceivePropsWarnings.length > 0) {
+                pendingComponentWillReceivePropsWarnings.forEach(
+                  function (fiber) {
+                    componentWillReceivePropsUniqueNames.add(
+                      getComponentNameFromFiber(fiber) || 'Component'
+                    )
+                    didWarnAboutUnsafeLifecycles.add(fiber.type)
+                  }
                 )
-                didWarnAboutUnsafeLifecycles.add(fiber.type)
-              })
-              pendingComponentWillReceivePropsWarnings = []
-            }
-            var UNSAFE_componentWillReceivePropsUniqueNames = /* @__PURE__ */ new Set()
-            if (pendingUNSAFE_ComponentWillReceivePropsWarnings.length > 0) {
-              pendingUNSAFE_ComponentWillReceivePropsWarnings.forEach(function (fiber) {
-                UNSAFE_componentWillReceivePropsUniqueNames.add(
-                  getComponentNameFromFiber(fiber) || 'Component'
+                pendingComponentWillReceivePropsWarnings = []
+              }
+              var UNSAFE_componentWillReceivePropsUniqueNames =
+                /* @__PURE__ */ new Set()
+              if (pendingUNSAFE_ComponentWillReceivePropsWarnings.length > 0) {
+                pendingUNSAFE_ComponentWillReceivePropsWarnings.forEach(
+                  function (fiber) {
+                    UNSAFE_componentWillReceivePropsUniqueNames.add(
+                      getComponentNameFromFiber(fiber) || 'Component'
+                    )
+                    didWarnAboutUnsafeLifecycles.add(fiber.type)
+                  }
                 )
-                didWarnAboutUnsafeLifecycles.add(fiber.type)
-              })
-              pendingUNSAFE_ComponentWillReceivePropsWarnings = []
-            }
-            var componentWillUpdateUniqueNames = /* @__PURE__ */ new Set()
-            if (pendingComponentWillUpdateWarnings.length > 0) {
-              pendingComponentWillUpdateWarnings.forEach(function (fiber) {
-                componentWillUpdateUniqueNames.add(getComponentNameFromFiber(fiber) || 'Component')
-                didWarnAboutUnsafeLifecycles.add(fiber.type)
-              })
-              pendingComponentWillUpdateWarnings = []
-            }
-            var UNSAFE_componentWillUpdateUniqueNames = /* @__PURE__ */ new Set()
-            if (pendingUNSAFE_ComponentWillUpdateWarnings.length > 0) {
-              pendingUNSAFE_ComponentWillUpdateWarnings.forEach(function (fiber) {
-                UNSAFE_componentWillUpdateUniqueNames.add(
-                  getComponentNameFromFiber(fiber) || 'Component'
+                pendingUNSAFE_ComponentWillReceivePropsWarnings = []
+              }
+              var componentWillUpdateUniqueNames = /* @__PURE__ */ new Set()
+              if (pendingComponentWillUpdateWarnings.length > 0) {
+                pendingComponentWillUpdateWarnings.forEach(function (fiber) {
+                  componentWillUpdateUniqueNames.add(
+                    getComponentNameFromFiber(fiber) || 'Component'
+                  )
+                  didWarnAboutUnsafeLifecycles.add(fiber.type)
+                })
+                pendingComponentWillUpdateWarnings = []
+              }
+              var UNSAFE_componentWillUpdateUniqueNames =
+                /* @__PURE__ */ new Set()
+              if (pendingUNSAFE_ComponentWillUpdateWarnings.length > 0) {
+                pendingUNSAFE_ComponentWillUpdateWarnings.forEach(
+                  function (fiber) {
+                    UNSAFE_componentWillUpdateUniqueNames.add(
+                      getComponentNameFromFiber(fiber) || 'Component'
+                    )
+                    didWarnAboutUnsafeLifecycles.add(fiber.type)
+                  }
                 )
-                didWarnAboutUnsafeLifecycles.add(fiber.type)
-              })
-              pendingUNSAFE_ComponentWillUpdateWarnings = []
+                pendingUNSAFE_ComponentWillUpdateWarnings = []
+              }
+              if (UNSAFE_componentWillMountUniqueNames.size > 0) {
+                var sortedNames = setToSortedString(
+                  UNSAFE_componentWillMountUniqueNames
+                )
+                error(
+                  'Using UNSAFE_componentWillMount in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move code with side effects to componentDidMount, and set initial state in the constructor.\n\nPlease update the following components: %s',
+                  sortedNames
+                )
+              }
+              if (UNSAFE_componentWillReceivePropsUniqueNames.size > 0) {
+                var _sortedNames = setToSortedString(
+                  UNSAFE_componentWillReceivePropsUniqueNames
+                )
+                error(
+                  "Using UNSAFE_componentWillReceiveProps in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n\nPlease update the following components: %s",
+                  _sortedNames
+                )
+              }
+              if (UNSAFE_componentWillUpdateUniqueNames.size > 0) {
+                var _sortedNames2 = setToSortedString(
+                  UNSAFE_componentWillUpdateUniqueNames
+                )
+                error(
+                  'Using UNSAFE_componentWillUpdate in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n\nPlease update the following components: %s',
+                  _sortedNames2
+                )
+              }
+              if (componentWillMountUniqueNames.size > 0) {
+                var _sortedNames3 = setToSortedString(
+                  componentWillMountUniqueNames
+                )
+                warn(
+                  'componentWillMount has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move code with side effects to componentDidMount, and set initial state in the constructor.\n* Rename componentWillMount to UNSAFE_componentWillMount to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s',
+                  _sortedNames3
+                )
+              }
+              if (componentWillReceivePropsUniqueNames.size > 0) {
+                var _sortedNames4 = setToSortedString(
+                  componentWillReceivePropsUniqueNames
+                )
+                warn(
+                  "componentWillReceiveProps has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s",
+                  _sortedNames4
+                )
+              }
+              if (componentWillUpdateUniqueNames.size > 0) {
+                var _sortedNames5 = setToSortedString(
+                  componentWillUpdateUniqueNames
+                )
+                warn(
+                  'componentWillUpdate has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* Rename componentWillUpdate to UNSAFE_componentWillUpdate to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s',
+                  _sortedNames5
+                )
+              }
             }
-            if (UNSAFE_componentWillMountUniqueNames.size > 0) {
-              var sortedNames = setToSortedString(UNSAFE_componentWillMountUniqueNames)
-              error(
-                'Using UNSAFE_componentWillMount in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move code with side effects to componentDidMount, and set initial state in the constructor.\n\nPlease update the following components: %s',
-                sortedNames
-              )
-            }
-            if (UNSAFE_componentWillReceivePropsUniqueNames.size > 0) {
-              var _sortedNames = setToSortedString(UNSAFE_componentWillReceivePropsUniqueNames)
-              error(
-                "Using UNSAFE_componentWillReceiveProps in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n\nPlease update the following components: %s",
-                _sortedNames
-              )
-            }
-            if (UNSAFE_componentWillUpdateUniqueNames.size > 0) {
-              var _sortedNames2 = setToSortedString(UNSAFE_componentWillUpdateUniqueNames)
-              error(
-                'Using UNSAFE_componentWillUpdate in strict mode is not recommended and may indicate bugs in your code. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n\nPlease update the following components: %s',
-                _sortedNames2
-              )
-            }
-            if (componentWillMountUniqueNames.size > 0) {
-              var _sortedNames3 = setToSortedString(componentWillMountUniqueNames)
-              warn(
-                'componentWillMount has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move code with side effects to componentDidMount, and set initial state in the constructor.\n* Rename componentWillMount to UNSAFE_componentWillMount to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s',
-                _sortedNames3
-              )
-            }
-            if (componentWillReceivePropsUniqueNames.size > 0) {
-              var _sortedNames4 = setToSortedString(componentWillReceivePropsUniqueNames)
-              warn(
-                "componentWillReceiveProps has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s",
-                _sortedNames4
-              )
-            }
-            if (componentWillUpdateUniqueNames.size > 0) {
-              var _sortedNames5 = setToSortedString(componentWillUpdateUniqueNames)
-              warn(
-                'componentWillUpdate has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* Rename componentWillUpdate to UNSAFE_componentWillUpdate to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s',
-                _sortedNames5
-              )
-            }
-          }
           var pendingLegacyContextWarning = /* @__PURE__ */ new Map()
           var didWarnAboutLegacyContext = /* @__PURE__ */ new Set()
-          ReactStrictModeWarnings.recordLegacyContextWarning = function (fiber, instance) {
+          ReactStrictModeWarnings.recordLegacyContextWarning = function (
+            fiber,
+            instance
+          ) {
             var strictRoot = findStrictRoot(fiber)
             if (strictRoot === null) {
               error(
@@ -11379,7 +12404,8 @@ var require_react_dom_development = __commonJS({
             if (
               fiber.type.contextTypes != null ||
               fiber.type.childContextTypes != null ||
-              (instance !== null && typeof instance.getChildContext === 'function')
+              (instance !== null &&
+                typeof instance.getChildContext === 'function')
             ) {
               if (warningsForRoot === void 0) {
                 warningsForRoot = []
@@ -11389,27 +12415,31 @@ var require_react_dom_development = __commonJS({
             }
           }
           ReactStrictModeWarnings.flushLegacyContextWarning = function () {
-            pendingLegacyContextWarning.forEach(function (fiberArray, strictRoot) {
-              if (fiberArray.length === 0) {
-                return
+            pendingLegacyContextWarning.forEach(
+              function (fiberArray, strictRoot) {
+                if (fiberArray.length === 0) {
+                  return
+                }
+                var firstFiber = fiberArray[0]
+                var uniqueNames = /* @__PURE__ */ new Set()
+                fiberArray.forEach(function (fiber) {
+                  uniqueNames.add(
+                    getComponentNameFromFiber(fiber) || 'Component'
+                  )
+                  didWarnAboutLegacyContext.add(fiber.type)
+                })
+                var sortedNames = setToSortedString(uniqueNames)
+                try {
+                  setCurrentFiber(firstFiber)
+                  error(
+                    'Legacy context API has been detected within a strict-mode tree.\n\nThe old API will be supported in all 16.x releases, but applications using it should migrate to the new version.\n\nPlease update the following components: %s\n\nLearn more about this warning here: https://reactjs.org/link/legacy-context',
+                    sortedNames
+                  )
+                } finally {
+                  resetCurrentFiber()
+                }
               }
-              var firstFiber = fiberArray[0]
-              var uniqueNames = /* @__PURE__ */ new Set()
-              fiberArray.forEach(function (fiber) {
-                uniqueNames.add(getComponentNameFromFiber(fiber) || 'Component')
-                didWarnAboutLegacyContext.add(fiber.type)
-              })
-              var sortedNames = setToSortedString(uniqueNames)
-              try {
-                setCurrentFiber(firstFiber)
-                error(
-                  'Legacy context API has been detected within a strict-mode tree.\n\nThe old API will be supported in all 16.x releases, but applications using it should migrate to the new version.\n\nPlease update the following components: %s\n\nLearn more about this warning here: https://reactjs.org/link/legacy-context',
-                  sortedNames
-                )
-              } finally {
-                resetCurrentFiber()
-              }
-            })
+            )
           }
           ReactStrictModeWarnings.discardPendingWarnings = function () {
             pendingComponentWillMountWarnings = []
@@ -11446,7 +12476,8 @@ var require_react_dom_development = __commonJS({
               )
             }
             child._store.validated = true
-            var componentName = getComponentNameFromFiber(returnFiber) || 'Component'
+            var componentName =
+              getComponentNameFromFiber(returnFiber) || 'Component'
             if (ownerHasKeyUseWarning[componentName]) {
               return
             }
@@ -11461,18 +12492,30 @@ var require_react_dom_development = __commonJS({
         }
         function coerceRef(returnFiber, current2, element) {
           var mixedRef = element.ref
-          if (mixedRef !== null && typeof mixedRef !== 'function' && typeof mixedRef !== 'object') {
+          if (
+            mixedRef !== null &&
+            typeof mixedRef !== 'function' &&
+            typeof mixedRef !== 'object'
+          ) {
             {
               if (
                 (returnFiber.mode & StrictLegacyMode || warnAboutStringRefs) && // We warn in ReactElement.js if owner and self are equal for string refs
                 // because these cannot be automatically converted to an arrow function
                 // using a codemod. Therefore, we don't have to warn about string refs again.
-                !(element._owner && element._self && element._owner.stateNode !== element._self) && // Will already throw with "Function components cannot have string refs"
+                !(
+                  element._owner &&
+                  element._self &&
+                  element._owner.stateNode !== element._self
+                ) && // Will already throw with "Function components cannot have string refs"
                 !(element._owner && element._owner.tag !== ClassComponent) && // Will already warn with "Function components cannot be given refs"
-                !(typeof element.type === 'function' && !isReactClass(element.type)) && // Will already throw with "Element ref was specified as a string (someStringRef) but no owner was set"
+                !(
+                  typeof element.type === 'function' &&
+                  !isReactClass(element.type)
+                ) && // Will already throw with "Element ref was specified as a string (someStringRef) but no owner was set"
                 element._owner
               ) {
-                var componentName = getComponentNameFromFiber(returnFiber) || 'Component'
+                var componentName =
+                  getComponentNameFromFiber(returnFiber) || 'Component'
                 if (!didWarnAboutStringRefs[componentName]) {
                   {
                     error(
@@ -11556,7 +12599,8 @@ var require_react_dom_development = __commonJS({
         }
         function warnOnFunctionType(returnFiber) {
           {
-            var componentName = getComponentNameFromFiber(returnFiber) || 'Component'
+            var componentName =
+              getComponentNameFromFiber(returnFiber) || 'Component'
             if (ownerHasFunctionTypeWarning[componentName]) {
               return
             }
@@ -11642,7 +12686,11 @@ var require_react_dom_development = __commonJS({
           }
           function updateTextNode(returnFiber, current2, textContent, lanes) {
             if (current2 === null || current2.tag !== HostText) {
-              var created = createFiberFromText(textContent, returnFiber.mode, lanes)
+              var created = createFiberFromText(
+                textContent,
+                returnFiber.mode,
+                lanes
+              )
               created.return = returnFiber
               return created
             } else {
@@ -11684,7 +12732,11 @@ var require_react_dom_development = __commonJS({
                 return existing
               }
             }
-            var created = createFiberFromElement(element, returnFiber.mode, lanes)
+            var created = createFiberFromElement(
+              element,
+              returnFiber.mode,
+              lanes
+            )
             created.ref = coerceRef(returnFiber, current2, element)
             created.return = returnFiber
             return created
@@ -11696,7 +12748,11 @@ var require_react_dom_development = __commonJS({
               current2.stateNode.containerInfo !== portal.containerInfo ||
               current2.stateNode.implementation !== portal.implementation
             ) {
-              var created = createFiberFromPortal(portal, returnFiber.mode, lanes)
+              var created = createFiberFromPortal(
+                portal,
+                returnFiber.mode,
+                lanes
+              )
               created.return = returnFiber
               return created
             } else {
@@ -11705,9 +12761,20 @@ var require_react_dom_development = __commonJS({
               return existing
             }
           }
-          function updateFragment2(returnFiber, current2, fragment, lanes, key) {
+          function updateFragment2(
+            returnFiber,
+            current2,
+            fragment,
+            lanes,
+            key
+          ) {
             if (current2 === null || current2.tag !== Fragment) {
-              var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key)
+              var created = createFiberFromFragment(
+                fragment,
+                returnFiber.mode,
+                lanes,
+                key
+              )
               created.return = returnFiber
               return created
             } else {
@@ -11717,21 +12784,36 @@ var require_react_dom_development = __commonJS({
             }
           }
           function createChild(returnFiber, newChild, lanes) {
-            if ((typeof newChild === 'string' && newChild !== '') || typeof newChild === 'number') {
-              var created = createFiberFromText('' + newChild, returnFiber.mode, lanes)
+            if (
+              (typeof newChild === 'string' && newChild !== '') ||
+              typeof newChild === 'number'
+            ) {
+              var created = createFiberFromText(
+                '' + newChild,
+                returnFiber.mode,
+                lanes
+              )
               created.return = returnFiber
               return created
             }
             if (typeof newChild === 'object' && newChild !== null) {
               switch (newChild.$$typeof) {
                 case REACT_ELEMENT_TYPE: {
-                  var _created = createFiberFromElement(newChild, returnFiber.mode, lanes)
+                  var _created = createFiberFromElement(
+                    newChild,
+                    returnFiber.mode,
+                    lanes
+                  )
                   _created.ref = coerceRef(returnFiber, null, newChild)
                   _created.return = returnFiber
                   return _created
                 }
                 case REACT_PORTAL_TYPE: {
-                  var _created2 = createFiberFromPortal(newChild, returnFiber.mode, lanes)
+                  var _created2 = createFiberFromPortal(
+                    newChild,
+                    returnFiber.mode,
+                    lanes
+                  )
                   _created2.return = returnFiber
                   return _created2
                 }
@@ -11742,7 +12824,12 @@ var require_react_dom_development = __commonJS({
                 }
               }
               if (isArray(newChild) || getIteratorFn(newChild)) {
-                var _created3 = createFiberFromFragment(newChild, returnFiber.mode, lanes, null)
+                var _created3 = createFiberFromFragment(
+                  newChild,
+                  returnFiber.mode,
+                  lanes,
+                  null
+                )
                 _created3.return = returnFiber
                 return _created3
               }
@@ -11757,7 +12844,10 @@ var require_react_dom_development = __commonJS({
           }
           function updateSlot(returnFiber, oldFiber, newChild, lanes) {
             var key = oldFiber !== null ? oldFiber.key : null
-            if ((typeof newChild === 'string' && newChild !== '') || typeof newChild === 'number') {
+            if (
+              (typeof newChild === 'string' && newChild !== '') ||
+              typeof newChild === 'number'
+            ) {
               if (key !== null) {
                 return null
               }
@@ -11789,7 +12879,13 @@ var require_react_dom_development = __commonJS({
                 if (key !== null) {
                   return null
                 }
-                return updateFragment2(returnFiber, oldFiber, newChild, lanes, null)
+                return updateFragment2(
+                  returnFiber,
+                  oldFiber,
+                  newChild,
+                  lanes,
+                  null
+                )
               }
               throwOnInvalidObjectType(returnFiber, newChild)
             }
@@ -11800,31 +12896,71 @@ var require_react_dom_development = __commonJS({
             }
             return null
           }
-          function updateFromMap(existingChildren, returnFiber, newIdx, newChild, lanes) {
-            if ((typeof newChild === 'string' && newChild !== '') || typeof newChild === 'number') {
+          function updateFromMap(
+            existingChildren,
+            returnFiber,
+            newIdx,
+            newChild,
+            lanes
+          ) {
+            if (
+              (typeof newChild === 'string' && newChild !== '') ||
+              typeof newChild === 'number'
+            ) {
               var matchedFiber = existingChildren.get(newIdx) || null
-              return updateTextNode(returnFiber, matchedFiber, '' + newChild, lanes)
+              return updateTextNode(
+                returnFiber,
+                matchedFiber,
+                '' + newChild,
+                lanes
+              )
             }
             if (typeof newChild === 'object' && newChild !== null) {
               switch (newChild.$$typeof) {
                 case REACT_ELEMENT_TYPE: {
                   var _matchedFiber =
-                    existingChildren.get(newChild.key === null ? newIdx : newChild.key) || null
-                  return updateElement(returnFiber, _matchedFiber, newChild, lanes)
+                    existingChildren.get(
+                      newChild.key === null ? newIdx : newChild.key
+                    ) || null
+                  return updateElement(
+                    returnFiber,
+                    _matchedFiber,
+                    newChild,
+                    lanes
+                  )
                 }
                 case REACT_PORTAL_TYPE: {
                   var _matchedFiber2 =
-                    existingChildren.get(newChild.key === null ? newIdx : newChild.key) || null
-                  return updatePortal(returnFiber, _matchedFiber2, newChild, lanes)
+                    existingChildren.get(
+                      newChild.key === null ? newIdx : newChild.key
+                    ) || null
+                  return updatePortal(
+                    returnFiber,
+                    _matchedFiber2,
+                    newChild,
+                    lanes
+                  )
                 }
                 case REACT_LAZY_TYPE:
                   var payload = newChild._payload
                   var init = newChild._init
-                  return updateFromMap(existingChildren, returnFiber, newIdx, init(payload), lanes)
+                  return updateFromMap(
+                    existingChildren,
+                    returnFiber,
+                    newIdx,
+                    init(payload),
+                    lanes
+                  )
               }
               if (isArray(newChild) || getIteratorFn(newChild)) {
                 var _matchedFiber3 = existingChildren.get(newIdx) || null
-                return updateFragment2(returnFiber, _matchedFiber3, newChild, lanes, null)
+                return updateFragment2(
+                  returnFiber,
+                  _matchedFiber3,
+                  newChild,
+                  lanes,
+                  null
+                )
               }
               throwOnInvalidObjectType(returnFiber, newChild)
             }
@@ -11871,7 +13007,12 @@ var require_react_dom_development = __commonJS({
             }
             return knownKeys
           }
-          function reconcileChildrenArray(returnFiber, currentFirstChild, newChildren, lanes) {
+          function reconcileChildrenArray(
+            returnFiber,
+            currentFirstChild,
+            newChildren,
+            lanes
+          ) {
             {
               var knownKeys = null
               for (var i = 0; i < newChildren.length; i++) {
@@ -11892,7 +13033,12 @@ var require_react_dom_development = __commonJS({
               } else {
                 nextOldFiber = oldFiber.sibling
               }
-              var newFiber = updateSlot(returnFiber, oldFiber, newChildren[newIdx], lanes)
+              var newFiber = updateSlot(
+                returnFiber,
+                oldFiber,
+                newChildren[newIdx],
+                lanes
+              )
               if (newFiber === null) {
                 if (oldFiber === null) {
                   oldFiber = nextOldFiber
@@ -11923,7 +13069,11 @@ var require_react_dom_development = __commonJS({
             }
             if (oldFiber === null) {
               for (; newIdx < newChildren.length; newIdx++) {
-                var _newFiber = createChild(returnFiber, newChildren[newIdx], lanes)
+                var _newFiber = createChild(
+                  returnFiber,
+                  newChildren[newIdx],
+                  lanes
+                )
                 if (_newFiber === null) {
                   continue
                 }
@@ -11953,10 +13103,16 @@ var require_react_dom_development = __commonJS({
               if (_newFiber2 !== null) {
                 if (shouldTrackSideEffects) {
                   if (_newFiber2.alternate !== null) {
-                    existingChildren.delete(_newFiber2.key === null ? newIdx : _newFiber2.key)
+                    existingChildren.delete(
+                      _newFiber2.key === null ? newIdx : _newFiber2.key
+                    )
                   }
                 }
-                lastPlacedIndex = placeChild(_newFiber2, lastPlacedIndex, newIdx)
+                lastPlacedIndex = placeChild(
+                  _newFiber2,
+                  lastPlacedIndex,
+                  newIdx
+                )
                 if (previousNewFiber === null) {
                   resultingFirstChild = _newFiber2
                 } else {
@@ -12029,14 +13185,23 @@ var require_react_dom_development = __commonJS({
             var newIdx = 0
             var nextOldFiber = null
             var step = newChildren.next()
-            for (; oldFiber !== null && !step.done; newIdx++, step = newChildren.next()) {
+            for (
+              ;
+              oldFiber !== null && !step.done;
+              newIdx++, step = newChildren.next()
+            ) {
               if (oldFiber.index > newIdx) {
                 nextOldFiber = oldFiber
                 oldFiber = null
               } else {
                 nextOldFiber = oldFiber.sibling
               }
-              var newFiber = updateSlot(returnFiber, oldFiber, step.value, lanes)
+              var newFiber = updateSlot(
+                returnFiber,
+                oldFiber,
+                step.value,
+                lanes
+              )
               if (newFiber === null) {
                 if (oldFiber === null) {
                   oldFiber = nextOldFiber
@@ -12071,7 +13236,11 @@ var require_react_dom_development = __commonJS({
                 if (_newFiber3 === null) {
                   continue
                 }
-                lastPlacedIndex = placeChild(_newFiber3, lastPlacedIndex, newIdx)
+                lastPlacedIndex = placeChild(
+                  _newFiber3,
+                  lastPlacedIndex,
+                  newIdx
+                )
                 if (previousNewFiber === null) {
                   resultingFirstChild = _newFiber3
                 } else {
@@ -12097,10 +13266,16 @@ var require_react_dom_development = __commonJS({
               if (_newFiber4 !== null) {
                 if (shouldTrackSideEffects) {
                   if (_newFiber4.alternate !== null) {
-                    existingChildren.delete(_newFiber4.key === null ? newIdx : _newFiber4.key)
+                    existingChildren.delete(
+                      _newFiber4.key === null ? newIdx : _newFiber4.key
+                    )
                   }
                 }
-                lastPlacedIndex = placeChild(_newFiber4, lastPlacedIndex, newIdx)
+                lastPlacedIndex = placeChild(
+                  _newFiber4,
+                  lastPlacedIndex,
+                  newIdx
+                )
                 if (previousNewFiber === null) {
                   resultingFirstChild = _newFiber4
                 } else {
@@ -12120,19 +13295,36 @@ var require_react_dom_development = __commonJS({
             }
             return resultingFirstChild
           }
-          function reconcileSingleTextNode(returnFiber, currentFirstChild, textContent, lanes) {
-            if (currentFirstChild !== null && currentFirstChild.tag === HostText) {
+          function reconcileSingleTextNode(
+            returnFiber,
+            currentFirstChild,
+            textContent,
+            lanes
+          ) {
+            if (
+              currentFirstChild !== null &&
+              currentFirstChild.tag === HostText
+            ) {
               deleteRemainingChildren(returnFiber, currentFirstChild.sibling)
               var existing = useFiber(currentFirstChild, textContent)
               existing.return = returnFiber
               return existing
             }
             deleteRemainingChildren(returnFiber, currentFirstChild)
-            var created = createFiberFromText(textContent, returnFiber.mode, lanes)
+            var created = createFiberFromText(
+              textContent,
+              returnFiber.mode,
+              lanes
+            )
             created.return = returnFiber
             return created
           }
-          function reconcileSingleElement(returnFiber, currentFirstChild, element, lanes) {
+          function reconcileSingleElement(
+            returnFiber,
+            currentFirstChild,
+            element,
+            lanes
+          ) {
             var key = element.key
             var child = currentFirstChild
             while (child !== null) {
@@ -12189,13 +13381,22 @@ var require_react_dom_development = __commonJS({
               created.return = returnFiber
               return created
             } else {
-              var _created4 = createFiberFromElement(element, returnFiber.mode, lanes)
+              var _created4 = createFiberFromElement(
+                element,
+                returnFiber.mode,
+                lanes
+              )
               _created4.ref = coerceRef(returnFiber, currentFirstChild, element)
               _created4.return = returnFiber
               return _created4
             }
           }
-          function reconcileSinglePortal(returnFiber, currentFirstChild, portal, lanes) {
+          function reconcileSinglePortal(
+            returnFiber,
+            currentFirstChild,
+            portal,
+            lanes
+          ) {
             var key = portal.key
             var child = currentFirstChild
             while (child !== null) {
@@ -12222,7 +13423,12 @@ var require_react_dom_development = __commonJS({
             created.return = returnFiber
             return created
           }
-          function reconcileChildFibers2(returnFiber, currentFirstChild, newChild, lanes) {
+          function reconcileChildFibers2(
+            returnFiber,
+            currentFirstChild,
+            newChild,
+            lanes
+          ) {
             var isUnkeyedTopLevelFragment =
               typeof newChild === 'object' &&
               newChild !== null &&
@@ -12235,28 +13441,61 @@ var require_react_dom_development = __commonJS({
               switch (newChild.$$typeof) {
                 case REACT_ELEMENT_TYPE:
                   return placeSingleChild(
-                    reconcileSingleElement(returnFiber, currentFirstChild, newChild, lanes)
+                    reconcileSingleElement(
+                      returnFiber,
+                      currentFirstChild,
+                      newChild,
+                      lanes
+                    )
                   )
                 case REACT_PORTAL_TYPE:
                   return placeSingleChild(
-                    reconcileSinglePortal(returnFiber, currentFirstChild, newChild, lanes)
+                    reconcileSinglePortal(
+                      returnFiber,
+                      currentFirstChild,
+                      newChild,
+                      lanes
+                    )
                   )
                 case REACT_LAZY_TYPE:
                   var payload = newChild._payload
                   var init = newChild._init
-                  return reconcileChildFibers2(returnFiber, currentFirstChild, init(payload), lanes)
+                  return reconcileChildFibers2(
+                    returnFiber,
+                    currentFirstChild,
+                    init(payload),
+                    lanes
+                  )
               }
               if (isArray(newChild)) {
-                return reconcileChildrenArray(returnFiber, currentFirstChild, newChild, lanes)
+                return reconcileChildrenArray(
+                  returnFiber,
+                  currentFirstChild,
+                  newChild,
+                  lanes
+                )
               }
               if (getIteratorFn(newChild)) {
-                return reconcileChildrenIterator(returnFiber, currentFirstChild, newChild, lanes)
+                return reconcileChildrenIterator(
+                  returnFiber,
+                  currentFirstChild,
+                  newChild,
+                  lanes
+                )
               }
               throwOnInvalidObjectType(returnFiber, newChild)
             }
-            if ((typeof newChild === 'string' && newChild !== '') || typeof newChild === 'number') {
+            if (
+              (typeof newChild === 'string' && newChild !== '') ||
+              typeof newChild === 'number'
+            ) {
               return placeSingleChild(
-                reconcileSingleTextNode(returnFiber, currentFirstChild, '' + newChild, lanes)
+                reconcileSingleTextNode(
+                  returnFiber,
+                  currentFirstChild,
+                  '' + newChild,
+                  lanes
+                )
               )
             }
             {
@@ -12278,7 +13517,10 @@ var require_react_dom_development = __commonJS({
             return
           }
           var currentChild = workInProgress2.child
-          var newChild = createWorkInProgress(currentChild, currentChild.pendingProps)
+          var newChild = createWorkInProgress(
+            currentChild,
+            currentChild.pendingProps
+          )
           workInProgress2.child = newChild
           newChild.return = workInProgress2
           while (currentChild.sibling !== null) {
@@ -12352,17 +13594,30 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function scheduleContextWorkOnParentPath(parent, renderLanes2, propagationRoot) {
+        function scheduleContextWorkOnParentPath(
+          parent,
+          renderLanes2,
+          propagationRoot
+        ) {
           var node = parent
           while (node !== null) {
             var alternate = node.alternate
             if (!isSubsetOfLanes(node.childLanes, renderLanes2)) {
               node.childLanes = mergeLanes(node.childLanes, renderLanes2)
               if (alternate !== null) {
-                alternate.childLanes = mergeLanes(alternate.childLanes, renderLanes2)
+                alternate.childLanes = mergeLanes(
+                  alternate.childLanes,
+                  renderLanes2
+                )
               }
-            } else if (alternate !== null && !isSubsetOfLanes(alternate.childLanes, renderLanes2)) {
-              alternate.childLanes = mergeLanes(alternate.childLanes, renderLanes2)
+            } else if (
+              alternate !== null &&
+              !isSubsetOfLanes(alternate.childLanes, renderLanes2)
+            ) {
+              alternate.childLanes = mergeLanes(
+                alternate.childLanes,
+                renderLanes2
+              )
             }
             if (node === propagationRoot) {
               break
@@ -12377,12 +13632,20 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function propagateContextChange(workInProgress2, context, renderLanes2) {
+        function propagateContextChange(
+          workInProgress2,
+          context,
+          renderLanes2
+        ) {
           {
             propagateContextChange_eager(workInProgress2, context, renderLanes2)
           }
         }
-        function propagateContextChange_eager(workInProgress2, context, renderLanes2) {
+        function propagateContextChange_eager(
+          workInProgress2,
+          context,
+          renderLanes2
+        ) {
           var fiber = workInProgress2.child
           if (fiber !== null) {
             fiber.return = workInProgress2
@@ -12418,14 +13681,19 @@ var require_react_dom_development = __commonJS({
                   if (alternate !== null) {
                     alternate.lanes = mergeLanes(alternate.lanes, renderLanes2)
                   }
-                  scheduleContextWorkOnParentPath(fiber.return, renderLanes2, workInProgress2)
+                  scheduleContextWorkOnParentPath(
+                    fiber.return,
+                    renderLanes2,
+                    workInProgress2
+                  )
                   list.lanes = mergeLanes(list.lanes, renderLanes2)
                   break
                 }
                 dependency = dependency.next
               }
             } else if (fiber.tag === ContextProvider) {
-              nextFiber = fiber.type === workInProgress2.type ? null : fiber.child
+              nextFiber =
+                fiber.type === workInProgress2.type ? null : fiber.child
             } else if (fiber.tag === DehydratedFragment) {
               var parentSuspense = fiber.return
               if (parentSuspense === null) {
@@ -12433,12 +13701,19 @@ var require_react_dom_development = __commonJS({
                   'We just came from a parent so we must have had a parent. This is a bug in React.'
                 )
               }
-              parentSuspense.lanes = mergeLanes(parentSuspense.lanes, renderLanes2)
+              parentSuspense.lanes = mergeLanes(
+                parentSuspense.lanes,
+                renderLanes2
+              )
               var _alternate = parentSuspense.alternate
               if (_alternate !== null) {
                 _alternate.lanes = mergeLanes(_alternate.lanes, renderLanes2)
               }
-              scheduleContextWorkOnParentPath(parentSuspense, renderLanes2, workInProgress2)
+              scheduleContextWorkOnParentPath(
+                parentSuspense,
+                renderLanes2,
+                workInProgress2
+              )
               nextFiber = fiber.sibling
             } else {
               nextFiber = fiber.child
@@ -12554,7 +13829,12 @@ var require_react_dom_development = __commonJS({
           queue.interleaved = update
           return markUpdateLaneFromFiberToRoot(fiber, lane)
         }
-        function enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane) {
+        function enqueueConcurrentHookUpdateAndEagerlyBailout(
+          fiber,
+          queue,
+          update,
+          lane
+        ) {
           var interleaved = queue.interleaved
           if (interleaved === null) {
             update.next = update
@@ -12588,7 +13868,10 @@ var require_react_dom_development = __commonJS({
             alternate.lanes = mergeLanes(alternate.lanes, lane)
           }
           {
-            if (alternate === null && (sourceFiber.flags & (Placement | Hydrating)) !== NoFlags) {
+            if (
+              alternate === null &&
+              (sourceFiber.flags & (Placement | Hydrating)) !== NoFlags
+            ) {
               warnAboutUpdateOnNotYetMountedFiberInDEV(sourceFiber)
             }
           }
@@ -12673,7 +13956,10 @@ var require_react_dom_development = __commonJS({
           }
           var sharedQueue = updateQueue.shared
           {
-            if (currentlyProcessingQueue === sharedQueue && !didWarnUpdateInsideUpdate) {
+            if (
+              currentlyProcessingQueue === sharedQueue &&
+              !didWarnUpdateInsideUpdate
+            ) {
               error(
                 'An update (setState, replaceState, or forceUpdate) was scheduled from inside an update function. Update functions should be pure, with zero side-effects. Consider using componentDidUpdate or a callback.'
               )
@@ -12691,7 +13977,12 @@ var require_react_dom_development = __commonJS({
             sharedQueue.pending = update
             return unsafe_markUpdateLaneFromFiberToRoot(fiber, lane)
           } else {
-            return enqueueConcurrentClassUpdate(fiber, sharedQueue, update, lane)
+            return enqueueConcurrentClassUpdate(
+              fiber,
+              sharedQueue,
+              update,
+              lane
+            )
           }
         }
         function entangleTransitions(root2, fiber, lane) {
@@ -12796,7 +14087,8 @@ var require_react_dom_development = __commonJS({
               return payload
             }
             case CaptureUpdate: {
-              workInProgress2.flags = (workInProgress2.flags & ~ShouldCapture) | DidCapture
+              workInProgress2.flags =
+                (workInProgress2.flags & ~ShouldCapture) | DidCapture
             }
             case UpdateState: {
               var _payload = update.payload
@@ -12832,7 +14124,12 @@ var require_react_dom_development = __commonJS({
           }
           return prevState
         }
-        function processUpdateQueue(workInProgress2, props, instance, renderLanes2) {
+        function processUpdateQueue(
+          workInProgress2,
+          props,
+          instance,
+          renderLanes2
+        ) {
           var queue = workInProgress2.updateQueue
           hasForceUpdate = false
           {
@@ -13161,8 +14458,10 @@ var require_react_dom_development = __commonJS({
             root2.mutableSourceEagerHydrationData.push(mutableSource, version)
           }
         }
-        var ReactCurrentDispatcher$1 = ReactSharedInternals.ReactCurrentDispatcher,
-          ReactCurrentBatchConfig$2 = ReactSharedInternals.ReactCurrentBatchConfig
+        var ReactCurrentDispatcher$1 =
+            ReactSharedInternals.ReactCurrentDispatcher,
+          ReactCurrentBatchConfig$2 =
+            ReactSharedInternals.ReactCurrentBatchConfig
         var didWarnAboutMismatchedHooksForComponent
         var didWarnUncachedGetSnapshot
         {
@@ -13215,7 +14514,9 @@ var require_react_dom_development = __commonJS({
         }
         function warnOnHookMismatchInDev(currentHookName) {
           {
-            var componentName = getComponentNameFromFiber(currentlyRenderingFiber$1)
+            var componentName = getComponentNameFromFiber(
+              currentlyRenderingFiber$1
+            )
             if (!didWarnAboutMismatchedHooksForComponent.has(componentName)) {
               didWarnAboutMismatchedHooksForComponent.add(componentName)
               if (hookTypesDev !== null) {
@@ -13223,7 +14524,10 @@ var require_react_dom_development = __commonJS({
                 var secondColumnStart = 30
                 for (var i = 0; i <= hookTypesUpdateIndexDev; i++) {
                   var oldHookName = hookTypesDev[i]
-                  var newHookName = i === hookTypesUpdateIndexDev ? currentHookName : oldHookName
+                  var newHookName =
+                    i === hookTypesUpdateIndexDev
+                      ? currentHookName
+                      : oldHookName
                   var row = i + 1 + '. ' + oldHookName
                   while (row.length < secondColumnStart) {
                     row += ' '
@@ -13291,7 +14595,8 @@ var require_react_dom_development = __commonJS({
           {
             hookTypesDev = current2 !== null ? current2._debugHookTypes : null
             hookTypesUpdateIndexDev = -1
-            ignorePreviousDependencies = current2 !== null && current2.type !== workInProgress2.type
+            ignorePreviousDependencies =
+              current2 !== null && current2.type !== workInProgress2.type
           }
           workInProgress2.memoizedState = null
           workInProgress2.updateQueue = null
@@ -13300,7 +14605,8 @@ var require_react_dom_development = __commonJS({
             if (current2 !== null && current2.memoizedState !== null) {
               ReactCurrentDispatcher$1.current = HooksDispatcherOnUpdateInDEV
             } else if (hookTypesDev !== null) {
-              ReactCurrentDispatcher$1.current = HooksDispatcherOnMountWithHookTypesInDEV
+              ReactCurrentDispatcher$1.current =
+                HooksDispatcherOnMountWithHookTypesInDEV
             } else {
               ReactCurrentDispatcher$1.current = HooksDispatcherOnMountInDEV
             }
@@ -13334,7 +14640,8 @@ var require_react_dom_development = __commonJS({
           {
             workInProgress2._debugHookTypes = hookTypesDev
           }
-          var didRenderTooFewHooks = currentHook !== null && currentHook.next !== null
+          var didRenderTooFewHooks =
+            currentHook !== null && currentHook.next !== null
           renderLanes = NoLanes
           currentlyRenderingFiber$1 = null
           currentHook = null
@@ -13345,7 +14652,8 @@ var require_react_dom_development = __commonJS({
             hookTypesUpdateIndexDev = -1
             if (
               current2 !== null &&
-              (current2.flags & StaticMask) !== (workInProgress2.flags & StaticMask) && // Disable this warning in legacy mode, because legacy Suspense is weird
+              (current2.flags & StaticMask) !==
+                (workInProgress2.flags & StaticMask) && // Disable this warning in legacy mode, because legacy Suspense is weird
               // and creates false positives. To make this work in legacy mode, we'd
               // need to mark fibers that commit in an incomplete state, somehow. For
               // now I'll disable the warning that most of the bugs that would trigger
@@ -13373,7 +14681,12 @@ var require_react_dom_development = __commonJS({
         function bailoutHooks(current2, workInProgress2, lanes) {
           workInProgress2.updateQueue = current2.updateQueue
           if ((workInProgress2.mode & StrictEffectsMode) !== NoMode) {
-            workInProgress2.flags &= ~(MountPassiveDev | MountLayoutDev | Passive | Update)
+            workInProgress2.flags &= ~(
+              MountPassiveDev |
+              MountLayoutDev |
+              Passive |
+              Update
+            )
           } else {
             workInProgress2.flags &= ~(Passive | Update)
           }
@@ -13444,7 +14757,9 @@ var require_react_dom_development = __commonJS({
             currentHook = nextCurrentHook
           } else {
             if (nextCurrentHook === null) {
-              throw new Error('Rendered more hooks than during the previous render.')
+              throw new Error(
+                'Rendered more hooks than during the previous render.'
+              )
             }
             currentHook = nextCurrentHook
             var newHook = {
@@ -13455,7 +14770,8 @@ var require_react_dom_development = __commonJS({
               next: null,
             }
             if (workInProgressHook === null) {
-              currentlyRenderingFiber$1.memoizedState = workInProgressHook = newHook
+              currentlyRenderingFiber$1.memoizedState = workInProgressHook =
+                newHook
             } else {
               workInProgressHook = workInProgressHook.next = newHook
             }
@@ -13649,7 +14965,11 @@ var require_react_dom_development = __commonJS({
             return void 0
           }
         }
-        function mountSyncExternalStore(subscribe, getSnapshot, getServerSnapshot) {
+        function mountSyncExternalStore(
+          subscribe,
+          getSnapshot,
+          getServerSnapshot
+        ) {
           var fiber = currentlyRenderingFiber$1
           var hook = mountWorkInProgressHook()
           var nextSnapshot
@@ -13677,7 +14997,9 @@ var require_react_dom_development = __commonJS({
               if (!didWarnUncachedGetSnapshot) {
                 var cachedSnapshot = getSnapshot()
                 if (!objectIs(nextSnapshot, cachedSnapshot)) {
-                  error('The result of getSnapshot should be cached to avoid an infinite loop')
+                  error(
+                    'The result of getSnapshot should be cached to avoid an infinite loop'
+                  )
                   didWarnUncachedGetSnapshot = true
                 }
               }
@@ -13698,17 +15020,29 @@ var require_react_dom_development = __commonJS({
             getSnapshot,
           }
           hook.queue = inst
-          mountEffect(subscribeToStore.bind(null, fiber, inst, subscribe), [subscribe])
+          mountEffect(subscribeToStore.bind(null, fiber, inst, subscribe), [
+            subscribe,
+          ])
           fiber.flags |= Passive
           pushEffect(
             HasEffect | Passive$1,
-            updateStoreInstance.bind(null, fiber, inst, nextSnapshot, getSnapshot),
+            updateStoreInstance.bind(
+              null,
+              fiber,
+              inst,
+              nextSnapshot,
+              getSnapshot
+            ),
             void 0,
             null
           )
           return nextSnapshot
         }
-        function updateSyncExternalStore(subscribe, getSnapshot, getServerSnapshot) {
+        function updateSyncExternalStore(
+          subscribe,
+          getSnapshot,
+          getServerSnapshot
+        ) {
           var fiber = currentlyRenderingFiber$1
           var hook = updateWorkInProgressHook()
           var nextSnapshot = getSnapshot()
@@ -13716,7 +15050,9 @@ var require_react_dom_development = __commonJS({
             if (!didWarnUncachedGetSnapshot) {
               var cachedSnapshot = getSnapshot()
               if (!objectIs(nextSnapshot, cachedSnapshot)) {
-                error('The result of getSnapshot should be cached to avoid an infinite loop')
+                error(
+                  'The result of getSnapshot should be cached to avoid an infinite loop'
+                )
                 didWarnUncachedGetSnapshot = true
               }
             }
@@ -13728,17 +15064,26 @@ var require_react_dom_development = __commonJS({
             markWorkInProgressReceivedUpdate()
           }
           var inst = hook.queue
-          updateEffect(subscribeToStore.bind(null, fiber, inst, subscribe), [subscribe])
+          updateEffect(subscribeToStore.bind(null, fiber, inst, subscribe), [
+            subscribe,
+          ])
           if (
             inst.getSnapshot !== getSnapshot ||
             snapshotChanged || // Check if the susbcribe function changed. We can save some memory by
             // checking whether we scheduled a subscription effect above.
-            (workInProgressHook !== null && workInProgressHook.memoizedState.tag & HasEffect)
+            (workInProgressHook !== null &&
+              workInProgressHook.memoizedState.tag & HasEffect)
           ) {
             fiber.flags |= Passive
             pushEffect(
               HasEffect | Passive$1,
-              updateStoreInstance.bind(null, fiber, inst, nextSnapshot, getSnapshot),
+              updateStoreInstance.bind(
+                null,
+                fiber,
+                inst,
+                nextSnapshot,
+                getSnapshot
+              ),
               void 0,
               null
             )
@@ -13754,7 +15099,11 @@ var require_react_dom_development = __commonJS({
           }
           return nextSnapshot
         }
-        function pushStoreConsistencyCheck(fiber, getSnapshot, renderedSnapshot) {
+        function pushStoreConsistencyCheck(
+          fiber,
+          getSnapshot,
+          renderedSnapshot
+        ) {
           fiber.flags |= StoreConsistency
           var check = {
             getSnapshot,
@@ -13878,7 +15227,12 @@ var require_react_dom_development = __commonJS({
           var hook = mountWorkInProgressHook()
           var nextDeps = deps === void 0 ? null : deps
           currentlyRenderingFiber$1.flags |= fiberFlags
-          hook.memoizedState = pushEffect(HasEffect | hookFlags, create, void 0, nextDeps)
+          hook.memoizedState = pushEffect(
+            HasEffect | hookFlags,
+            create,
+            void 0,
+            nextDeps
+          )
         }
         function updateEffectImpl(fiberFlags, hookFlags, create, deps) {
           var hook = updateWorkInProgressHook()
@@ -13890,13 +15244,23 @@ var require_react_dom_development = __commonJS({
             if (nextDeps !== null) {
               var prevDeps = prevEffect.deps
               if (areHookInputsEqual(nextDeps, prevDeps)) {
-                hook.memoizedState = pushEffect(hookFlags, create, destroy, nextDeps)
+                hook.memoizedState = pushEffect(
+                  hookFlags,
+                  create,
+                  destroy,
+                  nextDeps
+                )
                 return
               }
             }
           }
           currentlyRenderingFiber$1.flags |= fiberFlags
-          hook.memoizedState = pushEffect(HasEffect | hookFlags, create, destroy, nextDeps)
+          hook.memoizedState = pushEffect(
+            HasEffect | hookFlags,
+            create,
+            destroy,
+            nextDeps
+          )
         }
         function mountEffect(create, deps) {
           if ((currentlyRenderingFiber$1.mode & StrictEffectsMode) !== NoMode) {
@@ -13907,7 +15271,12 @@ var require_react_dom_development = __commonJS({
               deps
             )
           } else {
-            return mountEffectImpl(Passive | PassiveStatic, Passive$1, create, deps)
+            return mountEffectImpl(
+              Passive | PassiveStatic,
+              Passive$1,
+              create,
+              deps
+            )
           }
         }
         function updateEffect(create, deps) {
@@ -13946,7 +15315,9 @@ var require_react_dom_development = __commonJS({
               if (!refObject.hasOwnProperty('current')) {
                 error(
                   'Expected useImperativeHandle() first argument to either be a ref callback or React.createRef() object. Instead received: %s.',
-                  'an object with keys {' + Object.keys(refObject).join(', ') + '}'
+                  'an object with keys {' +
+                    Object.keys(refObject).join(', ') +
+                    '}'
                 )
               }
             }
@@ -13966,7 +15337,8 @@ var require_react_dom_development = __commonJS({
               )
             }
           }
-          var effectDeps = deps !== null && deps !== void 0 ? deps.concat([ref]) : null
+          var effectDeps =
+            deps !== null && deps !== void 0 ? deps.concat([ref]) : null
           var fiberFlags = Update
           {
             fiberFlags |= LayoutStatic
@@ -13990,7 +15362,8 @@ var require_react_dom_development = __commonJS({
               )
             }
           }
-          var effectDeps = deps !== null && deps !== void 0 ? deps.concat([ref]) : null
+          var effectDeps =
+            deps !== null && deps !== void 0 ? deps.concat([ref]) : null
           return updateEffectImpl(
             Update,
             Layout,
@@ -14089,13 +15462,16 @@ var require_react_dom_development = __commonJS({
         }
         function startTransition(setPending, callback, options2) {
           var previousPriority = getCurrentUpdatePriority()
-          setCurrentUpdatePriority(higherEventPriority(previousPriority, ContinuousEventPriority))
+          setCurrentUpdatePriority(
+            higherEventPriority(previousPriority, ContinuousEventPriority)
+          )
           setPending(true)
           var prevTransition = ReactCurrentBatchConfig$2.transition
           ReactCurrentBatchConfig$2.transition = {}
           var currentTransition = ReactCurrentBatchConfig$2.transition
           {
-            ReactCurrentBatchConfig$2.transition._updatedFibers = /* @__PURE__ */ new Set()
+            ReactCurrentBatchConfig$2.transition._updatedFibers =
+              /* @__PURE__ */ new Set()
           }
           try {
             setPending(false)
@@ -14160,7 +15536,8 @@ var require_react_dom_development = __commonJS({
             id += ':'
           } else {
             var globalClientId = globalClientIdCounter++
-            id = ':' + identifierPrefix + 'r' + globalClientId.toString(32) + ':'
+            id =
+              ':' + identifierPrefix + 'r' + globalClientId.toString(32) + ':'
           }
           hook.memoizedState = id
           return id
@@ -14218,13 +15595,17 @@ var require_react_dom_development = __commonJS({
             enqueueRenderPhaseUpdate(queue, update)
           } else {
             var alternate = fiber.alternate
-            if (fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)) {
+            if (
+              fiber.lanes === NoLanes &&
+              (alternate === null || alternate.lanes === NoLanes)
+            ) {
               var lastRenderedReducer = queue.lastRenderedReducer
               if (lastRenderedReducer !== null) {
                 var prevDispatcher
                 {
                   prevDispatcher = ReactCurrentDispatcher$1.current
-                  ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+                  ReactCurrentDispatcher$1.current =
+                    InvalidNestedHooksDispatcherOnUpdateInDEV
                 }
                 try {
                   var currentState = queue.lastRenderedState
@@ -14232,7 +15613,12 @@ var require_react_dom_development = __commonJS({
                   update.hasEagerState = true
                   update.eagerState = eagerState
                   if (objectIs(eagerState, currentState)) {
-                    enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane)
+                    enqueueConcurrentHookUpdateAndEagerlyBailout(
+                      fiber,
+                      queue,
+                      update,
+                      lane
+                    )
                     return
                   }
                 } catch (error2) {
@@ -14260,7 +15646,8 @@ var require_react_dom_development = __commonJS({
           )
         }
         function enqueueRenderPhaseUpdate(queue, update) {
-          didScheduleRenderPhaseUpdateDuringThisPass = didScheduleRenderPhaseUpdate = true
+          didScheduleRenderPhaseUpdateDuringThisPass =
+            didScheduleRenderPhaseUpdate = true
           var pending = queue.pending
           if (pending === null) {
             update.next = update
@@ -14366,7 +15753,8 @@ var require_react_dom_development = __commonJS({
               mountHookTypesDev()
               checkDepsAreArrayDev(deps)
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountMemo(create, deps)
               } finally {
@@ -14377,7 +15765,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useReducer'
               mountHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountReducer(reducer, initialArg, init)
               } finally {
@@ -14393,7 +15782,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useState'
               mountHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountState(initialState)
               } finally {
@@ -14420,10 +15810,18 @@ var require_react_dom_development = __commonJS({
               mountHookTypesDev()
               return mountMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               mountHookTypesDev()
-              return mountSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+              return mountSyncExternalStore(
+                subscribe,
+                getSnapshot,
+                getServerSnapshot
+              )
             },
             useId: function () {
               currentHookNameInDev = 'useId'
@@ -14470,7 +15868,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useMemo'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountMemo(create, deps)
               } finally {
@@ -14481,7 +15880,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useReducer'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountReducer(reducer, initialArg, init)
               } finally {
@@ -14497,7 +15897,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useState'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountState(initialState)
               } finally {
@@ -14524,10 +15925,18 @@ var require_react_dom_development = __commonJS({
               updateHookTypesDev()
               return mountMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               updateHookTypesDev()
-              return mountSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+              return mountSyncExternalStore(
+                subscribe,
+                getSnapshot,
+                getServerSnapshot
+              )
             },
             useId: function () {
               currentHookNameInDev = 'useId'
@@ -14574,7 +15983,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useMemo'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateMemo(create, deps)
               } finally {
@@ -14585,7 +15995,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useReducer'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateReducer(reducer, initialArg, init)
               } finally {
@@ -14601,7 +16012,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useState'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateState(initialState)
               } finally {
@@ -14628,7 +16040,11 @@ var require_react_dom_development = __commonJS({
               updateHookTypesDev()
               return updateMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               updateHookTypesDev()
               return updateSyncExternalStore(subscribe, getSnapshot)
@@ -14678,7 +16094,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useMemo'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnRerenderInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnRerenderInDEV
               try {
                 return updateMemo(create, deps)
               } finally {
@@ -14689,7 +16106,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useReducer'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnRerenderInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnRerenderInDEV
               try {
                 return rerenderReducer(reducer, initialArg, init)
               } finally {
@@ -14705,7 +16123,8 @@ var require_react_dom_development = __commonJS({
               currentHookNameInDev = 'useState'
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnRerenderInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnRerenderInDEV
               try {
                 return rerenderState(initialState)
               } finally {
@@ -14732,7 +16151,11 @@ var require_react_dom_development = __commonJS({
               updateHookTypesDev()
               return updateMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               updateHookTypesDev()
               return updateSyncExternalStore(subscribe, getSnapshot)
@@ -14790,7 +16213,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               mountHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountMemo(create, deps)
               } finally {
@@ -14802,7 +16226,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               mountHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountReducer(reducer, initialArg, init)
               } finally {
@@ -14820,7 +16245,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               mountHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnMountInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnMountInDEV
               try {
                 return mountState(initialState)
               } finally {
@@ -14851,11 +16277,19 @@ var require_react_dom_development = __commonJS({
               mountHookTypesDev()
               return mountMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               warnInvalidHookAccess()
               mountHookTypesDev()
-              return mountSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+              return mountSyncExternalStore(
+                subscribe,
+                getSnapshot,
+                getServerSnapshot
+              )
             },
             useId: function () {
               currentHookNameInDev = 'useId'
@@ -14911,7 +16345,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateMemo(create, deps)
               } finally {
@@ -14923,7 +16358,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateReducer(reducer, initialArg, init)
               } finally {
@@ -14941,7 +16377,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateState(initialState)
               } finally {
@@ -14972,7 +16409,11 @@ var require_react_dom_development = __commonJS({
               updateHookTypesDev()
               return updateMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               warnInvalidHookAccess()
               updateHookTypesDev()
@@ -15032,7 +16473,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return updateMemo(create, deps)
               } finally {
@@ -15044,7 +16486,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return rerenderReducer(reducer, initialArg, init)
               } finally {
@@ -15062,7 +16505,8 @@ var require_react_dom_development = __commonJS({
               warnInvalidHookAccess()
               updateHookTypesDev()
               var prevDispatcher = ReactCurrentDispatcher$1.current
-              ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV
+              ReactCurrentDispatcher$1.current =
+                InvalidNestedHooksDispatcherOnUpdateInDEV
               try {
                 return rerenderState(initialState)
               } finally {
@@ -15093,7 +16537,11 @@ var require_react_dom_development = __commonJS({
               updateHookTypesDev()
               return updateMutableSource()
             },
-            useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
+            useSyncExternalStore: function (
+              subscribe,
+              getSnapshot,
+              getServerSnapshot
+            ) {
               currentHookNameInDev = 'useSyncExternalStore'
               warnInvalidHookAccess()
               updateHookTypesDev()
@@ -15150,7 +16598,10 @@ var require_react_dom_development = __commonJS({
         function stopProfilerTimerIfRunning(fiber) {
           profilerStartTime = -1
         }
-        function stopProfilerTimerIfRunningAndRecordDelta(fiber, overrideBaseTime) {
+        function stopProfilerTimerIfRunningAndRecordDelta(
+          fiber,
+          overrideBaseTime
+        ) {
           if (profilerStartTime >= 0) {
             var elapsedTime = now$1() - profilerStartTime
             fiber.actualDuration += elapsedTime
@@ -15245,8 +16696,10 @@ var require_react_dom_development = __commonJS({
         {
           didWarnAboutStateAssignmentForComponent = /* @__PURE__ */ new Set()
           didWarnAboutUninitializedState = /* @__PURE__ */ new Set()
-          didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = /* @__PURE__ */ new Set()
-          didWarnAboutLegacyLifecyclesAndDerivedState = /* @__PURE__ */ new Set()
+          didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate =
+            /* @__PURE__ */ new Set()
+          didWarnAboutLegacyLifecyclesAndDerivedState =
+            /* @__PURE__ */ new Set()
           didWarnAboutDirectlyAssigningPropsToState = /* @__PURE__ */ new Set()
           didWarnAboutUndefinedDerivedState = /* @__PURE__ */ new Set()
           didWarnAboutContextTypeAndContextTypes = /* @__PURE__ */ new Set()
@@ -15396,12 +16849,20 @@ var require_react_dom_development = __commonJS({
         ) {
           var instance = workInProgress2.stateNode
           if (typeof instance.shouldComponentUpdate === 'function') {
-            var shouldUpdate = instance.shouldComponentUpdate(newProps, newState, nextContext)
+            var shouldUpdate = instance.shouldComponentUpdate(
+              newProps,
+              newState,
+              nextContext
+            )
             {
               if (workInProgress2.mode & StrictLegacyMode) {
                 setIsStrictModeForDevtools(true)
                 try {
-                  shouldUpdate = instance.shouldComponentUpdate(newProps, newState, nextContext)
+                  shouldUpdate = instance.shouldComponentUpdate(
+                    newProps,
+                    newState,
+                    nextContext
+                  )
                 } finally {
                   setIsStrictModeForDevtools(false)
                 }
@@ -15416,7 +16877,10 @@ var require_react_dom_development = __commonJS({
             return shouldUpdate
           }
           if (ctor.prototype && ctor.prototype.isPureReactComponent) {
-            return !shallowEqual(oldProps, newProps) || !shallowEqual(oldState, newState)
+            return (
+              !shallowEqual(oldProps, newProps) ||
+              !shallowEqual(oldState, newState)
+            )
           }
           return true
         }
@@ -15426,7 +16890,10 @@ var require_react_dom_development = __commonJS({
             var name = getComponentNameFromType(ctor) || 'Component'
             var renderPresent = instance.render
             if (!renderPresent) {
-              if (ctor.prototype && typeof ctor.prototype.render === 'function') {
+              if (
+                ctor.prototype &&
+                typeof ctor.prototype.render === 'function'
+              ) {
                 error(
                   '%s(...): No `render` method found on the returned component instance: did you accidentally return an object from the constructor?',
                   name
@@ -15448,7 +16915,10 @@ var require_react_dom_development = __commonJS({
                 name
               )
             }
-            if (instance.getDefaultProps && !instance.getDefaultProps.isReactClassApproved) {
+            if (
+              instance.getDefaultProps &&
+              !instance.getDefaultProps.isReactClassApproved
+            ) {
               error(
                 'getDefaultProps was defined on %s, a plain JavaScript class. This is only supported for classes created using React.createClass. Use a static property to define defaultProps instead.',
                 name
@@ -15543,7 +17013,9 @@ var require_react_dom_development = __commonJS({
                 name
               )
             }
-            if (typeof instance.UNSAFE_componentWillRecieveProps === 'function') {
+            if (
+              typeof instance.UNSAFE_componentWillRecieveProps === 'function'
+            ) {
               error(
                 '%s has a method called UNSAFE_componentWillRecieveProps(). Did you mean UNSAFE_componentWillReceiveProps()?',
                 name
@@ -15636,11 +17108,14 @@ var require_react_dom_development = __commonJS({
                   addendum =
                     ' However, it is set to undefined. This can be caused by a typo or by mixing up named and default imports. This can also happen due to a circular dependency, so try moving the createContext() call to a separate file.'
                 } else if (typeof contextType !== 'object') {
-                  addendum = ' However, it is set to a ' + typeof contextType + '.'
+                  addendum =
+                    ' However, it is set to a ' + typeof contextType + '.'
                 } else if (contextType.$$typeof === REACT_PROVIDER_TYPE) {
-                  addendum = ' Did you accidentally pass the Context.Provider instead?'
+                  addendum =
+                    ' Did you accidentally pass the Context.Provider instead?'
                 } else if (contextType._context !== void 0) {
-                  addendum = ' Did you accidentally pass the Context.Consumer instead?'
+                  addendum =
+                    ' Did you accidentally pass the Context.Consumer instead?'
                 } else {
                   addendum =
                     ' However, it is set to an object with keys {' +
@@ -15660,7 +17135,8 @@ var require_react_dom_development = __commonJS({
           } else {
             unmaskedContext = getUnmaskedContext(workInProgress2, ctor, true)
             var contextTypes = ctor.contextTypes
-            isLegacyContextConsumer = contextTypes !== null && contextTypes !== void 0
+            isLegacyContextConsumer =
+              contextTypes !== null && contextTypes !== void 0
             context = isLegacyContextConsumer
               ? getMaskedContext(workInProgress2, unmaskedContext)
               : emptyContextObject
@@ -15677,10 +17153,15 @@ var require_react_dom_development = __commonJS({
             }
           }
           var state = (workInProgress2.memoizedState =
-            instance.state !== null && instance.state !== void 0 ? instance.state : null)
+            instance.state !== null && instance.state !== void 0
+              ? instance.state
+              : null)
           adoptClassInstance(workInProgress2, instance)
           {
-            if (typeof ctor.getDerivedStateFromProps === 'function' && state === null) {
+            if (
+              typeof ctor.getDerivedStateFromProps === 'function' &&
+              state === null
+            ) {
               var componentName = getComponentNameFromType(ctor) || 'Component'
               if (!didWarnAboutUninitializedState.has(componentName)) {
                 didWarnAboutUninitializedState.add(componentName)
@@ -15701,26 +17182,35 @@ var require_react_dom_development = __commonJS({
               var foundWillUpdateName = null
               if (
                 typeof instance.componentWillMount === 'function' &&
-                instance.componentWillMount.__suppressDeprecationWarning !== true
+                instance.componentWillMount.__suppressDeprecationWarning !==
+                  true
               ) {
                 foundWillMountName = 'componentWillMount'
-              } else if (typeof instance.UNSAFE_componentWillMount === 'function') {
+              } else if (
+                typeof instance.UNSAFE_componentWillMount === 'function'
+              ) {
                 foundWillMountName = 'UNSAFE_componentWillMount'
               }
               if (
                 typeof instance.componentWillReceiveProps === 'function' &&
-                instance.componentWillReceiveProps.__suppressDeprecationWarning !== true
+                instance.componentWillReceiveProps
+                  .__suppressDeprecationWarning !== true
               ) {
                 foundWillReceivePropsName = 'componentWillReceiveProps'
-              } else if (typeof instance.UNSAFE_componentWillReceiveProps === 'function') {
+              } else if (
+                typeof instance.UNSAFE_componentWillReceiveProps === 'function'
+              ) {
                 foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps'
               }
               if (
                 typeof instance.componentWillUpdate === 'function' &&
-                instance.componentWillUpdate.__suppressDeprecationWarning !== true
+                instance.componentWillUpdate.__suppressDeprecationWarning !==
+                  true
               ) {
                 foundWillUpdateName = 'componentWillUpdate'
-              } else if (typeof instance.UNSAFE_componentWillUpdate === 'function') {
+              } else if (
+                typeof instance.UNSAFE_componentWillUpdate === 'function'
+              ) {
                 foundWillUpdateName = 'UNSAFE_componentWillUpdate'
               }
               if (
@@ -15728,20 +17218,33 @@ var require_react_dom_development = __commonJS({
                 foundWillReceivePropsName !== null ||
                 foundWillUpdateName !== null
               ) {
-                var _componentName = getComponentNameFromType(ctor) || 'Component'
+                var _componentName =
+                  getComponentNameFromType(ctor) || 'Component'
                 var newApiName =
                   typeof ctor.getDerivedStateFromProps === 'function'
                     ? 'getDerivedStateFromProps()'
                     : 'getSnapshotBeforeUpdate()'
-                if (!didWarnAboutLegacyLifecyclesAndDerivedState.has(_componentName)) {
-                  didWarnAboutLegacyLifecyclesAndDerivedState.add(_componentName)
+                if (
+                  !didWarnAboutLegacyLifecyclesAndDerivedState.has(
+                    _componentName
+                  )
+                ) {
+                  didWarnAboutLegacyLifecyclesAndDerivedState.add(
+                    _componentName
+                  )
                   error(
                     'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n%s uses %s but also contains the following legacy lifecycles:%s%s%s\n\nThe above lifecycles should be removed. Learn more about this warning here:\nhttps://reactjs.org/link/unsafe-component-lifecycles',
                     _componentName,
                     newApiName,
-                    foundWillMountName !== null ? '\n  ' + foundWillMountName : '',
-                    foundWillReceivePropsName !== null ? '\n  ' + foundWillReceivePropsName : '',
-                    foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : ''
+                    foundWillMountName !== null
+                      ? '\n  ' + foundWillMountName
+                      : '',
+                    foundWillReceivePropsName !== null
+                      ? '\n  ' + foundWillReceivePropsName
+                      : '',
+                    foundWillUpdateName !== null
+                      ? '\n  ' + foundWillUpdateName
+                      : ''
                   )
                 }
               }
@@ -15767,10 +17270,19 @@ var require_react_dom_development = __commonJS({
                 getComponentNameFromFiber(workInProgress2) || 'Component'
               )
             }
-            classComponentUpdater.enqueueReplaceState(instance, instance.state, null)
+            classComponentUpdater.enqueueReplaceState(
+              instance,
+              instance.state,
+              null
+            )
           }
         }
-        function callComponentWillReceiveProps(workInProgress2, instance, newProps, nextContext) {
+        function callComponentWillReceiveProps(
+          workInProgress2,
+          instance,
+          newProps,
+          nextContext
+        ) {
           var oldState = instance.state
           if (typeof instance.componentWillReceiveProps === 'function') {
             instance.componentWillReceiveProps(newProps, nextContext)
@@ -15780,7 +17292,8 @@ var require_react_dom_development = __commonJS({
           }
           if (instance.state !== oldState) {
             {
-              var componentName = getComponentNameFromFiber(workInProgress2) || 'Component'
+              var componentName =
+                getComponentNameFromFiber(workInProgress2) || 'Component'
               if (!didWarnAboutStateAssignmentForComponent.has(componentName)) {
                 didWarnAboutStateAssignmentForComponent.add(componentName)
                 error(
@@ -15789,10 +17302,19 @@ var require_react_dom_development = __commonJS({
                 )
               }
             }
-            classComponentUpdater.enqueueReplaceState(instance, instance.state, null)
+            classComponentUpdater.enqueueReplaceState(
+              instance,
+              instance.state,
+              null
+            )
           }
         }
-        function mountClassInstance(workInProgress2, ctor, newProps, renderLanes2) {
+        function mountClassInstance(
+          workInProgress2,
+          ctor,
+          newProps,
+          renderLanes2
+        ) {
           {
             checkClassInstance(workInProgress2, ctor, newProps)
           }
@@ -15805,13 +17327,22 @@ var require_react_dom_development = __commonJS({
           if (typeof contextType === 'object' && contextType !== null) {
             instance.context = readContext(contextType)
           } else {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, ctor, true)
-            instance.context = getMaskedContext(workInProgress2, unmaskedContext)
+            var unmaskedContext = getUnmaskedContext(
+              workInProgress2,
+              ctor,
+              true
+            )
+            instance.context = getMaskedContext(
+              workInProgress2,
+              unmaskedContext
+            )
           }
           {
             if (instance.state === newProps) {
               var componentName = getComponentNameFromType(ctor) || 'Component'
-              if (!didWarnAboutDirectlyAssigningPropsToState.has(componentName)) {
+              if (
+                !didWarnAboutDirectlyAssigningPropsToState.has(componentName)
+              ) {
                 didWarnAboutDirectlyAssigningPropsToState.add(componentName)
                 error(
                   "%s: It is not recommended to assign props directly to state because updates to props won't be reflected in state. In most cases, it is better to use props directly.",
@@ -15820,16 +17351,27 @@ var require_react_dom_development = __commonJS({
               }
             }
             if (workInProgress2.mode & StrictLegacyMode) {
-              ReactStrictModeWarnings.recordLegacyContextWarning(workInProgress2, instance)
+              ReactStrictModeWarnings.recordLegacyContextWarning(
+                workInProgress2,
+                instance
+              )
             }
             {
-              ReactStrictModeWarnings.recordUnsafeLifecycleWarnings(workInProgress2, instance)
+              ReactStrictModeWarnings.recordUnsafeLifecycleWarnings(
+                workInProgress2,
+                instance
+              )
             }
           }
           instance.state = workInProgress2.memoizedState
           var getDerivedStateFromProps = ctor.getDerivedStateFromProps
           if (typeof getDerivedStateFromProps === 'function') {
-            applyDerivedStateFromProps(workInProgress2, ctor, getDerivedStateFromProps, newProps)
+            applyDerivedStateFromProps(
+              workInProgress2,
+              ctor,
+              getDerivedStateFromProps,
+              newProps
+            )
             instance.state = workInProgress2.memoizedState
           }
           if (
@@ -15839,7 +17381,12 @@ var require_react_dom_development = __commonJS({
               typeof instance.componentWillMount === 'function')
           ) {
             callComponentWillMount(workInProgress2, instance)
-            processUpdateQueue(workInProgress2, newProps, instance, renderLanes2)
+            processUpdateQueue(
+              workInProgress2,
+              newProps,
+              instance,
+              renderLanes2
+            )
             instance.state = workInProgress2.memoizedState
           }
           if (typeof instance.componentDidMount === 'function') {
@@ -15853,7 +17400,12 @@ var require_react_dom_development = __commonJS({
             workInProgress2.flags |= fiberFlags
           }
         }
-        function resumeMountClassInstance(workInProgress2, ctor, newProps, renderLanes2) {
+        function resumeMountClassInstance(
+          workInProgress2,
+          ctor,
+          newProps,
+          renderLanes2
+        ) {
           var instance = workInProgress2.stateNode
           var oldProps = workInProgress2.memoizedProps
           instance.props = oldProps
@@ -15863,8 +17415,15 @@ var require_react_dom_development = __commonJS({
           if (typeof contextType === 'object' && contextType !== null) {
             nextContext = readContext(contextType)
           } else {
-            var nextLegacyUnmaskedContext = getUnmaskedContext(workInProgress2, ctor, true)
-            nextContext = getMaskedContext(workInProgress2, nextLegacyUnmaskedContext)
+            var nextLegacyUnmaskedContext = getUnmaskedContext(
+              workInProgress2,
+              ctor,
+              true
+            )
+            nextContext = getMaskedContext(
+              workInProgress2,
+              nextLegacyUnmaskedContext
+            )
           }
           var getDerivedStateFromProps = ctor.getDerivedStateFromProps
           var hasNewLifecycles =
@@ -15876,7 +17435,12 @@ var require_react_dom_development = __commonJS({
               typeof instance.componentWillReceiveProps === 'function')
           ) {
             if (oldProps !== newProps || oldContext !== nextContext) {
-              callComponentWillReceiveProps(workInProgress2, instance, newProps, nextContext)
+              callComponentWillReceiveProps(
+                workInProgress2,
+                instance,
+                newProps,
+                nextContext
+              )
             }
           }
           resetHasForceUpdateBeforeProcessing()
@@ -15903,7 +17467,12 @@ var require_react_dom_development = __commonJS({
             return false
           }
           if (typeof getDerivedStateFromProps === 'function') {
-            applyDerivedStateFromProps(workInProgress2, ctor, getDerivedStateFromProps, newProps)
+            applyDerivedStateFromProps(
+              workInProgress2,
+              ctor,
+              getDerivedStateFromProps,
+              newProps
+            )
             newState = workInProgress2.memoizedState
           }
           var shouldUpdate =
@@ -15959,7 +17528,13 @@ var require_react_dom_development = __commonJS({
           instance.context = nextContext
           return shouldUpdate
         }
-        function updateClassInstance(current2, workInProgress2, ctor, newProps, renderLanes2) {
+        function updateClassInstance(
+          current2,
+          workInProgress2,
+          ctor,
+          newProps,
+          renderLanes2
+        ) {
           var instance = workInProgress2.stateNode
           cloneUpdateQueue(current2, workInProgress2)
           var unresolvedOldProps = workInProgress2.memoizedProps
@@ -15975,7 +17550,11 @@ var require_react_dom_development = __commonJS({
           if (typeof contextType === 'object' && contextType !== null) {
             nextContext = readContext(contextType)
           } else {
-            var nextUnmaskedContext = getUnmaskedContext(workInProgress2, ctor, true)
+            var nextUnmaskedContext = getUnmaskedContext(
+              workInProgress2,
+              ctor,
+              true
+            )
             nextContext = getMaskedContext(workInProgress2, nextUnmaskedContext)
           }
           var getDerivedStateFromProps = ctor.getDerivedStateFromProps
@@ -15987,8 +17566,16 @@ var require_react_dom_development = __commonJS({
             (typeof instance.UNSAFE_componentWillReceiveProps === 'function' ||
               typeof instance.componentWillReceiveProps === 'function')
           ) {
-            if (unresolvedOldProps !== unresolvedNewProps || oldContext !== nextContext) {
-              callComponentWillReceiveProps(workInProgress2, instance, newProps, nextContext)
+            if (
+              unresolvedOldProps !== unresolvedNewProps ||
+              oldContext !== nextContext
+            ) {
+              callComponentWillReceiveProps(
+                workInProgress2,
+                instance,
+                newProps,
+                nextContext
+              )
             }
           }
           resetHasForceUpdateBeforeProcessing()
@@ -16022,7 +17609,12 @@ var require_react_dom_development = __commonJS({
             return false
           }
           if (typeof getDerivedStateFromProps === 'function') {
-            applyDerivedStateFromProps(workInProgress2, ctor, getDerivedStateFromProps, newProps)
+            applyDerivedStateFromProps(
+              workInProgress2,
+              ctor,
+              getDerivedStateFromProps,
+              newProps
+            )
             newState = workInProgress2.memoizedState
           }
           var shouldUpdate =
@@ -16050,7 +17642,11 @@ var require_react_dom_development = __commonJS({
                 instance.componentWillUpdate(newProps, newState, nextContext)
               }
               if (typeof instance.UNSAFE_componentWillUpdate === 'function') {
-                instance.UNSAFE_componentWillUpdate(newProps, newState, nextContext)
+                instance.UNSAFE_componentWillUpdate(
+                  newProps,
+                  newState,
+                  nextContext
+                )
               }
             }
             if (typeof instance.componentDidUpdate === 'function') {
@@ -16120,22 +17716,33 @@ var require_react_dom_development = __commonJS({
                 }
                 console['error'](error2)
               }
-              var componentName = source ? getComponentNameFromFiber(source) : null
+              var componentName = source
+                ? getComponentNameFromFiber(source)
+                : null
               var componentNameMessage = componentName
-                ? 'The above error occurred in the <' + componentName + '> component:'
+                ? 'The above error occurred in the <' +
+                  componentName +
+                  '> component:'
                 : 'The above error occurred in one of your React components:'
               var errorBoundaryMessage
               if (boundary.tag === HostRoot) {
                 errorBoundaryMessage =
                   'Consider adding an error boundary to your tree to customize error handling behavior.\nVisit https://reactjs.org/link/error-boundaries to learn more about error boundaries.'
               } else {
-                var errorBoundaryName = getComponentNameFromFiber(boundary) || 'Anonymous'
+                var errorBoundaryName =
+                  getComponentNameFromFiber(boundary) || 'Anonymous'
                 errorBoundaryMessage =
                   'React will try to recreate this component tree from scratch ' +
-                  ('using the error boundary you provided, ' + errorBoundaryName + '.')
+                  ('using the error boundary you provided, ' +
+                    errorBoundaryName +
+                    '.')
               }
               var combinedMessage =
-                componentNameMessage + '\n' + componentStack + '\n\n' + ('' + errorBoundaryMessage)
+                componentNameMessage +
+                '\n' +
+                componentStack +
+                '\n\n' +
+                ('' + errorBoundaryMessage)
               console['error'](combinedMessage)
             } else {
               console['error'](error2)
@@ -16244,7 +17851,9 @@ var require_react_dom_development = __commonJS({
           var tag = sourceFiber.tag
           if (
             (sourceFiber.mode & ConcurrentMode) === NoMode &&
-            (tag === FunctionComponent || tag === ForwardRef || tag === SimpleMemoComponent)
+            (tag === FunctionComponent ||
+              tag === ForwardRef ||
+              tag === SimpleMemoComponent)
           ) {
             var currentSource = sourceFiber.alternate
             if (currentSource) {
@@ -16299,14 +17908,24 @@ var require_react_dom_development = __commonJS({
           suspenseBoundary.lanes = rootRenderLanes
           return suspenseBoundary
         }
-        function throwException(root2, returnFiber, sourceFiber, value, rootRenderLanes) {
+        function throwException(
+          root2,
+          returnFiber,
+          sourceFiber,
+          value,
+          rootRenderLanes
+        ) {
           sourceFiber.flags |= Incomplete
           {
             if (isDevToolsPresent) {
               restorePendingUpdaters(root2, rootRenderLanes)
             }
           }
-          if (value !== null && typeof value === 'object' && typeof value.then === 'function') {
+          if (
+            value !== null &&
+            typeof value === 'object' &&
+            typeof value.then === 'function'
+          ) {
             var wakeable = value
             resetSuspendedComponent(sourceFiber)
             {
@@ -16314,7 +17933,8 @@ var require_react_dom_development = __commonJS({
                 markDidThrowWhileHydratingDEV()
               }
             }
-            var suspenseBoundary = getNearestSuspenseBoundaryToCapture(returnFiber)
+            var suspenseBoundary =
+              getNearestSuspenseBoundaryToCapture(returnFiber)
             if (suspenseBoundary !== null) {
               suspenseBoundary.flags &= ~ForceClientRender
               markSuspenseBoundaryShouldCapture(
@@ -16343,7 +17963,8 @@ var require_react_dom_development = __commonJS({
           } else {
             if (getIsHydrating() && sourceFiber.mode & ConcurrentMode) {
               markDidThrowWhileHydratingDEV()
-              var _suspenseBoundary = getNearestSuspenseBoundaryToCapture(returnFiber)
+              var _suspenseBoundary =
+                getNearestSuspenseBoundaryToCapture(returnFiber)
               if (_suspenseBoundary !== null) {
                 if ((_suspenseBoundary.flags & ShouldCapture) === NoFlags) {
                   _suspenseBoundary.flags |= ForceClientRender
@@ -16355,7 +17976,9 @@ var require_react_dom_development = __commonJS({
                   root2,
                   rootRenderLanes
                 )
-                queueHydrationError(createCapturedValueAtFiber(value, sourceFiber))
+                queueHydrationError(
+                  createCapturedValueAtFiber(value, sourceFiber)
+                )
                 return
               }
             }
@@ -16370,7 +17993,11 @@ var require_react_dom_development = __commonJS({
                 workInProgress2.flags |= ShouldCapture
                 var lane = pickArbitraryLane(rootRenderLanes)
                 workInProgress2.lanes = mergeLanes(workInProgress2.lanes, lane)
-                var update = createRootErrorUpdate(workInProgress2, _errorInfo, lane)
+                var update = createRootErrorUpdate(
+                  workInProgress2,
+                  _errorInfo,
+                  lane
+                )
                 enqueueCapturedUpdate(workInProgress2, update)
                 return
               }
@@ -16387,8 +18014,15 @@ var require_react_dom_development = __commonJS({
                 ) {
                   workInProgress2.flags |= ShouldCapture
                   var _lane = pickArbitraryLane(rootRenderLanes)
-                  workInProgress2.lanes = mergeLanes(workInProgress2.lanes, _lane)
-                  var _update = createClassErrorUpdate(workInProgress2, errorInfo, _lane)
+                  workInProgress2.lanes = mergeLanes(
+                    workInProgress2.lanes,
+                    _lane
+                  )
+                  var _update = createClassErrorUpdate(
+                    workInProgress2,
+                    errorInfo,
+                    _lane
+                  )
                   enqueueCapturedUpdate(workInProgress2, _update)
                   return
                 }
@@ -16424,7 +18058,12 @@ var require_react_dom_development = __commonJS({
           didWarnAboutTailOptions = {}
           didWarnAboutDefaultPropsOnFunctionComponent = {}
         }
-        function reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2) {
+        function reconcileChildren(
+          current2,
+          workInProgress2,
+          nextChildren,
+          renderLanes2
+        ) {
           if (current2 === null) {
             workInProgress2.child = mountChildFibers(
               workInProgress2,
@@ -16460,7 +18099,13 @@ var require_react_dom_development = __commonJS({
             renderLanes2
           )
         }
-        function updateForwardRef(current2, workInProgress2, Component, nextProps, renderLanes2) {
+        function updateForwardRef(
+          current2,
+          workInProgress2,
+          Component,
+          nextProps,
+          renderLanes2
+        ) {
           {
             if (workInProgress2.type !== workInProgress2.elementType) {
               var innerPropTypes = Component.propTypes
@@ -16518,13 +18163,22 @@ var require_react_dom_development = __commonJS({
           }
           if (current2 !== null && !didReceiveUpdate) {
             bailoutHooks(current2, workInProgress2, renderLanes2)
-            return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+            return bailoutOnAlreadyFinishedWork(
+              current2,
+              workInProgress2,
+              renderLanes2
+            )
           }
           if (getIsHydrating() && hasId) {
             pushMaterializedTreeId(workInProgress2)
           }
           workInProgress2.flags |= PerformedWork
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateMemoComponent(
@@ -16571,12 +18225,15 @@ var require_react_dom_development = __commonJS({
               }
               if (Component.defaultProps !== void 0) {
                 var componentName = getComponentNameFromType(type) || 'Unknown'
-                if (!didWarnAboutDefaultPropsOnFunctionComponent[componentName]) {
+                if (
+                  !didWarnAboutDefaultPropsOnFunctionComponent[componentName]
+                ) {
                   error(
                     '%s: Support for defaultProps will be removed from memo components in a future major release. Use JavaScript default parameters instead.',
                     componentName
                   )
-                  didWarnAboutDefaultPropsOnFunctionComponent[componentName] = true
+                  didWarnAboutDefaultPropsOnFunctionComponent[componentName] =
+                    true
                 }
               }
             }
@@ -16607,13 +18264,23 @@ var require_react_dom_development = __commonJS({
             }
           }
           var currentChild = current2.child
-          var hasScheduledUpdateOrContext = checkScheduledUpdateOrContext(current2, renderLanes2)
+          var hasScheduledUpdateOrContext = checkScheduledUpdateOrContext(
+            current2,
+            renderLanes2
+          )
           if (!hasScheduledUpdateOrContext) {
             var prevProps = currentChild.memoizedProps
             var compare = Component.compare
             compare = compare !== null ? compare : shallowEqual
-            if (compare(prevProps, nextProps) && current2.ref === workInProgress2.ref) {
-              return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+            if (
+              compare(prevProps, nextProps) &&
+              current2.ref === workInProgress2.ref
+            ) {
+              return bailoutOnAlreadyFinishedWork(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             }
           }
           workInProgress2.flags |= PerformedWork
@@ -16666,8 +18333,15 @@ var require_react_dom_development = __commonJS({
               workInProgress2.pendingProps = nextProps = prevProps
               if (!checkScheduledUpdateOrContext(current2, renderLanes2)) {
                 workInProgress2.lanes = current2.lanes
-                return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
-              } else if ((current2.flags & ForceUpdateForLegacySuspense) !== NoFlags) {
+                return bailoutOnAlreadyFinishedWork(
+                  current2,
+                  workInProgress2,
+                  renderLanes2
+                )
+              } else if (
+                (current2.flags & ForceUpdateForLegacySuspense) !==
+                NoFlags
+              ) {
                 didReceiveUpdate = true
               }
             }
@@ -16680,7 +18354,11 @@ var require_react_dom_development = __commonJS({
             renderLanes2
           )
         }
-        function updateOffscreenComponent(current2, workInProgress2, renderLanes2) {
+        function updateOffscreenComponent(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           var nextProps = workInProgress2.pendingProps
           var nextChildren = nextProps.children
           var prevState = current2 !== null ? current2.memoizedState : null
@@ -16702,7 +18380,8 @@ var require_react_dom_development = __commonJS({
               } else {
                 nextBaseLanes = renderLanes2
               }
-              workInProgress2.lanes = workInProgress2.childLanes = laneToLanes(OffscreenLane)
+              workInProgress2.lanes = workInProgress2.childLanes =
+                laneToLanes(OffscreenLane)
               var _nextState = {
                 baseLanes: nextBaseLanes,
                 cachePool: spawnedCachePool,
@@ -16719,30 +18398,49 @@ var require_react_dom_development = __commonJS({
                 transitions: null,
               }
               workInProgress2.memoizedState = _nextState2
-              var subtreeRenderLanes2 = prevState !== null ? prevState.baseLanes : renderLanes2
+              var subtreeRenderLanes2 =
+                prevState !== null ? prevState.baseLanes : renderLanes2
               pushRenderLanes(workInProgress2, subtreeRenderLanes2)
             }
           } else {
             var _subtreeRenderLanes
             if (prevState !== null) {
-              _subtreeRenderLanes = mergeLanes(prevState.baseLanes, renderLanes2)
+              _subtreeRenderLanes = mergeLanes(
+                prevState.baseLanes,
+                renderLanes2
+              )
               workInProgress2.memoizedState = null
             } else {
               _subtreeRenderLanes = renderLanes2
             }
             pushRenderLanes(workInProgress2, _subtreeRenderLanes)
           }
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateFragment(current2, workInProgress2, renderLanes2) {
           var nextChildren = workInProgress2.pendingProps
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateMode(current2, workInProgress2, renderLanes2) {
           var nextChildren = workInProgress2.pendingProps.children
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateProfiler(current2, workInProgress2, renderLanes2) {
@@ -16756,12 +18454,20 @@ var require_react_dom_development = __commonJS({
           }
           var nextProps = workInProgress2.pendingProps
           var nextChildren = nextProps.children
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function markRef(current2, workInProgress2) {
           var ref = workInProgress2.ref
-          if ((current2 === null && ref !== null) || (current2 !== null && current2.ref !== ref)) {
+          if (
+            (current2 === null && ref !== null) ||
+            (current2 !== null && current2.ref !== ref)
+          ) {
             workInProgress2.flags |= Ref
             {
               workInProgress2.flags |= RefStatic
@@ -16791,7 +18497,11 @@ var require_react_dom_development = __commonJS({
           }
           var context
           {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, Component, true)
+            var unmaskedContext = getUnmaskedContext(
+              workInProgress2,
+              Component,
+              true
+            )
             context = getMaskedContext(workInProgress2, unmaskedContext)
           }
           var nextChildren
@@ -16835,13 +18545,22 @@ var require_react_dom_development = __commonJS({
           }
           if (current2 !== null && !didReceiveUpdate) {
             bailoutHooks(current2, workInProgress2, renderLanes2)
-            return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+            return bailoutOnAlreadyFinishedWork(
+              current2,
+              workInProgress2,
+              renderLanes2
+            )
           }
           if (getIsHydrating() && hasId) {
             pushMaterializedTreeId(workInProgress2)
           }
           workInProgress2.flags |= PerformedWork
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateClassComponent(
@@ -16856,7 +18575,10 @@ var require_react_dom_development = __commonJS({
               case false: {
                 var _instance = workInProgress2.stateNode
                 var ctor = workInProgress2.type
-                var tempInstance = new ctor(workInProgress2.memoizedProps, _instance.context)
+                var tempInstance = new ctor(
+                  workInProgress2.memoizedProps,
+                  _instance.context
+                )
                 var state = tempInstance.state
                 _instance.updater.enqueueSetState(_instance, state, null)
                 break
@@ -16902,7 +18624,12 @@ var require_react_dom_development = __commonJS({
           if (instance === null) {
             resetSuspendedCurrentOnMountInLegacyMode(current2, workInProgress2)
             constructClassInstance(workInProgress2, Component, nextProps)
-            mountClassInstance(workInProgress2, Component, nextProps, renderLanes2)
+            mountClassInstance(
+              workInProgress2,
+              Component,
+              nextProps,
+              renderLanes2
+            )
             shouldUpdate = true
           } else if (current2 === null) {
             shouldUpdate = resumeMountClassInstance(
@@ -16956,12 +18683,19 @@ var require_react_dom_development = __commonJS({
             if (hasContext) {
               invalidateContextProvider(workInProgress2, Component, false)
             }
-            return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+            return bailoutOnAlreadyFinishedWork(
+              current2,
+              workInProgress2,
+              renderLanes2
+            )
           }
           var instance = workInProgress2.stateNode
           ReactCurrentOwner$1.current = workInProgress2
           var nextChildren
-          if (didCaptureError && typeof Component.getDerivedStateFromError !== 'function') {
+          if (
+            didCaptureError &&
+            typeof Component.getDerivedStateFromError !== 'function'
+          ) {
             nextChildren = null
             {
               stopProfilerTimerIfRunning()
@@ -16989,9 +18723,19 @@ var require_react_dom_development = __commonJS({
           }
           workInProgress2.flags |= PerformedWork
           if (current2 !== null && didCaptureError) {
-            forceUnmountCurrentAndReconcile(current2, workInProgress2, nextChildren, renderLanes2)
+            forceUnmountCurrentAndReconcile(
+              current2,
+              workInProgress2,
+              nextChildren,
+              renderLanes2
+            )
           } else {
-            reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+            reconcileChildren(
+              current2,
+              workInProgress2,
+              nextChildren,
+              renderLanes2
+            )
           }
           workInProgress2.memoizedState = instance.state
           if (hasContext) {
@@ -17015,7 +18759,9 @@ var require_react_dom_development = __commonJS({
         function updateHostRoot(current2, workInProgress2, renderLanes2) {
           pushHostRootContext(workInProgress2)
           if (current2 === null) {
-            throw new Error('Should have a current fiber. This is a bug in React.')
+            throw new Error(
+              'Should have a current fiber. This is a bug in React.'
+            )
           }
           var nextProps = workInProgress2.pendingProps
           var prevState = workInProgress2.memoizedState
@@ -17066,7 +18812,12 @@ var require_react_dom_development = __commonJS({
               )
             } else {
               enterHydrationState(workInProgress2)
-              var child = mountChildFibers(workInProgress2, null, nextChildren, renderLanes2)
+              var child = mountChildFibers(
+                workInProgress2,
+                null,
+                nextChildren,
+                renderLanes2
+              )
               workInProgress2.child = child
               var node = child
               while (node) {
@@ -17077,9 +18828,18 @@ var require_react_dom_development = __commonJS({
           } else {
             resetHydrationState()
             if (nextChildren === prevChildren) {
-              return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+              return bailoutOnAlreadyFinishedWork(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             }
-            reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+            reconcileChildren(
+              current2,
+              workInProgress2,
+              nextChildren,
+              renderLanes2
+            )
           }
           return workInProgress2.child
         }
@@ -17093,7 +18853,12 @@ var require_react_dom_development = __commonJS({
           resetHydrationState()
           queueHydrationError(recoverableError)
           workInProgress2.flags |= ForceClientRender
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateHostComponent(current2, workInProgress2, renderLanes2) {
@@ -17108,11 +18873,19 @@ var require_react_dom_development = __commonJS({
           var isDirectTextChild = shouldSetTextContent(type, nextProps)
           if (isDirectTextChild) {
             nextChildren = null
-          } else if (prevProps !== null && shouldSetTextContent(type, prevProps)) {
+          } else if (
+            prevProps !== null &&
+            shouldSetTextContent(type, prevProps)
+          ) {
             workInProgress2.flags |= ContentReset
           }
           markRef(current2, workInProgress2)
-          reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            nextChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function updateHostText(current2, workInProgress2) {
@@ -17121,7 +18894,12 @@ var require_react_dom_development = __commonJS({
           }
           return null
         }
-        function mountLazyComponent(_current, workInProgress2, elementType, renderLanes2) {
+        function mountLazyComponent(
+          _current,
+          workInProgress2,
+          elementType,
+          renderLanes2
+        ) {
           resetSuspendedCurrentOnMountInLegacyMode(_current, workInProgress2)
           var props = workInProgress2.pendingProps
           var lazyComponent = elementType
@@ -17129,14 +18907,16 @@ var require_react_dom_development = __commonJS({
           var init = lazyComponent._init
           var Component = init(payload)
           workInProgress2.type = Component
-          var resolvedTag = (workInProgress2.tag = resolveLazyComponentTag(Component))
+          var resolvedTag = (workInProgress2.tag =
+            resolveLazyComponentTag(Component))
           var resolvedProps = resolveDefaultProps(Component, props)
           var child
           switch (resolvedTag) {
             case FunctionComponent: {
               {
                 validateFunctionComponentInDev(workInProgress2, Component)
-                workInProgress2.type = Component = resolveFunctionForHotReloading(Component)
+                workInProgress2.type = Component =
+                  resolveFunctionForHotReloading(Component)
               }
               child = updateFunctionComponent(
                 null,
@@ -17149,7 +18929,8 @@ var require_react_dom_development = __commonJS({
             }
             case ClassComponent: {
               {
-                workInProgress2.type = Component = resolveClassForHotReloading(Component)
+                workInProgress2.type = Component =
+                  resolveClassForHotReloading(Component)
               }
               child = updateClassComponent(
                 null,
@@ -17162,7 +18943,8 @@ var require_react_dom_development = __commonJS({
             }
             case ForwardRef: {
               {
-                workInProgress2.type = Component = resolveForwardRefForHotReloading(Component)
+                workInProgress2.type = Component =
+                  resolveForwardRefForHotReloading(Component)
               }
               child = updateForwardRef(
                 null,
@@ -17234,7 +19016,12 @@ var require_react_dom_development = __commonJS({
           }
           prepareToReadContext(workInProgress2, renderLanes2)
           constructClassInstance(workInProgress2, Component, nextProps)
-          mountClassInstance(workInProgress2, Component, nextProps, renderLanes2)
+          mountClassInstance(
+            workInProgress2,
+            Component,
+            nextProps,
+            renderLanes2
+          )
           return finishClassComponent(
             null,
             workInProgress2,
@@ -17244,12 +19031,21 @@ var require_react_dom_development = __commonJS({
             renderLanes2
           )
         }
-        function mountIndeterminateComponent(_current, workInProgress2, Component, renderLanes2) {
+        function mountIndeterminateComponent(
+          _current,
+          workInProgress2,
+          Component,
+          renderLanes2
+        ) {
           resetSuspendedCurrentOnMountInLegacyMode(_current, workInProgress2)
           var props = workInProgress2.pendingProps
           var context
           {
-            var unmaskedContext = getUnmaskedContext(workInProgress2, Component, false)
+            var unmaskedContext = getUnmaskedContext(
+              workInProgress2,
+              Component,
+              false
+            )
             context = getMaskedContext(workInProgress2, unmaskedContext)
           }
           prepareToReadContext(workInProgress2, renderLanes2)
@@ -17259,8 +19055,12 @@ var require_react_dom_development = __commonJS({
             markComponentRenderStarted(workInProgress2)
           }
           {
-            if (Component.prototype && typeof Component.prototype.render === 'function') {
-              var componentName = getComponentNameFromType(Component) || 'Unknown'
+            if (
+              Component.prototype &&
+              typeof Component.prototype.render === 'function'
+            ) {
+              var componentName =
+                getComponentNameFromType(Component) || 'Unknown'
               if (!didWarnAboutBadClass[componentName]) {
                 error(
                   "The <%s /> component appears to have a render method, but doesn't extend React.Component. This is likely to cause errors. Change %s to extend React.Component instead.",
@@ -17271,11 +19071,21 @@ var require_react_dom_development = __commonJS({
               }
             }
             if (workInProgress2.mode & StrictLegacyMode) {
-              ReactStrictModeWarnings.recordLegacyContextWarning(workInProgress2, null)
+              ReactStrictModeWarnings.recordLegacyContextWarning(
+                workInProgress2,
+                null
+              )
             }
             setIsRendering(true)
             ReactCurrentOwner$1.current = workInProgress2
-            value = renderWithHooks(null, workInProgress2, Component, props, context, renderLanes2)
+            value = renderWithHooks(
+              null,
+              workInProgress2,
+              Component,
+              props,
+              context,
+              renderLanes2
+            )
             hasId = checkDidRenderIdHook()
             setIsRendering(false)
           }
@@ -17290,7 +19100,8 @@ var require_react_dom_development = __commonJS({
               typeof value.render === 'function' &&
               value.$$typeof === void 0
             ) {
-              var _componentName = getComponentNameFromType(Component) || 'Unknown'
+              var _componentName =
+                getComponentNameFromType(Component) || 'Unknown'
               if (!didWarnAboutModulePatternComponent[_componentName]) {
                 error(
                   "The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.",
@@ -17311,7 +19122,8 @@ var require_react_dom_development = __commonJS({
             value.$$typeof === void 0
           ) {
             {
-              var _componentName2 = getComponentNameFromType(Component) || 'Unknown'
+              var _componentName2 =
+                getComponentNameFromType(Component) || 'Unknown'
               if (!didWarnAboutModulePatternComponent[_componentName2]) {
                 error(
                   "The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.",
@@ -17333,7 +19145,9 @@ var require_react_dom_development = __commonJS({
               hasContext = false
             }
             workInProgress2.memoizedState =
-              value.state !== null && value.state !== void 0 ? value.state : null
+              value.state !== null && value.state !== void 0
+                ? value.state
+                : null
             initializeUpdateQueue(workInProgress2)
             adoptClassInstance(workInProgress2, value)
             mountClassInstance(workInProgress2, Component, props, renderLanes2)
@@ -17405,30 +19219,47 @@ var require_react_dom_development = __commonJS({
               }
             }
             if (Component.defaultProps !== void 0) {
-              var componentName = getComponentNameFromType(Component) || 'Unknown'
+              var componentName =
+                getComponentNameFromType(Component) || 'Unknown'
               if (!didWarnAboutDefaultPropsOnFunctionComponent[componentName]) {
                 error(
                   '%s: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.',
                   componentName
                 )
-                didWarnAboutDefaultPropsOnFunctionComponent[componentName] = true
+                didWarnAboutDefaultPropsOnFunctionComponent[componentName] =
+                  true
               }
             }
             if (typeof Component.getDerivedStateFromProps === 'function') {
-              var _componentName3 = getComponentNameFromType(Component) || 'Unknown'
-              if (!didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3]) {
+              var _componentName3 =
+                getComponentNameFromType(Component) || 'Unknown'
+              if (
+                !didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3]
+              ) {
                 error(
                   '%s: Function components do not support getDerivedStateFromProps.',
                   _componentName3
                 )
-                didWarnAboutGetDerivedStateOnFunctionComponent[_componentName3] = true
+                didWarnAboutGetDerivedStateOnFunctionComponent[
+                  _componentName3
+                ] = true
               }
             }
-            if (typeof Component.contextType === 'object' && Component.contextType !== null) {
-              var _componentName4 = getComponentNameFromType(Component) || 'Unknown'
-              if (!didWarnAboutContextTypeOnFunctionComponent[_componentName4]) {
-                error('%s: Function components do not support contextType.', _componentName4)
-                didWarnAboutContextTypeOnFunctionComponent[_componentName4] = true
+            if (
+              typeof Component.contextType === 'object' &&
+              Component.contextType !== null
+            ) {
+              var _componentName4 =
+                getComponentNameFromType(Component) || 'Unknown'
+              if (
+                !didWarnAboutContextTypeOnFunctionComponent[_componentName4]
+              ) {
+                error(
+                  '%s: Function components do not support contextType.',
+                  _componentName4
+                )
+                didWarnAboutContextTypeOnFunctionComponent[_componentName4] =
+                  true
               }
             }
           }
@@ -17445,7 +19276,10 @@ var require_react_dom_development = __commonJS({
             transitions: null,
           }
         }
-        function updateSuspenseOffscreenState(prevOffscreenState, renderLanes2) {
+        function updateSuspenseOffscreenState(
+          prevOffscreenState,
+          renderLanes2
+        ) {
           var cachePool = null
           return {
             baseLanes: mergeLanes(prevOffscreenState.baseLanes, renderLanes2),
@@ -17453,7 +19287,12 @@ var require_react_dom_development = __commonJS({
             transitions: prevOffscreenState.transitions,
           }
         }
-        function shouldRemainOnFallback(suspenseContext, current2, workInProgress2, renderLanes2) {
+        function shouldRemainOnFallback(
+          suspenseContext,
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           if (current2 !== null) {
             var suspenseState = current2.memoizedState
             if (suspenseState === null) {
@@ -17465,7 +19304,11 @@ var require_react_dom_development = __commonJS({
         function getRemainingWorkInPrimaryTree(current2, renderLanes2) {
           return removeLanes(current2.childLanes, renderLanes2)
         }
-        function updateSuspenseComponent(current2, workInProgress2, renderLanes2) {
+        function updateSuspenseComponent(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           var nextProps = workInProgress2.pendingProps
           {
             if (shouldSuspend(workInProgress2)) {
@@ -17496,7 +19339,10 @@ var require_react_dom_development = __commonJS({
             if (suspenseState !== null) {
               var dehydrated = suspenseState.dehydrated
               if (dehydrated !== null) {
-                return mountDehydratedSuspenseComponent(workInProgress2, dehydrated)
+                return mountDehydratedSuspenseComponent(
+                  workInProgress2,
+                  dehydrated
+                )
               }
             }
             var nextPrimaryChildren = nextProps.children
@@ -17509,11 +19355,15 @@ var require_react_dom_development = __commonJS({
                 renderLanes2
               )
               var primaryChildFragment = workInProgress2.child
-              primaryChildFragment.memoizedState = mountSuspenseOffscreenState(renderLanes2)
+              primaryChildFragment.memoizedState =
+                mountSuspenseOffscreenState(renderLanes2)
               workInProgress2.memoizedState = SUSPENDED_MARKER
               return fallbackFragment
             } else {
-              return mountSuspensePrimaryChildren(workInProgress2, nextPrimaryChildren)
+              return mountSuspensePrimaryChildren(
+                workInProgress2,
+                nextPrimaryChildren
+              )
             }
           } else {
             var prevState = current2.memoizedState
@@ -17546,7 +19396,10 @@ var require_react_dom_development = __commonJS({
               _primaryChildFragment2.memoizedState =
                 prevOffscreenState === null
                   ? mountSuspenseOffscreenState(renderLanes2)
-                  : updateSuspenseOffscreenState(prevOffscreenState, renderLanes2)
+                  : updateSuspenseOffscreenState(
+                      prevOffscreenState,
+                      renderLanes2
+                    )
               _primaryChildFragment2.childLanes = getRemainingWorkInPrimaryTree(
                 current2,
                 renderLanes2
@@ -17566,13 +19419,20 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function mountSuspensePrimaryChildren(workInProgress2, primaryChildren, renderLanes2) {
+        function mountSuspensePrimaryChildren(
+          workInProgress2,
+          primaryChildren,
+          renderLanes2
+        ) {
           var mode = workInProgress2.mode
           var primaryChildProps = {
             mode: 'visible',
             children: primaryChildren,
           }
-          var primaryChildFragment = mountWorkInProgressOffscreenFiber(primaryChildProps, mode)
+          var primaryChildFragment = mountWorkInProgressOffscreenFiber(
+            primaryChildProps,
+            mode
+          )
           primaryChildFragment.return = workInProgress2
           workInProgress2.child = primaryChildFragment
           return primaryChildFragment
@@ -17591,7 +19451,10 @@ var require_react_dom_development = __commonJS({
           }
           var primaryChildFragment
           var fallbackChildFragment
-          if ((mode & ConcurrentMode) === NoMode && progressedPrimaryFragment !== null) {
+          if (
+            (mode & ConcurrentMode) === NoMode &&
+            progressedPrimaryFragment !== null
+          ) {
             primaryChildFragment = progressedPrimaryFragment
             primaryChildFragment.childLanes = NoLanes
             primaryChildFragment.pendingProps = primaryChildProps
@@ -17608,7 +19471,10 @@ var require_react_dom_development = __commonJS({
               null
             )
           } else {
-            primaryChildFragment = mountWorkInProgressOffscreenFiber(primaryChildProps, mode)
+            primaryChildFragment = mountWorkInProgressOffscreenFiber(
+              primaryChildProps,
+              mode
+            )
             fallbackChildFragment = createFiberFromFragment(
               fallbackChildren,
               mode,
@@ -17622,7 +19488,11 @@ var require_react_dom_development = __commonJS({
           workInProgress2.child = primaryChildFragment
           return fallbackChildFragment
         }
-        function mountWorkInProgressOffscreenFiber(offscreenProps, mode, renderLanes2) {
+        function mountWorkInProgressOffscreenFiber(
+          offscreenProps,
+          mode,
+          renderLanes2
+        ) {
           return createFiberFromOffscreen(offscreenProps, mode, NoLanes, null)
         }
         function updateWorkInProgressOffscreenFiber(current2, offscreenProps) {
@@ -17693,8 +19563,10 @@ var require_react_dom_development = __commonJS({
             if (workInProgress2.mode & ProfileMode) {
               primaryChildFragment.actualDuration = 0
               primaryChildFragment.actualStartTime = -1
-              primaryChildFragment.selfBaseDuration = currentPrimaryChildFragment.selfBaseDuration
-              primaryChildFragment.treeBaseDuration = currentPrimaryChildFragment.treeBaseDuration
+              primaryChildFragment.selfBaseDuration =
+                currentPrimaryChildFragment.selfBaseDuration
+              primaryChildFragment.treeBaseDuration =
+                currentPrimaryChildFragment.treeBaseDuration
             }
             workInProgress2.deletions = null
           } else {
@@ -17735,10 +19607,18 @@ var require_react_dom_development = __commonJS({
           if (recoverableError !== null) {
             queueHydrationError(recoverableError)
           }
-          reconcileChildFibers(workInProgress2, current2.child, null, renderLanes2)
+          reconcileChildFibers(
+            workInProgress2,
+            current2.child,
+            null,
+            renderLanes2
+          )
           var nextProps = workInProgress2.pendingProps
           var primaryChildren = nextProps.children
-          var primaryChildFragment = mountSuspensePrimaryChildren(workInProgress2, primaryChildren)
+          var primaryChildFragment = mountSuspensePrimaryChildren(
+            workInProgress2,
+            primaryChildren
+          )
           primaryChildFragment.flags |= Placement
           workInProgress2.memoizedState = null
           return primaryChildFragment
@@ -17755,7 +19635,10 @@ var require_react_dom_development = __commonJS({
             mode: 'visible',
             children: primaryChildren,
           }
-          var primaryChildFragment = mountWorkInProgressOffscreenFiber(primaryChildProps, fiberMode)
+          var primaryChildFragment = mountWorkInProgressOffscreenFiber(
+            primaryChildProps,
+            fiberMode
+          )
           var fallbackChildFragment = createFiberFromFragment(
             fallbackChildren,
             fiberMode,
@@ -17768,11 +19651,20 @@ var require_react_dom_development = __commonJS({
           primaryChildFragment.sibling = fallbackChildFragment
           workInProgress2.child = primaryChildFragment
           if ((workInProgress2.mode & ConcurrentMode) !== NoMode) {
-            reconcileChildFibers(workInProgress2, current2.child, null, renderLanes2)
+            reconcileChildFibers(
+              workInProgress2,
+              current2.child,
+              null,
+              renderLanes2
+            )
           }
           return fallbackChildFragment
         }
-        function mountDehydratedSuspenseComponent(workInProgress2, suspenseInstance, renderLanes2) {
+        function mountDehydratedSuspenseComponent(
+          workInProgress2,
+          suspenseInstance,
+          renderLanes2
+        ) {
           if ((workInProgress2.mode & ConcurrentMode) === NoMode) {
             {
               error(
@@ -17834,19 +19726,33 @@ var require_react_dom_development = __commonJS({
                 capturedValue
               )
             }
-            var hasContextChanged2 = includesSomeLane(renderLanes2, current2.childLanes)
+            var hasContextChanged2 = includesSomeLane(
+              renderLanes2,
+              current2.childLanes
+            )
             if (didReceiveUpdate || hasContextChanged2) {
               var root2 = getWorkInProgressRoot()
               if (root2 !== null) {
-                var attemptHydrationAtLane = getBumpedLaneForHydration(root2, renderLanes2)
+                var attemptHydrationAtLane = getBumpedLaneForHydration(
+                  root2,
+                  renderLanes2
+                )
                 if (
                   attemptHydrationAtLane !== NoLane &&
                   attemptHydrationAtLane !== suspenseState.retryLane
                 ) {
                   suspenseState.retryLane = attemptHydrationAtLane
                   var eventTime = NoTimestamp
-                  enqueueConcurrentRenderForLane(current2, attemptHydrationAtLane)
-                  scheduleUpdateOnFiber(root2, current2, attemptHydrationAtLane, eventTime)
+                  enqueueConcurrentRenderForLane(
+                    current2,
+                    attemptHydrationAtLane
+                  )
+                  scheduleUpdateOnFiber(
+                    root2,
+                    current2,
+                    attemptHydrationAtLane,
+                    eventTime
+                  )
                 }
               }
               renderDidSuspendDelayIfPossible()
@@ -17902,29 +19808,43 @@ var require_react_dom_development = __commonJS({
             } else {
               var nextPrimaryChildren = nextProps.children
               var nextFallbackChildren = nextProps.fallback
-              var fallbackChildFragment = mountSuspenseFallbackAfterRetryWithoutHydrating(
-                current2,
-                workInProgress2,
-                nextPrimaryChildren,
-                nextFallbackChildren,
-                renderLanes2
-              )
+              var fallbackChildFragment =
+                mountSuspenseFallbackAfterRetryWithoutHydrating(
+                  current2,
+                  workInProgress2,
+                  nextPrimaryChildren,
+                  nextFallbackChildren,
+                  renderLanes2
+                )
               var _primaryChildFragment4 = workInProgress2.child
-              _primaryChildFragment4.memoizedState = mountSuspenseOffscreenState(renderLanes2)
+              _primaryChildFragment4.memoizedState =
+                mountSuspenseOffscreenState(renderLanes2)
               workInProgress2.memoizedState = SUSPENDED_MARKER
               return fallbackChildFragment
             }
           }
         }
-        function scheduleSuspenseWorkOnFiber(fiber, renderLanes2, propagationRoot) {
+        function scheduleSuspenseWorkOnFiber(
+          fiber,
+          renderLanes2,
+          propagationRoot
+        ) {
           fiber.lanes = mergeLanes(fiber.lanes, renderLanes2)
           var alternate = fiber.alternate
           if (alternate !== null) {
             alternate.lanes = mergeLanes(alternate.lanes, renderLanes2)
           }
-          scheduleContextWorkOnParentPath(fiber.return, renderLanes2, propagationRoot)
+          scheduleContextWorkOnParentPath(
+            fiber.return,
+            renderLanes2,
+            propagationRoot
+          )
         }
-        function propagateSuspenseContextChange(workInProgress2, firstChild, renderLanes2) {
+        function propagateSuspenseContextChange(
+          workInProgress2,
+          firstChild,
+          renderLanes2
+        ) {
           var node = firstChild
           while (node !== null) {
             if (node.tag === SuspenseComponent) {
@@ -17957,7 +19877,10 @@ var require_react_dom_development = __commonJS({
           var lastContentRow = null
           while (row !== null) {
             var currentRow = row.alternate
-            if (currentRow !== null && findFirstSuspended(currentRow) === null) {
+            if (
+              currentRow !== null &&
+              findFirstSuspended(currentRow) === null
+            ) {
               lastContentRow = row
             }
             row = row.sibling
@@ -18020,7 +19943,10 @@ var require_react_dom_development = __commonJS({
                   '"%s" is not a supported value for tail on <SuspenseList />. Did you mean "collapsed" or "hidden"?',
                   tailMode
                 )
-              } else if (revealOrder !== 'forwards' && revealOrder !== 'backwards') {
+              } else if (
+                revealOrder !== 'forwards' &&
+                revealOrder !== 'backwards'
+              ) {
                 didWarnAboutTailOptions[tailMode] = true
                 error(
                   '<SuspenseList tail="%s" /> is only valid if revealOrder is "forwards" or "backwards". Did you mean to specify revealOrder="forwards"?',
@@ -18033,7 +19959,8 @@ var require_react_dom_development = __commonJS({
         function validateSuspenseListNestedChild(childSlot, index2) {
           {
             var isAnArray = isArray(childSlot)
-            var isIterable = !isAnArray && typeof getIteratorFn(childSlot) === 'function'
+            var isIterable =
+              !isAnArray && typeof getIteratorFn(childSlot) === 'function'
             if (isAnArray || isIterable) {
               var type = isAnArray ? 'array' : 'iterable'
               error(
@@ -18111,7 +20038,11 @@ var require_react_dom_development = __commonJS({
             renderState.tailMode = tailMode
           }
         }
-        function updateSuspenseListComponent(current2, workInProgress2, renderLanes2) {
+        function updateSuspenseListComponent(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           var nextProps = workInProgress2.pendingProps
           var revealOrder = nextProps.revealOrder
           var tailMode = nextProps.tail
@@ -18119,16 +20050,32 @@ var require_react_dom_development = __commonJS({
           validateRevealOrder(revealOrder)
           validateTailOptions(tailMode, revealOrder)
           validateSuspenseListChildren(newChildren, revealOrder)
-          reconcileChildren(current2, workInProgress2, newChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            newChildren,
+            renderLanes2
+          )
           var suspenseContext = suspenseStackCursor.current
-          var shouldForceFallback = hasSuspenseContext(suspenseContext, ForceSuspenseFallback)
+          var shouldForceFallback = hasSuspenseContext(
+            suspenseContext,
+            ForceSuspenseFallback
+          )
           if (shouldForceFallback) {
-            suspenseContext = setShallowSuspenseContext(suspenseContext, ForceSuspenseFallback)
+            suspenseContext = setShallowSuspenseContext(
+              suspenseContext,
+              ForceSuspenseFallback
+            )
             workInProgress2.flags |= DidCapture
           } else {
-            var didSuspendBefore = current2 !== null && (current2.flags & DidCapture) !== NoFlags
+            var didSuspendBefore =
+              current2 !== null && (current2.flags & DidCapture) !== NoFlags
             if (didSuspendBefore) {
-              propagateSuspenseContextChange(workInProgress2, workInProgress2.child, renderLanes2)
+              propagateSuspenseContextChange(
+                workInProgress2,
+                workInProgress2.child,
+                renderLanes2
+              )
             }
             suspenseContext = setDefaultShallowSuspenseContext(suspenseContext)
           }
@@ -18163,7 +20110,10 @@ var require_react_dom_development = __commonJS({
                 workInProgress2.child = null
                 while (row !== null) {
                   var currentRow = row.alternate
-                  if (currentRow !== null && findFirstSuspended(currentRow) === null) {
+                  if (
+                    currentRow !== null &&
+                    findFirstSuspended(currentRow) === null
+                  ) {
                     workInProgress2.child = row
                     break
                   }
@@ -18203,8 +20153,15 @@ var require_react_dom_development = __commonJS({
           }
           return workInProgress2.child
         }
-        function updatePortalComponent(current2, workInProgress2, renderLanes2) {
-          pushHostContainer(workInProgress2, workInProgress2.stateNode.containerInfo)
+        function updatePortalComponent(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
+          pushHostContainer(
+            workInProgress2,
+            workInProgress2.stateNode.containerInfo
+          )
           var nextChildren = workInProgress2.pendingProps
           if (current2 === null) {
             workInProgress2.child = reconcileChildFibers(
@@ -18214,12 +20171,21 @@ var require_react_dom_development = __commonJS({
               renderLanes2
             )
           } else {
-            reconcileChildren(current2, workInProgress2, nextChildren, renderLanes2)
+            reconcileChildren(
+              current2,
+              workInProgress2,
+              nextChildren,
+              renderLanes2
+            )
           }
           return workInProgress2.child
         }
         var hasWarnedAboutUsingNoValuePropOnContextProvider = false
-        function updateContextProvider(current2, workInProgress2, renderLanes2) {
+        function updateContextProvider(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           var providerType = workInProgress2.type
           var context = providerType._context
           var newProps = workInProgress2.pendingProps
@@ -18236,7 +20202,12 @@ var require_react_dom_development = __commonJS({
             }
             var providerPropTypes = workInProgress2.type.propTypes
             if (providerPropTypes) {
-              checkPropTypes(providerPropTypes, newProps, 'prop', 'Context.Provider')
+              checkPropTypes(
+                providerPropTypes,
+                newProps,
+                'prop',
+                'Context.Provider'
+              )
             }
           }
           pushProvider(workInProgress2, context, newValue)
@@ -18244,8 +20215,15 @@ var require_react_dom_development = __commonJS({
             if (oldProps !== null) {
               var oldValue = oldProps.value
               if (objectIs(oldValue, newValue)) {
-                if (oldProps.children === newProps.children && !hasContextChanged()) {
-                  return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+                if (
+                  oldProps.children === newProps.children &&
+                  !hasContextChanged()
+                ) {
+                  return bailoutOnAlreadyFinishedWork(
+                    current2,
+                    workInProgress2,
+                    renderLanes2
+                  )
                 }
               } else {
                 propagateContextChange(workInProgress2, context, renderLanes2)
@@ -18253,11 +20231,20 @@ var require_react_dom_development = __commonJS({
             }
           }
           var newChildren = newProps.children
-          reconcileChildren(current2, workInProgress2, newChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            newChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         var hasWarnedAboutUsingContextAsConsumer = false
-        function updateContextConsumer(current2, workInProgress2, renderLanes2) {
+        function updateContextConsumer(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           var context = workInProgress2.type
           {
             if (context._context === void 0) {
@@ -18298,13 +20285,21 @@ var require_react_dom_development = __commonJS({
             markComponentRenderStopped()
           }
           workInProgress2.flags |= PerformedWork
-          reconcileChildren(current2, workInProgress2, newChildren, renderLanes2)
+          reconcileChildren(
+            current2,
+            workInProgress2,
+            newChildren,
+            renderLanes2
+          )
           return workInProgress2.child
         }
         function markWorkInProgressReceivedUpdate() {
           didReceiveUpdate = true
         }
-        function resetSuspendedCurrentOnMountInLegacyMode(current2, workInProgress2) {
+        function resetSuspendedCurrentOnMountInLegacyMode(
+          current2,
+          workInProgress2
+        ) {
           if ((workInProgress2.mode & ConcurrentMode) === NoMode) {
             if (current2 !== null) {
               current2.alternate = null
@@ -18313,7 +20308,11 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2) {
+        function bailoutOnAlreadyFinishedWork(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           if (current2 !== null) {
             workInProgress2.dependencies = current2.dependencies
           }
@@ -18374,7 +20373,11 @@ var require_react_dom_development = __commonJS({
           }
           return false
         }
-        function attemptEarlyBailoutIfNoScheduledUpdate(current2, workInProgress2, renderLanes2) {
+        function attemptEarlyBailoutIfNoScheduledUpdate(
+          current2,
+          workInProgress2,
+          renderLanes2
+        ) {
           switch (workInProgress2.tag) {
             case HostRoot:
               pushHostRootContext(workInProgress2)
@@ -18392,7 +20395,10 @@ var require_react_dom_development = __commonJS({
               break
             }
             case HostPortal:
-              pushHostContainer(workInProgress2, workInProgress2.stateNode.containerInfo)
+              pushHostContainer(
+                workInProgress2,
+                workInProgress2.stateNode.containerInfo
+              )
               break
             case ContextProvider: {
               var newValue = workInProgress2.memoizedProps.value
@@ -18402,7 +20408,10 @@ var require_react_dom_development = __commonJS({
             }
             case Profiler:
               {
-                var hasChildWork = includesSomeLane(renderLanes2, workInProgress2.childLanes)
+                var hasChildWork = includesSomeLane(
+                  renderLanes2,
+                  workInProgress2.childLanes
+                )
                 if (hasChildWork) {
                   workInProgress2.flags |= Update
                 }
@@ -18419,7 +20428,9 @@ var require_react_dom_development = __commonJS({
                 if (state.dehydrated !== null) {
                   pushSuspenseContext(
                     workInProgress2,
-                    setDefaultShallowSuspenseContext(suspenseStackCursor.current)
+                    setDefaultShallowSuspenseContext(
+                      suspenseStackCursor.current
+                    )
                   )
                   workInProgress2.flags |= DidCapture
                   return null
@@ -18427,13 +20438,23 @@ var require_react_dom_development = __commonJS({
                 var primaryChildFragment = workInProgress2.child
                 var primaryChildLanes = primaryChildFragment.childLanes
                 if (includesSomeLane(renderLanes2, primaryChildLanes)) {
-                  return updateSuspenseComponent(current2, workInProgress2, renderLanes2)
+                  return updateSuspenseComponent(
+                    current2,
+                    workInProgress2,
+                    renderLanes2
+                  )
                 } else {
                   pushSuspenseContext(
                     workInProgress2,
-                    setDefaultShallowSuspenseContext(suspenseStackCursor.current)
+                    setDefaultShallowSuspenseContext(
+                      suspenseStackCursor.current
+                    )
                   )
-                  var child = bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+                  var child = bailoutOnAlreadyFinishedWork(
+                    current2,
+                    workInProgress2,
+                    renderLanes2
+                  )
                   if (child !== null) {
                     return child.sibling
                   } else {
@@ -18450,10 +20471,17 @@ var require_react_dom_development = __commonJS({
             }
             case SuspenseListComponent: {
               var didSuspendBefore = (current2.flags & DidCapture) !== NoFlags
-              var _hasChildWork = includesSomeLane(renderLanes2, workInProgress2.childLanes)
+              var _hasChildWork = includesSomeLane(
+                renderLanes2,
+                workInProgress2.childLanes
+              )
               if (didSuspendBefore) {
                 if (_hasChildWork) {
-                  return updateSuspenseListComponent(current2, workInProgress2, renderLanes2)
+                  return updateSuspenseListComponent(
+                    current2,
+                    workInProgress2,
+                    renderLanes2
+                  )
                 }
                 workInProgress2.flags |= DidCapture
               }
@@ -18473,10 +20501,18 @@ var require_react_dom_development = __commonJS({
             case OffscreenComponent:
             case LegacyHiddenComponent: {
               workInProgress2.lanes = NoLanes
-              return updateOffscreenComponent(current2, workInProgress2, renderLanes2)
+              return updateOffscreenComponent(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             }
           }
-          return bailoutOnAlreadyFinishedWork(current2, workInProgress2, renderLanes2)
+          return bailoutOnAlreadyFinishedWork(
+            current2,
+            workInProgress2,
+            renderLanes2
+          )
         }
         function beginWork(current2, workInProgress2, renderLanes2) {
           {
@@ -18547,7 +20583,12 @@ var require_react_dom_development = __commonJS({
             }
             case LazyComponent: {
               var elementType = workInProgress2.elementType
-              return mountLazyComponent(current2, workInProgress2, elementType, renderLanes2)
+              return mountLazyComponent(
+                current2,
+                workInProgress2,
+                elementType,
+                renderLanes2
+              )
             }
             case FunctionComponent: {
               var Component = workInProgress2.type
@@ -18582,13 +20623,25 @@ var require_react_dom_development = __commonJS({
             case HostRoot:
               return updateHostRoot(current2, workInProgress2, renderLanes2)
             case HostComponent:
-              return updateHostComponent(current2, workInProgress2, renderLanes2)
+              return updateHostComponent(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             case HostText:
               return updateHostText(current2, workInProgress2)
             case SuspenseComponent:
-              return updateSuspenseComponent(current2, workInProgress2, renderLanes2)
+              return updateSuspenseComponent(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             case HostPortal:
-              return updatePortalComponent(current2, workInProgress2, renderLanes2)
+              return updatePortalComponent(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             case ForwardRef: {
               var type = workInProgress2.type
               var _unresolvedProps2 = workInProgress2.pendingProps
@@ -18611,13 +20664,24 @@ var require_react_dom_development = __commonJS({
             case Profiler:
               return updateProfiler(current2, workInProgress2, renderLanes2)
             case ContextProvider:
-              return updateContextProvider(current2, workInProgress2, renderLanes2)
+              return updateContextProvider(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             case ContextConsumer:
-              return updateContextConsumer(current2, workInProgress2, renderLanes2)
+              return updateContextConsumer(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             case MemoComponent: {
               var _type2 = workInProgress2.type
               var _unresolvedProps3 = workInProgress2.pendingProps
-              var _resolvedProps3 = resolveDefaultProps(_type2, _unresolvedProps3)
+              var _resolvedProps3 = resolveDefaultProps(
+                _type2,
+                _unresolvedProps3
+              )
               {
                 if (workInProgress2.type !== workInProgress2.elementType) {
                   var outerPropTypes = _type2.propTypes
@@ -18632,7 +20696,10 @@ var require_react_dom_development = __commonJS({
                   }
                 }
               }
-              _resolvedProps3 = resolveDefaultProps(_type2.type, _resolvedProps3)
+              _resolvedProps3 = resolveDefaultProps(
+                _type2.type,
+                _resolvedProps3
+              )
               return updateMemoComponent(
                 current2,
                 workInProgress2,
@@ -18666,13 +20733,21 @@ var require_react_dom_development = __commonJS({
               )
             }
             case SuspenseListComponent: {
-              return updateSuspenseListComponent(current2, workInProgress2, renderLanes2)
+              return updateSuspenseListComponent(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             }
             case ScopeComponent: {
               break
             }
             case OffscreenComponent: {
-              return updateOffscreenComponent(current2, workInProgress2, renderLanes2)
+              return updateOffscreenComponent(
+                current2,
+                workInProgress2,
+                renderLanes2
+              )
             }
           }
           throw new Error(
@@ -18695,7 +20770,12 @@ var require_react_dom_development = __commonJS({
         var updateHostComponent$1
         var updateHostText$1
         {
-          appendAllChildren = function (parent, workInProgress2, needsVisibilityToggle, isHidden) {
+          appendAllChildren = function (
+            parent,
+            workInProgress2,
+            needsVisibilityToggle,
+            isHidden
+          ) {
             var node = workInProgress2.child
             while (node !== null) {
               if (node.tag === HostComponent || node.tag === HostText) {
@@ -18746,7 +20826,12 @@ var require_react_dom_development = __commonJS({
               markUpdate(workInProgress2)
             }
           }
-          updateHostText$1 = function (current2, workInProgress2, oldText, newText) {
+          updateHostText$1 = function (
+            current2,
+            workInProgress2,
+            oldText,
+            newText
+          ) {
             if (oldText !== newText) {
               markUpdate(workInProgress2)
             }
@@ -18807,7 +20892,10 @@ var require_react_dom_development = __commonJS({
               var treeBaseDuration = completedWork.selfBaseDuration
               var child = completedWork.child
               while (child !== null) {
-                newChildLanes = mergeLanes(newChildLanes, mergeLanes(child.lanes, child.childLanes))
+                newChildLanes = mergeLanes(
+                  newChildLanes,
+                  mergeLanes(child.lanes, child.childLanes)
+                )
                 subtreeFlags |= child.subtreeFlags
                 subtreeFlags |= child.flags
                 actualDuration += child.actualDuration
@@ -18863,7 +20951,11 @@ var require_react_dom_development = __commonJS({
           completedWork.childLanes = newChildLanes
           return didBailout
         }
-        function completeDehydratedSuspenseBoundary(current2, workInProgress2, nextState) {
+        function completeDehydratedSuspenseBoundary(
+          current2,
+          workInProgress2,
+          nextState
+        ) {
           if (
             hasUnhydratedTailNodes() &&
             (workInProgress2.mode & ConcurrentMode) !== NoMode &&
@@ -18871,7 +20963,8 @@ var require_react_dom_development = __commonJS({
           ) {
             warnIfUnhydratedTailNodes(workInProgress2)
             resetHydrationState()
-            workInProgress2.flags |= ForceClientRender | Incomplete | ShouldCapture
+            workInProgress2.flags |=
+              ForceClientRender | Incomplete | ShouldCapture
             return false
           }
           var wasHydrated = popHydrationState(workInProgress2)
@@ -18890,7 +20983,8 @@ var require_react_dom_development = __commonJS({
                   if (isTimedOutSuspense) {
                     var primaryChildFragment = workInProgress2.child
                     if (primaryChildFragment !== null) {
-                      workInProgress2.treeBaseDuration -= primaryChildFragment.treeBaseDuration
+                      workInProgress2.treeBaseDuration -=
+                        primaryChildFragment.treeBaseDuration
                     }
                   }
                 }
@@ -18909,7 +21003,8 @@ var require_react_dom_development = __commonJS({
                   if (_isTimedOutSuspense) {
                     var _primaryChildFragment = workInProgress2.child
                     if (_primaryChildFragment !== null) {
-                      workInProgress2.treeBaseDuration -= _primaryChildFragment.treeBaseDuration
+                      workInProgress2.treeBaseDuration -=
+                        _primaryChildFragment.treeBaseDuration
                     }
                   }
                 }
@@ -19023,7 +21118,14 @@ var require_react_dom_development = __commonJS({
                   )
                   appendAllChildren(instance, workInProgress2, false, false)
                   workInProgress2.stateNode = instance
-                  if (finalizeInitialChildren(instance, type, newProps, rootContainerInstance)) {
+                  if (
+                    finalizeInitialChildren(
+                      instance,
+                      type,
+                      newProps,
+                      rootContainerInstance
+                    )
+                  ) {
                     markUpdate(workInProgress2)
                   }
                 }
@@ -19071,13 +21173,15 @@ var require_react_dom_development = __commonJS({
               var nextState = workInProgress2.memoizedState
               if (
                 current2 === null ||
-                (current2.memoizedState !== null && current2.memoizedState.dehydrated !== null)
+                (current2.memoizedState !== null &&
+                  current2.memoizedState.dehydrated !== null)
               ) {
-                var fallthroughToNormalSuspensePath = completeDehydratedSuspenseBoundary(
-                  current2,
-                  workInProgress2,
-                  nextState
-                )
+                var fallthroughToNormalSuspensePath =
+                  completeDehydratedSuspenseBoundary(
+                    current2,
+                    workInProgress2,
+                    nextState
+                  )
                 if (!fallthroughToNormalSuspensePath) {
                   if (workInProgress2.flags & ShouldCapture) {
                     return workInProgress2
@@ -19094,7 +21198,8 @@ var require_react_dom_development = __commonJS({
                 return workInProgress2
               }
               var nextDidTimeout = nextState !== null
-              var prevDidTimeout = current2 !== null && current2.memoizedState !== null
+              var prevDidTimeout =
+                current2 !== null && current2.memoizedState !== null
               if (nextDidTimeout !== prevDidTimeout) {
                 if (nextDidTimeout) {
                   var _offscreenFiber2 = workInProgress2.child
@@ -19102,7 +21207,8 @@ var require_react_dom_development = __commonJS({
                   if ((workInProgress2.mode & ConcurrentMode) !== NoMode) {
                     var hasInvisibleChildContext =
                       current2 === null &&
-                      (workInProgress2.memoizedProps.unstable_avoidThisFallback !== true ||
+                      (workInProgress2.memoizedProps
+                        .unstable_avoidThisFallback !== true ||
                         !enableSuspenseAvoidThisFallback)
                     if (
                       hasInvisibleChildContext ||
@@ -19128,7 +21234,8 @@ var require_react_dom_development = __commonJS({
                   if (nextDidTimeout) {
                     var primaryChildFragment = workInProgress2.child
                     if (primaryChildFragment !== null) {
-                      workInProgress2.treeBaseDuration -= primaryChildFragment.treeBaseDuration
+                      workInProgress2.treeBaseDuration -=
+                        primaryChildFragment.treeBaseDuration
                     }
                   }
                 }
@@ -19163,13 +21270,15 @@ var require_react_dom_development = __commonJS({
                 bubbleProperties(workInProgress2)
                 return null
               }
-              var didSuspendAlready = (workInProgress2.flags & DidCapture) !== NoFlags
+              var didSuspendAlready =
+                (workInProgress2.flags & DidCapture) !== NoFlags
               var renderedTail = renderState.rendering
               if (renderedTail === null) {
                 if (!didSuspendAlready) {
                   var cannotBeSuspended =
                     renderHasNotSuspendedYet() &&
-                    (current2 === null || (current2.flags & DidCapture) === NoFlags)
+                    (current2 === null ||
+                      (current2.flags & DidCapture) === NoFlags)
                   if (!cannotBeSuspended) {
                     var row = workInProgress2.child
                     while (row !== null) {
@@ -19197,7 +21306,10 @@ var require_react_dom_development = __commonJS({
                       row = row.sibling
                     }
                   }
-                  if (renderState.tail !== null && now() > getRenderTargetTime()) {
+                  if (
+                    renderState.tail !== null &&
+                    now() > getRenderTargetTime()
+                  ) {
                     workInProgress2.flags |= DidCapture
                     didSuspendAlready = true
                     cutOffTailIfNeeded(renderState, false)
@@ -19231,7 +21343,8 @@ var require_react_dom_development = __commonJS({
                     // The time it took to render last row is greater than the remaining
                     // time we have to render. So rendering one more row would likely
                     // exceed it.
-                    now() * 2 - renderState.renderingStartTime > getRenderTargetTime() &&
+                    now() * 2 - renderState.renderingStartTime >
+                      getRenderTargetTime() &&
                     renderLanes2 !== OffscreenLane
                   ) {
                     workInProgress2.flags |= DidCapture
@@ -19266,7 +21379,8 @@ var require_react_dom_development = __commonJS({
                     ForceSuspenseFallback
                   )
                 } else {
-                  suspenseContext = setDefaultShallowSuspenseContext(suspenseContext)
+                  suspenseContext =
+                    setDefaultShallowSuspenseContext(suspenseContext)
                 }
                 pushSuspenseContext(workInProgress2, suspenseContext)
                 return next
@@ -19292,7 +21406,10 @@ var require_react_dom_development = __commonJS({
                   workInProgress2.flags |= Visibility
                 }
               }
-              if (!nextIsHidden || (workInProgress2.mode & ConcurrentMode) === NoMode) {
+              if (
+                !nextIsHidden ||
+                (workInProgress2.mode & ConcurrentMode) === NoMode
+              ) {
                 bubbleProperties(workInProgress2)
               } else {
                 if (includesSomeLane(subtreeRenderLanes, OffscreenLane)) {
@@ -19343,7 +21460,10 @@ var require_react_dom_development = __commonJS({
               popTopLevelContextObject(workInProgress2)
               resetWorkInProgressVersions()
               var _flags = workInProgress2.flags
-              if ((_flags & ShouldCapture) !== NoFlags && (_flags & DidCapture) === NoFlags) {
+              if (
+                (_flags & ShouldCapture) !== NoFlags &&
+                (_flags & DidCapture) === NoFlags
+              ) {
                 workInProgress2.flags = (_flags & ~ShouldCapture) | DidCapture
                 return workInProgress2
               }
@@ -19395,7 +21515,11 @@ var require_react_dom_development = __commonJS({
               return null
           }
         }
-        function unwindInterruptedWork(current2, interruptedWork, renderLanes2) {
+        function unwindInterruptedWork(
+          current2,
+          interruptedWork,
+          renderLanes2
+        ) {
           popTreeContext(interruptedWork)
           switch (interruptedWork.tag) {
             case ClassComponent: {
@@ -19467,21 +21591,32 @@ var require_react_dom_development = __commonJS({
             instance.componentWillUnmount()
           }
         }
-        function safelyCallCommitHookLayoutEffectListMount(current2, nearestMountedAncestor) {
+        function safelyCallCommitHookLayoutEffectListMount(
+          current2,
+          nearestMountedAncestor
+        ) {
           try {
             commitHookEffectListMount(Layout, current2)
           } catch (error2) {
             captureCommitPhaseError(current2, nearestMountedAncestor, error2)
           }
         }
-        function safelyCallComponentWillUnmount(current2, nearestMountedAncestor, instance) {
+        function safelyCallComponentWillUnmount(
+          current2,
+          nearestMountedAncestor,
+          instance
+        ) {
           try {
             callComponentWillUnmountWithTimer(current2, instance)
           } catch (error2) {
             captureCommitPhaseError(current2, nearestMountedAncestor, error2)
           }
         }
-        function safelyCallComponentDidMount(current2, nearestMountedAncestor, instance) {
+        function safelyCallComponentDidMount(
+          current2,
+          nearestMountedAncestor,
+          instance
+        ) {
           try {
             instance.componentDidMount()
           } catch (error2) {
@@ -19516,7 +21651,11 @@ var require_react_dom_development = __commonJS({
                   retVal = ref(null)
                 }
               } catch (error2) {
-                captureCommitPhaseError(current2, nearestMountedAncestor, error2)
+                captureCommitPhaseError(
+                  current2,
+                  nearestMountedAncestor,
+                  error2
+                )
               }
               {
                 if (typeof retVal === 'function') {
@@ -19553,7 +21692,10 @@ var require_react_dom_development = __commonJS({
           while (nextEffect !== null) {
             var fiber = nextEffect
             var child = fiber.child
-            if ((fiber.subtreeFlags & BeforeMutationMask) !== NoFlags && child !== null) {
+            if (
+              (fiber.subtreeFlags & BeforeMutationMask) !== NoFlags &&
+              child !== null
+            ) {
               child.return = fiber
               nextEffect = child
             } else {
@@ -19623,7 +21765,10 @@ var require_react_dom_development = __commonJS({
                   )
                   {
                     var didWarnSet = didWarnAboutUndefinedSnapshotBeforeUpdate
-                    if (snapshot === void 0 && !didWarnSet.has(finishedWork.type)) {
+                    if (
+                      snapshot === void 0 &&
+                      !didWarnSet.has(finishedWork.type)
+                    ) {
                       didWarnSet.add(finishedWork.type)
                       error(
                         '%s.getSnapshotBeforeUpdate(): A snapshot value (or null) must be returned. You have returned undefined.',
@@ -19656,7 +21801,11 @@ var require_react_dom_development = __commonJS({
             resetCurrentFiber()
           }
         }
-        function commitHookEffectListUnmount(flags, finishedWork, nearestMountedAncestor) {
+        function commitHookEffectListUnmount(
+          flags,
+          finishedWork,
+          nearestMountedAncestor
+        ) {
           var updateQueue = finishedWork.updateQueue
           var lastEffect = updateQueue !== null ? updateQueue.lastEffect : null
           if (lastEffect !== null) {
@@ -19679,7 +21828,11 @@ var require_react_dom_development = __commonJS({
                       setIsRunningInsertionEffect(true)
                     }
                   }
-                  safelyCallDestroy(finishedWork, nearestMountedAncestor, destroy)
+                  safelyCallDestroy(
+                    finishedWork,
+                    nearestMountedAncestor,
+                    destroy
+                  )
                   {
                     if ((flags & Insertion) !== NoFlags$1) {
                       setIsRunningInsertionEffect(false)
@@ -19774,12 +21927,14 @@ var require_react_dom_development = __commonJS({
             if ((finishedWork.flags & Update) !== NoFlags) {
               switch (finishedWork.tag) {
                 case Profiler: {
-                  var passiveEffectDuration = finishedWork.stateNode.passiveEffectDuration
+                  var passiveEffectDuration =
+                    finishedWork.stateNode.passiveEffectDuration
                   var _finishedWork$memoize = finishedWork.memoizedProps,
                     id = _finishedWork$memoize.id,
                     onPostCommit = _finishedWork$memoize.onPostCommit
                   var commitTime2 = getCommitTime()
-                  var phase = finishedWork.alternate === null ? 'mount' : 'update'
+                  var phase =
+                    finishedWork.alternate === null ? 'mount' : 'update'
                   {
                     if (isCurrentUpdateNested()) {
                       phase = 'nested-update'
@@ -19797,7 +21952,8 @@ var require_react_dom_development = __commonJS({
                         break outer
                       case Profiler:
                         var parentStateNode = parentFiber.stateNode
-                        parentStateNode.passiveEffectDuration += passiveEffectDuration
+                        parentStateNode.passiveEffectDuration +=
+                          passiveEffectDuration
                         break outer
                     }
                     parentFiber = parentFiber.return
@@ -19808,7 +21964,12 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function commitLayoutEffectOnFiber(finishedRoot, current2, finishedWork, committedLanes) {
+        function commitLayoutEffectOnFiber(
+          finishedRoot,
+          current2,
+          finishedWork,
+          committedLanes
+        ) {
           if ((finishedWork.flags & LayoutMask) !== NoFlags) {
             switch (finishedWork.tag) {
               case FunctionComponent:
@@ -19818,7 +21979,10 @@ var require_react_dom_development = __commonJS({
                   if (finishedWork.mode & ProfileMode) {
                     try {
                       startLayoutEffectTimer()
-                      commitHookEffectListMount(Layout | HasEffect, finishedWork)
+                      commitHookEffectListMount(
+                        Layout | HasEffect,
+                        finishedWork
+                      )
                     } finally {
                       recordLayoutEffectDuration(finishedWork)
                     }
@@ -19841,13 +22005,15 @@ var require_react_dom_development = __commonJS({
                           if (instance.props !== finishedWork.memoizedProps) {
                             error(
                               'Expected %s props to match memoized props before componentDidMount. This might either be because of a bug in React, or because a component reassigns its own `this.props`. Please file an issue.',
-                              getComponentNameFromFiber(finishedWork) || 'instance'
+                              getComponentNameFromFiber(finishedWork) ||
+                                'instance'
                             )
                           }
                           if (instance.state !== finishedWork.memoizedState) {
                             error(
                               'Expected %s state to match memoized state before componentDidMount. This might either be because of a bug in React, or because a component reassigns its own `this.state`. Please file an issue.',
-                              getComponentNameFromFiber(finishedWork) || 'instance'
+                              getComponentNameFromFiber(finishedWork) ||
+                                'instance'
                             )
                           }
                         }
@@ -19866,7 +22032,10 @@ var require_react_dom_development = __commonJS({
                       var prevProps =
                         finishedWork.elementType === finishedWork.type
                           ? current2.memoizedProps
-                          : resolveDefaultProps(finishedWork.type, current2.memoizedProps)
+                          : resolveDefaultProps(
+                              finishedWork.type,
+                              current2.memoizedProps
+                            )
                       var prevState = current2.memoizedState
                       {
                         if (
@@ -19876,13 +22045,15 @@ var require_react_dom_development = __commonJS({
                           if (instance.props !== finishedWork.memoizedProps) {
                             error(
                               'Expected %s props to match memoized props before componentDidUpdate. This might either be because of a bug in React, or because a component reassigns its own `this.props`. Please file an issue.',
-                              getComponentNameFromFiber(finishedWork) || 'instance'
+                              getComponentNameFromFiber(finishedWork) ||
+                                'instance'
                             )
                           }
                           if (instance.state !== finishedWork.memoizedState) {
                             error(
                               'Expected %s state to match memoized state before componentDidUpdate. This might either be because of a bug in React, or because a component reassigns its own `this.state`. Please file an issue.',
-                              getComponentNameFromFiber(finishedWork) || 'instance'
+                              getComponentNameFromFiber(finishedWork) ||
+                                'instance'
                             )
                           }
                         }
@@ -19940,7 +22111,9 @@ var require_react_dom_development = __commonJS({
                   if (finishedWork.child !== null) {
                     switch (finishedWork.child.tag) {
                       case HostComponent:
-                        _instance = getPublicInstance(finishedWork.child.stateNode)
+                        _instance = getPublicInstance(
+                          finishedWork.child.stateNode
+                        )
                         break
                       case ClassComponent:
                         _instance = finishedWork.child.stateNode
@@ -19991,7 +22164,12 @@ var require_react_dom_development = __commonJS({
                   }
                   {
                     if (typeof onCommit === 'function') {
-                      onCommit(finishedWork.memoizedProps.id, phase, effectDuration, commitTime2)
+                      onCommit(
+                        finishedWork.memoizedProps.id,
+                        phase,
+                        effectDuration,
+                        commitTime2
+                      )
                     }
                     enqueuePendingPassiveProfilerEffect(finishedWork)
                     var parentFiber = finishedWork.return
@@ -20085,7 +22263,11 @@ var require_react_dom_development = __commonJS({
                       unhideInstance(node.stateNode, node.memoizedProps)
                     }
                   } catch (error2) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                    captureCommitPhaseError(
+                      finishedWork,
+                      finishedWork.return,
+                      error2
+                    )
                   }
                 }
               } else if (node.tag === HostText) {
@@ -20098,11 +22280,16 @@ var require_react_dom_development = __commonJS({
                       unhideTextInstance(_instance3, node.memoizedProps)
                     }
                   } catch (error2) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                    captureCommitPhaseError(
+                      finishedWork,
+                      finishedWork.return,
+                      error2
+                    )
                   }
                 }
               } else if (
-                (node.tag === OffscreenComponent || node.tag === LegacyHiddenComponent) &&
+                (node.tag === OffscreenComponent ||
+                  node.tag === LegacyHiddenComponent) &&
                 node.memoizedState !== null &&
                 node !== finishedWork
               );
@@ -20227,7 +22414,11 @@ var require_react_dom_development = __commonJS({
           )
         }
         function isHostParent(fiber) {
-          return fiber.tag === HostComponent || fiber.tag === HostRoot || fiber.tag === HostPortal
+          return (
+            fiber.tag === HostComponent ||
+            fiber.tag === HostRoot ||
+            fiber.tag === HostPortal
+          )
         }
         function getHostSibling(fiber) {
           var node = fiber
@@ -20277,7 +22468,11 @@ var require_react_dom_development = __commonJS({
             case HostPortal: {
               var _parent = parentFiber.stateNode.containerInfo
               var _before = getHostSibling(finishedWork)
-              insertOrAppendPlacementNodeIntoContainer(finishedWork, _before, _parent)
+              insertOrAppendPlacementNodeIntoContainer(
+                finishedWork,
+                _before,
+                _parent
+              )
               break
             }
             default:
@@ -20286,7 +22481,11 @@ var require_react_dom_development = __commonJS({
               )
           }
         }
-        function insertOrAppendPlacementNodeIntoContainer(node, before, parent) {
+        function insertOrAppendPlacementNodeIntoContainer(
+          node,
+          before,
+          parent
+        ) {
           var tag = node.tag
           var isHost = tag === HostComponent || tag === HostText
           if (isHost) {
@@ -20303,7 +22502,11 @@ var require_react_dom_development = __commonJS({
               insertOrAppendPlacementNodeIntoContainer(child, before, parent)
               var sibling = child.sibling
               while (sibling !== null) {
-                insertOrAppendPlacementNodeIntoContainer(sibling, before, parent)
+                insertOrAppendPlacementNodeIntoContainer(
+                  sibling,
+                  before,
+                  parent
+                )
                 sibling = sibling.sibling
               }
             }
@@ -20368,14 +22571,26 @@ var require_react_dom_development = __commonJS({
           }
           detachFiberMutation(deletedFiber)
         }
-        function recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, parent) {
+        function recursivelyTraverseDeletionEffects(
+          finishedRoot,
+          nearestMountedAncestor,
+          parent
+        ) {
           var child = parent.child
           while (child !== null) {
-            commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, child)
+            commitDeletionEffectsOnFiber(
+              finishedRoot,
+              nearestMountedAncestor,
+              child
+            )
             child = child.sibling
           }
         }
-        function commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, deletedFiber) {
+        function commitDeletionEffectsOnFiber(
+          finishedRoot,
+          nearestMountedAncestor,
+          deletedFiber
+        ) {
           onCommitUnmount(deletedFiber)
           switch (deletedFiber.tag) {
             case HostComponent: {
@@ -20409,7 +22624,10 @@ var require_react_dom_development = __commonJS({
               {
                 if (hostParent !== null) {
                   if (hostParentIsContainer) {
-                    clearSuspenseBoundaryFromContainer(hostParent, deletedFiber.stateNode)
+                    clearSuspenseBoundaryFromContainer(
+                      hostParent,
+                      deletedFiber.stateNode
+                    )
                   } else {
                     clearSuspenseBoundary(hostParent, deletedFiber.stateNode)
                   }
@@ -20450,17 +22668,31 @@ var require_react_dom_development = __commonJS({
                         tag = _effect.tag
                       if (destroy !== void 0) {
                         if ((tag & Insertion) !== NoFlags$1) {
-                          safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy)
+                          safelyCallDestroy(
+                            deletedFiber,
+                            nearestMountedAncestor,
+                            destroy
+                          )
                         } else if ((tag & Layout) !== NoFlags$1) {
                           {
-                            markComponentLayoutEffectUnmountStarted(deletedFiber)
+                            markComponentLayoutEffectUnmountStarted(
+                              deletedFiber
+                            )
                           }
                           if (deletedFiber.mode & ProfileMode) {
                             startLayoutEffectTimer()
-                            safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy)
+                            safelyCallDestroy(
+                              deletedFiber,
+                              nearestMountedAncestor,
+                              destroy
+                            )
                             recordLayoutEffectDuration(deletedFiber)
                           } else {
-                            safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy)
+                            safelyCallDestroy(
+                              deletedFiber,
+                              nearestMountedAncestor,
+                              destroy
+                            )
                           }
                           {
                             markComponentLayoutEffectUnmountStopped()
@@ -20472,7 +22704,11 @@ var require_react_dom_development = __commonJS({
                   }
                 }
               }
-              recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber)
+              recursivelyTraverseDeletionEffects(
+                finishedRoot,
+                nearestMountedAncestor,
+                deletedFiber
+              )
               return
             }
             case ClassComponent: {
@@ -20480,14 +22716,26 @@ var require_react_dom_development = __commonJS({
                 safelyDetachRef(deletedFiber, nearestMountedAncestor)
                 var instance = deletedFiber.stateNode
                 if (typeof instance.componentWillUnmount === 'function') {
-                  safelyCallComponentWillUnmount(deletedFiber, nearestMountedAncestor, instance)
+                  safelyCallComponentWillUnmount(
+                    deletedFiber,
+                    nearestMountedAncestor,
+                    instance
+                  )
                 }
               }
-              recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber)
+              recursivelyTraverseDeletionEffects(
+                finishedRoot,
+                nearestMountedAncestor,
+                deletedFiber
+              )
               return
             }
             case ScopeComponent: {
-              recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber)
+              recursivelyTraverseDeletionEffects(
+                finishedRoot,
+                nearestMountedAncestor,
+                deletedFiber
+              )
               return
             }
             case OffscreenComponent: {
@@ -20497,7 +22745,8 @@ var require_react_dom_development = __commonJS({
               ) {
                 var prevOffscreenSubtreeWasHidden = offscreenSubtreeWasHidden
                 offscreenSubtreeWasHidden =
-                  prevOffscreenSubtreeWasHidden || deletedFiber.memoizedState !== null
+                  prevOffscreenSubtreeWasHidden ||
+                  deletedFiber.memoizedState !== null
                 recursivelyTraverseDeletionEffects(
                   finishedRoot,
                   nearestMountedAncestor,
@@ -20514,7 +22763,11 @@ var require_react_dom_development = __commonJS({
               break
             }
             default: {
-              recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber)
+              recursivelyTraverseDeletionEffects(
+                finishedRoot,
+                nearestMountedAncestor,
+                deletedFiber
+              )
               return
             }
           }
@@ -20546,7 +22799,11 @@ var require_react_dom_development = __commonJS({
               retryCache = finishedWork.stateNode = new PossiblyWeakSet()
             }
             wakeables.forEach(function (wakeable) {
-              var retry = resolveRetryWakeable.bind(null, finishedWork, wakeable)
+              var retry = resolveRetryWakeable.bind(
+                null,
+                finishedWork,
+                wakeable
+              )
               if (!retryCache.has(wakeable)) {
                 retryCache.add(wakeable)
                 {
@@ -20616,7 +22873,11 @@ var require_react_dom_development = __commonJS({
                   )
                   commitHookEffectListMount(Insertion | HasEffect, finishedWork)
                 } catch (error2) {
-                  captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                  captureCommitPhaseError(
+                    finishedWork,
+                    finishedWork.return,
+                    error2
+                  )
                 }
                 if (finishedWork.mode & ProfileMode) {
                   try {
@@ -20627,7 +22888,11 @@ var require_react_dom_development = __commonJS({
                       finishedWork.return
                     )
                   } catch (error2) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                    captureCommitPhaseError(
+                      finishedWork,
+                      finishedWork.return,
+                      error2
+                    )
                   }
                   recordLayoutEffectDuration(finishedWork)
                 } else {
@@ -20638,7 +22903,11 @@ var require_react_dom_development = __commonJS({
                       finishedWork.return
                     )
                   } catch (error2) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                    captureCommitPhaseError(
+                      finishedWork,
+                      finishedWork.return,
+                      error2
+                    )
                   }
                 }
               }
@@ -20668,14 +22937,19 @@ var require_react_dom_development = __commonJS({
                   try {
                     resetTextContent(instance)
                   } catch (error2) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                    captureCommitPhaseError(
+                      finishedWork,
+                      finishedWork.return,
+                      error2
+                    )
                   }
                 }
                 if (flags & Update) {
                   var _instance4 = finishedWork.stateNode
                   if (_instance4 != null) {
                     var newProps = finishedWork.memoizedProps
-                    var oldProps = current2 !== null ? current2.memoizedProps : newProps
+                    var oldProps =
+                      current2 !== null ? current2.memoizedProps : newProps
                     var type = finishedWork.type
                     var updatePayload = finishedWork.updateQueue
                     finishedWork.updateQueue = null
@@ -20690,7 +22964,11 @@ var require_react_dom_development = __commonJS({
                           finishedWork
                         )
                       } catch (error2) {
-                        captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                        captureCommitPhaseError(
+                          finishedWork,
+                          finishedWork.return,
+                          error2
+                        )
                       }
                     }
                   }
@@ -20710,11 +22988,16 @@ var require_react_dom_development = __commonJS({
                   }
                   var textInstance = finishedWork.stateNode
                   var newText = finishedWork.memoizedProps
-                  var oldText = current2 !== null ? current2.memoizedProps : newText
+                  var oldText =
+                    current2 !== null ? current2.memoizedProps : newText
                   try {
                     commitTextUpdate(textInstance, oldText, newText)
                   } catch (error2) {
-                    captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                    captureCommitPhaseError(
+                      finishedWork,
+                      finishedWork.return,
+                      error2
+                    )
                   }
                 }
               }
@@ -20731,7 +23014,11 @@ var require_react_dom_development = __commonJS({
                       try {
                         commitHydratedContainer(root2.containerInfo)
                       } catch (error2) {
-                        captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                        captureCommitPhaseError(
+                          finishedWork,
+                          finishedWork.return,
+                          error2
+                        )
                       }
                     }
                   }
@@ -20766,20 +23053,26 @@ var require_react_dom_development = __commonJS({
                 try {
                   commitSuspenseCallback(finishedWork)
                 } catch (error2) {
-                  captureCommitPhaseError(finishedWork, finishedWork.return, error2)
+                  captureCommitPhaseError(
+                    finishedWork,
+                    finishedWork.return,
+                    error2
+                  )
                 }
                 attachSuspenseRetryListeners(finishedWork)
               }
               return
             }
             case OffscreenComponent: {
-              var _wasHidden = current2 !== null && current2.memoizedState !== null
+              var _wasHidden =
+                current2 !== null && current2.memoizedState !== null
               if (
                 // TODO: Remove this dead flag
                 finishedWork.mode & ConcurrentMode
               ) {
                 var prevOffscreenSubtreeWasHidden = offscreenSubtreeWasHidden
-                offscreenSubtreeWasHidden = prevOffscreenSubtreeWasHidden || _wasHidden
+                offscreenSubtreeWasHidden =
+                  prevOffscreenSubtreeWasHidden || _wasHidden
                 recursivelyTraverseMutationEffects(root2, finishedWork)
                 offscreenSubtreeWasHidden = prevOffscreenSubtreeWasHidden
               } else {
@@ -20795,7 +23088,10 @@ var require_react_dom_development = __commonJS({
                 {
                   if (_isHidden) {
                     if (!_wasHidden) {
-                      if ((offscreenBoundary.mode & ConcurrentMode) !== NoMode) {
+                      if (
+                        (offscreenBoundary.mode & ConcurrentMode) !==
+                        NoMode
+                      ) {
                         nextEffect = offscreenBoundary
                         var offscreenChild = offscreenBoundary.child
                         while (offscreenChild !== null) {
@@ -20860,19 +23156,29 @@ var require_react_dom_development = __commonJS({
             var firstChild = fiber.child
             if (fiber.tag === OffscreenComponent && isModernRoot) {
               var isHidden = fiber.memoizedState !== null
-              var newOffscreenSubtreeIsHidden = isHidden || offscreenSubtreeIsHidden
+              var newOffscreenSubtreeIsHidden =
+                isHidden || offscreenSubtreeIsHidden
               if (newOffscreenSubtreeIsHidden) {
-                commitLayoutMountEffects_complete(subtreeRoot, root2, committedLanes)
+                commitLayoutMountEffects_complete(
+                  subtreeRoot,
+                  root2,
+                  committedLanes
+                )
                 continue
               } else {
                 var current2 = fiber.alternate
-                var wasHidden = current2 !== null && current2.memoizedState !== null
-                var newOffscreenSubtreeWasHidden = wasHidden || offscreenSubtreeWasHidden
+                var wasHidden =
+                  current2 !== null && current2.memoizedState !== null
+                var newOffscreenSubtreeWasHidden =
+                  wasHidden || offscreenSubtreeWasHidden
                 var prevOffscreenSubtreeIsHidden = offscreenSubtreeIsHidden
                 var prevOffscreenSubtreeWasHidden = offscreenSubtreeWasHidden
                 offscreenSubtreeIsHidden = newOffscreenSubtreeIsHidden
                 offscreenSubtreeWasHidden = newOffscreenSubtreeWasHidden
-                if (offscreenSubtreeWasHidden && !prevOffscreenSubtreeWasHidden) {
+                if (
+                  offscreenSubtreeWasHidden &&
+                  !prevOffscreenSubtreeWasHidden
+                ) {
                   nextEffect = fiber
                   reappearLayoutEffects_begin(fiber)
                 }
@@ -20890,26 +23196,46 @@ var require_react_dom_development = __commonJS({
                 nextEffect = fiber
                 offscreenSubtreeIsHidden = prevOffscreenSubtreeIsHidden
                 offscreenSubtreeWasHidden = prevOffscreenSubtreeWasHidden
-                commitLayoutMountEffects_complete(subtreeRoot, root2, committedLanes)
+                commitLayoutMountEffects_complete(
+                  subtreeRoot,
+                  root2,
+                  committedLanes
+                )
                 continue
               }
             }
-            if ((fiber.subtreeFlags & LayoutMask) !== NoFlags && firstChild !== null) {
+            if (
+              (fiber.subtreeFlags & LayoutMask) !== NoFlags &&
+              firstChild !== null
+            ) {
               firstChild.return = fiber
               nextEffect = firstChild
             } else {
-              commitLayoutMountEffects_complete(subtreeRoot, root2, committedLanes)
+              commitLayoutMountEffects_complete(
+                subtreeRoot,
+                root2,
+                committedLanes
+              )
             }
           }
         }
-        function commitLayoutMountEffects_complete(subtreeRoot, root2, committedLanes) {
+        function commitLayoutMountEffects_complete(
+          subtreeRoot,
+          root2,
+          committedLanes
+        ) {
           while (nextEffect !== null) {
             var fiber = nextEffect
             if ((fiber.flags & LayoutMask) !== NoFlags) {
               var current2 = fiber.alternate
               setCurrentFiber(fiber)
               try {
-                commitLayoutEffectOnFiber(root2, current2, fiber, committedLanes)
+                commitLayoutEffectOnFiber(
+                  root2,
+                  current2,
+                  fiber,
+                  committedLanes
+                )
               } catch (error2) {
                 captureCommitPhaseError(fiber, fiber.return, error2)
               }
@@ -21043,7 +23369,12 @@ var require_react_dom_development = __commonJS({
           committedTransitions
         ) {
           nextEffect = finishedWork
-          commitPassiveMountEffects_begin(finishedWork, root2, committedLanes, committedTransitions)
+          commitPassiveMountEffects_begin(
+            finishedWork,
+            root2,
+            committedLanes,
+            committedTransitions
+          )
         }
         function commitPassiveMountEffects_begin(
           subtreeRoot,
@@ -21054,7 +23385,10 @@ var require_react_dom_development = __commonJS({
           while (nextEffect !== null) {
             var fiber = nextEffect
             var firstChild = fiber.child
-            if ((fiber.subtreeFlags & PassiveMask) !== NoFlags && firstChild !== null) {
+            if (
+              (fiber.subtreeFlags & PassiveMask) !== NoFlags &&
+              firstChild !== null
+            ) {
               firstChild.return = fiber
               nextEffect = firstChild
             } else {
@@ -21078,7 +23412,12 @@ var require_react_dom_development = __commonJS({
             if ((fiber.flags & Passive) !== NoFlags) {
               setCurrentFiber(fiber)
               try {
-                commitPassiveMountOnFiber(root2, fiber, committedLanes, committedTransitions)
+                commitPassiveMountOnFiber(
+                  root2,
+                  fiber,
+                  committedLanes,
+                  committedTransitions
+                )
               } catch (error2) {
                 captureCommitPhaseError(fiber, fiber.return, error2)
               }
@@ -21135,7 +23474,10 @@ var require_react_dom_development = __commonJS({
                 for (var i = 0; i < deletions.length; i++) {
                   var fiberToDelete = deletions[i]
                   nextEffect = fiberToDelete
-                  commitPassiveUnmountEffectsInsideOfDeletedTree_begin(fiberToDelete, fiber)
+                  commitPassiveUnmountEffectsInsideOfDeletedTree_begin(
+                    fiberToDelete,
+                    fiber
+                  )
                 }
                 {
                   var previousFiber = fiber.alternate
@@ -21154,7 +23496,10 @@ var require_react_dom_development = __commonJS({
                 nextEffect = fiber
               }
             }
-            if ((fiber.subtreeFlags & PassiveMask) !== NoFlags && child !== null) {
+            if (
+              (fiber.subtreeFlags & PassiveMask) !== NoFlags &&
+              child !== null
+            ) {
               child.return = fiber
               nextEffect = child
             } else {
@@ -21210,18 +23555,25 @@ var require_react_dom_development = __commonJS({
           while (nextEffect !== null) {
             var fiber = nextEffect
             setCurrentFiber(fiber)
-            commitPassiveUnmountInsideDeletedTreeOnFiber(fiber, nearestMountedAncestor)
+            commitPassiveUnmountInsideDeletedTreeOnFiber(
+              fiber,
+              nearestMountedAncestor
+            )
             resetCurrentFiber()
             var child = fiber.child
             if (child !== null) {
               child.return = fiber
               nextEffect = child
             } else {
-              commitPassiveUnmountEffectsInsideOfDeletedTree_complete(deletedSubtreeRoot)
+              commitPassiveUnmountEffectsInsideOfDeletedTree_complete(
+                deletedSubtreeRoot
+              )
             }
           }
         }
-        function commitPassiveUnmountEffectsInsideOfDeletedTree_complete(deletedSubtreeRoot) {
+        function commitPassiveUnmountEffectsInsideOfDeletedTree_complete(
+          deletedSubtreeRoot
+        ) {
           while (nextEffect !== null) {
             var fiber = nextEffect
             var sibling = fiber.sibling
@@ -21241,17 +23593,28 @@ var require_react_dom_development = __commonJS({
             nextEffect = returnFiber
           }
         }
-        function commitPassiveUnmountInsideDeletedTreeOnFiber(current2, nearestMountedAncestor) {
+        function commitPassiveUnmountInsideDeletedTreeOnFiber(
+          current2,
+          nearestMountedAncestor
+        ) {
           switch (current2.tag) {
             case FunctionComponent:
             case ForwardRef:
             case SimpleMemoComponent: {
               if (current2.mode & ProfileMode) {
                 startPassiveEffectTimer()
-                commitHookEffectListUnmount(Passive$1, current2, nearestMountedAncestor)
+                commitHookEffectListUnmount(
+                  Passive$1,
+                  current2,
+                  nearestMountedAncestor
+                )
                 recordPassiveEffectDuration(current2)
               } else {
-                commitHookEffectListUnmount(Passive$1, current2, nearestMountedAncestor)
+                commitHookEffectListUnmount(
+                  Passive$1,
+                  current2,
+                  nearestMountedAncestor
+                )
               }
               break
             }
@@ -21305,7 +23668,11 @@ var require_react_dom_development = __commonJS({
               case ForwardRef:
               case SimpleMemoComponent: {
                 try {
-                  commitHookEffectListUnmount(Layout | HasEffect, fiber, fiber.return)
+                  commitHookEffectListUnmount(
+                    Layout | HasEffect,
+                    fiber,
+                    fiber.return
+                  )
                 } catch (error2) {
                   captureCommitPhaseError(fiber, fiber.return, error2)
                 }
@@ -21328,7 +23695,11 @@ var require_react_dom_development = __commonJS({
               case ForwardRef:
               case SimpleMemoComponent: {
                 try {
-                  commitHookEffectListUnmount(Passive$1 | HasEffect, fiber, fiber.return)
+                  commitHookEffectListUnmount(
+                    Passive$1 | HasEffect,
+                    fiber,
+                    fiber.return
+                  )
                 } catch (error2) {
                   captureCommitPhaseError(fiber, fiber.return, error2)
                 }
@@ -21362,7 +23733,9 @@ var require_react_dom_development = __commonJS({
           {
             var isReactActEnvironmentGlobal =
               // $FlowExpectedError – Flow doesn't know about IS_REACT_ACT_ENVIRONMENT global
-              typeof IS_REACT_ACT_ENVIRONMENT !== 'undefined' ? IS_REACT_ACT_ENVIRONMENT : void 0
+              typeof IS_REACT_ACT_ENVIRONMENT !== 'undefined'
+                ? IS_REACT_ACT_ENVIRONMENT
+                : void 0
             var jestIsDefined = typeof jest !== 'undefined'
             return jestIsDefined && isReactActEnvironmentGlobal !== false
           }
@@ -21371,17 +23744,26 @@ var require_react_dom_development = __commonJS({
           {
             var isReactActEnvironmentGlobal =
               // $FlowExpectedError – Flow doesn't know about IS_REACT_ACT_ENVIRONMENT global
-              typeof IS_REACT_ACT_ENVIRONMENT !== 'undefined' ? IS_REACT_ACT_ENVIRONMENT : void 0
-            if (!isReactActEnvironmentGlobal && ReactCurrentActQueue.current !== null) {
-              error('The current testing environment is not configured to support act(...)')
+              typeof IS_REACT_ACT_ENVIRONMENT !== 'undefined'
+                ? IS_REACT_ACT_ENVIRONMENT
+                : void 0
+            if (
+              !isReactActEnvironmentGlobal &&
+              ReactCurrentActQueue.current !== null
+            ) {
+              error(
+                'The current testing environment is not configured to support act(...)'
+              )
             }
             return isReactActEnvironmentGlobal
           }
         }
         var ceil = Math.ceil
-        var ReactCurrentDispatcher$2 = ReactSharedInternals.ReactCurrentDispatcher,
+        var ReactCurrentDispatcher$2 =
+            ReactSharedInternals.ReactCurrentDispatcher,
           ReactCurrentOwner$2 = ReactSharedInternals.ReactCurrentOwner,
-          ReactCurrentBatchConfig$3 = ReactSharedInternals.ReactCurrentBatchConfig,
+          ReactCurrentBatchConfig$3 =
+            ReactSharedInternals.ReactCurrentBatchConfig,
           ReactCurrentActQueue$1 = ReactSharedInternals.ReactCurrentActQueue
         var NoContext =
           /*             */
@@ -21450,7 +23832,10 @@ var require_react_dom_development = __commonJS({
           return workInProgressRoot
         }
         function requestEventTime() {
-          if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
+          if (
+            (executionContext & (RenderContext | CommitContext)) !==
+            NoContext
+          ) {
             return now()
           }
           if (currentEventTime !== NoTimestamp) {
@@ -21510,7 +23895,10 @@ var require_react_dom_development = __commonJS({
             }
           }
           markRootUpdated(root2, lane, eventTime)
-          if ((executionContext & RenderContext) !== NoLanes && root2 === workInProgressRoot) {
+          if (
+            (executionContext & RenderContext) !== NoLanes &&
+            root2 === workInProgressRoot
+          ) {
             warnAboutRenderPhaseUpdatesInDEV(fiber)
           } else {
             {
@@ -21560,7 +23948,9 @@ var require_react_dom_development = __commonJS({
           markStarvedLanesAsExpired(root2, currentTime)
           var nextLanes = getNextLanes(
             root2,
-            root2 === workInProgressRoot ? workInProgressRootRenderLanes : NoLanes
+            root2 === workInProgressRoot
+              ? workInProgressRootRenderLanes
+              : NoLanes
           )
           if (nextLanes === NoLanes) {
             if (existingCallbackNode !== null) {
@@ -21582,7 +23972,10 @@ var require_react_dom_development = __commonJS({
             )
           ) {
             {
-              if (existingCallbackNode == null && existingCallbackPriority !== SyncLane) {
+              if (
+                existingCallbackNode == null &&
+                existingCallbackPriority !== SyncLane
+              ) {
                 error(
                   'Expected scheduled callback to exist. This error is likely caused by a bug in React. Please file an issue.'
                 )
@@ -21599,7 +23992,9 @@ var require_react_dom_development = __commonJS({
               if (ReactCurrentActQueue$1.isBatchingLegacy !== null) {
                 ReactCurrentActQueue$1.didScheduleLegacyUpdate = true
               }
-              scheduleLegacySyncCallback(performSyncWorkOnRoot.bind(null, root2))
+              scheduleLegacySyncCallback(
+                performSyncWorkOnRoot.bind(null, root2)
+              )
             } else {
               scheduleSyncCallback(performSyncWorkOnRoot.bind(null, root2))
             }
@@ -21608,7 +24003,10 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentActQueue$1.current.push(flushSyncCallbacks)
               } else {
                 scheduleMicrotask(function () {
-                  if ((executionContext & (RenderContext | CommitContext)) === NoContext) {
+                  if (
+                    (executionContext & (RenderContext | CommitContext)) ===
+                    NoContext
+                  ) {
                     flushSyncCallbacks()
                   }
                 })
@@ -21648,7 +24046,10 @@ var require_react_dom_development = __commonJS({
           }
           currentEventTime = NoTimestamp
           currentEventTransitionLane = NoLanes
-          if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
+          if (
+            (executionContext & (RenderContext | CommitContext)) !==
+            NoContext
+          ) {
             throw new Error('Should not already be working.')
           }
           var originalCallbackNode = root2.callbackNode
@@ -21660,13 +24061,17 @@ var require_react_dom_development = __commonJS({
           }
           var lanes = getNextLanes(
             root2,
-            root2 === workInProgressRoot ? workInProgressRootRenderLanes : NoLanes
+            root2 === workInProgressRoot
+              ? workInProgressRootRenderLanes
+              : NoLanes
           )
           if (lanes === NoLanes) {
             return null
           }
           var shouldTimeSlice =
-            !includesBlockingLane(root2, lanes) && !includesExpiredLane(root2, lanes) && !didTimeout
+            !includesBlockingLane(root2, lanes) &&
+            !includesExpiredLane(root2, lanes) &&
+            !didTimeout
           var exitStatus = shouldTimeSlice
             ? renderRootConcurrent(root2, lanes)
             : renderRootSync(root2, lanes)
@@ -21690,13 +24095,20 @@ var require_react_dom_development = __commonJS({
             } else {
               var renderWasConcurrent = !includesBlockingLane(root2, lanes)
               var finishedWork = root2.current.alternate
-              if (renderWasConcurrent && !isRenderConsistentWithExternalStores(finishedWork)) {
+              if (
+                renderWasConcurrent &&
+                !isRenderConsistentWithExternalStores(finishedWork)
+              ) {
                 exitStatus = renderRootSync(root2, lanes)
                 if (exitStatus === RootErrored) {
-                  var _errorRetryLanes = getLanesToRetrySynchronouslyOnError(root2)
+                  var _errorRetryLanes =
+                    getLanesToRetrySynchronouslyOnError(root2)
                   if (_errorRetryLanes !== NoLanes) {
                     lanes = _errorRetryLanes
-                    exitStatus = recoverFromConcurrentError(root2, _errorRetryLanes)
+                    exitStatus = recoverFromConcurrentError(
+                      root2,
+                      _errorRetryLanes
+                    )
                   }
                 }
                 if (exitStatus === RootFatalErrored) {
@@ -21754,7 +24166,11 @@ var require_react_dom_development = __commonJS({
               throw new Error('Root did not complete. This is a bug in React.')
             }
             case RootErrored: {
-              commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions)
+              commitRoot(
+                root2,
+                workInProgressRootRecoverableErrors,
+                workInProgressTransitions
+              )
               break
             }
             case RootSuspended: {
@@ -21763,7 +24179,8 @@ var require_react_dom_development = __commonJS({
                 includesOnlyRetries(lanes) && // do not delay if we're inside an act() scope
                 !shouldForceFlushFallbacksInDEV()
               ) {
-                var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now()
+                var msUntilTimeout =
+                  globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now()
                 if (msUntilTimeout > 10) {
                   var nextLanes = getNextLanes(root2, NoLanes)
                   if (nextLanes !== NoLanes) {
@@ -21787,7 +24204,11 @@ var require_react_dom_development = __commonJS({
                   break
                 }
               }
-              commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions)
+              commitRoot(
+                root2,
+                workInProgressRootRecoverableErrors,
+                workInProgressTransitions
+              )
               break
             }
             case RootSuspendedWithDelay: {
@@ -21813,11 +24234,19 @@ var require_react_dom_development = __commonJS({
                   break
                 }
               }
-              commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions)
+              commitRoot(
+                root2,
+                workInProgressRootRecoverableErrors,
+                workInProgressTransitions
+              )
               break
             }
             case RootCompleted: {
-              commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions)
+              commitRoot(
+                root2,
+                workInProgressRootRecoverableErrors,
+                workInProgressTransitions
+              )
               break
             }
             default: {
@@ -21869,15 +24298,24 @@ var require_react_dom_development = __commonJS({
           return true
         }
         function markRootSuspended$1(root2, suspendedLanes) {
-          suspendedLanes = removeLanes(suspendedLanes, workInProgressRootPingedLanes)
-          suspendedLanes = removeLanes(suspendedLanes, workInProgressRootInterleavedUpdatedLanes)
+          suspendedLanes = removeLanes(
+            suspendedLanes,
+            workInProgressRootPingedLanes
+          )
+          suspendedLanes = removeLanes(
+            suspendedLanes,
+            workInProgressRootInterleavedUpdatedLanes
+          )
           markRootSuspended(root2, suspendedLanes)
         }
         function performSyncWorkOnRoot(root2) {
           {
             syncNestedUpdateFlag()
           }
-          if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
+          if (
+            (executionContext & (RenderContext | CommitContext)) !==
+            NoContext
+          ) {
             throw new Error('Should not already be working.')
           }
           flushPassiveEffects()
@@ -21907,7 +24345,11 @@ var require_react_dom_development = __commonJS({
           var finishedWork = root2.current.alternate
           root2.finishedWork = finishedWork
           root2.finishedLanes = lanes
-          commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions)
+          commitRoot(
+            root2,
+            workInProgressRootRecoverableErrors,
+            workInProgressTransitions
+          )
           ensureRootIsScheduled(root2, now())
           return null
         }
@@ -21915,7 +24357,10 @@ var require_react_dom_development = __commonJS({
           if (lanes !== NoLanes) {
             markRootEntangled(root2, mergeLanes(lanes, SyncLane))
             ensureRootIsScheduled(root2, now())
-            if ((executionContext & (RenderContext | CommitContext)) === NoContext) {
+            if (
+              (executionContext & (RenderContext | CommitContext)) ===
+              NoContext
+            ) {
               resetRenderTimer()
               flushSyncCallbacks()
             }
@@ -21976,18 +24421,26 @@ var require_react_dom_development = __commonJS({
             setCurrentUpdatePriority(previousPriority)
             ReactCurrentBatchConfig$3.transition = prevTransition
             executionContext = prevExecutionContext
-            if ((executionContext & (RenderContext | CommitContext)) === NoContext) {
+            if (
+              (executionContext & (RenderContext | CommitContext)) ===
+              NoContext
+            ) {
               flushSyncCallbacks()
             }
           }
         }
         function isAlreadyRendering() {
-          return (executionContext & (RenderContext | CommitContext)) !== NoContext
+          return (
+            (executionContext & (RenderContext | CommitContext)) !== NoContext
+          )
         }
         function pushRenderLanes(fiber, lanes) {
           push(subtreeRenderLanesCursor, subtreeRenderLanes, fiber)
           subtreeRenderLanes = mergeLanes(subtreeRenderLanes, lanes)
-          workInProgressRootIncludedLanes = mergeLanes(workInProgressRootIncludedLanes, lanes)
+          workInProgressRootIncludedLanes = mergeLanes(
+            workInProgressRootIncludedLanes,
+            lanes
+          )
         }
         function popRenderLanes(fiber) {
           subtreeRenderLanes = subtreeRenderLanesCursor.current
@@ -22054,9 +24507,17 @@ var require_react_dom_development = __commonJS({
                   typeof thrownValue.then === 'function'
                 ) {
                   var wakeable = thrownValue
-                  markComponentSuspended(erroredWork, wakeable, workInProgressRootRenderLanes)
+                  markComponentSuspended(
+                    erroredWork,
+                    wakeable,
+                    workInProgressRootRenderLanes
+                  )
                 } else {
-                  markComponentErrored(erroredWork, thrownValue, workInProgressRootRenderLanes)
+                  markComponentErrored(
+                    erroredWork,
+                    thrownValue,
+                    workInProgressRootRenderLanes
+                  )
                 }
               }
               throwException(
@@ -22096,7 +24557,10 @@ var require_react_dom_development = __commonJS({
           globalMostRecentFallbackTime = now()
         }
         function markSkippedUpdateLanes(lane) {
-          workInProgressRootSkippedLanes = mergeLanes(lane, workInProgressRootSkippedLanes)
+          workInProgressRootSkippedLanes = mergeLanes(
+            lane,
+            workInProgressRootSkippedLanes
+          )
         }
         function renderDidSuspend() {
           if (workInProgressRootExitStatus === RootInProgress) {
@@ -22116,7 +24580,10 @@ var require_react_dom_development = __commonJS({
             (includesNonIdleWork(workInProgressRootSkippedLanes) ||
               includesNonIdleWork(workInProgressRootInterleavedUpdatedLanes))
           ) {
-            markRootSuspended$1(workInProgressRoot, workInProgressRootRenderLanes)
+            markRootSuspended$1(
+              workInProgressRoot,
+              workInProgressRootRenderLanes
+            )
           }
         }
         function renderDidError(error2) {
@@ -22136,7 +24603,10 @@ var require_react_dom_development = __commonJS({
           var prevExecutionContext = executionContext
           executionContext |= RenderContext
           var prevDispatcher = pushDispatcher()
-          if (workInProgressRoot !== root2 || workInProgressRootRenderLanes !== lanes) {
+          if (
+            workInProgressRoot !== root2 ||
+            workInProgressRootRenderLanes !== lanes
+          ) {
             {
               if (isDevToolsPresent) {
                 var memoizedUpdaters = root2.memoizedUpdaters
@@ -22185,7 +24655,10 @@ var require_react_dom_development = __commonJS({
           var prevExecutionContext = executionContext
           executionContext |= RenderContext
           var prevDispatcher = pushDispatcher()
-          if (workInProgressRoot !== root2 || workInProgressRootRenderLanes !== lanes) {
+          if (
+            workInProgressRoot !== root2 ||
+            workInProgressRootRenderLanes !== lanes
+          ) {
             {
               if (isDevToolsPresent) {
                 var memoizedUpdaters = root2.memoizedUpdaters
@@ -22318,19 +24791,32 @@ var require_react_dom_development = __commonJS({
           try {
             ReactCurrentBatchConfig$3.transition = null
             setCurrentUpdatePriority(DiscreteEventPriority)
-            commitRootImpl(root2, recoverableErrors, transitions, previousUpdateLanePriority)
+            commitRootImpl(
+              root2,
+              recoverableErrors,
+              transitions,
+              previousUpdateLanePriority
+            )
           } finally {
             ReactCurrentBatchConfig$3.transition = prevTransition
             setCurrentUpdatePriority(previousUpdateLanePriority)
           }
           return null
         }
-        function commitRootImpl(root2, recoverableErrors, transitions, renderPriorityLevel) {
+        function commitRootImpl(
+          root2,
+          recoverableErrors,
+          transitions,
+          renderPriorityLevel
+        ) {
           do {
             flushPassiveEffects()
           } while (rootWithPendingPassiveEffects !== null)
           flushRenderPhaseStrictModeWarningsInDEV()
-          if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
+          if (
+            (executionContext & (RenderContext | CommitContext)) !==
+            NoContext
+          ) {
             throw new Error('Should not already be working.')
           }
           var finishedWork = root2.finishedWork
@@ -22361,7 +24847,10 @@ var require_react_dom_development = __commonJS({
           }
           root2.callbackNode = null
           root2.callbackPriority = NoLane
-          var remainingLanes = mergeLanes(finishedWork.lanes, finishedWork.childLanes)
+          var remainingLanes = mergeLanes(
+            finishedWork.lanes,
+            finishedWork.childLanes
+          )
           markRootFinished(root2, remainingLanes)
           if (root2 === workInProgressRoot) {
             workInProgressRoot = null
@@ -22383,11 +24872,17 @@ var require_react_dom_development = __commonJS({
           }
           var subtreeHasEffects =
             (finishedWork.subtreeFlags &
-              (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
+              (BeforeMutationMask |
+                MutationMask |
+                LayoutMask |
+                PassiveMask)) !==
             NoFlags
           var rootHasEffect =
             (finishedWork.flags &
-              (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
+              (BeforeMutationMask |
+                MutationMask |
+                LayoutMask |
+                PassiveMask)) !==
             NoFlags
           if (subtreeHasEffects || rootHasEffect) {
             var prevTransition = ReactCurrentBatchConfig$3.transition
@@ -22397,10 +24892,8 @@ var require_react_dom_development = __commonJS({
             var prevExecutionContext = executionContext
             executionContext |= CommitContext
             ReactCurrentOwner$2.current = null
-            var shouldFireAfterActiveInstanceBlur2 = commitBeforeMutationEffects(
-              root2,
-              finishedWork
-            )
+            var shouldFireAfterActiveInstanceBlur2 =
+              commitBeforeMutationEffects(root2, finishedWork)
             {
               recordCommitTime()
             }
@@ -22472,7 +24965,10 @@ var require_react_dom_development = __commonJS({
             firstUncaughtError = null
             throw error$1
           }
-          if (includesSomeLane(pendingPassiveEffectsLanes, SyncLane) && root2.tag !== LegacyRoot) {
+          if (
+            includesSomeLane(pendingPassiveEffectsLanes, SyncLane) &&
+            root2.tag !== LegacyRoot
+          ) {
             flushPassiveEffects()
           }
           remainingLanes = root2.pendingLanes
@@ -22497,8 +24993,13 @@ var require_react_dom_development = __commonJS({
         }
         function flushPassiveEffects() {
           if (rootWithPendingPassiveEffects !== null) {
-            var renderPriority = lanesToEventPriority(pendingPassiveEffectsLanes)
-            var priority = lowerEventPriority(DefaultEventPriority, renderPriority)
+            var renderPriority = lanesToEventPriority(
+              pendingPassiveEffectsLanes
+            )
+            var priority = lowerEventPriority(
+              DefaultEventPriority,
+              renderPriority
+            )
             var prevTransition = ReactCurrentBatchConfig$3.transition
             var previousPriority = getCurrentUpdatePriority()
             try {
@@ -22534,8 +25035,13 @@ var require_react_dom_development = __commonJS({
           var lanes = pendingPassiveEffectsLanes
           rootWithPendingPassiveEffects = null
           pendingPassiveEffectsLanes = NoLanes
-          if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
-            throw new Error('Cannot flush passive effects while already rendering.')
+          if (
+            (executionContext & (RenderContext | CommitContext)) !==
+            NoContext
+          ) {
+            throw new Error(
+              'Cannot flush passive effects while already rendering.'
+            )
           }
           {
             isFlushingPassiveEffects = true
@@ -22594,7 +25100,9 @@ var require_react_dom_development = __commonJS({
         }
         function markLegacyErrorBoundaryAsFailed(instance) {
           if (legacyErrorBoundariesThatAlreadyFailed === null) {
-            legacyErrorBoundariesThatAlreadyFailed = /* @__PURE__ */ new Set([instance])
+            legacyErrorBoundariesThatAlreadyFailed = /* @__PURE__ */ new Set([
+              instance,
+            ])
           } else {
             legacyErrorBoundariesThatAlreadyFailed.add(instance)
           }
@@ -22616,7 +25124,11 @@ var require_react_dom_development = __commonJS({
             ensureRootIsScheduled(root2, eventTime)
           }
         }
-        function captureCommitPhaseError(sourceFiber, nearestMountedAncestor, error$1) {
+        function captureCommitPhaseError(
+          sourceFiber,
+          nearestMountedAncestor,
+          error$1
+        ) {
           {
             reportUncaughtErrorInDEV(error$1)
             setIsRunningInsertionEffect(false)
@@ -22681,7 +25193,10 @@ var require_react_dom_development = __commonJS({
             ) {
               prepareFreshStack(root2, NoLanes)
             } else {
-              workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes)
+              workInProgressRootPingedLanes = mergeLanes(
+                workInProgressRootPingedLanes,
+                pingedLanes
+              )
             }
           }
           ensureRootIsScheduled(root2, eventTime)
@@ -22773,13 +25288,29 @@ var require_react_dom_development = __commonJS({
         function commitDoubleInvokeEffectsInDEV(fiber, hasPassiveEffects) {
           {
             setCurrentFiber(fiber)
-            invokeEffectsInDev(fiber, MountLayoutDev, invokeLayoutEffectUnmountInDEV)
+            invokeEffectsInDev(
+              fiber,
+              MountLayoutDev,
+              invokeLayoutEffectUnmountInDEV
+            )
             if (hasPassiveEffects) {
-              invokeEffectsInDev(fiber, MountPassiveDev, invokePassiveEffectUnmountInDEV)
+              invokeEffectsInDev(
+                fiber,
+                MountPassiveDev,
+                invokePassiveEffectUnmountInDEV
+              )
             }
-            invokeEffectsInDev(fiber, MountLayoutDev, invokeLayoutEffectMountInDEV)
+            invokeEffectsInDev(
+              fiber,
+              MountLayoutDev,
+              invokeLayoutEffectMountInDEV
+            )
             if (hasPassiveEffects) {
-              invokeEffectsInDev(fiber, MountPassiveDev, invokePassiveEffectMountInDEV)
+              invokeEffectsInDev(
+                fiber,
+                MountPassiveDev,
+                invokePassiveEffectMountInDEV
+              )
             }
             resetCurrentFiber()
           }
@@ -22830,14 +25361,18 @@ var require_react_dom_development = __commonJS({
             ) {
               return
             }
-            var componentName = getComponentNameFromFiber(fiber) || 'ReactComponent'
+            var componentName =
+              getComponentNameFromFiber(fiber) || 'ReactComponent'
             if (didWarnStateUpdateForNotYetMountedComponent !== null) {
-              if (didWarnStateUpdateForNotYetMountedComponent.has(componentName)) {
+              if (
+                didWarnStateUpdateForNotYetMountedComponent.has(componentName)
+              ) {
                 return
               }
               didWarnStateUpdateForNotYetMountedComponent.add(componentName)
             } else {
-              didWarnStateUpdateForNotYetMountedComponent = /* @__PURE__ */ new Set([componentName])
+              didWarnStateUpdateForNotYetMountedComponent =
+                /* @__PURE__ */ new Set([componentName])
             }
             var previousFiber = current
             try {
@@ -22858,7 +25393,10 @@ var require_react_dom_development = __commonJS({
         {
           var dummyFiber = null
           beginWork$1 = function (current2, unitOfWork, lanes) {
-            var originalWorkInProgressCopy = assignFiberPropertiesInDEV(dummyFiber, unitOfWork)
+            var originalWorkInProgressCopy = assignFiberPropertiesInDEV(
+              dummyFiber,
+              unitOfWork
+            )
             try {
               return beginWork(current2, unitOfWork, lanes)
             } catch (originalError) {
@@ -22877,7 +25415,14 @@ var require_react_dom_development = __commonJS({
               if (unitOfWork.mode & ProfileMode) {
                 startProfilerTimer(unitOfWork)
               }
-              invokeGuardedCallback(null, beginWork, null, current2, unitOfWork, lanes)
+              invokeGuardedCallback(
+                null,
+                beginWork,
+                null,
+                current2,
+                unitOfWork,
+                lanes
+              )
               if (hasCaughtError()) {
                 var replayError = clearCaughtError()
                 if (
@@ -22898,7 +25443,8 @@ var require_react_dom_development = __commonJS({
         var didWarnAboutUpdateInRender = false
         var didWarnAboutUpdateInRenderForAnotherComponent
         {
-          didWarnAboutUpdateInRenderForAnotherComponent = /* @__PURE__ */ new Set()
+          didWarnAboutUpdateInRenderForAnotherComponent =
+            /* @__PURE__ */ new Set()
         }
         function warnAboutRenderPhaseUpdatesInDEV(fiber) {
           {
@@ -22908,11 +25454,18 @@ var require_react_dom_development = __commonJS({
                 case ForwardRef:
                 case SimpleMemoComponent: {
                   var renderingComponentName =
-                    (workInProgress && getComponentNameFromFiber(workInProgress)) || 'Unknown'
+                    (workInProgress &&
+                      getComponentNameFromFiber(workInProgress)) ||
+                    'Unknown'
                   var dedupeKey = renderingComponentName
-                  if (!didWarnAboutUpdateInRenderForAnotherComponent.has(dedupeKey)) {
+                  if (
+                    !didWarnAboutUpdateInRenderForAnotherComponent.has(
+                      dedupeKey
+                    )
+                  ) {
                     didWarnAboutUpdateInRenderForAnotherComponent.add(dedupeKey)
-                    var setStateComponentName = getComponentNameFromFiber(fiber) || 'Unknown'
+                    var setStateComponentName =
+                      getComponentNameFromFiber(fiber) || 'Unknown'
                     error(
                       'Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render',
                       setStateComponentName,
@@ -23052,7 +25605,11 @@ var require_react_dom_development = __commonJS({
             }
             var family = resolveFamily(type)
             if (family === void 0) {
-              if (type !== null && type !== void 0 && typeof type.render === 'function') {
+              if (
+                type !== null &&
+                type !== void 0 &&
+                typeof type.render === 'function'
+              ) {
                 var currentRender = resolveFunctionForHotReloading(type.render)
                 if (type.render !== currentRender) {
                   var syntheticType = {
@@ -23079,7 +25636,9 @@ var require_react_dom_development = __commonJS({
             var nextType = element.type
             var needsCompareFamilies = false
             var $$typeofNextType =
-              typeof nextType === 'object' && nextType !== null ? nextType.$$typeof : null
+              typeof nextType === 'object' && nextType !== null
+                ? nextType.$$typeof
+                : null
             switch (fiber.tag) {
               case ClassComponent: {
                 if (typeof nextType === 'function') {
@@ -23117,7 +25676,10 @@ var require_react_dom_development = __commonJS({
             }
             if (needsCompareFamilies) {
               var prevFamily = resolveFamily(prevType)
-              if (prevFamily !== void 0 && prevFamily === resolveFamily(nextType)) {
+              if (
+                prevFamily !== void 0 &&
+                prevFamily === resolveFamily(nextType)
+              ) {
                 return true
               }
             }
@@ -23147,7 +25709,11 @@ var require_react_dom_development = __commonJS({
               updatedFamilies = update.updatedFamilies
             flushPassiveEffects()
             flushSync(function () {
-              scheduleFibersWithFamiliesRecursively(root2.current, updatedFamilies, staleFamilies)
+              scheduleFibersWithFamiliesRecursively(
+                root2.current,
+                updatedFamilies,
+                staleFamilies
+              )
             })
           }
         }
@@ -23162,7 +25728,11 @@ var require_react_dom_development = __commonJS({
             })
           }
         }
-        function scheduleFibersWithFamiliesRecursively(fiber, updatedFamilies, staleFamilies) {
+        function scheduleFibersWithFamiliesRecursively(
+          fiber,
+          updatedFamilies,
+          staleFamilies
+        ) {
           {
             var alternate = fiber.alternate,
               child = fiber.child,
@@ -23181,7 +25751,9 @@ var require_react_dom_development = __commonJS({
                 break
             }
             if (resolveFamily === null) {
-              throw new Error('Expected resolveFamily to be set during hot reload.')
+              throw new Error(
+                'Expected resolveFamily to be set during hot reload.'
+              )
             }
             var needsRender = false
             var needsRemount = false
@@ -23217,10 +25789,18 @@ var require_react_dom_development = __commonJS({
               }
             }
             if (child !== null && !needsRemount) {
-              scheduleFibersWithFamiliesRecursively(child, updatedFamilies, staleFamilies)
+              scheduleFibersWithFamiliesRecursively(
+                child,
+                updatedFamilies,
+                staleFamilies
+              )
             }
             if (sibling !== null) {
-              scheduleFibersWithFamiliesRecursively(sibling, updatedFamilies, staleFamilies)
+              scheduleFibersWithFamiliesRecursively(
+                sibling,
+                updatedFamilies,
+                staleFamilies
+              )
             }
           }
         }
@@ -23232,11 +25812,19 @@ var require_react_dom_development = __commonJS({
                 return family.current
               })
             )
-            findHostInstancesForMatchingFibersRecursively(root2.current, types, hostInstances)
+            findHostInstancesForMatchingFibersRecursively(
+              root2.current,
+              types,
+              hostInstances
+            )
             return hostInstances
           }
         }
-        function findHostInstancesForMatchingFibersRecursively(fiber, types, hostInstances) {
+        function findHostInstancesForMatchingFibersRecursively(
+          fiber,
+          types,
+          hostInstances
+        ) {
           {
             var child = fiber.child,
               sibling = fiber.sibling,
@@ -23263,17 +25851,28 @@ var require_react_dom_development = __commonJS({
               findHostInstancesForFiberShallowly(fiber, hostInstances)
             } else {
               if (child !== null) {
-                findHostInstancesForMatchingFibersRecursively(child, types, hostInstances)
+                findHostInstancesForMatchingFibersRecursively(
+                  child,
+                  types,
+                  hostInstances
+                )
               }
             }
             if (sibling !== null) {
-              findHostInstancesForMatchingFibersRecursively(sibling, types, hostInstances)
+              findHostInstancesForMatchingFibersRecursively(
+                sibling,
+                types,
+                hostInstances
+              )
             }
           }
         }
         function findHostInstancesForFiberShallowly(fiber, hostInstances) {
           {
-            var foundHostInstances = findChildHostInstancesForFiberShallowly(fiber, hostInstances)
+            var foundHostInstances = findChildHostInstancesForFiberShallowly(
+              fiber,
+              hostInstances
+            )
             if (foundHostInstances) {
               return
             }
@@ -23374,7 +25973,10 @@ var require_react_dom_development = __commonJS({
             this._debugOwner = null
             this._debugNeedsRemount = false
             this._debugHookTypes = null
-            if (!hasBadMapPolyfill && typeof Object.preventExtensions === 'function') {
+            if (
+              !hasBadMapPolyfill &&
+              typeof Object.preventExtensions === 'function'
+            ) {
               Object.preventExtensions(this)
             }
           }
@@ -23388,12 +25990,16 @@ var require_react_dom_development = __commonJS({
         }
         function isSimpleFunctionComponent(type) {
           return (
-            typeof type === 'function' && !shouldConstruct$1(type) && type.defaultProps === void 0
+            typeof type === 'function' &&
+            !shouldConstruct$1(type) &&
+            type.defaultProps === void 0
           )
         }
         function resolveLazyComponentTag(Component) {
           if (typeof Component === 'function') {
-            return shouldConstruct$1(Component) ? ClassComponent : FunctionComponent
+            return shouldConstruct$1(Component)
+              ? ClassComponent
+              : FunctionComponent
           } else if (Component !== void 0 && Component !== null) {
             var $$typeof = Component.$$typeof
             if ($$typeof === REACT_FORWARD_REF_TYPE) {
@@ -23408,7 +26014,12 @@ var require_react_dom_development = __commonJS({
         function createWorkInProgress(current2, pendingProps) {
           var workInProgress2 = current2.alternate
           if (workInProgress2 === null) {
-            workInProgress2 = createFiber(current2.tag, pendingProps, current2.key, current2.mode)
+            workInProgress2 = createFiber(
+              current2.tag,
+              pendingProps,
+              current2.key,
+              current2.mode
+            )
             workInProgress2.elementType = current2.elementType
             workInProgress2.type = current2.type
             workInProgress2.stateNode = current2.stateNode
@@ -23458,13 +26069,19 @@ var require_react_dom_development = __commonJS({
               case IndeterminateComponent:
               case FunctionComponent:
               case SimpleMemoComponent:
-                workInProgress2.type = resolveFunctionForHotReloading(current2.type)
+                workInProgress2.type = resolveFunctionForHotReloading(
+                  current2.type
+                )
                 break
               case ClassComponent:
-                workInProgress2.type = resolveClassForHotReloading(current2.type)
+                workInProgress2.type = resolveClassForHotReloading(
+                  current2.type
+                )
                 break
               case ForwardRef:
-                workInProgress2.type = resolveForwardRefForHotReloading(current2.type)
+                workInProgress2.type = resolveForwardRefForHotReloading(
+                  current2.type
+                )
                 break
             }
           }
@@ -23512,7 +26129,11 @@ var require_react_dom_development = __commonJS({
           }
           return workInProgress2
         }
-        function createHostRootFiber(tag, isStrictMode, concurrentUpdatesByDefaultOverride) {
+        function createHostRootFiber(
+          tag,
+          isStrictMode,
+          concurrentUpdatesByDefaultOverride
+        ) {
           var mode
           if (tag === ConcurrentRoot) {
             mode = ConcurrentMode
@@ -23530,7 +26151,14 @@ var require_react_dom_development = __commonJS({
           }
           return createFiber(HostRoot, null, null, mode)
         }
-        function createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, lanes) {
+        function createFiberFromTypeAndProps(
+          type,
+          key,
+          pendingProps,
+          owner,
+          mode,
+          lanes
+        ) {
           var fiberTag = IndeterminateComponent
           var resolvedType = type
           if (typeof type === 'function') {
@@ -23549,7 +26177,12 @@ var require_react_dom_development = __commonJS({
           } else {
             getTag: switch (type) {
               case REACT_FRAGMENT_TYPE:
-                return createFiberFromFragment(pendingProps.children, mode, lanes, key)
+                return createFiberFromFragment(
+                  pendingProps.children,
+                  mode,
+                  lanes,
+                  key
+                )
               case REACT_STRICT_MODE_TYPE:
                 fiberTag = Mode
                 mode |= StrictLegacyMode
@@ -23562,7 +26195,12 @@ var require_react_dom_development = __commonJS({
               case REACT_SUSPENSE_TYPE:
                 return createFiberFromSuspense(pendingProps, mode, lanes, key)
               case REACT_SUSPENSE_LIST_TYPE:
-                return createFiberFromSuspenseList(pendingProps, mode, lanes, key)
+                return createFiberFromSuspenseList(
+                  pendingProps,
+                  mode,
+                  lanes,
+                  key
+                )
               case REACT_OFFSCREEN_TYPE:
                 return createFiberFromOffscreen(pendingProps, mode, lanes, key)
               case REACT_LEGACY_HIDDEN_TYPE:
@@ -23582,7 +26220,8 @@ var require_react_dom_development = __commonJS({
                     case REACT_FORWARD_REF_TYPE:
                       fiberTag = ForwardRef
                       {
-                        resolvedType = resolveForwardRefForHotReloading(resolvedType)
+                        resolvedType =
+                          resolveForwardRefForHotReloading(resolvedType)
                       }
                       break getTag
                     case REACT_MEMO_TYPE:
@@ -23598,19 +26237,27 @@ var require_react_dom_development = __commonJS({
                 {
                   if (
                     type === void 0 ||
-                    (typeof type === 'object' && type !== null && Object.keys(type).length === 0)
+                    (typeof type === 'object' &&
+                      type !== null &&
+                      Object.keys(type).length === 0)
                   ) {
                     info +=
                       " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports."
                   }
-                  var ownerName = owner ? getComponentNameFromFiber(owner) : null
+                  var ownerName = owner
+                    ? getComponentNameFromFiber(owner)
+                    : null
                   if (ownerName) {
-                    info += '\n\nCheck the render method of `' + ownerName + '`.'
+                    info +=
+                      '\n\nCheck the render method of `' + ownerName + '`.'
                   }
                 }
                 throw new Error(
                   'Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) ' +
-                    ('but got: ' + (type == null ? type : typeof type) + '.' + info)
+                    ('but got: ' +
+                      (type == null ? type : typeof type) +
+                      '.' +
+                      info)
                 )
               }
             }
@@ -23632,7 +26279,14 @@ var require_react_dom_development = __commonJS({
           var type = element.type
           var key = element.key
           var pendingProps = element.props
-          var fiber = createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, lanes)
+          var fiber = createFiberFromTypeAndProps(
+            type,
+            key,
+            pendingProps,
+            owner,
+            mode,
+            lanes
+          )
           {
             fiber._debugSource = element._source
             fiber._debugOwner = element._owner
@@ -23653,7 +26307,12 @@ var require_react_dom_development = __commonJS({
               )
             }
           }
-          var fiber = createFiber(Profiler, pendingProps, key, mode | ProfileMode)
+          var fiber = createFiber(
+            Profiler,
+            pendingProps,
+            key,
+            mode | ProfileMode
+          )
           fiber.elementType = REACT_PROFILER_TYPE
           fiber.lanes = lanes
           {
@@ -23671,7 +26330,12 @@ var require_react_dom_development = __commonJS({
           return fiber
         }
         function createFiberFromSuspenseList(pendingProps, mode, lanes, key) {
-          var fiber = createFiber(SuspenseListComponent, pendingProps, key, mode)
+          var fiber = createFiber(
+            SuspenseListComponent,
+            pendingProps,
+            key,
+            mode
+          )
           fiber.elementType = REACT_SUSPENSE_LIST_TYPE
           fiber.lanes = lanes
           return fiber
@@ -23751,7 +26415,13 @@ var require_react_dom_development = __commonJS({
           target._debugHookTypes = source._debugHookTypes
           return target
         }
-        function FiberRootNode(containerInfo, tag, hydrate2, identifierPrefix, onRecoverableError) {
+        function FiberRootNode(
+          containerInfo,
+          tag,
+          hydrate2,
+          identifierPrefix,
+          onRecoverableError
+        ) {
           this.tag = tag
           this.containerInfo = containerInfo
           this.pendingChildren = null
@@ -23792,7 +26462,9 @@ var require_react_dom_development = __commonJS({
           {
             switch (tag) {
               case ConcurrentRoot:
-                this._debugRootType = hydrate2 ? 'hydrateRoot()' : 'createRoot()'
+                this._debugRootType = hydrate2
+                  ? 'hydrateRoot()'
+                  : 'createRoot()'
                 break
               case LegacyRoot:
                 this._debugRootType = hydrate2 ? 'hydrate()' : 'render()'
@@ -23838,7 +26510,10 @@ var require_react_dom_development = __commonJS({
         }
         var ReactVersion = '18.3.1'
         function createPortal(children, containerInfo, implementation) {
-          var key = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : null
+          var key =
+            arguments.length > 3 && arguments[3] !== void 0
+              ? arguments[3]
+              : null
           {
             checkKeyStringCoercion(key)
           }
@@ -23876,10 +26551,14 @@ var require_react_dom_development = __commonJS({
             var fiber = get(component)
             if (fiber === void 0) {
               if (typeof component.render === 'function') {
-                throw new Error('Unable to find node on an unmounted component.')
+                throw new Error(
+                  'Unable to find node on an unmounted component.'
+                )
               } else {
                 var keys = Object.keys(component).join(',')
-                throw new Error('Argument appears to not be a ReactComponent. Keys: ' + keys)
+                throw new Error(
+                  'Argument appears to not be a ReactComponent. Keys: ' + keys
+                )
               }
             }
             var hostFiber = findCurrentHostFiber(fiber)
@@ -23887,7 +26566,8 @@ var require_react_dom_development = __commonJS({
               return null
             }
             if (hostFiber.mode & StrictLegacyMode) {
-              var componentName = getComponentNameFromFiber(fiber) || 'Component'
+              var componentName =
+                getComponentNameFromFiber(fiber) || 'Component'
               if (!didWarnAboutFindNodeInStrictMode[componentName]) {
                 didWarnAboutFindNodeInStrictMode[componentName] = true
                 var previousFiber = current
@@ -23973,12 +26653,18 @@ var require_react_dom_development = __commonJS({
           var eventTime = requestEventTime()
           var lane = requestUpdateLane(current2)
           var update = createUpdate(eventTime, lane)
-          update.callback = callback !== void 0 && callback !== null ? callback : null
+          update.callback =
+            callback !== void 0 && callback !== null ? callback : null
           enqueueUpdate(current2, update, lane)
           scheduleInitialHydrationOnRoot(root2, lane, eventTime)
           return root2
         }
-        function updateContainer(element, container, parentComponent, callback) {
+        function updateContainer(
+          element,
+          container,
+          parentComponent,
+          callback
+        ) {
           {
             onScheduleRoot(container, element)
           }
@@ -24065,7 +26751,10 @@ var require_react_dom_development = __commonJS({
         function markRetryLaneImpl(fiber, retryLane) {
           var suspenseState = fiber.memoizedState
           if (suspenseState !== null && suspenseState.dehydrated !== null) {
-            suspenseState.retryLane = higherPriorityLane(suspenseState.retryLane, retryLane)
+            suspenseState.retryLane = higherPriorityLane(
+              suspenseState.retryLane,
+              retryLane
+            )
           }
         }
         function markRetryLaneIfNotHydrated(fiber, retryLane) {
@@ -24174,7 +26863,9 @@ var require_react_dom_development = __commonJS({
             } else {
               for (var i = 0; i < newPath.length - 1; i++) {
                 if (oldPath[i] !== newPath[i]) {
-                  warn('copyWithRename() expects paths to be the same except for the deepest key')
+                  warn(
+                    'copyWithRename() expects paths to be the same except for the deepest key'
+                  )
                   return
                 }
               }
@@ -24230,7 +26921,11 @@ var require_react_dom_development = __commonJS({
           overrideHookStateRenamePath = function (fiber, id, oldPath, newPath) {
             var hook = findHook(fiber, id)
             if (hook !== null) {
-              var newState = copyWithRename(hook.memoizedState, oldPath, newPath)
+              var newState = copyWithRename(
+                hook.memoizedState,
+                oldPath,
+                newPath
+              )
               hook.memoizedState = newState
               hook.baseState = newState
               fiber.memoizedProps = assign({}, fiber.memoizedProps)
@@ -24261,7 +26956,11 @@ var require_react_dom_development = __commonJS({
             }
           }
           overridePropsRenamePath = function (fiber, oldPath, newPath) {
-            fiber.pendingProps = copyWithRename(fiber.memoizedProps, oldPath, newPath)
+            fiber.pendingProps = copyWithRename(
+              fiber.memoizedProps,
+              oldPath,
+              newPath
+            )
             if (fiber.alternate) {
               fiber.alternate.pendingProps = fiber.pendingProps
             }
@@ -24298,7 +26997,8 @@ var require_react_dom_development = __commonJS({
         }
         function injectIntoDevTools(devToolsConfig) {
           var findFiberByHostInstance = devToolsConfig.findFiberByHostInstance
-          var ReactCurrentDispatcher2 = ReactSharedInternals.ReactCurrentDispatcher
+          var ReactCurrentDispatcher2 =
+            ReactSharedInternals.ReactCurrentDispatcher
           return injectInternals({
             bundleType: devToolsConfig.bundleType,
             version: devToolsConfig.version,
@@ -24315,7 +27015,8 @@ var require_react_dom_development = __commonJS({
             scheduleUpdate,
             currentDispatcherRef: ReactCurrentDispatcher2,
             findHostInstanceByFiber,
-            findFiberByHostInstance: findFiberByHostInstance || emptyFindFiberByHostInstance,
+            findFiberByHostInstance:
+              findFiberByHostInstance || emptyFindFiberByHostInstance,
             // React Refresh
             findHostInstancesForRefresh,
             scheduleRefresh,
@@ -24339,69 +27040,71 @@ var require_react_dom_development = __commonJS({
         function ReactDOMRoot(internalRoot) {
           this._internalRoot = internalRoot
         }
-        ReactDOMHydrationRoot.prototype.render = ReactDOMRoot.prototype.render = function (
-          children
-        ) {
-          var root2 = this._internalRoot
-          if (root2 === null) {
-            throw new Error('Cannot update an unmounted root.')
-          }
-          {
-            if (typeof arguments[1] === 'function') {
-              error(
-                'render(...): does not support the second callback argument. To execute a side effect after rendering, declare it in a component body with useEffect().'
-              )
-            } else if (isValidContainer(arguments[1])) {
-              error(
-                "You passed a container to the second argument of root.render(...). You don't need to pass it again since you already passed it to create the root."
-              )
-            } else if (typeof arguments[1] !== 'undefined') {
-              error(
-                'You passed a second argument to root.render(...) but it only accepts one argument.'
-              )
+        ReactDOMHydrationRoot.prototype.render = ReactDOMRoot.prototype.render =
+          function (children) {
+            var root2 = this._internalRoot
+            if (root2 === null) {
+              throw new Error('Cannot update an unmounted root.')
             }
-            var container = root2.containerInfo
-            if (container.nodeType !== COMMENT_NODE) {
-              var hostInstance = findHostInstanceWithNoPortals(root2.current)
-              if (hostInstance) {
-                if (hostInstance.parentNode !== container) {
-                  error(
-                    "render(...): It looks like the React-rendered content of the root container was removed without using React. This is not supported and will cause errors. Instead, call root.unmount() to empty a root's container."
-                  )
+            {
+              if (typeof arguments[1] === 'function') {
+                error(
+                  'render(...): does not support the second callback argument. To execute a side effect after rendering, declare it in a component body with useEffect().'
+                )
+              } else if (isValidContainer(arguments[1])) {
+                error(
+                  "You passed a container to the second argument of root.render(...). You don't need to pass it again since you already passed it to create the root."
+                )
+              } else if (typeof arguments[1] !== 'undefined') {
+                error(
+                  'You passed a second argument to root.render(...) but it only accepts one argument.'
+                )
+              }
+              var container = root2.containerInfo
+              if (container.nodeType !== COMMENT_NODE) {
+                var hostInstance = findHostInstanceWithNoPortals(root2.current)
+                if (hostInstance) {
+                  if (hostInstance.parentNode !== container) {
+                    error(
+                      "render(...): It looks like the React-rendered content of the root container was removed without using React. This is not supported and will cause errors. Instead, call root.unmount() to empty a root's container."
+                    )
+                  }
                 }
               }
             }
+            updateContainer(children, root2, null, null)
           }
-          updateContainer(children, root2, null, null)
-        }
-        ReactDOMHydrationRoot.prototype.unmount = ReactDOMRoot.prototype.unmount = function () {
-          {
-            if (typeof arguments[0] === 'function') {
-              error(
-                'unmount(...): does not support a callback argument. To execute a side effect after rendering, declare it in a component body with useEffect().'
-              )
-            }
-          }
-          var root2 = this._internalRoot
-          if (root2 !== null) {
-            this._internalRoot = null
-            var container = root2.containerInfo
+        ReactDOMHydrationRoot.prototype.unmount =
+          ReactDOMRoot.prototype.unmount = function () {
             {
-              if (isAlreadyRendering()) {
+              if (typeof arguments[0] === 'function') {
                 error(
-                  'Attempted to synchronously unmount a root while React was already rendering. React cannot finish unmounting the root until the current render has completed, which may lead to a race condition.'
+                  'unmount(...): does not support a callback argument. To execute a side effect after rendering, declare it in a component body with useEffect().'
                 )
               }
             }
-            flushSync(function () {
-              updateContainer(null, root2, null, null)
-            })
-            unmarkContainerAsRoot(container)
+            var root2 = this._internalRoot
+            if (root2 !== null) {
+              this._internalRoot = null
+              var container = root2.containerInfo
+              {
+                if (isAlreadyRendering()) {
+                  error(
+                    'Attempted to synchronously unmount a root while React was already rendering. React cannot finish unmounting the root until the current render has completed, which may lead to a race condition.'
+                  )
+                }
+              }
+              flushSync(function () {
+                updateContainer(null, root2, null, null)
+              })
+              unmarkContainerAsRoot(container)
+            }
           }
-        }
         function createRoot(container, options2) {
           if (!isValidContainer(container)) {
-            throw new Error('createRoot(...): Target container is not a DOM element.')
+            throw new Error(
+              'createRoot(...): Target container is not a DOM element.'
+            )
           }
           warnIfReactDOMContainerInDEV(container)
           var isStrictMode = false
@@ -24451,7 +27154,9 @@ var require_react_dom_development = __commonJS({
           )
           markContainerAsRoot(root2.current, container)
           var rootContainerElement =
-            container.nodeType === COMMENT_NODE ? container.parentNode : container
+            container.nodeType === COMMENT_NODE
+              ? container.parentNode
+              : container
           listenToAllSupportedEvents(rootContainerElement)
           return new ReactDOMRoot(root2)
         }
@@ -24463,10 +27168,13 @@ var require_react_dom_development = __commonJS({
             queueExplicitHydrationTarget(target)
           }
         }
-        ReactDOMHydrationRoot.prototype.unstable_scheduleHydration = scheduleHydration
+        ReactDOMHydrationRoot.prototype.unstable_scheduleHydration =
+          scheduleHydration
         function hydrateRoot(container, initialChildren, options2) {
           if (!isValidContainer(container)) {
-            throw new Error('hydrateRoot(...): Target container is not a DOM element.')
+            throw new Error(
+              'hydrateRoot(...): Target container is not a DOM element.'
+            )
           }
           warnIfReactDOMContainerInDEV(container)
           {
@@ -24477,7 +27185,8 @@ var require_react_dom_development = __commonJS({
             }
           }
           var hydrationCallbacks = options2 != null ? options2 : null
-          var mutableSources = (options2 != null && options2.hydratedSources) || null
+          var mutableSources =
+            (options2 != null && options2.hydratedSources) || null
           var isStrictMode = false
           var concurrentUpdatesByDefaultOverride = false
           var identifierPrefix = ''
@@ -24529,7 +27238,8 @@ var require_react_dom_development = __commonJS({
             (node.nodeType === ELEMENT_NODE ||
               node.nodeType === DOCUMENT_NODE ||
               node.nodeType === DOCUMENT_FRAGMENT_NODE ||
-              (node.nodeType === COMMENT_NODE && node.nodeValue === ' react-mount-point-unstable '))
+              (node.nodeType === COMMENT_NODE &&
+                node.nodeValue === ' react-mount-point-unstable '))
           )
         }
         function warnIfReactDOMContainerInDEV(container) {
@@ -24560,7 +27270,10 @@ var require_react_dom_development = __commonJS({
         var topLevelUpdateWarnings
         {
           topLevelUpdateWarnings = function (container) {
-            if (container._reactRootContainer && container.nodeType !== COMMENT_NODE) {
+            if (
+              container._reactRootContainer &&
+              container.nodeType !== COMMENT_NODE
+            ) {
               var hostInstance = findHostInstanceWithNoPortals(
                 container._reactRootContainer.current
               )
@@ -24635,7 +27348,9 @@ var require_react_dom_development = __commonJS({
             container._reactRootContainer = root2
             markContainerAsRoot(root2.current, container)
             var rootContainerElement =
-              container.nodeType === COMMENT_NODE ? container.parentNode : container
+              container.nodeType === COMMENT_NODE
+                ? container.parentNode
+                : container
             listenToAllSupportedEvents(rootContainerElement)
             flushSync()
             return root2
@@ -24667,7 +27382,9 @@ var require_react_dom_development = __commonJS({
             container._reactRootContainer = _root
             markContainerAsRoot(_root.current, container)
             var _rootContainerElement =
-              container.nodeType === COMMENT_NODE ? container.parentNode : container
+              container.nodeType === COMMENT_NODE
+                ? container.parentNode
+                : container
             listenToAllSupportedEvents(_rootContainerElement)
             flushSync(function () {
               updateContainer(initialChildren, _root, parentComponent, callback)
@@ -24695,7 +27412,10 @@ var require_react_dom_development = __commonJS({
         ) {
           {
             topLevelUpdateWarnings(container)
-            warnOnInvalidCallback$1(callback === void 0 ? null : callback, 'render')
+            warnOnInvalidCallback$1(
+              callback === void 0 ? null : callback,
+              'render'
+            )
           }
           var maybeRoot = container._reactRootContainer
           var root2
@@ -24731,7 +27451,8 @@ var require_react_dom_development = __commonJS({
             }
             var owner = ReactCurrentOwner$3.current
             if (owner !== null && owner.stateNode !== null) {
-              var warnedAboutRefsInRender = owner.stateNode._warnedAboutRefsInRender
+              var warnedAboutRefsInRender =
+                owner.stateNode._warnedAboutRefsInRender
               if (!warnedAboutRefsInRender) {
                 error(
                   '%s is accessing findDOMNode inside its render(). render() should be a pure function of props and state. It should never access something that requires stale data from the previous render, such as refs. Move this logic to componentDidMount and componentDidUpdate instead.',
@@ -24748,7 +27469,10 @@ var require_react_dom_development = __commonJS({
             return componentOrElement
           }
           {
-            return findHostInstanceWithWarning(componentOrElement, 'findDOMNode')
+            return findHostInstanceWithWarning(
+              componentOrElement,
+              'findDOMNode'
+            )
           }
         }
         function hydrate(element, container, callback) {
@@ -24762,14 +27486,21 @@ var require_react_dom_development = __commonJS({
           }
           {
             var isModernRoot =
-              isContainerMarkedAsRoot(container) && container._reactRootContainer === void 0
+              isContainerMarkedAsRoot(container) &&
+              container._reactRootContainer === void 0
             if (isModernRoot) {
               error(
                 'You are calling ReactDOM.hydrate() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call hydrateRoot(container, element)?'
               )
             }
           }
-          return legacyRenderSubtreeIntoContainer(null, element, container, true, callback)
+          return legacyRenderSubtreeIntoContainer(
+            null,
+            element,
+            container,
+            true,
+            callback
+          )
         }
         function render(element, container, callback) {
           {
@@ -24782,14 +27513,21 @@ var require_react_dom_development = __commonJS({
           }
           {
             var isModernRoot =
-              isContainerMarkedAsRoot(container) && container._reactRootContainer === void 0
+              isContainerMarkedAsRoot(container) &&
+              container._reactRootContainer === void 0
             if (isModernRoot) {
               error(
                 'You are calling ReactDOM.render() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call root.render(element)?'
               )
             }
           }
-          return legacyRenderSubtreeIntoContainer(null, element, container, false, callback)
+          return legacyRenderSubtreeIntoContainer(
+            null,
+            element,
+            container,
+            false,
+            callback
+          )
         }
         function unstable_renderSubtreeIntoContainer(
           parentComponent,
@@ -24827,11 +27565,14 @@ var require_react_dom_development = __commonJS({
             }
           }
           if (!isValidContainerLegacy(container)) {
-            throw new Error('unmountComponentAtNode(...): Target container is not a DOM element.')
+            throw new Error(
+              'unmountComponentAtNode(...): Target container is not a DOM element.'
+            )
           }
           {
             var isModernRoot =
-              isContainerMarkedAsRoot(container) && container._reactRootContainer === void 0
+              isContainerMarkedAsRoot(container) &&
+              container._reactRootContainer === void 0
             if (isModernRoot) {
               error(
                 'You are calling ReactDOM.unmountComponentAtNode() on a container that was previously passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call root.unmount()?'
@@ -24841,7 +27582,8 @@ var require_react_dom_development = __commonJS({
           if (container._reactRootContainer) {
             {
               var rootEl = getReactRootElementInContainer(container)
-              var renderedByDifferentReact = rootEl && !getInstanceFromNode(rootEl)
+              var renderedByDifferentReact =
+                rootEl && !getInstanceFromNode(rootEl)
               if (renderedByDifferentReact) {
                 error(
                   "unmountComponentAtNode(): The node you're attempting to unmount was rendered by another copy of React."
@@ -24849,16 +27591,24 @@ var require_react_dom_development = __commonJS({
               }
             }
             flushSync(function () {
-              legacyRenderSubtreeIntoContainer(null, null, container, false, function () {
-                container._reactRootContainer = null
-                unmarkContainerAsRoot(container)
-              })
+              legacyRenderSubtreeIntoContainer(
+                null,
+                null,
+                container,
+                false,
+                function () {
+                  container._reactRootContainer = null
+                  unmarkContainerAsRoot(container)
+                }
+              )
             })
             return true
           } else {
             {
               var _rootEl = getReactRootElementInContainer(container)
-              var hasNonRootReactChild = !!(_rootEl && getInstanceFromNode(_rootEl))
+              var hasNonRootReactChild = !!(
+                _rootEl && getInstanceFromNode(_rootEl)
+              )
               var isContainerReactRoot =
                 container.nodeType === ELEMENT_NODE &&
                 isValidContainerLegacy(container.parentNode) &&
@@ -24877,7 +27627,9 @@ var require_react_dom_development = __commonJS({
         }
         setAttemptSynchronousHydration(attemptSynchronousHydration$1)
         setAttemptContinuousHydration(attemptContinuousHydration$1)
-        setAttemptHydrationAtCurrentPriority(attemptHydrationAtCurrentPriority$1)
+        setAttemptHydrationAtCurrentPriority(
+          attemptHydrationAtCurrentPriority$1
+        )
         setGetCurrentUpdatePriority(getCurrentUpdatePriority)
         setAttemptHydrationAtPriority(runWithPriority)
         {
@@ -24898,13 +27650,21 @@ var require_react_dom_development = __commonJS({
         setRestoreImplementation(restoreControlledState$3)
         setBatchingImplementation(batchedUpdates$1, discreteUpdates, flushSync)
         function createPortal$1(children, container) {
-          var key = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : null
+          var key =
+            arguments.length > 2 && arguments[2] !== void 0
+              ? arguments[2]
+              : null
           if (!isValidContainer(container)) {
             throw new Error('Target container is not a DOM element.')
           }
           return createPortal(children, container, null, key)
         }
-        function renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {
+        function renderSubtreeIntoContainer(
+          parentComponent,
+          element,
+          containerNode,
+          callback
+        ) {
           return unstable_renderSubtreeIntoContainer(
             parentComponent,
             element,
@@ -24995,7 +27755,8 @@ var require_react_dom_development = __commonJS({
         exports.version = ReactVersion
         if (
           typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function'
+          typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop ===
+            'function'
         ) {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error())
         }

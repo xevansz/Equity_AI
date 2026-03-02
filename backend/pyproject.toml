@@ -6,10 +6,6 @@ authors = [
     {name = "xevansz", email = "minithbmatthew@gmail.com"},
 ]
 dependencies = [
-    "black",
-    "isort",
-    "flake8",
-    "pre-commit",
     "fastapi[standard]>=0.128.7",
     "motor>=3.7.1",
     "chromadb>=1.5.0",
@@ -18,13 +14,38 @@ dependencies = [
     "yfinance>=1.2.0",
     "lxml>=6.0.2",
     "sentence-transformers>=5.2.3",
-    "ruff",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
 
+[dependency-groups]
+dev = [
+    "ruff>=0.15.4",
+    "pre-commit>=4.5.1",
+    "pre-commit-hooks>=6.0.0",
+    "mypy>=1.19.1",
+]
 
 [tool.pdm]
 distribution = false
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+
+
 

@@ -44,7 +44,9 @@ const AnalysisPanel = ({ data }) => {
             key={t}
             onClick={() => setTab(t)}
             className={`px-3 py-1 rounded text-sm ${
-              tab === t ? 'bg-primary text-background' : 'bg-background text-muted'
+              tab === t
+                ? 'bg-primary text-background'
+                : 'bg-background text-muted'
             }`}
           >
             {t === 'thesis' && '💡 Thesis'}
@@ -59,7 +61,9 @@ const AnalysisPanel = ({ data }) => {
         {/* LEFT → RAW API RESPONSE */}
         <div className="bg-background rounded p-3 text-xs overflow-y-auto overflow-x-hidden max-h-[420px] border border-text-muted/10">
           <div className="text-muted mb-2">Raw API Response</div>
-          <pre className="whitespace-pre-wrap max-w-full overflow-x-auto text-text">{JSON.stringify(data, null, 2)}</pre>
+          <pre className="whitespace-pre-wrap max-w-full overflow-x-auto text-text">
+            {JSON.stringify(data, null, 2)}
+          </pre>
         </div>
 
         {/* RIGHT → TAB CONTENT */}

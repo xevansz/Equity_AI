@@ -20,7 +20,9 @@ const ForgotPassword = () => {
         {sent ? (
           <div className="p-4 bg-primary/10 rounded-lg text-center">
             <p className="text-sm">Reset link sent to {email}</p>
-            <p className="text-xs text-muted mt-2">Check your email for instructions.</p>
+            <p className="text-xs text-muted mt-2">
+              Check your email for instructions.
+            </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">

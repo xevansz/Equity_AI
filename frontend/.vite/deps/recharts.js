@@ -13,7 +13,8 @@ var require_isArray = __commonJS({
 // node_modules/lodash/_freeGlobal.js
 var require_freeGlobal = __commonJS({
   'node_modules/lodash/_freeGlobal.js'(exports, module) {
-    var freeGlobal = typeof global == 'object' && global && global.Object === Object && global
+    var freeGlobal =
+      typeof global == 'object' && global && global.Object === Object && global
     module.exports = freeGlobal
   },
 })
@@ -22,7 +23,8 @@ var require_freeGlobal = __commonJS({
 var require_root = __commonJS({
   'node_modules/lodash/_root.js'(exports, module) {
     var freeGlobal = require_freeGlobal()
-    var freeSelf = typeof self == 'object' && self && self.Object === Object && self
+    var freeSelf =
+      typeof self == 'object' && self && self.Object === Object && self
     var root = freeGlobal || freeSelf || Function('return this')()
     module.exports = root
   },
@@ -116,7 +118,10 @@ var require_isSymbol = __commonJS({
     var isObjectLike = require_isObjectLike()
     var symbolTag = '[object Symbol]'
     function isSymbol(value) {
-      return typeof value == 'symbol' || (isObjectLike(value) && baseGetTag(value) == symbolTag)
+      return (
+        typeof value == 'symbol' ||
+        (isObjectLike(value) && baseGetTag(value) == symbolTag)
+      )
     }
     module.exports = isSymbol
   },
@@ -178,7 +183,9 @@ var require_isFunction = __commonJS({
         return false
       }
       var tag = baseGetTag(value)
-      return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag
+      return (
+        tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag
+      )
     }
     module.exports = isFunction30
   },
@@ -198,7 +205,9 @@ var require_isMasked = __commonJS({
   'node_modules/lodash/_isMasked.js'(exports, module) {
     var coreJsData = require_coreJsData()
     var maskSrcKey = (function () {
-      var uid = /[^.]+$/.exec((coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO) || '')
+      var uid = /[^.]+$/.exec(
+        (coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO) || ''
+      )
       return uid ? 'Symbol(src)_1.' + uid : ''
     })()
     function isMasked(func) {
@@ -246,7 +255,10 @@ var require_baseIsNative = __commonJS({
         funcToString
           .call(hasOwnProperty2)
           .replace(reRegExpChar, '\\$&')
-          .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') +
+          .replace(
+            /hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,
+            '$1.*?'
+          ) +
         '$'
     )
     function baseIsNative(value) {
@@ -343,7 +355,9 @@ var require_hashHas = __commonJS({
     var hasOwnProperty2 = objectProto.hasOwnProperty
     function hashHas(key) {
       var data = this.__data__
-      return nativeCreate ? data[key] !== void 0 : hasOwnProperty2.call(data, key)
+      return nativeCreate
+        ? data[key] !== void 0
+        : hasOwnProperty2.call(data, key)
     }
     module.exports = hashHas
   },
@@ -555,7 +569,10 @@ var require_isKeyable = __commonJS({
   'node_modules/lodash/_isKeyable.js'(exports, module) {
     function isKeyable(value) {
       var type = typeof value
-      return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean'
+      return type == 'string' ||
+        type == 'number' ||
+        type == 'symbol' ||
+        type == 'boolean'
         ? value !== '__proto__'
         : value === null
     }
@@ -569,7 +586,9 @@ var require_getMapData = __commonJS({
     var isKeyable = require_isKeyable()
     function getMapData(map5, key) {
       var data = map5.__data__
-      return isKeyable(key) ? data[typeof key == 'string' ? 'string' : 'hash'] : data.map
+      return isKeyable(key)
+        ? data[typeof key == 'string' ? 'string' : 'hash']
+        : data.map
     }
     module.exports = getMapData
   },
@@ -657,7 +676,10 @@ var require_memoize = __commonJS({
     var MapCache = require_MapCache()
     var FUNC_ERROR_TEXT = 'Expected a function'
     function memoize4(func, resolver) {
-      if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
+      if (
+        typeof func != 'function' ||
+        (resolver != null && typeof resolver != 'function')
+      ) {
         throw new TypeError(FUNC_ERROR_TEXT)
       }
       var memoized = function () {
@@ -711,7 +733,9 @@ var require_stringToPath = __commonJS({
         result.push('')
       }
       string.replace(rePropName, function (match, number4, quote, subString) {
-        result.push(quote ? subString.replace(reEscapeChar, '$1') : number4 || match)
+        result.push(
+          quote ? subString.replace(reEscapeChar, '$1') : number4 || match
+        )
       })
       return result
     })
@@ -856,7 +880,9 @@ var require_isString = __commonJS({
     function isString5(value) {
       return (
         typeof value == 'string' ||
-        (!isArray(value) && isObjectLike(value) && baseGetTag(value) == stringTag)
+        (!isArray(value) &&
+          isObjectLike(value) &&
+          baseGetTag(value) == stringTag)
       )
     }
     module.exports = isString5
@@ -865,7 +891,9 @@ var require_isString = __commonJS({
 
 // node_modules/recharts/node_modules/react-is/cjs/react-is.development.js
 var require_react_is_development = __commonJS({
-  'node_modules/recharts/node_modules/react-is/cjs/react-is.development.js'(exports) {
+  'node_modules/recharts/node_modules/react-is/cjs/react-is.development.js'(
+    exports
+  ) {
     'use strict'
     if (true) {
       ;(function () {
@@ -1007,7 +1035,9 @@ var require_react_is_development = __commonJS({
         }
         function isElement(object) {
           return (
-            typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE
+            typeof object === 'object' &&
+            object !== null &&
+            object.$$typeof === REACT_ELEMENT_TYPE
           )
         }
         function isForwardRef(object) {
@@ -1089,7 +1119,10 @@ var require_isNumber = __commonJS({
     var isObjectLike = require_isObjectLike()
     var numberTag = '[object Number]'
     function isNumber4(value) {
-      return typeof value == 'number' || (isObjectLike(value) && baseGetTag(value) == numberTag)
+      return (
+        typeof value == 'number' ||
+        (isObjectLike(value) && baseGetTag(value) == numberTag)
+      )
     }
     module.exports = isNumber4
   },
@@ -1151,10 +1184,13 @@ var require_hasUnicode = __commonJS({
     var rsComboMarksRange = '\\u0300-\\u036f'
     var reComboHalfMarksRange = '\\ufe20-\\ufe2f'
     var rsComboSymbolsRange = '\\u20d0-\\u20ff'
-    var rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange
+    var rsComboRange =
+      rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange
     var rsVarRange = '\\ufe0e\\ufe0f'
     var rsZWJ = '\\u200d'
-    var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange + rsComboRange + rsVarRange + ']')
+    var reHasUnicode = RegExp(
+      '[' + rsZWJ + rsAstralRange + rsComboRange + rsVarRange + ']'
+    )
     function hasUnicode(string) {
       return reHasUnicode.test(string)
     }
@@ -1179,7 +1215,8 @@ var require_unicodeToArray = __commonJS({
     var rsComboMarksRange = '\\u0300-\\u036f'
     var reComboHalfMarksRange = '\\ufe20-\\ufe2f'
     var rsComboSymbolsRange = '\\u20d0-\\u20ff'
-    var rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange
+    var rsComboRange =
+      rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange
     var rsVarRange = '\\ufe0e\\ufe0f'
     var rsAstral = '[' + rsAstralRange + ']'
     var rsCombo = '[' + rsComboRange + ']'
@@ -1203,9 +1240,18 @@ var require_unicodeToArray = __commonJS({
     var rsSeq = rsOptVar + reOptMod + rsOptJoin
     var rsSymbol =
       '(?:' +
-      [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') +
+      [
+        rsNonAstral + rsCombo + '?',
+        rsCombo,
+        rsRegional,
+        rsSurrPair,
+        rsAstral,
+      ].join('|') +
       ')'
-    var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g')
+    var reUnicode = RegExp(
+      rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq,
+      'g'
+    )
     function unicodeToArray(string) {
       return string.match(reUnicode) || []
     }
@@ -1238,7 +1284,9 @@ var require_createCaseFirst = __commonJS({
         string = toString3(string)
         var strSymbols = hasUnicode(string) ? stringToArray(string) : void 0
         var chr = strSymbols ? strSymbols[0] : string.charAt(0)
-        var trailing = strSymbols ? castSlice(strSymbols, 1).join('') : string.slice(1)
+        var trailing = strSymbols
+          ? castSlice(strSymbols, 1).join('')
+          : string.slice(1)
         return chr[methodName]() + trailing
       }
     }
@@ -1473,7 +1521,10 @@ var require_equalArrays = __commonJS({
             break
           }
         } else if (
-          !(arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))
+          !(
+            arrValue === othValue ||
+            equalFunc(arrValue, othValue, bitmask, customizer, stack)
+          )
         ) {
           result = false
           break
@@ -1550,10 +1601,21 @@ var require_equalByTag = __commonJS({
     var dataViewTag = '[object DataView]'
     var symbolProto = Symbol3 ? Symbol3.prototype : void 0
     var symbolValueOf = symbolProto ? symbolProto.valueOf : void 0
-    function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
+    function equalByTag(
+      object,
+      other,
+      tag,
+      bitmask,
+      customizer,
+      equalFunc,
+      stack
+    ) {
       switch (tag) {
         case dataViewTag:
-          if (object.byteLength != other.byteLength || object.byteOffset != other.byteOffset) {
+          if (
+            object.byteLength != other.byteLength ||
+            object.byteOffset != other.byteOffset
+          ) {
             return false
           }
           object = object.buffer
@@ -1760,9 +1822,14 @@ var require_isBuffer = __commonJS({
   'node_modules/lodash/isBuffer.js'(exports, module) {
     var root = require_root()
     var stubFalse = require_stubFalse()
-    var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports
+    var freeExports =
+      typeof exports == 'object' && exports && !exports.nodeType && exports
     var freeModule =
-      freeExports && typeof module == 'object' && module && !module.nodeType && module
+      freeExports &&
+      typeof module == 'object' &&
+      module &&
+      !module.nodeType &&
+      module
     var moduleExports = freeModule && freeModule.exports === freeExports
     var Buffer = moduleExports ? root.Buffer : void 0
     var nativeIsBuffer = Buffer ? Buffer.isBuffer : void 0
@@ -1796,7 +1863,12 @@ var require_isLength = __commonJS({
   'node_modules/lodash/isLength.js'(exports, module) {
     var MAX_SAFE_INTEGER2 = 9007199254740991
     function isLength(value) {
-      return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER2
+      return (
+        typeof value == 'number' &&
+        value > -1 &&
+        value % 1 == 0 &&
+        value <= MAX_SAFE_INTEGER2
+      )
     }
     module.exports = isLength
   },
@@ -1860,7 +1932,11 @@ var require_baseIsTypedArray = __commonJS({
       typedArrayTags[weakMapTag] =
         false
     function baseIsTypedArray(value) {
-      return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[baseGetTag(value)]
+      return (
+        isObjectLike(value) &&
+        isLength(value.length) &&
+        !!typedArrayTags[baseGetTag(value)]
+      )
     }
     module.exports = baseIsTypedArray
   },
@@ -1882,14 +1958,20 @@ var require_baseUnary = __commonJS({
 var require_nodeUtil = __commonJS({
   'node_modules/lodash/_nodeUtil.js'(exports, module) {
     var freeGlobal = require_freeGlobal()
-    var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports
+    var freeExports =
+      typeof exports == 'object' && exports && !exports.nodeType && exports
     var freeModule =
-      freeExports && typeof module == 'object' && module && !module.nodeType && module
+      freeExports &&
+      typeof module == 'object' &&
+      module &&
+      !module.nodeType &&
+      module
     var moduleExports = freeModule && freeModule.exports === freeExports
     var freeProcess = moduleExports && freeGlobal.process
     var nodeUtil = (function () {
       try {
-        var types = freeModule && freeModule.require && freeModule.require('util').types
+        var types =
+          freeModule && freeModule.require && freeModule.require('util').types
         if (types) {
           return types
         }
@@ -1907,7 +1989,9 @@ var require_isTypedArray = __commonJS({
     var baseUnary = require_baseUnary()
     var nodeUtil = require_nodeUtil()
     var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray
-    var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray
+    var isTypedArray = nodeIsTypedArray
+      ? baseUnary(nodeIsTypedArray)
+      : baseIsTypedArray
     module.exports = isTypedArray
   },
 })
@@ -1938,7 +2022,10 @@ var require_arrayLikeKeys = __commonJS({
             skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
             (key == 'length' || // Node.js 0.10 has enumerable non-index properties on buffers.
               (isBuff && (key == 'offset' || key == 'parent')) || // PhantomJS 2 has enumerable non-index properties on typed arrays.
-              (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) || // Skip index properties.
+              (isType &&
+                (key == 'buffer' ||
+                  key == 'byteLength' ||
+                  key == 'byteOffset')) || // Skip index properties.
               isIndex(key, length))
           )
         ) {
@@ -2053,7 +2140,14 @@ var require_equalObjects = __commonJS({
     var COMPARE_PARTIAL_FLAG = 1
     var objectProto = Object.prototype
     var hasOwnProperty2 = objectProto.hasOwnProperty
-    function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
+    function equalObjects(
+      object,
+      other,
+      bitmask,
+      customizer,
+      equalFunc,
+      stack
+    ) {
       var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
         objProps = getAllKeys(object),
         objLength = objProps.length,
@@ -2089,7 +2183,8 @@ var require_equalObjects = __commonJS({
         }
         if (
           !(compared === void 0
-            ? objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack)
+            ? objValue === othValue ||
+              equalFunc(objValue, othValue, bitmask, customizer, stack)
             : compared)
         ) {
           result = false
@@ -2233,7 +2328,14 @@ var require_baseIsEqualDeep = __commonJS({
     var objectTag = '[object Object]'
     var objectProto = Object.prototype
     var hasOwnProperty2 = objectProto.hasOwnProperty
-    function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
+    function baseIsEqualDeep(
+      object,
+      other,
+      bitmask,
+      customizer,
+      equalFunc,
+      stack
+    ) {
       var objIsArr = isArray(object),
         othIsArr = isArray(other),
         objTag = objIsArr ? arrayTag : getTag(object),
@@ -2254,16 +2356,31 @@ var require_baseIsEqualDeep = __commonJS({
         stack || (stack = new Stack())
         return objIsArr || isTypedArray(object)
           ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
-          : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack)
+          : equalByTag(
+              object,
+              other,
+              objTag,
+              bitmask,
+              customizer,
+              equalFunc,
+              stack
+            )
       }
       if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
-        var objIsWrapped = objIsObj && hasOwnProperty2.call(object, '__wrapped__'),
+        var objIsWrapped =
+            objIsObj && hasOwnProperty2.call(object, '__wrapped__'),
           othIsWrapped = othIsObj && hasOwnProperty2.call(other, '__wrapped__')
         if (objIsWrapped || othIsWrapped) {
           var objUnwrapped = objIsWrapped ? object.value() : object,
             othUnwrapped = othIsWrapped ? other.value() : other
           stack || (stack = new Stack())
-          return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack)
+          return equalFunc(
+            objUnwrapped,
+            othUnwrapped,
+            bitmask,
+            customizer,
+            stack
+          )
         }
       }
       if (!isSameTag) {
@@ -2285,10 +2402,21 @@ var require_baseIsEqual = __commonJS({
       if (value === other) {
         return true
       }
-      if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {
+      if (
+        value == null ||
+        other == null ||
+        (!isObjectLike(value) && !isObjectLike(other))
+      ) {
         return value !== value && other !== other
       }
-      return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack)
+      return baseIsEqualDeep(
+        value,
+        other,
+        bitmask,
+        customizer,
+        baseIsEqual,
+        stack
+      )
     }
     module.exports = baseIsEqual
   },
@@ -2311,7 +2439,11 @@ var require_baseIsMatch = __commonJS({
       object = Object(object)
       while (index2--) {
         var data = matchData[index2]
-        if (noCustomizer && data[2] ? data[1] !== object[data[0]] : !(data[0] in object)) {
+        if (
+          noCustomizer && data[2]
+            ? data[1] !== object[data[0]]
+            : !(data[0] in object)
+        ) {
           return false
         }
       }
@@ -2327,7 +2459,14 @@ var require_baseIsMatch = __commonJS({
         } else {
           var stack = new Stack()
           if (customizer) {
-            var result = customizer(objValue, srcValue, key, object, source, stack)
+            var result = customizer(
+              objValue,
+              srcValue,
+              key,
+              object,
+              source,
+              stack
+            )
           }
           if (
             !(result === void 0
@@ -2388,7 +2527,10 @@ var require_matchesStrictComparable = __commonJS({
         if (object == null) {
           return false
         }
-        return object[key] === srcValue && (srcValue !== void 0 || key in Object(object))
+        return (
+          object[key] === srcValue &&
+          (srcValue !== void 0 || key in Object(object))
+        )
       }
     }
     module.exports = matchesStrictComparable
@@ -2492,7 +2634,11 @@ var require_baseMatchesProperty = __commonJS({
         var objValue = get10(object, path2)
         return objValue === void 0 && objValue === srcValue
           ? hasIn(object, path2)
-          : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG)
+          : baseIsEqual(
+              srcValue,
+              objValue,
+              COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG
+            )
       }
     }
     module.exports = baseMatchesProperty
@@ -2564,7 +2710,9 @@ var require_baseIteratee = __commonJS({
         return identity9
       }
       if (typeof value == 'object') {
-        return isArray(value) ? baseMatchesProperty(value[0], value[1]) : baseMatches(value)
+        return isArray(value)
+          ? baseMatchesProperty(value[0], value[1])
+          : baseMatches(value)
       }
       return property(value)
     }
@@ -2749,7 +2897,9 @@ var require_uniqBy = __commonJS({
     var baseIteratee = require_baseIteratee()
     var baseUniq = require_baseUniq()
     function uniqBy2(array2, iteratee) {
-      return array2 && array2.length ? baseUniq(array2, baseIteratee(iteratee, 2)) : []
+      return array2 && array2.length
+        ? baseUniq(array2, baseIteratee(iteratee, 2))
+        : []
     }
     module.exports = uniqBy2
   },
@@ -2929,7 +3079,11 @@ var require_compareAscending = __commonJS({
           othIsSymbol = isSymbol(other)
         if (
           (!othIsNull && !othIsSymbol && !valIsSymbol && value > other) ||
-          (valIsSymbol && othIsDefined && othIsReflexive && !othIsNull && !othIsSymbol) ||
+          (valIsSymbol &&
+            othIsDefined &&
+            othIsReflexive &&
+            !othIsNull &&
+            !othIsSymbol) ||
           (valIsNull && othIsDefined && othIsReflexive) ||
           (!valIsDefined && othIsReflexive) ||
           !valIsReflexive
@@ -2938,7 +3092,11 @@ var require_compareAscending = __commonJS({
         }
         if (
           (!valIsNull && !valIsSymbol && !othIsSymbol && value < other) ||
-          (othIsSymbol && valIsDefined && valIsReflexive && !valIsNull && !valIsSymbol) ||
+          (othIsSymbol &&
+            valIsDefined &&
+            valIsReflexive &&
+            !valIsNull &&
+            !valIsSymbol) ||
           (othIsNull && valIsDefined && valIsReflexive) ||
           (!othIsDefined && valIsReflexive) ||
           !othIsReflexive
@@ -2995,7 +3153,10 @@ var require_baseOrderBy = __commonJS({
         iteratees = arrayMap(iteratees, function (iteratee) {
           if (isArray(iteratee)) {
             return function (value) {
-              return baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee)
+              return baseGet(
+                value,
+                iteratee.length === 1 ? iteratee[0] : iteratee
+              )
             }
           }
           return iteratee
@@ -3201,9 +3362,15 @@ var require_sortBy = __commonJS({
         return []
       }
       var length = iteratees.length
-      if (length > 1 && isIterateeCall(collection, iteratees[0], iteratees[1])) {
+      if (
+        length > 1 &&
+        isIterateeCall(collection, iteratees[0], iteratees[1])
+      ) {
         iteratees = []
-      } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
+      } else if (
+        length > 2 &&
+        isIterateeCall(iteratees[0], iteratees[1], iteratees[2])
+      ) {
         iteratees = [iteratees[0]]
       }
       return baseOrderBy(collection, baseFlatten(iteratees, 1), [])
@@ -3242,7 +3409,9 @@ var require_baseTrim = __commonJS({
     var trimmedEndIndex = require_trimmedEndIndex()
     var reTrimStart = /^\s+/
     function baseTrim(string) {
-      return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '') : string
+      return string
+        ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+        : string
     }
     module.exports = baseTrim
   },
@@ -3312,7 +3481,9 @@ var require_debounce = __commonJS({
       if (isObject5(options)) {
         leading = !!options.leading
         maxing = 'maxWait' in options
-        maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait
+        maxWait = maxing
+          ? nativeMax(toNumber(options.maxWait) || 0, wait)
+          : maxWait
         trailing = 'trailing' in options ? !!options.trailing : trailing
       }
       function invokeFunc(time2) {
@@ -3332,7 +3503,9 @@ var require_debounce = __commonJS({
         var timeSinceLastCall = time2 - lastCallTime,
           timeSinceLastInvoke = time2 - lastInvokeTime,
           timeWaiting = wait - timeSinceLastCall
-        return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting
+        return maxing
+          ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+          : timeWaiting
       }
       function shouldInvoke(time2) {
         var timeSinceLastCall = time2 - lastCallTime,
@@ -3467,7 +3640,9 @@ var require_max = __commonJS({
     var baseGt = require_baseGt()
     var identity9 = require_identity()
     function max5(array2) {
-      return array2 && array2.length ? baseExtremum(array2, identity9, baseGt) : void 0
+      return array2 && array2.length
+        ? baseExtremum(array2, identity9, baseGt)
+        : void 0
     }
     module.exports = max5
   },
@@ -3490,7 +3665,9 @@ var require_min = __commonJS({
     var baseLt = require_baseLt()
     var identity9 = require_identity()
     function min5(array2) {
-      return array2 && array2.length ? baseExtremum(array2, identity9, baseLt) : void 0
+      return array2 && array2.length
+        ? baseExtremum(array2, identity9, baseLt)
+        : void 0
     }
     module.exports = min5
   },
@@ -3555,21 +3732,43 @@ var require_react_is_development2 = __commonJS({
         var hasSymbol = typeof Symbol === 'function' && Symbol.for
         var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 60103
         var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 60106
-        var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 60107
-        var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 60108
-        var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 60114
-        var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 60109
+        var REACT_FRAGMENT_TYPE = hasSymbol
+          ? Symbol.for('react.fragment')
+          : 60107
+        var REACT_STRICT_MODE_TYPE = hasSymbol
+          ? Symbol.for('react.strict_mode')
+          : 60108
+        var REACT_PROFILER_TYPE = hasSymbol
+          ? Symbol.for('react.profiler')
+          : 60114
+        var REACT_PROVIDER_TYPE = hasSymbol
+          ? Symbol.for('react.provider')
+          : 60109
         var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 60110
-        var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 60111
-        var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 60111
-        var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 60112
-        var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 60113
-        var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 60120
+        var REACT_ASYNC_MODE_TYPE = hasSymbol
+          ? Symbol.for('react.async_mode')
+          : 60111
+        var REACT_CONCURRENT_MODE_TYPE = hasSymbol
+          ? Symbol.for('react.concurrent_mode')
+          : 60111
+        var REACT_FORWARD_REF_TYPE = hasSymbol
+          ? Symbol.for('react.forward_ref')
+          : 60112
+        var REACT_SUSPENSE_TYPE = hasSymbol
+          ? Symbol.for('react.suspense')
+          : 60113
+        var REACT_SUSPENSE_LIST_TYPE = hasSymbol
+          ? Symbol.for('react.suspense_list')
+          : 60120
         var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 60115
         var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 60116
         var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 60121
-        var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 60117
-        var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 60118
+        var REACT_FUNDAMENTAL_TYPE = hasSymbol
+          ? Symbol.for('react.fundamental')
+          : 60117
+        var REACT_RESPONDER_TYPE = hasSymbol
+          ? Symbol.for('react.responder')
+          : 60118
         var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 60119
         function isValidElementType(type) {
           return (
@@ -3650,7 +3849,9 @@ var require_react_is_development2 = __commonJS({
               )
             }
           }
-          return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE
+          return (
+            isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE
+          )
         }
         function isConcurrentMode(object) {
           return typeOf(object) === REACT_CONCURRENT_MODE_TYPE
@@ -3663,7 +3864,9 @@ var require_react_is_development2 = __commonJS({
         }
         function isElement(object) {
           return (
-            typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE
+            typeof object === 'object' &&
+            object !== null &&
+            object.$$typeof === REACT_ELEMENT_TYPE
           )
         }
         function isForwardRef(object) {
@@ -3744,7 +3947,9 @@ var require_object_assign = __commonJS({
     var propIsEnumerable = Object.prototype.propertyIsEnumerable
     function toObject(val) {
       if (val === null || val === void 0) {
-        throw new TypeError('Object.assign cannot be called with null or undefined')
+        throw new TypeError(
+          'Object.assign cannot be called with null or undefined'
+        )
       }
       return Object(val)
     }
@@ -3772,7 +3977,10 @@ var require_object_assign = __commonJS({
         'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
           test3[letter] = letter
         })
-        if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+        if (
+          Object.keys(Object.assign({}, test3)).join('') !==
+          'abcdefghijklmnopqrst'
+        ) {
           return false
         }
         return true
@@ -3845,7 +4053,13 @@ var require_checkPropTypes = __commonJS({
     var ReactPropTypesSecret
     var loggedTypeFailures
     var has
-    function checkPropTypes(typeSpecs, values2, location, componentName, getStack) {
+    function checkPropTypes(
+      typeSpecs,
+      values2,
+      location,
+      componentName,
+      getStack
+    ) {
       if (true) {
         for (var typeSpecName in typeSpecs) {
           if (has(typeSpecs, typeSpecName)) {
@@ -3888,11 +4102,18 @@ var require_checkPropTypes = __commonJS({
                   '. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).'
               )
             }
-            if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+            if (
+              error instanceof Error &&
+              !(error.message in loggedTypeFailures)
+            ) {
               loggedTypeFailures[error.message] = true
               var stack = getStack ? getStack() : ''
               printWarning(
-                'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+                'Failed ' +
+                  location +
+                  ' type: ' +
+                  error.message +
+                  (stack != null ? stack : '')
               )
             }
           }
@@ -4043,7 +4264,13 @@ var require_factoryWithTypeCheckers = __commonJS({
             }
             return null
           } else {
-            return validate(props, propName, componentName, location, propFullName)
+            return validate(
+              props,
+              propName,
+              componentName,
+              location,
+              propFullName
+            )
           }
         }
         var chainedCheckType = checkType.bind(null, false)
@@ -4051,7 +4278,14 @@ var require_factoryWithTypeCheckers = __commonJS({
         return chainedCheckType
       }
       function createPrimitiveTypeChecker(expectedType) {
-        function validate(props, propName, componentName, location, propFullName, secret) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName,
+          secret
+        ) {
           var propValue = props[propName]
           var propType = getPropType(propValue)
           if (propType !== expectedType) {
@@ -4062,7 +4296,11 @@ var require_factoryWithTypeCheckers = __commonJS({
                 ' `' +
                 propFullName +
                 '` of type ' +
-                ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') +
+                ('`' +
+                  preciseType +
+                  '` supplied to `' +
+                  componentName +
+                  '`, expected ') +
                 ('`' + expectedType + '`.'),
               { expectedType }
             )
@@ -4075,7 +4313,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         return createChainableTypeChecker(emptyFunctionThatReturnsNull)
       }
       function createArrayOfTypeChecker(typeChecker) {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           if (typeof typeChecker !== 'function') {
             return new PropTypeError(
               'Property `' +
@@ -4094,7 +4338,11 @@ var require_factoryWithTypeCheckers = __commonJS({
                 ' `' +
                 propFullName +
                 '` of type ' +
-                ('`' + propType + '` supplied to `' + componentName + '`, expected an array.')
+                ('`' +
+                  propType +
+                  '` supplied to `' +
+                  componentName +
+                  '`, expected an array.')
             )
           }
           for (var i = 0; i < propValue.length; i++) {
@@ -4115,7 +4363,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         return createChainableTypeChecker(validate)
       }
       function createElementTypeChecker() {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           var propValue = props[propName]
           if (!isValidElement10(propValue)) {
             var propType = getPropType(propValue)
@@ -4137,7 +4391,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         return createChainableTypeChecker(validate)
       }
       function createElementTypeTypeChecker() {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           var propValue = props[propName]
           if (!ReactIs.isValidElementType(propValue)) {
             var propType = getPropType(propValue)
@@ -4159,7 +4419,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         return createChainableTypeChecker(validate)
       }
       function createInstanceTypeChecker(expectedClass) {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           if (!(props[propName] instanceof expectedClass)) {
             var expectedClassName = expectedClass.name || ANONYMOUS
             var actualClassName = getClassName(props[propName])
@@ -4169,7 +4435,11 @@ var require_factoryWithTypeCheckers = __commonJS({
                 ' `' +
                 propFullName +
                 '` of type ' +
-                ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') +
+                ('`' +
+                  actualClassName +
+                  '` supplied to `' +
+                  componentName +
+                  '`, expected ') +
                 ('instance of `' + expectedClassName + '`.')
             )
           }
@@ -4187,25 +4457,36 @@ var require_factoryWithTypeCheckers = __commonJS({
                   ' arguments. A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
               )
             } else {
-              printWarning('Invalid argument supplied to oneOf, expected an array.')
+              printWarning(
+                'Invalid argument supplied to oneOf, expected an array.'
+              )
             }
           }
           return emptyFunctionThatReturnsNull
         }
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           var propValue = props[propName]
           for (var i = 0; i < expectedValues.length; i++) {
             if (is(propValue, expectedValues[i])) {
               return null
             }
           }
-          var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
-            var type = getPreciseType(value)
-            if (type === 'symbol') {
-              return String(value)
+          var valuesString = JSON.stringify(
+            expectedValues,
+            function replacer(key, value) {
+              var type = getPreciseType(value)
+              if (type === 'symbol') {
+                return String(value)
+              }
+              return value
             }
-            return value
-          })
+          )
           return new PropTypeError(
             'Invalid ' +
               location +
@@ -4214,13 +4495,23 @@ var require_factoryWithTypeCheckers = __commonJS({
               '` of value `' +
               String(propValue) +
               '` ' +
-              ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.')
+              ('supplied to `' +
+                componentName +
+                '`, expected one of ' +
+                valuesString +
+                '.')
           )
         }
         return createChainableTypeChecker(validate)
       }
       function createObjectOfTypeChecker(typeChecker) {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           if (typeof typeChecker !== 'function') {
             return new PropTypeError(
               'Property `' +
@@ -4239,7 +4530,11 @@ var require_factoryWithTypeCheckers = __commonJS({
                 ' `' +
                 propFullName +
                 '` of type ' +
-                ('`' + propType + '` supplied to `' + componentName + '`, expected an object.')
+                ('`' +
+                  propType +
+                  '` supplied to `' +
+                  componentName +
+                  '`, expected an object.')
             )
           }
           for (var key in propValue) {
@@ -4264,7 +4559,9 @@ var require_factoryWithTypeCheckers = __commonJS({
       function createUnionTypeChecker(arrayOfTypeCheckers) {
         if (!Array.isArray(arrayOfTypeCheckers)) {
           true
-            ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.')
+            ? printWarning(
+                'Invalid argument supplied to oneOfType, expected an instance of array.'
+              )
             : void 0
           return emptyFunctionThatReturnsNull
         }
@@ -4281,7 +4578,13 @@ var require_factoryWithTypeCheckers = __commonJS({
             return emptyFunctionThatReturnsNull
           }
         }
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           var expectedTypes = []
           for (var i2 = 0; i2 < arrayOfTypeCheckers.length; i2++) {
             var checker2 = arrayOfTypeCheckers[i2]
@@ -4316,7 +4619,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         return createChainableTypeChecker(validate)
       }
       function createNodeChecker() {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           if (!isNode(props[propName])) {
             return new PropTypeError(
               'Invalid ' +
@@ -4331,7 +4640,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         }
         return createChainableTypeChecker(validate)
       }
-      function invalidValidatorError(componentName, location, propFullName, key, type) {
+      function invalidValidatorError(
+        componentName,
+        location,
+        propFullName,
+        key,
+        type
+      ) {
         return new PropTypeError(
           (componentName || 'React class') +
             ': ' +
@@ -4346,7 +4661,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         )
       }
       function createShapeTypeChecker(shapeTypes) {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           var propValue = props[propName]
           var propType = getPropType(propValue)
           if (propType !== 'object') {
@@ -4389,7 +4710,13 @@ var require_factoryWithTypeCheckers = __commonJS({
         return createChainableTypeChecker(validate)
       }
       function createStrictShapeTypeChecker(shapeTypes) {
-        function validate(props, propName, componentName, location, propFullName) {
+        function validate(
+          props,
+          propName,
+          componentName,
+          location,
+          propFullName
+        ) {
           var propValue = props[propName]
           var propType = getPropType(propValue)
           if (propType !== 'object') {
@@ -4567,7 +4894,10 @@ var require_prop_types = __commonJS({
     if (true) {
       ReactIs = require_react_is2()
       throwOnDirectAccess = true
-      module.exports = require_factoryWithTypeCheckers()(ReactIs.isElement, throwOnDirectAccess)
+      module.exports = require_factoryWithTypeCheckers()(
+        ReactIs.isElement,
+        throwOnDirectAccess
+      )
     } else {
       module.exports = null()
     }
@@ -4654,7 +4984,9 @@ var require_isBoolean = __commonJS({
     var boolTag = '[object Boolean]'
     function isBoolean2(value) {
       return (
-        value === true || value === false || (isObjectLike(value) && baseGetTag(value) == boolTag)
+        value === true ||
+        value === false ||
+        (isObjectLike(value) && baseGetTag(value) == boolTag)
       )
     }
     module.exports = isBoolean2
@@ -4726,7 +5058,11 @@ var require_createRange = __commonJS({
     var toFinite = require_toFinite()
     function createRange(fromRight) {
       return function (start, end, step) {
-        if (step && typeof step != 'number' && isIterateeCall(start, end, step)) {
+        if (
+          step &&
+          typeof step != 'number' &&
+          isIterateeCall(start, end, step)
+        ) {
           end = step = void 0
         }
         start = toFinite(start)
@@ -4895,7 +5231,9 @@ var require_createFind = __commonJS({
           }
         }
         var index2 = findIndexFunc(collection, predicate, fromIndex)
-        return index2 > -1 ? iterable[iteratee ? collection[index2] : index2] : void 0
+        return index2 > -1
+          ? iterable[iteratee ? collection[index2] : index2]
+          : void 0
       }
     }
     module.exports = createFind
@@ -4969,7 +5307,8 @@ var require_eventemitter3 = __commonJS({
       }
       var listener = new EE(fn, context || emitter, once),
         evt = prefix2 ? prefix2 + event : event
-      if (!emitter._events[evt]) ((emitter._events[evt] = listener), emitter._eventsCount++)
+      if (!emitter._events[evt])
+        ((emitter._events[evt] = listener), emitter._eventsCount++)
       else if (!emitter._events[evt].fn) emitter._events[evt].push(listener)
       else emitter._events[evt] = [emitter._events[evt], listener]
       return emitter
@@ -5020,7 +5359,8 @@ var require_eventemitter3 = __commonJS({
         args,
         i
       if (listeners.fn) {
-        if (listeners.once) this.removeListener(event, listeners.fn, void 0, true)
+        if (listeners.once)
+          this.removeListener(event, listeners.fn, void 0, true)
         switch (len) {
           case 1:
             return (listeners.fn.call(listeners.context), true)
@@ -5033,7 +5373,10 @@ var require_eventemitter3 = __commonJS({
           case 5:
             return (listeners.fn.call(listeners.context, a1, a2, a3, a4), true)
           case 6:
-            return (listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true)
+            return (
+              listeners.fn.call(listeners.context, a1, a2, a3, a4, a5),
+              true
+            )
         }
         for (i = 1, args = new Array(len - 1); i < len; i++) {
           args[i - 1] = arguments[i]
@@ -5043,7 +5386,8 @@ var require_eventemitter3 = __commonJS({
         var length = listeners.length,
           j
         for (i = 0; i < length; i++) {
-          if (listeners[i].once) this.removeListener(event, listeners[i].fn, void 0, true)
+          if (listeners[i].once)
+            this.removeListener(event, listeners[i].fn, void 0, true)
           switch (len) {
             case 1:
               listeners[i].fn.call(listeners[i].context)
@@ -5074,7 +5418,12 @@ var require_eventemitter3 = __commonJS({
     EventEmitter2.prototype.once = function once(event, fn, context) {
       return addListener(this, event, fn, context, true)
     }
-    EventEmitter2.prototype.removeListener = function removeListener(event, fn, context, once) {
+    EventEmitter2.prototype.removeListener = function removeListener(
+      event,
+      fn,
+      context,
+      once
+    ) {
       var evt = prefix2 ? prefix2 + event : event
       if (!this._events[evt]) return this
       if (!fn) {
@@ -5091,7 +5440,11 @@ var require_eventemitter3 = __commonJS({
           clearEvent(this, evt)
         }
       } else {
-        for (var i = 0, events = [], length = listeners.length; i < length; i++) {
+        for (
+          var i = 0, events = [], length = listeners.length;
+          i < length;
+          i++
+        ) {
           if (
             listeners[i].fn !== fn ||
             (once && !listeners[i].once) ||
@@ -5100,12 +5453,15 @@ var require_eventemitter3 = __commonJS({
             events.push(listeners[i])
           }
         }
-        if (events.length) this._events[evt] = events.length === 1 ? events[0] : events
+        if (events.length)
+          this._events[evt] = events.length === 1 ? events[0] : events
         else clearEvent(this, evt)
       }
       return this
     }
-    EventEmitter2.prototype.removeAllListeners = function removeAllListeners(event) {
+    EventEmitter2.prototype.removeAllListeners = function removeAllListeners(
+      event
+    ) {
       var evt
       if (event) {
         evt = prefix2 ? prefix2 + event : event
@@ -5236,7 +5592,12 @@ var require_baseKeysIn = __commonJS({
       var isProto = isPrototype(object),
         result = []
       for (var key in object) {
-        if (!(key == 'constructor' && (isProto || !hasOwnProperty2.call(object, key)))) {
+        if (
+          !(
+            key == 'constructor' &&
+            (isProto || !hasOwnProperty2.call(object, key))
+          )
+        ) {
           result.push(key)
         }
       }
@@ -5253,7 +5614,9 @@ var require_keysIn = __commonJS({
     var baseKeysIn = require_baseKeysIn()
     var isArrayLike = require_isArrayLike()
     function keysIn(object) {
-      return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object)
+      return isArrayLike(object)
+        ? arrayLikeKeys(object, true)
+        : baseKeysIn(object)
     }
     module.exports = keysIn
   },
@@ -5275,9 +5638,14 @@ var require_baseAssignIn = __commonJS({
 var require_cloneBuffer = __commonJS({
   'node_modules/lodash/_cloneBuffer.js'(exports, module) {
     var root = require_root()
-    var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports
+    var freeExports =
+      typeof exports == 'object' && exports && !exports.nodeType && exports
     var freeModule =
-      freeExports && typeof module == 'object' && module && !module.nodeType && module
+      freeExports &&
+      typeof module == 'object' &&
+      module &&
+      !module.nodeType &&
+      module
     var moduleExports = freeModule && freeModule.exports === freeExports
     var Buffer = moduleExports ? root.Buffer : void 0
     var allocUnsafe = Buffer ? Buffer.allocUnsafe : void 0
@@ -5286,7 +5654,9 @@ var require_cloneBuffer = __commonJS({
         return buffer.slice()
       }
       var length = buffer.length,
-        result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length)
+        result = allocUnsafe
+          ? allocUnsafe(length)
+          : new buffer.constructor(length)
       buffer.copy(result)
       return result
     }
@@ -5377,7 +5747,11 @@ var require_initCloneArray = __commonJS({
     function initCloneArray(array2) {
       var length = array2.length,
         result = new array2.constructor(length)
-      if (length && typeof array2[0] == 'string' && hasOwnProperty2.call(array2, 'index')) {
+      if (
+        length &&
+        typeof array2[0] == 'string' &&
+        hasOwnProperty2.call(array2, 'index')
+      ) {
         result.index = array2.index
         result.input = array2.input
       }
@@ -5406,7 +5780,11 @@ var require_cloneDataView = __commonJS({
     var cloneArrayBuffer = require_cloneArrayBuffer()
     function cloneDataView(dataView, isDeep) {
       var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer
-      return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength)
+      return new dataView.constructor(
+        buffer,
+        dataView.byteOffset,
+        dataView.byteLength
+      )
     }
     module.exports = cloneDataView
   },
@@ -5443,8 +5821,14 @@ var require_cloneTypedArray = __commonJS({
   'node_modules/lodash/_cloneTypedArray.js'(exports, module) {
     var cloneArrayBuffer = require_cloneArrayBuffer()
     function cloneTypedArray(typedArray, isDeep) {
-      var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer
-      return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length)
+      var buffer = isDeep
+        ? cloneArrayBuffer(typedArray.buffer)
+        : typedArray.buffer
+      return new typedArray.constructor(
+        buffer,
+        typedArray.byteOffset,
+        typedArray.length
+      )
     }
     module.exports = cloneTypedArray
   },
@@ -5681,14 +6065,19 @@ var require_baseClone = __commonJS({
       cloneableTags[uint16Tag] =
       cloneableTags[uint32Tag] =
         true
-    cloneableTags[errorTag] = cloneableTags[funcTag] = cloneableTags[weakMapTag] = false
+    cloneableTags[errorTag] =
+      cloneableTags[funcTag] =
+      cloneableTags[weakMapTag] =
+        false
     function baseClone(value, bitmask, customizer, key, object, stack) {
       var result,
         isDeep = bitmask & CLONE_DEEP_FLAG,
         isFlat = bitmask & CLONE_FLAT_FLAG,
         isFull = bitmask & CLONE_SYMBOLS_FLAG
       if (customizer) {
-        result = object ? customizer(value, key, object, stack) : customizer(value)
+        result = object
+          ? customizer(value, key, object, stack)
+          : customizer(value)
       }
       if (result !== void 0) {
         return result
@@ -5730,21 +6119,36 @@ var require_baseClone = __commonJS({
       stack.set(value, result)
       if (isSet(value)) {
         value.forEach(function (subValue) {
-          result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack))
+          result.add(
+            baseClone(subValue, bitmask, customizer, subValue, value, stack)
+          )
         })
       } else if (isMap(value)) {
         value.forEach(function (subValue, key2) {
-          result.set(key2, baseClone(subValue, bitmask, customizer, key2, value, stack))
+          result.set(
+            key2,
+            baseClone(subValue, bitmask, customizer, key2, value, stack)
+          )
         })
       }
-      var keysFunc = isFull ? (isFlat ? getAllKeysIn : getAllKeys) : isFlat ? keysIn : keys2
+      var keysFunc = isFull
+        ? isFlat
+          ? getAllKeysIn
+          : getAllKeys
+        : isFlat
+          ? keysIn
+          : keys2
       var props = isArr ? void 0 : keysFunc(value)
       arrayEach(props || value, function (subValue, key2) {
         if (props) {
           key2 = subValue
           subValue = value[key2]
         }
-        assignValue(result, key2, baseClone(subValue, bitmask, customizer, key2, value, stack))
+        assignValue(
+          result,
+          key2,
+          baseClone(subValue, bitmask, customizer, key2, value, stack)
+        )
       })
       return result
     }
@@ -5758,7 +6162,9 @@ var require_parent = __commonJS({
     var baseGet = require_baseGet()
     var baseSlice = require_baseSlice()
     function parent(object, path2) {
-      return path2.length < 2 ? object : baseGet(object, baseSlice(path2, 0, -1))
+      return path2.length < 2
+        ? object
+        : baseGet(object, baseSlice(path2, 0, -1))
     }
     module.exports = parent
   },
@@ -5781,7 +6187,8 @@ var require_baseUnset = __commonJS({
         return true
       }
       var isRootPrimitive =
-        object == null || (typeof object !== 'object' && typeof object !== 'function')
+        object == null ||
+        (typeof object !== 'object' && typeof object !== 'function')
       while (++index2 < length) {
         var key = path2[index2]
         if (typeof key !== 'string') {
@@ -5913,7 +6320,9 @@ var require_sumBy = __commonJS({
     var baseIteratee = require_baseIteratee()
     var baseSum = require_baseSum()
     function sumBy2(array2, iteratee) {
-      return array2 && array2.length ? baseSum(array2, baseIteratee(iteratee, 2)) : 0
+      return array2 && array2.length
+        ? baseSum(array2, baseIteratee(iteratee, 2))
+        : 0
     }
     module.exports = sumBy2
   },
@@ -5931,7 +6340,8 @@ function r(e) {
   else if ('object' == typeof e)
     if (Array.isArray(e)) {
       var o = e.length
-      for (t = 0; t < o; t++) e[t] && (f = r(e[t])) && (n && (n += ' '), (n += f))
+      for (t = 0; t < o; t++)
+        e[t] && (f = r(e[t])) && (n && (n += ' '), (n += f))
     } else for (f in e) e[f] && (n && (n += ' '), (n += f))
   return n
 }
@@ -5967,10 +6377,15 @@ var mathSign = function mathSign2(value) {
   return -1
 }
 var isPercent = function isPercent2(value) {
-  return (0, import_isString.default)(value) && value.indexOf('%') === value.length - 1
+  return (
+    (0, import_isString.default)(value) &&
+    value.indexOf('%') === value.length - 1
+  )
 }
 var isNumber = function isNumber2(value) {
-  return (0, import_isNumber.default)(value) && !(0, import_isNaN.default)(value)
+  return (
+    (0, import_isNumber.default)(value) && !(0, import_isNaN.default)(value)
+  )
 }
 var isNullish = function isNullish2(value) {
   return (0, import_isNil.default)(value)
@@ -5984,8 +6399,10 @@ var uniqueId = function uniqueId2(prefix2) {
   return ''.concat(prefix2 || '').concat(id)
 }
 var getPercentValue = function getPercentValue2(percent, totalValue) {
-  var defaultValue = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 0
-  var validate = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : false
+  var defaultValue =
+    arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 0
+  var validate =
+    arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : false
   if (!isNumber(percent) && !(0, import_isString.default)(percent)) {
     return defaultValue
   }
@@ -6076,7 +6493,9 @@ var getLinearRegression = function getLinearRegression2(data) {
     xmax = Math.max(xmax, xcurrent)
   }
   var a2 =
-    len * xxsum !== xsum * xsum ? (len * xysum - xsum * ysum) / (len * xxsum - xsum * xsum) : 0
+    len * xxsum !== xsum * xsum
+      ? (len * xysum - xsum * ysum) / (len * xxsum - xsum * xsum)
+      : 0
   return {
     xmin,
     xmax,
@@ -6640,7 +7059,11 @@ var adaptEventHandlers = function adaptEventHandlers2(props, newHandler) {
   })
   return out
 }
-var getEventHandlerOfChild = function getEventHandlerOfChild2(originalHandler, data, index2) {
+var getEventHandlerOfChild = function getEventHandlerOfChild2(
+  originalHandler,
+  data,
+  index2
+) {
   return function (e) {
     originalHandler(data, index2, e)
     return null
@@ -6892,7 +7315,8 @@ var isValidSpreadableProp = function isValidSpreadableProp2(
     (_FilteredElementKeyMa =
       FilteredElementKeyMap === null || FilteredElementKeyMap === void 0
         ? void 0
-        : FilteredElementKeyMap[svgElementType]) !== null && _FilteredElementKeyMa !== void 0
+        : FilteredElementKeyMap[svgElementType]) !== null &&
+    _FilteredElementKeyMa !== void 0
       ? _FilteredElementKeyMa
       : []
   return (
@@ -6928,7 +7352,9 @@ var filterProps = function filterProps2(props, includeEvents, svgElementType) {
     var _inputProps
     if (
       isValidSpreadableProp(
-        (_inputProps = inputProps) === null || _inputProps === void 0 ? void 0 : _inputProps[key],
+        (_inputProps = inputProps) === null || _inputProps === void 0
+          ? void 0
+          : _inputProps[key],
         key,
         includeEvents,
         svgElementType
@@ -6970,10 +7396,16 @@ var isChildrenEqual = function isChildrenEqual2(nextChildren, prevChildren) {
   return true
 }
 var isSingleChildEqual = function isSingleChildEqual2(nextChild, prevChild) {
-  if ((0, import_isNil2.default)(nextChild) && (0, import_isNil2.default)(prevChild)) {
+  if (
+    (0, import_isNil2.default)(nextChild) &&
+    (0, import_isNil2.default)(prevChild)
+  ) {
     return true
   }
-  if (!(0, import_isNil2.default)(nextChild) && !(0, import_isNil2.default)(prevChild)) {
+  if (
+    !(0, import_isNil2.default)(nextChild) &&
+    !(0, import_isNil2.default)(prevChild)
+  ) {
     var _ref = nextChild.props || {},
       nextChildren = _ref.children,
       nextProps = _objectWithoutProperties(_ref, _excluded)
@@ -6981,7 +7413,10 @@ var isSingleChildEqual = function isSingleChildEqual2(nextChild, prevChild) {
       prevChildren = _ref2.children,
       prevProps = _objectWithoutProperties(_ref2, _excluded2)
     if (nextChildren && prevChildren) {
-      return shallowEqual(nextProps, prevProps) && isChildrenEqual(nextChildren, prevChildren)
+      return (
+        shallowEqual(nextProps, prevProps) &&
+        isChildrenEqual(nextChildren, prevChildren)
+      )
     }
     if (!nextChildren && !prevChildren) {
       return shallowEqual(nextProps, prevProps)
@@ -7022,7 +7457,16 @@ var parseChildIndex = function parseChildIndex2(child, children2) {
 }
 
 // node_modules/recharts/es6/container/Surface.js
-var _excluded3 = ['children', 'width', 'height', 'viewBox', 'className', 'style', 'title', 'desc']
+var _excluded3 = [
+  'children',
+  'width',
+  'height',
+  'viewBox',
+  'className',
+  'style',
+  'title',
+  'desc',
+]
 function _extends() {
   _extends = Object.assign
     ? Object.assign.bind()
@@ -7177,7 +7621,9 @@ var import_isFunction2 = __toESM(require_isFunction())
 var isDev = true
 var warn = function warn2(condition, format2) {
   for (
-    var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2;
+    var _len = arguments.length,
+      args = new Array(_len > 2 ? _len - 2 : 0),
+      _key = 2;
     _key < _len;
     _key++
   ) {
@@ -7273,7 +7719,8 @@ var Path = class {
     this._append`Q${+x1},${+y1},${(this._x1 = +x2)},${(this._y1 = +y2)}`
   }
   bezierCurveTo(x1, y1, x2, y2, x3, y3) {
-    this._append`C${+x1},${+y1},${+x2},${+y2},${(this._x1 = +x3)},${(this._y1 = +y3)}`
+    this
+      ._append`C${+x1},${+y1},${+x2},${+y2},${(this._x1 = +x3)},${(this._y1 = +y3)}`
   }
   arcTo(x1, y1, x2, y2, r2) {
     ;((x1 = +x1), (y1 = +y1), (x2 = +x2), (y2 = +y2), (r2 = +r2))
@@ -7297,7 +7744,11 @@ var Path = class {
         l20_2 = x20 * x20 + y20 * y20,
         l21 = Math.sqrt(l21_2),
         l01 = Math.sqrt(l01_2),
-        l = r2 * Math.tan((pi2 - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) / 2),
+        l =
+          r2 *
+          Math.tan(
+            (pi2 - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) / 2
+          ),
         t01 = l / l01,
         t21 = l / l21
       if (Math.abs(t01 - 1) > epsilon2) {
@@ -7318,7 +7769,10 @@ var Path = class {
       da = ccw ? a0 - a1 : a1 - a0
     if (this._x1 === null) {
       this._append`M${x0},${y0}`
-    } else if (Math.abs(this._x1 - x0) > epsilon2 || Math.abs(this._y1 - y0) > epsilon2) {
+    } else if (
+      Math.abs(this._x1 - x0) > epsilon2 ||
+      Math.abs(this._y1 - y0) > epsilon2
+    ) {
       this._append`L${x0},${y0}`
     }
     if (!r2) return
@@ -7382,7 +7836,8 @@ Linear.prototype = {
     this._point = 0
   },
   lineEnd: function () {
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -7438,10 +7893,14 @@ function line_default(x2, y2) {
     if (buffer) return ((output = null), buffer + '' || null)
   }
   line.x = function (_) {
-    return arguments.length ? ((x2 = typeof _ === 'function' ? _ : constant_default(+_)), line) : x2
+    return arguments.length
+      ? ((x2 = typeof _ === 'function' ? _ : constant_default(+_)), line)
+      : x2
   }
   line.y = function (_) {
-    return arguments.length ? ((y2 = typeof _ === 'function' ? _ : constant_default(+_)), line) : y2
+    return arguments.length
+      ? ((y2 = typeof _ === 'function' ? _ : constant_default(+_)), line)
+      : y2
   }
   line.defined = function (_) {
     return arguments.length
@@ -7455,7 +7914,10 @@ function line_default(x2, y2) {
   }
   line.context = function (_) {
     return arguments.length
-      ? (_ == null ? (context = output = null) : (output = curve((context = _))), line)
+      ? (_ == null
+          ? (context = output = null)
+          : (output = curve((context = _))),
+        line)
       : context
   }
   return line
@@ -7470,7 +7932,12 @@ function area_default(x0, y0, y1) {
     output = null,
     path2 = withPath(area)
   x0 = typeof x0 === 'function' ? x0 : x0 === void 0 ? x : constant_default(+x0)
-  y0 = typeof y0 === 'function' ? y0 : y0 === void 0 ? constant_default(0) : constant_default(+y0)
+  y0 =
+    typeof y0 === 'function'
+      ? y0
+      : y0 === void 0
+        ? constant_default(0)
+        : constant_default(+y0)
   y1 = typeof y1 === 'function' ? y1 : y1 === void 0 ? y : constant_default(+y1)
   function area(data) {
     var i,
@@ -7501,7 +7968,10 @@ function area_default(x0, y0, y1) {
       }
       if (defined0) {
         ;((x0z[i] = +x0(d, i, data)), (y0z[i] = +y0(d, i, data)))
-        output.point(x1 ? +x1(d, i, data) : x0z[i], y1 ? +y1(d, i, data) : y0z[i])
+        output.point(
+          x1 ? +x1(d, i, data) : x0z[i],
+          y1 ? +y1(d, i, data) : y0z[i]
+        )
       }
     }
     if (buffer) return ((output = null), buffer + '' || null)
@@ -7511,28 +7981,48 @@ function area_default(x0, y0, y1) {
   }
   area.x = function (_) {
     return arguments.length
-      ? ((x0 = typeof _ === 'function' ? _ : constant_default(+_)), (x1 = null), area)
+      ? ((x0 = typeof _ === 'function' ? _ : constant_default(+_)),
+        (x1 = null),
+        area)
       : x0
   }
   area.x0 = function (_) {
-    return arguments.length ? ((x0 = typeof _ === 'function' ? _ : constant_default(+_)), area) : x0
+    return arguments.length
+      ? ((x0 = typeof _ === 'function' ? _ : constant_default(+_)), area)
+      : x0
   }
   area.x1 = function (_) {
     return arguments.length
-      ? ((x1 = _ == null ? null : typeof _ === 'function' ? _ : constant_default(+_)), area)
+      ? ((x1 =
+          _ == null
+            ? null
+            : typeof _ === 'function'
+              ? _
+              : constant_default(+_)),
+        area)
       : x1
   }
   area.y = function (_) {
     return arguments.length
-      ? ((y0 = typeof _ === 'function' ? _ : constant_default(+_)), (y1 = null), area)
+      ? ((y0 = typeof _ === 'function' ? _ : constant_default(+_)),
+        (y1 = null),
+        area)
       : y0
   }
   area.y0 = function (_) {
-    return arguments.length ? ((y0 = typeof _ === 'function' ? _ : constant_default(+_)), area) : y0
+    return arguments.length
+      ? ((y0 = typeof _ === 'function' ? _ : constant_default(+_)), area)
+      : y0
   }
   area.y1 = function (_) {
     return arguments.length
-      ? ((y1 = _ == null ? null : typeof _ === 'function' ? _ : constant_default(+_)), area)
+      ? ((y1 =
+          _ == null
+            ? null
+            : typeof _ === 'function'
+              ? _
+              : constant_default(+_)),
+        area)
       : y1
   }
   area.lineX0 = area.lineY0 = function () {
@@ -7556,7 +8046,10 @@ function area_default(x0, y0, y1) {
   }
   area.context = function (_) {
     return arguments.length
-      ? (_ == null ? (context = output = null) : (output = curve((context = _))), area)
+      ? (_ == null
+          ? (context = output = null)
+          : (output = curve((context = _))),
+        area)
       : context
   }
   return area
@@ -7608,7 +8101,8 @@ var Bump = class {
     this._point = 0
   }
   lineEnd() {
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
     this._line = 1 - this._line
   }
   point(x2, y2) {
@@ -7779,8 +8273,12 @@ var wye_default = {
 function Symbol2(type, size) {
   let context = null,
     path2 = withPath(symbol)
-  type = typeof type === 'function' ? type : constant_default(type || circle_default)
-  size = typeof size === 'function' ? size : constant_default(size === void 0 ? 64 : +size)
+  type =
+    typeof type === 'function' ? type : constant_default(type || circle_default)
+  size =
+    typeof size === 'function'
+      ? size
+      : constant_default(size === void 0 ? 64 : +size)
   function symbol() {
     let buffer
     if (!context) context = buffer = path2()
@@ -7798,7 +8296,9 @@ function Symbol2(type, size) {
       : size
   }
   symbol.context = function (_) {
-    return arguments.length ? ((context = _ == null ? null : _), symbol) : context
+    return arguments.length
+      ? ((context = _ == null ? null : _), symbol)
+      : context
   }
   return symbol
 }
@@ -7839,7 +8339,8 @@ Basis.prototype = {
         this._context.lineTo(this._x1, this._y1)
         break
     }
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -7854,7 +8355,10 @@ Basis.prototype = {
         break
       case 2:
         this._point = 3
-        this._context.lineTo((5 * this._x0 + this._x1) / 6, (5 * this._y0 + this._y1) / 6)
+        this._context.lineTo(
+          (5 * this._x0 + this._x1) / 6,
+          (5 * this._y0 + this._y1) / 6
+        )
       default:
         point(this, x2, y2)
         break
@@ -7896,8 +8400,14 @@ BasisClosed.prototype = {
         break
       }
       case 2: {
-        this._context.moveTo((this._x2 + 2 * this._x3) / 3, (this._y2 + 2 * this._y3) / 3)
-        this._context.lineTo((this._x3 + 2 * this._x2) / 3, (this._y3 + 2 * this._y2) / 3)
+        this._context.moveTo(
+          (this._x2 + 2 * this._x3) / 3,
+          (this._y2 + 2 * this._y3) / 3
+        )
+        this._context.lineTo(
+          (this._x3 + 2 * this._x2) / 3,
+          (this._y3 + 2 * this._y2) / 3
+        )
         this._context.closePath()
         break
       }
@@ -7923,7 +8433,10 @@ BasisClosed.prototype = {
       case 2:
         this._point = 3
         ;((this._x4 = x2), (this._y4 = y2))
-        this._context.moveTo((this._x0 + 4 * this._x1 + x2) / 6, (this._y0 + 4 * this._y1 + y2) / 6)
+        this._context.moveTo(
+          (this._x0 + 4 * this._x1 + x2) / 6,
+          (this._y0 + 4 * this._y1 + y2) / 6
+        )
         break
       default:
         point(this, x2, y2)
@@ -7953,7 +8466,8 @@ BasisOpen.prototype = {
     this._point = 0
   },
   lineEnd: function () {
-    if (this._line || (this._line !== 0 && this._point === 3)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 3))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -8068,7 +8582,8 @@ Cardinal.prototype = {
         point2(this, this._x1, this._y1)
         break
     }
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -8196,7 +8711,8 @@ CardinalOpen.prototype = {
     this._point = 0
   },
   lineEnd: function () {
-    if (this._line || (this._line !== 0 && this._point === 3)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 3))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -8285,7 +8801,8 @@ CatmullRom.prototype = {
         this.point(this._x2, this._y2)
         break
     }
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -8293,7 +8810,9 @@ CatmullRom.prototype = {
     if (this._point) {
       var x23 = this._x2 - x2,
         y23 = this._y2 - y2
-      this._l23_a = Math.sqrt((this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha)))
+      this._l23_a = Math.sqrt(
+        (this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha))
+      )
     }
     switch (this._point) {
       case 0:
@@ -8381,7 +8900,9 @@ CatmullRomClosed.prototype = {
     if (this._point) {
       var x23 = this._x2 - x2,
         y23 = this._y2 - y2
-      this._l23_a = Math.sqrt((this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha)))
+      this._l23_a = Math.sqrt(
+        (this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha))
+      )
     }
     switch (this._point) {
       case 0:
@@ -8408,7 +8929,9 @@ CatmullRomClosed.prototype = {
 }
 var catmullRomClosed_default = (function custom6(alpha3) {
   function catmullRom(context) {
-    return alpha3 ? new CatmullRomClosed(context, alpha3) : new CardinalClosed(context, 0)
+    return alpha3
+      ? new CatmullRomClosed(context, alpha3)
+      : new CardinalClosed(context, 0)
   }
   catmullRom.alpha = function (alpha4) {
     return custom6(+alpha4)
@@ -8440,7 +8963,8 @@ CatmullRomOpen.prototype = {
         0
   },
   lineEnd: function () {
-    if (this._line || (this._line !== 0 && this._point === 3)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 3))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -8448,7 +8972,9 @@ CatmullRomOpen.prototype = {
     if (this._point) {
       var x23 = this._x2 - x2,
         y23 = this._y2 - y2
-      this._l23_a = Math.sqrt((this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha)))
+      this._l23_a = Math.sqrt(
+        (this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha))
+      )
     }
     switch (this._point) {
       case 0:
@@ -8477,7 +9003,9 @@ CatmullRomOpen.prototype = {
 }
 var catmullRomOpen_default = (function custom7(alpha3) {
   function catmullRom(context) {
-    return alpha3 ? new CatmullRomOpen(context, alpha3) : new CardinalOpen(context, 0)
+    return alpha3
+      ? new CatmullRomOpen(context, alpha3)
+      : new CardinalOpen(context, 0)
   }
   catmullRom.alpha = function (alpha4) {
     return custom7(+alpha4)
@@ -8518,7 +9046,10 @@ function slope3(that, x2, y2) {
     s0 = (that._y1 - that._y0) / (h0 || (h1 < 0 && -0)),
     s1 = (y2 - that._y1) / (h1 || (h0 < 0 && -0)),
     p = (s0 * h1 + s1 * h0) / (h0 + h1)
-  return (sign(s0) + sign(s1)) * Math.min(Math.abs(s0), Math.abs(s1), 0.5 * Math.abs(p)) || 0
+  return (
+    (sign(s0) + sign(s1)) *
+      Math.min(Math.abs(s0), Math.abs(s1), 0.5 * Math.abs(p)) || 0
+  )
 }
 function slope2(that, t) {
   var h = that._x1 - that._x0
@@ -8530,7 +9061,14 @@ function point4(that, t03, t13) {
     x1 = that._x1,
     y1 = that._y1,
     dx = (x1 - x0) / 3
-  that._context.bezierCurveTo(x0 + dx, y0 + dx * t03, x1 - dx, y1 - dx * t13, x1, y1)
+  that._context.bezierCurveTo(
+    x0 + dx,
+    y0 + dx * t03,
+    x1 - dx,
+    y1 - dx * t13,
+    x1,
+    y1
+  )
 }
 function MonotoneX(context) {
   this._context = context
@@ -8555,7 +9093,8 @@ MonotoneX.prototype = {
         point4(this, this._t0, slope2(this, this._t0))
         break
     }
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
     this._line = 1 - this._line
   },
   point: function (x2, y2) {
@@ -8586,7 +9125,10 @@ MonotoneX.prototype = {
 function MonotoneY(context) {
   this._context = new ReflectContext(context)
 }
-;(MonotoneY.prototype = Object.create(MonotoneX.prototype)).point = function (x2, y2) {
+;(MonotoneY.prototype = Object.create(MonotoneX.prototype)).point = function (
+  x2,
+  y2
+) {
   MonotoneX.prototype.point.call(this, y2, x2)
 }
 function ReflectContext(context) {
@@ -8633,14 +9175,23 @@ Natural.prototype = {
       y2 = this._y,
       n = x2.length
     if (n) {
-      this._line ? this._context.lineTo(x2[0], y2[0]) : this._context.moveTo(x2[0], y2[0])
+      this._line
+        ? this._context.lineTo(x2[0], y2[0])
+        : this._context.moveTo(x2[0], y2[0])
       if (n === 2) {
         this._context.lineTo(x2[1], y2[1])
       } else {
         var px = controlPoints(x2),
           py = controlPoints(y2)
         for (var i0 = 0, i1 = 1; i1 < n; ++i0, ++i1) {
-          this._context.bezierCurveTo(px[0][i0], py[0][i0], px[1][i0], py[1][i0], x2[i1], y2[i1])
+          this._context.bezierCurveTo(
+            px[0][i0],
+            py[0][i0],
+            px[1][i0],
+            py[1][i0],
+            x2[i1],
+            y2[i1]
+          )
         }
       }
     }
@@ -8661,9 +9212,11 @@ function controlPoints(x2) {
     b = new Array(n),
     r2 = new Array(n)
   ;((a2[0] = 0), (b[0] = 2), (r2[0] = x2[0] + 2 * x2[1]))
-  for (i = 1; i < n - 1; ++i) ((a2[i] = 1), (b[i] = 4), (r2[i] = 4 * x2[i] + 2 * x2[i + 1]))
+  for (i = 1; i < n - 1; ++i)
+    ((a2[i] = 1), (b[i] = 4), (r2[i] = 4 * x2[i] + 2 * x2[i + 1]))
   ;((a2[n - 1] = 2), (b[n - 1] = 7), (r2[n - 1] = 8 * x2[n - 1] + x2[n]))
-  for (i = 1; i < n; ++i) ((m = a2[i] / b[i - 1]), (b[i] -= m), (r2[i] -= m * r2[i - 1]))
+  for (i = 1; i < n; ++i)
+    ((m = a2[i] / b[i - 1]), (b[i] -= m), (r2[i] -= m * r2[i - 1]))
   a2[n - 1] = r2[n - 1] / b[n - 1]
   for (i = n - 2; i >= 0; --i) a2[i] = (r2[i] - a2[i + 1]) / b[i]
   b[n - 1] = (x2[n] + a2[n - 1]) / 2
@@ -8691,9 +9244,12 @@ Step.prototype = {
     this._point = 0
   },
   lineEnd: function () {
-    if (0 < this._t && this._t < 1 && this._point === 2) this._context.lineTo(this._x, this._y)
-    if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath()
-    if (this._line >= 0) ((this._t = 1 - this._t), (this._line = 1 - this._line))
+    if (0 < this._t && this._t < 1 && this._point === 2)
+      this._context.lineTo(this._x, this._y)
+    if (this._line || (this._line !== 0 && this._point === 1))
+      this._context.closePath()
+    if (this._line >= 0)
+      ((this._t = 1 - this._t), (this._line = 1 - this._line))
   },
   point: function (x2, y2) {
     ;((x2 = +x2), (y2 = +y2))
@@ -8781,7 +9337,9 @@ function stack_default() {
   }
   stack.keys = function (_) {
     return arguments.length
-      ? ((keys2 = typeof _ === 'function' ? _ : constant_default(Array.from(_))), stack)
+      ? ((keys2 =
+          typeof _ === 'function' ? _ : constant_default(Array.from(_))),
+        stack)
       : keys2
   }
   stack.value = function (_) {
@@ -8801,7 +9359,9 @@ function stack_default() {
       : order
   }
   stack.offset = function (_) {
-    return arguments.length ? ((offset = _ == null ? none_default : _), stack) : offset
+    return arguments.length
+      ? ((offset = _ == null ? none_default : _), stack)
+      : offset
   }
   return stack
 }
@@ -8828,7 +9388,8 @@ function silhouette_default(series, order) {
 
 // node_modules/d3-shape/src/offset/wiggle.js
 function wiggle_default(series, order) {
-  if (!((n = series.length) > 0) || !((m = (s0 = series[order[0]]).length) > 0)) return
+  if (!((n = series.length) > 0) || !((m = (s0 = series[order[0]]).length) > 0))
+    return
   for (var y2 = 0, j = 1, s0, m, n; j < m; ++j) {
     for (var i = 0, s1 = 0, s2 = 0; i < n; ++i) {
       var si = series[order[i]],
@@ -8917,7 +9478,12 @@ function _objectSpread(e) {
 function _defineProperty(obj, key, value) {
   key = _toPropertyKey(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -8991,7 +9557,10 @@ var calculateAreaSize = function calculateAreaSize2(size, sizeType, type) {
     case 'star': {
       var angle = 18 * RADIAN
       return (
-        1.25 * size * size * (Math.tan(angle) - Math.tan(angle * 2) * Math.pow(Math.tan(angle), 2))
+        1.25 *
+        size *
+        size *
+        (Math.tan(angle) - Math.tan(angle * 2) * Math.pow(Math.tan(angle), 2))
       )
     }
     case 'triangle':
@@ -9003,7 +9572,8 @@ var calculateAreaSize = function calculateAreaSize2(size, sizeType, type) {
   }
 }
 var registerSymbol = function registerSymbol2(key, factory) {
-  symbolFactories['symbol'.concat((0, import_upperFirst.default)(key))] = factory
+  symbolFactories['symbol'.concat((0, import_upperFirst.default)(key))] =
+    factory
 }
 var Symbols = function Symbols2(_ref) {
   var _ref$type = _ref.type,
@@ -9145,19 +9715,25 @@ function _possibleConstructorReturn(self2, call) {
   if (call && (_typeof4(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized(self2)
 }
 function _assertThisInitialized(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct = function _isNativeReflectConstruct29() {
     return !!t
@@ -9193,7 +9769,12 @@ function _setPrototypeOf(o, p) {
 function _defineProperty2(obj, key, value) {
   key = _toPropertyKey2(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -9285,7 +9866,10 @@ var DefaultLegendContent = (function (_PureComponent) {
           if (import_react6.default.isValidElement(data.legendIcon)) {
             var iconProps = _objectSpread2({}, data)
             delete iconProps.legendIcon
-            return import_react6.default.cloneElement(data.legendIcon, iconProps)
+            return import_react6.default.cloneElement(
+              data.legendIcon,
+              iconProps
+            )
           }
           return import_react6.default.createElement(Symbols, {
             fill: color2,
@@ -9344,7 +9928,9 @@ var DefaultLegendContent = (function (_PureComponent) {
           if (entry.type === 'none') {
             return null
           }
-          var entryValue = !(0, import_isFunction2.default)(entry.value) ? entry.value : null
+          var entryValue = !(0, import_isFunction2.default)(entry.value)
+            ? entry.value
+            : null
           warn(
             !(0, import_isFunction2.default)(entry.value),
             `The name property is also required when using a function for the dataKey of a chart's cartesian components. Ex: <Bar name="Name of my Data"/>`
@@ -9516,19 +10102,25 @@ function _possibleConstructorReturn2(self2, call) {
   if (call && (_typeof5(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized2(self2)
 }
 function _assertThisInitialized2(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct2() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct2 = function _isNativeReflectConstruct29() {
     return !!t
@@ -9564,7 +10156,12 @@ function _setPrototypeOf2(o, p) {
 function _defineProperty3(obj, key, value) {
   key = _toPropertyKey3(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -9629,7 +10226,11 @@ var Legend = (function (_PureComponent) {
   function Legend2() {
     var _this
     _classCallCheck2(this, Legend2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper2(this, Legend2, [].concat(args))
@@ -9683,7 +10284,10 @@ var Legend = (function (_PureComponent) {
                 onBBoxUpdate(box)
               }
             }
-          } else if (this.lastBoundingBox.width !== -1 || this.lastBoundingBox.height !== -1) {
+          } else if (
+            this.lastBoundingBox.width !== -1 ||
+            this.lastBoundingBox.height !== -1
+          ) {
             this.lastBoundingBox.width = -1
             this.lastBoundingBox.height = -1
             if (onBBoxUpdate) {
@@ -9695,7 +10299,10 @@ var Legend = (function (_PureComponent) {
       {
         key: 'getBBoxSnapshot',
         value: function getBBoxSnapshot() {
-          if (this.lastBoundingBox.width >= 0 && this.lastBoundingBox.height >= 0) {
+          if (
+            this.lastBoundingBox.width >= 0 &&
+            this.lastBoundingBox.height >= 0
+          ) {
             return _objectSpread3({}, this.lastBoundingBox)
           }
           return {
@@ -9797,7 +10404,11 @@ var Legend = (function (_PureComponent) {
                 _objectSpread3({}, this.props),
                 {},
                 {
-                  payload: getUniqPayload(payload, payloadUniqBy, defaultUniqBy),
+                  payload: getUniqPayload(
+                    payload,
+                    payloadUniqBy,
+                    defaultUniqBy
+                  ),
                 }
               )
             )
@@ -9909,7 +10520,10 @@ function _arrayLikeToArray(arr, len) {
 }
 function _iterableToArrayLimit(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -9922,12 +10536,18 @@ function _iterableToArrayLimit(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -9968,7 +10588,12 @@ function _objectSpread4(e) {
 function _defineProperty4(obj, key, value) {
   key = _toPropertyKey4(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -10010,84 +10635,85 @@ var DefaultTooltipContent = function DefaultTooltipContent2(props) {
     label = props.label,
     labelFormatter = props.labelFormatter,
     _props$accessibilityL = props.accessibilityLayer,
-    accessibilityLayer = _props$accessibilityL === void 0 ? false : _props$accessibilityL
+    accessibilityLayer =
+      _props$accessibilityL === void 0 ? false : _props$accessibilityL
   var renderContent3 = function renderContent4() {
     if (payload && payload.length) {
       var listStyle = {
         padding: 0,
         margin: 0,
       }
-      var items = (itemSorter ? (0, import_sortBy.default)(payload, itemSorter) : payload).map(
-        function (entry, i) {
-          if (entry.type === 'none') {
-            return null
-          }
-          var finalItemStyle = _objectSpread4(
-            {
-              display: 'block',
-              paddingTop: 4,
-              paddingBottom: 4,
-              color: entry.color || '#000',
-            },
-            itemStyle
-          )
-          var finalFormatter = entry.formatter || formatter || defaultFormatter
-          var value = entry.value,
-            name = entry.name
-          var finalValue = value
-          var finalName = name
-          if (finalFormatter && finalValue != null && finalName != null) {
-            var formatted = finalFormatter(value, name, entry, i, payload)
-            if (Array.isArray(formatted)) {
-              var _formatted = _slicedToArray(formatted, 2)
-              finalValue = _formatted[0]
-              finalName = _formatted[1]
-            } else {
-              finalValue = formatted
-            }
-          }
-          return import_react8.default.createElement(
-            'li',
-            {
-              className: 'recharts-tooltip-item',
-              key: 'tooltip-item-'.concat(i),
-              style: finalItemStyle,
-            },
-            isNumOrStr(finalName)
-              ? import_react8.default.createElement(
-                  'span',
-                  {
-                    className: 'recharts-tooltip-item-name',
-                  },
-                  finalName
-                )
-              : null,
-            isNumOrStr(finalName)
-              ? import_react8.default.createElement(
-                  'span',
-                  {
-                    className: 'recharts-tooltip-item-separator',
-                  },
-                  separator
-                )
-              : null,
-            import_react8.default.createElement(
-              'span',
-              {
-                className: 'recharts-tooltip-item-value',
-              },
-              finalValue
-            ),
-            import_react8.default.createElement(
-              'span',
-              {
-                className: 'recharts-tooltip-item-unit',
-              },
-              entry.unit || ''
-            )
-          )
+      var items = (
+        itemSorter ? (0, import_sortBy.default)(payload, itemSorter) : payload
+      ).map(function (entry, i) {
+        if (entry.type === 'none') {
+          return null
         }
-      )
+        var finalItemStyle = _objectSpread4(
+          {
+            display: 'block',
+            paddingTop: 4,
+            paddingBottom: 4,
+            color: entry.color || '#000',
+          },
+          itemStyle
+        )
+        var finalFormatter = entry.formatter || formatter || defaultFormatter
+        var value = entry.value,
+          name = entry.name
+        var finalValue = value
+        var finalName = name
+        if (finalFormatter && finalValue != null && finalName != null) {
+          var formatted = finalFormatter(value, name, entry, i, payload)
+          if (Array.isArray(formatted)) {
+            var _formatted = _slicedToArray(formatted, 2)
+            finalValue = _formatted[0]
+            finalName = _formatted[1]
+          } else {
+            finalValue = formatted
+          }
+        }
+        return import_react8.default.createElement(
+          'li',
+          {
+            className: 'recharts-tooltip-item',
+            key: 'tooltip-item-'.concat(i),
+            style: finalItemStyle,
+          },
+          isNumOrStr(finalName)
+            ? import_react8.default.createElement(
+                'span',
+                {
+                  className: 'recharts-tooltip-item-name',
+                },
+                finalName
+              )
+            : null,
+          isNumOrStr(finalName)
+            ? import_react8.default.createElement(
+                'span',
+                {
+                  className: 'recharts-tooltip-item-separator',
+                },
+                separator
+              )
+            : null,
+          import_react8.default.createElement(
+            'span',
+            {
+              className: 'recharts-tooltip-item-value',
+            },
+            finalValue
+          ),
+          import_react8.default.createElement(
+            'span',
+            {
+              className: 'recharts-tooltip-item-unit',
+            },
+            entry.unit || ''
+          )
+        )
+      })
       return import_react8.default.createElement(
         'ul',
         {
@@ -10143,7 +10769,9 @@ var DefaultTooltipContent = function DefaultTooltipContent2(props) {
         className: labelCN,
         style: finalLabelStyle,
       },
-      import_react8.default.isValidElement(finalLabel) ? finalLabel : ''.concat(finalLabel)
+      import_react8.default.isValidElement(finalLabel)
+        ? finalLabel
+        : ''.concat(finalLabel)
     ),
     renderContent3()
   )
@@ -10175,7 +10803,12 @@ function _typeof7(o) {
 function _defineProperty5(obj, key, value) {
   key = _toPropertyKey5(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -10217,13 +10850,22 @@ function getTooltipCSSClassName(_ref) {
               translateX >= coordinate.x
           ),
           ''.concat(CSS_CLASS_PREFIX, '-left'),
-          isNumber(translateX) && coordinate && isNumber(coordinate.x) && translateX < coordinate.x
+          isNumber(translateX) &&
+            coordinate &&
+            isNumber(coordinate.x) &&
+            translateX < coordinate.x
         ),
         ''.concat(CSS_CLASS_PREFIX, '-bottom'),
-        isNumber(translateY) && coordinate && isNumber(coordinate.y) && translateY >= coordinate.y
+        isNumber(translateY) &&
+          coordinate &&
+          isNumber(coordinate.y) &&
+          translateY >= coordinate.y
       ),
       ''.concat(CSS_CLASS_PREFIX, '-top'),
-      isNumber(translateY) && coordinate && isNumber(coordinate.y) && translateY < coordinate.y
+      isNumber(translateY) &&
+        coordinate &&
+        isNumber(coordinate.y) &&
+        translateY < coordinate.y
     )
   )
 }
@@ -10403,19 +11045,25 @@ function _possibleConstructorReturn3(self2, call) {
   if (call && (_typeof8(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized3(self2)
 }
 function _assertThisInitialized3(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct3() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct3 = function _isNativeReflectConstruct29() {
     return !!t
@@ -10451,7 +11099,12 @@ function _setPrototypeOf3(o, p) {
 function _defineProperty6(obj, key, value) {
   key = _toPropertyKey6(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -10476,7 +11129,11 @@ var TooltipBoundingBox = (function (_PureComponent) {
   function TooltipBoundingBox2() {
     var _this
     _classCallCheck3(this, TooltipBoundingBox2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper3(this, TooltipBoundingBox2, [].concat(args))
@@ -10505,7 +11162,8 @@ var TooltipBoundingBox = (function (_PureComponent) {
                 (_this$props$coordinat2 = _this.props.coordinate) === null ||
                 _this$props$coordinat2 === void 0
                   ? void 0
-                  : _this$props$coordinat2.x) !== null && _this$props$coordinat !== void 0
+                  : _this$props$coordinat2.x) !== null &&
+              _this$props$coordinat !== void 0
                 ? _this$props$coordinat
                 : 0,
             y:
@@ -10513,7 +11171,8 @@ var TooltipBoundingBox = (function (_PureComponent) {
                 (_this$props$coordinat4 = _this.props.coordinate) === null ||
                 _this$props$coordinat4 === void 0
                   ? void 0
-                  : _this$props$coordinat4.y) !== null && _this$props$coordinat3 !== void 0
+                  : _this$props$coordinat4.y) !== null &&
+              _this$props$coordinat3 !== void 0
                 ? _this$props$coordinat3
                 : 0,
           },
@@ -10580,7 +11239,8 @@ var TooltipBoundingBox = (function (_PureComponent) {
           ((_this$props$coordinat5 = this.props.coordinate) === null ||
           _this$props$coordinat5 === void 0
             ? void 0
-            : _this$props$coordinat5.x) !== this.state.dismissedAtCoordinate.x ||
+            : _this$props$coordinat5.x) !==
+            this.state.dismissedAtCoordinate.x ||
           ((_this$props$coordinat6 = this.props.coordinate) === null ||
           _this$props$coordinat6 === void 0
             ? void 0
@@ -10626,7 +11286,9 @@ var TooltipBoundingBox = (function (_PureComponent) {
             {
               transition:
                 isAnimationActive && active
-                  ? 'transform '.concat(animationDuration, 'ms ').concat(animationEasing)
+                  ? 'transform '
+                      .concat(animationDuration, 'ms ')
+                      .concat(animationEasing)
                   : void 0,
             },
             cssProperties
@@ -10634,7 +11296,10 @@ var TooltipBoundingBox = (function (_PureComponent) {
           {},
           {
             pointerEvents: 'none',
-            visibility: !this.state.dismissed && active && hasPayload ? 'visible' : 'hidden',
+            visibility:
+              !this.state.dismissed && active && hasPayload
+                ? 'visible'
+                : 'hidden',
             position: 'absolute',
             top: 0,
             left: 0,
@@ -10772,19 +11437,25 @@ function _possibleConstructorReturn4(self2, call) {
   if (call && (_typeof9(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized4(self2)
 }
 function _assertThisInitialized4(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct4() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct4 = function _isNativeReflectConstruct29() {
     return !!t
@@ -10820,7 +11491,12 @@ function _setPrototypeOf4(o, p) {
 function _defineProperty7(obj, key, value) {
   key = _toPropertyKey7(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -10884,7 +11560,10 @@ var Tooltip = (function (_PureComponent) {
         if (filterNull && finalPayload.length) {
           finalPayload = getUniqPayload(
             payload.filter(function (entry) {
-              return entry.value != null && (entry.hide !== true || _this.props.includeHidden)
+              return (
+                entry.value != null &&
+                (entry.hide !== true || _this.props.includeHidden)
+              )
             }),
             payloadUniqBy,
             defaultUniqBy2
@@ -11012,7 +11691,12 @@ function _objectSpread7(e) {
 function _defineProperty8(obj, key, value) {
   key = _toPropertyKey8(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -11061,7 +11745,10 @@ function _arrayLikeToArray2(arr, len) {
 }
 function _iterableToArrayLimit2(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -11074,12 +11761,18 @@ function _iterableToArrayLimit2(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -11137,7 +11830,10 @@ var ResponsiveContainer = (0, import_react11.forwardRef)(function (_ref, ref) {
     _useState2 = _slicedToArray2(_useState, 2),
     sizes = _useState2[0],
     setSizes = _useState2[1]
-  var setContainerSize = (0, import_react11.useCallback)(function (newWidth, newHeight) {
+  var setContainerSize = (0, import_react11.useCallback)(function (
+    newWidth,
+    newHeight
+  ) {
     setSizes(function (prevState) {
       var roundedWidth = Math.round(newWidth)
       var roundedHeight = Math.round(newHeight)
@@ -11163,7 +11859,11 @@ var ResponsiveContainer = (0, import_react11.forwardRef)(function (_ref, ref) {
         setContainerSize(containerWidth2, containerHeight2)
         ;(_onResizeRef$current = onResizeRef.current) === null ||
           _onResizeRef$current === void 0 ||
-          _onResizeRef$current.call(onResizeRef, containerWidth2, containerHeight2)
+          _onResizeRef$current.call(
+            onResizeRef,
+            containerWidth2,
+            containerHeight2
+          )
       }
       if (debounce > 0) {
         callback = (0, import_throttle.default)(callback, debounce, {
@@ -11196,7 +11896,11 @@ var ResponsiveContainer = (0, import_react11.forwardRef)(function (_ref, ref) {
         width,
         height
       )
-      warn(!aspect || aspect > 0, 'The aspect(%s) must be greater than zero.', aspect)
+      warn(
+        !aspect || aspect > 0,
+        'The aspect(%s) must be greater than zero.',
+        aspect
+      )
       var calculatedWidth = isPercent(width) ? containerWidth : width
       var calculatedHeight = isPercent(height) ? containerHeight : height
       if (aspect && aspect > 0) {
@@ -11220,7 +11924,9 @@ var ResponsiveContainer = (0, import_react11.forwardRef)(function (_ref, ref) {
         minHeight,
         aspect
       )
-      var isCharts = !Array.isArray(children2) && getDisplayName(children2.type).endsWith('Chart')
+      var isCharts =
+        !Array.isArray(children2) &&
+        getDisplayName(children2.type).endsWith('Chart')
       return import_react11.default.Children.map(children2, function (child) {
         if (import_react11.default.isValidElement(child)) {
           return (0, import_react11.cloneElement)(
@@ -11333,7 +12039,12 @@ function _objectSpread8(e) {
 function _defineProperty9(obj, key, value) {
   key = _toPropertyKey9(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -11378,7 +12089,8 @@ function removeInvalidKeys(obj) {
   return copyObj
 }
 var getStringSize = function getStringSize2(text) {
-  var style = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}
+  var style =
+    arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}
   if (text === void 0 || text === null || Global.isSsr) {
     return {
       width: 0,
@@ -11401,7 +12113,10 @@ var getStringSize = function getStringSize2(text) {
       measurementSpan.setAttribute('aria-hidden', 'true')
       document.body.appendChild(measurementSpan)
     }
-    var measurementSpanStyle = _objectSpread8(_objectSpread8({}, SPAN_STYLE), copyStyle)
+    var measurementSpanStyle = _objectSpread8(
+      _objectSpread8({}, SPAN_STYLE),
+      copyStyle
+    )
     Object.assign(measurementSpan.style, measurementSpanStyle)
     measurementSpan.textContent = ''.concat(text)
     var rect = measurementSpan.getBoundingClientRect()
@@ -11478,7 +12193,10 @@ function _arrayLikeToArray3(arr, len) {
 }
 function _iterableToArrayLimit3(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -11491,12 +12209,18 @@ function _iterableToArrayLimit3(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -11541,9 +12265,12 @@ function _toPrimitive10(t, r2) {
   }
   return ('string' === r2 ? String : Number)(t)
 }
-var MULTIPLY_OR_DIVIDE_REGEX = /(-?\d+(?:\.\d+)?[a-zA-Z%]*)([*/])(-?\d+(?:\.\d+)?[a-zA-Z%]*)/
-var ADD_OR_SUBTRACT_REGEX = /(-?\d+(?:\.\d+)?[a-zA-Z%]*)([+-])(-?\d+(?:\.\d+)?[a-zA-Z%]*)/
-var CSS_LENGTH_UNIT_REGEX = /^px|cm|vh|vw|em|rem|%|mm|in|pt|pc|ex|ch|vmin|vmax|Q$/
+var MULTIPLY_OR_DIVIDE_REGEX =
+  /(-?\d+(?:\.\d+)?[a-zA-Z%]*)([*/])(-?\d+(?:\.\d+)?[a-zA-Z%]*)/
+var ADD_OR_SUBTRACT_REGEX =
+  /(-?\d+(?:\.\d+)?[a-zA-Z%]*)([+-])(-?\d+(?:\.\d+)?[a-zA-Z%]*)/
+var CSS_LENGTH_UNIT_REGEX =
+  /^px|cm|vh|vw|em|rem|%|mm|in|pt|pc|ex|ch|vmin|vmax|Q$/
 var NUM_SPLIT_REGEX = /(-?\d+(?:\.\d+)?)([a-zA-Z%]+)?/
 var CONVERSION_RATES = {
   cm: 96 / 2.54,
@@ -11602,7 +12329,11 @@ var DecimalCSS = (function () {
       {
         key: 'multiply',
         value: function multiply(other) {
-          if (this.unit !== '' && other.unit !== '' && this.unit !== other.unit) {
+          if (
+            this.unit !== '' &&
+            other.unit !== '' &&
+            this.unit !== other.unit
+          ) {
             return new DecimalCSS2(NaN, '')
           }
           return new DecimalCSS2(this.num * other.num, this.unit || other.unit)
@@ -11611,7 +12342,11 @@ var DecimalCSS = (function () {
       {
         key: 'divide',
         value: function divide2(other) {
-          if (this.unit !== '' && other.unit !== '' && this.unit !== other.unit) {
+          if (
+            this.unit !== '' &&
+            other.unit !== '' &&
+            this.unit !== other.unit
+          ) {
             return new DecimalCSS2(NaN, '')
           }
           return new DecimalCSS2(this.num / other.num, this.unit || other.unit)
@@ -11660,16 +12395,20 @@ function calculateArithmetic(expr) {
   while (newExpr.includes('*') || newExpr.includes('/')) {
     var _MULTIPLY_OR_DIVIDE_R
     var _ref3 =
-        (_MULTIPLY_OR_DIVIDE_R = MULTIPLY_OR_DIVIDE_REGEX.exec(newExpr)) !== null &&
-        _MULTIPLY_OR_DIVIDE_R !== void 0
+        (_MULTIPLY_OR_DIVIDE_R = MULTIPLY_OR_DIVIDE_REGEX.exec(newExpr)) !==
+          null && _MULTIPLY_OR_DIVIDE_R !== void 0
           ? _MULTIPLY_OR_DIVIDE_R
           : [],
       _ref4 = _slicedToArray3(_ref3, 4),
       leftOperand = _ref4[1],
       operator = _ref4[2],
       rightOperand = _ref4[3]
-    var lTs = DecimalCSS.parse(leftOperand !== null && leftOperand !== void 0 ? leftOperand : '')
-    var rTs = DecimalCSS.parse(rightOperand !== null && rightOperand !== void 0 ? rightOperand : '')
+    var lTs = DecimalCSS.parse(
+      leftOperand !== null && leftOperand !== void 0 ? leftOperand : ''
+    )
+    var rTs = DecimalCSS.parse(
+      rightOperand !== null && rightOperand !== void 0 ? rightOperand : ''
+    )
     var result = operator === '*' ? lTs.multiply(rTs) : lTs.divide(rTs)
     if (result.isNaN()) {
       return STR_NAN
@@ -11679,8 +12418,8 @@ function calculateArithmetic(expr) {
   while (newExpr.includes('+') || /.-\d+(?:\.\d+)?/.test(newExpr)) {
     var _ADD_OR_SUBTRACT_REGE
     var _ref5 =
-        (_ADD_OR_SUBTRACT_REGE = ADD_OR_SUBTRACT_REGEX.exec(newExpr)) !== null &&
-        _ADD_OR_SUBTRACT_REGE !== void 0
+        (_ADD_OR_SUBTRACT_REGE = ADD_OR_SUBTRACT_REGEX.exec(newExpr)) !==
+          null && _ADD_OR_SUBTRACT_REGE !== void 0
           ? _ADD_OR_SUBTRACT_REGE
           : [],
       _ref6 = _slicedToArray3(_ref5, 4),
@@ -11708,7 +12447,10 @@ function calculateParentheses(expr) {
     var _PARENTHESES_REGEX$ex = PARENTHESES_REGEX.exec(newExpr),
       _PARENTHESES_REGEX$ex2 = _slicedToArray3(_PARENTHESES_REGEX$ex, 2),
       parentheticalExpression = _PARENTHESES_REGEX$ex2[1]
-    newExpr = newExpr.replace(PARENTHESES_REGEX, calculateArithmetic(parentheticalExpression))
+    newExpr = newExpr.replace(
+      PARENTHESES_REGEX,
+      calculateArithmetic(parentheticalExpression)
+    )
   }
   return newExpr
 }
@@ -11816,7 +12558,10 @@ function _arrayLikeToArray4(arr, len) {
 }
 function _iterableToArrayLimit4(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -11829,12 +12574,18 @@ function _iterableToArrayLimit4(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -11888,7 +12639,8 @@ var calculateWordsByLines = function calculateWordsByLines2(
   var shouldLimitLines = isNumber(maxLines)
   var text = children2
   var calculate = function calculate2() {
-    var words = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : []
+    var words =
+      arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : []
     return words.reduce(function (result2, _ref3) {
       var word = _ref3.word,
         width = _ref3.width
@@ -11930,7 +12682,8 @@ var calculateWordsByLines = function calculateWordsByLines2(
     }).wordsWithComputedWidth
     var result2 = calculate(words)
     var doesOverflow =
-      result2.length > maxLines || findLongestLine(result2).width > Number(lineWidth)
+      result2.length > maxLines ||
+      findLongestLine(result2).width > Number(lineWidth)
     return [doesOverflow, result2]
   }
   var start = 0
@@ -12023,7 +12776,8 @@ var Text = function Text2(_ref5) {
     _ref5$textAnchor = _ref5.textAnchor,
     textAnchor = _ref5$textAnchor === void 0 ? 'start' : _ref5$textAnchor,
     _ref5$verticalAnchor = _ref5.verticalAnchor,
-    verticalAnchor = _ref5$verticalAnchor === void 0 ? 'end' : _ref5$verticalAnchor,
+    verticalAnchor =
+      _ref5$verticalAnchor === void 0 ? 'end' : _ref5$verticalAnchor,
     _ref5$fill = _ref5.fill,
     fill = _ref5$fill === void 0 ? DEFAULT_FILL : _ref5$fill,
     props = _objectWithoutProperties6(_ref5, _excluded7)
@@ -12038,7 +12792,14 @@ var Text = function Text2(_ref5) {
         width: props.width,
       })
     },
-    [props.breakAll, props.children, props.maxLines, scaleToFit, props.style, props.width]
+    [
+      props.breakAll,
+      props.children,
+      props.maxLines,
+      scaleToFit,
+      props.style,
+      props.width,
+    ]
   )
   var dx = props.dx,
     dy = props.dy,
@@ -12074,10 +12835,17 @@ var Text = function Text2(_ref5) {
   if (scaleToFit) {
     var lineWidth = wordsByLines[0].width
     var width = props.width
-    transforms.push('scale('.concat((isNumber(width) ? width / lineWidth : 1) / lineWidth, ')'))
+    transforms.push(
+      'scale('.concat(
+        (isNumber(width) ? width / lineWidth : 1) / lineWidth,
+        ')'
+      )
+    )
   }
   if (angle) {
-    transforms.push('rotate('.concat(angle, ', ').concat(x2, ', ').concat(y2, ')'))
+    transforms.push(
+      'rotate('.concat(angle, ', ').concat(x2, ', ').concat(y2, ')')
+    )
   }
   if (transforms.length) {
     textProps.transform = transforms.join(' ')
@@ -12156,12 +12924,28 @@ __export(d3_scale_exports, {
 
 // node_modules/d3-array/src/ascending.js
 function ascending(a2, b) {
-  return a2 == null || b == null ? NaN : a2 < b ? -1 : a2 > b ? 1 : a2 >= b ? 0 : NaN
+  return a2 == null || b == null
+    ? NaN
+    : a2 < b
+      ? -1
+      : a2 > b
+        ? 1
+        : a2 >= b
+          ? 0
+          : NaN
 }
 
 // node_modules/d3-array/src/descending.js
 function descending(a2, b) {
-  return a2 == null || b == null ? NaN : b < a2 ? -1 : b > a2 ? 1 : b >= a2 ? 0 : NaN
+  return a2 == null || b == null
+    ? NaN
+    : b < a2
+      ? -1
+      : b > a2
+        ? 1
+        : b >= a2
+          ? 0
+          : NaN
 }
 
 // node_modules/d3-array/src/bisector.js
@@ -12222,7 +13006,10 @@ function* numbers(values2, valueof) {
   } else {
     let index2 = -1
     for (let value of values2) {
-      if ((value = valueof(value, ++index2, values2)) != null && (value = +value) >= value) {
+      if (
+        (value = valueof(value, ++index2, values2)) != null &&
+        (value = +value) >= value
+      ) {
         yield value
       }
     }
@@ -12244,8 +13031,15 @@ function Blur2(blur3) {
     if (!((rx = +rx) >= 0)) throw new RangeError('invalid rx')
     if (!((ry = +ry) >= 0)) throw new RangeError('invalid ry')
     let { data: values2, width, height } = data
-    if (!((width = Math.floor(width)) >= 0)) throw new RangeError('invalid width')
-    if (!((height = Math.floor(height !== void 0 ? height : values2.length / width)) >= 0))
+    if (!((width = Math.floor(width)) >= 0))
+      throw new RangeError('invalid width')
+    if (
+      !(
+        (height = Math.floor(
+          height !== void 0 ? height : values2.length / width
+        )) >= 0
+      )
+    )
       throw new RangeError('invalid height')
     if (!width || !height || (!rx && !ry)) return data
     const blurx = rx && blur3(rx)
@@ -12305,7 +13099,9 @@ function blurf(radius) {
     }
     for (let i = start, j = stop; i <= j; i += step) {
       sum3 += S[Math.min(stop, i + s0)]
-      T[i] = (sum3 + t * (S[Math.max(start, i - s1)] + S[Math.min(stop, i + s1)])) / w
+      T[i] =
+        (sum3 + t * (S[Math.max(start, i - s1)] + S[Math.min(stop, i + s1)])) /
+        w
       sum3 -= S[Math.max(start, i - s0)]
     }
   }
@@ -12335,7 +13131,8 @@ var InternMap = class extends Map {
       _intern: { value: /* @__PURE__ */ new Map() },
       _key: { value: key },
     })
-    if (entries != null) for (const [key2, value] of entries) this.set(key2, value)
+    if (entries != null)
+      for (const [key2, value] of entries) this.set(key2, value)
   }
   get(key) {
     return super.get(intern_get(this, key))
@@ -12375,7 +13172,8 @@ function keyof(value) {
 // node_modules/d3-array/src/sort.js
 function compareDefined(compare = ascending) {
   if (compare === ascending) return ascendingDefined
-  if (typeof compare !== 'function') throw new TypeError('compare is not a function')
+  if (typeof compare !== 'function')
+    throw new TypeError('compare is not a function')
   return (a2, b) => {
     const x2 = compare(a2, b)
     if (x2 || x2 === 0) return x2
@@ -12383,7 +13181,10 @@ function compareDefined(compare = ascending) {
   }
 }
 function ascendingDefined(a2, b) {
-  return (a2 == null || !(a2 >= a2)) - (b == null || !(b >= b)) || (a2 < b ? -1 : a2 > b ? 1 : 0)
+  return (
+    (a2 == null || !(a2 >= a2)) - (b == null || !(b >= b)) ||
+    (a2 < b ? -1 : a2 > b ? 1 : 0)
+  )
 }
 
 // node_modules/d3-array/src/array.js
@@ -12415,7 +13216,8 @@ function tickSpec(start, stop, count2) {
     if (i1 * inc < start) ++i1
     if (i2 * inc > stop) --i2
   }
-  if (i2 < i1 && 0.5 <= count2 && count2 < 2) return tickSpec(start, stop, count2 * 2)
+  if (i2 < i1 && 0.5 <= count2 && count2 < 2)
+    return tickSpec(start, stop, count2 * 2)
   return [i1, i2, inc]
 }
 function ticks(start, stop, count2) {
@@ -12423,7 +13225,9 @@ function ticks(start, stop, count2) {
   if (!(count2 > 0)) return []
   if (start === stop) return [start]
   const reverse4 = stop < start,
-    [i1, i2, inc] = reverse4 ? tickSpec(stop, start, count2) : tickSpec(start, stop, count2)
+    [i1, i2, inc] = reverse4
+      ? tickSpec(stop, start, count2)
+      : tickSpec(start, stop, count2)
   if (!(i2 >= i1)) return []
   const n = i2 - i1 + 1,
     ticks2 = new Array(n)
@@ -12443,7 +13247,9 @@ function tickIncrement(start, stop, count2) {
 function tickStep(start, stop, count2) {
   ;((stop = +stop), (start = +start), (count2 = +count2))
   const reverse4 = stop < start,
-    inc = reverse4 ? tickIncrement(stop, start, count2) : tickIncrement(start, stop, count2)
+    inc = reverse4
+      ? tickIncrement(stop, start, count2)
+      : tickIncrement(start, stop, count2)
   return (reverse4 ? -1 : 1) * (inc < 0 ? 1 / -inc : inc)
 }
 
@@ -12452,7 +13258,10 @@ function max2(values2, valueof) {
   let max5
   if (valueof === void 0) {
     for (const value of values2) {
-      if (value != null && (max5 < value || (max5 === void 0 && value >= value))) {
+      if (
+        value != null &&
+        (max5 < value || (max5 === void 0 && value >= value))
+      ) {
         max5 = value
       }
     }
@@ -12475,7 +13284,10 @@ function min2(values2, valueof) {
   let min5
   if (valueof === void 0) {
     for (const value of values2) {
-      if (value != null && (min5 > value || (min5 === void 0 && value >= value))) {
+      if (
+        value != null &&
+        (min5 > value || (min5 === void 0 && value >= value))
+      ) {
         min5 = value
       }
     }
@@ -12506,7 +13318,8 @@ function quickselect(array2, k2, left = 0, right = Infinity, compare) {
       const m = k2 - left + 1
       const z = Math.log(n)
       const s2 = 0.5 * Math.exp((2 * z) / 3)
-      const sd = 0.5 * Math.sqrt((z * s2 * (n - s2)) / n) * (m - n / 2 < 0 ? -1 : 1)
+      const sd =
+        0.5 * Math.sqrt((z * s2 * (n - s2)) / n) * (m - n / 2 < 0 ? -1 : 1)
       const newLeft = Math.max(left, Math.floor(k2 - (m * s2) / n + sd))
       const newRight = Math.min(right, Math.floor(k2 + ((n - m) * s2) / n + sd))
       quickselect(array2, k2, newLeft, newRight, compare)
@@ -12563,7 +13376,12 @@ function quantileSorted(values2, p, valueof = number) {
 function range(start, stop, step) {
   ;((start = +start),
     (stop = +stop),
-    (step = (n = arguments.length) < 2 ? ((stop = start), (start = 0), 1) : n < 3 ? 1 : +step))
+    (step =
+      (n = arguments.length) < 2
+        ? ((stop = start), (start = 0), 1)
+        : n < 3
+          ? 1
+          : +step))
   var i = -1,
     n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
     range6 = new Array(n)
@@ -12681,7 +13499,8 @@ function band() {
     if (round2) step = Math.floor(step)
     start += (stop - start - step * (n - paddingInner)) * align
     bandwidth = step * (1 - paddingInner)
-    if (round2) ((start = Math.round(start)), (bandwidth = Math.round(bandwidth)))
+    if (round2)
+      ((start = Math.round(start)), (bandwidth = Math.round(bandwidth)))
     var values2 = range(n).map(function (i) {
       return start + step * i
     })
@@ -12691,7 +13510,9 @@ function band() {
     return arguments.length ? (domain(_), rescale()) : domain()
   }
   scale.range = function (_) {
-    return arguments.length ? (([r0, r1] = _), (r0 = +r0), (r1 = +r1), rescale()) : [r0, r1]
+    return arguments.length
+      ? (([r0, r1] = _), (r0 = +r0), (r1 = +r1), rescale())
+      : [r0, r1]
   }
   scale.rangeRound = function (_) {
     return (([r0, r1] = _), (r0 = +r0), (r1 = +r1), (round2 = true), rescale())
@@ -12711,13 +13532,17 @@ function band() {
       : paddingInner
   }
   scale.paddingInner = function (_) {
-    return arguments.length ? ((paddingInner = Math.min(1, _)), rescale()) : paddingInner
+    return arguments.length
+      ? ((paddingInner = Math.min(1, _)), rescale())
+      : paddingInner
   }
   scale.paddingOuter = function (_) {
     return arguments.length ? ((paddingOuter = +_), rescale()) : paddingOuter
   }
   scale.align = function (_) {
-    return arguments.length ? ((align = Math.max(0, Math.min(1, _))), rescale()) : align
+    return arguments.length
+      ? ((align = Math.max(0, Math.min(1, _))), rescale())
+      : align
   }
   scale.copy = function () {
     return band(domain(), [r0, r1])
@@ -12960,7 +13785,12 @@ function color(format2) {
               1
             )
           : l === 8
-            ? rgba((m >> 24) & 255, (m >> 16) & 255, (m >> 8) & 255, (m & 255) / 255)
+            ? rgba(
+                (m >> 24) & 255,
+                (m >> 16) & 255,
+                (m >> 8) & 255,
+                (m & 255) / 255
+              )
             : l === 4
               ? rgba(
                   ((m >> 12) & 15) | ((m >> 8) & 240),
@@ -12976,7 +13806,12 @@ function color(format2) {
         : (m = reRgbaInteger.exec(format2))
           ? rgba(m[1], m[2], m[3], m[4])
           : (m = reRgbaPercent.exec(format2))
-            ? rgba((m[1] * 255) / 100, (m[2] * 255) / 100, (m[3] * 255) / 100, m[4])
+            ? rgba(
+                (m[1] * 255) / 100,
+                (m[2] * 255) / 100,
+                (m[3] * 255) / 100,
+                m[4]
+              )
             : (m = reHslPercent.exec(format2))
               ? hsla(m[1], m[2] / 100, m[3] / 100, 1)
               : (m = reHslaPercent.exec(format2))
@@ -13001,7 +13836,9 @@ function rgbConvert(o) {
   return new Rgb(o.r, o.g, o.b, o.opacity)
 }
 function rgb(r2, g, b, opacity) {
-  return arguments.length === 1 ? rgbConvert(r2) : new Rgb(r2, g, b, opacity == null ? 1 : opacity)
+  return arguments.length === 1
+    ? rgbConvert(r2)
+    : new Rgb(r2, g, b, opacity == null ? 1 : opacity)
 }
 function Rgb(r2, g, b, opacity) {
   this.r = +r2
@@ -13025,7 +13862,12 @@ define_default(
       return this
     },
     clamp() {
-      return new Rgb(clampi(this.r), clampi(this.g), clampi(this.b), clampa(this.opacity))
+      return new Rgb(
+        clampi(this.r),
+        clampi(this.g),
+        clampi(this.b),
+        clampa(this.opacity)
+      )
     },
     displayable() {
       return (
@@ -13099,7 +13941,9 @@ function hslConvert(o) {
   return new Hsl(h, s2, l, o.opacity)
 }
 function hsl(h, s2, l, opacity) {
-  return arguments.length === 1 ? hslConvert(h) : new Hsl(h, s2, l, opacity == null ? 1 : opacity)
+  return arguments.length === 1
+    ? hslConvert(h)
+    : new Hsl(h, s2, l, opacity == null ? 1 : opacity)
 }
 function Hsl(h, s2, l, opacity) {
   this.h = +h
@@ -13133,7 +13977,12 @@ define_default(
       )
     },
     clamp() {
-      return new Hsl(clamph(this.h), clampt(this.s), clampt(this.l), clampa(this.opacity))
+      return new Hsl(
+        clamph(this.h),
+        clampt(this.s),
+        clampt(this.l),
+        clampa(this.opacity)
+      )
     },
     displayable() {
       return (
@@ -13200,7 +14049,9 @@ function labConvert(o) {
   return new Lab(116 * y2 - 16, 500 * (x2 - y2), 200 * (y2 - z), o.opacity)
 }
 function lab(l, a2, b, opacity) {
-  return arguments.length === 1 ? labConvert(l) : new Lab(l, a2, b, opacity == null ? 1 : opacity)
+  return arguments.length === 1
+    ? labConvert(l)
+    : new Lab(l, a2, b, opacity == null ? 1 : opacity)
 }
 function Lab(l, a2, b, opacity) {
   this.l = +l
@@ -13213,10 +14064,20 @@ define_default(
   lab,
   extend(Color, {
     brighter(k2) {
-      return new Lab(this.l + K * (k2 == null ? 1 : k2), this.a, this.b, this.opacity)
+      return new Lab(
+        this.l + K * (k2 == null ? 1 : k2),
+        this.a,
+        this.b,
+        this.opacity
+      )
     },
     darker(k2) {
-      return new Lab(this.l - K * (k2 == null ? 1 : k2), this.a, this.b, this.opacity)
+      return new Lab(
+        this.l - K * (k2 == null ? 1 : k2),
+        this.a,
+        this.b,
+        this.opacity
+      )
     },
     rgb() {
       var y2 = (this.l + 16) / 116,
@@ -13241,20 +14102,32 @@ function lab2xyz(t) {
   return t > t1 ? t * t * t : t2 * (t - t0)
 }
 function lrgb2rgb(x2) {
-  return 255 * (x2 <= 31308e-7 ? 12.92 * x2 : 1.055 * Math.pow(x2, 1 / 2.4) - 0.055)
+  return (
+    255 * (x2 <= 31308e-7 ? 12.92 * x2 : 1.055 * Math.pow(x2, 1 / 2.4) - 0.055)
+  )
 }
 function rgb2lrgb(x2) {
-  return (x2 /= 255) <= 0.04045 ? x2 / 12.92 : Math.pow((x2 + 0.055) / 1.055, 2.4)
+  return (x2 /= 255) <= 0.04045
+    ? x2 / 12.92
+    : Math.pow((x2 + 0.055) / 1.055, 2.4)
 }
 function hclConvert(o) {
   if (o instanceof Hcl) return new Hcl(o.h, o.c, o.l, o.opacity)
   if (!(o instanceof Lab)) o = labConvert(o)
-  if (o.a === 0 && o.b === 0) return new Hcl(NaN, 0 < o.l && o.l < 100 ? 0 : NaN, o.l, o.opacity)
+  if (o.a === 0 && o.b === 0)
+    return new Hcl(NaN, 0 < o.l && o.l < 100 ? 0 : NaN, o.l, o.opacity)
   var h = Math.atan2(o.b, o.a) * degrees
-  return new Hcl(h < 0 ? h + 360 : h, Math.sqrt(o.a * o.a + o.b * o.b), o.l, o.opacity)
+  return new Hcl(
+    h < 0 ? h + 360 : h,
+    Math.sqrt(o.a * o.a + o.b * o.b),
+    o.l,
+    o.opacity
+  )
 }
 function hcl(h, c2, l, opacity) {
-  return arguments.length === 1 ? hclConvert(h) : new Hcl(h, c2, l, opacity == null ? 1 : opacity)
+  return arguments.length === 1
+    ? hclConvert(h)
+    : new Hcl(h, c2, l, opacity == null ? 1 : opacity)
 }
 function Hcl(h, c2, l, opacity) {
   this.h = +h
@@ -13272,10 +14145,20 @@ define_default(
   hcl,
   extend(Color, {
     brighter(k2) {
-      return new Hcl(this.h, this.c, this.l + K * (k2 == null ? 1 : k2), this.opacity)
+      return new Hcl(
+        this.h,
+        this.c,
+        this.l + K * (k2 == null ? 1 : k2),
+        this.opacity
+      )
     },
     darker(k2) {
-      return new Hcl(this.h, this.c, this.l - K * (k2 == null ? 1 : k2), this.opacity)
+      return new Hcl(
+        this.h,
+        this.c,
+        this.l - K * (k2 == null ? 1 : k2),
+        this.opacity
+      )
     },
     rgb() {
       return hcl2lab(this).rgb()
@@ -13410,7 +14293,9 @@ function gamma(y2) {
   return (y2 = +y2) === 1
     ? nogamma
     : function (a2, b) {
-        return b - a2 ? exponential(a2, b, y2) : constant_default2(isNaN(a2) ? b : a2)
+        return b - a2
+          ? exponential(a2, b, y2)
+          : constant_default2(isNaN(a2) ? b : a2)
       }
 }
 function nogamma(a2, b) {
@@ -13612,7 +14497,8 @@ function value_default(a2, b) {
                 ? numberArray_default
                 : Array.isArray(b)
                   ? genericArray
-                  : (typeof b.valueOf !== 'function' && typeof b.toString !== 'function') ||
+                  : (typeof b.valueOf !== 'function' &&
+                        typeof b.toString !== 'function') ||
                       isNaN(b)
                     ? object_default
                     : number_default)(a2, b)
@@ -13643,8 +14529,10 @@ function decompose_default(a2, b, c2, d, e, f) {
   var scaleX, scaleY, skewX
   if ((scaleX = Math.sqrt(a2 * a2 + b * b))) ((a2 /= scaleX), (b /= scaleX))
   if ((skewX = a2 * c2 + b * d)) ((c2 -= a2 * skewX), (d -= b * skewX))
-  if ((scaleY = Math.sqrt(c2 * c2 + d * d))) ((c2 /= scaleY), (d /= scaleY), (skewX /= scaleY))
-  if (a2 * d < b * c2) ((a2 = -a2), (b = -b), (skewX = -skewX), (scaleX = -scaleX))
+  if ((scaleY = Math.sqrt(c2 * c2 + d * d)))
+    ((c2 /= scaleY), (d /= scaleY), (skewX /= scaleY))
+  if (a2 * d < b * c2)
+    ((a2 = -a2), (b = -b), (skewX = -skewX), (scaleX = -scaleX))
   return {
     translateX: e,
     translateY: f,
@@ -13658,12 +14546,17 @@ function decompose_default(a2, b, c2, d, e, f) {
 // node_modules/d3-interpolate/src/transform/parse.js
 var svgNode
 function parseCss(value) {
-  const m = new (typeof DOMMatrix === 'function' ? DOMMatrix : WebKitCSSMatrix)(value + '')
-  return m.isIdentity ? identity2 : decompose_default(m.a, m.b, m.c, m.d, m.e, m.f)
+  const m = new (typeof DOMMatrix === 'function' ? DOMMatrix : WebKitCSSMatrix)(
+    value + ''
+  )
+  return m.isIdentity
+    ? identity2
+    : decompose_default(m.a, m.b, m.c, m.d, m.e, m.f)
 }
 function parseSvg(value) {
   if (value == null) return identity2
-  if (!svgNode) svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+  if (!svgNode)
+    svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'g')
   svgNode.setAttribute('transform', value)
   if (!(value = svgNode.transform.baseVal.consolidate())) return identity2
   value = value.matrix
@@ -13678,7 +14571,10 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
   function translate(xa, ya, xb, yb, s2, q) {
     if (xa !== xb || ya !== yb) {
       var i = s2.push('translate(', null, pxComma, null, pxParen)
-      q.push({ i: i - 4, x: number_default(xa, xb) }, { i: i - 2, x: number_default(ya, yb) })
+      q.push(
+        { i: i - 4, x: number_default(xa, xb) },
+        { i: i - 2, x: number_default(ya, yb) }
+      )
     } else if (xb || yb) {
       s2.push('translate(' + xb + pxComma + yb + pxParen)
     }
@@ -13687,14 +14583,20 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
     if (a2 !== b) {
       if (a2 - b > 180) b += 360
       else if (b - a2 > 180) a2 += 360
-      q.push({ i: s2.push(pop(s2) + 'rotate(', null, degParen) - 2, x: number_default(a2, b) })
+      q.push({
+        i: s2.push(pop(s2) + 'rotate(', null, degParen) - 2,
+        x: number_default(a2, b),
+      })
     } else if (b) {
       s2.push(pop(s2) + 'rotate(' + b + degParen)
     }
   }
   function skewX(a2, b, s2, q) {
     if (a2 !== b) {
-      q.push({ i: s2.push(pop(s2) + 'skewX(', null, degParen) - 2, x: number_default(a2, b) })
+      q.push({
+        i: s2.push(pop(s2) + 'skewX(', null, degParen) - 2,
+        x: number_default(a2, b),
+      })
     } else if (b) {
       s2.push(pop(s2) + 'skewX(' + b + degParen)
     }
@@ -13702,7 +14604,10 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
   function scale(xa, ya, xb, yb, s2, q) {
     if (xa !== xb || ya !== yb) {
       var i = s2.push(pop(s2) + 'scale(', null, ',', null, ')')
-      q.push({ i: i - 4, x: number_default(xa, xb) }, { i: i - 2, x: number_default(ya, yb) })
+      q.push(
+        { i: i - 4, x: number_default(xa, xb) },
+        { i: i - 2, x: number_default(ya, yb) }
+      )
     } else if (xb !== 1 || yb !== 1) {
       s2.push(pop(s2) + 'scale(' + xb + ',' + yb + ')')
     }
@@ -13725,7 +14630,12 @@ function interpolateTransform(parse, pxComma, pxParen, degParen) {
     }
   }
 }
-var interpolateTransformCss = interpolateTransform(parseCss, 'px, ', 'px)', 'deg)')
+var interpolateTransformCss = interpolateTransform(
+  parseCss,
+  'px, ',
+  'px)',
+  'deg)'
+)
 var interpolateTransformSvg = interpolateTransform(parseSvg, ', ', ')', ')')
 
 // node_modules/d3-interpolate/src/zoom.js
@@ -13847,7 +14757,8 @@ var cubehelixLong = cubehelix2(nogamma)
 
 // node_modules/d3-interpolate/src/piecewise.js
 function piecewise(interpolate, values2) {
-  if (values2 === void 0) ((values2 = interpolate), (interpolate = value_default))
+  if (values2 === void 0)
+    ((values2 = interpolate), (interpolate = value_default))
   var i = 0,
     n = values2.length - 1,
     v = values2[0],
@@ -13948,28 +14859,38 @@ function transformer() {
   function scale(x2) {
     return x2 == null || isNaN((x2 = +x2))
       ? unknown
-      : (output || (output = piecewise2(domain.map(transform), range6, interpolate)))(
-          transform(clamp(x2))
-        )
+      : (
+          output ||
+          (output = piecewise2(domain.map(transform), range6, interpolate))
+        )(transform(clamp(x2)))
   }
   scale.invert = function (y2) {
     return clamp(
       untransform(
-        (input || (input = piecewise2(range6, domain.map(transform), number_default)))(y2)
+        (
+          input ||
+          (input = piecewise2(range6, domain.map(transform), number_default))
+        )(y2)
       )
     )
   }
   scale.domain = function (_) {
-    return arguments.length ? ((domain = Array.from(_, number2)), rescale()) : domain.slice()
+    return arguments.length
+      ? ((domain = Array.from(_, number2)), rescale())
+      : domain.slice()
   }
   scale.range = function (_) {
-    return arguments.length ? ((range6 = Array.from(_)), rescale()) : range6.slice()
+    return arguments.length
+      ? ((range6 = Array.from(_)), rescale())
+      : range6.slice()
   }
   scale.rangeRound = function (_) {
     return ((range6 = Array.from(_)), (interpolate = round_default), rescale())
   }
   scale.clamp = function (_) {
-    return arguments.length ? ((clamp = _ ? true : identity3), rescale()) : clamp !== identity3
+    return arguments.length
+      ? ((clamp = _ ? true : identity3), rescale())
+      : clamp !== identity3
   }
   scale.interpolate = function (_) {
     return arguments.length ? ((interpolate = _), rescale()) : interpolate
@@ -13997,7 +14918,9 @@ function formatDecimalParts(x2, p) {
   var i = (x2 = p ? x2.toExponential(p - 1) : x2.toExponential()).indexOf('e'),
     coefficient = x2.slice(0, i)
   return [
-    coefficient.length > 1 ? coefficient[0] + coefficient.slice(2) : coefficient,
+    coefficient.length > 1
+      ? coefficient[0] + coefficient.slice(2)
+      : coefficient,
     +x2.slice(i + 1),
   ]
 }
@@ -14035,9 +14958,11 @@ function formatNumerals_default(numerals) {
 }
 
 // node_modules/d3-format/src/formatSpecifier.js
-var re = /^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i
+var re =
+  /^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i
 function formatSpecifier(specifier) {
-  if (!(match = re.exec(specifier))) throw new Error('invalid format: ' + specifier)
+  if (!(match = re.exec(specifier)))
+    throw new Error('invalid format: ' + specifier)
   var match
   return new FormatSpecifier({
     fill: match[1],
@@ -14061,7 +14986,8 @@ function FormatSpecifier(specifier) {
   this.zero = !!specifier.zero
   this.width = specifier.width === void 0 ? void 0 : +specifier.width
   this.comma = !!specifier.comma
-  this.precision = specifier.precision === void 0 ? void 0 : +specifier.precision
+  this.precision =
+    specifier.precision === void 0 ? void 0 : +specifier.precision
   this.trim = !!specifier.trim
   this.type = specifier.type === void 0 ? '' : specifier.type + ''
 }
@@ -14107,7 +15033,11 @@ function formatPrefixAuto_default(x2, p) {
   if (!d) return ((prefixExponent = void 0), x2.toPrecision(p))
   var coefficient = d[0],
     exponent = d[1],
-    i = exponent - (prefixExponent = Math.max(-8, Math.min(8, Math.floor(exponent / 3))) * 3) + 1,
+    i =
+      exponent -
+      (prefixExponent =
+        Math.max(-8, Math.min(8, Math.floor(exponent / 3))) * 3) +
+      1,
     n = coefficient.length
   return i === n
     ? coefficient
@@ -14115,7 +15045,9 @@ function formatPrefixAuto_default(x2, p) {
       ? coefficient + new Array(i - n + 1).join('0')
       : i > 0
         ? coefficient.slice(0, i) + '.' + coefficient.slice(i)
-        : '0.' + new Array(1 - i).join('0') + formatDecimalParts(x2, Math.max(0, p + i - 1))[0]
+        : '0.' +
+          new Array(1 - i).join('0') +
+          formatDecimalParts(x2, Math.max(0, p + i - 1))[0]
 }
 
 // node_modules/d3-format/src/formatRounded.js
@@ -14127,7 +15059,9 @@ function formatRounded_default(x2, p) {
   return exponent < 0
     ? '0.' + new Array(-exponent).join('0') + coefficient
     : coefficient.length > exponent + 1
-      ? coefficient.slice(0, exponent + 1) + '.' + coefficient.slice(exponent + 1)
+      ? coefficient.slice(0, exponent + 1) +
+        '.' +
+        coefficient.slice(exponent + 1)
       : coefficient + new Array(exponent - coefficient.length + 2).join('0')
 }
 
@@ -14155,14 +15089,37 @@ function identity_default2(x2) {
 
 // node_modules/d3-format/src/locale.js
 var map3 = Array.prototype.map
-var prefixes = ['y', 'z', 'a', 'f', 'p', 'n', 'µ', 'm', '', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y']
+var prefixes = [
+  'y',
+  'z',
+  'a',
+  'f',
+  'p',
+  'n',
+  'µ',
+  'm',
+  '',
+  'k',
+  'M',
+  'G',
+  'T',
+  'P',
+  'E',
+  'Z',
+  'Y',
+]
 function locale_default(locale3) {
   var group2 =
       locale3.grouping === void 0 || locale3.thousands === void 0
         ? identity_default2
-        : formatGroup_default(map3.call(locale3.grouping, Number), locale3.thousands + ''),
-    currencyPrefix = locale3.currency === void 0 ? '' : locale3.currency[0] + '',
-    currencySuffix = locale3.currency === void 0 ? '' : locale3.currency[1] + '',
+        : formatGroup_default(
+            map3.call(locale3.grouping, Number),
+            locale3.thousands + ''
+          ),
+    currencyPrefix =
+      locale3.currency === void 0 ? '' : locale3.currency[0] + '',
+    currencySuffix =
+      locale3.currency === void 0 ? '' : locale3.currency[1] + '',
     decimal = locale3.decimal === void 0 ? '.' : locale3.decimal + '',
     numerals =
       locale3.numerals === void 0
@@ -14186,7 +15143,8 @@ function locale_default(locale3) {
     if (type === 'n') ((comma = true), (type = 'g'))
     else if (!formatTypes_default[type])
       (precision === void 0 && (precision = 12), (trim = true), (type = 'g'))
-    if (zero3 || (fill === '0' && align === '=')) ((zero3 = true), (fill = '0'), (align = '='))
+    if (zero3 || (fill === '0' && align === '='))
+      ((zero3 = true), (fill = '0'), (align = '='))
     var prefix2 =
         (options && options.prefix !== void 0 ? options.prefix : '') +
         (symbol === '$'
@@ -14219,7 +15177,8 @@ function locale_default(locale3) {
         var valueNegative = value < 0 || 1 / value < 0
         value = isNaN(value) ? nan : formatType(Math.abs(value), precision)
         if (trim) value = formatTrim_default(value)
-        if (valueNegative && +value === 0 && sign2 !== '+') valueNegative = false
+        if (valueNegative && +value === 0 && sign2 !== '+')
+          valueNegative = false
         valuePrefix =
           (valueNegative
             ? sign2 === '('
@@ -14239,7 +15198,8 @@ function locale_default(locale3) {
           while (++i < n) {
             if (((c2 = value.charCodeAt(i)), 48 > c2 || c2 > 57)) {
               valueSuffix =
-                (c2 === 46 ? decimal + value.slice(i + 1) : value.slice(i)) + valueSuffix
+                (c2 === 46 ? decimal + value.slice(i + 1) : value.slice(i)) +
+                valueSuffix
               value = value.slice(0, i)
               break
             }
@@ -14250,7 +15210,10 @@ function locale_default(locale3) {
       var length = valuePrefix.length + value.length + valueSuffix.length,
         padding = length < width ? new Array(width - length + 1).join(fill) : ''
       if (comma && zero3)
-        ((value = group2(padding + value, padding.length ? width - valueSuffix.length : Infinity)),
+        ((value = group2(
+          padding + value,
+          padding.length ? width - valueSuffix.length : Infinity
+        )),
           (padding = ''))
       switch (align) {
         case '<':
@@ -14279,11 +15242,17 @@ function locale_default(locale3) {
     return format2
   }
   function formatPrefix2(specifier, value) {
-    var e = Math.max(-8, Math.min(8, Math.floor(exponent_default(value) / 3))) * 3,
+    var e =
+        Math.max(-8, Math.min(8, Math.floor(exponent_default(value) / 3))) * 3,
       k2 = Math.pow(10, -e),
-      f = newFormat(((specifier = formatSpecifier(specifier)), (specifier.type = 'f'), specifier), {
-        suffix: prefixes[8 + e / 3],
-      })
+      f = newFormat(
+        ((specifier = formatSpecifier(specifier)),
+        (specifier.type = 'f'),
+        specifier),
+        {
+          suffix: prefixes[8 + e / 3],
+        }
+      )
     return function (value2) {
       return f(k2 * value2)
     }
@@ -14338,7 +15307,10 @@ function tickFormat(start, stop, count2, specifier) {
   switch (specifier.type) {
     case 's': {
       var value = Math.max(Math.abs(start), Math.abs(stop))
-      if (specifier.precision == null && !isNaN((precision = precisionPrefix_default(step, value))))
+      if (
+        specifier.precision == null &&
+        !isNaN((precision = precisionPrefix_default(step, value)))
+      )
         specifier.precision = precision
       return formatPrefix(specifier, value)
     }
@@ -14350,7 +15322,10 @@ function tickFormat(start, stop, count2, specifier) {
       if (
         specifier.precision == null &&
         !isNaN(
-          (precision = precisionRound_default(step, Math.max(Math.abs(start), Math.abs(stop))))
+          (precision = precisionRound_default(
+            step,
+            Math.max(Math.abs(start), Math.abs(stop))
+          ))
         )
       )
         specifier.precision = precision - (specifier.type === 'e')
@@ -14358,7 +15333,10 @@ function tickFormat(start, stop, count2, specifier) {
     }
     case 'f':
     case '%': {
-      if (specifier.precision == null && !isNaN((precision = precisionFixed_default(step))))
+      if (
+        specifier.precision == null &&
+        !isNaN((precision = precisionFixed_default(step)))
+      )
         specifier.precision = precision - (specifier.type === '%') * 2
       break
     }
@@ -14375,7 +15353,12 @@ function linearish(scale) {
   }
   scale.tickFormat = function (count2, specifier) {
     var d = domain()
-    return tickFormat(d[0], d[d.length - 1], count2 == null ? 10 : count2, specifier)
+    return tickFormat(
+      d[0],
+      d[d.length - 1],
+      count2 == null ? 10 : count2,
+      specifier
+    )
   }
   scale.nice = function (count2) {
     if (count2 == null) count2 = 10
@@ -14429,7 +15412,9 @@ function identity4(domain) {
   }
   scale.invert = scale
   scale.domain = scale.range = function (_) {
-    return arguments.length ? ((domain = Array.from(_, number2)), scale) : domain.slice()
+    return arguments.length
+      ? ((domain = Array.from(_, number2)), scale)
+      : domain.slice()
   }
   scale.unknown = function (_) {
     return arguments.length ? ((unknown = _), scale) : unknown
@@ -14475,7 +15460,11 @@ function pow10(x2) {
   return isFinite(x2) ? +('1e' + x2) : x2 < 0 ? 0 : x2
 }
 function powp(base) {
-  return base === 10 ? pow10 : base === Math.E ? Math.exp : (x2) => Math.pow(base, x2)
+  return base === 10
+    ? pow10
+    : base === Math.E
+      ? Math.exp
+      : (x2) => Math.pow(base, x2)
 }
 function logp(base) {
   return base === Math.E
@@ -14551,7 +15540,10 @@ function loggish(transform) {
     if (count2 == null) count2 = 10
     if (specifier == null) specifier = base === 10 ? 's' : ','
     if (typeof specifier !== 'function') {
-      if (!(base % 1) && (specifier = formatSpecifier(specifier)).precision == null)
+      if (
+        !(base % 1) &&
+        (specifier = formatSpecifier(specifier)).precision == null
+      )
         specifier.trim = true
       specifier = format(specifier)
     }
@@ -14595,7 +15587,9 @@ function symlogish(transform) {
   var c2 = 1,
     scale = transform(transformSymlog(c2), transformSymexp(c2))
   scale.constant = function (_) {
-    return arguments.length ? transform(transformSymlog((c2 = +_)), transformSymexp(c2)) : c2
+    return arguments.length
+      ? transform(transformSymlog((c2 = +_)), transformSymexp(c2))
+      : c2
   }
   return linearish(scale)
 }
@@ -14686,7 +15680,10 @@ function radial() {
     return arguments.length ? ((unknown = _), scale) : unknown
   }
   scale.copy = function () {
-    return radial(squared.domain(), range6).round(round2).clamp(squared.clamp()).unknown(unknown)
+    return radial(squared.domain(), range6)
+      .round(round2)
+      .clamp(squared.clamp())
+      .unknown(unknown)
   }
   initRange.apply(scale, arguments)
   return linearish(scale)
@@ -14706,7 +15703,9 @@ function quantile2() {
     return scale
   }
   function scale(x2) {
-    return x2 == null || isNaN((x2 = +x2)) ? unknown : range6[bisect_default(thresholds, x2)]
+    return x2 == null || isNaN((x2 = +x2))
+      ? unknown
+      : range6[bisect_default(thresholds, x2)]
   }
   scale.invertExtent = function (y2) {
     var i = range6.indexOf(y2)
@@ -14725,7 +15724,9 @@ function quantile2() {
     return rescale()
   }
   scale.range = function (_) {
-    return arguments.length ? ((range6 = Array.from(_)), rescale()) : range6.slice()
+    return arguments.length
+      ? ((range6 = Array.from(_)), rescale())
+      : range6.slice()
   }
   scale.unknown = function (_) {
     return arguments.length ? ((unknown = _), scale) : unknown
@@ -14748,7 +15749,9 @@ function quantize() {
     range6 = [0, 1],
     unknown
   function scale(x2) {
-    return x2 != null && x2 <= x2 ? range6[bisect_default(domain, x2, 0, n)] : unknown
+    return x2 != null && x2 <= x2
+      ? range6[bisect_default(domain, x2, 0, n)]
+      : unknown
   }
   function rescale() {
     var i = -1
@@ -14757,7 +15760,9 @@ function quantize() {
     return scale
   }
   scale.domain = function (_) {
-    return arguments.length ? (([x0, x1] = _), (x0 = +x0), (x1 = +x1), rescale()) : [x0, x1]
+    return arguments.length
+      ? (([x0, x1] = _), (x0 = +x0), (x1 = +x1), rescale())
+      : [x0, x1]
   }
   scale.range = function (_) {
     return arguments.length
@@ -14793,16 +15798,22 @@ function threshold() {
     unknown,
     n = 1
   function scale(x2) {
-    return x2 != null && x2 <= x2 ? range6[bisect_default(domain, x2, 0, n)] : unknown
+    return x2 != null && x2 <= x2
+      ? range6[bisect_default(domain, x2, 0, n)]
+      : unknown
   }
   scale.domain = function (_) {
     return arguments.length
-      ? ((domain = Array.from(_)), (n = Math.min(domain.length, range6.length - 1)), scale)
+      ? ((domain = Array.from(_)),
+        (n = Math.min(domain.length, range6.length - 1)),
+        scale)
       : domain.slice()
   }
   scale.range = function (_) {
     return arguments.length
-      ? ((range6 = Array.from(_)), (n = Math.min(domain.length, range6.length - 1)), scale)
+      ? ((range6 = Array.from(_)),
+        (n = Math.min(domain.length, range6.length - 1)),
+        scale)
       : range6.slice()
   }
   scale.invertExtent = function (y2) {
@@ -14826,7 +15837,9 @@ function timeInterval(floori, offseti, count2, field) {
     return (
       floori(
         (date2 =
-          arguments.length === 0 ? /* @__PURE__ */ new Date() : /* @__PURE__ */ new Date(+date2))
+          arguments.length === 0
+            ? /* @__PURE__ */ new Date()
+            : /* @__PURE__ */ new Date(+date2))
       ),
       date2
     )
@@ -14835,7 +15848,12 @@ function timeInterval(floori, offseti, count2, field) {
     return (floori((date2 = /* @__PURE__ */ new Date(+date2))), date2)
   }
   interval.ceil = (date2) => {
-    return (floori((date2 = new Date(date2 - 1))), offseti(date2, 1), floori(date2), date2)
+    return (
+      floori((date2 = new Date(date2 - 1))),
+      offseti(date2, 1),
+      floori(date2),
+      date2
+    )
   }
   interval.round = (date2) => {
     const d0 = interval(date2),
@@ -14844,7 +15862,10 @@ function timeInterval(floori, offseti, count2, field) {
   }
   interval.offset = (date2, step) => {
     return (
-      offseti((date2 = /* @__PURE__ */ new Date(+date2)), step == null ? 1 : Math.floor(step)),
+      offseti(
+        (date2 = /* @__PURE__ */ new Date(+date2)),
+        step == null ? 1 : Math.floor(step)
+      ),
       date2
     )
   }
@@ -14864,7 +15885,8 @@ function timeInterval(floori, offseti, count2, field) {
   interval.filter = (test) => {
     return timeInterval(
       (date2) => {
-        if (date2 >= date2) while ((floori(date2), !test(date2))) date2.setTime(date2 - 1)
+        if (date2 >= date2)
+          while ((floori(date2), !test(date2))) date2.setTime(date2 - 1)
       },
       (date2, step) => {
         if (date2 >= date2) {
@@ -14893,7 +15915,9 @@ function timeInterval(floori, offseti, count2, field) {
         : !(step > 1)
           ? interval
           : interval.filter(
-              field ? (d) => field(d) % step === 0 : (d) => interval.count(0, d) % step === 0
+              field
+                ? (d) => field(d) % step === 0
+                : (d) => interval.count(0, d) % step === 0
             )
     }
   }
@@ -14957,7 +15981,9 @@ var seconds = second.range
 // node_modules/d3-time/src/minute.js
 var timeMinute = timeInterval(
   (date2) => {
-    date2.setTime(date2 - date2.getMilliseconds() - date2.getSeconds() * durationSecond)
+    date2.setTime(
+      date2 - date2.getMilliseconds() - date2.getSeconds() * durationSecond
+    )
   },
   (date2, step) => {
     date2.setTime(+date2 + step * durationMinute)
@@ -15028,7 +16054,9 @@ var timeDay = timeInterval(
   (date2) => date2.setHours(0, 0, 0, 0),
   (date2, step) => date2.setDate(date2.getDate() + step),
   (start, end) =>
-    (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) /
+    (end -
+      start -
+      (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) /
     durationDay,
   (date2) => date2.getDate() - 1
 )
@@ -15076,7 +16104,10 @@ function timeWeekday(i) {
     },
     (start, end) => {
       return (
-        (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) /
+        (end -
+          start -
+          (end.getTimezoneOffset() - start.getTimezoneOffset()) *
+            durationMinute) /
         durationWeek
       )
     }
@@ -15135,7 +16166,11 @@ var timeMonth = timeInterval(
     date2.setMonth(date2.getMonth() + step)
   },
   (start, end) => {
-    return end.getMonth() - start.getMonth() + (end.getFullYear() - start.getFullYear()) * 12
+    return (
+      end.getMonth() -
+      start.getMonth() +
+      (end.getFullYear() - start.getFullYear()) * 12
+    )
   },
   (date2) => {
     return date2.getMonth()
@@ -15152,7 +16187,9 @@ var utcMonth = timeInterval(
   },
   (start, end) => {
     return (
-      end.getUTCMonth() - start.getUTCMonth() + (end.getUTCFullYear() - start.getUTCFullYear()) * 12
+      end.getUTCMonth() -
+      start.getUTCMonth() +
+      (end.getUTCFullYear() - start.getUTCFullYear()) * 12
     )
   },
   (date2) => {
@@ -15249,7 +16286,9 @@ function ticker(year, month, week, day, hour, minute) {
     const reverse4 = stop < start
     if (reverse4) [start, stop] = [stop, start]
     const interval =
-      count2 && typeof count2.range === 'function' ? count2 : tickInterval(start, stop, count2)
+      count2 && typeof count2.range === 'function'
+        ? count2
+        : tickInterval(start, stop, count2)
     const ticks3 = interval ? interval.range(start, +stop + 1) : []
     return reverse4 ? ticks3.reverse() : ticks3
   }
@@ -15257,15 +16296,29 @@ function ticker(year, month, week, day, hour, minute) {
     const target = Math.abs(stop - start) / count2
     const i = bisector(([, , step2]) => step2).right(tickIntervals, target)
     if (i === tickIntervals.length)
-      return year.every(tickStep(start / durationYear, stop / durationYear, count2))
-    if (i === 0) return millisecond.every(Math.max(tickStep(start, stop, count2), 1))
+      return year.every(
+        tickStep(start / durationYear, stop / durationYear, count2)
+      )
+    if (i === 0)
+      return millisecond.every(Math.max(tickStep(start, stop, count2), 1))
     const [t, step] =
-      tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i]
+      tickIntervals[
+        target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target
+          ? i - 1
+          : i
+      ]
     return t.every(step)
   }
   return [ticks2, tickInterval]
 }
-var [utcTicks, utcTickInterval] = ticker(utcYear, utcMonth, utcSunday, unixDay, utcHour, utcMinute)
+var [utcTicks, utcTickInterval] = ticker(
+  utcYear,
+  utcMonth,
+  utcSunday,
+  unixDay,
+  utcHour,
+  utcMinute
+)
 var [timeTicks, timeTickInterval] = ticker(
   timeYear,
   timeMonth,
@@ -15435,7 +16488,8 @@ function formatLocale(locale3) {
       while (++i < n) {
         if (specifier.charCodeAt(i) === 37) {
           string.push(specifier.slice(j, i))
-          if ((pad2 = pads[(c2 = specifier.charAt(++i))]) != null) c2 = specifier.charAt(++i)
+          if ((pad2 = pads[(c2 = specifier.charAt(++i))]) != null)
+            c2 = specifier.charAt(++i)
           else pad2 = c2 === 'e' ? ' ' : '0'
           if ((format2 = formats2[c2])) c2 = format2(date2, pad2)
           string.push(c2)
@@ -15484,7 +16538,9 @@ function formatLocale(locale3) {
             : localDate(newDate(d.y, 0, 1)).getDay()
         d.m = 0
         d.d =
-          'W' in d ? ((d.w + 6) % 7) + d.W * 7 - ((day + 5) % 7) : d.w + d.U * 7 - ((day + 6) % 7)
+          'W' in d
+            ? ((d.w + 6) % 7) + d.W * 7 - ((day + 5) % 7)
+            : d.w + d.U * 7 - ((day + 6) % 7)
       }
       if ('Z' in d) {
         d.H += (d.Z / 100) | 0
@@ -15515,23 +16571,33 @@ function formatLocale(locale3) {
   }
   function parsePeriod(d, string, i) {
     var n = periodRe.exec(string.slice(i))
-    return n ? ((d.p = periodLookup.get(n[0].toLowerCase())), i + n[0].length) : -1
+    return n
+      ? ((d.p = periodLookup.get(n[0].toLowerCase())), i + n[0].length)
+      : -1
   }
   function parseShortWeekday(d, string, i) {
     var n = shortWeekdayRe.exec(string.slice(i))
-    return n ? ((d.w = shortWeekdayLookup.get(n[0].toLowerCase())), i + n[0].length) : -1
+    return n
+      ? ((d.w = shortWeekdayLookup.get(n[0].toLowerCase())), i + n[0].length)
+      : -1
   }
   function parseWeekday(d, string, i) {
     var n = weekdayRe.exec(string.slice(i))
-    return n ? ((d.w = weekdayLookup.get(n[0].toLowerCase())), i + n[0].length) : -1
+    return n
+      ? ((d.w = weekdayLookup.get(n[0].toLowerCase())), i + n[0].length)
+      : -1
   }
   function parseShortMonth(d, string, i) {
     var n = shortMonthRe.exec(string.slice(i))
-    return n ? ((d.m = shortMonthLookup.get(n[0].toLowerCase())), i + n[0].length) : -1
+    return n
+      ? ((d.m = shortMonthLookup.get(n[0].toLowerCase())), i + n[0].length)
+      : -1
   }
   function parseMonth(d, string, i) {
     var n = monthRe.exec(string.slice(i))
-    return n ? ((d.m = monthLookup.get(n[0].toLowerCase())), i + n[0].length) : -1
+    return n
+      ? ((d.m = monthLookup.get(n[0].toLowerCase())), i + n[0].length)
+      : -1
   }
   function parseLocaleDateTime(d, string, i) {
     return parseSpecifier(d, locale_dateTime, string, i)
@@ -15617,7 +16683,12 @@ function pad(value, fill, width) {
   var sign2 = value < 0 ? '-' : '',
     string = (sign2 ? -value : value) + '',
     length = string.length
-  return sign2 + (length < width ? new Array(width - length + 1).join(fill) + string : string)
+  return (
+    sign2 +
+    (length < width
+      ? new Array(width - length + 1).join(fill) + string
+      : string)
+  )
 }
 function requote(s2) {
   return s2.replace(requoteRe, '\\$&')
@@ -15748,7 +16819,11 @@ function dISO(d) {
 }
 function formatWeekNumberISO(d, p) {
   d = dISO(d)
-  return pad(timeThursday.count(timeYear(d), d) + (timeYear(d).getDay() === 4), p, 2)
+  return pad(
+    timeThursday.count(timeYear(d), d) + (timeYear(d).getDay() === 4),
+    p,
+    2
+  )
 }
 function formatWeekdayNumberSunday(d) {
   return d.getDay()
@@ -15773,7 +16848,11 @@ function formatFullYearISO(d, p) {
 }
 function formatZone(d) {
   var z = d.getTimezoneOffset()
-  return (z > 0 ? '-' : ((z *= -1), '+')) + pad((z / 60) | 0, '0', 2) + pad(z % 60, '0', 2)
+  return (
+    (z > 0 ? '-' : ((z *= -1), '+')) +
+    pad((z / 60) | 0, '0', 2) +
+    pad(z % 60, '0', 2)
+  )
 }
 function formatUTCDayOfMonth(d, p) {
   return pad(d.getUTCDate(), p, 2)
@@ -15815,7 +16894,11 @@ function UTCdISO(d) {
 }
 function formatUTCWeekNumberISO(d, p) {
   d = UTCdISO(d)
-  return pad(utcThursday.count(utcYear(d), d) + (utcYear(d).getUTCDay() === 4), p, 2)
+  return pad(
+    utcThursday.count(utcYear(d), d) + (utcYear(d).getUTCDay() === 4),
+    p,
+    2
+  )
 }
 function formatUTCWeekdayNumberSunday(d) {
   return d.getUTCDay()
@@ -15862,7 +16945,15 @@ defaultLocale2({
   date: '%-m/%-d/%Y',
   time: '%-I:%M:%S %p',
   periods: ['AM', 'PM'],
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  days: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ],
   shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   months: [
     'January',
@@ -15878,7 +16969,20 @@ defaultLocale2({
     'November',
     'December',
   ],
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  shortMonths: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
 })
 function defaultLocale2(definition) {
   locale2 = formatLocale(definition)
@@ -15894,7 +16998,9 @@ var isoSpecifier = '%Y-%m-%dT%H:%M:%S.%LZ'
 function formatIsoNative(date2) {
   return date2.toISOString()
 }
-var formatIso = Date.prototype.toISOString ? formatIsoNative : utcFormat(isoSpecifier)
+var formatIso = Date.prototype.toISOString
+  ? formatIsoNative
+  : utcFormat(isoSpecifier)
 
 // node_modules/d3-time-format/src/isoParse.js
 function parseIsoNative(string) {
@@ -15912,7 +17018,18 @@ function date(t) {
 function number3(t) {
   return t instanceof Date ? +t : +(/* @__PURE__ */ new Date(+t))
 }
-function calendar(ticks2, tickInterval, year, month, week, day, hour, minute, second2, format2) {
+function calendar(
+  ticks2,
+  tickInterval,
+  year,
+  month,
+  week,
+  day,
+  hour,
+  minute,
+  second2,
+  format2
+) {
   var scale = continuous(),
     invert = scale.invert,
     domain = scale.domain
@@ -15947,7 +17064,9 @@ function calendar(ticks2, tickInterval, year, month, week, day, hour, minute, se
     return new Date(invert(y2))
   }
   scale.domain = function (_) {
-    return arguments.length ? domain(Array.from(_, number3)) : domain().map(date)
+    return arguments.length
+      ? domain(Array.from(_, number3))
+      : domain().map(date)
   }
   scale.ticks = function (interval) {
     var d = domain()
@@ -15959,13 +17078,28 @@ function calendar(ticks2, tickInterval, year, month, week, day, hour, minute, se
   scale.nice = function (interval) {
     var d = domain()
     if (!interval || typeof interval.range !== 'function')
-      interval = tickInterval(d[0], d[d.length - 1], interval == null ? 10 : interval)
+      interval = tickInterval(
+        d[0],
+        d[d.length - 1],
+        interval == null ? 10 : interval
+      )
     return interval ? domain(nice2(d, interval)) : scale
   }
   scale.copy = function () {
     return copy(
       scale,
-      calendar(ticks2, tickInterval, year, month, week, day, hour, minute, second2, format2)
+      calendar(
+        ticks2,
+        tickInterval,
+        year,
+        month,
+        week,
+        day,
+        hour,
+        minute,
+        second2,
+        format2
+      )
     )
   }
   return scale
@@ -16024,7 +17158,8 @@ function transformer2() {
       : interpolator(
           k10 === 0
             ? 0.5
-            : ((x2 = (transform(x2) - t03) * k10), clamp ? Math.max(0, Math.min(1, x2)) : x2)
+            : ((x2 = (transform(x2) - t03) * k10),
+              clamp ? Math.max(0, Math.min(1, x2)) : x2)
         )
   }
   scale.domain = function (_) {
@@ -16056,7 +17191,10 @@ function transformer2() {
     return arguments.length ? ((unknown = _), scale) : unknown
   }
   return function (t) {
-    ;((transform = t), (t03 = t(x0)), (t13 = t(x1)), (k10 = t03 === t13 ? 0 : 1 / (t13 - t03)))
+    ;((transform = t),
+      (t03 = t(x0)),
+      (t13 = t(x1)),
+      (k10 = t03 === t13 ? 0 : 1 / (t13 - t03)))
     return scale
   }
 }
@@ -16105,7 +17243,9 @@ function sequentialQuantile() {
     interpolator = identity3
   function scale(x2) {
     if (x2 != null && !isNaN((x2 = +x2)))
-      return interpolator((bisect_default(domain, x2, 1) - 1) / (domain.length - 1))
+      return interpolator(
+        (bisect_default(domain, x2, 1) - 1) / (domain.length - 1)
+      )
   }
   scale.domain = function (_) {
     if (!arguments.length) return domain.slice()
@@ -16147,7 +17287,9 @@ function transformer3() {
   function scale(x3) {
     return isNaN((x3 = +x3))
       ? unknown
-      : ((x3 = 0.5 + ((x3 = +transform(x3)) - t13) * (s2 * x3 < s2 * t13 ? k10 : k21)),
+      : ((x3 =
+          0.5 +
+          ((x3 = +transform(x3)) - t13) * (s2 * x3 < s2 * t13 ? k10 : k21)),
         interpolator(clamp ? Math.max(0, Math.min(1, x3)) : x3))
   }
   scale.domain = function (_) {
@@ -16172,7 +17314,9 @@ function transformer3() {
     return function (_) {
       var r0, r1, r2
       return arguments.length
-        ? (([r0, r1, r2] = _), (interpolator = piecewise(interpolate, [r0, r1, r2])), scale)
+        ? (([r0, r1, r2] = _),
+          (interpolator = piecewise(interpolate, [r0, r1, r2])),
+          scale)
         : [interpolator(0), interpolator(0.5), interpolator(1)]
     }
   }
@@ -16415,7 +17559,8 @@ P.precision = P.sd = function (z) {
     sd,
     w,
     x2 = this
-  if (z !== void 0 && z !== !!z && z !== 1 && z !== 0) throw Error(invalidArgument + z)
+  if (z !== void 0 && z !== !!z && z !== 1 && z !== 0)
+    throw Error(invalidArgument + z)
   e = getBase10Exponent(x2) + 1
   w = x2.d.length - 1
   sd = w * LOG_BASE + 1
@@ -16463,7 +17608,10 @@ P.squareRoot = P.sqrt = function () {
   for (;;) {
     t = r2
     r2 = t.plus(divide(x2, t, wpr + 2)).times(0.5)
-    if (digitsToString(t.d).slice(0, wpr) === (n = digitsToString(r2.d)).slice(0, wpr)) {
+    if (
+      digitsToString(t.d).slice(0, wpr) ===
+      (n = digitsToString(r2.d)).slice(0, wpr)
+    ) {
       n = n.slice(wpr - 3, wpr + 1)
       if (s2 == wpr && n == '4999') {
         round(t, pr + 1, 0)
@@ -16923,7 +18071,8 @@ function exp(x2, sd) {
     k2 = 0,
     Ctor = x2.constructor,
     pr = Ctor.precision
-  if (getBase10Exponent(x2) > 16) throw Error(exponentOutOfRange + getBase10Exponent(x2))
+  if (getBase10Exponent(x2) > 16)
+    throw Error(exponentOutOfRange + getBase10Exponent(x2))
   if (!x2.s) return new Ctor(ONE)
   if (sd == null) {
     external = false
@@ -16944,7 +18093,9 @@ function exp(x2, sd) {
     pow2 = round(pow2.times(x2), wpr)
     denominator = denominator.times(++i)
     t = sum3.plus(divide(pow2, denominator, wpr))
-    if (digitsToString(t.d).slice(0, wpr) === digitsToString(sum3.d).slice(0, wpr)) {
+    if (
+      digitsToString(t.d).slice(0, wpr) === digitsToString(sum3.d).slice(0, wpr)
+    ) {
       while (k2--) sum3 = round(sum3.times(sum3), wpr)
       Ctor.precision = pr
       return sd == null ? ((external = true), round(sum3, pr)) : sum3
@@ -17030,7 +18181,9 @@ function ln(y2, sd) {
   for (;;) {
     numerator = round(numerator.times(x2), wpr)
     t = sum3.plus(divide(numerator, new Ctor(denominator), wpr))
-    if (digitsToString(t.d).slice(0, wpr) === digitsToString(sum3.d).slice(0, wpr)) {
+    if (
+      digitsToString(t.d).slice(0, wpr) === digitsToString(sum3.d).slice(0, wpr)
+    ) {
       sum3 = sum3.times(2)
       if (e !== 0) sum3 = sum3.plus(getLn10(Ctor, wpr + 2, pr).times(e + ''))
       sum3 = divide(sum3, new Ctor(n), wpr)
@@ -17071,7 +18224,8 @@ function parseDecimal(x2, str) {
     }
     for (; i--; ) str += '0'
     x2.d.push(+str)
-    if (external && (x2.e > MAX_E || x2.e < -MAX_E)) throw Error(exponentOutOfRange + e)
+    if (external && (x2.e > MAX_E || x2.e < -MAX_E))
+      throw Error(exponentOutOfRange + e)
   } else {
     x2.s = 0
     x2.e = 0
@@ -17116,7 +18270,9 @@ function round(x2, sd, rm) {
             (rm == 4 ||
               doRound ||
               (rm == 6 && // Check whether the digit to the left of the rounding digit is odd.
-                ((i > 0 ? (j > 0 ? w / mathpow(10, n - j) : 0) : xd[xdi - 1]) % 10) & 1) ||
+                ((i > 0 ? (j > 0 ? w / mathpow(10, n - j) : 0) : xd[xdi - 1]) %
+                  10) &
+                  1) ||
               rm == (x2.s < 0 ? 8 : 7)))
   }
   if (sd < 1 || !xd[0]) {
@@ -17335,7 +18491,8 @@ function clone(obj) {
   if (obj === void 0) obj = {}
   if (obj) {
     ps = ['precision', 'rounding', 'toExpNeg', 'toExpPos', 'LN10']
-    for (i = 0; i < ps.length; ) if (!obj.hasOwnProperty((p = ps[i++]))) obj[p] = this[p]
+    for (i = 0; i < ps.length; )
+      if (!obj.hasOwnProperty((p = ps[i++]))) obj[p] = this[p]
   }
   Decimal2.config(obj)
   return Decimal2
@@ -17347,7 +18504,20 @@ function config(obj) {
   var i,
     p,
     v,
-    ps = ['precision', 1, MAX_DIGITS, 'rounding', 0, 8, 'toExpNeg', -1 / 0, 0, 'toExpPos', 0, 1 / 0]
+    ps = [
+      'precision',
+      1,
+      MAX_DIGITS,
+      'rounding',
+      0,
+      8,
+      'toExpNeg',
+      -1 / 0,
+      0,
+      'toExpPos',
+      0,
+      1 / 0,
+    ]
   for (i = 0; i < ps.length; i += 3) {
     if ((v = obj[(p = ps[i])]) !== void 0) {
       if (mathfloor(v) === v && v >= ps[i + 1] && v <= ps[i + 2]) this[p] = v
@@ -17388,7 +18558,8 @@ function _unsupportedIterableToArray5(o, minLen) {
     return _arrayLikeToArray5(o, minLen)
 }
 function _iterableToArray(iter) {
-  if (typeof Symbol !== 'undefined' && Symbol.iterator in Object(iter)) return Array.from(iter)
+  if (typeof Symbol !== 'undefined' && Symbol.iterator in Object(iter))
+    return Array.from(iter)
 }
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) return _arrayLikeToArray5(arr)
@@ -17413,7 +18584,8 @@ var curry0 = function curry02(fn) {
   return function _curried() {
     if (
       arguments.length === 0 ||
-      (arguments.length === 1 && isPlaceHolder(arguments.length <= 0 ? void 0 : arguments[0]))
+      (arguments.length === 1 &&
+        isPlaceHolder(arguments.length <= 0 ? void 0 : arguments[0]))
     ) {
       return _curried
     }
@@ -17425,7 +18597,11 @@ var curryN = function curryN2(n, fn) {
     return fn
   }
   return curry0(function () {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     var argsLength = args.filter(function (arg) {
@@ -17473,7 +18649,11 @@ var map4 = curry(function (fn, arr) {
     .map(fn)
 })
 var compose = function compose2() {
-  for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+  for (
+    var _len3 = arguments.length, args = new Array(_len3), _key3 = 0;
+    _key3 < _len3;
+    _key3++
+  ) {
     args[_key3] = arguments[_key3]
   }
   if (!args.length) {
@@ -17501,7 +18681,11 @@ var memoize = function memoize2(fn) {
   var lastArgs = null
   var lastResult2 = null
   return function () {
-    for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+    for (
+      var _len4 = arguments.length, args = new Array(_len4), _key4 = 0;
+      _key4 < _len4;
+      _key4++
+    ) {
       args[_key4] = arguments[_key4]
     }
     if (
@@ -17577,7 +18761,8 @@ function _nonIterableSpread2() {
   )
 }
 function _iterableToArray2(iter) {
-  if (typeof Symbol !== 'undefined' && Symbol.iterator in Object(iter)) return Array.from(iter)
+  if (typeof Symbol !== 'undefined' && Symbol.iterator in Object(iter))
+    return Array.from(iter)
 }
 function _arrayWithoutHoles2(arr) {
   if (Array.isArray(arr)) return _arrayLikeToArray6(arr)
@@ -17618,7 +18803,11 @@ function _iterableToArrayLimit5(arr, i) {
   var _d = false
   var _e = void 0
   try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+    for (
+      var _i = arr[Symbol.iterator](), _s;
+      !(_n = (_s = _i.next()).done);
+      _n = true
+    ) {
       _arr.push(_s.value)
       if (i && _arr.length === i) break
     }
@@ -17657,7 +18846,9 @@ function getFormatStep(roughStep, allowDecimals, correctionFactor) {
   var digitCountValue = new decimal_default(10).pow(digitCount)
   var stepRatio = roughStep.div(digitCountValue)
   var stepRatioScale = digitCount !== 1 ? 0.05 : 0.1
-  var amendStepRatio = new decimal_default(Math.ceil(stepRatio.div(stepRatioScale).toNumber()))
+  var amendStepRatio = new decimal_default(
+    Math.ceil(stepRatio.div(stepRatioScale).toNumber())
+  )
     .add(correctionFactor)
     .mul(stepRatioScale)
   var formatStep = amendStepRatio.mul(digitCountValue)
@@ -17669,8 +18860,12 @@ function getTickOfSingleValue(value, tickCount, allowDecimals) {
   if (!middle.isint() && allowDecimals) {
     var absVal = Math.abs(value)
     if (absVal < 1) {
-      step = new decimal_default(10).pow(arithmetic_default.getDigitCount(value) - 1)
-      middle = new decimal_default(Math.floor(middle.div(step).toNumber())).mul(step)
+      step = new decimal_default(10).pow(
+        arithmetic_default.getDigitCount(value) - 1
+      )
+      middle = new decimal_default(Math.floor(middle.div(step).toNumber())).mul(
+        step
+      )
     } else if (absVal > 1) {
       middle = new decimal_default(Math.floor(value))
     }
@@ -17682,14 +18877,17 @@ function getTickOfSingleValue(value, tickCount, allowDecimals) {
   var middleIndex = Math.floor((tickCount - 1) / 2)
   var fn = compose(
     map4(function (n) {
-      return middle.add(new decimal_default(n - middleIndex).mul(step)).toNumber()
+      return middle
+        .add(new decimal_default(n - middleIndex).mul(step))
+        .toNumber()
     }),
     range2
   )
   return fn(0, tickCount)
 }
 function calculateStep(min5, max5, tickCount, allowDecimals) {
-  var correctionFactor = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : 0
+  var correctionFactor =
+    arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : 0
   if (!Number.isFinite((max5 - min5) / (tickCount - 1))) {
     return {
       step: new decimal_default(0),
@@ -17710,10 +18908,18 @@ function calculateStep(min5, max5, tickCount, allowDecimals) {
     middle = middle.sub(new decimal_default(middle).mod(step))
   }
   var belowCount = Math.ceil(middle.sub(min5).div(step).toNumber())
-  var upCount = Math.ceil(new decimal_default(max5).sub(middle).div(step).toNumber())
+  var upCount = Math.ceil(
+    new decimal_default(max5).sub(middle).div(step).toNumber()
+  )
   var scaleCount = belowCount + upCount + 1
   if (scaleCount > tickCount) {
-    return calculateStep(min5, max5, tickCount, allowDecimals, correctionFactor + 1)
+    return calculateStep(
+      min5,
+      max5,
+      tickCount,
+      allowDecimals,
+      correctionFactor + 1
+    )
   }
   if (scaleCount < tickCount) {
     upCount = max5 > 0 ? upCount + (tickCount - scaleCount) : upCount
@@ -17729,8 +18935,10 @@ function getNiceTickValuesFn(_ref3) {
   var _ref4 = _slicedToArray5(_ref3, 2),
     min5 = _ref4[0],
     max5 = _ref4[1]
-  var tickCount = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 6
-  var allowDecimals = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
+  var tickCount =
+    arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 6
+  var allowDecimals =
+    arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
   var count2 = Math.max(tickCount, 2)
   var _getValidInterval = getValidInterval([min5, max5]),
     _getValidInterval2 = _slicedToArray5(_getValidInterval, 2),
@@ -17774,8 +18982,10 @@ function getTickValuesFn(_ref5) {
   var _ref6 = _slicedToArray5(_ref5, 2),
     min5 = _ref6[0],
     max5 = _ref6[1]
-  var tickCount = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 6
-  var allowDecimals = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
+  var tickCount =
+    arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 6
+  var allowDecimals =
+    arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
   var count2 = Math.max(tickCount, 2)
   var _getValidInterval3 = getValidInterval([min5, max5]),
     _getValidInterval4 = _slicedToArray5(_getValidInterval3, 2),
@@ -17794,7 +19004,9 @@ function getTickValuesFn(_ref5) {
   )
   var fn = compose(
     map4(function (n) {
-      return new decimal_default(cormin).add(new decimal_default(n).mul(step)).toNumber()
+      return new decimal_default(cormin)
+        .add(new decimal_default(n).mul(step))
+        .toNumber()
     }),
     range2
   )
@@ -17807,7 +19019,8 @@ function getTickValuesFixedDomainFn(_ref7, tickCount) {
   var _ref8 = _slicedToArray5(_ref7, 2),
     min5 = _ref8[0],
     max5 = _ref8[1]
-  var allowDecimals = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
+  var allowDecimals =
+    arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
   var _getValidInterval5 = getValidInterval([min5, max5]),
     _getValidInterval6 = _slicedToArray5(_getValidInterval5, 2),
     cormin = _getValidInterval6[0],
@@ -17933,7 +19146,10 @@ function _arrayLikeToArray7(arr, len) {
 }
 function _iterableToArrayLimit6(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -17946,12 +19162,18 @@ function _iterableToArrayLimit6(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -18023,19 +19245,25 @@ function _possibleConstructorReturn5(self2, call) {
   if (call && (_typeof13(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized5(self2)
 }
 function _assertThisInitialized5(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct5() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct5 = function _isNativeReflectConstruct29() {
     return !!t
@@ -18071,7 +19299,12 @@ function _setPrototypeOf5(o, p) {
 function _defineProperty10(obj, key, value) {
   key = _toPropertyKey11(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -18114,7 +19347,10 @@ var ErrorBar = (function (_React$Component) {
         var svgProps = filterProps(others, false)
         this.props.direction === 'x' && xAxis.type !== 'number'
           ? true
-            ? invariant(false, 'ErrorBar requires Axis type property to be "number".')
+            ? invariant(
+                false,
+                'ErrorBar requires Axis type property to be "number".'
+              )
             : invariant(false)
           : void 0
         var errorBars = data.map(function (entry) {
@@ -18193,7 +19429,11 @@ var ErrorBar = (function (_React$Component) {
                 className: 'recharts-errorBar',
                 key: 'bar-'.concat(
                   lineCoordinates.map(function (c2) {
-                    return ''.concat(c2.x1, '-').concat(c2.x2, '-').concat(c2.y1, '-').concat(c2.y2)
+                    return ''
+                      .concat(c2.x1, '-')
+                      .concat(c2.x2, '-')
+                      .concat(c2.y1, '-')
+                      .concat(c2.y2)
                   })
                 ),
               },
@@ -18283,7 +19523,12 @@ function _objectSpread9(e) {
 function _defineProperty11(obj, key, value) {
   key = _toPropertyKey12(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -18321,7 +19566,10 @@ var getLegendProps = function getLegendProps2(_ref) {
   if (legendItem.props && legendItem.props.payload) {
     legendData = legendItem.props && legendItem.props.payload
   } else if (legendContent === 'children') {
-    legendData = (formattedGraphicalItems || []).reduce(function (result, _ref2) {
+    legendData = (formattedGraphicalItems || []).reduce(function (
+      result,
+      _ref2
+    ) {
       var item = _ref2.item,
         props = _ref2.props
       var data = props.sectors || props.data || []
@@ -18360,7 +19608,10 @@ var getLegendProps = function getLegendProps2(_ref) {
     })
   }
   return _objectSpread9(
-    _objectSpread9(_objectSpread9({}, legendProps), Legend.getWithHeight(legendItem, legendWidth)),
+    _objectSpread9(
+      _objectSpread9({}, legendProps),
+      Legend.getWithHeight(legendItem, legendWidth)
+    ),
     {},
     {
       payload: legendData,
@@ -18456,7 +19707,12 @@ function _objectSpread10(e) {
 function _defineProperty12(obj, key, value) {
   key = _toPropertyKey13(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -18511,12 +19767,14 @@ function getDomainOfDataByKey(data, key, type, filterNil) {
 }
 var calculateActiveTickIndex = function calculateActiveTickIndex2(coordinate) {
   var _ticks$length
-  var ticks2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : []
+  var ticks2 =
+    arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : []
   var unsortedTicks = arguments.length > 2 ? arguments[2] : void 0
   var axis = arguments.length > 3 ? arguments[3] : void 0
   var index2 = -1
   var len =
-    (_ticks$length = ticks2 === null || ticks2 === void 0 ? void 0 : ticks2.length) !== null &&
+    (_ticks$length =
+      ticks2 === null || ticks2 === void 0 ? void 0 : ticks2.length) !== null &&
     _ticks$length !== void 0
       ? _ticks$length
       : 0
@@ -18530,9 +19788,15 @@ var calculateActiveTickIndex = function calculateActiveTickIndex2(coordinate) {
   ) {
     var range6 = axis.range
     for (var i = 0; i < len; i++) {
-      var before = i > 0 ? unsortedTicks[i - 1].coordinate : unsortedTicks[len - 1].coordinate
+      var before =
+        i > 0
+          ? unsortedTicks[i - 1].coordinate
+          : unsortedTicks[len - 1].coordinate
       var cur = unsortedTicks[i].coordinate
-      var after = i >= len - 1 ? unsortedTicks[0].coordinate : unsortedTicks[i + 1].coordinate
+      var after =
+        i >= len - 1
+          ? unsortedTicks[0].coordinate
+          : unsortedTicks[i + 1].coordinate
       var sameDirectionCoord = void 0
       if (mathSign(cur - before) !== mathSign(after - cur)) {
         var diffInterval = []
@@ -18561,7 +19825,10 @@ var calculateActiveTickIndex = function calculateActiveTickIndex2(coordinate) {
       } else {
         var minValue = Math.min(before, after)
         var maxValue = Math.max(before, after)
-        if (coordinate > (minValue + cur) / 2 && coordinate <= (maxValue + cur) / 2) {
+        if (
+          coordinate > (minValue + cur) / 2 &&
+          coordinate <= (maxValue + cur) / 2
+        ) {
           index2 = unsortedTicks[i].index
           break
         }
@@ -18570,12 +19837,17 @@ var calculateActiveTickIndex = function calculateActiveTickIndex2(coordinate) {
   } else {
     for (var _i = 0; _i < len; _i++) {
       if (
-        (_i === 0 && coordinate <= (ticks2[_i].coordinate + ticks2[_i + 1].coordinate) / 2) ||
+        (_i === 0 &&
+          coordinate <=
+            (ticks2[_i].coordinate + ticks2[_i + 1].coordinate) / 2) ||
         (_i > 0 &&
           _i < len - 1 &&
-          coordinate > (ticks2[_i].coordinate + ticks2[_i - 1].coordinate) / 2 &&
-          coordinate <= (ticks2[_i].coordinate + ticks2[_i + 1].coordinate) / 2) ||
-        (_i === len - 1 && coordinate > (ticks2[_i].coordinate + ticks2[_i - 1].coordinate) / 2)
+          coordinate >
+            (ticks2[_i].coordinate + ticks2[_i - 1].coordinate) / 2 &&
+          coordinate <=
+            (ticks2[_i].coordinate + ticks2[_i + 1].coordinate) / 2) ||
+        (_i === len - 1 &&
+          coordinate > (ticks2[_i].coordinate + ticks2[_i - 1].coordinate) / 2)
       ) {
         index2 = ticks2[_i].index
         break
@@ -18589,7 +19861,9 @@ var getMainColorOfGraphicItem = function getMainColorOfGraphicItem2(item) {
   var _ref = item,
     displayName = _ref.type.displayName
   var defaultedProps =
-    (_item$type = item.type) !== null && _item$type !== void 0 && _item$type.defaultProps
+    (_item$type = item.type) !== null &&
+    _item$type !== void 0 &&
+    _item$type.defaultProps
       ? _objectSpread10(_objectSpread10({}, item.type.defaultProps), item.props)
       : item.props
   var stroke = defaultedProps.stroke,
@@ -18633,14 +19907,19 @@ var getBarSizeList = function getBarSizeList2(_ref2) {
         var barItemDefaultProps = barItems[0].type.defaultProps
         var barItemProps =
           barItemDefaultProps !== void 0
-            ? _objectSpread10(_objectSpread10({}, barItemDefaultProps), barItems[0].props)
+            ? _objectSpread10(
+                _objectSpread10({}, barItemDefaultProps),
+                barItems[0].props
+              )
             : barItems[0].props
         var selfSize = barItemProps.barSize
         var cateId = barItemProps[cateAxisId]
         if (!result[cateId]) {
           result[cateId] = []
         }
-        var barSize = (0, import_isNil5.default)(selfSize) ? globalSize : selfSize
+        var barSize = (0, import_isNil5.default)(selfSize)
+          ? globalSize
+          : selfSize
         result[cateId].push({
           item: barItems[0],
           stackList: barItems.slice(1),
@@ -18716,13 +19995,19 @@ var getBarPosition = function getBarPosition2(_ref3) {
     if (originalSize > 1) {
       originalSize >>= 0
     }
-    var size = maxBarSize === +maxBarSize ? Math.min(originalSize, maxBarSize) : originalSize
+    var size =
+      maxBarSize === +maxBarSize
+        ? Math.min(originalSize, maxBarSize)
+        : originalSize
     result = sizeList.reduce(function (res, entry, i) {
       var newRes = [].concat(_toConsumableArray3(res), [
         {
           item: entry.item,
           position: {
-            offset: _offset + (originalSize + realBarGap) * i + (originalSize - size) / 2,
+            offset:
+              _offset +
+              (originalSize + realBarGap) * i +
+              (originalSize - size) / 2,
             size,
           },
         },
@@ -18740,7 +20025,12 @@ var getBarPosition = function getBarPosition2(_ref3) {
   }
   return result
 }
-var appendOffsetOfLegend = function appendOffsetOfLegend2(offset, _unused, props, legendBox) {
+var appendOffsetOfLegend = function appendOffsetOfLegend2(
+  offset,
+  _unused,
+  props,
+  legendBox
+) {
   var children2 = props.children,
     width = props.width,
     margin = props.margin
@@ -18757,7 +20047,8 @@ var appendOffsetOfLegend = function appendOffsetOfLegend2(offset, _unused, props
       verticalAlign = legendProps.verticalAlign,
       layout = legendProps.layout
     if (
-      (layout === 'vertical' || (layout === 'horizontal' && verticalAlign === 'middle')) &&
+      (layout === 'vertical' ||
+        (layout === 'horizontal' && verticalAlign === 'middle')) &&
       align !== 'center' &&
       isNumber(offset[align])
     ) {
@@ -18768,20 +20059,29 @@ var appendOffsetOfLegend = function appendOffsetOfLegend2(offset, _unused, props
       )
     }
     if (
-      (layout === 'horizontal' || (layout === 'vertical' && align === 'center')) &&
+      (layout === 'horizontal' ||
+        (layout === 'vertical' && align === 'center')) &&
       verticalAlign !== 'middle' &&
       isNumber(offset[verticalAlign])
     ) {
       return _objectSpread10(
         _objectSpread10({}, offset),
         {},
-        _defineProperty12({}, verticalAlign, offset[verticalAlign] + (boxHeight || 0))
+        _defineProperty12(
+          {},
+          verticalAlign,
+          offset[verticalAlign] + (boxHeight || 0)
+        )
       )
     }
   }
   return offset
 }
-var isErrorBarRelevantForAxis = function isErrorBarRelevantForAxis2(layout, axisType, direction) {
+var isErrorBarRelevantForAxis = function isErrorBarRelevantForAxis2(
+  layout,
+  axisType,
+  direction
+) {
   if ((0, import_isNil5.default)(axisType)) {
     return true
   }
@@ -18799,11 +20099,23 @@ var isErrorBarRelevantForAxis = function isErrorBarRelevantForAxis2(layout, axis
   }
   return true
 }
-var getDomainOfErrorBars = function getDomainOfErrorBars2(data, item, dataKey, layout, axisType) {
+var getDomainOfErrorBars = function getDomainOfErrorBars2(
+  data,
+  item,
+  dataKey,
+  layout,
+  axisType
+) {
   var children2 = item.props.children
-  var errorBars = findAllByType(children2, ErrorBar).filter(function (errorBarChild) {
-    return isErrorBarRelevantForAxis(layout, axisType, errorBarChild.props.direction)
-  })
+  var errorBars = findAllByType(children2, ErrorBar).filter(
+    function (errorBarChild) {
+      return isErrorBarRelevantForAxis(
+        layout,
+        axisType,
+        errorBarChild.props.direction
+      )
+    }
+  )
   if (errorBars && errorBars.length) {
     var keys2 = errorBars.map(function (errorBarChild) {
       return errorBarChild.props.dataKey
@@ -18813,27 +20125,44 @@ var getDomainOfErrorBars = function getDomainOfErrorBars2(data, item, dataKey, l
         var entryValue = getValueByDataKey(entry, dataKey)
         if ((0, import_isNil5.default)(entryValue)) return result
         var mainValue = Array.isArray(entryValue)
-          ? [(0, import_min4.default)(entryValue), (0, import_max3.default)(entryValue)]
+          ? [
+              (0, import_min4.default)(entryValue),
+              (0, import_max3.default)(entryValue),
+            ]
           : [entryValue, entryValue]
         var errorDomain = keys2.reduce(
           function (prevErrorArr, k2) {
             var errorValue = getValueByDataKey(entry, k2, 0)
             var lowerValue =
-              mainValue[0] - Math.abs(Array.isArray(errorValue) ? errorValue[0] : errorValue)
+              mainValue[0] -
+              Math.abs(Array.isArray(errorValue) ? errorValue[0] : errorValue)
             var upperValue =
-              mainValue[1] + Math.abs(Array.isArray(errorValue) ? errorValue[1] : errorValue)
-            return [Math.min(lowerValue, prevErrorArr[0]), Math.max(upperValue, prevErrorArr[1])]
+              mainValue[1] +
+              Math.abs(Array.isArray(errorValue) ? errorValue[1] : errorValue)
+            return [
+              Math.min(lowerValue, prevErrorArr[0]),
+              Math.max(upperValue, prevErrorArr[1]),
+            ]
           },
           [Infinity, -Infinity]
         )
-        return [Math.min(errorDomain[0], result[0]), Math.max(errorDomain[1], result[1])]
+        return [
+          Math.min(errorDomain[0], result[0]),
+          Math.max(errorDomain[1], result[1]),
+        ]
       },
       [Infinity, -Infinity]
     )
   }
   return null
 }
-var parseErrorBarsOfAxis = function parseErrorBarsOfAxis2(data, items, dataKey, axisType, layout) {
+var parseErrorBarsOfAxis = function parseErrorBarsOfAxis2(
+  data,
+  items,
+  dataKey,
+  axisType,
+  layout
+) {
   var domains = items
     .map(function (item) {
       return getDomainOfErrorBars(data, item, dataKey, layout, axisType)
@@ -18932,7 +20261,8 @@ var getTicksOfAxis = function getTicksOfAxis2(axis, isGrid, isAll) {
   var duplicateDomain = axis.duplicateDomain,
     type = axis.type,
     range6 = axis.range
-  var offsetForBand = axis.realScaleType === 'scaleBand' ? scale.bandwidth() / 2 : 2
+  var offsetForBand =
+    axis.realScaleType === 'scaleBand' ? scale.bandwidth() / 2 : 2
   var offset =
     (isGrid || isAll) && type === 'category' && scale.bandwidth
       ? scale.bandwidth() / offsetForBand
@@ -18944,7 +20274,9 @@ var getTicksOfAxis = function getTicksOfAxis2(axis, isGrid, isAll) {
       : offset
   if (isGrid && (axis.ticks || axis.niceTicks)) {
     var result = (axis.ticks || axis.niceTicks).map(function (entry) {
-      var scaleContent = duplicateDomain ? duplicateDomain.indexOf(entry) : entry
+      var scaleContent = duplicateDomain
+        ? duplicateDomain.indexOf(entry)
+        : entry
       return {
         // If the scaleContent is not a number, the coordinate will be NaN.
         // That could be the case for example with a PointScale and a string as domain.
@@ -18986,7 +20318,10 @@ var getTicksOfAxis = function getTicksOfAxis2(axis, isGrid, isAll) {
   })
 }
 var handlerWeakMap = /* @__PURE__ */ new WeakMap()
-var combineEventHandlers = function combineEventHandlers2(defaultHandler, childHandler) {
+var combineEventHandlers = function combineEventHandlers2(
+  defaultHandler,
+  childHandler
+) {
   if (typeof childHandler !== 'function') {
     return defaultHandler
   }
@@ -19073,7 +20408,12 @@ var checkDomainOfScale = function checkDomainOfScale2(scale) {
   var maxValue = Math.max(range6[0], range6[1]) + EPS2
   var first2 = scale(domain[0])
   var last3 = scale(domain[len - 1])
-  if (first2 < minValue || first2 > maxValue || last3 < minValue || last3 > maxValue) {
+  if (
+    first2 < minValue ||
+    first2 > maxValue ||
+    last3 < minValue ||
+    last3 > maxValue
+  ) {
     scale.domain([domain[0], domain[len - 1]])
   }
 }
@@ -19089,7 +20429,12 @@ var findPositionOfBar = function findPositionOfBar2(barPosition, child) {
   return null
 }
 var truncateByDomain = function truncateByDomain2(value, domain) {
-  if (!domain || domain.length !== 2 || !isNumber(domain[0]) || !isNumber(domain[1])) {
+  if (
+    !domain ||
+    domain.length !== 2 ||
+    !isNumber(domain[0]) ||
+    !isNumber(domain[1])
+  ) {
     return value
   }
   var minValue = Math.min(domain[0], domain[1])
@@ -19118,7 +20463,9 @@ var offsetSign = function offsetSign2(series) {
     var positive = 0
     var negative = 0
     for (var i = 0; i < n; ++i) {
-      var value = (0, import_isNaN2.default)(series[i][j][1]) ? series[i][j][0] : series[i][j][1]
+      var value = (0, import_isNaN2.default)(series[i][j][1])
+        ? series[i][j][0]
+        : series[i][j][1]
       if (value >= 0) {
         series[i][j][0] = positive
         series[i][j][1] = positive + value
@@ -19139,7 +20486,9 @@ var offsetPositive = function offsetPositive2(series) {
   for (var j = 0, m = series[0].length; j < m; ++j) {
     var positive = 0
     for (var i = 0; i < n; ++i) {
-      var value = (0, import_isNaN2.default)(series[i][j][1]) ? series[i][j][0] : series[i][j][1]
+      var value = (0, import_isNaN2.default)(series[i][j][1])
+        ? series[i][j][0]
+        : series[i][j][1]
       if (value >= 0) {
         series[i][j][0] = positive
         series[i][j][1] = positive + value
@@ -19193,8 +20542,13 @@ var getStackGroupsByAxisId = function getStackGroupsByAxisId2(
   var stackGroups = items.reduce(function (result, item) {
     var _item$type2
     var defaultedProps =
-      (_item$type2 = item.type) !== null && _item$type2 !== void 0 && _item$type2.defaultProps
-        ? _objectSpread10(_objectSpread10({}, item.type.defaultProps), item.props)
+      (_item$type2 = item.type) !== null &&
+      _item$type2 !== void 0 &&
+      _item$type2.defaultProps
+        ? _objectSpread10(
+            _objectSpread10({}, item.type.defaultProps),
+            item.props
+          )
         : item.props
     var stackId = defaultedProps.stackId,
       hide = defaultedProps.hide
@@ -19233,7 +20587,10 @@ var getStackGroupsByAxisId = function getStackGroupsByAxisId2(
     var group2 = stackGroups[axisId]
     if (group2.hasStack) {
       var stackGroupsInitialValue = {}
-      group2.stackGroups = Object.keys(group2.stackGroups).reduce(function (res, stackId) {
+      group2.stackGroups = Object.keys(group2.stackGroups).reduce(function (
+        res,
+        stackId
+      ) {
         var g = group2.stackGroups[stackId]
         return _objectSpread10(
           _objectSpread10({}, res),
@@ -19247,7 +20604,11 @@ var getStackGroupsByAxisId = function getStackGroupsByAxisId2(
         )
       }, stackGroupsInitialValue)
     }
-    return _objectSpread10(_objectSpread10({}, result), {}, _defineProperty12({}, axisId, group2))
+    return _objectSpread10(
+      _objectSpread10({}, result),
+      {},
+      _defineProperty12({}, axisId, group2)
+    )
   }, axisStackGroupsInitialValue)
 }
 var getTicksOfScale = function getTicksOfScale2(scale, opts) {
@@ -19271,14 +20632,21 @@ var getTicksOfScale = function getTicksOfScale2(scale, opts) {
       return null
     }
     var tickValues = getNiceTickValues(domain, tickCount, allowDecimals)
-    scale.domain([(0, import_min4.default)(tickValues), (0, import_max3.default)(tickValues)])
+    scale.domain([
+      (0, import_min4.default)(tickValues),
+      (0, import_max3.default)(tickValues),
+    ])
     return {
       niceTicks: tickValues,
     }
   }
   if (tickCount && type === 'number') {
     var _domain = scale.domain()
-    var _tickValues = getTickValuesFixedDomain(_domain, tickCount, allowDecimals)
+    var _tickValues = getTickValuesFixedDomain(
+      _domain,
+      tickCount,
+      allowDecimals
+    )
     return {
       niceTicks: _tickValues,
     }
@@ -19322,7 +20690,9 @@ var getCateCoordinateOfBar = function getCateCoordinateOfBar2(_ref6) {
     return ticks2[index2] ? ticks2[index2].coordinate + offset : null
   }
   var value = getValueByDataKey(entry, axis.dataKey, axis.domain[index2])
-  return !(0, import_isNil5.default)(value) ? axis.scale(value) - bandSize / 2 + offset : null
+  return !(0, import_isNil5.default)(value)
+    ? axis.scale(value) - bandSize / 2 + offset
+    : null
 }
 var getBaseValueOfBar = function getBaseValueOfBar2(_ref7) {
   var numericAxis = _ref7.numericAxis
@@ -19343,7 +20713,9 @@ var getBaseValueOfBar = function getBaseValueOfBar2(_ref7) {
 var getStackedDataOfItem = function getStackedDataOfItem2(item, stackGroups) {
   var _item$type3
   var defaultedProps =
-    (_item$type3 = item.type) !== null && _item$type3 !== void 0 && _item$type3.defaultProps
+    (_item$type3 = item.type) !== null &&
+    _item$type3 !== void 0 &&
+    _item$type3.defaultProps
       ? _objectSpread10(_objectSpread10({}, item.type.defaultProps), item.props)
       : item.props
   var stackId = defaultedProps.stackId
@@ -19367,7 +20739,11 @@ var getDomainOfSingle = function getDomainOfSingle2(data) {
     [Infinity, -Infinity]
   )
 }
-var getDomainOfStackGroups = function getDomainOfStackGroups2(stackGroups, startIndex, endIndex) {
+var getDomainOfStackGroups = function getDomainOfStackGroups2(
+  stackGroups,
+  startIndex,
+  endIndex
+) {
   return Object.keys(stackGroups)
     .reduce(
       function (result, stackId) {
@@ -19403,7 +20779,9 @@ var parseSpecifiedDomain = function parseSpecifiedDomain2(
   }
   var domain = []
   if (isNumber(specifiedDomain[0])) {
-    domain[0] = allowDataOverflow ? specifiedDomain[0] : Math.min(specifiedDomain[0], dataDomain[0])
+    domain[0] = allowDataOverflow
+      ? specifiedDomain[0]
+      : Math.min(specifiedDomain[0], dataDomain[0])
   } else if (MIN_VALUE_REG.test(specifiedDomain[0])) {
     var value = +MIN_VALUE_REG.exec(specifiedDomain[0])[1]
     domain[0] = dataDomain[0] - value
@@ -19413,7 +20791,9 @@ var parseSpecifiedDomain = function parseSpecifiedDomain2(
     domain[0] = dataDomain[0]
   }
   if (isNumber(specifiedDomain[1])) {
-    domain[1] = allowDataOverflow ? specifiedDomain[1] : Math.max(specifiedDomain[1], dataDomain[1])
+    domain[1] = allowDataOverflow
+      ? specifiedDomain[1]
+      : Math.max(specifiedDomain[1], dataDomain[1])
   } else if (MAX_VALUE_REG.test(specifiedDomain[1])) {
     var _value = +MAX_VALUE_REG.exec(specifiedDomain[1])[1]
     domain[1] = dataDomain[1] + _value
@@ -19439,7 +20819,10 @@ var getBandSizeOfAxis = function getBandSizeOfAxis2(axis, ticks2, isBar) {
     for (var i = 1, len = orderedTicks.length; i < len; i++) {
       var cur = orderedTicks[i]
       var prev = orderedTicks[i - 1]
-      bandSize = Math.min((cur.coordinate || 0) - (prev.coordinate || 0), bandSize)
+      bandSize = Math.min(
+        (cur.coordinate || 0) - (prev.coordinate || 0),
+        bandSize
+      )
     }
     return bandSize === Infinity ? 0 : bandSize
   }
@@ -19465,7 +20848,10 @@ var parseDomainOfCategoryAxis = function parseDomainOfCategoryAxis2(
 }
 var getTooltipItem = function getTooltipItem2(graphicalItem, payload) {
   var defaultedProps = graphicalItem.type.defaultProps
-    ? _objectSpread10(_objectSpread10({}, graphicalItem.type.defaultProps), graphicalItem.props)
+    ? _objectSpread10(
+        _objectSpread10({}, graphicalItem.type.defaultProps),
+        graphicalItem.props
+      )
     : graphicalItem.props
   var dataKey = defaultedProps.dataKey,
     name = defaultedProps.name,
@@ -19542,7 +20928,12 @@ function _objectSpread11(e) {
 function _defineProperty13(obj, key, value) {
   key = _toPropertyKey14(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -19591,7 +20982,10 @@ function _arrayLikeToArray9(arr, len) {
 }
 function _iterableToArrayLimit7(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -19604,12 +20998,18 @@ function _iterableToArrayLimit7(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -19647,7 +21047,13 @@ var getMaxRadius = function getMaxRadius2(width, height) {
     ) / 2
   )
 }
-var formatAxisMap = function formatAxisMap2(props, axisMap, offset, axisType, chartName) {
+var formatAxisMap = function formatAxisMap2(
+  props,
+  axisMap,
+  offset,
+  axisType,
+  chartName
+) {
   var width = props.width,
     height = props.height
   var startAngle = props.startAngle,
@@ -19656,7 +21062,11 @@ var formatAxisMap = function formatAxisMap2(props, axisMap, offset, axisType, ch
   var cy = getPercentValue(props.cy, height, height / 2)
   var maxRadius = getMaxRadius(width, height, offset)
   var innerRadius = getPercentValue(props.innerRadius, maxRadius, 0)
-  var outerRadius = getPercentValue(props.outerRadius, maxRadius, maxRadius * 0.8)
+  var outerRadius = getPercentValue(
+    props.outerRadius,
+    maxRadius,
+    maxRadius * 0.8
+  )
   var ids = Object.keys(axisMap)
   return ids.reduce(function (result, id) {
     var axis = axisMap[id]
@@ -19710,10 +21120,17 @@ var formatAxisMap = function formatAxisMap2(props, axisMap, offset, axisType, ch
         endAngle,
       }
     )
-    return _objectSpread11(_objectSpread11({}, result), {}, _defineProperty13({}, id, finalAxis))
+    return _objectSpread11(
+      _objectSpread11({}, result),
+      {},
+      _defineProperty13({}, id, finalAxis)
+    )
   }, {})
 }
-var distanceBetweenPoints = function distanceBetweenPoints2(point6, anotherPoint) {
+var distanceBetweenPoints = function distanceBetweenPoints2(
+  point6,
+  anotherPoint
+) {
   var x1 = point6.x,
     y1 = point6.y
   var x2 = anotherPoint.x,
@@ -19762,7 +21179,10 @@ var formatAngleOfSector = function formatAngleOfSector2(_ref3) {
     endAngle: endAngle - min5 * 360,
   }
 }
-var reverseFormatAngleOfSetor = function reverseFormatAngleOfSetor2(angle, _ref4) {
+var reverseFormatAngleOfSetor = function reverseFormatAngleOfSetor2(
+  angle,
+  _ref4
+) {
   var startAngle = _ref4.startAngle,
     endAngle = _ref4.endAngle
   var startCnt = Math.floor(startAngle / 360)
@@ -19946,7 +21366,12 @@ function _objectSpread12(e) {
 function _defineProperty14(obj, key, value) {
   key = _toPropertyKey15(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -19985,7 +21410,9 @@ function _extends8() {
 var getLabel = function getLabel2(props) {
   var value = props.value,
     formatter = props.formatter
-  var label = (0, import_isNil7.default)(props.children) ? value : props.children
+  var label = (0, import_isNil7.default)(props.children)
+    ? value
+    : props.children
   if ((0, import_isFunction6.default)(formatter)) {
     return formatter(label)
   }
@@ -20025,7 +21452,12 @@ var renderRadialLabel = function renderRadialLabel2(labelProps, label, attrs) {
   }
   direction = deltaAngle <= 0 ? direction : !direction
   var startPoint = polarToCartesian(cx, cy, radius, labelAngle)
-  var endPoint = polarToCartesian(cx, cy, radius, labelAngle + (direction ? 1 : -1) * 359)
+  var endPoint = polarToCartesian(
+    cx,
+    cy,
+    radius,
+    labelAngle + (direction ? 1 : -1) * 359
+  )
   var path2 = 'M'
     .concat(startPoint.x, ',')
     .concat(startPoint.y, '\n    A')
@@ -20073,7 +21505,12 @@ var getAttrsOfPolarLabel = function getAttrsOfPolarLabel2(props) {
     endAngle = _ref2.endAngle
   var midAngle = (startAngle + endAngle) / 2
   if (position3 === 'outside') {
-    var _polarToCartesian = polarToCartesian(cx, cy, outerRadius + offset, midAngle),
+    var _polarToCartesian = polarToCartesian(
+        cx,
+        cy,
+        outerRadius + offset,
+        midAngle
+      ),
       _x = _polarToCartesian.x,
       _y = _polarToCartesian.y
     return {
@@ -20164,7 +21601,10 @@ var getAttrsOfCartesianLabel = function getAttrsOfCartesianLabel2(props) {
       _objectSpread12({}, _attrs),
       parentViewBox
         ? {
-            height: Math.max(parentViewBox.y + parentViewBox.height - (y2 + height), 0),
+            height: Math.max(
+              parentViewBox.y + parentViewBox.height - (y2 + height),
+              0
+            ),
             width,
           }
         : {}
@@ -20198,7 +21638,10 @@ var getAttrsOfCartesianLabel = function getAttrsOfCartesianLabel2(props) {
       _objectSpread12({}, _attrs3),
       parentViewBox
         ? {
-            width: Math.max(parentViewBox.x + parentViewBox.width - _attrs3.x, 0),
+            width: Math.max(
+              parentViewBox.x + parentViewBox.width - _attrs3.x,
+              0
+            ),
             height,
           }
         : {}
@@ -20369,11 +21812,15 @@ function Label(_ref4) {
   var attrs = filterProps(props, true)
   if (
     isPolarLabel &&
-    (position3 === 'insideStart' || position3 === 'insideEnd' || position3 === 'end')
+    (position3 === 'insideStart' ||
+      position3 === 'insideEnd' ||
+      position3 === 'end')
   ) {
     return renderRadialLabel(props, label, attrs)
   }
-  var positionAttrs = isPolarLabel ? getAttrsOfPolarLabel(props) : getAttrsOfCartesianLabel(props)
+  var positionAttrs = isPolarLabel
+    ? getAttrsOfPolarLabel(props)
+    : getAttrsOfCartesianLabel(props)
   return import_react15.default.createElement(
     Text,
     _extends8(
@@ -20507,19 +21954,25 @@ var parseLabel = function parseLabel2(label, viewBox) {
   return null
 }
 var renderCallByParent = function renderCallByParent2(parentProps, viewBox) {
-  var checkPropsLabel = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
-  if (!parentProps || (!parentProps.children && checkPropsLabel && !parentProps.label)) {
+  var checkPropsLabel =
+    arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
+  if (
+    !parentProps ||
+    (!parentProps.children && checkPropsLabel && !parentProps.label)
+  ) {
     return null
   }
   var children2 = parentProps.children
   var parentViewBox = parseViewBox(parentProps)
-  var explicitChildren = findAllByType(children2, Label).map(function (child, index2) {
-    return (0, import_react15.cloneElement)(child, {
-      viewBox: viewBox || parentViewBox,
+  var explicitChildren = findAllByType(children2, Label).map(
+    function (child, index2) {
+      return (0, import_react15.cloneElement)(child, {
+        viewBox: viewBox || parentViewBox,
 
-      key: 'label-'.concat(index2),
-    })
-  })
+        key: 'label-'.concat(index2),
+      })
+    }
+  )
   if (!checkPropsLabel) {
     return explicitChildren
   }
@@ -20639,7 +22092,12 @@ function _objectSpread13(e) {
 function _defineProperty15(obj, key, value) {
   key = _toPropertyKey16(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -20686,11 +22144,14 @@ function _objectWithoutPropertiesLoose9(source, excluded) {
   return target
 }
 var defaultAccessor = function defaultAccessor2(entry) {
-  return Array.isArray(entry.value) ? (0, import_last.default)(entry.value) : entry.value
+  return Array.isArray(entry.value)
+    ? (0, import_last.default)(entry.value)
+    : entry.value
 }
 function LabelList(_ref) {
   var _ref$valueAccessor = _ref.valueAccessor,
-    valueAccessor = _ref$valueAccessor === void 0 ? defaultAccessor : _ref$valueAccessor,
+    valueAccessor =
+      _ref$valueAccessor === void 0 ? defaultAccessor : _ref$valueAccessor,
     restProps = _objectWithoutProperties9(_ref, _excluded10)
   var data = restProps.data,
     dataKey = restProps.dataKey,
@@ -20750,7 +22211,10 @@ function parseLabelList(label, data) {
       data,
     })
   }
-  if (import_react16.default.isValidElement(label) || (0, import_isFunction7.default)(label)) {
+  if (
+    import_react16.default.isValidElement(label) ||
+    (0, import_isFunction7.default)(label)
+  ) {
     return import_react16.default.createElement(LabelList, {
       key: 'labelList-implicit',
       data,
@@ -20774,18 +22238,24 @@ function parseLabelList(label, data) {
   return null
 }
 function renderCallByParent3(parentProps, data) {
-  var checkPropsLabel = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
-  if (!parentProps || (!parentProps.children && checkPropsLabel && !parentProps.label)) {
+  var checkPropsLabel =
+    arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true
+  if (
+    !parentProps ||
+    (!parentProps.children && checkPropsLabel && !parentProps.label)
+  ) {
     return null
   }
   var children2 = parentProps.children
-  var explicitChildren = findAllByType(children2, LabelList).map(function (child, index2) {
-    return (0, import_react16.cloneElement)(child, {
-      data,
+  var explicitChildren = findAllByType(children2, LabelList).map(
+    function (child, index2) {
+      return (0, import_react16.cloneElement)(child, {
+        data,
 
-      key: 'labelList-'.concat(index2),
-    })
-  })
+        key: 'labelList-'.concat(index2),
+      })
+    }
+  )
   if (!checkPropsLabel) {
     return explicitChildren
   }
@@ -20935,7 +22405,12 @@ function _objectSpread14(e) {
 function _defineProperty16(obj, key, value) {
   key = _toPropertyKey17(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -21291,7 +22766,12 @@ function _objectSpread15(e) {
 function _defineProperty17(obj, key, value) {
   key = _toPropertyKey18(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -21341,7 +22821,9 @@ var getCurveFactory = function getCurveFactory2(type, layout) {
   }
   var name = 'curve'.concat((0, import_upperFirst3.default)(type))
   if ((name === 'curveMonotone' || name === 'curveBump') && layout) {
-    return CURVE_FACTORIES[''.concat(name).concat(layout === 'vertical' ? 'Y' : 'X')]
+    return CURVE_FACTORIES[
+      ''.concat(name).concat(layout === 'vertical' ? 'Y' : 'X')
+    ]
   }
   return CURVE_FACTORIES[name] || linear_default
 }
@@ -21464,7 +22946,6 @@ function getStrictProperties(object) {
   return getOwnPropertyNames(object).concat(getOwnPropertySymbols(object))
 }
 var hasOwn =
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   Object.hasOwn || ((object, property) => hasOwnProperty.call(object, property))
 function sameValueZeroEqual(a2, b) {
   return a2 === b || (!a2 && !b && a2 !== a2 && b !== b)
@@ -21475,7 +22956,8 @@ var REACT_OWNER = '_owner'
 var { getOwnPropertyDescriptor, keys } = Object
 function areArrayBuffersEqual(a2, b) {
   return (
-    a2.byteLength === b.byteLength && areTypedArraysEqual(new Uint8Array(a2), new Uint8Array(b))
+    a2.byteLength === b.byteLength &&
+    areTypedArraysEqual(new Uint8Array(a2), new Uint8Array(b))
   )
 }
 function areArraysEqual(a2, b, state) {
@@ -21504,7 +22986,10 @@ function areDatesEqual(a2, b) {
 }
 function areErrorsEqual(a2, b) {
   return (
-    a2.name === b.name && a2.message === b.message && a2.cause === b.cause && a2.stack === b.stack
+    a2.name === b.name &&
+    a2.message === b.message &&
+    a2.cause === b.cause &&
+    a2.stack === b.stack
   )
 }
 function areFunctionsEqual(a2, b) {
@@ -21630,7 +23115,15 @@ function areSetsEqual(a2, b, state) {
       }
       if (
         !matchedIndices[matchIndex] &&
-        state.equals(aResult.value, bResult.value, aResult.value, bResult.value, a2, b, state)
+        state.equals(
+          aResult.value,
+          bResult.value,
+          aResult.value,
+          bResult.value,
+          a2,
+          b,
+          state
+        )
       ) {
         hasMatch = matchedIndices[matchIndex] = true
         break
@@ -21668,13 +23161,16 @@ function areUrlsEqual(a2, b) {
 }
 function isPropertyEqual(a2, b, state, property) {
   if (
-    (property === REACT_OWNER || property === PREACT_OWNER || property === PREACT_VNODE) &&
+    (property === REACT_OWNER ||
+      property === PREACT_OWNER ||
+      property === PREACT_VNODE) &&
     (a2.$$typeof || b.$$typeof)
   ) {
     return true
   }
   return (
-    hasOwn(b, property) && state.equals(a2[property], b[property], property, property, a2, b, state)
+    hasOwn(b, property) &&
+    state.equals(a2[property], b[property], property, property, a2, b, state)
   )
 }
 var ARRAY_BUFFER_TAG = '[object ArrayBuffer]'
@@ -21820,7 +23316,11 @@ function createEqualityComparator({
     return false
   }
 }
-function createEqualityComparatorConfig({ circular, createCustomConfig, strict }) {
+function createEqualityComparatorConfig({
+  circular,
+  createCustomConfig,
+  strict,
+}) {
   let config2 = {
     areArrayBuffersEqual,
     areArraysEqual: strict ? areObjectsEqualStrict : areArraysEqual,
@@ -21828,12 +23328,16 @@ function createEqualityComparatorConfig({ circular, createCustomConfig, strict }
     areDatesEqual,
     areErrorsEqual,
     areFunctionsEqual,
-    areMapsEqual: strict ? combineComparators(areMapsEqual, areObjectsEqualStrict) : areMapsEqual,
+    areMapsEqual: strict
+      ? combineComparators(areMapsEqual, areObjectsEqualStrict)
+      : areMapsEqual,
     areNumbersEqual,
     areObjectsEqual: strict ? areObjectsEqualStrict : areObjectsEqual,
     arePrimitiveWrappersEqual,
     areRegExpsEqual,
-    areSetsEqual: strict ? combineComparators(areSetsEqual, areObjectsEqualStrict) : areSetsEqual,
+    areSetsEqual: strict
+      ? combineComparators(areSetsEqual, areObjectsEqualStrict)
+      : areSetsEqual,
     areTypedArraysEqual: strict
       ? combineComparators(areTypedArraysEqual, areObjectsEqualStrict)
       : areTypedArraysEqual,
@@ -21858,14 +23362,25 @@ function createEqualityComparatorConfig({ circular, createCustomConfig, strict }
   return config2
 }
 function createInternalEqualityComparator(compare) {
-  return function (a2, b, _indexOrKeyA, _indexOrKeyB, _parentA, _parentB, state) {
+  return function (
+    a2,
+    b,
+    _indexOrKeyA,
+    _indexOrKeyB,
+    _parentA,
+    _parentB,
+    state
+  ) {
     return compare(a2, b, state)
   }
 }
 function createIsEqual({ circular, comparator, createState, equals, strict }) {
   if (createState) {
     return function isEqual11(a2, b) {
-      const { cache = circular ? /* @__PURE__ */ new WeakMap() : void 0, meta } = createState()
+      const {
+        cache = circular ? /* @__PURE__ */ new WeakMap() : void 0,
+        meta,
+      } = createState()
       return comparator(a2, b, {
         cache,
         equals,
@@ -21934,10 +23449,12 @@ function createCustomEqual(options = {}) {
 
 // node_modules/react-smooth/es6/setRafTimeout.js
 function safeRequestAnimationFrame(callback) {
-  if (typeof requestAnimationFrame !== 'undefined') requestAnimationFrame(callback)
+  if (typeof requestAnimationFrame !== 'undefined')
+    requestAnimationFrame(callback)
 }
 function setRafTimeout(callback) {
-  var timeout2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0
+  var timeout2 =
+    arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0
   var currTime = -1
   var shouldUpdate = function shouldUpdate2(now) {
     if (currTime < 0) {
@@ -22113,7 +23630,12 @@ function _objectSpread16(e) {
 function _defineProperty18(obj, key, value) {
   key = _toPropertyKey19(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -22160,7 +23682,10 @@ var mapObject = function mapObject2(fn, obj) {
 var getTransitionVal = function getTransitionVal2(props, duration, easing) {
   return props
     .map(function (prop) {
-      return ''.concat(getDashCase(prop), ' ').concat(duration, 'ms ').concat(easing)
+      return ''
+        .concat(getDashCase(prop), ' ')
+        .concat(duration, 'ms ')
+        .concat(easing)
     })
     .join(',')
 }
@@ -22204,7 +23729,10 @@ function _nonIterableRest9() {
 }
 function _iterableToArrayLimit8(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -22217,12 +23745,18 @@ function _iterableToArrayLimit8(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t.return && ((u = t.return()), Object(u) !== u)) return
+        if (!f && null != t.return && ((u = t.return()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -22306,7 +23840,11 @@ var derivativeCubicBezier = function derivativeCubicBezier2(c1, c2) {
   }
 }
 var configBezier = function configBezier2() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+  for (
+    var _len = arguments.length, args = new Array(_len), _key = 0;
+    _key < _len;
+    _key++
+  ) {
     args[_key] = arguments[_key]
   }
   var x1 = args[0],
@@ -22347,7 +23885,10 @@ var configBezier = function configBezier2() {
         break
       default: {
         var easing = args[0].split('(')
-        if (easing[0] === 'cubic-bezier' && easing[1].split(')')[0].split(',').length === 4) {
+        if (
+          easing[0] === 'cubic-bezier' &&
+          easing[1].split(')')[0].split(',').length === 4
+        ) {
           var _easing$1$split$0$spl = easing[1]
             .split(')')[0]
             .split(',')
@@ -22405,7 +23946,8 @@ var configBezier = function configBezier2() {
   return bezier
 }
 var configSpring = function configSpring2() {
-  var config2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}
+  var config2 =
+    arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}
   var _config$stiff = config2.stiff,
     stiff = _config$stiff === void 0 ? 100 : _config$stiff,
     _config$damping = config2.damping,
@@ -22427,7 +23969,11 @@ var configSpring = function configSpring2() {
   return stepper
 }
 var configEasing = function configEasing2() {
-  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+  for (
+    var _len2 = arguments.length, args = new Array(_len2), _key2 = 0;
+    _key2 < _len2;
+    _key2++
+  ) {
     args[_key2] = arguments[_key2]
   }
   var easing = args[0]
@@ -22536,7 +24082,12 @@ function _objectSpread17(e) {
 function _defineProperty19(obj, key, value) {
   key = _toPropertyKey20(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -22585,7 +24136,10 @@ function _arrayLikeToArray14(arr, len) {
 }
 function _iterableToArrayLimit9(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -22598,12 +24152,18 @@ function _iterableToArrayLimit9(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t.return && ((u = t.return()), Object(u) !== u)) return
+        if (!f && null != t.return && ((u = t.return()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -22699,7 +24259,10 @@ var configUpdate_default = function (from, to, easing, duration, render) {
     var steps = deltaTime / easing.dt
     stepperStyle = calStepperVals(easing, stepperStyle, steps)
     render(
-      _objectSpread17(_objectSpread17(_objectSpread17({}, from), to), getCurrStyle(stepperStyle))
+      _objectSpread17(
+        _objectSpread17(_objectSpread17({}, from), to),
+        getCurrStyle(stepperStyle)
+      )
     )
     preTime = now
     if (!shouldStopAnimation()) {
@@ -22714,14 +24277,21 @@ var configUpdate_default = function (from, to, easing, duration, render) {
     var currStyle = mapObject(function (key, val) {
       return alpha.apply(void 0, _toConsumableArray7(val).concat([easing(t)]))
     }, timingStyle)
-    render(_objectSpread17(_objectSpread17(_objectSpread17({}, from), to), currStyle))
+    render(
+      _objectSpread17(_objectSpread17(_objectSpread17({}, from), to), currStyle)
+    )
     if (t < 1) {
       cafId = requestAnimationFrame(update)
     } else {
       var finalStyle = mapObject(function (key, val) {
         return alpha.apply(void 0, _toConsumableArray7(val).concat([easing(1)]))
       }, timingStyle)
-      render(_objectSpread17(_objectSpread17(_objectSpread17({}, from), to), finalStyle))
+      render(
+        _objectSpread17(
+          _objectSpread17(_objectSpread17({}, from), to),
+          finalStyle
+        )
+      )
     }
   }
   update = easing.isStepper ? stepperUpdate : timingUpdate
@@ -22862,7 +24432,12 @@ function _objectSpread18(e) {
 function _defineProperty20(obj, key, value) {
   key = _toPropertyKey21(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -22939,13 +24514,17 @@ function _possibleConstructorReturn6(self2, call) {
   if (call && (_typeof25(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized6(self2)
 }
 function _assertThisInitialized6(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
@@ -22954,7 +24533,9 @@ function _isNativeReflectConstruct6() {
   if (Reflect.construct.sham) return false
   if (typeof Proxy === 'function') return true
   try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
     return true
   } catch (e) {
     return false
@@ -22983,7 +24564,9 @@ var Animate = (function (_PureComponent) {
       steps = _this$props.steps,
       children2 = _this$props.children,
       duration = _this$props.duration
-    _this.handleStyleChange = _this.handleStyleChange.bind(_assertThisInitialized6(_this))
+    _this.handleStyleChange = _this.handleStyleChange.bind(
+      _assertThisInitialized6(_this)
+    )
     _this.changeStyle = _this.changeStyle.bind(_assertThisInitialized6(_this))
     if (!isActive || duration <= 0) {
       _this.state = {
@@ -23008,7 +24591,9 @@ var Animate = (function (_PureComponent) {
         return _possibleConstructorReturn6(_this)
       }
       _this.state = {
-        style: attributeName ? _defineProperty20({}, attributeName, from) : from,
+        style: attributeName
+          ? _defineProperty20({}, attributeName, from)
+          : from,
       }
     } else {
       _this.state = {
@@ -23047,7 +24632,9 @@ var Animate = (function (_PureComponent) {
         }
         if (!isActive) {
           var newState = {
-            style: attributeName ? _defineProperty20({}, attributeName, to) : to,
+            style: attributeName
+              ? _defineProperty20({}, attributeName, to)
+              : to,
           }
           if (this.state && style) {
             if (
@@ -23059,7 +24646,11 @@ var Animate = (function (_PureComponent) {
           }
           return
         }
-        if (deepEqual(prevProps.to, to) && prevProps.canBegin && prevProps.isActive) {
+        if (
+          deepEqual(prevProps.to, to) &&
+          prevProps.canBegin &&
+          prevProps.isActive
+        ) {
           return
         }
         var isTriggered = !prevProps.canBegin || !prevProps.isActive
@@ -23072,7 +24663,9 @@ var Animate = (function (_PureComponent) {
         var from = isTriggered || shouldReAnimate ? currentFrom : prevProps.to
         if (this.state && style) {
           var _newState = {
-            style: attributeName ? _defineProperty20({}, attributeName, from) : from,
+            style: attributeName
+              ? _defineProperty20({}, attributeName, from)
+              : from,
           }
           if (
             (attributeName && style[attributeName] !== from) ||
@@ -23202,13 +24795,20 @@ var Animate = (function (_PureComponent) {
             }
           )
           return []
-            .concat(_toConsumableArray8(sequence), [newStyle, duration, onAnimationEnd2])
+            .concat(_toConsumableArray8(sequence), [
+              newStyle,
+              duration,
+              onAnimationEnd2,
+            ])
             .filter(identity7)
         }
         return this.manager.start(
           [onAnimationStart2].concat(
             _toConsumableArray8(
-              steps.reduce(addStyle, [initialStyle, Math.max(initialTime, begin)])
+              steps.reduce(addStyle, [
+                initialStyle,
+                Math.max(initialTime, begin),
+              ])
             ),
             [props.onAnimationEnd]
           )
@@ -23244,7 +24844,9 @@ var Animate = (function (_PureComponent) {
           this.runStepAnimation(props)
           return
         }
-        var to = attributeName ? _defineProperty20({}, attributeName, propsTo) : propsTo
+        var to = attributeName
+          ? _defineProperty20({}, attributeName, propsTo)
+          : propsTo
         var transition = getTransitionVal(Object.keys(to), duration, easing)
         manager.start([
           onAnimationStart2,
@@ -23290,7 +24892,8 @@ var Animate = (function (_PureComponent) {
         var cloneContainer = function cloneContainer2(container) {
           var _container$props = container.props,
             _container$props$styl = _container$props.style,
-            style = _container$props$styl === void 0 ? {} : _container$props$styl,
+            style =
+              _container$props$styl === void 0 ? {} : _container$props$styl,
             className = _container$props.className
           var res = (0, import_react19.cloneElement)(
             container,
@@ -23356,7 +24959,13 @@ Animate.propTypes = {
       duration: import_prop_types.default.number.isRequired,
       style: import_prop_types.default.object.isRequired,
       easing: import_prop_types.default.oneOfType([
-        import_prop_types.default.oneOf(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'linear']),
+        import_prop_types.default.oneOf([
+          'ease',
+          'ease-in',
+          'ease-out',
+          'ease-in-out',
+          'linear',
+        ]),
         import_prop_types.default.func,
       ]),
       // transition css properties(dash case), optional
@@ -23433,7 +25042,8 @@ var import_prop_types4 = __toESM(require_prop_types())
 
 // node_modules/dom-helpers/esm/hasClass.js
 function hasClass(element, className) {
-  if (element.classList) return !!className && element.classList.contains(className)
+  if (element.classList)
+    return !!className && element.classList.contains(className)
   return (
     (' ' + (element.className.baseVal || element.className) + ' ').indexOf(
       ' ' + className + ' '
@@ -23450,7 +25060,9 @@ function addClass(element, className) {
     else
       element.setAttribute(
         'class',
-        ((element.className && element.className.baseVal) || '') + ' ' + className
+        ((element.className && element.className.baseVal) || '') +
+          ' ' +
+          className
       )
 }
 
@@ -23469,7 +25081,10 @@ function removeClass(element, className) {
   } else {
     element.setAttribute(
       'class',
-      replaceClassName((element.className && element.className.baseVal) || '', className)
+      replaceClassName(
+        (element.className && element.className.baseVal) || '',
+        className
+      )
     )
   }
 }
@@ -23539,7 +25154,8 @@ var Transition = (function (_React$Component) {
     var _this
     _this = _React$Component.call(this, props, context) || this
     var parentGroup = context
-    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear
+    var appear =
+      parentGroup && !parentGroup.isMounting ? props.enter : props.appear
     var initialStatus
     _this.appearStatus = null
     if (props.in) {
@@ -23562,7 +25178,10 @@ var Transition = (function (_React$Component) {
     _this.nextCallback = null
     return _this
   }
-  Transition2.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+  Transition2.getDerivedStateFromProps = function getDerivedStateFromProps(
+    _ref,
+    prevState
+  ) {
     var nextIn = _ref.in
     if (nextIn && prevState.status === UNMOUNTED) {
       return {
@@ -23678,7 +25297,9 @@ var Transition = (function (_React$Component) {
     var _this3 = this
     var exit = this.props.exit
     var timeouts = this.getTimeouts()
-    var maybeNode = this.props.nodeRef ? void 0 : import_react_dom.default.findDOMNode(this)
+    var maybeNode = this.props.nodeRef
+      ? void 0
+      : import_react_dom.default.findDOMNode(this)
     if (!exit || config_default.disabled) {
       this.safeSetState(
         {
@@ -23740,13 +25361,16 @@ var Transition = (function (_React$Component) {
     var node = this.props.nodeRef
       ? this.props.nodeRef.current
       : import_react_dom.default.findDOMNode(this)
-    var doesNotHaveTimeoutOrListener = timeout2 == null && !this.props.addEndListener
+    var doesNotHaveTimeoutOrListener =
+      timeout2 == null && !this.props.addEndListener
     if (!node || doesNotHaveTimeoutOrListener) {
       setTimeout(this.nextCallback, 0)
       return
     }
     if (this.props.addEndListener) {
-      var _ref3 = this.props.nodeRef ? [this.nextCallback] : [node, this.nextCallback],
+      var _ref3 = this.props.nodeRef
+          ? [this.nextCallback]
+          : [node, this.nextCallback],
         maybeNode = _ref3[0],
         maybeNextCallback = _ref3[1]
       this.props.addEndListener(maybeNode, maybeNextCallback)
@@ -23831,7 +25455,14 @@ Transition.propTypes = true
         current:
           typeof Element === 'undefined'
             ? import_prop_types3.default.any
-            : function (propValue, key, componentName, location, propFullName, secret) {
+            : function (
+                propValue,
+                key,
+                componentName,
+                location,
+                propFullName,
+                secret
+              ) {
                 var value = propValue[key]
                 return import_prop_types3.default.instanceOf(
                   value && 'ownerDocument' in value
@@ -23924,7 +25555,9 @@ Transition.propTypes = true
         var pt = timeoutsShape
         if (!props.addEndListener) pt = pt.isRequired
         for (
-          var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1;
+          var _len = arguments.length,
+            args = new Array(_len > 1 ? _len - 1 : 0),
+            _key = 1;
           _key < _len;
           _key++
         ) {
@@ -24045,17 +25678,25 @@ var CSSTransition = (function (_React$Component) {
   _inheritsLoose(CSSTransition2, _React$Component)
   function CSSTransition2() {
     var _this
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
-    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this
+    _this =
+      _React$Component.call.apply(_React$Component, [this].concat(args)) || this
     _this.appliedClasses = {
       appear: {},
       enter: {},
       exit: {},
     }
     _this.onEnter = function (maybeNode, maybeAppearing) {
-      var _this$resolveArgument = _this.resolveArguments(maybeNode, maybeAppearing),
+      var _this$resolveArgument = _this.resolveArguments(
+          maybeNode,
+          maybeAppearing
+        ),
         node = _this$resolveArgument[0],
         appearing = _this$resolveArgument[1]
       _this.removeClasses(node, 'exit')
@@ -24065,7 +25706,10 @@ var CSSTransition = (function (_React$Component) {
       }
     }
     _this.onEntering = function (maybeNode, maybeAppearing) {
-      var _this$resolveArgument2 = _this.resolveArguments(maybeNode, maybeAppearing),
+      var _this$resolveArgument2 = _this.resolveArguments(
+          maybeNode,
+          maybeAppearing
+        ),
         node = _this$resolveArgument2[0],
         appearing = _this$resolveArgument2[1]
       var type = appearing ? 'appear' : 'enter'
@@ -24075,7 +25719,10 @@ var CSSTransition = (function (_React$Component) {
       }
     }
     _this.onEntered = function (maybeNode, maybeAppearing) {
-      var _this$resolveArgument3 = _this.resolveArguments(maybeNode, maybeAppearing),
+      var _this$resolveArgument3 = _this.resolveArguments(
+          maybeNode,
+          maybeAppearing
+        ),
         node = _this$resolveArgument3[0],
         appearing = _this$resolveArgument3[1]
       var type = appearing ? 'appear' : 'enter'
@@ -24121,11 +25768,15 @@ var CSSTransition = (function (_React$Component) {
       var classNames = _this.props.classNames
       var isStringClassNames = typeof classNames === 'string'
       var prefix2 = isStringClassNames && classNames ? classNames + '-' : ''
-      var baseClassName = isStringClassNames ? '' + prefix2 + type : classNames[type]
+      var baseClassName = isStringClassNames
+        ? '' + prefix2 + type
+        : classNames[type]
       var activeClassName = isStringClassNames
         ? baseClassName + '-active'
         : classNames[type + 'Active']
-      var doneClassName = isStringClassNames ? baseClassName + '-done' : classNames[type + 'Done']
+      var doneClassName = isStringClassNames
+        ? baseClassName + '-done'
+        : classNames[type + 'Done']
       return {
         baseClassName,
         activeClassName,
@@ -24322,7 +25973,9 @@ var import_react_dom2 = __toESM(require_react_dom())
 // node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
 function _assertThisInitialized7(e) {
   if (void 0 === e)
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   return e
 }
 
@@ -24334,7 +25987,9 @@ var import_react24 = __toESM(require_react())
 var import_react23 = __toESM(require_react())
 function getChildMapping(children2, mapFn) {
   var mapper = function mapper2(child) {
-    return mapFn && (0, import_react23.isValidElement)(child) ? mapFn(child) : child
+    return mapFn && (0, import_react23.isValidElement)(child)
+      ? mapFn(child)
+      : child
   }
   var result = /* @__PURE__ */ Object.create(null)
   if (children2)
@@ -24369,7 +26024,8 @@ function mergeChildMappings(prev, next) {
     if (nextKeysPending[nextKey]) {
       for (i = 0; i < nextKeysPending[nextKey].length; i++) {
         var pendingNextKey = nextKeysPending[nextKey][i]
-        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey)
+        childMapping[nextKeysPending[nextKey][i]] =
+          getValueForKey(pendingNextKey)
       }
     }
     childMapping[nextKey] = getValueForKey(nextKey)
@@ -24402,7 +26058,8 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
     var hasPrev = key in prevChildMapping
     var hasNext = key in nextChildMapping
     var prevChild = prevChildMapping[key]
-    var isLeaving = (0, import_react23.isValidElement)(prevChild) && !prevChild.props.in
+    var isLeaving =
+      (0, import_react23.isValidElement)(prevChild) && !prevChild.props.in
     if (hasNext && (!hasPrev || isLeaving)) {
       children2[key] = (0, import_react23.cloneElement)(child, {
         onExited: onExited.bind(null, child),
@@ -24414,7 +26071,11 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
       children2[key] = (0, import_react23.cloneElement)(child, {
         in: false,
       })
-    } else if (hasNext && hasPrev && (0, import_react23.isValidElement)(prevChild)) {
+    } else if (
+      hasNext &&
+      hasPrev &&
+      (0, import_react23.isValidElement)(prevChild)
+    ) {
       children2[key] = (0, import_react23.cloneElement)(child, {
         onExited: onExited.bind(null, child),
         in: prevChild.props.in,
@@ -24467,7 +26128,10 @@ var TransitionGroup = (function (_React$Component) {
   _proto.componentWillUnmount = function componentWillUnmount() {
     this.mounted = false
   }
-  TransitionGroup2.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
+  TransitionGroup2.getDerivedStateFromProps = function getDerivedStateFromProps(
+    nextProps,
+    _ref
+  ) {
     var prevChildMapping = _ref.children,
       handleExited = _ref.handleExited,
       firstRender = _ref.firstRender
@@ -24498,7 +26162,10 @@ var TransitionGroup = (function (_React$Component) {
     var _this$props = this.props,
       Component7 = _this$props.component,
       childFactory2 = _this$props.childFactory,
-      props = _objectWithoutPropertiesLoose12(_this$props, ['component', 'childFactory'])
+      props = _objectWithoutPropertiesLoose12(_this$props, [
+        'component',
+        'childFactory',
+      ])
     var contextValue = this.state.contextValue
     var children2 = values(this.state.children).map(childFactory2)
     delete props.appear
@@ -24586,10 +26253,16 @@ var ReplaceTransition = (function (_React$Component) {
   _inheritsLoose(ReplaceTransition2, _React$Component)
   function ReplaceTransition2() {
     var _this
-    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, _args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       _args[_key] = arguments[_key]
     }
-    _this = _React$Component.call.apply(_React$Component, [this].concat(_args)) || this
+    _this =
+      _React$Component.call.apply(_React$Component, [this].concat(_args)) ||
+      this
     _this.handleEnter = function () {
       for (
         var _len2 = arguments.length, args = new Array(_len2), _key2 = 0;
@@ -24653,14 +26326,20 @@ var ReplaceTransition = (function (_React$Component) {
     return _this
   }
   var _proto = ReplaceTransition2.prototype
-  _proto.handleLifecycle = function handleLifecycle(handler, idx, originalArgs) {
+  _proto.handleLifecycle = function handleLifecycle(
+    handler,
+    idx,
+    originalArgs
+  ) {
     var _child$props
     var children2 = this.props.children
     var child = import_react25.default.Children.toArray(children2)[idx]
     if (child.props[handler])
       (_child$props = child.props)[handler].apply(_child$props, originalArgs)
     if (this.props[handler]) {
-      var maybeNode = child.props.nodeRef ? void 0 : import_react_dom2.default.findDOMNode(this)
+      var maybeNode = child.props.nodeRef
+        ? void 0
+        : import_react_dom2.default.findDOMNode(this)
       this.props[handler](maybeNode)
     }
   }
@@ -24669,7 +26348,8 @@ var ReplaceTransition = (function (_React$Component) {
       children2 = _this$props.children,
       inProp = _this$props.in,
       props = _objectWithoutPropertiesLoose12(_this$props, ['children', 'in'])
-    var _React$Children$toArr = import_react25.default.Children.toArray(children2),
+    var _React$Children$toArr =
+        import_react25.default.Children.toArray(children2),
       first2 = _React$Children$toArr[0],
       second2 = _React$Children$toArr[1]
     delete props.onEnter
@@ -24703,7 +26383,9 @@ ReplaceTransition.propTypes = true
       in: import_prop_types6.default.bool.isRequired,
       children: function children(props, propName) {
         if (import_react25.default.Children.count(props[propName]) !== 2)
-          return new Error('"' + propName + '" must be exactly two transition components.')
+          return new Error(
+            '"' + propName + '" must be exactly two transition components.'
+          )
         return null
       },
     }
@@ -24733,7 +26415,8 @@ var modes = {
 var callHook = function callHook2(element, name, cb) {
   return function () {
     var _element$props
-    element.props[name] && (_element$props = element.props)[name].apply(_element$props, arguments)
+    element.props[name] &&
+      (_element$props = element.props)[name].apply(_element$props, arguments)
     cb()
   }
 }
@@ -24807,10 +26490,15 @@ var SwitchTransition = (function (_React$Component) {
   _inheritsLoose(SwitchTransition2, _React$Component)
   function SwitchTransition2() {
     var _this
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
-    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this
+    _this =
+      _React$Component.call.apply(_React$Component, [this].concat(args)) || this
     _this.state = {
       status: ENTERED,
       current: null,
@@ -24831,28 +26519,32 @@ var SwitchTransition = (function (_React$Component) {
   _proto.componentDidMount = function componentDidMount() {
     this.appeared = true
   }
-  SwitchTransition2.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
-    if (props.children == null) {
+  SwitchTransition2.getDerivedStateFromProps =
+    function getDerivedStateFromProps(props, state) {
+      if (props.children == null) {
+        return {
+          current: null,
+        }
+      }
+      if (state.status === ENTERING && props.mode === modes.in) {
+        return {
+          status: ENTERING,
+        }
+      }
+      if (
+        state.current &&
+        areChildrenDifferent(state.current, props.children)
+      ) {
+        return {
+          status: EXITING,
+        }
+      }
       return {
-        current: null,
+        current: import_react26.default.cloneElement(props.children, {
+          in: true,
+        }),
       }
     }
-    if (state.status === ENTERING && props.mode === modes.in) {
-      return {
-        status: ENTERING,
-      }
-    }
-    if (state.current && areChildrenDifferent(state.current, props.children)) {
-      return {
-        status: EXITING,
-      }
-    }
-    return {
-      current: import_react26.default.cloneElement(props.children, {
-        in: true,
-      }),
-    }
-  }
   _proto.render = function render() {
     var _this$props = this.props,
       children2 = _this$props.children,
@@ -25064,13 +26756,17 @@ function _possibleConstructorReturn7(self2, call) {
   if (call && (_typeof26(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized8(self2)
 }
 function _assertThisInitialized8(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
@@ -25079,7 +26775,9 @@ function _isNativeReflectConstruct7() {
   if (Reflect.construct.sham) return false
   if (typeof Proxy === 'function') return true
   try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
     return true
   } catch (e) {
     return false
@@ -25096,7 +26794,12 @@ function _getPrototypeOf7(o) {
 function _defineProperty21(obj, key, value) {
   key = _toPropertyKey22(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -25116,20 +26819,27 @@ function _toPrimitive22(input, hint) {
   }
   return (hint === 'string' ? String : Number)(input)
 }
-var parseDurationOfSingleTransition = function parseDurationOfSingleTransition2() {
-  var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}
-  var steps = options.steps,
-    duration = options.duration
-  if (steps && steps.length) {
-    return steps.reduce(function (result, entry) {
-      return result + (Number.isFinite(entry.duration) && entry.duration > 0 ? entry.duration : 0)
-    }, 0)
+var parseDurationOfSingleTransition =
+  function parseDurationOfSingleTransition2() {
+    var options =
+      arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}
+    var steps = options.steps,
+      duration = options.duration
+    if (steps && steps.length) {
+      return steps.reduce(function (result, entry) {
+        return (
+          result +
+          (Number.isFinite(entry.duration) && entry.duration > 0
+            ? entry.duration
+            : 0)
+        )
+      }, 0)
+    }
+    if (Number.isFinite(duration)) {
+      return duration
+    }
+    return 0
   }
-  if (Number.isFinite(duration)) {
-    return duration
-  }
-  return 0
-}
 var AnimateGroupChild = (function (_Component) {
   _inherits7(AnimateGroupChild2, _Component)
   var _super = _createSuper2(AnimateGroupChild2)
@@ -25137,16 +26847,24 @@ var AnimateGroupChild = (function (_Component) {
     var _this
     _classCallCheck8(this, AnimateGroupChild2)
     _this = _super.call(this)
-    _defineProperty21(_assertThisInitialized8(_this), 'handleEnter', function (node, isAppearing) {
-      var _this$props = _this.props,
-        appearOptions = _this$props.appearOptions,
-        enterOptions = _this$props.enterOptions
-      _this.handleStyleActive(isAppearing ? appearOptions : enterOptions)
-    })
-    _defineProperty21(_assertThisInitialized8(_this), 'handleExit', function () {
-      var leaveOptions = _this.props.leaveOptions
-      _this.handleStyleActive(leaveOptions)
-    })
+    _defineProperty21(
+      _assertThisInitialized8(_this),
+      'handleEnter',
+      function (node, isAppearing) {
+        var _this$props = _this.props,
+          appearOptions = _this$props.appearOptions,
+          enterOptions = _this$props.enterOptions
+        _this.handleStyleActive(isAppearing ? appearOptions : enterOptions)
+      }
+    )
+    _defineProperty21(
+      _assertThisInitialized8(_this),
+      'handleExit',
+      function () {
+        var leaveOptions = _this.props.leaveOptions
+        _this.handleStyleActive(leaveOptions)
+      }
+    )
     _this.state = {
       isActive: false,
     }
@@ -25335,7 +27053,10 @@ function _arrayLikeToArray16(arr, len) {
 }
 function _iterableToArrayLimit10(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -25348,12 +27069,18 @@ function _iterableToArrayLimit10(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -25394,7 +27121,12 @@ function _objectSpread20(e) {
 function _defineProperty22(obj, key, value) {
   key = _toPropertyKey23(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -25414,11 +27146,18 @@ function _toPrimitive23(t, r2) {
   }
   return ('string' === r2 ? String : Number)(t)
 }
-var getRectanglePath = function getRectanglePath2(x2, y2, width, height, radius) {
+var getRectanglePath = function getRectanglePath2(
+  x2,
+  y2,
+  width,
+  height,
+  radius
+) {
   var maxRadius = Math.min(Math.abs(width) / 2, Math.abs(height) / 2)
   var ySign = height >= 0 ? 1 : -1
   var xSign = width >= 0 ? 1 : -1
-  var clockWise = (height >= 0 && width >= 0) || (height < 0 && width < 0) ? 1 : 0
+  var clockWise =
+    (height >= 0 && width >= 0) || (height < 0 && width < 0) ? 1 : 0
   var path2
   if (maxRadius > 0 && radius instanceof Array) {
     var newRadius = [0, 0, 0, 0]
@@ -25443,7 +27182,9 @@ var getRectanglePath = function getRectanglePath2(x2, y2, width, height, radius)
         .concat(x2 + width, ',')
         .concat(y2 + ySign * newRadius[1])
     }
-    path2 += 'L '.concat(x2 + width, ',').concat(y2 + height - ySign * newRadius[2])
+    path2 += 'L '
+      .concat(x2 + width, ',')
+      .concat(y2 + height - ySign * newRadius[2])
     if (newRadius[2] > 0) {
       path2 += 'A '
         .concat(newRadius[2], ',')
@@ -25538,7 +27279,10 @@ var defaultProps3 = {
   animationEasing: 'ease',
 }
 var Rectangle = function Rectangle2(rectangleProps) {
-  var props = _objectSpread20(_objectSpread20({}, defaultProps3), rectangleProps)
+  var props = _objectSpread20(
+    _objectSpread20({}, defaultProps3),
+    rectangleProps
+  )
   var pathRef = (0, import_react29.useRef)()
   var _useState = (0, import_react29.useState)(-1),
     _useState2 = _slicedToArray10(_useState, 2),
@@ -25721,7 +27465,8 @@ var isValidatePoint = function isValidatePoint2(point6) {
   return point6 && point6.x === +point6.x && point6.y === +point6.y
 }
 var getParsedPoints = function getParsedPoints2() {
-  var points = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : []
+  var points =
+    arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : []
   var segmentPoints = [[]]
   points.forEach(function (entry) {
     if (isValidatePoint(entry)) {
@@ -25738,12 +27483,18 @@ var getParsedPoints = function getParsedPoints2() {
   }
   return segmentPoints
 }
-var getSinglePolygonPath = function getSinglePolygonPath2(points, connectNulls) {
+var getSinglePolygonPath = function getSinglePolygonPath2(
+  points,
+  connectNulls
+) {
   var segmentPoints = getParsedPoints(points)
   if (connectNulls) {
     segmentPoints = [
       segmentPoints.reduce(function (res, segPoints) {
-        return [].concat(_toConsumableArray9(res), _toConsumableArray9(segPoints))
+        return [].concat(
+          _toConsumableArray9(res),
+          _toConsumableArray9(segPoints)
+        )
       }, []),
     ]
   }
@@ -25760,11 +27511,20 @@ var getSinglePolygonPath = function getSinglePolygonPath2(points, connectNulls) 
     .join('')
   return segmentPoints.length === 1 ? ''.concat(polygonPath, 'Z') : polygonPath
 }
-var getRanglePath = function getRanglePath2(points, baseLinePoints, connectNulls) {
+var getRanglePath = function getRanglePath2(
+  points,
+  baseLinePoints,
+  connectNulls
+) {
   var outerPath = getSinglePolygonPath(points, connectNulls)
   return ''
-    .concat(outerPath.slice(-1) === 'Z' ? outerPath.slice(0, -1) : outerPath, 'L')
-    .concat(getSinglePolygonPath(baseLinePoints.reverse(), connectNulls).slice(1))
+    .concat(
+      outerPath.slice(-1) === 'Z' ? outerPath.slice(0, -1) : outerPath,
+      'L'
+    )
+    .concat(
+      getSinglePolygonPath(baseLinePoints.reverse(), connectNulls).slice(1)
+    )
 }
 var Polygon = function Polygon2(props) {
   var points = props.points,
@@ -25929,7 +27689,12 @@ function _objectSpread21(e) {
 function _defineProperty23(obj, key, value) {
   key = _toPropertyKey24(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -26031,7 +27796,14 @@ var Cross = function Cross2(_ref) {
 
 // node_modules/recharts/es6/polar/PolarGrid.js
 var import_react32 = __toESM(require_react())
-var _excluded16 = ['cx', 'cy', 'innerRadius', 'outerRadius', 'gridType', 'radialLines']
+var _excluded16 = [
+  'cx',
+  'cy',
+  'innerRadius',
+  'outerRadius',
+  'gridType',
+  'radialLines',
+]
 function _typeof29(o) {
   '@babel/helpers - typeof'
   return (
@@ -26123,7 +27895,12 @@ function _objectSpread22(e) {
 function _defineProperty24(obj, key, value) {
   key = _toPropertyKey25(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -26213,7 +27990,10 @@ var ConcentricCircle = function ConcentricCircle2(props) {
   return import_react32.default.createElement(
     'circle',
     _extends18({}, concentricCircleProps, {
-      className: clsx_default('recharts-polar-grid-concentric-circle', props.className),
+      className: clsx_default(
+        'recharts-polar-grid-concentric-circle',
+        props.className
+      ),
       key: 'circle-'.concat(index2),
       cx,
       cy,
@@ -26239,7 +28019,10 @@ var ConcentricPolygon = function ConcentricPolygon2(props) {
   return import_react32.default.createElement(
     'path',
     _extends18({}, concentricPolygonProps, {
-      className: clsx_default('recharts-polar-grid-concentric-polygon', props.className),
+      className: clsx_default(
+        'recharts-polar-grid-concentric-polygon',
+        props.className
+      ),
       key: 'path-'.concat(index2),
       d: getPolygonPath(radius, props.cx, props.cy, props.polarAngles),
     })
@@ -26472,19 +28255,25 @@ function _possibleConstructorReturn8(self2, call) {
   if (call && (_typeof30(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized9(self2)
 }
 function _assertThisInitialized9(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct8() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct8 = function _isNativeReflectConstruct29() {
     return !!t
@@ -26520,7 +28309,12 @@ function _setPrototypeOf9(o, p) {
 function _defineProperty25(obj, key, value) {
   key = _toPropertyKey26(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -26593,12 +28387,18 @@ var PolarRadiusAxis = (function (_PureComponent) {
             cy = _this$props2.cy,
             angle = _this$props2.angle,
             ticks2 = _this$props2.ticks
-          var maxRadiusTick = (0, import_maxBy.default)(ticks2, function (entry) {
-            return entry.coordinate || 0
-          })
-          var minRadiusTick = (0, import_minBy.default)(ticks2, function (entry) {
-            return entry.coordinate || 0
-          })
+          var maxRadiusTick = (0, import_maxBy.default)(
+            ticks2,
+            function (entry) {
+              return entry.coordinate || 0
+            }
+          )
+          var minRadiusTick = (0, import_minBy.default)(
+            ticks2,
+            function (entry) {
+              return entry.coordinate || 0
+            }
+          )
           return {
             cx,
             cy,
@@ -26621,7 +28421,10 @@ var PolarRadiusAxis = (function (_PureComponent) {
             others = _objectWithoutProperties16(_this$props3, _excluded17)
           var extent2 = ticks2.reduce(
             function (result, entry) {
-              return [Math.min(result[0], entry.coordinate), Math.max(result[1], entry.coordinate)]
+              return [
+                Math.min(result[0], entry.coordinate),
+                Math.max(result[1], entry.coordinate),
+              ]
             },
             [Infinity, -Infinity]
           )
@@ -26743,7 +28546,10 @@ var PolarRadiusAxis = (function (_PureComponent) {
           return import_react33.default.createElement(
             Layer,
             {
-              className: clsx_default('recharts-polar-radius-axis', this.props.className),
+              className: clsx_default(
+                'recharts-polar-radius-axis',
+                this.props.className
+              ),
             },
             axisLine && this.renderAxisLine(),
             tick && this.renderTicks(),
@@ -26894,19 +28700,25 @@ function _possibleConstructorReturn9(self2, call) {
   if (call && (_typeof31(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized10(self2)
 }
 function _assertThisInitialized10(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct9() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct9 = function _isNativeReflectConstruct29() {
     return !!t
@@ -26942,7 +28754,12 @@ function _setPrototypeOf10(o, p) {
 function _defineProperty26(obj, key, value) {
   key = _toPropertyKey27(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -27128,7 +28945,10 @@ var PolarAngleAxis = (function (_PureComponent) {
               Layer,
               _extends20(
                 {
-                  className: clsx_default('recharts-polar-angle-axis-tick', getTickClassName(tick)),
+                  className: clsx_default(
+                    'recharts-polar-angle-axis-tick',
+                    getTickClassName(tick)
+                  ),
                   key: 'tick-'.concat(entry.coordinate),
                 },
                 adaptEventsOfChild(_this.props, entry, i)
@@ -27174,7 +28994,10 @@ var PolarAngleAxis = (function (_PureComponent) {
           return import_react34.default.createElement(
             Layer,
             {
-              className: clsx_default('recharts-polar-angle-axis', this.props.className),
+              className: clsx_default(
+                'recharts-polar-angle-axis',
+                this.props.className
+              ),
             },
             axisLine && this.renderAxisLine(),
             this.renderTicks()
@@ -27303,7 +29126,10 @@ function _arrayLikeToArray18(arr, len) {
 }
 function _iterableToArrayLimit11(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -27316,12 +29142,18 @@ function _iterableToArrayLimit11(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -27362,7 +29194,12 @@ function _objectSpread25(e) {
 function _defineProperty27(obj, key, value) {
   key = _toPropertyKey28(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -27382,13 +29219,21 @@ function _toPrimitive28(t, r2) {
   }
   return ('string' === r2 ? String : Number)(t)
 }
-var getTrapezoidPath = function getTrapezoidPath2(x2, y2, upperWidth, lowerWidth, height) {
+var getTrapezoidPath = function getTrapezoidPath2(
+  x2,
+  y2,
+  upperWidth,
+  lowerWidth,
+  height
+) {
   var widthGap = upperWidth - lowerWidth
   var path2
   path2 = 'M '.concat(x2, ',').concat(y2)
   path2 += 'L '.concat(x2 + upperWidth, ',').concat(y2)
   path2 += 'L '.concat(x2 + upperWidth - widthGap / 2, ',').concat(y2 + height)
-  path2 += 'L '.concat(x2 + upperWidth - widthGap / 2 - lowerWidth, ',').concat(y2 + height)
+  path2 += 'L '
+    .concat(x2 + upperWidth - widthGap / 2 - lowerWidth, ',')
+    .concat(y2 + height)
   path2 += 'L '.concat(x2, ',').concat(y2, ' Z')
   return path2
 }
@@ -27404,7 +29249,10 @@ var defaultProps4 = {
   animationEasing: 'ease',
 }
 var Trapezoid = function Trapezoid2(props) {
-  var trapezoidProps = _objectSpread25(_objectSpread25({}, defaultProps4), props)
+  var trapezoidProps = _objectSpread25(
+    _objectSpread25({}, defaultProps4),
+    props
+  )
   var pathRef = (0, import_react35.useRef)()
   var _useState = (0, import_react35.useState)(-1),
     _useState2 = _slicedToArray11(_useState, 2),
@@ -27498,7 +29346,13 @@ var Trapezoid = function Trapezoid2(props) {
           'path',
           _extends21({}, filterProps(trapezoidProps, true), {
             className: layerClass,
-            d: getTrapezoidPath(currX, currY, currUpperWidth, currLowerWidth, currHeight),
+            d: getTrapezoidPath(
+              currX,
+              currY,
+              currUpperWidth,
+              currLowerWidth,
+              currHeight
+            ),
             ref: pathRef,
           })
         )
@@ -27508,7 +29362,13 @@ var Trapezoid = function Trapezoid2(props) {
 }
 
 // node_modules/recharts/es6/util/ActiveShapeUtils.js
-var _excluded18 = ['option', 'shapeType', 'propTransformer', 'activeClassName', 'isActive']
+var _excluded18 = [
+  'option',
+  'shapeType',
+  'propTransformer',
+  'activeClassName',
+  'isActive',
+]
 function _typeof33(o) {
   '@babel/helpers - typeof'
   return (
@@ -27584,7 +29444,12 @@ function _objectSpread26(e) {
 function _defineProperty28(obj, key, value) {
   key = _toPropertyKey29(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -27640,21 +29505,31 @@ function Shape(_ref2) {
     shapeType = _ref2.shapeType,
     _ref2$propTransformer = _ref2.propTransformer,
     propTransformer =
-      _ref2$propTransformer === void 0 ? defaultPropTransformer : _ref2$propTransformer,
+      _ref2$propTransformer === void 0
+        ? defaultPropTransformer
+        : _ref2$propTransformer,
     _ref2$activeClassName = _ref2.activeClassName,
     activeClassName =
-      _ref2$activeClassName === void 0 ? 'recharts-active-shape' : _ref2$activeClassName,
+      _ref2$activeClassName === void 0
+        ? 'recharts-active-shape'
+        : _ref2$activeClassName,
     isActive = _ref2.isActive,
     props = _objectWithoutProperties17(_ref2, _excluded18)
   var shape
   if ((0, import_react36.isValidElement)(option)) {
     shape = (0, import_react36.cloneElement)(
       option,
-      _objectSpread26(_objectSpread26({}, props), getPropsFromShapeOption(option))
+      _objectSpread26(
+        _objectSpread26({}, props),
+        getPropsFromShapeOption(option)
+      )
     )
   } else if ((0, import_isFunction12.default)(option)) {
     shape = option(props)
-  } else if ((0, import_isPlainObject.default)(option) && !(0, import_isBoolean.default)(option)) {
+  } else if (
+    (0, import_isPlainObject.default)(option) &&
+    !(0, import_isBoolean.default)(option)
+  ) {
     var nextProps = propTransformer(option, props)
     shape = import_react36.default.createElement(ShapeSelector, {
       shapeType,
@@ -27773,20 +29648,27 @@ function getActiveShapeIndexForTooltip(_ref3) {
     graphicalItem = _ref3.graphicalItem,
     itemData = _ref3.itemData
   var shapeKey = getShapeDataKey(graphicalItem, activeTooltipItem)
-  var tooltipPayload = getActiveShapeTooltipPayload(graphicalItem, activeTooltipItem)
+  var tooltipPayload = getActiveShapeTooltipPayload(
+    graphicalItem,
+    activeTooltipItem
+  )
   var activeItemMatches = itemData.filter(function (datum, dataIndex) {
     var valuesMatch = (0, import_isEqual2.default)(tooltipPayload, datum)
-    var mouseCoordinateMatches = graphicalItem.props[shapeKey].filter(function (shapeData) {
-      var comparison = getComparisonFn(graphicalItem, activeTooltipItem)
-      return comparison(shapeData, activeTooltipItem)
-    })
+    var mouseCoordinateMatches = graphicalItem.props[shapeKey].filter(
+      function (shapeData) {
+        var comparison = getComparisonFn(graphicalItem, activeTooltipItem)
+        return comparison(shapeData, activeTooltipItem)
+      }
+    )
     var indexOfMouseCoordinates = graphicalItem.props[shapeKey].indexOf(
       mouseCoordinateMatches[mouseCoordinateMatches.length - 1]
     )
     var coordinatesMatch = dataIndex === indexOfMouseCoordinates
     return valuesMatch && coordinatesMatch
   })
-  var activeIndex = itemData.indexOf(activeItemMatches[activeItemMatches.length - 1])
+  var activeIndex = itemData.indexOf(
+    activeItemMatches[activeItemMatches.length - 1]
+  )
   return activeIndex
 }
 
@@ -27889,19 +29771,25 @@ function _possibleConstructorReturn10(self2, call) {
   if (call && (_typeof34(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized11(self2)
 }
 function _assertThisInitialized11(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct10() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct10 = function _isNativeReflectConstruct29() {
     return !!t
@@ -27937,7 +29825,12 @@ function _setPrototypeOf11(o, p) {
 function _defineProperty29(obj, key, value) {
   key = _toPropertyKey30(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -28068,13 +29961,21 @@ var Pie = (function (_PureComponent) {
               {
                 index: i,
                 points: [
-                  polarToCartesian(entry.cx, entry.cy, entry.outerRadius, midAngle),
+                  polarToCartesian(
+                    entry.cx,
+                    entry.cy,
+                    entry.outerRadius,
+                    midAngle
+                  ),
                   endPoint,
                 ],
               }
             )
             var realDataKey = dataKey
-            if ((0, import_isNil9.default)(dataKey) && (0, import_isNil9.default)(valueKey)) {
+            if (
+              (0, import_isNil9.default)(dataKey) &&
+              (0, import_isNil9.default)(valueKey)
+            ) {
               realDataKey = 'value'
             } else if ((0, import_isNil9.default)(dataKey)) {
               realDataKey = valueKey
@@ -28088,8 +29989,13 @@ var Pie = (function (_PureComponent) {
                   .concat(entry.midAngle, '-')
                   .concat(i),
               },
-              labelLine && Pie2.renderLabelLineItem(labelLine, lineProps, 'line'),
-              Pie2.renderLabelItem(label, labelProps, getValueByDataKey(entry, realDataKey))
+              labelLine &&
+                Pie2.renderLabelLineItem(labelLine, lineProps, 'line'),
+              Pie2.renderLabelItem(
+                label,
+                labelProps,
+                getValueByDataKey(entry, realDataKey)
+              )
             )
           })
           return import_react37.default.createElement(
@@ -28111,14 +30017,19 @@ var Pie = (function (_PureComponent) {
             inactiveShapeProp = _this$props2.inactiveShape
           return sectors.map(function (entry, i) {
             if (
-              (entry === null || entry === void 0 ? void 0 : entry.startAngle) === 0 &&
-              (entry === null || entry === void 0 ? void 0 : entry.endAngle) === 0 &&
+              (entry === null || entry === void 0
+                ? void 0
+                : entry.startAngle) === 0 &&
+              (entry === null || entry === void 0 ? void 0 : entry.endAngle) ===
+                0 &&
               sectors.length !== 1
             )
               return null
             var isActive = _this2.isActiveIndex(i)
             var inactiveShape =
-              inactiveShapeProp && _this2.hasActiveIndex() ? inactiveShapeProp : null
+              inactiveShapeProp && _this2.hasActiveIndex()
+                ? inactiveShapeProp
+                : null
             var sectorOptions = isActive ? activeShape : inactiveShape
             var sectorProps = _objectSpread27(
               _objectSpread27({}, entry),
@@ -28143,8 +30054,18 @@ var Pie = (function (_PureComponent) {
                 adaptEventsOfChild(_this2.props, entry, i),
                 {
                   key: 'sector-'
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.startAngle, '-')
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.endAngle, '-')
+                    .concat(
+                      entry === null || entry === void 0
+                        ? void 0
+                        : entry.startAngle,
+                      '-'
+                    )
+                    .concat(
+                      entry === null || entry === void 0
+                        ? void 0
+                        : entry.endAngle,
+                      '-'
+                    )
                     .concat(entry.midAngle, '-')
                     .concat(i),
                 }
@@ -28191,7 +30112,9 @@ var Pie = (function (_PureComponent) {
               to: {
                 t: 1,
               },
-              key: 'pie-'.concat(animationId, '-').concat(prevIsAnimationActive),
+              key: 'pie-'
+                .concat(animationId, '-')
+                .concat(prevIsAnimationActive),
               onAnimationStart: this.handleAnimationStart,
               onAnimationEnd: this.handleAnimationEnd,
             },
@@ -28203,7 +30126,9 @@ var Pie = (function (_PureComponent) {
               sectors.forEach(function (entry, index2) {
                 var prev = prevSectors && prevSectors[index2]
                 var paddingAngle =
-                  index2 > 0 ? (0, import_get4.default)(entry, 'paddingAngle', 0) : 0
+                  index2 > 0
+                    ? (0, import_get4.default)(entry, 'paddingAngle', 0)
+                    : 0
                 if (prev) {
                   var angleIp = interpolateNumber(
                     prev.endAngle - prev.startAngle,
@@ -28222,7 +30147,10 @@ var Pie = (function (_PureComponent) {
                 } else {
                   var endAngle = entry.endAngle,
                     startAngle = entry.startAngle
-                  var interpolatorAngle = interpolateNumber(0, endAngle - startAngle)
+                  var interpolatorAngle = interpolateNumber(
+                    0,
+                    endAngle - startAngle
+                  )
                   var deltaAngle = interpolatorAngle(t)
                   var _latest = _objectSpread27(
                     _objectSpread27({}, entry),
@@ -28253,7 +30181,8 @@ var Pie = (function (_PureComponent) {
             if (!e.altKey) {
               switch (e.key) {
                 case 'ArrowLeft': {
-                  var next = ++_this4.state.sectorToFocus % _this4.sectorRefs.length
+                  var next =
+                    ++_this4.state.sectorToFocus % _this4.sectorRefs.length
                   _this4.sectorRefs[next].focus()
                   _this4.setState({
                     sectorToFocus: next,
@@ -28296,7 +30225,8 @@ var Pie = (function (_PureComponent) {
             isAnimationActive &&
             sectors &&
             sectors.length &&
-            (!prevSectors || !(0, import_isEqual3.default)(prevSectors, sectors))
+            (!prevSectors ||
+              !(0, import_isEqual3.default)(prevSectors, sectors))
           ) {
             return this.renderSectorsWithAnimation()
           }
@@ -28369,7 +30299,10 @@ var Pie = (function (_PureComponent) {
               isAnimationFinished: true,
             }
           }
-          if (nextProps.isAnimationActive && nextProps.animationId !== prevState.prevAnimationId) {
+          if (
+            nextProps.isAnimationActive &&
+            nextProps.animationId !== prevState.prevAnimationId
+          ) {
             return {
               prevAnimationId: nextProps.animationId,
               curSectors: nextProps.sectors,
@@ -28436,7 +30369,8 @@ var Pie = (function (_PureComponent) {
           }
           var className = clsx_default(
             'recharts-pie-label-text',
-            typeof option !== 'boolean' && !(0, import_isFunction13.default)(option)
+            typeof option !== 'boolean' &&
+              !(0, import_isFunction13.default)(option)
               ? option.className
               : ''
           )
@@ -28519,8 +30453,13 @@ _defineProperty29(Pie, 'parseCoordinateOfPie', function (itemProps, offset) {
   var cx = left + getPercentValue(itemProps.cx, width, width / 2)
   var cy = top + getPercentValue(itemProps.cy, height, height / 2)
   var innerRadius = getPercentValue(itemProps.innerRadius, maxPieRadius, 0)
-  var outerRadius = getPercentValue(itemProps.outerRadius, maxPieRadius, maxPieRadius * 0.8)
-  var maxRadius = itemProps.maxRadius || Math.sqrt(width * width + height * height) / 2
+  var outerRadius = getPercentValue(
+    itemProps.outerRadius,
+    maxPieRadius,
+    maxPieRadius * 0.8
+  )
+  var maxRadius =
+    itemProps.maxRadius || Math.sqrt(width * width + height * height) / 2
   return {
     cx,
     cy,
@@ -28553,7 +30492,10 @@ _defineProperty29(Pie, 'getComposedData', function (_ref4) {
   var deltaAngle = _Pie.parseDeltaAngle(startAngle, endAngle)
   var absDeltaAngle = Math.abs(deltaAngle)
   var realDataKey = dataKey
-  if ((0, import_isNil9.default)(dataKey) && (0, import_isNil9.default)(valueKey)) {
+  if (
+    (0, import_isNil9.default)(dataKey) &&
+    (0, import_isNil9.default)(valueKey)
+  ) {
     warn(
       false,
       'Use "dataKey" to specify the value of pie,\n      the props "valueKey" will be deprecated in 1.1.0'
@@ -28570,8 +30512,10 @@ _defineProperty29(Pie, 'getComposedData', function (_ref4) {
     return getValueByDataKey(entry, realDataKey, 0) !== 0
   }).length
   var totalPadingAngle =
-    (absDeltaAngle >= 360 ? notZeroItemCount : notZeroItemCount - 1) * paddingAngle
-  var realTotalAngle = absDeltaAngle - notZeroItemCount * minAngle - totalPadingAngle
+    (absDeltaAngle >= 360 ? notZeroItemCount : notZeroItemCount - 1) *
+    paddingAngle
+  var realTotalAngle =
+    absDeltaAngle - notZeroItemCount * minAngle - totalPadingAngle
   var sum3 = pieData.reduce(function (result, entry) {
     var val = getValueByDataKey(entry, realDataKey, 0)
     return result + (isNumber(val) ? val : 0)
@@ -28585,13 +30529,16 @@ _defineProperty29(Pie, 'getComposedData', function (_ref4) {
       var percent = (isNumber(val) ? val : 0) / sum3
       var tempStartAngle
       if (i) {
-        tempStartAngle = prev.endAngle + mathSign(deltaAngle) * paddingAngle * (val !== 0 ? 1 : 0)
+        tempStartAngle =
+          prev.endAngle +
+          mathSign(deltaAngle) * paddingAngle * (val !== 0 ? 1 : 0)
       } else {
         tempStartAngle = startAngle
       }
       var tempEndAngle =
         tempStartAngle +
-        mathSign(deltaAngle) * ((val !== 0 ? minAngle : 0) + percent * realTotalAngle)
+        mathSign(deltaAngle) *
+          ((val !== 0 ? minAngle : 0) + percent * realTotalAngle)
       var midAngle = (tempStartAngle + tempEndAngle) / 2
       var middleRadius = (coordinate.innerRadius + coordinate.outerRadius) / 2
       var tooltipPayload = [
@@ -28603,7 +30550,12 @@ _defineProperty29(Pie, 'getComposedData', function (_ref4) {
           type: tooltipType,
         },
       ]
-      var tooltipPosition = polarToCartesian(coordinate.cx, coordinate.cy, middleRadius, midAngle)
+      var tooltipPosition = polarToCartesian(
+        coordinate.cx,
+        coordinate.cy,
+        middleRadius,
+        midAngle
+      )
       prev = _objectSpread27(
         _objectSpread27(
           _objectSpread27(
@@ -28773,19 +30725,25 @@ function _possibleConstructorReturn11(self2, call) {
   if (call && (_typeof35(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized12(self2)
 }
 function _assertThisInitialized12(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct11() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct11 = function _isNativeReflectConstruct29() {
     return !!t
@@ -28821,7 +30779,12 @@ function _setPrototypeOf12(o, p) {
 function _defineProperty30(obj, key, value) {
   key = _toPropertyKey31(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -28845,7 +30808,11 @@ var Radar = (function (_PureComponent) {
   function Radar2() {
     var _this
     _classCallCheck12(this, Radar2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper9(this, Radar2, [].concat(args))
@@ -29012,9 +30979,12 @@ var Radar = (function (_PureComponent) {
             },
             function (_ref) {
               var t = _ref.t
-              var prevPointsDiffFactor = prevPoints && prevPoints.length / points.length
+              var prevPointsDiffFactor =
+                prevPoints && prevPoints.length / points.length
               var stepData = points.map(function (entry, index2) {
-                var prev = prevPoints && prevPoints[Math.floor(index2 * prevPointsDiffFactor)]
+                var prev =
+                  prevPoints &&
+                  prevPoints[Math.floor(index2 * prevPointsDiffFactor)]
                 if (prev) {
                   var _interpolatorX = interpolateNumber(prev.x, entry.x)
                   var _interpolatorY = interpolateNumber(prev.y, entry.y)
@@ -29159,13 +31129,21 @@ _defineProperty30(Radar, 'getComposedData', function (_ref2) {
   var isRange = false
   var points = []
   var angleBandSize =
-    angleAxis.type !== 'number' ? (bandSize !== null && bandSize !== void 0 ? bandSize : 0) : 0
+    angleAxis.type !== 'number'
+      ? bandSize !== null && bandSize !== void 0
+        ? bandSize
+        : 0
+      : 0
   displayedData.forEach(function (entry, i) {
     var name = getValueByDataKey(entry, angleAxis.dataKey, i)
     var value = getValueByDataKey(entry, dataKey)
     var angle = angleAxis.scale(name) + angleBandSize
-    var pointValue = Array.isArray(value) ? (0, import_last2.default)(value) : value
-    var radius = (0, import_isNil10.default)(pointValue) ? void 0 : radiusAxis.scale(pointValue)
+    var pointValue = Array.isArray(value)
+      ? (0, import_last2.default)(value)
+      : value
+    var radius = (0, import_isNil10.default)(pointValue)
+      ? void 0
+      : radiusAxis.scale(pointValue)
     if (Array.isArray(value) && value.length >= 2) {
       isRange = true
     }
@@ -29190,7 +31168,9 @@ _defineProperty30(Radar, 'getComposedData', function (_ref2) {
     points.forEach(function (point6) {
       if (Array.isArray(point6.value)) {
         var baseValue = (0, import_first.default)(point6.value)
-        var radius = (0, import_isNil10.default)(baseValue) ? void 0 : radiusAxis.scale(baseValue)
+        var radius = (0, import_isNil10.default)(baseValue)
+          ? void 0
+          : radiusAxis.scale(baseValue)
         baseLinePoints.push(
           _objectSpread28(
             _objectSpread28({}, point6),
@@ -29285,7 +31265,12 @@ function _objectSpread29(e) {
 function _defineProperty31(obj, key, value) {
   key = _toPropertyKey32(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -29464,19 +31449,25 @@ function _possibleConstructorReturn12(self2, call) {
   if (call && (_typeof37(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized13(self2)
 }
 function _assertThisInitialized13(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct12() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct12 = function _isNativeReflectConstruct29() {
     return !!t
@@ -29512,7 +31503,12 @@ function _setPrototypeOf13(o, p) {
 function _defineProperty32(obj, key, value) {
   key = _toPropertyKey33(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -29536,7 +31532,11 @@ var RadialBar = (function (_PureComponent) {
   function RadialBar2() {
     var _this
     _classCallCheck13(this, RadialBar2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper10(this, RadialBar2, [].concat(args))
@@ -29605,7 +31605,9 @@ var RadialBar = (function (_PureComponent) {
               ),
               {},
               {
-                className: 'recharts-radial-bar-sector '.concat(entry.className),
+                className: 'recharts-radial-bar-sector '.concat(
+                  entry.className
+                ),
                 forceCornerRadius: others.forceCornerRadius,
                 cornerIsExternal: others.cornerIsExternal,
                 isActive,
@@ -29655,8 +31657,14 @@ var RadialBar = (function (_PureComponent) {
               var stepData = data.map(function (entry, index2) {
                 var prev = prevData && prevData[index2]
                 if (prev) {
-                  var interpolatorStartAngle = interpolateNumber(prev.startAngle, entry.startAngle)
-                  var interpolatorEndAngle = interpolateNumber(prev.endAngle, entry.endAngle)
+                  var interpolatorStartAngle = interpolateNumber(
+                    prev.startAngle,
+                    entry.startAngle
+                  )
+                  var interpolatorEndAngle = interpolateNumber(
+                    prev.endAngle,
+                    entry.endAngle
+                  )
                   return _objectSpread30(
                     _objectSpread30({}, entry),
                     {},
@@ -29794,7 +31802,10 @@ var RadialBar = (function (_PureComponent) {
               this.renderSectors()
             ),
             (!isAnimationActive || isAnimationFinished) &&
-              LabelList.renderCallByParent(_objectSpread30({}, this.props), data)
+              LabelList.renderCallByParent(
+                _objectSpread30({}, this.props),
+                data
+              )
           )
         },
       },
@@ -29868,7 +31879,10 @@ _defineProperty32(RadialBar, 'getComposedData', function (_ref2) {
   var sectors = displayedData.map(function (entry, index2) {
     var value, innerRadius, outerRadius, startAngle, endAngle, backgroundSector
     if (stackedData) {
-      value = truncateByDomain(stackedData[dataStartIndex + index2], stackedDomain)
+      value = truncateByDomain(
+        stackedData[dataStartIndex + index2],
+        stackedDomain
+      )
     } else {
       value = getValueByDataKey(entry, dataKey)
       if (!Array.isArray(value)) {
@@ -29888,9 +31902,13 @@ _defineProperty32(RadialBar, 'getComposedData', function (_ref2) {
       startAngle = angleAxis.scale(value[0])
       outerRadius = innerRadius + pos.size
       var deltaAngle = endAngle - startAngle
-      if (Math.abs(minPointSize) > 0 && Math.abs(deltaAngle) < Math.abs(minPointSize)) {
+      if (
+        Math.abs(minPointSize) > 0 &&
+        Math.abs(deltaAngle) < Math.abs(minPointSize)
+      ) {
         var delta =
-          mathSign(deltaAngle || minPointSize) * (Math.abs(minPointSize) - Math.abs(deltaAngle))
+          mathSign(deltaAngle || minPointSize) *
+          (Math.abs(minPointSize) - Math.abs(deltaAngle))
         endAngle += delta
       }
       backgroundSector = {
@@ -29916,9 +31934,13 @@ _defineProperty32(RadialBar, 'getComposedData', function (_ref2) {
       })
       endAngle = startAngle + pos.size
       var deltaRadius = outerRadius - innerRadius
-      if (Math.abs(minPointSize) > 0 && Math.abs(deltaRadius) < Math.abs(minPointSize)) {
+      if (
+        Math.abs(minPointSize) > 0 &&
+        Math.abs(deltaRadius) < Math.abs(minPointSize)
+      ) {
         var _delta =
-          mathSign(deltaRadius || minPointSize) * (Math.abs(minPointSize) - Math.abs(deltaRadius))
+          mathSign(deltaRadius || minPointSize) *
+          (Math.abs(minPointSize) - Math.abs(deltaRadius))
         outerRadius += _delta
       }
     }
@@ -30011,7 +32033,12 @@ function _objectSpread31(e) {
 function _defineProperty33(obj, key, value) {
   key = _toPropertyKey34(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -30148,19 +32175,25 @@ function _possibleConstructorReturn13(self2, call) {
   if (call && (_typeof39(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized14(self2)
 }
 function _assertThisInitialized14(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct13() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct13 = function _isNativeReflectConstruct29() {
     return !!t
@@ -30196,7 +32229,12 @@ function _setPrototypeOf14(o, p) {
 function _defineProperty34(obj, key, value) {
   key = _toPropertyKey35(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -30291,7 +32329,10 @@ var Brush = (function (_PureComponent) {
     })
     _defineProperty34(_this, 'handleLeaveWrapper', function () {
       if (_this.state.isTravellerMoving || _this.state.isSlideMoving) {
-        _this.leaveTimer = window.setTimeout(_this.handleDragEnd, _this.props.leaveTimeOut)
+        _this.leaveTimer = window.setTimeout(
+          _this.handleDragEnd,
+          _this.props.leaveTimeOut
+        )
       }
     })
     _defineProperty34(_this, 'handleEnterSlideOrTraveller', function () {
@@ -30350,7 +32391,10 @@ var Brush = (function (_PureComponent) {
           var maxIndex2 = Brush2.getIndexInRange(scaleValues, max5)
           return {
             startIndex: minIndex2 - (minIndex2 % gap),
-            endIndex: maxIndex2 === lastIndex ? lastIndex : maxIndex2 - (maxIndex2 % gap),
+            endIndex:
+              maxIndex2 === lastIndex
+                ? lastIndex
+                : maxIndex2 - (maxIndex2 % gap),
           }
         },
       },
@@ -30411,7 +32455,11 @@ var Brush = (function (_PureComponent) {
             startX: startX + delta,
             endX: endX + delta,
           })
-          if ((newIndex.startIndex !== startIndex || newIndex.endIndex !== endIndex) && onChange) {
+          if (
+            (newIndex.startIndex !== startIndex ||
+              newIndex.endIndex !== endIndex) &&
+            onChange
+          ) {
             onChange(newIndex)
           }
           this.setState({
@@ -30468,10 +32516,14 @@ var Brush = (function (_PureComponent) {
             var lastIndex = data.length - 1
             if (
               (movingTravellerId === 'startX' &&
-                (endX > startX ? startIndex % gap === 0 : endIndex % gap === 0)) ||
+                (endX > startX
+                  ? startIndex % gap === 0
+                  : endIndex % gap === 0)) ||
               (endX < startX && endIndex === lastIndex) ||
               (movingTravellerId === 'endX' &&
-                (endX > startX ? endIndex % gap === 0 : startIndex % gap === 0)) ||
+                (endX > startX
+                  ? endIndex % gap === 0
+                  : startIndex % gap === 0)) ||
               (endX > startX && endIndex === lastIndex)
             ) {
               return true
@@ -30604,13 +32656,15 @@ var Brush = (function (_PureComponent) {
             ariaLabel ||
             'Min value: '
               .concat(
-                (_data$startIndex = data[startIndex]) === null || _data$startIndex === void 0
+                (_data$startIndex = data[startIndex]) === null ||
+                  _data$startIndex === void 0
                   ? void 0
                   : _data$startIndex.name,
                 ', Max value: '
               )
               .concat(
-                (_data$endIndex = data[endIndex]) === null || _data$endIndex === void 0
+                (_data$endIndex = data[endIndex]) === null ||
+                  _data$endIndex === void 0
                   ? void 0
                   : _data$endIndex.name
               )
@@ -30632,7 +32686,10 @@ var Brush = (function (_PureComponent) {
                 }
                 e.preventDefault()
                 e.stopPropagation()
-                _this3.handleTravellerMoveKeyboard(e.key === 'ArrowRight' ? 1 : -1, id)
+                _this3.handleTravellerMoveKeyboard(
+                  e.key === 'ArrowRight' ? 1 : -1,
+                  id
+                )
               },
               onFocus: function onFocus() {
                 _this3.setState({
@@ -30765,7 +32822,8 @@ var Brush = (function (_PureComponent) {
             return null
           }
           var layerClass = clsx_default('recharts-brush', className)
-          var isPanoramic = import_react41.default.Children.count(children2) === 1
+          var isPanoramic =
+            import_react41.default.Children.count(children2) === 1
           var style = generatePrefixStyle('userSelect', 'none')
           return import_react41.default.createElement(
             Layer,
@@ -30854,7 +32912,10 @@ var Brush = (function (_PureComponent) {
             updateId = nextProps.updateId,
             startIndex = nextProps.startIndex,
             endIndex = nextProps.endIndex
-          if (data !== prevState.prevData || updateId !== prevState.prevUpdateId) {
+          if (
+            data !== prevState.prevData ||
+            updateId !== prevState.prevUpdateId
+          ) {
             return _objectSpread32(
               {
                 prevData: data,
@@ -31031,7 +33092,12 @@ function _objectSpread33(e) {
 function _defineProperty35(obj, key, value) {
   key = _toPropertyKey36(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -31128,7 +33194,8 @@ function BarRectangle(props) {
   )
 }
 var minPointSizeCallback = function minPointSizeCallback2(minPointSize) {
-  var defaultValue = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0
+  var defaultValue =
+    arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0
   return function (value, index2) {
     if (typeof minPointSize === 'number') return minPointSize
     var isValueNumberOrNil = isNumber(value) || isNullish(value)
@@ -31276,19 +33343,25 @@ function _possibleConstructorReturn14(self2, call) {
   if (call && (_typeof41(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized15(self2)
 }
 function _assertThisInitialized15(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct14() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct14 = function _isNativeReflectConstruct29() {
     return !!t
@@ -31324,7 +33397,12 @@ function _setPrototypeOf15(o, p) {
 function _defineProperty36(obj, key, value) {
   key = _toPropertyKey37(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -31348,7 +33426,11 @@ var Bar = (function (_PureComponent) {
   function Bar2() {
     var _this
     _classCallCheck15(this, Bar2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper12(this, Bar2, [].concat(args))
@@ -31418,9 +33500,20 @@ var Bar = (function (_PureComponent) {
                     // https://github.com/recharts/recharts/issues/5415
 
                     key: 'rectangle-'
-                      .concat(entry === null || entry === void 0 ? void 0 : entry.x, '-')
-                      .concat(entry === null || entry === void 0 ? void 0 : entry.y, '-')
-                      .concat(entry === null || entry === void 0 ? void 0 : entry.value, '-')
+                      .concat(
+                        entry === null || entry === void 0 ? void 0 : entry.x,
+                        '-'
+                      )
+                      .concat(
+                        entry === null || entry === void 0 ? void 0 : entry.y,
+                        '-'
+                      )
+                      .concat(
+                        entry === null || entry === void 0
+                          ? void 0
+                          : entry.value,
+                        '-'
+                      )
                       .concat(i),
                   }
                 ),
@@ -31467,8 +33560,14 @@ var Bar = (function (_PureComponent) {
                 if (prev) {
                   var interpolatorX = interpolateNumber(prev.x, entry.x)
                   var interpolatorY = interpolateNumber(prev.y, entry.y)
-                  var interpolatorWidth = interpolateNumber(prev.width, entry.width)
-                  var interpolatorHeight = interpolateNumber(prev.height, entry.height)
+                  var interpolatorWidth = interpolateNumber(
+                    prev.width,
+                    entry.width
+                  )
+                  var interpolatorHeight = interpolateNumber(
+                    prev.height,
+                    entry.height
+                  )
                   return _objectSpread34(
                     _objectSpread34({}, entry),
                     {},
@@ -31599,9 +33698,15 @@ var Bar = (function (_PureComponent) {
           if (!errorBarItems) {
             return null
           }
-          var offset = layout === 'vertical' ? data[0].height / 2 : data[0].width / 2
-          var dataPointFormatter = function dataPointFormatter2(dataPoint, dataKey) {
-            var value = Array.isArray(dataPoint.value) ? dataPoint.value[1] : dataPoint.value
+          var offset =
+            layout === 'vertical' ? data[0].height / 2 : data[0].width / 2
+          var dataPointFormatter = function dataPointFormatter2(
+            dataPoint,
+            dataKey
+          ) {
+            var value = Array.isArray(dataPoint.value)
+              ? dataPoint.value[1]
+              : dataPoint.value
             return {
               x: dataPoint.x,
               y: dataPoint.y,
@@ -31610,14 +33715,18 @@ var Bar = (function (_PureComponent) {
             }
           }
           var errorBarProps = {
-            clipPath: needClip ? 'url(#clipPath-'.concat(clipPathId, ')') : null,
+            clipPath: needClip
+              ? 'url(#clipPath-'.concat(clipPathId, ')')
+              : null,
           }
           return import_react43.default.createElement(
             Layer,
             errorBarProps,
             errorBarItems.map(function (item) {
               return import_react43.default.cloneElement(item, {
-                key: 'error-bar-'.concat(clipPathId, '-').concat(item.props.dataKey),
+                key: 'error-bar-'
+                  .concat(clipPathId, '-')
+                  .concat(item.props.dataKey),
                 data,
                 xAxis,
                 yAxis,
@@ -31681,7 +33790,9 @@ var Bar = (function (_PureComponent) {
               Layer,
               {
                 className: 'recharts-bar-rectangles',
-                clipPath: needClip ? 'url(#clipPath-'.concat(clipPathId, ')') : null,
+                clipPath: needClip
+                  ? 'url(#clipPath-'.concat(clipPathId, ')')
+                  : null,
               },
               background ? this.renderBackground() : null,
               this.renderRectangles()
@@ -31766,17 +33877,20 @@ _defineProperty36(Bar, 'getComposedData', function (_ref2) {
   var rects = displayedData.map(function (entry, index2) {
     var value, x2, y2, width, height, background
     if (stackedData) {
-      value = truncateByDomain(stackedData[dataStartIndex + index2], stackedDomain)
+      value = truncateByDomain(
+        stackedData[dataStartIndex + index2],
+        stackedDomain
+      )
     } else {
       value = getValueByDataKey(entry, dataKey)
       if (!Array.isArray(value)) {
         value = [baseValue, value]
       }
     }
-    var minPointSize = minPointSizeCallback(minPointSizeProp, _Bar.defaultProps.minPointSize)(
-      value[1],
-      index2
-    )
+    var minPointSize = minPointSizeCallback(
+      minPointSizeProp,
+      _Bar.defaultProps.minPointSize
+    )(value[1], index2)
     if (layout === 'horizontal') {
       var _ref4
       var _ref3 = [yAxis.scale(value[0]), yAxis.scale(value[1])],
@@ -31806,8 +33920,13 @@ _defineProperty36(Bar, 'getComposedData', function (_ref2) {
         width,
         height: yAxis.height,
       }
-      if (Math.abs(minPointSize) > 0 && Math.abs(height) < Math.abs(minPointSize)) {
-        var delta = mathSign(height || minPointSize) * (Math.abs(minPointSize) - Math.abs(height))
+      if (
+        Math.abs(minPointSize) > 0 &&
+        Math.abs(height) < Math.abs(minPointSize)
+      ) {
+        var delta =
+          mathSign(height || minPointSize) *
+          (Math.abs(minPointSize) - Math.abs(height))
         y2 -= delta
         height += delta
       }
@@ -31832,8 +33951,13 @@ _defineProperty36(Bar, 'getComposedData', function (_ref2) {
         width: xAxis.width,
         height,
       }
-      if (Math.abs(minPointSize) > 0 && Math.abs(width) < Math.abs(minPointSize)) {
-        var _delta = mathSign(width || minPointSize) * (Math.abs(minPointSize) - Math.abs(width))
+      if (
+        Math.abs(minPointSize) > 0 &&
+        Math.abs(width) < Math.abs(minPointSize)
+      ) {
+        var _delta =
+          mathSign(width || minPointSize) *
+          (Math.abs(minPointSize) - Math.abs(width))
         width += _delta
       }
     }
@@ -31941,7 +34065,12 @@ function _objectSpread35(e) {
 function _defineProperty37(obj, key, value) {
   key = _toPropertyKey38(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -31961,7 +34090,13 @@ function _toPrimitive38(t, r2) {
   }
   return ('string' === r2 ? String : Number)(t)
 }
-var formatAxisMap3 = function formatAxisMap4(props, axisMap, offset, axisType, chartName) {
+var formatAxisMap3 = function formatAxisMap4(
+  props,
+  axisMap,
+  offset,
+  axisType,
+  chartName
+) {
   var width = props.width,
     height = props.height,
     layout = props.layout,
@@ -31988,7 +34123,10 @@ var formatAxisMap3 = function formatAxisMap4(props, axisMap, offset, axisType, c
       reversed = axis.reversed
     var offsetKey = ''.concat(orientation).concat(mirror ? 'Mirror' : '')
     var calculatedPadding, range6, x2, y2, needSpace
-    if (axis.type === 'number' && (axis.padding === 'gap' || axis.padding === 'no-gap')) {
+    if (
+      axis.type === 'number' &&
+      (axis.padding === 'gap' || axis.padding === 'no-gap')
+    ) {
       var diff = domain[1] - domain[0]
       var smallestDistanceBetweenValues = Infinity
       var sortedValues = axis.categoricalDomain.sort(compareValues)
@@ -32002,29 +34140,43 @@ var formatAxisMap3 = function formatAxisMap4(props, axisMap, offset, axisType, c
       })
       if (Number.isFinite(smallestDistanceBetweenValues)) {
         var smallestDistanceInPercent = smallestDistanceBetweenValues / diff
-        var rangeWidth = axis.layout === 'vertical' ? offset.height : offset.width
+        var rangeWidth =
+          axis.layout === 'vertical' ? offset.height : offset.width
         if (axis.padding === 'gap') {
           calculatedPadding = (smallestDistanceInPercent * rangeWidth) / 2
         }
         if (axis.padding === 'no-gap') {
-          var gap = getPercentValue(props.barCategoryGap, smallestDistanceInPercent * rangeWidth)
+          var gap = getPercentValue(
+            props.barCategoryGap,
+            smallestDistanceInPercent * rangeWidth
+          )
           var halfBand = (smallestDistanceInPercent * rangeWidth) / 2
-          calculatedPadding = halfBand - gap - ((halfBand - gap) / rangeWidth) * gap
+          calculatedPadding =
+            halfBand - gap - ((halfBand - gap) / rangeWidth) * gap
         }
       }
     }
     if (axisType === 'xAxis') {
       range6 = [
         offset.left + (padding.left || 0) + (calculatedPadding || 0),
-        offset.left + offset.width - (padding.right || 0) - (calculatedPadding || 0),
+        offset.left +
+          offset.width -
+          (padding.right || 0) -
+          (calculatedPadding || 0),
       ]
     } else if (axisType === 'yAxis') {
       range6 =
         layout === 'horizontal'
-          ? [offset.top + offset.height - (padding.bottom || 0), offset.top + (padding.top || 0)]
+          ? [
+              offset.top + offset.height - (padding.bottom || 0),
+              offset.top + (padding.top || 0),
+            ]
           : [
               offset.top + (padding.top || 0) + (calculatedPadding || 0),
-              offset.top + offset.height - (padding.bottom || 0) - (calculatedPadding || 0),
+              offset.top +
+                offset.height -
+                (padding.bottom || 0) -
+                (calculatedPadding || 0),
             ]
     } else {
       range6 = axis.range
@@ -32048,11 +34200,15 @@ var formatAxisMap3 = function formatAxisMap4(props, axisMap, offset, axisType, c
       )
     )
     if (axisType === 'xAxis') {
-      needSpace = (orientation === 'top' && !mirror) || (orientation === 'bottom' && mirror)
+      needSpace =
+        (orientation === 'top' && !mirror) ||
+        (orientation === 'bottom' && mirror)
       x2 = offset.left
       y2 = steps[offsetKey] - needSpace * axis.height
     } else if (axisType === 'yAxis') {
-      needSpace = (orientation === 'left' && !mirror) || (orientation === 'right' && mirror)
+      needSpace =
+        (orientation === 'left' && !mirror) ||
+        (orientation === 'right' && mirror)
       x2 = steps[offsetKey] - needSpace * axis.width
       y2 = offset.top
     }
@@ -32074,7 +34230,11 @@ var formatAxisMap3 = function formatAxisMap4(props, axisMap, offset, axisType, c
     } else if (!axis.hide) {
       steps[offsetKey] += (needSpace ? -1 : 1) * finalAxis.width
     }
-    return _objectSpread35(_objectSpread35({}, result), {}, _defineProperty37({}, id, finalAxis))
+    return _objectSpread35(
+      _objectSpread35({}, result),
+      {},
+      _defineProperty37({}, id, finalAxis)
+    )
   }, {})
 }
 var rectWithPoints = function rectWithPoints2(_ref, _ref2) {
@@ -32146,7 +34306,10 @@ var ScaleHelper = (function () {
       {
         key: 'apply',
         value: function apply(value) {
-          var _ref4 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {},
+          var _ref4 =
+              arguments.length > 1 && arguments[1] !== void 0
+                ? arguments[1]
+                : {},
             bandAware = _ref4.bandAware,
             position3 = _ref4.position
           if (value === void 0) {
@@ -32213,7 +34376,8 @@ var createLabeledScales = function createLabeledScales2(options) {
     {},
     {
       apply: function apply(coord) {
-        var _ref5 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {},
+        var _ref5 =
+            arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {},
           bandAware = _ref5.bandAware,
           position3 = _ref5.position
         return (0, import_mapValues.default)(coord, function (value, label) {
@@ -32265,7 +34429,16 @@ var calculateViewBox = (0, import_memoize.default)(
     }
   },
   function (offset) {
-    return ['l', offset.left, 't', offset.top, 'w', offset.width, 'h', offset.height].join('')
+    return [
+      'l',
+      offset.left,
+      't',
+      offset.top,
+      'w',
+      offset.width,
+      'h',
+      offset.height,
+    ].join('')
   }
 )
 
@@ -32388,13 +34561,17 @@ var useArbitraryXAxis = function useArbitraryXAxis2() {
   var xAxisMap = (0, import_react44.useContext)(XAxisContext)
   return getAnyElementOfObject(xAxisMap)
 }
-var useYAxisWithFiniteDomainOrRandom = function useYAxisWithFiniteDomainOrRandom2() {
-  var yAxisMap = (0, import_react44.useContext)(YAxisContext)
-  var yAxisWithFiniteDomain = (0, import_find.default)(yAxisMap, function (axis) {
-    return (0, import_every3.default)(axis.domain, Number.isFinite)
-  })
-  return yAxisWithFiniteDomain || getAnyElementOfObject(yAxisMap)
-}
+var useYAxisWithFiniteDomainOrRandom =
+  function useYAxisWithFiniteDomainOrRandom2() {
+    var yAxisMap = (0, import_react44.useContext)(YAxisContext)
+    var yAxisWithFiniteDomain = (0, import_find.default)(
+      yAxisMap,
+      function (axis) {
+        return (0, import_every3.default)(axis.domain, Number.isFinite)
+      }
+    )
+    return yAxisWithFiniteDomain || getAnyElementOfObject(yAxisMap)
+  }
 var useYAxisOrThrow = function useYAxisOrThrow2(yAxisId) {
   var yAxisMap = (0, import_react44.useContext)(YAxisContext)
   !(yAxisMap != null)
@@ -32488,19 +34665,25 @@ function _possibleConstructorReturn15(self2, call) {
   if (call && (_typeof44(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized16(self2)
 }
 function _assertThisInitialized16(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct15() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct15 = function _isNativeReflectConstruct29() {
     return !!t
@@ -32563,7 +34746,12 @@ function _objectSpread36(e) {
 function _defineProperty38(obj, key, value) {
   key = _toPropertyKey39(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -32612,7 +34800,10 @@ function _arrayLikeToArray19(arr, len) {
 }
 function _iterableToArrayLimit12(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -32625,12 +34816,18 @@ function _iterableToArrayLimit12(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -32795,7 +34992,9 @@ function ReferenceLineImpl(props) {
     _endPoints$2 = _endPoints[1],
     x2 = _endPoints$2.x,
     y2 = _endPoints$2.y
-  var clipPath = ifOverflowMatches(props, 'hidden') ? 'url(#'.concat(clipPathId, ')') : void 0
+  var clipPath = ifOverflowMatches(props, 'hidden')
+    ? 'url(#'.concat(clipPathId, ')')
+    : void 0
   var lineProps = _objectSpread36(
     _objectSpread36(
       {
@@ -32838,7 +35037,10 @@ var ReferenceLine = (function (_React$Component) {
     {
       key: 'render',
       value: function render() {
-        return import_react45.default.createElement(ReferenceLineImpl, this.props)
+        return import_react45.default.createElement(
+          ReferenceLineImpl,
+          this.props
+        )
       },
     },
   ])
@@ -32956,19 +35158,25 @@ function _possibleConstructorReturn16(self2, call) {
   if (call && (_typeof45(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized17(self2)
 }
 function _assertThisInitialized17(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct16() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct16 = function _isNativeReflectConstruct29() {
     return !!t
@@ -33004,7 +35212,12 @@ function _setPrototypeOf17(o, p) {
 function _defineProperty39(obj, key, value) {
   key = _toPropertyKey40(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -33245,19 +35458,25 @@ function _possibleConstructorReturn17(self2, call) {
   if (call && (_typeof46(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized18(self2)
 }
 function _assertThisInitialized18(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct17() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct17 = function _isNativeReflectConstruct29() {
     return !!t
@@ -33293,7 +35512,12 @@ function _setPrototypeOf18(o, p) {
 function _defineProperty40(obj, key, value) {
   key = _toPropertyKey41(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -33349,7 +35573,10 @@ var getRect = function getRect2(hasX1, hasX2, hasY1, hasY2, props) {
         })
       : scales.y.rangeMax,
   }
-  if (ifOverflowMatches(props, 'discard') && (!scales.isInRange(p1) || !scales.isInRange(p2))) {
+  if (
+    ifOverflowMatches(props, 'discard') &&
+    (!scales.isInRange(p1) || !scales.isInRange(p2))
+  ) {
     return null
   }
   return rectWithPoints(p1, p2)
@@ -33496,7 +35723,10 @@ function getTickBoundaries(viewBox, sign2, sizeKey) {
   }
 }
 function isVisible(sign2, tickPosition, getSize, start, end) {
-  if (sign2 * tickPosition < sign2 * start || sign2 * tickPosition > sign2 * end) {
+  if (
+    sign2 * tickPosition < sign2 * start ||
+    sign2 * tickPosition > sign2 * end
+  ) {
     return false
   }
   var size = getSize()
@@ -33510,7 +35740,13 @@ function getNumberIntervalTicks(ticks2, interval) {
 }
 
 // node_modules/recharts/es6/cartesian/getEquidistantTicks.js
-function getEquidistantTicks(sign2, boundaries, getTickSize, ticks2, minTickGap) {
+function getEquidistantTicks(
+  sign2,
+  boundaries,
+  getTickSize,
+  ticks2,
+  minTickGap
+) {
   var result = (ticks2 || []).slice()
   var initialStart = boundaries.start,
     end = boundaries.end
@@ -33533,7 +35769,8 @@ function getEquidistantTicks(sign2, boundaries, getTickSize, ticks2, minTickGap)
         return size
       }
       var tickCoord = entry.coordinate
-      var isShow = index2 === 0 || isVisible(sign2, tickCoord, getSize, start, end)
+      var isShow =
+        index2 === 0 || isVisible(sign2, tickCoord, getSize, start, end)
       if (!isShow) {
         index2 = 0
         start = initialStart
@@ -33602,7 +35839,12 @@ function _objectSpread39(e) {
 function _defineProperty41(obj, key, value) {
   key = _toPropertyKey42(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -33642,7 +35884,8 @@ function getTicksEnd(sign2, boundaries, getTickSize, ticks2, minTickGap) {
         _objectSpread39({}, entry),
         {},
         {
-          tickCoord: gap > 0 ? entry.coordinate - gap * sign2 : entry.coordinate,
+          tickCoord:
+            gap > 0 ? entry.coordinate - gap * sign2 : entry.coordinate,
         }
       )
     } else {
@@ -33671,7 +35914,14 @@ function getTicksEnd(sign2, boundaries, getTickSize, ticks2, minTickGap) {
   }
   return result
 }
-function getTicksStart(sign2, boundaries, getTickSize, ticks2, minTickGap, preserveEnd) {
+function getTicksStart(
+  sign2,
+  boundaries,
+  getTickSize,
+  ticks2,
+  minTickGap,
+  preserveEnd
+) {
   var result = (ticks2 || []).slice()
   var len = result.length
   var start = boundaries.start,
@@ -33684,7 +35934,8 @@ function getTicksStart(sign2, boundaries, getTickSize, ticks2, minTickGap, prese
       _objectSpread39({}, tail),
       {},
       {
-        tickCoord: tailGap > 0 ? tail.coordinate - tailGap * sign2 : tail.coordinate,
+        tickCoord:
+          tailGap > 0 ? tail.coordinate - tailGap * sign2 : tail.coordinate,
       }
     )
     var isTailShow = isVisible(
@@ -33723,7 +35974,8 @@ function getTicksStart(sign2, boundaries, getTickSize, ticks2, minTickGap, prese
         _objectSpread39({}, entry),
         {},
         {
-          tickCoord: gap < 0 ? entry.coordinate - gap * sign2 : entry.coordinate,
+          tickCoord:
+            gap < 0 ? entry.coordinate - gap * sign2 : entry.coordinate,
         }
       )
     } else {
@@ -33772,7 +36024,8 @@ function getTicks(props, fontSize, letterSpacing) {
     )
   }
   var candidates = []
-  var sizeKey = orientation === 'top' || orientation === 'bottom' ? 'width' : 'height'
+  var sizeKey =
+    orientation === 'top' || orientation === 'bottom' ? 'width' : 'height'
   var unitSize =
     unit2 && sizeKey === 'width'
       ? getStringSize(unit2, {
@@ -33801,10 +36054,19 @@ function getTicks(props, fontSize, letterSpacing) {
           letterSpacing,
         })[sizeKey]
   }
-  var sign2 = ticks2.length >= 2 ? mathSign(ticks2[1].coordinate - ticks2[0].coordinate) : 1
+  var sign2 =
+    ticks2.length >= 2
+      ? mathSign(ticks2[1].coordinate - ticks2[0].coordinate)
+      : 1
   var boundaries = getTickBoundaries(viewBox, sign2, sizeKey)
   if (interval === 'equidistantPreserveStart') {
-    return getEquidistantTicks(sign2, boundaries, getTickSize, ticks2, minTickGap)
+    return getEquidistantTicks(
+      sign2,
+      boundaries,
+      getTickSize,
+      ticks2,
+      minTickGap
+    )
   }
   if (interval === 'preserveStart' || interval === 'preserveStartEnd') {
     candidates = getTicksStart(
@@ -33950,19 +36212,25 @@ function _possibleConstructorReturn18(self2, call) {
   if (call && (_typeof48(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized19(self2)
 }
 function _assertThisInitialized19(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct18() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct18 = function _isNativeReflectConstruct29() {
     return !!t
@@ -33998,7 +36266,12 @@ function _setPrototypeOf19(o, p) {
 function _defineProperty42(obj, key, value) {
   key = _toPropertyKey43(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -34053,7 +36326,9 @@ var CartesianAxis = (function (_Component) {
         value: function componentDidMount() {
           var htmlLayer = this.layerReference
           if (!htmlLayer) return
-          var tick = htmlLayer.getElementsByClassName('recharts-cartesian-axis-tick-value')[0]
+          var tick = htmlLayer.getElementsByClassName(
+            'recharts-cartesian-axis-tick-value'
+          )[0]
           if (tick) {
             this.setState({
               fontSize: window.getComputedStyle(tick).fontSize,
@@ -34083,7 +36358,9 @@ var CartesianAxis = (function (_Component) {
           var x1, x22, y1, y22, tx, ty
           var sign2 = mirror ? -1 : 1
           var finalTickSize = data.tickSize || tickSize
-          var tickCoord = isNumber(data.tickCoord) ? data.tickCoord : data.coordinate
+          var tickCoord = isNumber(data.tickCoord)
+            ? data.tickCoord
+            : data.coordinate
           switch (orientation) {
             case 'top':
               x1 = x22 = data.coordinate
@@ -34387,7 +36664,11 @@ var CartesianAxis = (function (_Component) {
               },
             },
             axisLine && this.renderAxisLine(),
-            this.renderTicks(finalTicks, this.state.fontSize, this.state.letterSpacing),
+            this.renderTicks(
+              finalTicks,
+              this.state.fontSize,
+              this.state.letterSpacing
+            ),
             Label.renderCallByParent(this.props)
           )
         },
@@ -34520,7 +36801,12 @@ function _objectSpread41(e) {
 function _defineProperty43(obj, key, value) {
   key = _toPropertyKey44(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -34620,7 +36906,10 @@ function renderLineItem(option, props) {
       others = _objectWithoutProperties23(props, _excluded29)
     var _filterProps = filterProps(others, false),
       __ = _filterProps.offset,
-      restOfFilteredProps = _objectWithoutProperties23(_filterProps, _excluded210)
+      restOfFilteredProps = _objectWithoutProperties23(
+        _filterProps,
+        _excluded210
+      )
     lineItem = import_react49.default.createElement(
       'line',
       _extends33({}, restOfFilteredProps, {
@@ -34724,7 +37013,9 @@ function HorizontalStripes(props) {
   }
   var items = roundedSortedHorizontalPoints.map(function (entry, i) {
     var lastStripe = !roundedSortedHorizontalPoints[i + 1]
-    var lineHeight = lastStripe ? y2 + height - entry : roundedSortedHorizontalPoints[i + 1] - entry
+    var lineHeight = lastStripe
+      ? y2 + height - entry
+      : roundedSortedHorizontalPoints[i + 1] - entry
     if (lineHeight <= 0) {
       return null
     }
@@ -34774,7 +37065,9 @@ function VerticalStripes(props) {
   }
   var items = roundedSortedVerticalPoints.map(function (entry, i) {
     var lastStripe = !roundedSortedVerticalPoints[i + 1]
-    var lineWidth = lastStripe ? x2 + width - entry : roundedSortedVerticalPoints[i + 1] - entry
+    var lineWidth = lastStripe
+      ? x2 + width - entry
+      : roundedSortedVerticalPoints[i + 1] - entry
     if (lineWidth <= 0) {
       return null
     }
@@ -34799,64 +37092,66 @@ function VerticalStripes(props) {
     items
   )
 }
-var defaultVerticalCoordinatesGenerator = function defaultVerticalCoordinatesGenerator2(
-  _ref,
-  syncWithTicks
-) {
-  var xAxis = _ref.xAxis,
-    width = _ref.width,
-    height = _ref.height,
-    offset = _ref.offset
-  return getCoordinatesOfGrid(
-    getTicks(
-      _objectSpread41(
-        _objectSpread41(_objectSpread41({}, CartesianAxis.defaultProps), xAxis),
-        {},
-        {
-          ticks: getTicksOfAxis(xAxis, true),
-          viewBox: {
-            x: 0,
-            y: 0,
-            width,
-            height,
-          },
-        }
-      )
-    ),
-    offset.left,
-    offset.left + offset.width,
-    syncWithTicks
-  )
-}
-var defaultHorizontalCoordinatesGenerator = function defaultHorizontalCoordinatesGenerator2(
-  _ref2,
-  syncWithTicks
-) {
-  var yAxis = _ref2.yAxis,
-    width = _ref2.width,
-    height = _ref2.height,
-    offset = _ref2.offset
-  return getCoordinatesOfGrid(
-    getTicks(
-      _objectSpread41(
-        _objectSpread41(_objectSpread41({}, CartesianAxis.defaultProps), yAxis),
-        {},
-        {
-          ticks: getTicksOfAxis(yAxis, true),
-          viewBox: {
-            x: 0,
-            y: 0,
-            width,
-            height,
-          },
-        }
-      )
-    ),
-    offset.top,
-    offset.top + offset.height,
-    syncWithTicks
-  )
-}
+var defaultVerticalCoordinatesGenerator =
+  function defaultVerticalCoordinatesGenerator2(_ref, syncWithTicks) {
+    var xAxis = _ref.xAxis,
+      width = _ref.width,
+      height = _ref.height,
+      offset = _ref.offset
+    return getCoordinatesOfGrid(
+      getTicks(
+        _objectSpread41(
+          _objectSpread41(
+            _objectSpread41({}, CartesianAxis.defaultProps),
+            xAxis
+          ),
+          {},
+          {
+            ticks: getTicksOfAxis(xAxis, true),
+            viewBox: {
+              x: 0,
+              y: 0,
+              width,
+              height,
+            },
+          }
+        )
+      ),
+      offset.left,
+      offset.left + offset.width,
+      syncWithTicks
+    )
+  }
+var defaultHorizontalCoordinatesGenerator =
+  function defaultHorizontalCoordinatesGenerator2(_ref2, syncWithTicks) {
+    var yAxis = _ref2.yAxis,
+      width = _ref2.width,
+      height = _ref2.height,
+      offset = _ref2.offset
+    return getCoordinatesOfGrid(
+      getTicks(
+        _objectSpread41(
+          _objectSpread41(
+            _objectSpread41({}, CartesianAxis.defaultProps),
+            yAxis
+          ),
+          {},
+          {
+            ticks: getTicksOfAxis(yAxis, true),
+            viewBox: {
+              x: 0,
+              y: 0,
+              width,
+              height,
+            },
+          }
+        )
+      ),
+      offset.top,
+      offset.top + offset.height,
+      syncWithTicks
+    )
+  }
 var defaultProps5 = {
   horizontal: true,
   vertical: true,
@@ -34893,19 +37188,23 @@ function CartesianGrid(props) {
           ? _props$fill
           : defaultProps5.fill,
       horizontal:
-        (_props$horizontal3 = props.horizontal) !== null && _props$horizontal3 !== void 0
+        (_props$horizontal3 = props.horizontal) !== null &&
+        _props$horizontal3 !== void 0
           ? _props$horizontal3
           : defaultProps5.horizontal,
       horizontalFill:
-        (_props$horizontalFill = props.horizontalFill) !== null && _props$horizontalFill !== void 0
+        (_props$horizontalFill = props.horizontalFill) !== null &&
+        _props$horizontalFill !== void 0
           ? _props$horizontalFill
           : defaultProps5.horizontalFill,
       vertical:
-        (_props$vertical3 = props.vertical) !== null && _props$vertical3 !== void 0
+        (_props$vertical3 = props.vertical) !== null &&
+        _props$vertical3 !== void 0
           ? _props$vertical3
           : defaultProps5.vertical,
       verticalFill:
-        (_props$verticalFill = props.verticalFill) !== null && _props$verticalFill !== void 0
+        (_props$verticalFill = props.verticalFill) !== null &&
+        _props$verticalFill !== void 0
           ? _props$verticalFill
           : defaultProps5.verticalFill,
       x: isNumber(props.x) ? props.x : offset.left,
@@ -34936,9 +37235,11 @@ function CartesianGrid(props) {
     return null
   }
   var verticalCoordinatesGenerator =
-    propsIncludingDefaults.verticalCoordinatesGenerator || defaultVerticalCoordinatesGenerator
+    propsIncludingDefaults.verticalCoordinatesGenerator ||
+    defaultVerticalCoordinatesGenerator
   var horizontalCoordinatesGenerator =
-    propsIncludingDefaults.horizontalCoordinatesGenerator || defaultHorizontalCoordinatesGenerator
+    propsIncludingDefaults.horizontalCoordinatesGenerator ||
+    defaultHorizontalCoordinatesGenerator
   var horizontalPoints = propsIncludingDefaults.horizontalPoints,
     verticalPoints = propsIncludingDefaults.verticalPoints
   if (
@@ -35222,19 +37523,25 @@ function _possibleConstructorReturn19(self2, call) {
   if (call && (_typeof50(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized20(self2)
 }
 function _assertThisInitialized20(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct19() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct19 = function _isNativeReflectConstruct29() {
     return !!t
@@ -35270,7 +37577,12 @@ function _setPrototypeOf20(o, p) {
 function _defineProperty44(obj, key, value) {
   key = _toPropertyKey45(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -35294,7 +37606,11 @@ var Line = (function (_PureComponent) {
   function Line2() {
     var _this
     _classCallCheck21(this, Line2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper17(this, Line2, [].concat(args))
@@ -35302,38 +37618,49 @@ var Line = (function (_PureComponent) {
       isAnimationFinished: true,
       totalLength: 0,
     })
-    _defineProperty44(_this, 'generateSimpleStrokeDasharray', function (totalLength, length) {
-      return ''.concat(length, 'px ').concat(totalLength - length, 'px')
-    })
-    _defineProperty44(_this, 'getStrokeDasharray', function (length, totalLength, lines) {
-      var lineLength = lines.reduce(function (pre, next) {
-        return pre + next
-      })
-      if (!lineLength) {
-        return _this.generateSimpleStrokeDasharray(totalLength, length)
+    _defineProperty44(
+      _this,
+      'generateSimpleStrokeDasharray',
+      function (totalLength, length) {
+        return ''.concat(length, 'px ').concat(totalLength - length, 'px')
       }
-      var count2 = Math.floor(length / lineLength)
-      var remainLength = length % lineLength
-      var restLength = totalLength - length
-      var remainLines = []
-      for (var i = 0, sum3 = 0; i < lines.length; sum3 += lines[i], ++i) {
-        if (sum3 + lines[i] > remainLength) {
-          remainLines = [].concat(_toConsumableArray10(lines.slice(0, i)), [remainLength - sum3])
-          break
-        }
-      }
-      var emptyLines = remainLines.length % 2 === 0 ? [0, restLength] : [restLength]
-      return []
-        .concat(
-          _toConsumableArray10(Line2.repeat(lines, count2)),
-          _toConsumableArray10(remainLines),
-          emptyLines
-        )
-        .map(function (line) {
-          return ''.concat(line, 'px')
+    )
+    _defineProperty44(
+      _this,
+      'getStrokeDasharray',
+      function (length, totalLength, lines) {
+        var lineLength = lines.reduce(function (pre, next) {
+          return pre + next
         })
-        .join(', ')
-    })
+        if (!lineLength) {
+          return _this.generateSimpleStrokeDasharray(totalLength, length)
+        }
+        var count2 = Math.floor(length / lineLength)
+        var remainLength = length % lineLength
+        var restLength = totalLength - length
+        var remainLines = []
+        for (var i = 0, sum3 = 0; i < lines.length; sum3 += lines[i], ++i) {
+          if (sum3 + lines[i] > remainLength) {
+            remainLines = [].concat(_toConsumableArray10(lines.slice(0, i)), [
+              remainLength - sum3,
+            ])
+            break
+          }
+        }
+        var emptyLines =
+          remainLines.length % 2 === 0 ? [0, restLength] : [restLength]
+        return []
+          .concat(
+            _toConsumableArray10(Line2.repeat(lines, count2)),
+            _toConsumableArray10(remainLines),
+            emptyLines
+          )
+          .map(function (line) {
+            return ''.concat(line, 'px')
+          })
+          .join(', ')
+      }
+    )
     _defineProperty44(_this, 'id', uniqueId('recharts-line-'))
     _defineProperty44(_this, 'pathRef', function (node) {
       _this.mainCurve = node
@@ -35391,7 +37718,12 @@ var Line = (function (_PureComponent) {
         value: function getTotalLength() {
           var curveDom = this.mainCurve
           try {
-            return (curveDom && curveDom.getTotalLength && curveDom.getTotalLength()) || 0
+            return (
+              (curveDom &&
+                curveDom.getTotalLength &&
+                curveDom.getTotalLength()) ||
+              0
+            )
           } catch (err) {
             return 0
           }
@@ -35413,7 +37745,10 @@ var Line = (function (_PureComponent) {
           if (!errorBarItems) {
             return null
           }
-          var dataPointFormatter = function dataPointFormatter2(dataPoint, dataKey) {
+          var dataPointFormatter = function dataPointFormatter2(
+            dataPoint,
+            dataKey
+          ) {
             return {
               x: dataPoint.x,
               y: dataPoint.y,
@@ -35422,7 +37757,9 @@ var Line = (function (_PureComponent) {
             }
           }
           var errorBarProps = {
-            clipPath: needClip ? 'url(#clipPath-'.concat(clipPathId, ')') : null,
+            clipPath: needClip
+              ? 'url(#clipPath-'.concat(clipPathId, ')')
+              : null,
           }
           return import_react50.default.createElement(
             Layer,
@@ -35480,7 +37817,9 @@ var Line = (function (_PureComponent) {
           })
           var dotsProps = {
             clipPath: needClip
-              ? 'url(#clipPath-'.concat(clipDot ? '' : 'dots-').concat(clipPathId, ')')
+              ? 'url(#clipPath-'
+                  .concat(clipDot ? '' : 'dots-')
+                  .concat(clipPathId, ')')
               : null,
           }
           return import_react50.default.createElement(
@@ -35498,7 +37837,12 @@ var Line = (function (_PureComponent) {
       },
       {
         key: 'renderCurveStatically',
-        value: function renderCurveStatically(points, needClip, clipPathId, props) {
+        value: function renderCurveStatically(
+          points,
+          needClip,
+          clipPathId,
+          props
+        ) {
           var _this$props3 = this.props,
             type = _this$props3.type,
             layout = _this$props3.layout,
@@ -35512,7 +37856,9 @@ var Line = (function (_PureComponent) {
               {
                 fill: 'none',
                 className: 'recharts-line-curve',
-                clipPath: needClip ? 'url(#clipPath-'.concat(clipPathId, ')') : null,
+                clipPath: needClip
+                  ? 'url(#clipPath-'.concat(clipPathId, ')')
+                  : null,
                 points,
               },
               props
@@ -35607,7 +37953,11 @@ var Line = (function (_PureComponent) {
                     }
                   )
                 })
-                return _this2.renderCurveStatically(stepData, needClip, clipPathId)
+                return _this2.renderCurveStatically(
+                  stepData,
+                  needClip,
+                  clipPathId
+                )
               }
               var interpolator = interpolateNumber(0, totalLength)
               var curLength = interpolator(t)
@@ -35619,16 +37969,25 @@ var Line = (function (_PureComponent) {
                   .map(function (num) {
                     return parseFloat(num)
                   })
-                currentStrokeDasharray = _this2.getStrokeDasharray(curLength, totalLength, lines)
+                currentStrokeDasharray = _this2.getStrokeDasharray(
+                  curLength,
+                  totalLength,
+                  lines
+                )
               } else {
                 currentStrokeDasharray = _this2.generateSimpleStrokeDasharray(
                   totalLength,
                   curLength
                 )
               }
-              return _this2.renderCurveStatically(points, needClip, clipPathId, {
-                strokeDasharray: currentStrokeDasharray,
-              })
+              return _this2.renderCurveStatically(
+                points,
+                needClip,
+                clipPathId,
+                {
+                  strokeDasharray: currentStrokeDasharray,
+                }
+              )
             }
           )
         },
@@ -35646,7 +38005,8 @@ var Line = (function (_PureComponent) {
             isAnimationActive &&
             points &&
             points.length &&
-            ((!prevPoints && totalLength > 0) || !(0, import_isEqual7.default)(prevPoints, points))
+            ((!prevPoints && totalLength > 0) ||
+              !(0, import_isEqual7.default)(prevPoints, points))
           ) {
             return this.renderCurveWithAnimation(needClip, clipPathId)
           }
@@ -35681,7 +38041,8 @@ var Line = (function (_PureComponent) {
           var needClip = needClipX || needClipY
           var clipPathId = (0, import_isNil12.default)(id) ? this.id : id
           var _ref2 =
-              (_filterProps = filterProps(dot, false)) !== null && _filterProps !== void 0
+              (_filterProps = filterProps(dot, false)) !== null &&
+              _filterProps !== void 0
                 ? _filterProps
                 : {
                     r: 3,
@@ -35733,7 +38094,8 @@ var Line = (function (_PureComponent) {
               : null,
             !hasSinglePoint && this.renderCurve(needClip, clipPathId),
             this.renderErrorBar(needClip, clipPathId),
-            (hasSinglePoint || dot) && this.renderDots(needClip, clipDot, clipPathId),
+            (hasSinglePoint || dot) &&
+              this.renderDots(needClip, clipDot, clipPathId),
             (!isAnimationActive || isAnimationFinished) &&
               LabelList.renderCallByParent(this.props, points)
           )
@@ -35763,10 +38125,15 @@ var Line = (function (_PureComponent) {
         key: 'repeat',
         value: function repeat(lines, count2) {
           var linesUnit =
-            lines.length % 2 !== 0 ? [].concat(_toConsumableArray10(lines), [0]) : lines
+            lines.length % 2 !== 0
+              ? [].concat(_toConsumableArray10(lines), [0])
+              : lines
           var result = []
           for (var i = 0; i < count2; ++i) {
-            result = [].concat(_toConsumableArray10(result), _toConsumableArray10(linesUnit))
+            result = [].concat(
+              _toConsumableArray10(result),
+              _toConsumableArray10(linesUnit)
+            )
           }
           return result
         },
@@ -36007,19 +38374,25 @@ function _possibleConstructorReturn20(self2, call) {
   if (call && (_typeof51(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized21(self2)
 }
 function _assertThisInitialized21(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct20() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct20 = function _isNativeReflectConstruct29() {
     return !!t
@@ -36055,7 +38428,12 @@ function _setPrototypeOf21(o, p) {
 function _defineProperty45(obj, key, value) {
   key = _toPropertyKey46(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -36079,7 +38457,11 @@ var Area = (function (_PureComponent) {
   function Area2() {
     var _this
     _classCallCheck22(this, Area2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper18(this, Area2, [].concat(args))
@@ -36152,7 +38534,9 @@ var Area = (function (_PureComponent) {
           })
           var dotsProps = {
             clipPath: needClip
-              ? 'url(#clipPath-'.concat(clipDot ? '' : 'dots-').concat(clipPathId, ')')
+              ? 'url(#clipPath-'
+                  .concat(clipDot ? '' : 'dots-')
+                  .concat(clipPathId, ')')
               : null,
           }
           return import_react51.default.createElement(
@@ -36199,7 +38583,9 @@ var Area = (function (_PureComponent) {
               x: startX < endX ? startX : startX - width,
               y: 0,
               width,
-              height: Math.floor(maxY + (strokeWidth ? parseInt(''.concat(strokeWidth), 10) : 1)),
+              height: Math.floor(
+                maxY + (strokeWidth ? parseInt(''.concat(strokeWidth), 10) : 1)
+              ),
             })
           }
           return null
@@ -36236,7 +38622,8 @@ var Area = (function (_PureComponent) {
             return import_react51.default.createElement('rect', {
               x: 0,
               y: startY < endY ? startY : startY - height,
-              width: maxX + (strokeWidth ? parseInt(''.concat(strokeWidth), 10) : 1),
+              width:
+                maxX + (strokeWidth ? parseInt(''.concat(strokeWidth), 10) : 1),
               height: Math.floor(height),
             })
           }
@@ -36255,7 +38642,12 @@ var Area = (function (_PureComponent) {
       },
       {
         key: 'renderAreaStatically',
-        value: function renderAreaStatically(points, baseLine, needClip, clipPathId) {
+        value: function renderAreaStatically(
+          points,
+          baseLine,
+          needClip,
+          clipPathId
+        ) {
           var _this$props4 = this.props,
             layout = _this$props4.layout,
             type = _this$props4.type,
@@ -36267,7 +38659,9 @@ var Area = (function (_PureComponent) {
           return import_react51.default.createElement(
             Layer,
             {
-              clipPath: needClip ? 'url(#clipPath-'.concat(clipPathId, ')') : null,
+              clipPath: needClip
+                ? 'url(#clipPath-'.concat(clipPathId, ')')
+                : null,
             },
             import_react51.default.createElement(
               Curve,
@@ -36374,7 +38768,9 @@ var Area = (function (_PureComponent) {
                   stepBaseLine = _interpolator(t)
                 } else {
                   stepBaseLine = baseLine.map(function (entry, index2) {
-                    var prevPointIndex = Math.floor(index2 * prevPointsDiffFactor)
+                    var prevPointIndex = Math.floor(
+                      index2 * prevPointsDiffFactor
+                    )
                     if (prevBaseLine[prevPointIndex]) {
                       var prev = prevBaseLine[prevPointIndex]
                       var interpolatorX = interpolateNumber(prev.x, entry.x)
@@ -36391,7 +38787,12 @@ var Area = (function (_PureComponent) {
                     return entry
                   })
                 }
-                return _this2.renderAreaStatically(stepPoints, stepBaseLine, needClip, clipPathId)
+                return _this2.renderAreaStatically(
+                  stepPoints,
+                  stepBaseLine,
+                  needClip,
+                  clipPathId
+                )
               }
               return import_react51.default.createElement(
                 Layer,
@@ -36412,7 +38813,12 @@ var Area = (function (_PureComponent) {
                   {
                     clipPath: 'url(#animationClipPath-'.concat(clipPathId, ')'),
                   },
-                  _this2.renderAreaStatically(points, baseLine, needClip, clipPathId)
+                  _this2.renderAreaStatically(
+                    points,
+                    baseLine,
+                    needClip,
+                    clipPathId
+                  )
                 )
               )
             }
@@ -36440,7 +38846,12 @@ var Area = (function (_PureComponent) {
           ) {
             return this.renderAreaWithAnimation(needClip, clipPathId)
           }
-          return this.renderAreaStatically(points, baseLine, needClip, clipPathId)
+          return this.renderAreaStatically(
+            points,
+            baseLine,
+            needClip,
+            clipPathId
+          )
         },
       },
       {
@@ -36471,7 +38882,8 @@ var Area = (function (_PureComponent) {
           var needClip = needClipX || needClipY
           var clipPathId = (0, import_isNil13.default)(id) ? this.id : id
           var _ref2 =
-              (_filterProps = filterProps(dot, false)) !== null && _filterProps !== void 0
+              (_filterProps = filterProps(dot, false)) !== null &&
+              _filterProps !== void 0
                 ? _filterProps
                 : {
                     r: 3,
@@ -36522,7 +38934,8 @@ var Area = (function (_PureComponent) {
                 )
               : null,
             !hasSinglePoint ? this.renderArea(needClip, clipPathId) : null,
-            (dot || hasSinglePoint) && this.renderDots(needClip, clipDot, clipPathId),
+            (dot || hasSinglePoint) &&
+              this.renderDots(needClip, clipDot, clipPathId),
             (!isAnimationActive || isAnimationFinished) &&
               LabelList.renderCallByParent(this.props, points)
           )
@@ -36582,7 +38995,9 @@ _defineProperty45(Area, 'getBaseValue', function (props, item, xAxis, yAxis) {
     chartBaseValue = props.baseValue
   var itemBaseValue = item.props.baseValue
   var baseValue =
-    itemBaseValue !== null && itemBaseValue !== void 0 ? itemBaseValue : chartBaseValue
+    itemBaseValue !== null && itemBaseValue !== void 0
+      ? itemBaseValue
+      : chartBaseValue
   if (isNumber(baseValue) && typeof baseValue === 'number') {
     return baseValue
   }
@@ -36597,7 +39012,9 @@ _defineProperty45(Area, 'getBaseValue', function (props, item, xAxis, yAxis) {
     if (baseValue === 'dataMax') {
       return domainMax
     }
-    return domainMax < 0 ? domainMax : Math.max(Math.min(domain[0], domain[1]), 0)
+    return domainMax < 0
+      ? domainMax
+      : Math.max(Math.min(domain[0], domain[1]), 0)
   }
   if (baseValue === 'dataMin') {
     return domain[0]
@@ -36637,7 +39054,9 @@ _defineProperty45(Area, 'getComposedData', function (_ref4) {
         isRange = true
       }
     }
-    var isBreakPoint = value[1] == null || (hasStack && getValueByDataKey(entry, dataKey) == null)
+    var isBreakPoint =
+      value[1] == null ||
+      (hasStack && getValueByDataKey(entry, dataKey) == null)
     if (isHorizontalLayout) {
       return {
         x: getCateCoordinateOfLine({
@@ -36681,7 +39100,9 @@ _defineProperty45(Area, 'getComposedData', function (_ref4) {
       }
     })
   } else {
-    baseLine = isHorizontalLayout ? yAxis.scale(baseValue) : xAxis.scale(baseValue)
+    baseLine = isHorizontalLayout
+      ? yAxis.scale(baseValue)
+      : xAxis.scale(baseValue)
   }
   return _objectSpread43(
     {
@@ -36779,19 +39200,25 @@ function _possibleConstructorReturn21(self2, call) {
   if (call && (_typeof52(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized22(self2)
 }
 function _assertThisInitialized22(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct21() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct21 = function _isNativeReflectConstruct29() {
     return !!t
@@ -36827,7 +39254,12 @@ function _setPrototypeOf22(o, p) {
 function _defineProperty46(obj, key, value) {
   key = _toPropertyKey47(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -37052,19 +39484,25 @@ function _possibleConstructorReturn22(self2, call) {
   if (call && (_typeof53(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized23(self2)
 }
 function _assertThisInitialized23(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct22() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct22 = function _isNativeReflectConstruct29() {
     return !!t
@@ -37100,7 +39538,12 @@ function _setPrototypeOf23(o, p) {
 function _defineProperty47(obj, key, value) {
   key = _toPropertyKey48(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -37124,7 +39567,11 @@ var Scatter = (function (_PureComponent) {
   function Scatter2() {
     var _this
     _classCallCheck24(this, Scatter2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper20(this, Scatter2, [].concat(args))
@@ -37167,9 +39614,18 @@ var Scatter = (function (_PureComponent) {
                 {
                   className: 'recharts-scatter-symbol',
                   key: 'symbol-'
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.cx, '-')
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.cy, '-')
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.size, '-')
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.cx,
+                      '-'
+                    )
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.cy,
+                      '-'
+                    )
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.size,
+                      '-'
+                    )
                     .concat(i),
                 },
                 adaptEventsOfChild(_this2.props, entry, i),
@@ -37228,7 +39684,10 @@ var Scatter = (function (_PureComponent) {
                 if (prev) {
                   var interpolatorCx = interpolateNumber(prev.cx, entry.cx)
                   var interpolatorCy = interpolateNumber(prev.cy, entry.cy)
-                  var interpolatorSize = interpolateNumber(prev.size, entry.size)
+                  var interpolatorSize = interpolateNumber(
+                    prev.size,
+                    entry.size
+                  )
                   return _objectSpread44(
                     _objectSpread44({}, entry),
                     {},
@@ -37296,16 +39755,23 @@ var Scatter = (function (_PureComponent) {
               direction = _item$props.direction,
               errorDataKey = _item$props.dataKey
             return import_react52.default.cloneElement(item, {
-              key: ''.concat(direction, '-').concat(errorDataKey, '-').concat(points[i]),
+              key: ''
+                .concat(direction, '-')
+                .concat(errorDataKey, '-')
+                .concat(points[i]),
               data: points,
               xAxis,
               yAxis,
               layout: direction === 'x' ? 'vertical' : 'horizontal',
-              dataPointFormatter: function dataPointFormatter(dataPoint, dataKey) {
+              dataPointFormatter: function dataPointFormatter(
+                dataPoint,
+                dataKey
+              ) {
                 return {
                   x: dataPoint.cx,
                   y: dataPoint.cy,
-                  value: direction === 'x' ? +dataPoint.node.x : +dataPoint.node.y,
+                  value:
+                    direction === 'x' ? +dataPoint.node.x : +dataPoint.node.y,
                   errorVal: getValueByDataKey(dataPoint, dataKey),
                 }
               },
@@ -37417,7 +39883,9 @@ var Scatter = (function (_PureComponent) {
             Layer,
             {
               className: layerClass,
-              clipPath: needClip ? 'url(#clipPath-'.concat(clipPathId, ')') : null,
+              clipPath: needClip
+                ? 'url(#clipPath-'.concat(clipPathId, ')')
+                : null,
             },
             needClipX || needClipY
               ? import_react52.default.createElement(
@@ -37502,8 +39970,12 @@ _defineProperty47(Scatter, 'getComposedData', function (_ref2) {
     offset = _ref2.offset
   var tooltipType = item.props.tooltipType
   var cells = findAllByType(item.props.children, Cell)
-  var xAxisDataKey = (0, import_isNil14.default)(xAxis.dataKey) ? item.props.dataKey : xAxis.dataKey
-  var yAxisDataKey = (0, import_isNil14.default)(yAxis.dataKey) ? item.props.dataKey : yAxis.dataKey
+  var xAxisDataKey = (0, import_isNil14.default)(xAxis.dataKey)
+    ? item.props.dataKey
+    : xAxis.dataKey
+  var yAxisDataKey = (0, import_isNil14.default)(yAxis.dataKey)
+    ? item.props.dataKey
+    : yAxis.dataKey
   var zAxisDataKey = zAxis && zAxis.dataKey
   var defaultRangeZ = zAxis ? zAxis.range : ZAxis.defaultProps.range
   var defaultZ = defaultRangeZ && defaultRangeZ[0]
@@ -37513,7 +39985,9 @@ _defineProperty47(Scatter, 'getComposedData', function (_ref2) {
     var x2 = getValueByDataKey(entry, xAxisDataKey)
     var y2 = getValueByDataKey(entry, yAxisDataKey)
     var z =
-      (!(0, import_isNil14.default)(zAxisDataKey) && getValueByDataKey(entry, zAxisDataKey)) || '-'
+      (!(0, import_isNil14.default)(zAxisDataKey) &&
+        getValueByDataKey(entry, zAxisDataKey)) ||
+      '-'
     var tooltipPayload = [
       {
         name: (0, import_isNil14.default)(xAxis.dataKey)
@@ -37657,19 +40131,25 @@ function _possibleConstructorReturn23(self2, call) {
   if (call && (_typeof54(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized24(self2)
 }
 function _assertThisInitialized24(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct23() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct23 = function _isNativeReflectConstruct29() {
     return !!t
@@ -37705,7 +40185,12 @@ function _setPrototypeOf24(o, p) {
 function _defineProperty48(obj, key, value) {
   key = _toPropertyKey49(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -37755,7 +40240,9 @@ function XAxisImpl(_ref) {
       CartesianAxis,
       _extends38({}, axisOptions, {
         className: clsx_default(
-          'recharts-'.concat(axisOptions.axisType, ' ').concat(axisOptions.axisType),
+          'recharts-'
+            .concat(axisOptions.axisType, ' ')
+            .concat(axisOptions.axisType),
           axisOptions.className
         ),
         viewBox: {
@@ -37863,19 +40350,25 @@ function _possibleConstructorReturn24(self2, call) {
   if (call && (_typeof55(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized25(self2)
 }
 function _assertThisInitialized25(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct24() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct24 = function _isNativeReflectConstruct29() {
     return !!t
@@ -37911,7 +40404,12 @@ function _setPrototypeOf25(o, p) {
 function _defineProperty49(obj, key, value) {
   key = _toPropertyKey50(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -37961,7 +40459,9 @@ var YAxisImpl = function YAxisImpl2(_ref) {
       CartesianAxis,
       _extends39({}, axisOptions, {
         className: clsx_default(
-          'recharts-'.concat(axisOptions.axisType, ' ').concat(axisOptions.axisType),
+          'recharts-'
+            .concat(axisOptions.axisType, ' ')
+            .concat(axisOptions.axisType),
           axisOptions.className
         ),
         viewBox: {
@@ -38069,7 +40569,10 @@ var detectReferenceElementsDomain = function detectReferenceElementsDomain2(
 ) {
   var lines = findAllByType(children2, ReferenceLine)
   var dots = findAllByType(children2, ReferenceDot)
-  var elements = [].concat(_toConsumableArray11(lines), _toConsumableArray11(dots))
+  var elements = [].concat(
+    _toConsumableArray11(lines),
+    _toConsumableArray11(dots)
+  )
   var areas = findAllByType(children2, ReferenceArea)
   var idKey = ''.concat(axisType, 'Id')
   var valueKey = axisType[0]
@@ -38099,7 +40602,10 @@ var detectReferenceElementsDomain = function detectReferenceElementsDomain2(
       ) {
         var value1 = el.props[key1]
         var value2 = el.props[key2]
-        return [Math.min(result[0], value1, value2), Math.max(result[1], value1, value2)]
+        return [
+          Math.min(result[0], value1, value2),
+          Math.max(result[1], value1, value2),
+        ]
       }
       return result
     }, finalDomain)
@@ -38163,7 +40669,12 @@ function _createClass27(Constructor, protoProps, staticProps) {
 function _defineProperty50(obj, key, value) {
   key = _toPropertyKey51(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -38196,7 +40707,8 @@ var AccessibilityManager = (function () {
       value: function setDetails(_ref) {
         var _ref2
         var _ref$coordinateList = _ref.coordinateList,
-          coordinateList = _ref$coordinateList === void 0 ? null : _ref$coordinateList,
+          coordinateList =
+            _ref$coordinateList === void 0 ? null : _ref$coordinateList,
           _ref$container = _ref.container,
           container = _ref$container === void 0 ? null : _ref$container,
           _ref$layout = _ref.layout,
@@ -38204,7 +40716,8 @@ var AccessibilityManager = (function () {
           _ref$offset = _ref.offset,
           offset = _ref$offset === void 0 ? null : _ref$offset,
           _ref$mouseHandlerCall = _ref.mouseHandlerCallback,
-          mouseHandlerCallback = _ref$mouseHandlerCall === void 0 ? null : _ref$mouseHandlerCall
+          mouseHandlerCallback =
+            _ref$mouseHandlerCall === void 0 ? null : _ref$mouseHandlerCall
         this.coordinateList =
           (_ref2 =
             coordinateList !== null && coordinateList !== void 0
@@ -38212,14 +40725,22 @@ var AccessibilityManager = (function () {
               : this.coordinateList) !== null && _ref2 !== void 0
             ? _ref2
             : []
-        this.container = container !== null && container !== void 0 ? container : this.container
-        this.layout = layout !== null && layout !== void 0 ? layout : this.layout
-        this.offset = offset !== null && offset !== void 0 ? offset : this.offset
+        this.container =
+          container !== null && container !== void 0
+            ? container
+            : this.container
+        this.layout =
+          layout !== null && layout !== void 0 ? layout : this.layout
+        this.offset =
+          offset !== null && offset !== void 0 ? offset : this.offset
         this.mouseHandlerCallback =
           mouseHandlerCallback !== null && mouseHandlerCallback !== void 0
             ? mouseHandlerCallback
             : this.mouseHandlerCallback
-        this.activeIndex = Math.min(Math.max(this.activeIndex, 0), this.coordinateList.length - 1)
+        this.activeIndex = Math.min(
+          Math.max(this.activeIndex, 0),
+          this.coordinateList.length - 1
+        )
       },
     },
     {
@@ -38239,7 +40760,10 @@ var AccessibilityManager = (function () {
             if (this.layout !== 'horizontal') {
               return
             }
-            this.activeIndex = Math.min(this.activeIndex + 1, this.coordinateList.length - 1)
+            this.activeIndex = Math.min(
+              this.activeIndex + 1,
+              this.coordinateList.length - 1
+            )
             this.spoofMouse()
             break
           }
@@ -38279,9 +40803,13 @@ var AccessibilityManager = (function () {
           height = _this$container$getBo.height
         var coordinate = this.coordinateList[this.activeIndex].coordinate
         var scrollOffsetX =
-          ((_window = window) === null || _window === void 0 ? void 0 : _window.scrollX) || 0
+          ((_window = window) === null || _window === void 0
+            ? void 0
+            : _window.scrollX) || 0
         var scrollOffsetY =
-          ((_window2 = window) === null || _window2 === void 0 ? void 0 : _window2.scrollY) || 0
+          ((_window2 = window) === null || _window2 === void 0
+            ? void 0
+            : _window2.scrollY) || 0
         var pageX = x2 + coordinate + scrollOffsetX
         var pageY = y2 + this.offset.top + height / 2 + scrollOffsetY
         this.mouseHandlerCallback({
@@ -38295,10 +40823,19 @@ var AccessibilityManager = (function () {
 
 // node_modules/recharts/es6/util/isDomainSpecifiedByUser.js
 function isDomainSpecifiedByUser(domain, allowDataOverflow, axisType) {
-  if (axisType === 'number' && allowDataOverflow === true && Array.isArray(domain)) {
+  if (
+    axisType === 'number' &&
+    allowDataOverflow === true &&
+    Array.isArray(domain)
+  ) {
     var domainStart = domain === null || domain === void 0 ? void 0 : domain[0]
     var domainEnd = domain === null || domain === void 0 ? void 0 : domain[1]
-    if (!!domainStart && !!domainEnd && isNumber(domainStart) && isNumber(domainEnd)) {
+    if (
+      !!domainStart &&
+      !!domainEnd &&
+      isNumber(domainStart) &&
+      isNumber(domainEnd)
+    ) {
       return true
     }
   }
@@ -38309,13 +40846,24 @@ function isDomainSpecifiedByUser(domain, allowDataOverflow, axisType) {
 var import_react53 = __toESM(require_react())
 
 // node_modules/recharts/es6/util/cursor/getCursorRectangle.js
-function getCursorRectangle(layout, activeCoordinate, offset, tooltipAxisBandSize) {
+function getCursorRectangle(
+  layout,
+  activeCoordinate,
+  offset,
+  tooltipAxisBandSize
+) {
   var halfSize = tooltipAxisBandSize / 2
   return {
     stroke: 'none',
     fill: '#ccc',
-    x: layout === 'horizontal' ? activeCoordinate.x - halfSize : offset.left + 0.5,
-    y: layout === 'horizontal' ? offset.top + 0.5 : activeCoordinate.y - halfSize,
+    x:
+      layout === 'horizontal'
+        ? activeCoordinate.x - halfSize
+        : offset.left + 0.5,
+    y:
+      layout === 'horizontal'
+        ? offset.top + 0.5
+        : activeCoordinate.y - halfSize,
     width: layout === 'horizontal' ? tooltipAxisBandSize : offset.width - 1,
     height: layout === 'horizontal' ? offset.height - 1 : tooltipAxisBandSize,
   }
@@ -38432,7 +40980,12 @@ function _objectSpread45(e) {
 function _defineProperty51(obj, key, value) {
   key = _toPropertyKey52(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -38465,9 +41018,11 @@ function Cursor(props) {
     layout = props.layout,
     chartName = props.chartName
   var elementPropsCursor =
-    (_element$props$cursor = element.props.cursor) !== null && _element$props$cursor !== void 0
+    (_element$props$cursor = element.props.cursor) !== null &&
+    _element$props$cursor !== void 0
       ? _element$props$cursor
-      : (_defaultProps = element.type.defaultProps) === null || _defaultProps === void 0
+      : (_defaultProps = element.type.defaultProps) === null ||
+          _defaultProps === void 0
         ? void 0
         : _defaultProps.cursor
   if (
@@ -38485,7 +41040,12 @@ function Cursor(props) {
     restProps = activeCoordinate
     cursorComp = Cross
   } else if (chartName === 'BarChart') {
-    restProps = getCursorRectangle(layout, activeCoordinate, offset, tooltipAxisBandSize)
+    restProps = getCursorRectangle(
+      layout,
+      activeCoordinate,
+      offset,
+      tooltipAxisBandSize
+    )
     cursorComp = Rectangle
   } else if (layout === 'radial') {
     var _getRadialCursorPoint = getRadialCursorPoints(activeCoordinate),
@@ -38527,7 +41087,10 @@ function Cursor(props) {
     {
       payload: activePayload,
       payloadIndex: activeTooltipIndex,
-      className: clsx_default('recharts-tooltip-cursor', elementPropsCursor.className),
+      className: clsx_default(
+        'recharts-tooltip-cursor',
+        elementPropsCursor.className
+      ),
     }
   )
   return (0, import_react53.isValidElement)(elementPropsCursor)
@@ -38537,7 +41100,16 @@ function Cursor(props) {
 
 // node_modules/recharts/es6/chart/generateCategoricalChart.js
 var _excluded34 = ['item']
-var _excluded213 = ['children', 'className', 'width', 'height', 'style', 'compact', 'title', 'desc']
+var _excluded213 = [
+  'children',
+  'className',
+  'width',
+  'height',
+  'style',
+  'compact',
+  'title',
+  'desc',
+]
 function _typeof58(o) {
   '@babel/helpers - typeof'
   return (
@@ -38588,7 +41160,10 @@ function _nonIterableRest14() {
 }
 function _iterableToArrayLimit13(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -38601,12 +41176,18 @@ function _iterableToArrayLimit13(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -38678,19 +41259,25 @@ function _possibleConstructorReturn25(self2, call) {
   if (call && (_typeof58(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized26(self2)
 }
 function _assertThisInitialized26(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct25() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct25 = function _isNativeReflectConstruct29() {
     return !!t
@@ -38790,7 +41377,12 @@ function _objectSpread46(e) {
 function _defineProperty52(obj, key, value) {
   key = _toPropertyKey53(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -38899,14 +41491,22 @@ var getDisplayedData = function getDisplayedData2(data, _ref) {
   ).reduce(function (result, child) {
     var itemData = child.props.data
     if (itemData && itemData.length) {
-      return [].concat(_toConsumableArray12(result), _toConsumableArray12(itemData))
+      return [].concat(
+        _toConsumableArray12(result),
+        _toConsumableArray12(itemData)
+      )
     }
     return result
   }, [])
   if (itemsData.length > 0) {
     return itemsData
   }
-  if (data && data.length && isNumber(dataStartIndex) && isNumber(dataEndIndex)) {
+  if (
+    data &&
+    data.length &&
+    isNumber(dataStartIndex) &&
+    isNumber(dataEndIndex)
+  ) {
     return data.slice(dataStartIndex, dataEndIndex + 1)
   }
   return []
@@ -38914,7 +41514,12 @@ var getDisplayedData = function getDisplayedData2(data, _ref) {
 function getDefaultDomainByAxisType(axisType) {
   return axisType === 'number' ? [0, 'auto'] : void 0
 }
-var getTooltipContent = function getTooltipContent2(state, chartData, activeIndex, activeLabel) {
+var getTooltipContent = function getTooltipContent2(
+  state,
+  chartData,
+  activeIndex,
+  activeLabel
+) {
   var graphicalItems = state.graphicalItems,
     tooltipAxis = state.tooltipAxis
   var displayedData = getDisplayedData(chartData, state)
@@ -38929,7 +41534,8 @@ var getTooltipContent = function getTooltipContent2(state, chartData, activeInde
   return graphicalItems.reduce(function (result, child) {
     var _child$props$data
     var data =
-      (_child$props$data = child.props.data) !== null && _child$props$data !== void 0
+      (_child$props$data = child.props.data) !== null &&
+      _child$props$data !== void 0
         ? _child$props$data
         : chartData
     if (
@@ -38950,10 +41556,17 @@ var getTooltipContent = function getTooltipContent2(state, chartData, activeInde
     if (!payload) {
       return result
     }
-    return [].concat(_toConsumableArray12(result), [getTooltipItem(child, payload)])
+    return [].concat(_toConsumableArray12(result), [
+      getTooltipItem(child, payload),
+    ])
   }, [])
 }
-var getTooltipData = function getTooltipData2(state, chartData, layout, rangeObj) {
+var getTooltipData = function getTooltipData2(
+  state,
+  chartData,
+  layout,
+  rangeObj
+) {
   var rangeData = rangeObj || {
     x: state.chartX,
     y: state.chartY,
@@ -38964,9 +41577,20 @@ var getTooltipData = function getTooltipData2(state, chartData, layout, rangeObj
     tooltipTicks = state.tooltipTicks
   var activeIndex = calculateActiveTickIndex(pos, ticks2, tooltipTicks, axis)
   if (activeIndex >= 0 && tooltipTicks) {
-    var activeLabel = tooltipTicks[activeIndex] && tooltipTicks[activeIndex].value
-    var activePayload = getTooltipContent(state, chartData, activeIndex, activeLabel)
-    var activeCoordinate = getActiveCoordinate(layout, ticks2, activeIndex, rangeData)
+    var activeLabel =
+      tooltipTicks[activeIndex] && tooltipTicks[activeIndex].value
+    var activePayload = getTooltipContent(
+      state,
+      chartData,
+      activeIndex,
+      activeLabel
+    )
+    var activeCoordinate = getActiveCoordinate(
+      layout,
+      ticks2,
+      activeIndex,
+      rangeData
+    )
     return {
       activeTooltipIndex: activeIndex,
       activeLabel,
@@ -38992,7 +41616,10 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
     var _childProps$domain2
     var childProps =
       child.type.defaultProps !== void 0
-        ? _objectSpread46(_objectSpread46({}, child.type.defaultProps), child.props)
+        ? _objectSpread46(
+            _objectSpread46({}, child.type.defaultProps),
+            child.props
+          )
         : child.props
     var type = childProps.type,
       dataKey = childProps.dataKey,
@@ -39011,7 +41638,8 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
         var itemAxisId =
           axisIdKey in item.props
             ? item.props[axisIdKey]
-            : (_defaultProps = item.type.defaultProps) === null || _defaultProps === void 0
+            : (_defaultProps = item.type.defaultProps) === null ||
+                _defaultProps === void 0
               ? void 0
               : _defaultProps[axisIdKey]
         return itemAxisId === axisId
@@ -39024,14 +41652,19 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
     if (isDomainSpecifiedByUser(childProps.domain, allowDataOverflow, type)) {
       domain = parseSpecifiedDomain(childProps.domain, null, allowDataOverflow)
       if (isCategorical && (type === 'number' || scale !== 'auto')) {
-        categoricalDomain = getDomainOfDataByKey(displayedData, dataKey, 'category')
+        categoricalDomain = getDomainOfDataByKey(
+          displayedData,
+          dataKey,
+          'category'
+        )
       }
     }
     var defaultDomain = getDefaultDomainByAxisType(type)
     if (!domain || domain.length === 0) {
       var _childProps$domain
       var childDomain =
-        (_childProps$domain = childProps.domain) !== null && _childProps$domain !== void 0
+        (_childProps$domain = childProps.domain) !== null &&
+        _childProps$domain !== void 0
           ? _childProps$domain
           : defaultDomain
       if (dataKey) {
@@ -39042,10 +41675,11 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
             duplicateDomain = domain
             domain = (0, import_range3.default)(0, len)
           } else if (!allowDuplicatedCategory) {
-            domain = parseDomainOfCategoryAxis(childDomain, domain, child).reduce(function (
-              finalDomain,
-              entry
-            ) {
+            domain = parseDomainOfCategoryAxis(
+              childDomain,
+              domain,
+              child
+            ).reduce(function (finalDomain, entry) {
               return finalDomain.indexOf(entry) >= 0
                 ? finalDomain
                 : [].concat(_toConsumableArray12(finalDomain), [entry])
@@ -39053,10 +41687,11 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
           }
         } else if (type === 'category') {
           if (!allowDuplicatedCategory) {
-            domain = parseDomainOfCategoryAxis(childDomain, domain, child).reduce(function (
-              finalDomain,
-              entry
-            ) {
+            domain = parseDomainOfCategoryAxis(
+              childDomain,
+              domain,
+              child
+            ).reduce(function (finalDomain, entry) {
               return finalDomain.indexOf(entry) >= 0 ||
                 entry === '' ||
                 (0, import_isNil15.default)(entry)
@@ -39076,13 +41711,15 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
               var itemAxisId =
                 axisIdKey in item.props
                   ? item.props[axisIdKey]
-                  : (_defaultProps2 = item.type.defaultProps) === null || _defaultProps2 === void 0
+                  : (_defaultProps2 = item.type.defaultProps) === null ||
+                      _defaultProps2 === void 0
                     ? void 0
                     : _defaultProps2[axisIdKey]
               var itemHide =
                 'hide' in item.props
                   ? item.props.hide
-                  : (_defaultProps3 = item.type.defaultProps) === null || _defaultProps3 === void 0
+                  : (_defaultProps3 = item.type.defaultProps) === null ||
+                      _defaultProps3 === void 0
                     ? void 0
                     : _defaultProps3.hide
               return itemAxisId === axisId && (includeHidden || !itemHide)
@@ -39096,7 +41733,11 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
           }
         }
         if (isCategorical && (type === 'number' || scale !== 'auto')) {
-          categoricalDomain = getDomainOfDataByKey(displayedData, dataKey, 'category')
+          categoricalDomain = getDomainOfDataByKey(
+            displayedData,
+            dataKey,
+            'category'
+          )
         }
       } else if (isCategorical) {
         domain = (0, import_range3.default)(0, len)
@@ -39109,14 +41750,23 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
         domain =
           stackOffset === 'expand'
             ? [0, 1]
-            : getDomainOfStackGroups(stackGroups[axisId].stackGroups, dataStartIndex, dataEndIndex)
+            : getDomainOfStackGroups(
+                stackGroups[axisId].stackGroups,
+                dataStartIndex,
+                dataEndIndex
+              )
       } else {
         domain = getDomainOfItemsWithSameAxis(
           displayedData,
           graphicalItems.filter(function (item) {
             var itemAxisId =
-              axisIdKey in item.props ? item.props[axisIdKey] : item.type.defaultProps[axisIdKey]
-            var itemHide = 'hide' in item.props ? item.props.hide : item.type.defaultProps.hide
+              axisIdKey in item.props
+                ? item.props[axisIdKey]
+                : item.type.defaultProps[axisIdKey]
+            var itemHide =
+              'hide' in item.props
+                ? item.props.hide
+                : item.type.defaultProps.hide
             return itemAxisId === axisId && (includeHidden || !itemHide)
           }),
           type,
@@ -39125,7 +41775,13 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
         )
       }
       if (type === 'number') {
-        domain = detectReferenceElementsDomain(children2, domain, axisId, axisType, ticks2)
+        domain = detectReferenceElementsDomain(
+          children2,
+          domain,
+          axisId,
+          axisType,
+          ticks2
+        )
         if (childDomain) {
           domain = parseSpecifiedDomain(childDomain, domain, allowDataOverflow)
         }
@@ -39154,7 +41810,8 @@ var getAxisMapByAxes = function getAxisMapByAxes2(props, _ref2) {
             categoricalDomain,
             duplicateDomain,
             originalDomain:
-              (_childProps$domain2 = childProps.domain) !== null && _childProps$domain2 !== void 0
+              (_childProps$domain2 = childProps.domain) !== null &&
+              _childProps$domain2 !== void 0
                 ? _childProps$domain2
                 : defaultDomain,
             isCategorical,
@@ -39186,7 +41843,10 @@ var getAxisMapByItems = function getAxisMapByItems2(props, _ref3) {
   return graphicalItems.reduce(function (result, child) {
     var childProps =
       child.type.defaultProps !== void 0
-        ? _objectSpread46(_objectSpread46({}, child.type.defaultProps), child.props)
+        ? _objectSpread46(
+            _objectSpread46({}, child.type.defaultProps),
+            child.props
+          )
         : child.props
     var axisId = childProps[axisIdKey]
     var originalDomain = getDefaultDomainByAxisType('number')
@@ -39195,13 +41855,22 @@ var getAxisMapByItems = function getAxisMapByItems2(props, _ref3) {
       var domain
       if (isCategorical) {
         domain = (0, import_range3.default)(0, len)
-      } else if (stackGroups && stackGroups[axisId] && stackGroups[axisId].hasStack) {
+      } else if (
+        stackGroups &&
+        stackGroups[axisId] &&
+        stackGroups[axisId].hasStack
+      ) {
         domain = getDomainOfStackGroups(
           stackGroups[axisId].stackGroups,
           dataStartIndex,
           dataEndIndex
         )
-        domain = detectReferenceElementsDomain(children2, domain, axisId, axisType)
+        domain = detectReferenceElementsDomain(
+          children2,
+          domain,
+          axisId,
+          axisType
+        )
       } else {
         domain = parseSpecifiedDomain(
           originalDomain,
@@ -39212,13 +41881,15 @@ var getAxisMapByItems = function getAxisMapByItems2(props, _ref3) {
               var itemAxisId =
                 axisIdKey in item.props
                   ? item.props[axisIdKey]
-                  : (_defaultProps4 = item.type.defaultProps) === null || _defaultProps4 === void 0
+                  : (_defaultProps4 = item.type.defaultProps) === null ||
+                      _defaultProps4 === void 0
                     ? void 0
                     : _defaultProps4[axisIdKey]
               var itemHide =
                 'hide' in item.props
                   ? item.props.hide
-                  : (_defaultProps5 = item.type.defaultProps) === null || _defaultProps5 === void 0
+                  : (_defaultProps5 = item.type.defaultProps) === null ||
+                      _defaultProps5 === void 0
                     ? void 0
                     : _defaultProps5.hide
               return itemAxisId === axisId && !itemHide
@@ -39228,7 +41899,12 @@ var getAxisMapByItems = function getAxisMapByItems2(props, _ref3) {
           ),
           Axis.defaultProps.allowDataOverflow
         )
-        domain = detectReferenceElementsDomain(children2, domain, axisId, axisType)
+        domain = detectReferenceElementsDomain(
+          children2,
+          domain,
+          axisId,
+          axisType
+        )
       }
       return _objectSpread46(
         _objectSpread46({}, result),
@@ -39305,9 +41981,12 @@ var tooltipTicksGenerator = function tooltipTicksGenerator2(axisMap) {
   var tooltipTicks = getTicksOfAxis(axis, false, true)
   return {
     tooltipTicks,
-    orderedTooltipTicks: (0, import_sortBy3.default)(tooltipTicks, function (o) {
-      return o.coordinate
-    }),
+    orderedTooltipTicks: (0, import_sortBy3.default)(
+      tooltipTicks,
+      function (o) {
+        return o.coordinate
+      }
+    ),
     tooltipAxis: axis,
     tooltipAxisBandSize: getBandSizeOfAxis(axis, tooltipTicks),
   }
@@ -39413,7 +42092,8 @@ var calculateOffset = function calculateOffset2(_ref5, prevLegendBBox) {
           _defineProperty52(
             {},
             orientation,
-            (0, import_get6.default)(result, ''.concat(orientation)) + entry.height
+            (0, import_get6.default)(result, ''.concat(orientation)) +
+              entry.height
           )
         )
       }
@@ -39462,9 +42142,11 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
   var chartName = _ref6.chartName,
     GraphicalChild = _ref6.GraphicalChild,
     _ref6$defaultTooltipE = _ref6.defaultTooltipEventType,
-    defaultTooltipEventType = _ref6$defaultTooltipE === void 0 ? 'axis' : _ref6$defaultTooltipE,
+    defaultTooltipEventType =
+      _ref6$defaultTooltipE === void 0 ? 'axis' : _ref6$defaultTooltipE,
     _ref6$validateTooltip = _ref6.validateTooltipEventTypes,
-    validateTooltipEventTypes = _ref6$validateTooltip === void 0 ? ['axis'] : _ref6$validateTooltip,
+    validateTooltipEventTypes =
+      _ref6$validateTooltip === void 0 ? ['axis'] : _ref6$validateTooltip,
     axisComponents = _ref6.axisComponents,
     legendContent = _ref6.legendContent,
     formatAxisMap5 = _ref6.formatAxisMap,
@@ -39494,7 +42176,10 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
       })
       var itemProps =
         item.type.defaultProps !== void 0
-          ? _objectSpread46(_objectSpread46({}, item.type.defaultProps), item.props)
+          ? _objectSpread46(
+              _objectSpread46({}, item.type.defaultProps),
+              item.props
+            )
           : item.props
       var dataKey = itemProps.dataKey,
         childMaxBarSize = itemProps.maxBarSize
@@ -39511,7 +42196,10 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
                 false,
                 'Specifying a(n) '
                   .concat(entry.axisType, 'Id requires a corresponding ')
-                  .concat(entry.axisType, 'Id on the targeted graphical component ')
+                  .concat(
+                    entry.axisType,
+                    'Id on the targeted graphical component '
+                  )
                   .concat(
                     (_item$type$displayNam =
                       item === null ||
@@ -39519,7 +42207,8 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
                       (_item$type = item.type) === null ||
                       _item$type === void 0
                         ? void 0
-                        : _item$type.displayName) !== null && _item$type$displayNam !== void 0
+                        : _item$type.displayName) !== null &&
+                      _item$type$displayNam !== void 0
                       ? _item$type$displayNam
                       : ''
                   )
@@ -39561,8 +42250,11 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           : childMaxBarSize
         var barBandSize =
           (_ref7 =
-            (_getBandSizeOfAxis = getBandSizeOfAxis(cateAxis, cateTicks, true)) !== null &&
-            _getBandSizeOfAxis !== void 0
+            (_getBandSizeOfAxis = getBandSizeOfAxis(
+              cateAxis,
+              cateTicks,
+              true
+            )) !== null && _getBandSizeOfAxis !== void 0
               ? _getBandSizeOfAxis
               : maxBarSize) !== null && _ref7 !== void 0
             ? _ref7
@@ -39687,7 +42379,8 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
                 {},
                 {
                   graphicalItems,
-                  stackGroups: entry.axisType === numericAxisName && stackGroups,
+                  stackGroups:
+                    entry.axisType === numericAxisName && stackGroups,
                   dataStartIndex,
                   dataEndIndex,
                 }
@@ -39705,7 +42398,9 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
             graphicalItems,
           }
         ),
-        prevState === null || prevState === void 0 ? void 0 : prevState.legendBBox
+        prevState === null || prevState === void 0
+          ? void 0
+          : prevState.legendBBox
       )
       Object.keys(axisObj).forEach(function (key) {
         axisObj[key] = formatAxisMap5(
@@ -39752,8 +42447,16 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
       var _this
       _classCallCheck28(this, CategoricalChartWrapper2)
       _this = _callSuper23(this, CategoricalChartWrapper2, [_props])
-      _defineProperty52(_this, 'eventEmitterSymbol', Symbol('rechartsEventEmitter'))
-      _defineProperty52(_this, 'accessibilityManager', new AccessibilityManager())
+      _defineProperty52(
+        _this,
+        'eventEmitterSymbol',
+        Symbol('rechartsEventEmitter')
+      )
+      _defineProperty52(
+        _this,
+        'accessibilityManager',
+        new AccessibilityManager()
+      )
       _defineProperty52(_this, 'handleLegendBBoxUpdate', function (box) {
         if (box) {
           var _this$state = _this.state,
@@ -39784,21 +42487,28 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           )
         }
       })
-      _defineProperty52(_this, 'handleReceiveSyncEvent', function (cId, data, emitter) {
-        if (_this.props.syncId === cId) {
-          if (
-            emitter === _this.eventEmitterSymbol &&
-            typeof _this.props.syncMethod !== 'function'
-          ) {
-            return
+      _defineProperty52(
+        _this,
+        'handleReceiveSyncEvent',
+        function (cId, data, emitter) {
+          if (_this.props.syncId === cId) {
+            if (
+              emitter === _this.eventEmitterSymbol &&
+              typeof _this.props.syncMethod !== 'function'
+            ) {
+              return
+            }
+            _this.applySyncEvent(data)
           }
-          _this.applySyncEvent(data)
         }
-      })
+      )
       _defineProperty52(_this, 'handleBrushChange', function (_ref9) {
         var startIndex = _ref9.startIndex,
           endIndex = _ref9.endIndex
-        if (startIndex !== _this.state.dataStartIndex || endIndex !== _this.state.dataEndIndex) {
+        if (
+          startIndex !== _this.state.dataStartIndex ||
+          endIndex !== _this.state.dataEndIndex
+        ) {
           var updateId = _this.state.updateId
           _this.setState(function () {
             return _objectSpread46(
@@ -39974,7 +42684,12 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
       })
       _defineProperty52(_this, 'triggerSyncEvent', function (data) {
         if (_this.props.syncId !== void 0) {
-          eventCenter.emit(SYNC_EVENT, _this.props.syncId, data, _this.eventEmitterSymbol)
+          eventCenter.emit(
+            SYNC_EVENT,
+            _this.props.syncId,
+            data,
+            _this.eventEmitterSymbol
+          )
         }
       })
       _defineProperty52(_this, 'applySyncEvent', function (data) {
@@ -40034,8 +42749,13 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           var validateChartX = Math.min(chartX, viewBox.x + viewBox.width)
           var validateChartY = Math.min(chartY, viewBox.y + viewBox.height)
           var activeLabel =
-            tooltipTicks[activeTooltipIndex] && tooltipTicks[activeTooltipIndex].value
-          var activePayload = getTooltipContent(_this.state, _this.props.data, activeTooltipIndex)
+            tooltipTicks[activeTooltipIndex] &&
+            tooltipTicks[activeTooltipIndex].value
+          var activePayload = getTooltipContent(
+            _this.state,
+            _this.props.data,
+            activeTooltipIndex
+          )
           var activeCoordinate = tooltipTicks[activeTooltipIndex]
             ? {
                 x:
@@ -40095,28 +42815,39 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           tooltipEventType,
         })
       })
-      _defineProperty52(_this, 'renderPolarAxis', function (element, displayName, index2) {
-        var axisType = (0, import_get6.default)(element, 'type.axisType')
-        var axisMap = (0, import_get6.default)(_this.state, ''.concat(axisType, 'Map'))
-        var elementDefaultProps = element.type.defaultProps
-        var elementProps =
-          elementDefaultProps !== void 0
-            ? _objectSpread46(_objectSpread46({}, elementDefaultProps), element.props)
-            : element.props
-        var axisOption = axisMap && axisMap[elementProps[''.concat(axisType, 'Id')]]
-        return (0, import_react54.cloneElement)(
-          element,
-          _objectSpread46(
-            _objectSpread46({}, axisOption),
-            {},
-            {
-              className: clsx_default(axisType, axisOption.className),
-              key: element.key || ''.concat(displayName, '-').concat(index2),
-              ticks: getTicksOfAxis(axisOption, true),
-            }
+      _defineProperty52(
+        _this,
+        'renderPolarAxis',
+        function (element, displayName, index2) {
+          var axisType = (0, import_get6.default)(element, 'type.axisType')
+          var axisMap = (0, import_get6.default)(
+            _this.state,
+            ''.concat(axisType, 'Map')
           )
-        )
-      })
+          var elementDefaultProps = element.type.defaultProps
+          var elementProps =
+            elementDefaultProps !== void 0
+              ? _objectSpread46(
+                  _objectSpread46({}, elementDefaultProps),
+                  element.props
+                )
+              : element.props
+          var axisOption =
+            axisMap && axisMap[elementProps[''.concat(axisType, 'Id')]]
+          return (0, import_react54.cloneElement)(
+            element,
+            _objectSpread46(
+              _objectSpread46({}, axisOption),
+              {},
+              {
+                className: clsx_default(axisType, axisOption.className),
+                key: element.key || ''.concat(displayName, '-').concat(index2),
+                ticks: getTicksOfAxis(axisOption, true),
+              }
+            )
+          )
+        }
+      )
       _defineProperty52(_this, 'renderPolarGrid', function (element) {
         var _element$props = element.props,
           radialLines = _element$props.radialLines,
@@ -40230,49 +42961,65 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           updateId = _this$state6.updateId
         return (0, import_react54.cloneElement)(element, {
           key: element.key || '_recharts-brush',
-          onChange: combineEventHandlers(_this.handleBrushChange, element.props.onChange),
+          onChange: combineEventHandlers(
+            _this.handleBrushChange,
+            element.props.onChange
+          ),
           data,
           x: isNumber(element.props.x) ? element.props.x : offset.left,
           y: isNumber(element.props.y)
             ? element.props.y
-            : offset.top + offset.height + offset.brushBottom - (margin.bottom || 0),
-          width: isNumber(element.props.width) ? element.props.width : offset.width,
+            : offset.top +
+              offset.height +
+              offset.brushBottom -
+              (margin.bottom || 0),
+          width: isNumber(element.props.width)
+            ? element.props.width
+            : offset.width,
           startIndex: dataStartIndex,
           endIndex: dataEndIndex,
           updateId: 'brush-'.concat(updateId),
         })
       })
-      _defineProperty52(_this, 'renderReferenceElement', function (element, displayName, index2) {
-        if (!element) {
-          return null
+      _defineProperty52(
+        _this,
+        'renderReferenceElement',
+        function (element, displayName, index2) {
+          if (!element) {
+            return null
+          }
+          var _this2 = _this,
+            clipPathId = _this2.clipPathId
+          var _this$state7 = _this.state,
+            xAxisMap = _this$state7.xAxisMap,
+            yAxisMap = _this$state7.yAxisMap,
+            offset = _this$state7.offset
+          var elementDefaultProps = element.type.defaultProps || {}
+          var _element$props2 = element.props,
+            _element$props2$xAxis = _element$props2.xAxisId,
+            xAxisId =
+              _element$props2$xAxis === void 0
+                ? elementDefaultProps.xAxisId
+                : _element$props2$xAxis,
+            _element$props2$yAxis = _element$props2.yAxisId,
+            yAxisId =
+              _element$props2$yAxis === void 0
+                ? elementDefaultProps.yAxisId
+                : _element$props2$yAxis
+          return (0, import_react54.cloneElement)(element, {
+            key: element.key || ''.concat(displayName, '-').concat(index2),
+            xAxis: xAxisMap[xAxisId],
+            yAxis: yAxisMap[yAxisId],
+            viewBox: {
+              x: offset.left,
+              y: offset.top,
+              width: offset.width,
+              height: offset.height,
+            },
+            clipPathId,
+          })
         }
-        var _this2 = _this,
-          clipPathId = _this2.clipPathId
-        var _this$state7 = _this.state,
-          xAxisMap = _this$state7.xAxisMap,
-          yAxisMap = _this$state7.yAxisMap,
-          offset = _this$state7.offset
-        var elementDefaultProps = element.type.defaultProps || {}
-        var _element$props2 = element.props,
-          _element$props2$xAxis = _element$props2.xAxisId,
-          xAxisId =
-            _element$props2$xAxis === void 0 ? elementDefaultProps.xAxisId : _element$props2$xAxis,
-          _element$props2$yAxis = _element$props2.yAxisId,
-          yAxisId =
-            _element$props2$yAxis === void 0 ? elementDefaultProps.yAxisId : _element$props2$yAxis
-        return (0, import_react54.cloneElement)(element, {
-          key: element.key || ''.concat(displayName, '-').concat(index2),
-          xAxis: xAxisMap[xAxisId],
-          yAxis: yAxisMap[yAxisId],
-          viewBox: {
-            x: offset.left,
-            y: offset.top,
-            width: offset.width,
-            height: offset.height,
-          },
-          clipPathId,
-        })
-      })
+      )
       _defineProperty52(_this, 'renderActivePoints', function (_ref10) {
         var item = _ref10.item,
           activePoint = _ref10.activePoint,
@@ -40283,7 +43030,10 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
         var key = item.props.key
         var itemItemProps =
           item.item.type.defaultProps !== void 0
-            ? _objectSpread46(_objectSpread46({}, item.item.type.defaultProps), item.item.props)
+            ? _objectSpread46(
+                _objectSpread46({}, item.item.type.defaultProps),
+                item.item.props
+              )
             : item.item.props
         var activeDot = itemItemProps.activeDot,
           dataKey = itemItemProps.dataKey
@@ -40332,151 +43082,191 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
         }
         return result
       })
-      _defineProperty52(_this, 'renderGraphicChild', function (element, displayName, index2) {
-        var item = _this.filterFormatItem(element, displayName, index2)
-        if (!item) {
-          return null
-        }
-        var tooltipEventType = _this.getTooltipEventType()
-        var _this$state8 = _this.state,
-          isTooltipActive = _this$state8.isTooltipActive,
-          tooltipAxis = _this$state8.tooltipAxis,
-          activeTooltipIndex = _this$state8.activeTooltipIndex,
-          activeLabel = _this$state8.activeLabel
-        var children2 = _this.props.children
-        var tooltipItem = findChildByType(children2, Tooltip)
-        var _item$props = item.props,
-          points = _item$props.points,
-          isRange = _item$props.isRange,
-          baseLine = _item$props.baseLine
-        var itemItemProps =
-          item.item.type.defaultProps !== void 0
-            ? _objectSpread46(_objectSpread46({}, item.item.type.defaultProps), item.item.props)
-            : item.item.props
-        var activeDot = itemItemProps.activeDot,
-          hide = itemItemProps.hide,
-          activeBar = itemItemProps.activeBar,
-          activeShape = itemItemProps.activeShape
-        var hasActive = Boolean(
-          !hide && isTooltipActive && tooltipItem && (activeDot || activeBar || activeShape)
-        )
-        var itemEvents = {}
-        if (tooltipEventType !== 'axis' && tooltipItem && tooltipItem.props.trigger === 'click') {
-          itemEvents = {
-            onClick: combineEventHandlers(_this.handleItemMouseEnter, element.props.onClick),
+      _defineProperty52(
+        _this,
+        'renderGraphicChild',
+        function (element, displayName, index2) {
+          var item = _this.filterFormatItem(element, displayName, index2)
+          if (!item) {
+            return null
           }
-        } else if (tooltipEventType !== 'axis') {
-          itemEvents = {
-            onMouseLeave: combineEventHandlers(
-              _this.handleItemMouseLeave,
-              element.props.onMouseLeave
-            ),
-            onMouseEnter: combineEventHandlers(
-              _this.handleItemMouseEnter,
-              element.props.onMouseEnter
-            ),
-          }
-        }
-        var graphicalItem = (0, import_react54.cloneElement)(
-          element,
-          _objectSpread46(_objectSpread46({}, item.props), itemEvents)
-        )
-        function findWithPayload(entry) {
-          return typeof tooltipAxis.dataKey === 'function'
-            ? tooltipAxis.dataKey(entry.payload)
-            : null
-        }
-        if (hasActive) {
-          if (activeTooltipIndex >= 0) {
-            var activePoint, basePoint
-            if (tooltipAxis.dataKey && !tooltipAxis.allowDuplicatedCategory) {
-              var specifiedKey =
-                typeof tooltipAxis.dataKey === 'function'
-                  ? findWithPayload
-                  : 'payload.'.concat(tooltipAxis.dataKey.toString())
-              activePoint = findEntryInArray(points, specifiedKey, activeLabel)
-              basePoint =
-                isRange && baseLine && findEntryInArray(baseLine, specifiedKey, activeLabel)
-            } else {
-              activePoint =
-                points === null || points === void 0 ? void 0 : points[activeTooltipIndex]
-              basePoint = isRange && baseLine && baseLine[activeTooltipIndex]
+          var tooltipEventType = _this.getTooltipEventType()
+          var _this$state8 = _this.state,
+            isTooltipActive = _this$state8.isTooltipActive,
+            tooltipAxis = _this$state8.tooltipAxis,
+            activeTooltipIndex = _this$state8.activeTooltipIndex,
+            activeLabel = _this$state8.activeLabel
+          var children2 = _this.props.children
+          var tooltipItem = findChildByType(children2, Tooltip)
+          var _item$props = item.props,
+            points = _item$props.points,
+            isRange = _item$props.isRange,
+            baseLine = _item$props.baseLine
+          var itemItemProps =
+            item.item.type.defaultProps !== void 0
+              ? _objectSpread46(
+                  _objectSpread46({}, item.item.type.defaultProps),
+                  item.item.props
+                )
+              : item.item.props
+          var activeDot = itemItemProps.activeDot,
+            hide = itemItemProps.hide,
+            activeBar = itemItemProps.activeBar,
+            activeShape = itemItemProps.activeShape
+          var hasActive = Boolean(
+            !hide &&
+            isTooltipActive &&
+            tooltipItem &&
+            (activeDot || activeBar || activeShape)
+          )
+          var itemEvents = {}
+          if (
+            tooltipEventType !== 'axis' &&
+            tooltipItem &&
+            tooltipItem.props.trigger === 'click'
+          ) {
+            itemEvents = {
+              onClick: combineEventHandlers(
+                _this.handleItemMouseEnter,
+                element.props.onClick
+              ),
             }
-            if (activeShape || activeBar) {
-              var activeIndex =
-                element.props.activeIndex !== void 0
-                  ? element.props.activeIndex
-                  : activeTooltipIndex
-              return [
-                (0, import_react54.cloneElement)(
-                  element,
-                  _objectSpread46(
-                    _objectSpread46(_objectSpread46({}, item.props), itemEvents),
-                    {},
-                    {
-                      activeIndex,
-                    }
+          } else if (tooltipEventType !== 'axis') {
+            itemEvents = {
+              onMouseLeave: combineEventHandlers(
+                _this.handleItemMouseLeave,
+                element.props.onMouseLeave
+              ),
+              onMouseEnter: combineEventHandlers(
+                _this.handleItemMouseEnter,
+                element.props.onMouseEnter
+              ),
+            }
+          }
+          var graphicalItem = (0, import_react54.cloneElement)(
+            element,
+            _objectSpread46(_objectSpread46({}, item.props), itemEvents)
+          )
+          function findWithPayload(entry) {
+            return typeof tooltipAxis.dataKey === 'function'
+              ? tooltipAxis.dataKey(entry.payload)
+              : null
+          }
+          if (hasActive) {
+            if (activeTooltipIndex >= 0) {
+              var activePoint, basePoint
+              if (tooltipAxis.dataKey && !tooltipAxis.allowDuplicatedCategory) {
+                var specifiedKey =
+                  typeof tooltipAxis.dataKey === 'function'
+                    ? findWithPayload
+                    : 'payload.'.concat(tooltipAxis.dataKey.toString())
+                activePoint = findEntryInArray(
+                  points,
+                  specifiedKey,
+                  activeLabel
+                )
+                basePoint =
+                  isRange &&
+                  baseLine &&
+                  findEntryInArray(baseLine, specifiedKey, activeLabel)
+              } else {
+                activePoint =
+                  points === null || points === void 0
+                    ? void 0
+                    : points[activeTooltipIndex]
+                basePoint = isRange && baseLine && baseLine[activeTooltipIndex]
+              }
+              if (activeShape || activeBar) {
+                var activeIndex =
+                  element.props.activeIndex !== void 0
+                    ? element.props.activeIndex
+                    : activeTooltipIndex
+                return [
+                  (0, import_react54.cloneElement)(
+                    element,
+                    _objectSpread46(
+                      _objectSpread46(
+                        _objectSpread46({}, item.props),
+                        itemEvents
+                      ),
+                      {},
+                      {
+                        activeIndex,
+                      }
+                    )
+                  ),
+                  null,
+                  null,
+                ]
+              }
+              if (!(0, import_isNil15.default)(activePoint)) {
+                return [graphicalItem].concat(
+                  _toConsumableArray12(
+                    _this.renderActivePoints({
+                      item,
+                      activePoint,
+                      basePoint,
+                      childIndex: activeTooltipIndex,
+                      isRange,
+                    })
                   )
-                ),
+                )
+              }
+            } else {
+              var _this$getItemByXY
+              var _ref11 =
+                  (_this$getItemByXY = _this.getItemByXY(
+                    _this.state.activeCoordinate
+                  )) !== null && _this$getItemByXY !== void 0
+                    ? _this$getItemByXY
+                    : {
+                        graphicalItem,
+                      },
+                _ref11$graphicalItem = _ref11.graphicalItem,
+                _ref11$graphicalItem$ = _ref11$graphicalItem.item,
+                xyItem =
+                  _ref11$graphicalItem$ === void 0
+                    ? element
+                    : _ref11$graphicalItem$,
+                childIndex = _ref11$graphicalItem.childIndex
+              var elementProps = _objectSpread46(
+                _objectSpread46(_objectSpread46({}, item.props), itemEvents),
+                {},
+                {
+                  activeIndex: childIndex,
+                }
+              )
+              return [
+                (0, import_react54.cloneElement)(xyItem, elementProps),
                 null,
                 null,
               ]
             }
-            if (!(0, import_isNil15.default)(activePoint)) {
-              return [graphicalItem].concat(
-                _toConsumableArray12(
-                  _this.renderActivePoints({
-                    item,
-                    activePoint,
-                    basePoint,
-                    childIndex: activeTooltipIndex,
-                    isRange,
-                  })
-                )
-              )
-            }
-          } else {
-            var _this$getItemByXY
-            var _ref11 =
-                (_this$getItemByXY = _this.getItemByXY(_this.state.activeCoordinate)) !== null &&
-                _this$getItemByXY !== void 0
-                  ? _this$getItemByXY
-                  : {
-                      graphicalItem,
-                    },
-              _ref11$graphicalItem = _ref11.graphicalItem,
-              _ref11$graphicalItem$ = _ref11$graphicalItem.item,
-              xyItem = _ref11$graphicalItem$ === void 0 ? element : _ref11$graphicalItem$,
-              childIndex = _ref11$graphicalItem.childIndex
-            var elementProps = _objectSpread46(
-              _objectSpread46(_objectSpread46({}, item.props), itemEvents),
-              {},
-              {
-                activeIndex: childIndex,
-              }
-            )
-            return [(0, import_react54.cloneElement)(xyItem, elementProps), null, null]
           }
+          if (isRange) {
+            return [graphicalItem, null, null]
+          }
+          return [graphicalItem, null]
         }
-        if (isRange) {
-          return [graphicalItem, null, null]
-        }
-        return [graphicalItem, null]
-      })
-      _defineProperty52(_this, 'renderCustomized', function (element, displayName, index2) {
-        return (0, import_react54.cloneElement)(
-          element,
-          _objectSpread46(
+      )
+      _defineProperty52(
+        _this,
+        'renderCustomized',
+        function (element, displayName, index2) {
+          return (0, import_react54.cloneElement)(
+            element,
             _objectSpread46(
-              {
-                key: 'recharts-customized-'.concat(index2),
-              },
-              _this.props
-            ),
-            _this.state
+              _objectSpread46(
+                {
+                  key: 'recharts-customized-'.concat(index2),
+                },
+                _this.props
+              ),
+              _this.state
+            )
           )
-        )
-      })
+        }
+      )
       _defineProperty52(_this, 'renderMap', {
         CartesianGrid: {
           handler: renderAsIs,
@@ -40544,12 +43334,15 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
         },
       })
       _this.clipPathId = ''.concat(
-        (_props$id = _props.id) !== null && _props$id !== void 0 ? _props$id : uniqueId('recharts'),
+        (_props$id = _props.id) !== null && _props$id !== void 0
+          ? _props$id
+          : uniqueId('recharts'),
         '-clip'
       )
       _this.throttleTriggeredAfterMouseMove = (0, import_throttle2.default)(
         _this.triggeredAfterMouseMove,
-        (_props$throttleDelay = _props.throttleDelay) !== null && _props$throttleDelay !== void 0
+        (_props$throttleDelay = _props.throttleDelay) !== null &&
+          _props$throttleDelay !== void 0
           ? _props$throttleDelay
           : 1e3 / 60
       )
@@ -40605,9 +43398,16 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
             return
           }
           var activeLabel =
-            this.state.tooltipTicks[defaultIndex] && this.state.tooltipTicks[defaultIndex].value
-          var activePayload = getTooltipContent(this.state, data, defaultIndex, activeLabel)
-          var independentAxisCoord = this.state.tooltipTicks[defaultIndex].coordinate
+            this.state.tooltipTicks[defaultIndex] &&
+            this.state.tooltipTicks[defaultIndex].value
+          var activePayload = getTooltipContent(
+            this.state,
+            data,
+            defaultIndex,
+            activeLabel
+          )
+          var independentAxisCoord =
+            this.state.tooltipTicks[defaultIndex].coordinate
           var dependentAxisCoord = (this.state.offset.top + height) / 2
           var isHorizontal = layout === 'horizontal'
           var activeCoordinate = isHorizontal
@@ -40619,16 +43419,19 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
                 y: independentAxisCoord,
                 x: dependentAxisCoord,
               }
-          var scatterPlotElement = this.state.formattedGraphicalItems.find(function (_ref12) {
-            var item = _ref12.item
-            return item.type.name === 'Scatter'
-          })
+          var scatterPlotElement = this.state.formattedGraphicalItems.find(
+            function (_ref12) {
+              var item = _ref12.item
+              return item.type.name === 'Scatter'
+            }
+          )
           if (scatterPlotElement) {
             activeCoordinate = _objectSpread46(
               _objectSpread46({}, activeCoordinate),
               scatterPlotElement.props.points[defaultIndex].tooltipPosition
             )
-            activePayload = scatterPlotElement.props.points[defaultIndex].tooltipPayload
+            activePayload =
+              scatterPlotElement.props.points[defaultIndex].tooltipPayload
           }
           var nextState = {
             activeTooltipIndex: defaultIndex,
@@ -40738,12 +43541,19 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
             xAxisMap = _this$state9.xAxisMap,
             yAxisMap = _this$state9.yAxisMap
           var tooltipEventType = this.getTooltipEventType()
-          var toolTipData = getTooltipData(this.state, this.props.data, this.props.layout, rangeObj)
+          var toolTipData = getTooltipData(
+            this.state,
+            this.props.data,
+            this.props.layout,
+            rangeObj
+          )
           if (tooltipEventType !== 'axis' && xAxisMap && yAxisMap) {
             var xScale = getAnyElementOfObject(xAxisMap).scale
             var yScale = getAnyElementOfObject(yAxisMap).scale
-            var xValue = xScale && xScale.invert ? xScale.invert(e.chartX) : null
-            var yValue = yScale && yScale.invert ? yScale.invert(e.chartY) : null
+            var xValue =
+              xScale && xScale.invert ? xScale.invert(e.chartX) : null
+            var yValue =
+              yScale && yScale.invert ? yScale.invert(e.chartY) : null
             return _objectSpread46(
               _objectSpread46({}, e),
               {},
@@ -40763,7 +43573,8 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
       {
         key: 'inRange',
         value: function inRange(x2, y2) {
-          var scale = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 1
+          var scale =
+            arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 1
           var layout = this.props.layout
           var scaledX = x2 / scale,
             scaledY = y2 / scale
@@ -40822,8 +43633,14 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
               }
             }
           }
-          var outerEvents = adaptEventHandlers(this.props, this.handleOuterEvent)
-          return _objectSpread46(_objectSpread46({}, outerEvents), tooltipEvents)
+          var outerEvents = adaptEventHandlers(
+            this.props,
+            this.handleOuterEvent
+          )
+          return _objectSpread46(
+            _objectSpread46({}, outerEvents),
+            tooltipEvents
+          )
         },
       },
       {
@@ -40847,7 +43664,8 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
             if (
               entry.item === item ||
               entry.props.key === item.key ||
-              (displayName === getDisplayName(entry.item.type) && childIndex === entry.childIndex)
+              (displayName === getDisplayName(entry.item.type) &&
+                childIndex === entry.childIndex)
             ) {
               return entry
             }
@@ -40949,13 +43767,20 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
             formattedGraphicalItems = _this$state11.formattedGraphicalItems,
             activeItem = _this$state11.activeItem
           if (formattedGraphicalItems && formattedGraphicalItems.length) {
-            for (var i = 0, len = formattedGraphicalItems.length; i < len; i++) {
+            for (
+              var i = 0, len = formattedGraphicalItems.length;
+              i < len;
+              i++
+            ) {
               var graphicalItem = formattedGraphicalItems[i]
               var props = graphicalItem.props,
                 item = graphicalItem.item
               var itemProps =
                 item.type.defaultProps !== void 0
-                  ? _objectSpread46(_objectSpread46({}, item.type.defaultProps), item.props)
+                  ? _objectSpread46(
+                      _objectSpread46({}, item.type.defaultProps),
+                      item.props
+                    )
                   : item.props
               var itemDisplayName = getDisplayName(item.type)
               if (itemDisplayName === 'Bar') {
@@ -40989,7 +43814,9 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
                   itemData: itemProps.data,
                 })
                 var childIndex =
-                  itemProps.activeIndex === void 0 ? activeIndex : itemProps.activeIndex
+                  itemProps.activeIndex === void 0
+                    ? activeIndex
+                    : itemProps.activeIndex
                 return {
                   graphicalItem: _objectSpread46(
                     _objectSpread46({}, graphicalItem),
@@ -41056,7 +43883,8 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
                 ? _this$props$tabIndex
                 : 0
             attrs.role =
-              (_this$props$role = this.props.role) !== null && _this$props$role !== void 0
+              (_this$props$role = this.props.role) !== null &&
+              _this$props$role !== void 0
                 ? _this$props$role
                 : 'application'
             attrs.onKeyDown = function (e) {
@@ -41218,7 +44046,10 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           }
         )
         var newState = _objectSpread46(
-          _objectSpread46(_objectSpread46({}, _defaultState), keepFromPrevState),
+          _objectSpread46(
+            _objectSpread46({}, _defaultState),
+            keepFromPrevState
+          ),
           updatesToState
         )
         return _objectSpread46(
@@ -41248,13 +44079,17 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
         )
       }
       if (!isChildrenEqual(children2, prevState.prevChildren)) {
-        var _brush$props$startInd, _brush$props, _brush$props$endIndex, _brush$props2
+        var _brush$props$startInd,
+          _brush$props,
+          _brush$props$endIndex,
+          _brush$props2
         var brush = findChildByType(children2, Brush)
         var startIndex = brush
           ? (_brush$props$startInd =
               (_brush$props = brush.props) === null || _brush$props === void 0
                 ? void 0
-                : _brush$props.startIndex) !== null && _brush$props$startInd !== void 0
+                : _brush$props.startIndex) !== null &&
+            _brush$props$startInd !== void 0
             ? _brush$props$startInd
             : dataStartIndex
           : dataStartIndex
@@ -41262,11 +44097,13 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
           ? (_brush$props$endIndex =
               (_brush$props2 = brush.props) === null || _brush$props2 === void 0
                 ? void 0
-                : _brush$props2.endIndex) !== null && _brush$props$endIndex !== void 0
+                : _brush$props2.endIndex) !== null &&
+            _brush$props$endIndex !== void 0
             ? _brush$props$endIndex
             : dataEndIndex
           : dataEndIndex
-        var hasDifferentStartOrEndIndex = startIndex !== dataStartIndex || endIndex !== dataEndIndex
+        var hasDifferentStartOrEndIndex =
+          startIndex !== dataStartIndex || endIndex !== dataEndIndex
         var hasGlobalData = !(0, import_isNil15.default)(data)
         var newUpdateId =
           hasGlobalData && !hasDifferentStartOrEndIndex
@@ -41306,32 +44143,38 @@ var generateCategoricalChart = function generateCategoricalChart2(_ref6) {
       return null
     }
   )
-  _defineProperty52(CategoricalChartWrapper, 'renderActiveDot', function (option, props, key) {
-    var dot
-    if ((0, import_react54.isValidElement)(option)) {
-      dot = (0, import_react54.cloneElement)(option, props)
-    } else if ((0, import_isFunction26.default)(option)) {
-      dot = option(props)
-    } else {
-      dot = import_react54.default.createElement(Dot, props)
+  _defineProperty52(
+    CategoricalChartWrapper,
+    'renderActiveDot',
+    function (option, props, key) {
+      var dot
+      if ((0, import_react54.isValidElement)(option)) {
+        dot = (0, import_react54.cloneElement)(option, props)
+      } else if ((0, import_isFunction26.default)(option)) {
+        dot = option(props)
+      } else {
+        dot = import_react54.default.createElement(Dot, props)
+      }
+      return import_react54.default.createElement(
+        Layer,
+        {
+          className: 'recharts-active-dot',
+          key,
+        },
+        dot
+      )
     }
-    return import_react54.default.createElement(
-      Layer,
-      {
-        className: 'recharts-active-dot',
-        key,
-      },
-      dot
-    )
-  })
-  var CategoricalChart = (0, import_react54.forwardRef)(function CategoricalChart2(props, ref) {
-    return import_react54.default.createElement(
-      CategoricalChartWrapper,
-      _extends40({}, props, {
-        ref,
-      })
-    )
-  })
+  )
+  var CategoricalChart = (0, import_react54.forwardRef)(
+    function CategoricalChart2(props, ref) {
+      return import_react54.default.createElement(
+        CategoricalChartWrapper,
+        _extends40({}, props, {
+          ref,
+        })
+      )
+    }
+  )
   CategoricalChart.displayName = CategoricalChartWrapper.displayName
   return CategoricalChart
 }
@@ -41534,19 +44377,25 @@ function _possibleConstructorReturn26(self2, call) {
   if (call && (_typeof59(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized27(self2)
 }
 function _assertThisInitialized27(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct26() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct26 = function _isNativeReflectConstruct29() {
     return !!t
@@ -41609,7 +44458,12 @@ function _objectSpread47(e) {
 function _defineProperty53(obj, key, value) {
   key = _toPropertyKey54(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -41655,7 +44509,9 @@ var computeNode = function computeNode2(_ref) {
     }, 0)
   } else {
     nodeValue =
-      (0, import_isNaN4.default)(node[valueKey]) || node[valueKey] <= 0 ? 0 : node[valueKey]
+      (0, import_isNaN4.default)(node[valueKey]) || node[valueKey] <= 0
+        ? 0
+        : node[valueKey]
   }
   return _objectSpread47(
     _objectSpread47({}, node),
@@ -41722,7 +44578,12 @@ var getWorstScore = function getWorstScore2(row, parentSize, aspectRatio) {
       )
     : Infinity
 }
-var horizontalPosition = function horizontalPosition2(row, parentSize, parentRect, isFlush) {
+var horizontalPosition = function horizontalPosition2(
+  row,
+  parentSize,
+  parentRect,
+  isFlush
+) {
   var rowHeight = parentSize ? Math.round(row.area / parentSize) : 0
   if (isFlush || rowHeight > parentRect.height) {
     rowHeight = parentRect.height
@@ -41750,7 +44611,12 @@ var horizontalPosition = function horizontalPosition2(row, parentSize, parentRec
     }
   )
 }
-var verticalPosition = function verticalPosition2(row, parentSize, parentRect, isFlush) {
+var verticalPosition = function verticalPosition2(
+  row,
+  parentSize,
+  parentRect,
+  isFlush
+) {
   var rowWidth = parentSize ? Math.round(row.area / parentSize) : 0
   if (isFlush || rowWidth > parentRect.width) {
     rowWidth = parentRect.width
@@ -41843,7 +44709,11 @@ var Treemap = (function (_PureComponent) {
   function Treemap2() {
     var _this
     _classCallCheck29(this, Treemap2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper24(this, Treemap2, [].concat(args))
@@ -42015,7 +44885,10 @@ var Treemap = (function (_PureComponent) {
             x2 = nodeProps.x,
             y2 = nodeProps.y,
             depth = nodeProps.depth
-          var translateX = parseInt(''.concat((Math.random() * 2 - 1) * width), 10)
+          var translateX = parseInt(
+            ''.concat((Math.random() * 2 - 1) * width),
+            10
+          )
           var event = {}
           if (isLeaf || type === 'nest') {
             event = {
@@ -42078,7 +44951,9 @@ var Treemap = (function (_PureComponent) {
               return import_react55.default.createElement(
                 es6_default,
                 {
-                  from: 'translate('.concat(translateX, 'px, ').concat(translateX, 'px)'),
+                  from: 'translate('
+                    .concat(translateX, 'px, ')
+                    .concat(translateX, 'px)'),
                   to: 'translate(0, 0)',
                   attributeName: 'transform',
                   begin: animationBegin,
@@ -42125,7 +45000,10 @@ var Treemap = (function (_PureComponent) {
             content = _this$props7.content,
             type = _this$props7.type
           var nodeProps = _objectSpread47(
-            _objectSpread47(_objectSpread47({}, filterProps(this.props, false)), node),
+            _objectSpread47(
+              _objectSpread47({}, filterProps(this.props, false)),
+              node
+            ),
             {},
             {
               root,
@@ -42133,9 +45011,11 @@ var Treemap = (function (_PureComponent) {
           )
           var isLeaf = !node.children || !node.children.length
           var currentRoot = this.state.currentRoot
-          var isCurrentRootChild = (currentRoot.children || []).filter(function (item) {
-            return item.depth === node.depth && item.name === node.name
-          })
+          var isCurrentRootChild = (currentRoot.children || []).filter(
+            function (item) {
+              return item.depth === node.depth && item.name === node.name
+            }
+          )
           if (!isCurrentRootChild.length && root.depth && type === 'nest') {
             return null
           }
@@ -42236,7 +45116,11 @@ var Treemap = (function (_PureComponent) {
               var name = (0, import_get7.default)(item, nameKey, 'root')
               var content = null
               if (import_react55.default.isValidElement(nestIndexContent)) {
-                content = import_react55.default.cloneElement(nestIndexContent, item, i)
+                content = import_react55.default.cloneElement(
+                  nestIndexContent,
+                  item,
+                  i
+                )
               }
               if ((0, import_isFunction27.default)(nestIndexContent)) {
                 content = nestIndexContent(item, i)
@@ -42359,7 +45243,12 @@ var Treemap = (function (_PureComponent) {
       },
       {
         key: 'renderContentItem',
-        value: function renderContentItem(content, nodeProps, type, colorPanel) {
+        value: function renderContentItem(
+          content,
+          nodeProps,
+          type,
+          colorPanel
+        ) {
           if (import_react55.default.isValidElement(content)) {
             return import_react55.default.cloneElement(content, nodeProps)
           }
@@ -42372,7 +45261,12 @@ var Treemap = (function (_PureComponent) {
             height = nodeProps.height,
             index2 = nodeProps.index
           var arrow = null
-          if (width > 10 && height > 10 && nodeProps.children && type === 'nest') {
+          if (
+            width > 10 &&
+            height > 10 &&
+            nodeProps.children &&
+            type === 'nest'
+          ) {
             arrow = import_react55.default.createElement(Polygon, {
               points: [
                 {
@@ -42392,7 +45286,12 @@ var Treemap = (function (_PureComponent) {
           }
           var text = null
           var nameSize = getStringSize(nodeProps.name)
-          if (width > 20 && height > 20 && nameSize.width < width && nameSize.height < height) {
+          if (
+            width > 20 &&
+            height > 20 &&
+            nameSize.width < width &&
+            nameSize.height < height
+          ) {
             text = import_react55.default.createElement(
               'text',
               {
@@ -42412,7 +45311,9 @@ var Treemap = (function (_PureComponent) {
               _extends41(
                 {
                   fill:
-                    nodeProps.depth < 2 ? colors[index2 % colors.length] : 'rgba(255,255,255,0)',
+                    nodeProps.depth < 2
+                      ? colors[index2 % colors.length]
+                      : 'rgba(255,255,255,0)',
                   stroke: '#fff',
                 },
                 (0, import_omit.default)(nodeProps, 'children'),
@@ -42554,19 +45455,25 @@ function _possibleConstructorReturn27(self2, call) {
   if (call && (_typeof60(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized28(self2)
 }
 function _assertThisInitialized28(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct27() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct27 = function _isNativeReflectConstruct29() {
     return !!t
@@ -42629,7 +45536,12 @@ function _objectSpread48(e) {
 function _defineProperty54(obj, key, value) {
   key = _toPropertyKey55(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -42671,14 +45583,22 @@ var getSumOfIds = function getSumOfIds2(links, ids) {
     return result + getValue(links[id])
   }, 0)
 }
-var getSumWithWeightedSource = function getSumWithWeightedSource2(tree, links, ids) {
+var getSumWithWeightedSource = function getSumWithWeightedSource2(
+  tree,
+  links,
+  ids
+) {
   return ids.reduce(function (result, id) {
     var link2 = links[id]
     var sourceNode = tree[link2.source]
     return result + centerY(sourceNode) * getValue(links[id])
   }, 0)
 }
-var getSumWithWeightedTarget = function getSumWithWeightedTarget2(tree, links, ids) {
+var getSumWithWeightedTarget = function getSumWithWeightedTarget2(
+  tree,
+  links,
+  ids
+) {
   return ids.reduce(function (result, id) {
     var link2 = links[id]
     var targetNode = tree[link2.target]
@@ -42774,11 +45694,17 @@ var getDepthTree = function getDepthTree2(tree) {
   }
   return result
 }
-var updateYOfTree = function updateYOfTree2(depthTree, height, nodePadding, links) {
+var updateYOfTree = function updateYOfTree2(
+  depthTree,
+  height,
+  nodePadding,
+  links
+) {
   var yRatio = (0, import_min5.default)(
     depthTree.map(function (nodes) {
       return (
-        (height - (nodes.length - 1) * nodePadding) / (0, import_sumBy.default)(nodes, getValue)
+        (height - (nodes.length - 1) * nodePadding) /
+        (0, import_sumBy.default)(nodes, getValue)
       )
     })
   )
@@ -42799,8 +45725,13 @@ var updateYOfTree = function updateYOfTree2(depthTree, height, nodePadding, link
     )
   })
 }
-var resolveCollisions = function resolveCollisions2(depthTree, height, nodePadding) {
-  var sort2 = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : true
+var resolveCollisions = function resolveCollisions2(
+  depthTree,
+  height,
+  nodePadding
+) {
+  var sort2 =
+    arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : true
   for (var i = 0, len = depthTree.length; i < len; i++) {
     var nodes = depthTree[i]
     var n = nodes.length
@@ -42829,28 +45760,46 @@ var resolveCollisions = function resolveCollisions2(depthTree, height, nodePaddi
     }
   }
 }
-var relaxLeftToRight = function relaxLeftToRight2(tree, depthTree, links, alpha3) {
+var relaxLeftToRight = function relaxLeftToRight2(
+  tree,
+  depthTree,
+  links,
+  alpha3
+) {
   for (var i = 0, maxDepth = depthTree.length; i < maxDepth; i++) {
     var nodes = depthTree[i]
     for (var j = 0, len = nodes.length; j < len; j++) {
       var node = nodes[j]
       if (node.sourceLinks.length) {
         var sourceSum = getSumOfIds(links, node.sourceLinks)
-        var weightedSum = getSumWithWeightedSource(tree, links, node.sourceLinks)
+        var weightedSum = getSumWithWeightedSource(
+          tree,
+          links,
+          node.sourceLinks
+        )
         var y2 = weightedSum / sourceSum
         node.y += (y2 - centerY(node)) * alpha3
       }
     }
   }
 }
-var relaxRightToLeft = function relaxRightToLeft2(tree, depthTree, links, alpha3) {
+var relaxRightToLeft = function relaxRightToLeft2(
+  tree,
+  depthTree,
+  links,
+  alpha3
+) {
   for (var i = depthTree.length - 1; i >= 0; i--) {
     var nodes = depthTree[i]
     for (var j = 0, len = nodes.length; j < len; j++) {
       var node = nodes[j]
       if (node.targetLinks.length) {
         var targetSum = getSumOfIds(links, node.targetLinks)
-        var weightedSum = getSumWithWeightedTarget(tree, links, node.targetLinks)
+        var weightedSum = getSumWithWeightedTarget(
+          tree,
+          links,
+          node.targetLinks
+        )
         var y2 = weightedSum / targetSum
         node.y += (y2 - centerY(node)) * alpha3
       }
@@ -42951,7 +45900,11 @@ var Sankey = (function (_PureComponent) {
   function Sankey2() {
     var _this
     _classCallCheck30(this, Sankey2)
-    for (var _len2 = arguments.length, args = new Array(_len2), _key = 0; _key < _len2; _key++) {
+    for (
+      var _len2 = arguments.length, args = new Array(_len2), _key = 0;
+      _key < _len2;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper25(this, Sankey2, [].concat(args))
@@ -43126,8 +46079,16 @@ var Sankey = (function (_PureComponent) {
                 filterProps(linkContent, false)
               )
               var events = {
-                onMouseEnter: _this2.handleMouseEnter.bind(_this2, linkProps, 'link'),
-                onMouseLeave: _this2.handleMouseLeave.bind(_this2, linkProps, 'link'),
+                onMouseEnter: _this2.handleMouseEnter.bind(
+                  _this2,
+                  linkProps,
+                  'link'
+                ),
+                onMouseLeave: _this2.handleMouseLeave.bind(
+                  _this2,
+                  linkProps,
+                  'link'
+                ),
                 onClick: _this2.handleClick.bind(_this2, linkProps, 'link'),
               }
               return import_react56.default.createElement(
@@ -43180,15 +46141,26 @@ var Sankey = (function (_PureComponent) {
                 }
               )
               var events = {
-                onMouseEnter: _this3.handleMouseEnter.bind(_this3, nodeProps, 'node'),
-                onMouseLeave: _this3.handleMouseLeave.bind(_this3, nodeProps, 'node'),
+                onMouseEnter: _this3.handleMouseEnter.bind(
+                  _this3,
+                  nodeProps,
+                  'node'
+                ),
+                onMouseLeave: _this3.handleMouseLeave.bind(
+                  _this3,
+                  nodeProps,
+                  'node'
+                ),
                 onClick: _this3.handleClick.bind(_this3, nodeProps, 'node'),
               }
               return import_react56.default.createElement(
                 Layer,
                 _extends42(
                   {
-                    key: 'node-'.concat(node.x, '-').concat(node.y, '-').concat(node.value),
+                    key: 'node-'
+                      .concat(node.x, '-')
+                      .concat(node.y, '-')
+                      .concat(node.value),
                   },
                   events
                 ),
@@ -43306,9 +46278,13 @@ var Sankey = (function (_PureComponent) {
             sort2 !== prevState.sort
           ) {
             var contentWidth =
-              width - ((margin && margin.left) || 0) - ((margin && margin.right) || 0)
+              width -
+              ((margin && margin.left) || 0) -
+              ((margin && margin.right) || 0)
             var contentHeight =
-              height - ((margin && margin.top) || 0) - ((margin && margin.bottom) || 0)
+              height -
+              ((margin && margin.top) || 0) -
+              ((margin && margin.bottom) || 0)
             var _computeData = computeData({
                 data,
                 width: contentWidth,
@@ -43575,7 +46551,10 @@ function _nonIterableRest15() {
 }
 function _iterableToArrayLimit14(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -43588,12 +46567,18 @@ function _iterableToArrayLimit14(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -43675,9 +46660,13 @@ var SunburstChart = function SunburstChart2(_ref) {
     _ref$stroke = _ref.stroke,
     stroke = _ref$stroke === void 0 ? '#FFF' : _ref$stroke,
     _ref$textOptions = _ref.textOptions,
-    textOptions = _ref$textOptions === void 0 ? defaultTextProps : _ref$textOptions,
+    textOptions =
+      _ref$textOptions === void 0 ? defaultTextProps : _ref$textOptions,
     _ref$outerRadius = _ref.outerRadius,
-    outerRadius = _ref$outerRadius === void 0 ? Math.min(width, height) / 2 : _ref$outerRadius,
+    outerRadius =
+      _ref$outerRadius === void 0
+        ? Math.min(width, height) / 2
+        : _ref$outerRadius,
     _ref$cx = _ref.cx,
     cx = _ref$cx === void 0 ? width / 2 : _ref$cx,
     _ref$cy = _ref.cy,
@@ -43728,7 +46717,8 @@ var SunburstChart = function SunburstChart2(_ref) {
       var start = currentAngle
       var fillColor =
         (_ref2 =
-          (_d$fill = d === null || d === void 0 ? void 0 : d.fill) !== null && _d$fill !== void 0
+          (_d$fill = d === null || d === void 0 ? void 0 : d.fill) !== null &&
+          _d$fill !== void 0
             ? _d$fill
             : childColor) !== null && _ref2 !== void 0
           ? _ref2
@@ -43782,7 +46772,12 @@ var SunburstChart = function SunburstChart2(_ref) {
           )
         )
       )
-      var _polarToCartesian2 = polarToCartesian(cx, cy, innerR + radius / 2, start),
+      var _polarToCartesian2 = polarToCartesian(
+          cx,
+          cy,
+          innerR + radius / 2,
+          start
+        ),
         tooltipX = _polarToCartesian2.x,
         tooltipY = _polarToCartesian2.y
       positions.set(d.name, {
@@ -43924,7 +46919,12 @@ function _objectSpread49(e) {
 function _defineProperty55(obj, key, value) {
   key = _toPropertyKey56(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -43955,7 +46955,10 @@ function typeGuardTrapezoidProps(option, props) {
   )
   var height = parseInt(heightValue, 10)
   return _objectSpread49(
-    _objectSpread49(_objectSpread49({}, props), getPropsFromShapeOption(option)),
+    _objectSpread49(
+      _objectSpread49({}, props),
+      getPropsFromShapeOption(option)
+    ),
     {},
     {
       height,
@@ -44008,7 +47011,10 @@ function _arrayLikeToArray24(arr, len) {
 }
 function _iterableToArrayLimit15(r2, l) {
   var t =
-    null == r2 ? null : ('undefined' != typeof Symbol && r2[Symbol.iterator]) || r2['@@iterator']
+    null == r2
+      ? null
+      : ('undefined' != typeof Symbol && r2[Symbol.iterator]) ||
+        r2['@@iterator']
   if (null != t) {
     var e,
       n,
@@ -44021,12 +47027,18 @@ function _iterableToArrayLimit15(r2, l) {
       if (((i = (t = t.call(r2)).next), 0 === l)) {
         if (Object(t) !== t) return
         f = false
-      } else for (; !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l); f = true);
+      } else
+        for (
+          ;
+          !(f = (e = i.call(t)).done) && (a2.push(e.value), a2.length !== l);
+          f = true
+        );
     } catch (r3) {
       ;((o = true), (n = r3))
     } finally {
       try {
-        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u)) return
+        if (!f && null != t['return'] && ((u = t['return']()), Object(u) !== u))
+          return
       } finally {
         if (o) throw n
       }
@@ -44134,19 +47146,25 @@ function _possibleConstructorReturn28(self2, call) {
   if (call && (_typeof62(call) === 'object' || typeof call === 'function')) {
     return call
   } else if (call !== void 0) {
-    throw new TypeError('Derived constructors may only return object or undefined')
+    throw new TypeError(
+      'Derived constructors may only return object or undefined'
+    )
   }
   return _assertThisInitialized29(self2)
 }
 function _assertThisInitialized29(self2) {
   if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+    throw new ReferenceError(
+      "this hasn't been initialised - super() hasn't been called"
+    )
   }
   return self2
 }
 function _isNativeReflectConstruct28() {
   try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}))
+    var t = !Boolean.prototype.valueOf.call(
+      Reflect.construct(Boolean, [], function () {})
+    )
   } catch (t4) {}
   return (_isNativeReflectConstruct28 = function _isNativeReflectConstruct29() {
     return !!t
@@ -44182,7 +47200,12 @@ function _setPrototypeOf29(o, p) {
 function _defineProperty56(obj, key, value) {
   key = _toPropertyKey57(key)
   if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true })
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    })
   } else {
     obj[key] = value
   }
@@ -44206,7 +47229,11 @@ var Funnel = (function (_PureComponent) {
   function Funnel2() {
     var _this
     _classCallCheck31(this, Funnel2)
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
       args[_key] = arguments[_key]
     }
     _this = _callSuper26(this, Funnel2, [].concat(args))
@@ -44273,10 +47300,21 @@ var Funnel = (function (_PureComponent) {
                 adaptEventsOfChild(_this2.props, entry, i),
                 {
                   key: 'trapezoid-'
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.x, '-')
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.y, '-')
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.name, '-')
-                    .concat(entry === null || entry === void 0 ? void 0 : entry.value),
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.x,
+                      '-'
+                    )
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.y,
+                      '-'
+                    )
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.name,
+                      '-'
+                    )
+                    .concat(
+                      entry === null || entry === void 0 ? void 0 : entry.value
+                    ),
                   role: 'img',
                 }
               ),
@@ -44329,9 +47367,18 @@ var Funnel = (function (_PureComponent) {
                 if (prev) {
                   var _interpolatorX = interpolateNumber(prev.x, entry.x)
                   var _interpolatorY = interpolateNumber(prev.y, entry.y)
-                  var _interpolatorUpperWidth = interpolateNumber(prev.upperWidth, entry.upperWidth)
-                  var _interpolatorLowerWidth = interpolateNumber(prev.lowerWidth, entry.lowerWidth)
-                  var _interpolatorHeight = interpolateNumber(prev.height, entry.height)
+                  var _interpolatorUpperWidth = interpolateNumber(
+                    prev.upperWidth,
+                    entry.upperWidth
+                  )
+                  var _interpolatorLowerWidth = interpolateNumber(
+                    prev.lowerWidth,
+                    entry.lowerWidth
+                  )
+                  var _interpolatorHeight = interpolateNumber(
+                    prev.height,
+                    entry.height
+                  )
                   return _objectSpread50(
                     _objectSpread50({}, entry),
                     {},
@@ -44344,10 +47391,22 @@ var Funnel = (function (_PureComponent) {
                     }
                   )
                 }
-                var interpolatorX = interpolateNumber(entry.x + entry.upperWidth / 2, entry.x)
-                var interpolatorY = interpolateNumber(entry.y + entry.height / 2, entry.y)
-                var interpolatorUpperWidth = interpolateNumber(0, entry.upperWidth)
-                var interpolatorLowerWidth = interpolateNumber(0, entry.lowerWidth)
+                var interpolatorX = interpolateNumber(
+                  entry.x + entry.upperWidth / 2,
+                  entry.x
+                )
+                var interpolatorY = interpolateNumber(
+                  entry.y + entry.height / 2,
+                  entry.y
+                )
+                var interpolatorUpperWidth = interpolateNumber(
+                  0,
+                  entry.upperWidth
+                )
+                var interpolatorLowerWidth = interpolateNumber(
+                  0,
+                  entry.lowerWidth
+                )
                 var interpolatorHeight = interpolateNumber(0, entry.height)
                 return _objectSpread50(
                   _objectSpread50({}, entry),
@@ -44381,7 +47440,8 @@ var Funnel = (function (_PureComponent) {
             isAnimationActive &&
             trapezoids &&
             trapezoids.length &&
-            (!prevTrapezoids || !(0, import_isEqual10.default)(prevTrapezoids, trapezoids))
+            (!prevTrapezoids ||
+              !(0, import_isEqual10.default)(prevTrapezoids, trapezoids))
           ) {
             return this.renderTrapezoidsWithAnimation()
           }
@@ -44553,7 +47613,8 @@ _defineProperty56(Funnel, 'getComposedData', function (_ref2) {
     } else {
       nextVal = 0
     }
-    var x2 = ((maxValue - val) * realWidth) / (2 * maxValue) + top + 25 + offsetX
+    var x2 =
+      ((maxValue - val) * realWidth) / (2 * maxValue) + top + 25 + offsetX
     var y2 = rowHeight * i + left + offsetY
     var upperWidth = (val / maxValue) * realWidth
     var lowerWidth = (nextVal / maxValue) * realWidth
@@ -44593,7 +47654,9 @@ _defineProperty56(Funnel, 'getComposedData', function (_ref2) {
         labelViewBox: {
           x: x2 + (upperWidth - lowerWidth) / 4,
           y: y2,
-          width: Math.abs(upperWidth - lowerWidth) / 2 + Math.min(upperWidth, lowerWidth),
+          width:
+            Math.abs(upperWidth - lowerWidth) / 2 +
+            Math.min(upperWidth, lowerWidth),
           height: rowHeight,
         },
       }

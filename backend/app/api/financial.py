@@ -1,9 +1,11 @@
 """Financial Data API"""
 
-from fastapi import APIRouter, HTTPException, Depends
+from backend.app.models import user
+from fastapi import APIRouter, Depends, HTTPException
+
+from app.dependencies import get_current_user
 from app.schemas.financial import FinancialRequest, FinancialResponse
 from app.services.data_service import DataService
-from app.dependencies import get_current_user
 
 router = APIRouter()
 
@@ -11,7 +13,7 @@ router = APIRouter()
 @router.post("/financial", response_model=FinancialResponse)
 async def get_financial_data(
     request: FinancialRequest,
-    user=Depends(get_current_user),
+    user: user = Depends(get_current_user),
 ):
     """Get financial data and metrics"""
     try:
@@ -24,4 +26,4 @@ async def get_financial_data(
 
         return data
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e

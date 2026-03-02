@@ -1,6 +1,7 @@
-import bcrypt
 import hashlib
 import re
+
+import bcrypt
 from fastapi import HTTPException
 
 

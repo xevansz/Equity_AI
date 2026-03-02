@@ -1,6 +1,8 @@
-from fastapi import APIRouter, Depends
-from app.dependencies import get_database
 from datetime import UTC, datetime
+
+from fastapi import APIRouter, Depends
+
+from app.dependencies import get_database
 
 router = APIRouter()
 

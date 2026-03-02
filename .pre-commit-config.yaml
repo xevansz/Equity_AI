@@ -1,0 +1,50 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff lint
+        entry: bash -c "cd backend && pdm run ruff check . --fix"
+        language: system
+        pass_filenames: false
+
+      - id: ruff-format
+        name: ruff format
+        entry: bash -c "cd backend && pdm run ruff format ."
+        language: system
+        pass_filenames: false
+
+      # - id: mypy
+      #   name: mypy
+      #   entry: bash -c "cd backend && pdm run python -m mypy ."
+      #   language: system
+      #   pass_filenames: false
+
+      - id: check-yaml
+        name: check yaml
+        entry: check-yaml
+        language: system
+        types: [yaml]
+
+      - id: check-added-large-files
+        name: check added large files
+        entry: check-added-large-files
+        language: system
+
+      - id: frontend-eslint
+        name: frontend eslint
+        entry: bash -c "cd frontend && npm run lint:fix"
+        language: system
+        pass_filenames: false
+
+      - id: frontend-prettier
+        name: frontend prettier
+        entry: bash -c "cd frontend && npm run format"
+        language: system
+        pass_filenames: false
+
+      - id: frontend-tsc
+        name: frontend typecheck
+        entry: bash -c "cd frontend && npm run check"
+        language: system
+        pass_filenames: false
+

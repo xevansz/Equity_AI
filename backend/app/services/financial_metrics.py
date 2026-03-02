@@ -1,7 +1,7 @@
 def clean_rate_limit(data: dict):
     """Remove Alpha Vantage rate-limit responses"""
     if isinstance(data, dict) and "Information" in data:
-       return {}
+        return {}
     return data
 
 
@@ -17,7 +17,8 @@ def calculate_top_metrics(financials: dict):
     def safe_div(a, b):
         try:
             return round(a / b, 4) if a is not None and b not in (0, None) else None
-        except:
+        except Exception as e:
+            print(f"Error: {e}")
             return None
 
     revenue = income.get("totalRevenue")
@@ -41,7 +42,7 @@ def calculate_top_metrics(financials: dict):
         "Debt_to_Equity": safe_div(total_liabilities, total_equity),
         "Current_Ratio": safe_div(current_assets, current_liabilities),
         "Free_Cash_Flow": free_cash_flow,
-        "PE_Ratio": None  # needs market price (optional)
+        "PE_Ratio": None,  # needs market price (optional)
     }
 
     return metrics

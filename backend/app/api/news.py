@@ -1,8 +1,9 @@
 """News API"""
 
-from fastapi import APIRouter, HTTPException, Depends
-from app.mcp.news_api import NewsAPI
+from fastapi import APIRouter, Depends, HTTPException
+
 from app.dependencies import get_current_user
+from app.mcp.news_api import NewsAPI
 
 router = APIRouter()
 
@@ -21,4 +22,4 @@ async def get_news(symbol: str, user=Depends(get_current_user)):
 
         return {"symbol": symbol, "news": news}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e

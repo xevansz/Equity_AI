@@ -13,7 +13,10 @@ const Navbar = () => {
     <nav className="bg-surface border-b border-text-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to={user ? '/dashboard' : '/'} className="flex items-center gap-3">
+          <Link
+            to={user ? '/dashboard' : '/'}
+            className="flex items-center gap-3"
+          >
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-background" />
             </div>
@@ -26,13 +29,22 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-8">
             {user ? (
               <>
-                <Link to="/dashboard" className="text-text hover:text-primary transition-colors">
+                <Link
+                  to="/dashboard"
+                  className="text-text hover:text-primary transition-colors"
+                >
                   Dashboard
                 </Link>
-                <Link to="/watchlist" className="text-text hover:text-primary transition-colors">
+                <Link
+                  to="/watchlist"
+                  className="text-text hover:text-primary transition-colors"
+                >
                   Watchlist
                 </Link>
-                <Link to="/chat" className="text-text hover:text-primary transition-colors">
+                <Link
+                  to="/chat"
+                  className="text-text hover:text-primary transition-colors"
+                >
                   Chat
                 </Link>
                 <div className="flex items-center gap-4">
@@ -49,7 +61,10 @@ const Navbar = () => {
             ) : (
               <div className="flex items-center gap-4">
                 <ThemeToggle />
-                <Link to="/login" className="text-text hover:text-primary transition-colors">
+                <Link
+                  to="/login"
+                  className="text-text hover:text-primary transition-colors"
+                >
                   Sign In
                 </Link>
                 <Link

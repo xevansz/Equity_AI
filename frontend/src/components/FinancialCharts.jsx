@@ -22,7 +22,9 @@ const FinancialCharts = ({ chartData }) => {
 
   return (
     <div className="h-72 w-full">
-      <h3 className="text-sm font-semibold mb-2">Revenue & Profit (Last 5 Years)</h3>
+      <h3 className="text-sm font-semibold mb-2">
+        Revenue & Profit (Last 5 Years)
+      </h3>
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart

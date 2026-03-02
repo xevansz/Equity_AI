@@ -26,11 +26,7 @@ class ConversationMemory:
         if self.db is None:
             return []
 
-        cursor = (
-            self.db.conversations.find({"session_id": session_id})
-            .sort("_id", -1)
-            .limit(limit)
-        )
+        cursor = self.db.conversations.find({"session_id": session_id}).sort("_id", -1).limit(limit)
 
         messages = await cursor.to_list(length=limit)
         return list(reversed(messages))

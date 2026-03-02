@@ -46,7 +46,9 @@ function createMemoryHistory(options) {
       index2 === 0 ? 'default' : void 0
     )
   )
-  let index = clampIndex(initialIndex == null ? entries.length - 1 : initialIndex)
+  let index = clampIndex(
+    initialIndex == null ? entries.length - 1 : initialIndex
+  )
   let action = Action.Pop
   let listener = null
   function clampIndex(n) {
@@ -59,10 +61,16 @@ function createMemoryHistory(options) {
     if (state === void 0) {
       state = null
     }
-    let location = createLocation(entries ? getCurrentLocation().pathname : '/', to, state, key)
+    let location = createLocation(
+      entries ? getCurrentLocation().pathname : '/',
+      to,
+      state,
+      key
+    )
     warning(
       location.pathname.charAt(0) === '/',
-      'relative pathnames are not supported in memory history: ' + JSON.stringify(to)
+      'relative pathnames are not supported in memory history: ' +
+        JSON.stringify(to)
     )
     return location
   }
@@ -159,14 +167,23 @@ function createBrowserHistory(options) {
   function createBrowserHref(window2, to) {
     return typeof to === 'string' ? to : createPath(to)
   }
-  return getUrlBasedHistory(createBrowserLocation, createBrowserHref, null, options)
+  return getUrlBasedHistory(
+    createBrowserLocation,
+    createBrowserHref,
+    null,
+    options
+  )
 }
 function createHashHistory(options) {
   if (options === void 0) {
     options = {}
   }
   function createHashLocation(window2, globalHistory) {
-    let { pathname = '/', search = '', hash = '' } = parsePath(window2.location.hash.substr(1))
+    let {
+      pathname = '/',
+      search = '',
+      hash = '',
+    } = parsePath(window2.location.hash.substr(1))
     if (!pathname.startsWith('/') && !pathname.startsWith('.')) {
       pathname = '/' + pathname
     }
@@ -195,10 +212,17 @@ function createHashHistory(options) {
   function validateHashLocation(location, to) {
     warning(
       location.pathname.charAt(0) === '/',
-      'relative pathnames are not supported in hash history.push(' + JSON.stringify(to) + ')'
+      'relative pathnames are not supported in hash history.push(' +
+        JSON.stringify(to) +
+        ')'
     )
   }
-  return getUrlBasedHistory(createHashLocation, createHashHref, validateHashLocation, options)
+  return getUrlBasedHistory(
+    createHashLocation,
+    createHashHref,
+    validateHashLocation,
+    options
+  )
 }
 function invariant(value, message) {
   if (value === false || value === null || typeof value === 'undefined') {
@@ -247,8 +271,10 @@ function createLocation(current, to, state, key) {
 }
 function createPath(_ref) {
   let { pathname = '/', search = '', hash = '' } = _ref
-  if (search && search !== '?') pathname += search.charAt(0) === '?' ? search : '?' + search
-  if (hash && hash !== '#') pathname += hash.charAt(0) === '#' ? hash : '#' + hash
+  if (search && search !== '?')
+    pathname += search.charAt(0) === '?' ? search : '?' + search
+  if (hash && hash !== '#')
+    pathname += hash.charAt(0) === '#' ? hash : '#' + hash
   return pathname
 }
 function parsePath(path) {
@@ -270,7 +296,12 @@ function parsePath(path) {
   }
   return parsedPath
 }
-function getUrlBasedHistory(getLocation, createHref, validateLocation, options) {
+function getUrlBasedHistory(
+  getLocation,
+  createHref,
+  validateLocation,
+  options
+) {
   if (options === void 0) {
     options = {}
   }
@@ -347,10 +378,17 @@ function getUrlBasedHistory(getLocation, createHref, validateLocation, options) 
     }
   }
   function createURL(to) {
-    let base = window2.location.origin !== 'null' ? window2.location.origin : window2.location.href
+    let base =
+      window2.location.origin !== 'null'
+        ? window2.location.origin
+        : window2.location.href
     let href = typeof to === 'string' ? to : createPath(to)
     href = href.replace(/ $/, '%20')
-    invariant(base, 'No window.location.(origin|href) available to create URL for href: ' + href)
+    invariant(
+      base,
+      'No window.location.(origin|href) available to create URL for href: ' +
+        href
+    )
     return new URL(href, base)
   }
   let history = {
@@ -409,7 +447,12 @@ var immutableRouteKeys = /* @__PURE__ */ new Set([
 function isIndexRoute(route) {
   return route.index === true
 }
-function convertRoutesToDataRoutes(routes, mapRouteProperties2, parentPath, manifest) {
+function convertRoutesToDataRoutes(
+  routes,
+  mapRouteProperties2,
+  parentPath,
+  manifest
+) {
   if (parentPath === void 0) {
     parentPath = []
   }
@@ -419,7 +462,10 @@ function convertRoutesToDataRoutes(routes, mapRouteProperties2, parentPath, mani
   return routes.map((route, index) => {
     let treePath = [...parentPath, String(index)]
     let id = typeof route.id === 'string' ? route.id : treePath.join('-')
-    invariant(route.index !== true || !route.children, 'Cannot specify children on an index route')
+    invariant(
+      route.index !== true || !route.children,
+      'Cannot specify children on an index route'
+    )
     invariant(
       !manifest[id],
       'Found a route id collision on id "' +
@@ -457,7 +503,8 @@ function matchRoutes(routes, locationArg, basename) {
   return matchRoutesImpl(routes, locationArg, basename, false)
 }
 function matchRoutesImpl(routes, locationArg, basename, allowPartial) {
-  let location = typeof locationArg === 'string' ? parsePath(locationArg) : locationArg
+  let location =
+    typeof locationArg === 'string' ? parsePath(locationArg) : locationArg
   let pathname = stripBasename(location.pathname || '/', basename)
   if (pathname == null) {
     return null
@@ -532,7 +579,10 @@ function flattenRoutes(routes, branches, parentsMeta, parentPath) {
   }
   routes.forEach((route, index) => {
     var _route$path
-    if (route.path === '' || !((_route$path = route.path) != null && _route$path.includes('?'))) {
+    if (
+      route.path === '' ||
+      !((_route$path = route.path) != null && _route$path.includes('?'))
+    ) {
       flattenRoute(route, index)
     } else {
       for (let exploded of explodeOptionalSegments(route.path)) {
@@ -554,12 +604,16 @@ function explodeOptionalSegments(path) {
   let restExploded = explodeOptionalSegments(rest.join('/'))
   let result = []
   result.push(
-    ...restExploded.map((subpath) => (subpath === '' ? required : [required, subpath].join('/')))
+    ...restExploded.map((subpath) =>
+      subpath === '' ? required : [required, subpath].join('/')
+    )
   )
   if (isOptional) {
     result.push(...restExploded)
   }
-  return result.map((exploded) => (path.startsWith('/') && exploded === '' ? '/' : exploded))
+  return result.map((exploded) =>
+    path.startsWith('/') && exploded === '' ? '/' : exploded
+  )
 }
 function rankRouteBranches(branches) {
   branches.sort((a, b) =>
@@ -601,7 +655,8 @@ function computeScore(path, index) {
     )
 }
 function compareIndexes(a, b) {
-  let siblings = a.length === b.length && a.slice(0, -1).every((n, i) => n === b[i])
+  let siblings =
+    a.length === b.length && a.slice(0, -1).every((n, i) => n === b[i])
   return siblings
     ? // If two routes are siblings, we should try to match the earlier sibling
       // first. This allows people to have fine-grained control over the matching
@@ -624,7 +679,9 @@ function matchRouteBranch(branch, pathname, allowPartial) {
     let meta = routesMeta[i]
     let end = i === routesMeta.length - 1
     let remainingPathname =
-      matchedPathname === '/' ? pathname : pathname.slice(matchedPathname.length) || '/'
+      matchedPathname === '/'
+        ? pathname
+        : pathname.slice(matchedPathname.length) || '/'
     let match = matchPath(
       {
         path: meta.relativePath,
@@ -634,7 +691,12 @@ function matchRouteBranch(branch, pathname, allowPartial) {
       remainingPathname
     )
     let route = meta.route
-    if (!match && end && allowPartial && !routesMeta[routesMeta.length - 1].route.index) {
+    if (
+      !match &&
+      end &&
+      allowPartial &&
+      !routesMeta[routesMeta.length - 1].route.index
+    ) {
       match = matchPath(
         {
           path: meta.relativePath,
@@ -652,7 +714,9 @@ function matchRouteBranch(branch, pathname, allowPartial) {
       // TODO: Can this as be avoided?
       params: matchedParams,
       pathname: joinPaths([matchedPathname, match.pathname]),
-      pathnameBase: normalizePathname(joinPaths([matchedPathname, match.pathnameBase])),
+      pathnameBase: normalizePathname(
+        joinPaths([matchedPathname, match.pathnameBase])
+      ),
       route,
     })
     if (match.pathnameBase !== '/') {
@@ -672,14 +736,17 @@ function generatePath(originalPath, params) {
       'Route path "' +
         path +
         '" will be treated as if it were ' +
-        ('"' + path.replace(/\*$/, '/*') + '" because the `*` character must ') +
+        ('"' +
+          path.replace(/\*$/, '/*') +
+          '" because the `*` character must ') +
         'always follow a `/` in the pattern. To get rid of this warning, ' +
         ('please change the route path to "' + path.replace(/\*$/, '/*') + '".')
     )
     path = path.replace(/\*$/, '/*')
   }
   const prefix = path.startsWith('/') ? '/' : ''
-  const stringify = (p) => (p == null ? '' : typeof p === 'string' ? p : String(p))
+  const stringify = (p) =>
+    p == null ? '' : typeof p === 'string' ? p : String(p)
   const segments = path
     .split(/\/+/)
     .map((segment, index, array) => {
@@ -692,7 +759,10 @@ function generatePath(originalPath, params) {
       if (keyMatch) {
         const [, key, optional] = keyMatch
         let param = params[key]
-        invariant(optional === '?' || param != null, 'Missing ":' + key + '" param')
+        invariant(
+          optional === '?' || param != null,
+          'Missing ":' + key + '" param'
+        )
         return stringify(param)
       }
       return segment.replace(/\?$/g, '')
@@ -708,7 +778,11 @@ function matchPath(pattern, pathname) {
       end: true,
     }
   }
-  let [matcher, compiledParams] = compilePath(pattern.path, pattern.caseSensitive, pattern.end)
+  let [matcher, compiledParams] = compilePath(
+    pattern.path,
+    pattern.caseSensitive,
+    pattern.end
+  )
   let match = pathname.match(matcher)
   if (!match) return null
   let matchedPathname = match[0]
@@ -771,7 +845,8 @@ function compilePath(path, caseSensitive, end) {
     params.push({
       paramName: '*',
     })
-    regexpSource += path === '*' || path === '/*' ? '(.*)$' : '(?:\\/(.+)|\\/*)$'
+    regexpSource +=
+      path === '*' || path === '/*' ? '(.*)$' : '(?:\\/(.+)|\\/*)$'
   } else if (end) {
     regexpSource += '\\/*$'
   } else if (path !== '' && path !== '/') {
@@ -802,7 +877,9 @@ function stripBasename(pathname, basename) {
   if (!pathname.toLowerCase().startsWith(basename.toLowerCase())) {
     return null
   }
-  let startIndex = basename.endsWith('/') ? basename.length - 1 : basename.length
+  let startIndex = basename.endsWith('/')
+    ? basename.length - 1
+    : basename.length
   let nextChar = pathname.charAt(startIndex)
   if (nextChar && nextChar !== '/') {
     return null
@@ -815,7 +892,11 @@ function resolvePath(to, fromPathname) {
   if (fromPathname === void 0) {
     fromPathname = '/'
   }
-  let { pathname: toPathname, search = '', hash = '' } = typeof to === 'string' ? parsePath(to) : to
+  let {
+    pathname: toPathname,
+    search = '',
+    hash = '',
+  } = typeof to === 'string' ? parsePath(to) : to
   let pathname
   if (toPathname) {
     if (isAbsoluteUrl(toPathname)) {
@@ -862,14 +943,21 @@ function getInvalidPathError(char, field, dest, path) {
     "Cannot include a '" +
     char +
     "' character in a manually specified " +
-    ('`to.' + field + '` field [' + JSON.stringify(path) + '].  Please separate it out to the ') +
-    ('`to.' + dest + '` field. Alternatively you may provide the full path as ') +
+    ('`to.' +
+      field +
+      '` field [' +
+      JSON.stringify(path) +
+      '].  Please separate it out to the ') +
+    ('`to.' +
+      dest +
+      '` field. Alternatively you may provide the full path as ') +
     'a string in <Link to="..."> and the router will parse it for you.'
   )
 }
 function getPathContributingMatches(matches) {
   return matches.filter(
-    (match, index) => index === 0 || (match.route.path && match.route.path.length > 0)
+    (match, index) =>
+      index === 0 || (match.route.path && match.route.path.length > 0)
   )
 }
 function getResolveToMatches(matches, v7_relativeSplatPath) {
@@ -921,18 +1009,27 @@ function resolveTo(toArg, routePathnames, locationPathname, isPathRelative) {
     from = routePathnameIndex >= 0 ? routePathnames[routePathnameIndex] : '/'
   }
   let path = resolvePath(to, from)
-  let hasExplicitTrailingSlash = toPathname && toPathname !== '/' && toPathname.endsWith('/')
+  let hasExplicitTrailingSlash =
+    toPathname && toPathname !== '/' && toPathname.endsWith('/')
   let hasCurrentTrailingSlash =
     (isEmptyPath || toPathname === '.') && locationPathname.endsWith('/')
-  if (!path.pathname.endsWith('/') && (hasExplicitTrailingSlash || hasCurrentTrailingSlash)) {
+  if (
+    !path.pathname.endsWith('/') &&
+    (hasExplicitTrailingSlash || hasCurrentTrailingSlash)
+  ) {
     path.pathname += '/'
   }
   return path
 }
 var joinPaths = (paths) => paths.join('/').replace(/\/\/+/g, '/')
-var normalizePathname = (pathname) => pathname.replace(/\/+$/, '').replace(/^\/*/, '/')
+var normalizePathname = (pathname) =>
+  pathname.replace(/\/+$/, '').replace(/^\/*/, '/')
 var normalizeSearch = (search) =>
-  !search || search === '?' ? '' : search.startsWith('?') ? search : '?' + search
+  !search || search === '?'
+    ? ''
+    : search.startsWith('?')
+      ? search
+      : '?' + search
 var normalizeHash = (hash) =>
   !hash || hash === '#' ? '' : hash.startsWith('#') ? hash : '#' + hash
 var json = function json2(data, init) {
@@ -969,8 +1066,10 @@ var DeferredData = class {
     let reject
     this.abortPromise = new Promise((_, r) => (reject = r))
     this.controller = new AbortController()
-    let onAbort = () => reject(new AbortedDeferredError('Deferred data aborted'))
-    this.unlistenAbortSignal = () => this.controller.signal.removeEventListener('abort', onAbort)
+    let onAbort = () =>
+      reject(new AbortedDeferredError('Deferred data aborted'))
+    this.unlistenAbortSignal = () =>
+      this.controller.signal.removeEventListener('abort', onAbort)
     this.controller.signal.addEventListener('abort', onAbort)
     this.data = Object.entries(data).reduce((acc, _ref2) => {
       let [key, value] = _ref2
@@ -1000,7 +1099,10 @@ var DeferredData = class {
     return promise
   }
   onSettle(promise, key, error, data) {
-    if (this.controller.signal.aborted && error instanceof AbortedDeferredError) {
+    if (
+      this.controller.signal.aborted &&
+      error instanceof AbortedDeferredError
+    ) {
       this.unlistenAbortSignal()
       Object.defineProperty(promise, '_error', {
         get: () => error,
@@ -1201,13 +1303,20 @@ var defaultMapRouteProperties = (route) => ({
 })
 var TRANSITIONS_STORAGE_KEY = 'remix-router-transitions'
 function createRouter(init) {
-  const routerWindow = init.window ? init.window : typeof window !== 'undefined' ? window : void 0
+  const routerWindow = init.window
+    ? init.window
+    : typeof window !== 'undefined'
+      ? window
+      : void 0
   const isBrowser2 =
     typeof routerWindow !== 'undefined' &&
     typeof routerWindow.document !== 'undefined' &&
     typeof routerWindow.document.createElement !== 'undefined'
   const isServer = !isBrowser2
-  invariant(init.routes.length > 0, 'You must provide a non-empty routes array to createRouter')
+  invariant(
+    init.routes.length > 0,
+    'You must provide a non-empty routes array to createRouter'
+  )
   let mapRouteProperties2
   if (init.mapRouteProperties) {
     mapRouteProperties2 = init.mapRouteProperties
@@ -1220,7 +1329,12 @@ function createRouter(init) {
     mapRouteProperties2 = defaultMapRouteProperties
   }
   let manifest = {}
-  let dataRoutes = convertRoutesToDataRoutes(init.routes, mapRouteProperties2, void 0, manifest)
+  let dataRoutes = convertRoutesToDataRoutes(
+    init.routes,
+    mapRouteProperties2,
+    void 0,
+    manifest
+  )
   let inFlightDataRoutes
   let basename = init.basename || '/'
   let dataStrategyImpl = init.dataStrategy || defaultDataStrategy
@@ -1256,7 +1370,11 @@ function createRouter(init) {
     }
   }
   if (initialMatches && !init.hydrationData) {
-    let fogOfWar = checkFogOfWar(initialMatches, dataRoutes, init.history.location.pathname)
+    let fogOfWar = checkFogOfWar(
+      initialMatches,
+      dataRoutes,
+      init.history.location.pathname
+    )
     if (fogOfWar.active) {
       initialMatches = null
     }
@@ -1266,7 +1384,11 @@ function createRouter(init) {
     initialized = false
     initialMatches = []
     if (future.v7_partialHydration) {
-      let fogOfWar = checkFogOfWar(null, dataRoutes, init.history.location.pathname)
+      let fogOfWar = checkFogOfWar(
+        null,
+        dataRoutes,
+        init.history.location.pathname
+      )
       if (fogOfWar.active && fogOfWar.matches) {
         initialMatchesIsFOW = true
         initialMatches = fogOfWar.matches
@@ -1452,7 +1574,9 @@ function createRouter(init) {
       state.navigation.formMethod != null &&
       isMutationMethod(state.navigation.formMethod) &&
       state.navigation.state === 'loading' &&
-      ((_location$state = location.state) == null ? void 0 : _location$state._isRedirect) !== true
+      ((_location$state = location.state) == null
+        ? void 0
+        : _location$state._isRedirect) !== true
     let actionData
     if (newState.actionData) {
       if (Object.keys(newState.actionData).length > 0) {
@@ -1482,8 +1606,9 @@ function createRouter(init) {
       pendingPreventScrollReset === true ||
       (state.navigation.formMethod != null &&
         isMutationMethod(state.navigation.formMethod) &&
-        ((_location$state2 = location.state) == null ? void 0 : _location$state2._isRedirect) !==
-          true)
+        ((_location$state2 = location.state) == null
+          ? void 0
+          : _location$state2._isRedirect) !== true)
     if (inFlightDataRoutes) {
       dataRoutes = inFlightDataRoutes
       inFlightDataRoutes = void 0
@@ -1531,7 +1656,10 @@ function createRouter(init) {
         initialized: true,
         navigation: IDLE_NAVIGATION,
         revalidation: 'idle',
-        restoreScrollPosition: getSavedScrollPosition(location, newState.matches || state.matches),
+        restoreScrollPosition: getSavedScrollPosition(
+          location,
+          newState.matches || state.matches
+        ),
         preventScrollReset,
         blockers,
       }),
@@ -1570,7 +1698,11 @@ function createRouter(init) {
     )
     let currentLocation = state.location
     let nextLocation = createLocation(state.location, path, opts && opts.state)
-    nextLocation = _extends({}, nextLocation, init.history.encodeLocation(nextLocation))
+    nextLocation = _extends(
+      {},
+      nextLocation,
+      init.history.encodeLocation(nextLocation)
+    )
     let userReplace = opts && opts.replace != null ? opts.replace : void 0
     let historyAction = Action.Push
     if (userReplace === true) {
@@ -1584,7 +1716,9 @@ function createRouter(init) {
       historyAction = Action.Replace
     }
     let preventScrollReset =
-      opts && 'preventScrollReset' in opts ? opts.preventScrollReset === true : void 0
+      opts && 'preventScrollReset' in opts
+        ? opts.preventScrollReset === true
+        : void 0
     let flushSync = (opts && opts.flushSync) === true
     let blockerKey = shouldBlockNavigation({
       currentLocation,
@@ -1639,17 +1773,22 @@ function createRouter(init) {
       })
       return
     }
-    startNavigation(pendingAction || state.historyAction, state.navigation.location, {
-      overrideNavigation: state.navigation,
-      // Proxy through any rending view transition
-      enableViewTransition: pendingViewTransitionEnabled === true,
-    })
+    startNavigation(
+      pendingAction || state.historyAction,
+      state.navigation.location,
+      {
+        overrideNavigation: state.navigation,
+        // Proxy through any rending view transition
+        enableViewTransition: pendingViewTransitionEnabled === true,
+      }
+    )
   }
   async function startNavigation(historyAction, location, opts) {
     pendingNavigationController && pendingNavigationController.abort()
     pendingNavigationController = null
     pendingAction = historyAction
-    isUninterruptedRevalidation = (opts && opts.startUninterruptedRevalidation) === true
+    isUninterruptedRevalidation =
+      (opts && opts.startUninterruptedRevalidation) === true
     saveScrollPosition(state.location, state.matches)
     pendingPreventScrollReset = (opts && opts.preventScrollReset) === true
     pendingViewTransitionEnabled = (opts && opts.enableViewTransition) === true
@@ -1688,7 +1827,9 @@ function createRouter(init) {
       matches = fogOfWar.matches
     }
     if (!matches) {
-      let { error, notFoundMatches, route } = handleNavigational404(location.pathname)
+      let { error, notFoundMatches, route } = handleNavigational404(
+        location.pathname
+      )
       completeNavigation(
         location,
         {
@@ -1720,7 +1861,11 @@ function createRouter(init) {
           error: opts.pendingError,
         },
       ]
-    } else if (opts && opts.submission && isMutationMethod(opts.submission.formMethod)) {
+    } else if (
+      opts &&
+      opts.submission &&
+      isMutationMethod(opts.submission.formMethod)
+    ) {
       let actionResult = await handleAction(
         request,
         location,
@@ -1758,7 +1903,11 @@ function createRouter(init) {
       loadingNavigation = getLoadingNavigation(location, opts.submission)
       flushSync = false
       fogOfWar.active = false
-      request = createClientSideRequest(init.history, request.url, request.signal)
+      request = createClientSideRequest(
+        init.history,
+        request.url,
+        request.signal
+      )
     }
     let {
       shortCircuited,
@@ -1796,7 +1945,14 @@ function createRouter(init) {
       )
     )
   }
-  async function handleAction(request, location, submission, matches, isFogOfWar, opts) {
+  async function handleAction(
+    request,
+    location,
+    submission,
+    matches,
+    isFogOfWar,
+    opts
+  ) {
     if (opts === void 0) {
       opts = {}
     }
@@ -1811,13 +1967,18 @@ function createRouter(init) {
       }
     )
     if (isFogOfWar) {
-      let discoverResult = await discoverRoutes(matches, location.pathname, request.signal)
+      let discoverResult = await discoverRoutes(
+        matches,
+        location.pathname,
+        request.signal
+      )
       if (discoverResult.type === 'aborted') {
         return {
           shortCircuited: true,
         }
       } else if (discoverResult.type === 'error') {
-        let boundaryId = findNearestBoundary(discoverResult.partialMatches).route.id
+        let boundaryId = findNearestBoundary(discoverResult.partialMatches)
+          .route.id
         return {
           matches: discoverResult.partialMatches,
           pendingActionResult: [
@@ -1829,7 +1990,9 @@ function createRouter(init) {
           ],
         }
       } else if (!discoverResult.matches) {
-        let { notFoundMatches, error, route } = handleNavigational404(location.pathname)
+        let { notFoundMatches, error, route } = handleNavigational404(
+          location.pathname
+        )
         return {
           matches: notFoundMatches,
           pendingActionResult: [
@@ -1856,7 +2019,14 @@ function createRouter(init) {
         }),
       }
     } else {
-      let results = await callDataStrategy('action', state, request, [actionMatch], matches, null)
+      let results = await callDataStrategy(
+        'action',
+        state,
+        request,
+        [actionMatch],
+        matches,
+        null
+      )
       result = results[actionMatch.route.id]
       if (request.signal.aborted) {
         return {
@@ -1918,11 +2088,15 @@ function createRouter(init) {
     flushSync,
     pendingActionResult
   ) {
-    let loadingNavigation = overrideNavigation || getLoadingNavigation(location, submission)
+    let loadingNavigation =
+      overrideNavigation || getLoadingNavigation(location, submission)
     let activeSubmission =
-      submission || fetcherSubmission || getSubmissionFromNavigation(loadingNavigation)
+      submission ||
+      fetcherSubmission ||
+      getSubmissionFromNavigation(loadingNavigation)
     let shouldUpdateNavigationState =
-      !isUninterruptedRevalidation && (!future.v7_partialHydration || !initialHydration)
+      !isUninterruptedRevalidation &&
+      (!future.v7_partialHydration || !initialHydration)
     if (isFogOfWar) {
       if (shouldUpdateNavigationState) {
         let actionData = getUpdatedActionData(pendingActionResult)
@@ -1942,13 +2116,18 @@ function createRouter(init) {
           }
         )
       }
-      let discoverResult = await discoverRoutes(matches, location.pathname, request.signal)
+      let discoverResult = await discoverRoutes(
+        matches,
+        location.pathname,
+        request.signal
+      )
       if (discoverResult.type === 'aborted') {
         return {
           shortCircuited: true,
         }
       } else if (discoverResult.type === 'error') {
-        let boundaryId = findNearestBoundary(discoverResult.partialMatches).route.id
+        let boundaryId = findNearestBoundary(discoverResult.partialMatches)
+          .route.id
         return {
           matches: discoverResult.partialMatches,
           loaderData: {},
@@ -1957,7 +2136,9 @@ function createRouter(init) {
           },
         }
       } else if (!discoverResult.matches) {
-        let { error, notFoundMatches, route } = handleNavigational404(location.pathname)
+        let { error, notFoundMatches, route } = handleNavigational404(
+          location.pathname
+        )
         return {
           matches: notFoundMatches,
           loaderData: {},
@@ -2050,15 +2231,19 @@ function createRouter(init) {
     let abortPendingFetchRevalidations = () =>
       revalidatingFetchers.forEach((f) => abortFetcher(f.key))
     if (pendingNavigationController) {
-      pendingNavigationController.signal.addEventListener('abort', abortPendingFetchRevalidations)
+      pendingNavigationController.signal.addEventListener(
+        'abort',
+        abortPendingFetchRevalidations
+      )
     }
-    let { loaderResults, fetcherResults } = await callLoadersAndMaybeResolveData(
-      state,
-      matches,
-      matchesToLoad,
-      revalidatingFetchers,
-      request
-    )
+    let { loaderResults, fetcherResults } =
+      await callLoadersAndMaybeResolveData(
+        state,
+        matches,
+        matchesToLoad,
+        revalidatingFetchers,
+        request
+      )
     if (request.signal.aborted) {
       return {
         shortCircuited: true,
@@ -2142,7 +2327,10 @@ function createRouter(init) {
   function getUpdatedRevalidatingFetchers(revalidatingFetchers) {
     revalidatingFetchers.forEach((rf) => {
       let fetcher = state.fetchers.get(rf.key)
-      let revalidatingFetcher = getLoadingFetcher(void 0, fetcher ? fetcher.data : void 0)
+      let revalidatingFetcher = getLoadingFetcher(
+        void 0,
+        fetcher ? fetcher.data : void 0
+      )
       state.fetchers.set(rf.key, revalidatingFetcher)
     })
     return new Map(state.fetchers)
@@ -2404,33 +2592,50 @@ function createRouter(init) {
     })
     let abortPendingFetchRevalidations = () =>
       revalidatingFetchers.forEach((rf) => abortFetcher(rf.key))
-    abortController.signal.addEventListener('abort', abortPendingFetchRevalidations)
-    let { loaderResults, fetcherResults } = await callLoadersAndMaybeResolveData(
-      state,
-      matches,
-      matchesToLoad,
-      revalidatingFetchers,
-      revalidationRequest
+    abortController.signal.addEventListener(
+      'abort',
+      abortPendingFetchRevalidations
     )
+    let { loaderResults, fetcherResults } =
+      await callLoadersAndMaybeResolveData(
+        state,
+        matches,
+        matchesToLoad,
+        revalidatingFetchers,
+        revalidationRequest
+      )
     if (abortController.signal.aborted) {
       return
     }
-    abortController.signal.removeEventListener('abort', abortPendingFetchRevalidations)
+    abortController.signal.removeEventListener(
+      'abort',
+      abortPendingFetchRevalidations
+    )
     fetchReloadIds.delete(key)
     fetchControllers.delete(key)
     revalidatingFetchers.forEach((r) => fetchControllers.delete(r.key))
     let redirect3 = findRedirect(loaderResults)
     if (redirect3) {
-      return startRedirectNavigation(revalidationRequest, redirect3.result, false, {
-        preventScrollReset,
-      })
+      return startRedirectNavigation(
+        revalidationRequest,
+        redirect3.result,
+        false,
+        {
+          preventScrollReset,
+        }
+      )
     }
     redirect3 = findRedirect(fetcherResults)
     if (redirect3) {
       fetchRedirectIds.add(redirect3.key)
-      return startRedirectNavigation(revalidationRequest, redirect3.result, false, {
-        preventScrollReset,
-      })
+      return startRedirectNavigation(
+        revalidationRequest,
+        redirect3.result,
+        false,
+        {
+          preventScrollReset,
+        }
+      )
     }
     let { loaderData, errors } = processLoaderData(
       state,
@@ -2446,7 +2651,10 @@ function createRouter(init) {
       state.fetchers.set(key, doneFetcher)
     }
     abortStaleFetchLoads(loadId)
-    if (state.navigation.state === 'loading' && loadId > pendingNavigationLoadId) {
+    if (
+      state.navigation.state === 'loading' &&
+      loadId > pendingNavigationLoadId
+    ) {
       invariant(pendingAction, 'Expected pending action')
       pendingNavigationController && pendingNavigationController.abort()
       completeNavigation(state.navigation.location, {
@@ -2458,7 +2666,12 @@ function createRouter(init) {
     } else {
       updateState({
         errors,
-        loaderData: mergeLoaderData(state.loaderData, loaderData, matches, errors),
+        loaderData: mergeLoaderData(
+          state.loaderData,
+          loaderData,
+          matches,
+          errors
+        ),
         fetchers: new Map(state.fetchers),
       })
       isRevalidationRequired = false
@@ -2478,13 +2691,20 @@ function createRouter(init) {
     let existingFetcher = state.fetchers.get(key)
     updateFetcherState(
       key,
-      getLoadingFetcher(submission, existingFetcher ? existingFetcher.data : void 0),
+      getLoadingFetcher(
+        submission,
+        existingFetcher ? existingFetcher.data : void 0
+      ),
       {
         flushSync,
       }
     )
     let abortController = new AbortController()
-    let fetchRequest = createClientSideRequest(init.history, path, abortController.signal)
+    let fetchRequest = createClientSideRequest(
+      init.history,
+      path,
+      abortController.signal
+    )
     if (isFogOfWar) {
       let discoverResult = await discoverRoutes(
         matches,
@@ -2518,10 +2738,18 @@ function createRouter(init) {
     }
     fetchControllers.set(key, abortController)
     let originatingLoadId = incrementingLoadId
-    let results = await callDataStrategy('loader', state, fetchRequest, [match], matches, key)
+    let results = await callDataStrategy(
+      'loader',
+      state,
+      fetchRequest,
+      [match],
+      matches,
+      key
+    )
     let result = results[match.route.id]
     if (isDeferredResult(result)) {
-      result = (await resolveDeferredData(result, fetchRequest.signal, true)) || result
+      result =
+        (await resolveDeferredData(result, fetchRequest.signal, true)) || result
     }
     if (fetchControllers.get(key) === abortController) {
       fetchControllers.delete(key)
@@ -2552,7 +2780,12 @@ function createRouter(init) {
     invariant(!isDeferredResult(result), 'Unhandled fetcher deferred data')
     updateFetcherState(key, getDoneFetcher(result.data))
   }
-  async function startRedirectNavigation(request, redirect3, isNavigation, _temp2) {
+  async function startRedirectNavigation(
+    request,
+    redirect3,
+    isNavigation,
+    _temp2
+  ) {
     let {
       submission,
       fetcherSubmission,
@@ -2564,7 +2797,12 @@ function createRouter(init) {
     }
     let location = redirect3.response.headers.get('Location')
     invariant(location, 'Expected a Location header on the redirect Response')
-    location = normalizeRedirectLocation(location, new URL(request.url), basename, init.history)
+    location = normalizeRedirectLocation(
+      location,
+      new URL(request.url),
+      basename,
+      init.history
+    )
     let redirectLocation = createLocation(state.location, location, {
       _isRedirect: true,
     })
@@ -2593,7 +2831,13 @@ function createRouter(init) {
         ? Action.Replace
         : Action.Push
     let { formMethod, formAction, formEncType } = state.navigation
-    if (!submission && !fetcherSubmission && formMethod && formAction && formEncType) {
+    if (
+      !submission &&
+      !fetcherSubmission &&
+      formMethod &&
+      formAction &&
+      formEncType
+    ) {
       submission = getSubmissionFromNavigation(state.navigation)
     }
     let activeSubmission = submission || fetcherSubmission
@@ -2608,21 +2852,35 @@ function createRouter(init) {
         }),
         // Preserve these flags across redirects
         preventScrollReset: preventScrollReset || pendingPreventScrollReset,
-        enableViewTransition: isNavigation ? pendingViewTransitionEnabled : void 0,
+        enableViewTransition: isNavigation
+          ? pendingViewTransitionEnabled
+          : void 0,
       })
     } else {
-      let overrideNavigation = getLoadingNavigation(redirectLocation, submission)
+      let overrideNavigation = getLoadingNavigation(
+        redirectLocation,
+        submission
+      )
       await startNavigation(redirectHistoryAction, redirectLocation, {
         overrideNavigation,
         // Send fetcher submissions through for shouldRevalidate
         fetcherSubmission,
         // Preserve these flags across redirects
         preventScrollReset: preventScrollReset || pendingPreventScrollReset,
-        enableViewTransition: isNavigation ? pendingViewTransitionEnabled : void 0,
+        enableViewTransition: isNavigation
+          ? pendingViewTransitionEnabled
+          : void 0,
       })
     }
   }
-  async function callDataStrategy(type, state2, request, matchesToLoad, matches, fetcherKey) {
+  async function callDataStrategy(
+    type,
+    state2,
+    request,
+    matchesToLoad,
+    matches,
+    fetcherKey
+  ) {
     let results
     let dataResults = {}
     try {
@@ -2661,7 +2919,8 @@ function createRouter(init) {
           ),
         }
       } else {
-        dataResults[routeId] = await convertDataStrategyResultToDataResult(result)
+        dataResults[routeId] =
+          await convertDataStrategyResultToDataResult(result)
       }
     }
     return dataResults
@@ -2710,7 +2969,10 @@ function createRouter(init) {
       })
     )
     let loaderResults = await loaderResultsPromise
-    let fetcherResults = (await fetcherResultsPromise).reduce((acc, r) => Object.assign(acc, r), {})
+    let fetcherResults = (await fetcherResultsPromise).reduce(
+      (acc, r) => Object.assign(acc, r),
+      {}
+    )
     await Promise.all([
       resolveNavigationDeferredResults(
         matches,
@@ -2871,7 +3133,10 @@ function createRouter(init) {
         (blocker.state === 'blocked' && newBlocker.state === 'proceeding') ||
         (blocker.state === 'blocked' && newBlocker.state === 'unblocked') ||
         (blocker.state === 'proceeding' && newBlocker.state === 'unblocked'),
-      'Invalid blocker state transition: ' + blocker.state + ' -> ' + newBlocker.state
+      'Invalid blocker state transition: ' +
+        blocker.state +
+        ' -> ' +
+        newBlocker.state
     )
     let blockers = new Map(state.blockers)
     blockers.set(key, newBlocker)
@@ -2982,7 +3247,12 @@ function createRouter(init) {
         }
       } else {
         if (Object.keys(matches[0].params).length > 0) {
-          let partialMatches = matchRoutesImpl(routesToUse, pathname, basename, true)
+          let partialMatches = matchRoutesImpl(
+            routesToUse,
+            pathname,
+            basename,
+            true
+          )
           return {
             active: true,
             matches: partialMatches,
@@ -3015,7 +3285,13 @@ function createRouter(init) {
           fetcherKey,
           patch: (routeId, children) => {
             if (signal.aborted) return
-            patchRoutesImpl(routeId, children, routesToUse, localManifest, mapRouteProperties2)
+            patchRoutesImpl(
+              routeId,
+              children,
+              routesToUse,
+              localManifest,
+              mapRouteProperties2
+            )
           },
         })
       } catch (e) {
@@ -3041,11 +3317,18 @@ function createRouter(init) {
           matches: newMatches,
         }
       }
-      let newPartialMatches = matchRoutesImpl(routesToUse, pathname, basename, true)
+      let newPartialMatches = matchRoutesImpl(
+        routesToUse,
+        pathname,
+        basename,
+        true
+      )
       if (
         !newPartialMatches ||
         (partialMatches.length === newPartialMatches.length &&
-          partialMatches.every((m, i) => m.route.id === newPartialMatches[i].route.id))
+          partialMatches.every(
+            (m, i) => m.route.id === newPartialMatches[i].route.id
+          ))
       ) {
         return {
           type: 'success',
@@ -3057,12 +3340,23 @@ function createRouter(init) {
   }
   function _internalSetRoutes(newRoutes) {
     manifest = {}
-    inFlightDataRoutes = convertRoutesToDataRoutes(newRoutes, mapRouteProperties2, void 0, manifest)
+    inFlightDataRoutes = convertRoutesToDataRoutes(
+      newRoutes,
+      mapRouteProperties2,
+      void 0,
+      manifest
+    )
   }
   function patchRoutes(routeId, children) {
     let isNonHMR = inFlightDataRoutes == null
     let routesToUse = inFlightDataRoutes || dataRoutes
-    patchRoutesImpl(routeId, children, routesToUse, manifest, mapRouteProperties2)
+    patchRoutesImpl(
+      routeId,
+      children,
+      routesToUse,
+      manifest,
+      mapRouteProperties2
+    )
     if (isNonHMR) {
       dataRoutes = [...dataRoutes]
       updateState({})
@@ -3112,7 +3406,8 @@ var UNSAFE_DEFERRED_SYMBOL = Symbol('deferred')
 function isSubmissionNavigation(opts) {
   return (
     opts != null &&
-    (('formData' in opts && opts.formData != null) || ('body' in opts && opts.body !== void 0))
+    (('formData' in opts && opts.formData != null) ||
+      ('body' in opts && opts.body !== void 0))
   )
 }
 function normalizeTo(
@@ -3153,7 +3448,9 @@ function normalizeTo(
   if ((to == null || to === '' || to === '.') && activeRouteMatch) {
     let nakedIndex = hasNakedIndexQuery(path.search)
     if (activeRouteMatch.route.index && !nakedIndex) {
-      path.search = path.search ? path.search.replace(/^\?/, '?index&') : '?index'
+      path.search = path.search
+        ? path.search.replace(/^\?/, '?index&')
+        : '?index'
     } else if (!activeRouteMatch.route.index && nakedIndex) {
       let params = new URLSearchParams(path.search)
       let indexValues = params.getAll('index')
@@ -3164,7 +3461,8 @@ function normalizeTo(
     }
   }
   if (prependBasename && basename !== '/') {
-    path.pathname = path.pathname === '/' ? basename : joinPaths([basename, path.pathname])
+    path.pathname =
+      path.pathname === '/' ? basename : joinPaths([basename, path.pathname])
   }
   return createPath(path)
 }
@@ -3189,7 +3487,9 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
     }),
   })
   let rawFormMethod = opts.formMethod || 'get'
-  let formMethod = normalizeFormMethod ? rawFormMethod.toUpperCase() : rawFormMethod.toLowerCase()
+  let formMethod = normalizeFormMethod
+    ? rawFormMethod.toUpperCase()
+    : rawFormMethod.toLowerCase()
   let formAction = stripHashFromPath(path)
   if (opts.body !== void 0) {
     if (opts.formEncType === 'text/plain') {
@@ -3199,7 +3499,8 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
       let text =
         typeof opts.body === 'string'
           ? opts.body
-          : opts.body instanceof FormData || opts.body instanceof URLSearchParams
+          : opts.body instanceof FormData ||
+              opts.body instanceof URLSearchParams
             ? // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#plain-text-form-data
               Array.from(opts.body.entries()).reduce((acc, _ref3) => {
                 let [name, value] = _ref3
@@ -3222,7 +3523,8 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
         return getInvalidBodyError()
       }
       try {
-        let json3 = typeof opts.body === 'string' ? JSON.parse(opts.body) : opts.body
+        let json3 =
+          typeof opts.body === 'string' ? JSON.parse(opts.body) : opts.body
         return {
           path,
           submission: {
@@ -3239,7 +3541,10 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
       }
     }
   }
-  invariant(typeof FormData === 'function', 'FormData is not available in this environment')
+  invariant(
+    typeof FormData === 'function',
+    'FormData is not available in this environment'
+  )
   let searchParams
   let formData
   if (opts.formData) {
@@ -3265,7 +3570,8 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
   let submission = {
     formMethod,
     formAction,
-    formEncType: (opts && opts.formEncType) || 'application/x-www-form-urlencoded',
+    formEncType:
+      (opts && opts.formEncType) || 'application/x-www-form-urlencoded',
     formData,
     json: void 0,
     text: void 0,
@@ -3323,12 +3629,22 @@ function getMatchesToLoad(
   let nextUrl = history.createURL(location)
   let boundaryMatches = matches
   if (initialHydration && state.errors) {
-    boundaryMatches = getLoaderMatchesUntilBoundary(matches, Object.keys(state.errors)[0], true)
+    boundaryMatches = getLoaderMatchesUntilBoundary(
+      matches,
+      Object.keys(state.errors)[0],
+      true
+    )
   } else if (pendingActionResult && isErrorResult(pendingActionResult[1])) {
-    boundaryMatches = getLoaderMatchesUntilBoundary(matches, pendingActionResult[0])
+    boundaryMatches = getLoaderMatchesUntilBoundary(
+      matches,
+      pendingActionResult[0]
+    )
   }
-  let actionStatus = pendingActionResult ? pendingActionResult[1].statusCode : void 0
-  let shouldSkipRevalidation = skipActionErrorRevalidation && actionStatus && actionStatus >= 400
+  let actionStatus = pendingActionResult
+    ? pendingActionResult[1].statusCode
+    : void 0
+  let shouldSkipRevalidation =
+    skipActionErrorRevalidation && actionStatus && actionStatus >= 400
   let navigationMatches = boundaryMatches.filter((match, index) => {
     let { route } = match
     if (route.lazy) {
@@ -3365,7 +3681,8 @@ function getMatchesToLoad(
             ? false
             : // Forced revalidation due to submission, useRevalidator, or X-Remix-Revalidate
               isRevalidationRequired ||
-              currentUrl.pathname + currentUrl.search === nextUrl.pathname + nextUrl.search || // Search params affect all loaders
+              currentUrl.pathname + currentUrl.search ===
+                nextUrl.pathname + nextUrl.search || // Search params affect all loaders
               currentUrl.search !== nextUrl.search ||
               isNewRouteInstance(currentRouteMatch, nextRouteMatch),
         }
@@ -3417,7 +3734,9 @@ function getMatchesToLoad(
           {
             actionResult,
             actionStatus,
-            defaultShouldRevalidate: shouldSkipRevalidation ? false : isRevalidationRequired,
+            defaultShouldRevalidate: shouldSkipRevalidation
+              ? false
+              : isRevalidationRequired,
           }
         )
       )
@@ -3480,12 +3799,21 @@ function shouldRevalidateLoader(loaderMatch, arg) {
   }
   return arg.defaultShouldRevalidate
 }
-function patchRoutesImpl(routeId, children, routesToUse, manifest, mapRouteProperties2) {
+function patchRoutesImpl(
+  routeId,
+  children,
+  routesToUse,
+  manifest,
+  mapRouteProperties2
+) {
   var _childrenToPatch
   let childrenToPatch
   if (routeId) {
     let route = manifest[routeId]
-    invariant(route, 'No route found to patch children into: routeId = ' + routeId)
+    invariant(
+      route,
+      'No route found to patch children into: routeId = ' + routeId
+    )
     if (!route.children) {
       route.children = []
     }
@@ -3494,7 +3822,10 @@ function patchRoutesImpl(routeId, children, routesToUse, manifest, mapRoutePrope
     childrenToPatch = routesToUse
   }
   let uniqueChildren = children.filter(
-    (newRoute) => !childrenToPatch.some((existingRoute) => isSameRoute(newRoute, existingRoute))
+    (newRoute) =>
+      !childrenToPatch.some((existingRoute) =>
+        isSameRoute(newRoute, existingRoute)
+      )
   )
   let newRoutes = convertRoutesToDataRoutes(
     uniqueChildren,
@@ -3503,7 +3834,9 @@ function patchRoutesImpl(routeId, children, routesToUse, manifest, mapRoutePrope
       routeId || '_',
       'patch',
       String(
-        ((_childrenToPatch = childrenToPatch) == null ? void 0 : _childrenToPatch.length) || '0'
+        ((_childrenToPatch = childrenToPatch) == null
+          ? void 0
+          : _childrenToPatch.length) || '0'
       ),
     ],
     manifest
@@ -3511,7 +3844,11 @@ function patchRoutesImpl(routeId, children, routesToUse, manifest, mapRoutePrope
   childrenToPatch.push(...newRoutes)
 }
 function isSameRoute(newRoute, existingRoute) {
-  if ('id' in newRoute && 'id' in existingRoute && newRoute.id === existingRoute.id) {
+  if (
+    'id' in newRoute &&
+    'id' in existingRoute &&
+    newRoute.id === existingRoute.id
+  ) {
     return true
   }
   if (
@@ -3562,7 +3899,10 @@ async function loadLazyRouteModule(route, mapRouteProperties2, manifest) {
         '" defined but its lazy function is also returning a value for this property. ' +
         ('The lazy route property "' + lazyRouteProperty + '" will be ignored.')
     )
-    if (!isPropertyStaticallyDefined && !immutableRouteKeys.has(lazyRouteProperty)) {
+    if (
+      !isPropertyStaticallyDefined &&
+      !immutableRouteKeys.has(lazyRouteProperty)
+    ) {
       routeUpdates[lazyRouteProperty] = lazyRoute[lazyRouteProperty]
     }
   }
@@ -3599,13 +3939,19 @@ async function callDataStrategyImpl(
   requestContext
 ) {
   let loadRouteDefinitionsPromises = matches.map((m) =>
-    m.route.lazy ? loadLazyRouteModule(m.route, mapRouteProperties2, manifest) : void 0
+    m.route.lazy
+      ? loadLazyRouteModule(m.route, mapRouteProperties2, manifest)
+      : void 0
   )
   let dsMatches = matches.map((match, i) => {
     let loadRoutePromise = loadRouteDefinitionsPromises[i]
     let shouldLoad = matchesToLoad.some((m) => m.route.id === match.route.id)
     let resolve = async (handlerOverride) => {
-      if (handlerOverride && request.method === 'GET' && (match.route.lazy || match.route.loader)) {
+      if (
+        handlerOverride &&
+        request.method === 'GET' &&
+        (match.route.lazy || match.route.loader)
+      ) {
         shouldLoad = true
       }
       return shouldLoad
@@ -3742,7 +4088,11 @@ async function callLoaderOrAction(
       'You defined ' +
         (type === 'action' ? 'an action' : 'a loader') +
         ' for route ' +
-        ('"' + match.route.id + '" but didn\'t return anything from your `' + type + '` ') +
+        ('"' +
+          match.route.id +
+          '" but didn\'t return anything from your `' +
+          type +
+          '` ') +
         'function. Please return a value or `null`.'
     )
   } catch (e) {
@@ -3801,7 +4151,8 @@ async function convertDataStrategyResultToDataResult(dataStrategyResult) {
         return {
           type: ResultType.error,
           error: result.data,
-          statusCode: (_result$init = result.init) == null ? void 0 : _result$init.status,
+          statusCode:
+            (_result$init = result.init) == null ? void 0 : _result$init.status,
           headers:
             (_result$init2 = result.init) != null && _result$init2.headers
               ? new Headers(result.init.headers)
@@ -3811,7 +4162,9 @@ async function convertDataStrategyResultToDataResult(dataStrategyResult) {
       return {
         type: ResultType.error,
         error: new ErrorResponseImpl(
-          ((_result$init3 = result.init) == null ? void 0 : _result$init3.status) || 500,
+          ((_result$init3 = result.init) == null
+            ? void 0
+            : _result$init3.status) || 500,
           void 0,
           result.data
         ),
@@ -3833,10 +4186,12 @@ async function convertDataStrategyResultToDataResult(dataStrategyResult) {
     return {
       type: ResultType.deferred,
       deferredData: result,
-      statusCode: (_result$init5 = result.init) == null ? void 0 : _result$init5.status,
+      statusCode:
+        (_result$init5 = result.init) == null ? void 0 : _result$init5.status,
       headers:
-        ((_result$init6 = result.init) == null ? void 0 : _result$init6.headers) &&
-        new Headers(result.init.headers),
+        ((_result$init6 = result.init) == null
+          ? void 0
+          : _result$init6.headers) && new Headers(result.init.headers),
     }
   }
   if (isDataWithResponseInit(result)) {
@@ -3844,7 +4199,8 @@ async function convertDataStrategyResultToDataResult(dataStrategyResult) {
     return {
       type: ResultType.data,
       data: result.data,
-      statusCode: (_result$init7 = result.init) == null ? void 0 : _result$init7.status,
+      statusCode:
+        (_result$init7 = result.init) == null ? void 0 : _result$init7.status,
       headers:
         (_result$init8 = result.init) != null && _result$init8.headers
           ? new Headers(result.init.headers)
@@ -3865,9 +4221,15 @@ function normalizeRelativeRoutingRedirectResponse(
   v7_relativeSplatPath
 ) {
   let location = response.headers.get('Location')
-  invariant(location, 'Redirects returned/thrown from loaders/actions must have a Location header')
+  invariant(
+    location,
+    'Redirects returned/thrown from loaders/actions must have a Location header'
+  )
   if (!ABSOLUTE_URL_REGEX.test(location)) {
-    let trimmedMatches = matches.slice(0, matches.findIndex((m) => m.route.id === routeId) + 1)
+    let trimmedMatches = matches.slice(
+      0,
+      matches.findIndex((m) => m.route.id === routeId) + 1
+    )
     location = normalizeTo(
       new URL(request.url),
       trimmedMatches,
@@ -3880,7 +4242,12 @@ function normalizeRelativeRoutingRedirectResponse(
   }
   return response
 }
-function normalizeRedirectLocation(location, currentUrl, basename, historyInstance) {
+function normalizeRedirectLocation(
+  location,
+  currentUrl,
+  basename,
+  historyInstance
+) {
   let invalidProtocols = [
     'about:',
     'blob:',
@@ -3930,7 +4297,10 @@ function createClientSideRequest(history, location, signal, submission) {
       init.body = JSON.stringify(submission.json)
     } else if (formEncType === 'text/plain') {
       init.body = submission.text
-    } else if (formEncType === 'application/x-www-form-urlencoded' && submission.formData) {
+    } else if (
+      formEncType === 'application/x-www-form-urlencoded' &&
+      submission.formData
+    ) {
       init.body = convertFormDataToSearchParams(submission.formData)
     } else {
       init.body = submission.formData
@@ -3974,7 +4344,10 @@ function processRouteLoaderData(
     }
     let id = match.route.id
     let result = results[id]
-    invariant(!isRedirectResult(result), 'Cannot handle redirect results in processLoaderData')
+    invariant(
+      !isRedirectResult(result),
+      'Cannot handle redirect results in processLoaderData'
+    )
     if (isErrorResult(result)) {
       let error = result.error
       if (pendingError !== void 0) {
@@ -3993,7 +4366,9 @@ function processRouteLoaderData(
       loaderData[id] = void 0
       if (!foundError) {
         foundError = true
-        statusCode = isRouteErrorResponse(result.error) ? result.error.status : 500
+        statusCode = isRouteErrorResponse(result.error)
+          ? result.error.status
+          : 500
       }
       if (result.headers) {
         loaderHeaders[id] = result.headers
@@ -4002,7 +4377,11 @@ function processRouteLoaderData(
       if (isDeferredResult(result)) {
         activeDeferreds.set(id, result.deferredData)
         loaderData[id] = result.deferredData.data
-        if (result.statusCode != null && result.statusCode !== 200 && !foundError) {
+        if (
+          result.statusCode != null &&
+          result.statusCode !== 200 &&
+          !foundError
+        ) {
           statusCode = result.statusCode
         }
         if (result.headers) {
@@ -4116,7 +4495,10 @@ function findNearestBoundary(matches, routeId) {
   let eligibleMatches = routeId
     ? matches.slice(0, matches.findIndex((m) => m.route.id === routeId) + 1)
     : [...matches]
-  return eligibleMatches.reverse().find((m) => m.route.hasErrorBoundary === true) || matches[0]
+  return (
+    eligibleMatches.reverse().find((m) => m.route.hasErrorBoundary === true) ||
+    matches[0]
+  )
 }
 function getShortCircuitMatches(routes) {
   let route =
@@ -4138,7 +4520,8 @@ function getShortCircuitMatches(routes) {
   }
 }
 function getInternalRouterError(status, _temp5) {
-  let { pathname, routeId, method, type, message } = _temp5 === void 0 ? {} : _temp5
+  let { pathname, routeId, method, type, message } =
+    _temp5 === void 0 ? {} : _temp5
   let statusText = 'Unknown Server Error'
   let errorMessage = 'Unknown @remix-run/router error'
   if (status === 400) {
@@ -4159,7 +4542,8 @@ function getInternalRouterError(status, _temp5) {
     }
   } else if (status === 403) {
     statusText = 'Forbidden'
-    errorMessage = 'Route "' + routeId + '" does not match URL "' + pathname + '"'
+    errorMessage =
+      'Route "' + routeId + '" does not match URL "' + pathname + '"'
   } else if (status === 404) {
     statusText = 'Not Found'
     errorMessage = 'No route matches URL "' + pathname + '"'
@@ -4178,7 +4562,12 @@ function getInternalRouterError(status, _temp5) {
       errorMessage = 'Invalid request method "' + method.toUpperCase() + '"'
     }
   }
-  return new ErrorResponseImpl(status || 500, statusText, new Error(errorMessage), true)
+  return new ErrorResponseImpl(
+    status || 500,
+    statusText,
+    new Error(errorMessage),
+    true
+  )
 }
 function findRedirect(results) {
   let entries = Object.entries(results)
@@ -4214,7 +4603,9 @@ function isHashChangeOnly(a, b) {
   return false
 }
 function isRedirectDataStrategyResultResult(result) {
-  return isResponse(result.result) && redirectStatusCodes.has(result.result.status)
+  return (
+    isResponse(result.result) && redirectStatusCodes.has(result.result.status)
+  )
 }
 function isDeferredResult(result) {
   return result.type === ResultType.deferred
@@ -4271,7 +4662,9 @@ async function resolveNavigationDeferredResults(
   let entries = Object.entries(results)
   for (let index = 0; index < entries.length; index++) {
     let [routeId, result] = entries[index]
-    let match = matches.find((m) => (m == null ? void 0 : m.route.id) === routeId)
+    let match = matches.find(
+      (m) => (m == null ? void 0 : m.route.id) === routeId
+    )
     if (!match) {
       continue
     }
@@ -4289,21 +4682,32 @@ async function resolveNavigationDeferredResults(
     }
   }
 }
-async function resolveFetcherDeferredResults(matches, results, revalidatingFetchers) {
+async function resolveFetcherDeferredResults(
+  matches,
+  results,
+  revalidatingFetchers
+) {
   for (let index = 0; index < revalidatingFetchers.length; index++) {
     let { key, routeId, controller } = revalidatingFetchers[index]
     let result = results[key]
-    let match = matches.find((m) => (m == null ? void 0 : m.route.id) === routeId)
+    let match = matches.find(
+      (m) => (m == null ? void 0 : m.route.id) === routeId
+    )
     if (!match) {
       continue
     }
     if (isDeferredResult(result)) {
-      invariant(controller, 'Expected an AbortController for revalidating fetcher deferred result')
-      await resolveDeferredData(result, controller.signal, true).then((result2) => {
-        if (result2) {
-          results[key] = result2
+      invariant(
+        controller,
+        'Expected an AbortController for revalidating fetcher deferred result'
+      )
+      await resolveDeferredData(result, controller.signal, true).then(
+        (result2) => {
+          if (result2) {
+            results[key] = result2
+          }
         }
-      })
+      )
     }
   }
 }
@@ -4337,15 +4741,26 @@ function hasNakedIndexQuery(search) {
   return new URLSearchParams(search).getAll('index').some((v) => v === '')
 }
 function getTargetMatch(matches, location) {
-  let search = typeof location === 'string' ? parsePath(location).search : location.search
-  if (matches[matches.length - 1].route.index && hasNakedIndexQuery(search || '')) {
+  let search =
+    typeof location === 'string' ? parsePath(location).search : location.search
+  if (
+    matches[matches.length - 1].route.index &&
+    hasNakedIndexQuery(search || '')
+  ) {
     return matches[matches.length - 1]
   }
   let pathMatches = getPathContributingMatches(matches)
   return pathMatches[pathMatches.length - 1]
 }
 function getSubmissionFromNavigation(navigation) {
-  let { formMethod, formAction, formEncType, text, formData, json: json3 } = navigation
+  let {
+    formMethod,
+    formAction,
+    formEncType,
+    text,
+    formData,
+    json: json3,
+  } = navigation
   if (!formMethod || !formAction || !formEncType) {
     return
   }
@@ -4473,7 +4888,9 @@ function getDoneFetcher(data) {
 }
 function restoreAppliedTransitions(_window, transitions) {
   try {
-    let sessionPositions = _window.sessionStorage.getItem(TRANSITIONS_STORAGE_KEY)
+    let sessionPositions = _window.sessionStorage.getItem(
+      TRANSITIONS_STORAGE_KEY
+    )
     if (sessionPositions) {
       let json3 = JSON.parse(sessionPositions)
       for (let [k, v] of Object.entries(json3 || {})) {
@@ -4491,9 +4908,17 @@ function persistAppliedTransitions(_window, transitions) {
       json3[k] = [...v]
     }
     try {
-      _window.sessionStorage.setItem(TRANSITIONS_STORAGE_KEY, JSON.stringify(json3))
+      _window.sessionStorage.setItem(
+        TRANSITIONS_STORAGE_KEY,
+        JSON.stringify(json3)
+      )
     } catch (error) {
-      warning(false, 'Failed to save applied view transitions in sessionStorage (' + error + ').')
+      warning(
+        false,
+        'Failed to save applied view transitions in sessionStorage (' +
+          error +
+          ').'
+      )
     }
   }
 }
@@ -4565,7 +4990,8 @@ function useHref(to, _temp) {
   })
   let joinedPathname = pathname
   if (basename !== '/') {
-    joinedPathname = pathname === '/' ? basename : joinPaths([basename, pathname])
+    joinedPathname =
+      pathname === '/' ? basename : joinPaths([basename, pathname])
   }
   return navigator.createHref({
     pathname: joinedPathname,
@@ -4604,7 +5030,10 @@ function useMatch(pattern) {
       : invariant(false)
     : void 0
   let { pathname } = useLocation()
-  return React.useMemo(() => matchPath(pattern, decodePath(pathname)), [pathname, pattern])
+  return React.useMemo(
+    () => matchPath(pattern, decodePath(pathname)),
+    [pathname, pattern]
+  )
 }
 var navigateEffectWarning =
   'You should call navigate() in a React.useEffect(), not when your component is first rendered.'
@@ -4633,7 +5062,9 @@ function useNavigateUnstable() {
   let { basename, future, navigator } = React.useContext(NavigationContext)
   let { matches } = React.useContext(RouteContext)
   let { pathname: locationPathname } = useLocation()
-  let routePathnamesJson = JSON.stringify(getResolveToMatches(matches, future.v7_relativeSplatPath))
+  let routePathnamesJson = JSON.stringify(
+    getResolveToMatches(matches, future.v7_relativeSplatPath)
+  )
   let activeRef = React.useRef(false)
   useIsomorphicLayoutEffect(() => {
     activeRef.current = true
@@ -4656,11 +5087,24 @@ function useNavigateUnstable() {
         options.relative === 'path'
       )
       if (dataRouterContext == null && basename !== '/') {
-        path.pathname = path.pathname === '/' ? basename : joinPaths([basename, path.pathname])
+        path.pathname =
+          path.pathname === '/'
+            ? basename
+            : joinPaths([basename, path.pathname])
       }
-      ;(options.replace ? navigator.replace : navigator.push)(path, options.state, options)
+      ;(options.replace ? navigator.replace : navigator.push)(
+        path,
+        options.state,
+        options
+      )
     },
-    [basename, navigator, routePathnamesJson, locationPathname, dataRouterContext]
+    [
+      basename,
+      navigator,
+      routePathnamesJson,
+      locationPathname,
+      dataRouterContext,
+    ]
   )
   return navigate
 }
@@ -4691,9 +5135,17 @@ function useResolvedPath(to, _temp2) {
   let { future } = React.useContext(NavigationContext)
   let { matches } = React.useContext(RouteContext)
   let { pathname: locationPathname } = useLocation()
-  let routePathnamesJson = JSON.stringify(getResolveToMatches(matches, future.v7_relativeSplatPath))
+  let routePathnamesJson = JSON.stringify(
+    getResolveToMatches(matches, future.v7_relativeSplatPath)
+  )
   return React.useMemo(
-    () => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative === 'path'),
+    () =>
+      resolveTo(
+        to,
+        JSON.parse(routePathnamesJson),
+        locationPathname,
+        relative === 'path'
+      ),
     [to, routePathnamesJson, locationPathname, relative]
   )
 }
@@ -4724,11 +5176,17 @@ function useRoutesImpl(routes, locationArg, dataRouterState, future) {
       parentPathname,
       !parentRoute || parentPath.endsWith('*'),
       'You rendered descendant <Routes> (or called `useRoutes()`) at ' +
-        ('"' + parentPathname + '" (under <Route path="' + parentPath + '">) but the ') +
+        ('"' +
+          parentPathname +
+          '" (under <Route path="' +
+          parentPath +
+          '">) but the ') +
         `parent route path has no trailing "*". This means if you navigate deeper, the parent won't match anymore and therefore the child routes will never render.
 
 ` +
-        ('Please change the parent <Route path="' + parentPath + '"> to <Route ') +
+        ('Please change the parent <Route path="' +
+          parentPath +
+          '"> to <Route ') +
         ('path="' + (parentPath === '/' ? '*' : parentPath + '/*') + '">.')
     )
   }
@@ -4736,7 +5194,8 @@ function useRoutesImpl(routes, locationArg, dataRouterState, future) {
   let location
   if (locationArg) {
     var _parsedLocationArg$pa
-    let parsedLocationArg = typeof locationArg === 'string' ? parsePath(locationArg) : locationArg
+    let parsedLocationArg =
+      typeof locationArg === 'string' ? parsePath(locationArg) : locationArg
     !(
       parentPathnameBase === '/' ||
       ((_parsedLocationArg$pa = parsedLocationArg.pathname) == null
@@ -4952,7 +5411,11 @@ var RenderErrorBoundary = class extends React.Component {
     }
   }
   componentDidCatch(error, errorInfo) {
-    console.error('React Router caught the following error during render', error, errorInfo)
+    console.error(
+      'React Router caught the following error during render',
+      error,
+      errorInfo
+    )
   }
   render() {
     return this.state.error !== void 0
@@ -5019,10 +5482,14 @@ function _renderMatches(matches, parentMatches, dataRouterState, future) {
     }
   }
   let renderedMatches = matches
-  let errors = (_dataRouterState = dataRouterState) == null ? void 0 : _dataRouterState.errors
+  let errors =
+    (_dataRouterState = dataRouterState) == null
+      ? void 0
+      : _dataRouterState.errors
   if (errors != null) {
     let errorIndex = renderedMatches.findIndex(
-      (m) => m.route.id && (errors == null ? void 0 : errors[m.route.id]) !== void 0
+      (m) =>
+        m.route.id && (errors == null ? void 0 : errors[m.route.id]) !== void 0
     )
     !(errorIndex >= 0)
       ? true
@@ -5033,7 +5500,10 @@ function _renderMatches(matches, parentMatches, dataRouterState, future) {
           )
         : invariant(false)
       : void 0
-    renderedMatches = renderedMatches.slice(0, Math.min(renderedMatches.length, errorIndex + 1))
+    renderedMatches = renderedMatches.slice(
+      0,
+      Math.min(renderedMatches.length, errorIndex + 1)
+    )
   }
   let renderFallback = false
   let fallbackIndex = -1
@@ -5108,7 +5578,8 @@ function _renderMatches(matches, parentMatches, dataRouterState, future) {
         children,
       })
     }
-    return dataRouterState && (match.route.ErrorBoundary || match.route.errorElement || index === 0)
+    return dataRouterState &&
+      (match.route.ErrorBoundary || match.route.errorElement || index === 0)
       ? React.createElement(RenderErrorBoundary, {
           location: dataRouterState.location,
           revalidation: dataRouterState.revalidation,
@@ -5151,7 +5622,11 @@ function getDataRouterConsoleError(hookName) {
 }
 function useDataRouterContext(hookName) {
   let ctx = React.useContext(DataRouterContext)
-  !ctx ? (true ? invariant(false, getDataRouterConsoleError(hookName)) : invariant(false)) : void 0
+  !ctx
+    ? true
+      ? invariant(false, getDataRouterConsoleError(hookName))
+      : invariant(false)
+    : void 0
   return ctx
 }
 function useDataRouterState(hookName) {
@@ -5177,7 +5652,10 @@ function useCurrentRouteId(hookName) {
   let thisRoute = route.matches[route.matches.length - 1]
   !thisRoute.route.id
     ? true
-      ? invariant(false, hookName + ' can only be used on routes that contain a unique "id"')
+      ? invariant(
+          false,
+          hookName + ' can only be used on routes that contain a unique "id"'
+        )
       : invariant(false)
     : void 0
   return thisRoute.route.id
@@ -5201,7 +5679,9 @@ function useRevalidator() {
   )
 }
 function useMatches() {
-  let { matches, loaderData } = useDataRouterState(DataRouterStateHook.UseMatches)
+  let { matches, loaderData } = useDataRouterState(
+    DataRouterStateHook.UseMatches
+  )
   return React.useMemo(
     () => matches.map((m) => convertRouteMatchToUiMatch(m, loaderData)),
     [matches, loaderData]
@@ -5211,7 +5691,9 @@ function useLoaderData() {
   let state = useDataRouterState(DataRouterStateHook.UseLoaderData)
   let routeId = useCurrentRouteId(DataRouterStateHook.UseLoaderData)
   if (state.errors && state.errors[routeId] != null) {
-    console.error('You cannot `useLoaderData` in an errorElement (routeId: ' + routeId + ')')
+    console.error(
+      'You cannot `useLoaderData` in an errorElement (routeId: ' + routeId + ')'
+    )
     return void 0
   }
   return state.loaderData[routeId]
@@ -5233,7 +5715,9 @@ function useRouteError() {
   if (error !== void 0) {
     return error
   }
-  return (_state$errors = state.errors) == null ? void 0 : _state$errors[routeId]
+  return (_state$errors = state.errors) == null
+    ? void 0
+    : _state$errors[routeId]
 }
 function useAsyncValue() {
   let value = React.useContext(AwaitContext)
@@ -5259,10 +5743,14 @@ function useBlocker(shouldBlock) {
       let { currentLocation, nextLocation, historyAction } = arg
       return shouldBlock({
         currentLocation: _extends2({}, currentLocation, {
-          pathname: stripBasename(currentLocation.pathname, basename) || currentLocation.pathname,
+          pathname:
+            stripBasename(currentLocation.pathname, basename) ||
+            currentLocation.pathname,
         }),
         nextLocation: _extends2({}, nextLocation, {
-          pathname: stripBasename(nextLocation.pathname, basename) || nextLocation.pathname,
+          pathname:
+            stripBasename(nextLocation.pathname, basename) ||
+            nextLocation.pathname,
         }),
         historyAction,
       })
@@ -5339,7 +5827,9 @@ var logDeprecation = (flag, msg, link) =>
       ('For more information, see ' + link + '.')
   )
 function logV6DeprecationWarnings(renderFuture, routerFuture) {
-  if ((renderFuture == null ? void 0 : renderFuture.v7_startTransition) === void 0) {
+  if (
+    (renderFuture == null ? void 0 : renderFuture.v7_startTransition) === void 0
+  ) {
     logDeprecation(
       'v7_startTransition',
       'React Router will begin wrapping state updates in `React.startTransition` in v7',
@@ -5347,7 +5837,8 @@ function logV6DeprecationWarnings(renderFuture, routerFuture) {
     )
   }
   if (
-    (renderFuture == null ? void 0 : renderFuture.v7_relativeSplatPath) === void 0 &&
+    (renderFuture == null ? void 0 : renderFuture.v7_relativeSplatPath) ===
+      void 0 &&
     (!routerFuture || routerFuture.v7_relativeSplatPath === void 0)
   ) {
     logDeprecation(
@@ -5511,7 +6002,13 @@ function Router(_ref5) {
   if (typeof locationProp === 'string') {
     locationProp = parsePath(locationProp)
   }
-  let { pathname = '/', search = '', hash = '', state = null, key = 'default' } = locationProp
+  let {
+    pathname = '/',
+    search = '',
+    hash = '',
+    state = null,
+    key = 'default',
+  } = locationProp
   let locationContext = React.useMemo(() => {
     let trailingPathname = stripBasename(pathname, basename)
     if (trailingPathname == null) {
@@ -5534,7 +6031,11 @@ function Router(_ref5) {
         '<Router basename="' +
           basename +
           '"> is not able to match the URL ' +
-          ('"' + pathname + search + hash + '" because it does not start with the ') +
+          ('"' +
+            pathname +
+            search +
+            hash +
+            '" because it does not start with the ') +
           "basename, so the <Router> won't render anything."
       )
     : void 0
@@ -5587,7 +6088,11 @@ var AwaitErrorBoundary = class extends React.Component {
     }
   }
   componentDidCatch(error, errorInfo) {
-    console.error('<Await> caught the following error during render', error, errorInfo)
+    console.error(
+      '<Await> caught the following error during render',
+      error,
+      errorInfo
+    )
   }
   render() {
     let { children, errorElement, resolve } = this.props
@@ -5636,7 +6141,10 @@ var AwaitErrorBoundary = class extends React.Component {
           })
       )
     }
-    if (status === AwaitRenderStatus.error && promise._error instanceof AbortedDeferredError) {
+    if (
+      status === AwaitRenderStatus.error &&
+      promise._error instanceof AbortedDeferredError
+    ) {
       throw neverSettledPromise
     }
     if (status === AwaitRenderStatus.error && !errorElement) {
@@ -5674,7 +6182,10 @@ function createRoutesFromChildren(children, parentPath) {
     }
     let treePath = [...parentPath, index]
     if (element.type === React.Fragment) {
-      routes.push.apply(routes, createRoutesFromChildren(element.props.children, treePath))
+      routes.push.apply(
+        routes,
+        createRoutesFromChildren(element.props.children, treePath)
+      )
       return
     }
     !(element.type === Route)
@@ -5682,7 +6193,9 @@ function createRoutesFromChildren(children, parentPath) {
         ? invariant(
             false,
             '[' +
-              (typeof element.type === 'string' ? element.type : element.type.name) +
+              (typeof element.type === 'string'
+                ? element.type
+                : element.type.name) +
               '] is not a <Route> component. All component children of <Routes> must be a <Route> or <React.Fragment>'
           )
         : invariant(false)
@@ -5703,13 +6216,18 @@ function createRoutesFromChildren(children, parentPath) {
       action: element.props.action,
       errorElement: element.props.errorElement,
       ErrorBoundary: element.props.ErrorBoundary,
-      hasErrorBoundary: element.props.ErrorBoundary != null || element.props.errorElement != null,
+      hasErrorBoundary:
+        element.props.ErrorBoundary != null ||
+        element.props.errorElement != null,
       shouldRevalidate: element.props.shouldRevalidate,
       handle: element.props.handle,
       lazy: element.props.lazy,
     }
     if (element.props.children) {
-      route.children = createRoutesFromChildren(element.props.children, treePath)
+      route.children = createRoutesFromChildren(
+        element.props.children,
+        treePath
+      )
     }
     routes.push(route)
   })
@@ -5788,7 +6306,8 @@ function createMemoryRouter(routes, opts) {
     routes,
     mapRouteProperties,
     dataStrategy: opts == null ? void 0 : opts.dataStrategy,
-    patchRoutesOnNavigation: opts == null ? void 0 : opts.patchRoutesOnNavigation,
+    patchRoutesOnNavigation:
+      opts == null ? void 0 : opts.patchRoutesOnNavigation,
   }).initialize()
 }
 
@@ -5850,11 +6369,15 @@ function createSearchParams(init) {
     init = ''
   }
   return new URLSearchParams(
-    typeof init === 'string' || Array.isArray(init) || init instanceof URLSearchParams
+    typeof init === 'string' ||
+      Array.isArray(init) ||
+      init instanceof URLSearchParams
       ? init
       : Object.keys(init).reduce((memo2, key) => {
           let value = init[key]
-          return memo2.concat(Array.isArray(value) ? value.map((v) => [key, v]) : [[key, value]])
+          return memo2.concat(
+            Array.isArray(value) ? value.map((v) => [key, v]) : [[key, value]]
+          )
         }, [])
   )
 }
@@ -5921,15 +6444,21 @@ function getFormSubmissionInfo(target, basename) {
     formData = new FormData(target)
   } else if (
     isButtonElement(target) ||
-    (isInputElement(target) && (target.type === 'submit' || target.type === 'image'))
+    (isInputElement(target) &&
+      (target.type === 'submit' || target.type === 'image'))
   ) {
     let form = target.form
     if (form == null) {
-      throw new Error('Cannot submit a <button> or <input type="submit"> without a <form>')
+      throw new Error(
+        'Cannot submit a <button> or <input type="submit"> without a <form>'
+      )
     }
     let attr = target.getAttribute('formaction') || form.getAttribute('action')
     action = attr ? stripBasename(attr, basename) : null
-    method = target.getAttribute('formmethod') || form.getAttribute('method') || defaultMethod
+    method =
+      target.getAttribute('formmethod') ||
+      form.getAttribute('method') ||
+      defaultMethod
     encType =
       getFormEncType(target.getAttribute('formenctype')) ||
       getFormEncType(form.getAttribute('enctype')) ||
@@ -6014,11 +6543,13 @@ function createBrowserRouter(routes, opts) {
     history: createBrowserHistory({
       window: opts == null ? void 0 : opts.window,
     }),
-    hydrationData: (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
+    hydrationData:
+      (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
     routes,
     mapRouteProperties,
     dataStrategy: opts == null ? void 0 : opts.dataStrategy,
-    patchRoutesOnNavigation: opts == null ? void 0 : opts.patchRoutesOnNavigation,
+    patchRoutesOnNavigation:
+      opts == null ? void 0 : opts.patchRoutesOnNavigation,
     window: opts == null ? void 0 : opts.window,
   }).initialize()
 }
@@ -6031,17 +6562,20 @@ function createHashRouter(routes, opts) {
     history: createHashHistory({
       window: opts == null ? void 0 : opts.window,
     }),
-    hydrationData: (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
+    hydrationData:
+      (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
     routes,
     mapRouteProperties,
     dataStrategy: opts == null ? void 0 : opts.dataStrategy,
-    patchRoutesOnNavigation: opts == null ? void 0 : opts.patchRoutesOnNavigation,
+    patchRoutesOnNavigation:
+      opts == null ? void 0 : opts.patchRoutesOnNavigation,
     window: opts == null ? void 0 : opts.window,
   }).initialize()
 }
 function parseHydrationData() {
   var _window
-  let state = (_window = window) == null ? void 0 : _window.__staticRouterHydrationData
+  let state =
+    (_window = window) == null ? void 0 : _window.__staticRouterHydrationData
   if (state && state.errors) {
     state = _extends3({}, state, {
       errors: deserializeErrors(state.errors),
@@ -6250,7 +6784,11 @@ function RouterProvider(_ref) {
     }
   }, [optInStartTransition, pendingState, renderDfd, router.window])
   React2.useEffect(() => {
-    if (renderDfd && pendingState && state.location.key === pendingState.location.key) {
+    if (
+      renderDfd &&
+      pendingState &&
+      state.location.key === pendingState.location.key
+    ) {
       renderDfd.resolve()
     }
   }, [renderDfd, transition, state.location, pendingState])
@@ -6308,7 +6846,10 @@ function RouterProvider(_ref) {
     }),
     [router.future.v7_relativeSplatPath]
   )
-  React2.useEffect(() => logV6DeprecationWarnings(future, router.future), [future, router.future])
+  React2.useEffect(
+    () => logV6DeprecationWarnings(future, router.future),
+    [future, router.future]
+  )
   return React2.createElement(
     React2.Fragment,
     null,
@@ -6484,7 +7025,9 @@ var Link = React2.forwardRef(function LinkWithRef(_ref7, ref) {
     if (isBrowser) {
       try {
         let currentUrl = new URL(window.location.href)
-        let targetUrl = to.startsWith('//') ? new URL(currentUrl.protocol + to) : new URL(to)
+        let targetUrl = to.startsWith('//')
+          ? new URL(currentUrl.protocol + to)
+          : new URL(to)
         let path = stripBasename(targetUrl.pathname, basename)
         if (targetUrl.origin === currentUrl.origin && path != null) {
           to = path + targetUrl.search + targetUrl.hash
@@ -6569,14 +7112,19 @@ var NavLink = React2.forwardRef(function NavLinkWithRef(_ref8, ref) {
       : null
   if (!caseSensitive) {
     locationPathname = locationPathname.toLowerCase()
-    nextLocationPathname = nextLocationPathname ? nextLocationPathname.toLowerCase() : null
+    nextLocationPathname = nextLocationPathname
+      ? nextLocationPathname.toLowerCase()
+      : null
     toPathname = toPathname.toLowerCase()
   }
   if (nextLocationPathname && basename) {
-    nextLocationPathname = stripBasename(nextLocationPathname, basename) || nextLocationPathname
+    nextLocationPathname =
+      stripBasename(nextLocationPathname, basename) || nextLocationPathname
   }
   const endSlashPosition =
-    toPathname !== '/' && toPathname.endsWith('/') ? toPathname.length - 1 : toPathname.length
+    toPathname !== '/' && toPathname.endsWith('/')
+      ? toPathname.length - 1
+      : toPathname.length
   let isActive =
     locationPathname === toPathname ||
     (!end &&
@@ -6607,7 +7155,8 @@ var NavLink = React2.forwardRef(function NavLinkWithRef(_ref8, ref) {
       .filter(Boolean)
       .join(' ')
   }
-  let style = typeof styleProp === 'function' ? styleProp(renderProps) : styleProp
+  let style =
+    typeof styleProp === 'function' ? styleProp(renderProps) : styleProp
   return React2.createElement(
     Link,
     _extends3({}, rest, {
@@ -6649,7 +7198,9 @@ var Form = React2.forwardRef((_ref9, forwardedRef) => {
     if (event.defaultPrevented) return
     event.preventDefault()
     let submitter = event.nativeEvent.submitter
-    let submitMethod = (submitter == null ? void 0 : submitter.getAttribute('formmethod')) || method
+    let submitMethod =
+      (submitter == null ? void 0 : submitter.getAttribute('formmethod')) ||
+      method
     submit(submitter || event.currentTarget, {
       fetcherKey,
       method: submitMethod,
@@ -6710,7 +7261,11 @@ function getDataRouterConsoleError2(hookName) {
 }
 function useDataRouterContext2(hookName) {
   let ctx = React2.useContext(DataRouterContext)
-  !ctx ? (true ? invariant(false, getDataRouterConsoleError2(hookName)) : invariant(false)) : void 0
+  !ctx
+    ? true
+      ? invariant(false, getDataRouterConsoleError2(hookName))
+      : invariant(false)
+    : void 0
   return ctx
 }
 function useDataRouterState2(hookName) {
@@ -6741,7 +7296,9 @@ function useLinkClickHandler(to, _temp) {
       if (shouldProcessLinkClick(event, target)) {
         event.preventDefault()
         let replace2 =
-          replaceProp !== void 0 ? replaceProp : createPath(location) === createPath(path)
+          replaceProp !== void 0
+            ? replaceProp
+            : createPath(location) === createPath(path)
         navigate(to, {
           replace: replace2,
           state,
@@ -6818,7 +7375,10 @@ function useSubmit() {
         options = {}
       }
       validateClientSideSubmission()
-      let { action, method, encType, formData, body } = getFormSubmissionInfo(target, basename)
+      let { action, method, encType, formData, body } = getFormSubmissionInfo(
+        target,
+        basename
+      )
       if (options.navigate === false) {
         let key = options.fetcherKey || getUniqueFetcherId()
         router.fetch(key, currentRouteId, options.action || action, {
@@ -6880,7 +7440,8 @@ function useFormAction(action, _temp2) {
     path.search = path.search ? path.search.replace(/^\?/, '?index&') : '?index'
   }
   if (basename !== '/') {
-    path.pathname = path.pathname === '/' ? basename : joinPaths([basename, path.pathname])
+    path.pathname =
+      path.pathname === '/' ? basename : joinPaths([basename, path.pathname])
   }
   return createPath(path)
 }
@@ -6907,7 +7468,10 @@ function useFetcher(_temp3) {
     : void 0
   !(routeId != null)
     ? true
-      ? invariant(false, 'useFetcher can only be used on routes that contain a unique "id"')
+      ? invariant(
+          false,
+          'useFetcher can only be used on routes that contain a unique "id"'
+        )
       : invariant(false)
     : void 0
   let defaultKey = useIdImpl ? useIdImpl() : ''
@@ -7036,7 +7600,9 @@ function useScrollRestoration(_temp4) {
   if (typeof document !== 'undefined') {
     React2.useLayoutEffect(() => {
       try {
-        let sessionPositions = sessionStorage.getItem(storageKey || SCROLL_RESTORATION_STORAGE_KEY)
+        let sessionPositions = sessionStorage.getItem(
+          storageKey || SCROLL_RESTORATION_STORAGE_KEY
+        )
         if (sessionPositions) {
           savedScrollPositions = JSON.parse(sessionPositions)
         }
@@ -7049,7 +7615,9 @@ function useScrollRestoration(_temp4) {
               getKey(
                 // Strip the basename to match useLocation()
                 _extends3({}, location2, {
-                  pathname: stripBasename(location2.pathname, basename) || location2.pathname,
+                  pathname:
+                    stripBasename(location2.pathname, basename) ||
+                    location2.pathname,
                 }),
                 matches2
               )
@@ -7073,7 +7641,9 @@ function useScrollRestoration(_temp4) {
         return
       }
       if (location.hash) {
-        let el = document.getElementById(decodeURIComponent(location.hash.slice(1)))
+        let el = document.getElementById(
+          decodeURIComponent(location.hash.slice(1))
+        )
         if (el) {
           el.scrollIntoView()
           return
@@ -7148,7 +7718,9 @@ function useViewTransitionState(to, opts) {
         )
       : invariant(false)
     : void 0
-  let { basename } = useDataRouterContext2(DataRouterHook2.useViewTransitionState)
+  let { basename } = useDataRouterContext2(
+    DataRouterHook2.useViewTransitionState
+  )
   let path = useResolvedPath(to, {
     relative: opts.relative,
   })
@@ -7159,8 +7731,12 @@ function useViewTransitionState(to, opts) {
     stripBasename(vtContext.currentLocation.pathname, basename) ||
     vtContext.currentLocation.pathname
   let nextPath =
-    stripBasename(vtContext.nextLocation.pathname, basename) || vtContext.nextLocation.pathname
-  return matchPath(path.pathname, nextPath) != null || matchPath(path.pathname, currentPath) != null
+    stripBasename(vtContext.nextLocation.pathname, basename) ||
+    vtContext.nextLocation.pathname
+  return (
+    matchPath(path.pathname, nextPath) != null ||
+    matchPath(path.pathname, currentPath) != null
+  )
 }
 export {
   AbortedDeferredError,

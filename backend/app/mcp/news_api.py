@@ -1,7 +1,7 @@
 """News API Connector"""
 
-from app.mcp.base import BaseMCP
 from app.config import settings
+from app.mcp.base import BaseMCP
 
 
 class NewsAPI(BaseMCP):

@@ -1,8 +1,8 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+
 
 class User(BaseModel):
-    id: Optional[str] = None
+    id: str | None = None
     email: EmailStr
     password: str
-    role: str = "user"   # user | admin
+    role: str = "user"  # user | admin

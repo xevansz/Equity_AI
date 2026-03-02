@@ -8,9 +8,7 @@ class DataService:
         financials = await financial_loader.load_financials(symbol)
 
         # --- Clean Alpha Vantage rate-limit responses ---
-        financials["income_statement"] = clean_rate_limit(
-            financials.get("income_statement")
-        )
+        financials["income_statement"] = clean_rate_limit(financials.get("income_statement"))
         financials["balance_sheet"] = clean_rate_limit(financials.get("balance_sheet"))
         financials["cash_flow"] = clean_rate_limit(financials.get("cash_flow"))
 

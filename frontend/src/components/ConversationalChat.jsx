@@ -65,7 +65,9 @@ const ConversationalChat = () => {
         {
           id: Date.now() + 1,
           text:
-            err.response?.data?.message || err.message || 'Something went wrong. Please try again.',
+            err.response?.data?.message ||
+            err.message ||
+            'Something went wrong. Please try again.',
           sender: 'bot',
           isError: true,
         },
@@ -79,7 +81,9 @@ const ConversationalChat = () => {
     <div className="flex flex-col bg-background flex-1 min-h-0">
       <div className="bg-secondary border-b border-text-muted/10 p-4">
         <h1 className="text-xl font-bold">Equity Research Assistant</h1>
-        <p className="text-sm text-muted">Ask me anything about stocks and companies</p>
+        <p className="text-sm text-muted">
+          Ask me anything about stocks and companies
+        </p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -90,10 +94,14 @@ const ConversationalChat = () => {
           >
             <div
               className={`max-w-lg px-4 py-2 rounded-lg ${
-                msg.sender === 'user' ? 'bg-primary text-background' : 'bg-surface text-text'
+                msg.sender === 'user'
+                  ? 'bg-primary text-background'
+                  : 'bg-surface text-text'
               }`}
             >
-              <p className="text-sm whitespace-pre-line">{cleanMarkdown(msg.text)}</p>
+              <p className="text-sm whitespace-pre-line">
+                {cleanMarkdown(msg.text)}
+              </p>
             </div>
           </div>
         ))}
@@ -115,7 +123,10 @@ const ConversationalChat = () => {
           className="flex-1 px-4 py-2 rounded-lg bg-surface"
           placeholder="Ask about a stock..."
         />
-        <button onClick={handleSend} className="bg-primary px-4 py-2 rounded-lg">
+        <button
+          onClick={handleSend}
+          className="bg-primary px-4 py-2 rounded-lg"
+        >
           <Send size={16} />
         </button>
       </div>

@@ -1,5 +1,7 @@
 """Company Model"""
+
 from pydantic import BaseModel
+
 
 class Company(BaseModel):
     symbol: str

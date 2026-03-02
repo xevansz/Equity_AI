@@ -1,9 +1,12 @@
 """Chat API Endpoint"""
 
-from fastapi import APIRouter, HTTPException, Depends
+from backend.app import database
+from backend.app.models.user import User
+from fastapi import APIRouter, Depends, HTTPException
+
+from app.dependencies import get_current_user, get_database
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.services.chat_service import ChatService
-from app.dependencies import get_database, get_current_user
 
 router = APIRouter()
 
@@ -11,8 +14,8 @@ router = APIRouter()
 @router.post("/chat", response_model=ChatResponse)
 async def chat(
     request: ChatRequest,
-    db=Depends(get_database),
-    user=Depends(get_current_user),
+    db: database = Depends(get_database),
+    user: User = Depends(get_current_user),
 ):
     """Conversational chat with equity research"""
     try:
@@ -32,4 +35,4 @@ async def chat(
         raise
     except Exception as e:
         print(f"CHAT API ERROR: {repr(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e

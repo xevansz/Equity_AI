@@ -1,11 +1,12 @@
 """Chat Service"""
 
-import time
-from app.rag.rag_pipeline import rag_pipeline
-from app.conversational.response_generator import response_generator
-from app.conversational.memory import ConversationMemory
-from app.schemas.chat import ChatRequest, ChatResponse
 import asyncio
+import time
+
+from app.conversational.memory import ConversationMemory
+from app.conversational.response_generator import response_generator
+from app.rag.rag_pipeline import rag_pipeline
+from app.schemas.chat import ChatRequest, ChatResponse
 
 
 class ChatService:

@@ -1,4 +1,3 @@
-
 def analyze_financials(symbol: str, db):
     return f"""
 Financial Analysis for {symbol}
@@ -12,16 +11,18 @@ Financial Analysis for {symbol}
 These metrics indicate the financial stability and operating efficiency of {symbol}.
 """
 
+
 """Financial Metrics Analysis"""
+
 
 class FinancialAnalyzer:
     def analyze_liquidity(self, balance_sheet: dict):
         # Current ratio, quick ratio
         return {"current_ratio": 1.5, "quick_ratio": 1.2}
-    
+
     def analyze_solvency(self, balance_sheet: dict):
         # Debt ratios
         return {"debt_to_equity": 0.5, "interest_coverage": 5.0}
 
-financial_analyzer = FinancialAnalyzer()
 
+financial_analyzer = FinancialAnalyzer()

@@ -2,8 +2,9 @@
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
+
+from app.dependencies import get_current_user, get_database
 from app.research_engine.report_generator import generate_equity_report
-from app.dependencies import get_database, get_current_user
 
 router = APIRouter()
 

@@ -15,9 +15,7 @@ class ResearchService:
         financials = await financial_loader.load_financials(symbol)
 
         # Analyze
-        analysis = financial_analyzer.analyze_liquidity(
-            financials.get("balance_sheet", {})
-        )
+        analysis = financial_analyzer.analyze_liquidity(financials.get("balance_sheet", {}))
 
         # Generate report
         report = await report_generator.generate_report(symbol, {"financial": analysis})

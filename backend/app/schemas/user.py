@@ -1,10 +1,9 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
 
 
 # Used when returning user info (no password!)
 class UserOut(BaseModel):
-    id: Optional[str]
+    id: str | None
     email: EmailStr
     role: str
 

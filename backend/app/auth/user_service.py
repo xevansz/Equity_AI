@@ -6,9 +6,7 @@ class UserService:
         self.collection = db.users
 
     async def create_user(self, email, password, role="user"):
-        await self.collection.insert_one(
-            {"email": email, "password": hash_password(password), "role": role}
-        )
+        await self.collection.insert_one({"email": email, "password": hash_password(password), "role": role})
 
     async def get_user(self, email):
         return await self.collection.find_one({"email": email})
@@ -24,7 +22,5 @@ class UserService:
     # 🔥 ADD THIS
     async def update_password(self, email, new_password):
         hashed = hash_password(new_password)
-        result = await self.collection.update_one(
-            {"email": email}, {"$set": {"password": hashed}}
-        )
+        result = await self.collection.update_one({"email": email}, {"$set": {"password": hashed}})
         return result.modified_count > 0

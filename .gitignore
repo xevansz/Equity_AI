@@ -19,3 +19,6 @@ desktop.ini
 
 # ide
 *~
+
+# db
+*.sqlite3

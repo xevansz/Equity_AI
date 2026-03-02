@@ -23,10 +23,14 @@ class Database:
     def get_database(self):
         return self.db
 
-    async def create_index(self):
+    async def create_index_symbol(self):  # Do we need this?
         if self.db is not None:
             collection = self.db["symbol_cache"]
             await collection.create_index([("company_name", 1)])
+
+    async def create_index_watchlist(self):
+        if self.db is not None:
+            await self.db.watchlist.create_index([("user_id", 1), ("symbol", 1)], unique=True)
 
 
 database = Database()
@@ -41,4 +45,5 @@ async def close_databases():
 
 
 async def create_index_cache():
-    await database.create_index()
+    await database.create_index_symbol()
+    await database.create_index_watchlist()

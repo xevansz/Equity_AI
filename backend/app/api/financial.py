@@ -1,13 +1,13 @@
 """Financial Data API"""
 
-from backend.app.models import user
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.dependencies import get_current_user
+from app.models import user
 from app.schemas.financial import FinancialRequest, FinancialResponse
 from app.services.data_service import DataService
 
-router = APIRouter()
+router = APIRouter(tags=["financial"])
 
 
 @router.post("/financial", response_model=FinancialResponse)

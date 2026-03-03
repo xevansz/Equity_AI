@@ -1,23 +1,17 @@
-// src/api/watchlist.js
 import axios from 'axios'
-import { supabase } from '../lib/supabase' // adjust path if needed
 
 const BASE_URL = '/api/watchlist'
 
-/**
- * Helper to get auth header from Supabase session
- */
-const getAuthHeaders = async () => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
+const getAuthHeaders = () => {
+  const token = localStorage.getItem('access_token')
 
-  if (!session) {
-    throw new Error('User not authenticated')
+  if (!token) {
+    throw new Error('No auth token found')
   }
 
   return {
-    Authorization: `Bearer ${session.access_token}`,
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
   }
 }
 
@@ -28,7 +22,7 @@ const getAuthHeaders = async () => {
  */
 export const fetchWatchlist = async (limit = 20, after = null) => {
   try {
-    const headers = await getAuthHeaders()
+    const headers = getAuthHeaders()
 
     const response = await axios.get(BASE_URL, {
       headers,

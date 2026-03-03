@@ -11,7 +11,6 @@ import {
   addToWatchlist,
   removeFromWatchlist,
 } from '../api/watchlist'
-import { supabase } from '../lib/supabase'
 
 const WatchlistContext = createContext()
 
@@ -86,18 +85,8 @@ export const WatchlistProvider = ({ children }) => {
    * Auto-fetch on login
    */
   useEffect(() => {
-    const init = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-
-      if (session) {
-        fetchWatchlist(true)
-      }
-    }
-
-    init()
-  }, [fetchWatchlist])
+    fetchWatchlist(true)
+  }, [])
 
   return (
     <WatchlistContext.Provider

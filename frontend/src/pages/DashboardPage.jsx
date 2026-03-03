@@ -1,23 +1,15 @@
 // src/pages/DashboardPage.jsx
-import React, { useState } from 'react'
+import React from 'react'
 import SearchBar from '../components/SearchBar'
 import AnalysisPanel from '../components/AnalysisPanel'
-import useSearch from '../hooks/useSearch'
+import { useSearch } from '../context/SearchContext'
+import { useWatchlist } from '../context/WatchlistContext'
 
 const DashboardPage = () => {
-  const { data, loading, error, runSearch } = useSearch()
-  const [analysisData, setAnalysisData] = useState(null)
-
-  const handleSearch = async (query) => {
-    try {
-      const res = await runSearch(query)
-      setAnalysisData(res)
-    } catch (err) {
-      console.error('Search error', err)
-    }
-  }
-
-  const finalData = analysisData || data
+  const { items, add } = useWatchlist()
+  const isInWatchlist =
+    data?.symbol && items.some((item) => item.symbol === data.symbol)
+  const { data, loading, error, query, setQuery, runSearch } = useSearch()
 
   return (
     <div className="bg-background w-full">
@@ -28,7 +20,7 @@ const DashboardPage = () => {
           <p className="text-muted">Analyze stocks with AI-powered insights</p>
         </div>
 
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar query={query} setQuery={setQuery} onSearch={runSearch} />
 
         {loading && (
           <div className="mt-8 p-8 bg-surface rounded-lg text-center">
@@ -39,13 +31,28 @@ const DashboardPage = () => {
 
         {error && (
           <div className="mt-8 p-4 bg-error/10 border border-error/20 rounded-lg">
-            <p className="text-error">Error: {error.message} </p>
+            <p className="text-error">Error: {error} </p>
           </div>
         )}
 
-        {!loading && finalData && (
-          <div className="mt-8">
-            <AnalysisPanel data={finalData} />
+        {!loading && data && (
+          <div className="mt-8 space-y-4">
+            {/* Add to watchlist button */}
+            <div>
+              <button
+                onClick={() => add(data.symbol, data.query)}
+                disabled={isInWatchlist}
+                className={`px-4 py-2 rounded-lg transition ${
+                  isInWatchlist
+                    ? 'bg-green-600 text-white cursor-not-allowed'
+                    : 'bg-primary text-white hover:opacity-90'
+                }`}
+              >
+                {isInWatchlist ? '✓ Added' : '+ Add to '}
+              </button>
+            </div>
+
+            <AnalysisPanel data={data} />
           </div>
         )}
       </div>

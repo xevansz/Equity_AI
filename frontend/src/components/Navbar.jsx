@@ -4,10 +4,18 @@ import { Link } from 'react-router-dom'
 import { TrendingUp, Menu, X } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import ThemeToggle from './ThemeToggle'
+import { useSearch } from '../context/SearchContext'
 
 const Navbar = () => {
   const { user, logout } = useAuth()
+  const { clearResults } = useSearch()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const handleLogout = () => {
+    logout()
+    clearResults()
+    setIsMobileMenuOpen(false)
+  }
 
   return (
     <nav className="bg-surface border-b border-text-muted/10">
@@ -51,7 +59,7 @@ const Navbar = () => {
                   <ThemeToggle />
                   <span className="text-muted">{user.email}</span>
                   <button
-                    onClick={logout}
+                    onClick={handleLogout}
                     className="px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors text-text"
                   >
                     Sign Out
@@ -121,7 +129,7 @@ const Navbar = () => {
                     <p className="text-muted text-sm mb-3">{user.email}</p>
                     <button
                       onClick={() => {
-                        logout()
+                        handleLogout()
                         setIsMobileMenuOpen(false)
                       }}
                       className="w-full px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors text-text text-left"

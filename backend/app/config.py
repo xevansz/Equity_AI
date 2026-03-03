@@ -28,12 +28,12 @@ class Settings(BaseSettings):
     DB_NAME: str = "equity_research"
 
     # JWT
-    JWT_SECRET_KEY: str = "youlikemychinesedecorations?"
+    JWT_SECRET_KEY: str
     JWT_EXPIRE_MINUTES: int = 1440
 
     # Admin
-    ADMIN_EMAIL: str
-    ADMIN_PASSWORD: str
+    ADMIN_EMAIL: str = "muvvalarajeswari69@gmail.com"
+    ADMIN_PASSWORD: str = "Admin@123"
 
     # SMTP
     SMTP_HOST: str = ""

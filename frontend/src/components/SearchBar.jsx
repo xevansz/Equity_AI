@@ -1,10 +1,7 @@
-// SearchBar.jsx
-import React, { useState } from 'react'
+import React from 'react'
 import { Search } from 'lucide-react'
 
-const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState('')
-
+const SearchBar = ({ query, setQuery, onSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (query.trim()) {

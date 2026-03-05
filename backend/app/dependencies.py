@@ -7,6 +7,8 @@ from app.auth.user_service import UserService
 from app.conversational.memory import ConversationMemory
 from app.database import database
 from app.embeddings.vector_store import VectorStore
+from app.ingestion.news_loader import NewsLoader
+from app.ingestion.transcript_loader import TranscriptLoader
 from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
@@ -76,6 +78,20 @@ def get_news_api(request: Request) -> NewsAPI:
     if client is not None:
         return client
     return NewsAPI()
+
+
+def get_news_loader(request: Request) -> NewsLoader:
+    loader = getattr(request.app.state, "news_loader", None)
+    if loader is not None:
+        return loader
+    return NewsLoader(get_news_api(request))
+
+
+def get_transcript_loader(request: Request) -> TranscriptLoader:
+    loader = getattr(request.app.state, "transcript_loader", None)
+    if loader is not None:
+        return loader
+    return TranscriptLoader()
 
 
 def get_alpha_vantage(request: Request) -> AlphaVantageMCP:

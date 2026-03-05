@@ -64,6 +64,12 @@ class Database:
             await self.db.otps.create_index("created_at", expireAfterSeconds=600)
             await self.db.otps.create_index("email")
 
+    async def create_index_ingested_documents(self):
+        if self.db is not None:
+            # _id is already unique (stable hash); add compound indexes for fast lookups
+            await self.db.ingested_documents.create_index([("symbol", 1), ("type", 1), ("published_at", -1)])
+            await self.db.ingested_documents.create_index([("symbol", 1), ("type", 1), ("source", 1)])
+
 
 database = Database()
 
@@ -83,3 +89,4 @@ async def create_index_cache():
     await database.create_index_users()
     await database.create_index_conversations()
     await database.create_index_otps()
+    await database.create_index_ingested_documents()

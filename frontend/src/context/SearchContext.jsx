@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { createContext, useContext, useState } from 'react'
-import apiClient from '../api/axios'
+import { searchAPI } from '../api/search'
 
 export const SearchContext = createContext()
 
@@ -27,15 +27,12 @@ export const SearchProvider = ({ children }) => {
       setLoading(true)
       setError(null)
 
-      const res = await apiClient.post('/search', { query: searchQuery })
-      const result = res.data
+      const result = await searchAPI(searchQuery)
 
       setData(result)
       localStorage.setItem('eq_search_results', JSON.stringify(result))
     } catch (err) {
-      setError(
-        err.response?.data?.detail || err.message || 'Something went wrong'
-      )
+      setError(err.message || 'Something went wrong')
     } finally {
       setLoading(false)
     }

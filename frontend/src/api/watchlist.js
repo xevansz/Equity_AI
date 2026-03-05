@@ -17,12 +17,10 @@ export const fetchWatchlist = async (limit = 20, after = null) => {
     })
 
     return response.data
-  } catch (error) {
-    console.error(
-      'Error fetching watchlist:',
-      error.response?.data || error.message
-    )
-    throw error
+  } catch (err) {
+    const message =
+      err.response?.data?.detail || err.message || 'Request failed'
+    throw new Error(message)
   }
 }
 
@@ -34,12 +32,10 @@ export const addToWatchlist = async (symbol, name) => {
     const response = await apiClient.post(BASE_URL, { symbol, name })
 
     return response.data
-  } catch (error) {
-    console.error(
-      'Error adding to watchlist:',
-      error.response?.data || error.message
-    )
-    throw error
+  } catch (err) {
+    const message =
+      err.response?.data?.detail || err.message || 'Request failed'
+    throw new Error(message)
   }
 }
 
@@ -51,11 +47,9 @@ export const removeFromWatchlist = async (symbol) => {
     const response = await apiClient.delete(`${BASE_URL}/${symbol}`)
 
     return response.data
-  } catch (error) {
-    console.error(
-      'Error removing from watchlist:',
-      error.response?.data || error.message
-    )
-    throw error
+  } catch (err) {
+    const message =
+      err.response?.data?.detail || err.message || 'Request failed'
+    throw new Error(message)
   }
 }

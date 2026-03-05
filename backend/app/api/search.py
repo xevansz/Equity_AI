@@ -1,10 +1,15 @@
-# api/search.py
 import asyncio
 
 from fastapi import APIRouter, Depends, HTTPException
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
-from app.dependencies import get_current_user, get_database
+from app.dependencies import (
+    get_chat_service,
+    get_current_user,
+    get_data_service,
+    get_database,
+    get_news_api,
+)
 from app.llm.report_generator import generate_equity_report
 from app.llm.symbol_resolver import symbol_resolver
 from app.mcp.news_api import NewsAPI
@@ -22,6 +27,9 @@ async def single_search(
     request: ChatRequest,
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
+    chat_service: ChatService = Depends(get_chat_service),
+    data_service: DataService = Depends(get_data_service),
+    news_api: NewsAPI = Depends(get_news_api),
 ) -> SearchResponse:
     query = request.query
 
@@ -40,10 +48,6 @@ async def single_search(
     print("=" * 90)
 
     try:
-        chat_service = ChatService(db)
-        news_api = NewsAPI()
-        data_service = DataService()
-
         chat_task = chat_service.process_query(request)
         financial_task = data_service.get_financial_data(symbol)
         news_task = news_api.fetch_news(symbol)

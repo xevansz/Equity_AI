@@ -3,7 +3,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
-from app.dependencies import get_current_user, get_database
+from app.dependencies import get_chat_service, get_current_user, get_database
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.services.chat_service import ChatService
 
@@ -15,6 +15,7 @@ async def chat(
     request: ChatRequest,
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
+    service: ChatService = Depends(get_chat_service),
 ) -> ChatResponse:
     """Conversational chat with equity research"""
     try:
@@ -22,8 +23,6 @@ async def chat(
 
         if db is None:
             raise HTTPException(status_code=503, detail="Database not available")
-
-        service = ChatService(db, user_id=user.get("email"))
         response = await service.process_query(request)
 
         print("🤖 CHAT RESPONSE:", response.answer)

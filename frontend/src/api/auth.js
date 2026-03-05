@@ -1,27 +1,20 @@
-import axios from 'axios'
+import apiClient from './axios'
 
-/**
- * Login API
- */
+/* Login API */
 export async function login(email, password) {
-  const resp = await axios.post('/api/auth/login', { email, password })
+  const resp = await apiClient.post('/auth/login', { email, password })
   return resp.data
 }
 
-/**
- * Register API
- */
+/* Register API */
 export async function register(email, password) {
-  const resp = await axios.post('/api/auth/register', { email, password })
+  const resp = await apiClient.post('/auth/register', { email, password })
   return resp.data
 }
 
-/**
- * Get current user (from Authorization header)
- * Relies on axios.defaults.headers.common['Authorization']
- */
+/* Get current user (from Authorization header) */
 export async function me() {
-  const resp = await axios.get('/api/auth/me')
+  const resp = await apiClient.get('/auth/me')
   return resp.data
 }
 

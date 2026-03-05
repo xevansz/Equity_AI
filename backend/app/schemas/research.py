@@ -9,5 +9,7 @@ class ResearchRequest(BaseModel):
 
 class ResearchResponse(BaseModel):
     symbol: str
-    report: str
-    analysis: dict
+    Data_CoT: str
+    Thesis_CoT: str
+    Valuation: str
+    Risk_CoT: str

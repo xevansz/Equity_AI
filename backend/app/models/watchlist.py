@@ -7,9 +7,21 @@ class WatchlistItem(BaseModel):
     symbol: str
     name: str
     user_id: str
-    added_at: datetime = Field(default_factory=datetime.now(UTC))
+    added_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
 
 class WatchlistCreate(BaseModel):
     symbol: str
     name: str
+
+
+class WatchlistItemOut(BaseModel):
+    symbol: str
+    name: str
+    added_at: datetime
+
+
+class WatchlistListResponse(BaseModel):
+    items: list[WatchlistItemOut]
+    next_cursor: datetime | None
+    limit: int

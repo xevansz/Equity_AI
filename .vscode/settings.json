@@ -2,17 +2,36 @@
   "editor.formatOnSave": true,
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.ruff": "explicit"
+    "source.fixAll.eslint": true
   },
 
-  "eslint.validate": ["javascript", "javascriptreact"],
+  "terminal.integrated.focusAfterRun": "terminal",
 
+  // -------- JAVASCRIPT --------
+  "eslint.validate": ["javascript", "javascriptreact"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // -------- PYTHON --------
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "ruff.configuration": {
-    "indent-width": 2
+
+  // -------- MARKDOWN --------
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    "editor.formatOnSave": false
+  },
+
+  "markdownlint.config": {
+    "MD013": false,
+    "MD041": false,
+    "MD033": false,
+    "MD022": false,
+    "MD032": false
   }
 }

@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from app.dependencies import get_current_user
+from app.dependencies import get_current_user, get_data_service
 from app.schemas.financial import FinancialRequest, FinancialResponse
 from app.services.data_service import DataService
 
@@ -13,11 +13,11 @@ router = APIRouter(tags=["financial"])
 async def get_financial_data(
     request: FinancialRequest,
     user: dict = Depends(get_current_user),
+    service: DataService = Depends(get_data_service),
 ) -> FinancialResponse:
     """Get financial data and metrics"""
     try:
         print("\nFINANCIAL REQUEST:", request.symbol)
-        service = DataService()
         data = await service.get_financial_data(request.symbol)
         print("FINANCIAL DATA LOADED")
         print(data.financials.keys())

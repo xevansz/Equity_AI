@@ -11,7 +11,7 @@ from app.auth.auth_router import router as auth_router
 from app.config import settings
 from app.database import close_databases, create_index_cache, init_databases
 from app.mcp.financial_api import alpha_vantage
-from app.mcp.news_api import news_api
+from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import sec_api
 
 
@@ -21,11 +21,12 @@ async def lifespan(app: FastAPI):
     # startup
     await init_databases()
     await create_index_cache()
+    app.state.news_api = NewsAPI()
     yield
     # shutdown
     await close_databases()
     await alpha_vantage.close()
-    await news_api.close()
+    await app.state.news_api.close()
     await sec_api.close()
 
 

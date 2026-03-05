@@ -1,11 +1,12 @@
-import os
 from datetime import UTC, datetime, timedelta
 
 from jose import JWTError, jwt
 
-JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+from app.config import settings
+
+JWT_SECRET_KEY = settings.JWT_SECRET_KEY
 ALGORITHM = "HS256"
-JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES", "1440"))
+JWT_EXPIRE_MINUTES = int(settings.JWT_EXPIRE_MINUTES)
 
 if not JWT_SECRET_KEY:
     raise RuntimeError("JWT_SECRET_KEY not found in environment")

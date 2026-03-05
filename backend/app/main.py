@@ -1,7 +1,7 @@
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import APIRouter, FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
@@ -10,10 +10,11 @@ from app.api import chat, conversations, financial, health, news, research, sear
 from app.auth.auth_router import router as auth_router
 from app.config import settings
 from app.database import close_databases, create_index_cache, init_databases
+from app.embeddings.vector_store import VectorStore
 from app.logging_config import configure_logging
-from app.mcp.financial_api import alpha_vantage
+from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.news_api import NewsAPI
-from app.mcp.sec_api import sec_api
+from app.mcp.sec_api import SECAPI
 
 configure_logging()
 
@@ -24,13 +25,17 @@ async def lifespan(app: FastAPI):
     # startup
     await init_databases()
     await create_index_cache()
+    app.state.alpha_vantage = AlphaVantageMCP()
     app.state.news_api = NewsAPI()
+    app.state.sec_api = SECAPI()
+    app.state.vector_store = VectorStore()
     yield
     # shutdown
     await close_databases()
-    await alpha_vantage.close()
+    await app.state.alpha_vantage.close()
     await app.state.news_api.close()
-    await sec_api.close()
+    await app.state.sec_api.close()
+    await app.state.vector_store.close()
 
 
 # FastAPI app
@@ -51,16 +56,16 @@ app.add_middleware(
 )
 
 # Routers
-API_PREFIX = "/api"
-app.include_router(auth_router, prefix=API_PREFIX)
-app.include_router(health.router, prefix=API_PREFIX)
-app.include_router(chat.router, prefix=API_PREFIX)
-app.include_router(research.router, prefix=API_PREFIX)
-app.include_router(financial.router, prefix=API_PREFIX)
-app.include_router(news.router, prefix=API_PREFIX)
-app.include_router(search.router, prefix=API_PREFIX)
-app.include_router(watchlist.router, prefix=API_PREFIX)
-app.include_router(conversations.router, prefix=API_PREFIX)
+api_router = APIRouter(prefix="/api/v1")
+app.include_router(auth_router)
+app.include_router(health.router)
+app.include_router(chat.router)
+app.include_router(research.router)
+app.include_router(financial.router)
+app.include_router(news.router)
+app.include_router(search.router)
+app.include_router(watchlist.router)
+app.include_router(conversations.router)
 
 
 # root

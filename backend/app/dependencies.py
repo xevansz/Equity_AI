@@ -6,7 +6,10 @@ from app.auth.jwt_handler import verify_token
 from app.auth.user_service import UserService
 from app.conversational.memory import ConversationMemory
 from app.database import database
+from app.embeddings.vector_store import VectorStore
+from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.news_api import NewsAPI
+from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
 from app.services.research_service import ResearchService
@@ -40,12 +43,24 @@ def get_conversation_memory(db: AsyncIOMotorDatabase = Depends(get_database)) ->
     return ConversationMemory(db)
 
 
+def get_vector_store(request: Request) -> VectorStore:
+    client = getattr(request.app.state, "vector_store", None)
+    if client is not None:
+        return client
+    return VectorStore()
+
+
+def get_vectorstore_api(request: Request) -> VectorStore:
+    return get_vector_store(request)
+
+
 def get_chat_service(
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
+    vector_store: VectorStore = Depends(get_vector_store),
 ) -> ChatService:
     user_id = user.get("email") if isinstance(user, dict) else None
-    return ChatService(db, user_id=user_id)
+    return ChatService(db, user_id=user_id, vector_store=vector_store)
 
 
 def get_data_service() -> DataService:
@@ -61,6 +76,20 @@ def get_news_api(request: Request) -> NewsAPI:
     if client is not None:
         return client
     return NewsAPI()
+
+
+def get_alpha_vantage(request: Request) -> AlphaVantageMCP:
+    client = getattr(request.app.state, "alpha_vantage", None)
+    if client is not None:
+        return client
+    return AlphaVantageMCP()
+
+
+def get_sec_api(request: Request) -> SECAPI:
+    client = getattr(request.app.state, "sec_api", None)
+    if client is not None:
+        return client
+    return SECAPI()
 
 
 # Admin only

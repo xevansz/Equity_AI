@@ -10,6 +10,3 @@ class SECAPI(BaseMCP):
     async def get_filings(self, ticker: str):
         # Simplified SEC API call
         return {"ticker": ticker, "filings": []}
-
-
-sec_api = SECAPI()

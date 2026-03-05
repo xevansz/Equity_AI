@@ -16,6 +16,3 @@ class AlphaVantageMCP(BaseMCP):
 
     async def get_cash_flow(self, symbol: str):
         return await self.get("", {"function": "CASH_FLOW", "symbol": symbol})
-
-
-alpha_vantage = AlphaVantageMCP()

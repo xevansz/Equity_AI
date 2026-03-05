@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from app.dependencies import get_current_user
+from app.dependencies import get_current_user, get_news_api
 from app.logging_config import get_logger
 from app.mcp.news_api import NewsAPI
 
@@ -12,11 +12,14 @@ router = APIRouter(tags=["news"])
 
 
 @router.get("/news/{symbol}")
-async def get_news(symbol: str, user: dict = Depends(get_current_user)) -> dict:
+async def get_news(
+    symbol: str,
+    user: dict = Depends(get_current_user),
+    news_api: NewsAPI = Depends(get_news_api),
+) -> dict:
     """Get latest news for symbol"""
     try:
         logger.info("News request: %s", symbol)
-        news_api = NewsAPI()
         news = await news_api.fetch_news(symbol)
         logger.info("News articles fetched: %s", len(news))
         if len(news) > 0:

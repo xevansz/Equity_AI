@@ -5,6 +5,7 @@ import time
 
 from app.conversational.memory import ConversationMemory
 from app.conversational.response_generator import response_generator
+from app.embeddings.vector_store import VectorStore
 from app.logging_config import get_logger
 from app.rag.rag_pipeline import rag_pipeline
 from app.schemas.chat import ChatRequest, ChatResponse
@@ -18,9 +19,10 @@ class ChatService:
     _last_call_time = 0  # rate limiting
     _MIN_INTERVAL_SECONDS = 6  # change to 60 later
 
-    def __init__(self, db, user_id: str | None = None) -> None:
+    def __init__(self, db, user_id: str | None = None, vector_store: VectorStore | None = None) -> None:
         self.memory = ConversationMemory(db)
         self.user_id = user_id
+        self.vector_store = vector_store or VectorStore()
 
     async def process_query(self, request: ChatRequest) -> ChatResponse:
         query = request.query.strip()
@@ -32,7 +34,7 @@ class ChatService:
 
         try:
             logger.info("Running RAG pipeline")
-            context = await rag_pipeline.run(query)
+            context = await rag_pipeline.run(self.vector_store, query)
 
             if not context or not context.strip():
                 answer = "No sufficient contextual data found for this query."

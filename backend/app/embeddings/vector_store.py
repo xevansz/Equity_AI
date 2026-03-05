@@ -24,6 +24,3 @@ class VectorStore:
         top_k = top_k or settings.TOP_K_RETRIEVAL
         results = self.collection.query(query_texts=[query], n_results=top_k)
         return results
-
-
-vector_store = VectorStore()

@@ -28,6 +28,3 @@ class NewsAPI(BaseMCP):
         except Exception as e:
             logger.exception("Error fetching news: %s", str(e))
             return []
-
-
-news_api = NewsAPI()

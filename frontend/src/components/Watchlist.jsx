@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useWatchlist } from '../context/WatchlistContext'
 
 const Watchlist = () => {
-  const { watchlist, removeFromWatchlist } = useWatchlist()
+  const { items, remove } = useWatchlist()
   const [prices, setPrices] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchPrices = async () => {
-      if (watchlist.length === 0) {
+      if (items.length === 0) {
         setLoading(false)
         return
       }
 
       try {
         const responses = await Promise.all(
-          watchlist.map((item) =>
+          items.map((item) =>
             fetch(`/api/financial?symbol=${item.symbol}`).then((res) =>
               res.json()
             )
@@ -24,7 +24,7 @@ const Watchlist = () => {
 
         const priceMap = {}
         responses.forEach((data, index) => {
-          priceMap[watchlist[index].symbol] = data?.price ?? null
+          priceMap[items[index].symbol] = data?.price ?? null
         })
 
         setPrices(priceMap)
@@ -36,9 +36,9 @@ const Watchlist = () => {
     }
 
     fetchPrices()
-  }, [watchlist])
+  }, [items])
 
-  if (watchlist.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="p-6 bg-surface rounded-lg">
         <p className="text-muted">No items in your watchlist yet.</p>
@@ -48,7 +48,7 @@ const Watchlist = () => {
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {watchlist.map((item) => (
+      {items.map((item) => (
         <div
           key={item.symbol}
           className="p-5 bg-surface rounded-xl shadow-sm flex flex-col justify-between"
@@ -67,7 +67,7 @@ const Watchlist = () => {
           </div>
 
           <button
-            onClick={() => removeFromWatchlist(item.symbol)}
+            onClick={() => remove(item.symbol)}
             className="mt-4 text-sm text-red-500 hover:underline"
           >
             Remove

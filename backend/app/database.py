@@ -50,6 +50,12 @@ class Database:
     async def create_index_conversations(self):
         if self.db is not None:
             await self.db.conversations.create_index([("user_id", 1), ("created_at", -1)])
+            await self.db.conversations.create_index("session_id")
+
+    async def create_index_otps(self):
+        if self.db is not None:
+            await self.db.otps.create_index("created_at", expireAfterSeconds=600)
+            await self.db.otps.create_index("email")
 
 
 database = Database()
@@ -68,3 +74,4 @@ async def create_index_cache():
     await database.create_index_watchlist()
     await database.create_index_users()
     await database.create_index_conversations()
+    await database.create_index_otps()

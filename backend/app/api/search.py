@@ -2,26 +2,34 @@
 import asyncio
 
 from fastapi import APIRouter, Depends, HTTPException
+from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.dependencies import get_current_user, get_database
 from app.llm.report_generator import generate_equity_report
 from app.llm.symbol_resolver import symbol_resolver
 from app.mcp.news_api import NewsAPI
-from app.models.conversation import SearchRequest
-from app.schemas.chat import ChatRequest
+from app.schemas.chat import ChatRequest, ChatResponse
+from app.schemas.financial import FinancialResponse
+from app.schemas.search import SearchResponse
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
 
 router = APIRouter(tags=["search"])
 
 
-@router.post("/search")
+@router.post("/search", response_model=SearchResponse)
 async def single_search(
-    request: SearchRequest,
-    db=Depends(get_database),
-    user=Depends(get_current_user),
-):
+    request: ChatRequest,
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    user: dict = Depends(get_current_user),
+) -> SearchResponse:
     query = request.query
+
+    if not query:
+        raise HTTPException(status_code=400, detail="query is required")
+
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
 
     symbol = await symbol_resolver(query, db)
 
@@ -31,20 +39,12 @@ async def single_search(
     print("Symbol :", symbol)
     print("=" * 90)
 
-    if not query:
-        raise HTTPException(status_code=400, detail="query is required")
-
-    if db is None:
-        raise HTTPException(status_code=503, detail="Database not available")
-
     try:
-        # Chat search
-        chat_request = ChatRequest(query=query)
         chat_service = ChatService(db)
         news_api = NewsAPI()
         data_service = DataService()
 
-        chat_task = chat_service.process_query(chat_request)
+        chat_task = chat_service.process_query(request)
         financial_task = data_service.get_financial_data(symbol)
         news_task = news_api.fetch_news(symbol)
 
@@ -58,16 +58,13 @@ async def single_search(
 
         print(f"NEWS ARTICLES FETCHED: {len(news) if news else 0}")
 
-        return {
-            "query": query,
-            "symbol": symbol,
-            "chat": {
-                "answer": chat_response.answer,
-                "sources": chat_response.sources if hasattr(chat_response, "sources") else [],
-            },
-            "financial": financial_data.model_dump() if hasattr(financial_data, "dict") else financial_data,
-            "research": research_report,
-            "news": {"symbol": symbol, "news": news},
-        }
+        return SearchResponse(
+            query=query,
+            symbol=symbol,
+            chat=ChatResponse(answer=chat_response.answer, sources=chat_response.sources),
+            financial=financial_data if isinstance(financial_data, FinancialResponse) else None,
+            research=research_report if isinstance(research_report, dict) else {},
+            news={"symbol": symbol, "news": news},
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) from e

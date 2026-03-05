@@ -3,7 +3,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.dependencies import get_current_user
-from app.models import user
 from app.schemas.financial import FinancialRequest, FinancialResponse
 from app.services.data_service import DataService
 
@@ -13,8 +12,8 @@ router = APIRouter(tags=["financial"])
 @router.post("/financial", response_model=FinancialResponse)
 async def get_financial_data(
     request: FinancialRequest,
-    user: user = Depends(get_current_user),
-):
+    user: dict = Depends(get_current_user),
+) -> FinancialResponse:
     """Get financial data and metrics"""
     try:
         print("\nFINANCIAL REQUEST:", request.symbol)

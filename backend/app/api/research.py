@@ -1,20 +1,21 @@
 """Research Report API"""
 
 from fastapi import APIRouter, Depends
+from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.dependencies import get_current_user, get_database
 from app.llm.report_generator import generate_equity_report
-from app.schemas.research import ResearchRequest
+from app.schemas.research import ResearchRequest, ResearchResponse
 
 router = APIRouter(tags=["research"])
 
 
-@router.post("/research")
+@router.post("/research", response_model=ResearchResponse)
 async def research(
     req: ResearchRequest,
-    db=Depends(get_database),
-    user=Depends(get_current_user),
-):
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    user: dict = Depends(get_current_user),
+) -> ResearchResponse:
     print("\nRESEARCH REQUEST:", req.symbol)
     report = generate_equity_report(req.symbol, db)
     print("RESEARCH REPORT GENERATED")
@@ -24,4 +25,4 @@ async def research(
     print("Risk-CoT:", report["Risk_CoT"][:150])
     print("-" * 60)
 
-    return report
+    return ResearchResponse(**report)

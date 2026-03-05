@@ -85,7 +85,11 @@ export const WatchlistProvider = ({ children }) => {
    * Auto-fetch on login
    */
   useEffect(() => {
-    fetchWatchlist(true)
+    const token =
+      localStorage.getItem('access_token') || localStorage.getItem('token')
+    if (token) {
+      fetchWatchlist(true)
+    }
   }, [])
 
   return (

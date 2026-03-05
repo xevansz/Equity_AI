@@ -1,19 +1,6 @@
-import axios from 'axios'
+import apiClient from './axios'
 
-const BASE_URL = '/api/watchlist'
-
-const getAuthHeaders = () => {
-  const token = localStorage.getItem('access_token')
-
-  if (!token) {
-    throw new Error('No auth token found')
-  }
-
-  return {
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  }
-}
+const BASE_URL = '/watchlist'
 
 /**
  * Fetch paginated watchlist
@@ -22,10 +9,7 @@ const getAuthHeaders = () => {
  */
 export const fetchWatchlist = async (limit = 20, after = null) => {
   try {
-    const headers = getAuthHeaders()
-
-    const response = await axios.get(BASE_URL, {
-      headers,
+    const response = await apiClient.get(BASE_URL, {
       params: {
         limit,
         ...(after && { after }),
@@ -47,9 +31,7 @@ export const fetchWatchlist = async (limit = 20, after = null) => {
  */
 export const addToWatchlist = async (symbol, name) => {
   try {
-    const headers = await getAuthHeaders()
-
-    const response = await axios.post(BASE_URL, { symbol, name }, { headers })
+    const response = await apiClient.post(BASE_URL, { symbol, name })
 
     return response.data
   } catch (error) {
@@ -66,11 +48,7 @@ export const addToWatchlist = async (symbol, name) => {
  */
 export const removeFromWatchlist = async (symbol) => {
   try {
-    const headers = await getAuthHeaders()
-
-    const response = await axios.delete(`${BASE_URL}/${symbol}`, {
-      headers,
-    })
+    const response = await apiClient.delete(`${BASE_URL}/${symbol}`)
 
     return response.data
   } catch (error) {

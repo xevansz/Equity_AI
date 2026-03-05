@@ -1,5 +1,7 @@
 import re
 
+from motor.motor_asyncio import AsyncIOMotorDatabase
+
 from app.llm.gemini import gemini
 from app.services.symbol_cache_service import SymbolCacheService
 
@@ -46,7 +48,7 @@ def normalize_symbol(raw: str) -> str:
     return "UNKNOWN"
 
 
-async def symbol_resolver(query: str, db):
+async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
     """resolve symbol with caching"""
     cache_service = SymbolCacheService(db)
 

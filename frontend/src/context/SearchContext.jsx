@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { createContext, useContext, useState } from 'react'
+import apiClient from '../api/axios'
 
-const SearchContext = createContext()
+export const SearchContext = createContext()
 
 export const SearchProvider = ({ children }) => {
   const [query, setQuery] = useState(() => {
@@ -14,6 +15,7 @@ export const SearchProvider = ({ children }) => {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+
   useEffect(() => {
     localStorage.setItem('eq_search_query', query)
   }, [query])
@@ -25,27 +27,15 @@ export const SearchProvider = ({ children }) => {
       setLoading(true)
       setError(null)
 
-      const token = localStorage.getItem('access_token')
-
-      const res = await fetch('http://localhost:8000/api/search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ query: searchQuery }),
-      })
-
-      if (!res.ok) {
-        throw new Error('Search request failed')
-      }
-
-      const result = await res.json()
+      const res = await apiClient.post('/search', { query: searchQuery })
+      const result = res.data
 
       setData(result)
       localStorage.setItem('eq_search_results', JSON.stringify(result))
     } catch (err) {
-      setError(err.message || 'Something went wrong')
+      setError(
+        err.response?.data?.detail || err.message || 'Something went wrong'
+      )
     } finally {
       setLoading(false)
     }

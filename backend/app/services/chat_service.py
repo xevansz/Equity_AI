@@ -15,10 +15,11 @@ class ChatService:
     _last_call_time = 0  # rate limiting
     _MIN_INTERVAL_SECONDS = 6  # change to 60 later
 
-    def __init__(self, db):
+    def __init__(self, db, user_id: str | None = None) -> None:
         self.memory = ConversationMemory(db)
+        self.user_id = user_id
 
-    async def process_query(self, request: ChatRequest):
+    async def process_query(self, request: ChatRequest) -> ChatResponse:
         query = request.query.strip()
         if query in self._cache:
             cached_answer = self._cache[query]
@@ -39,7 +40,7 @@ class ChatService:
                 elapsed = now - self._last_call_time
                 if elapsed < self._MIN_INTERVAL_SECONDS:
                     sleep_time = self._MIN_INTERVAL_SECONDS - elapsed
-                    print(f"⏳ Rate limiting Gemini ({sleep_time:.2f}s)")
+                    print(f"Rate limiting Gemini ({sleep_time:.2f}s)")
                     await asyncio.sleep(sleep_time)
 
                 self._last_call_time = time.time()
@@ -50,7 +51,7 @@ class ChatService:
         except Exception as e:
             print("🚨 LLM / RAG ERROR:", repr(e))
             answer = (
-                "⚠️ AI response is temporarily unavailable due to usage limits. "
+                "WARNING: AI response is temporarily unavailable due to usage limits. "
                 "Financial data and analysis are still available."
             )
 
@@ -60,10 +61,10 @@ class ChatService:
 
         return ChatResponse(answer=answer, sources=[])
 
-    async def _save_conversation(self, request: ChatRequest, answer: str):
+    async def _save_conversation(self, request: ChatRequest, answer: str) -> None:
         """Save conversation safely without breaking flow"""
         try:
-            await self.memory.save_message(request.session_id, "user", request.query)
-            await self.memory.save_message(request.session_id, "assistant", answer)
+            await self.memory.save_message(request.session_id, "user", request.query, self.user_id)
+            await self.memory.save_message(request.session_id, "assistant", answer, self.user_id)
         except Exception as e:
             print("⚠️ Memory save skipped:", repr(e))

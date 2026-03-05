@@ -1,7 +1,8 @@
 // src/context/AuthContext.jsx
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import * as authApi from '../api/auth'
+import { SearchContext } from './SearchContext'
 
 export const AuthContext = createContext({
   user: null,
@@ -14,6 +15,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(() => localStorage.getItem('token'))
   const [loading, setLoading] = useState(true)
+  const searchCtx = useContext(SearchContext)
 
   useEffect(() => {
     // 🚨 No token → do NOT call backend
@@ -60,6 +62,7 @@ export function AuthProvider({ children }) {
     setToken(null)
     localStorage.removeItem('token')
     delete axios.defaults.headers.common.Authorization
+    searchCtx?.clearResults()
   }
 
   return (

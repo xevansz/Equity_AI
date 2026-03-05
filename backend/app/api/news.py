@@ -9,7 +9,7 @@ router = APIRouter(tags=["news"])
 
 
 @router.get("/news/{symbol}")
-async def get_news(symbol: str, user=Depends(get_current_user)):
+async def get_news(symbol: str, user: dict = Depends(get_current_user)) -> dict:
     """Get latest news for symbol"""
     try:
         print("\nNEWS REQUEST:", symbol)

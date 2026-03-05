@@ -7,9 +7,9 @@ import { useWatchlist } from '../context/WatchlistContext'
 
 const DashboardPage = () => {
   const { items, add } = useWatchlist()
-  const isInWatchlist =
-    data?.symbol && items.some((item) => item.symbol === data.symbol)
   const { data, loading, error, query, setQuery, runSearch } = useSearch()
+  const isInWatchlist =
+    !!data?.symbol && items.some((item) => item.symbol === data.symbol)
 
   return (
     <div className="bg-background w-full">
@@ -40,7 +40,7 @@ const DashboardPage = () => {
             {/* Add to watchlist button */}
             <div>
               <button
-                onClick={() => add(data.symbol, data.query)}
+                onClick={() => add(data.symbol, data.query || data.symbol)}
                 disabled={isInWatchlist}
                 className={`px-4 py-2 rounded-lg transition ${
                   isInWatchlist
@@ -48,7 +48,7 @@ const DashboardPage = () => {
                     : 'bg-primary text-white hover:opacity-90'
                 }`}
               >
-                {isInWatchlist ? '✓ Added' : '+ Add to '}
+                {isInWatchlist ? '✓ Added' : '+ Add to Watchlist'}
               </button>
             </div>
 

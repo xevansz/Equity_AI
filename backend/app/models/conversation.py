@@ -1,4 +1,4 @@
-"""Conversation Model"""
+"""Conversation DB Document Model"""
 
 from datetime import datetime
 
@@ -10,8 +10,3 @@ class Message(BaseModel):
     role: str
     content: str
     timestamp: datetime
-
-
-class SearchRequest(BaseModel):
-    query: str
-    symbol: str | None = None

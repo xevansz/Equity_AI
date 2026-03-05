@@ -1,11 +1,12 @@
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 
-from app.api import chat, financial, health, news, research, search, watchlist
+from app.api import chat, conversations, financial, health, news, research, search, watchlist
 from app.auth.auth_router import router as auth_router
 from app.config import settings
 from app.database import close_databases, create_index_cache, init_databases
@@ -55,6 +56,7 @@ app.include_router(financial.router, prefix=API_PREFIX)
 app.include_router(news.router, prefix=API_PREFIX)
 app.include_router(search.router, prefix=API_PREFIX)
 app.include_router(watchlist.router, prefix=API_PREFIX)
+app.include_router(conversations.router, prefix=API_PREFIX)
 
 
 # root
@@ -73,13 +75,42 @@ async def favicon():
     return FileResponse("app/static/favicon.ico")
 
 
-# Global error handler
+# Validation error handler (422)
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+    return JSONResponse(
+        status_code=422,
+        content={
+            "detail": "Validation error",
+            "errors": exc.errors(),
+        },
+    )
+
+
+# HTTP exception handler
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "detail": exc.detail,
+            "status_code": exc.status_code,
+        },
+    )
+
+
+# Generic 500 handler
 @app.exception_handler(Exception)
-async def global_exception_handler(request: Request, exc: Exception):
-    return JSONResponse(status_code=500, content={"error": str(exc)})
+async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    return JSONResponse(
+        status_code=500,
+        content={
+            "detail": "Internal server error",
+            "status_code": 500,
+        },
+    )
 
 
-# Driver code
 if __name__ == "__main__":
     import uvicorn
 

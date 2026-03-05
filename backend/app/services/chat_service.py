@@ -5,8 +5,11 @@ import time
 
 from app.conversational.memory import ConversationMemory
 from app.conversational.response_generator import response_generator
+from app.logging_config import get_logger
 from app.rag.rag_pipeline import rag_pipeline
 from app.schemas.chat import ChatRequest, ChatResponse
+
+logger = get_logger(__name__)
 
 
 class ChatService:
@@ -28,28 +31,28 @@ class ChatService:
             return ChatResponse(answer=cached_answer, sources=[])
 
         try:
-            print("Running RAG pipeline...")
+            logger.info("Running RAG pipeline")
             context = await rag_pipeline.run(query)
 
             if not context or not context.strip():
                 answer = "No sufficient contextual data found for this query."
             else:
-                print("RAG Context (preview):", context[:200])
+                logger.debug("RAG context preview: %s", context[:200])
 
                 now = time.time()
                 elapsed = now - self._last_call_time
                 if elapsed < self._MIN_INTERVAL_SECONDS:
                     sleep_time = self._MIN_INTERVAL_SECONDS - elapsed
-                    print(f"Rate limiting Gemini ({sleep_time:.2f}s)")
+                    logger.info("Rate limiting Gemini (sleep=%.2fs)", sleep_time)
                     await asyncio.sleep(sleep_time)
 
                 self._last_call_time = time.time()
-                print("Calling Gemini...")
+                logger.info("Calling Gemini")
                 answer = await response_generator.generate_response(query, context)
-                print("Gemini Answer (preview):", answer[:200])
+                logger.debug("Gemini answer preview: %s", answer[:200])
 
         except Exception as e:
-            print("🚨 LLM / RAG ERROR:", repr(e))
+            logger.exception("LLM/RAG error: %s", repr(e))
             answer = (
                 "WARNING: AI response is temporarily unavailable due to usage limits. "
                 "Financial data and analysis are still available."
@@ -67,4 +70,4 @@ class ChatService:
             await self.memory.save_message(request.session_id, "user", request.query, self.user_id)
             await self.memory.save_message(request.session_id, "assistant", answer, self.user_id)
         except Exception as e:
-            print("⚠️ Memory save skipped:", repr(e))
+            logger.warning("Memory save skipped: %s", repr(e))

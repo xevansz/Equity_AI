@@ -3,7 +3,10 @@ import re
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.llm.gemini import gemini
+from app.logging_config import get_logger
 from app.services.symbol_cache_service import SymbolCacheService
+
+logger = get_logger(__name__)
 
 SYMBOL_RESOLUTION_PROMPT = """
 You are a financial entity resolver.
@@ -55,7 +58,7 @@ async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
     # search in cache first
     cached_symbol = await cache_service.get_symbol(query)
     if cached_symbol:
-        print(f"symbol found in cache: {cached_symbol}")
+        logger.info("Symbol found in cache: %s", cached_symbol)
         return cached_symbol
 
     # fallback to LLM if not found in cache
@@ -70,13 +73,13 @@ async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
 
             if symbol != "UNKNOWN":
                 await cache_service.cache_symbol(company_name.strip(), symbol)
-                print("cached succesfully")
+                logger.debug("Symbol cached successfully")
             return symbol
 
         else:
-            print("symbol not found")
+            logger.info("Symbol not found")
             return "UNKNOWN"
 
     except Exception as e:
-        print(f"Symbol resolution failed: {e}")
+        logger.exception("Symbol resolution failed: %s", str(e))
         return "UNKNOWN"

@@ -4,6 +4,9 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.errors import PyMongoError
 
 from app.config import settings
+from app.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 class Database:
@@ -18,16 +21,16 @@ class Database:
 
             await self.client.admin.command("ping")
 
-            print("Mongodb connected succesfully")
+            logger.info("MongoDB connected successfully")
 
-        except PyMongoError as e:
-            print(f"MongoDB connected failed: {e}")
+        except PyMongoError:
+            logger.exception("MongoDB connection failed")
             raise
 
     async def close(self):
         if self.client:
             self.client.close()
-            print("Mongodb disconnected")
+            logger.info("MongoDB disconnected")
 
     def get_database(self):
         return self.db

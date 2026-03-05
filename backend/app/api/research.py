@@ -5,7 +5,10 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.dependencies import get_current_user, get_database
 from app.llm.report_generator import generate_equity_report
+from app.logging_config import get_logger
 from app.schemas.research import ResearchRequest, ResearchResponse
+
+logger = get_logger(__name__)
 
 router = APIRouter(tags=["research"])
 
@@ -16,13 +19,11 @@ async def research(
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ) -> ResearchResponse:
-    print("\nRESEARCH REQUEST:", req.symbol)
+    logger.info("Research request: %s", req.symbol)
     report = generate_equity_report(req.symbol, db)
-    print("RESEARCH REPORT GENERATED")
-
-    print("Data-CoT:", report["Data_CoT"][:150])
-    print("Thesis-CoT:", report["Thesis_CoT"][:150])
-    print("Risk-CoT:", report["Risk_CoT"][:150])
-    print("-" * 60)
+    logger.info("Research report generated")
+    logger.debug("Data-CoT preview: %s", report.get("Data_CoT", "")[:150])
+    logger.debug("Thesis-CoT preview: %s", report.get("Thesis_CoT", "")[:150])
+    logger.debug("Risk-CoT preview: %s", report.get("Risk_CoT", "")[:150])
 
     return ResearchResponse(**report)

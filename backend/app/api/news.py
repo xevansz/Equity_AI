@@ -3,7 +3,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.dependencies import get_current_user
+from app.logging_config import get_logger
 from app.mcp.news_api import NewsAPI
+
+logger = get_logger(__name__)
 
 router = APIRouter(tags=["news"])
 
@@ -12,14 +15,14 @@ router = APIRouter(tags=["news"])
 async def get_news(symbol: str, user: dict = Depends(get_current_user)) -> dict:
     """Get latest news for symbol"""
     try:
-        print("\nNEWS REQUEST:", symbol)
+        logger.info("News request: %s", symbol)
         news_api = NewsAPI()
         news = await news_api.fetch_news(symbol)
-        print(f"{len(news)} News Articles Fetched")
+        logger.info("News articles fetched: %s", len(news))
         if len(news) > 0:
-            print("Top headline:", news[0].get("title"))
-        print("-" * 60)
+            logger.debug("Top headline: %s", news[0].get("title"))
 
         return {"symbol": symbol, "news": news}
     except Exception as e:
+        logger.exception("News API error")
         raise HTTPException(status_code=500, detail=str(e)) from e

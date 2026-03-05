@@ -12,12 +12,15 @@ from app.dependencies import (
 )
 from app.llm.report_generator import generate_equity_report
 from app.llm.symbol_resolver import symbol_resolver
+from app.logging_config import get_logger
 from app.mcp.news_api import NewsAPI
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.schemas.financial import FinancialResponse
 from app.schemas.search import SearchResponse
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
+
+logger = get_logger(__name__)
 
 router = APIRouter(tags=["search"])
 
@@ -41,11 +44,7 @@ async def single_search(
 
     symbol = await symbol_resolver(query, db)
 
-    print("\n" + "=" * 90)
-    print("SINGLE SEARCH API CALLED")
-    print("Company Name  :", query)
-    print("Symbol :", symbol)
-    print("=" * 90)
+    logger.info("Single search called (query=%s symbol=%s)", query, symbol)
 
     try:
         chat_task = chat_service.process_query(request)
@@ -60,7 +59,7 @@ async def single_search(
 
         research_report = generate_equity_report(symbol, db)
 
-        print(f"NEWS ARTICLES FETCHED: {len(news) if news else 0}")
+        logger.info("News articles fetched: %s", len(news) if news else 0)
 
         return SearchResponse(
             query=query,
@@ -71,4 +70,5 @@ async def single_search(
             news={"symbol": symbol, "news": news},
         )
     except Exception as e:
+        logger.exception("Search API error")
         raise HTTPException(status_code=500, detail=str(e)) from e

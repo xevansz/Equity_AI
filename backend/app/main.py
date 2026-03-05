@@ -10,9 +10,12 @@ from app.api import chat, conversations, financial, health, news, research, sear
 from app.auth.auth_router import router as auth_router
 from app.config import settings
 from app.database import close_databases, create_index_cache, init_databases
+from app.logging_config import configure_logging
 from app.mcp.financial_api import alpha_vantage
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import sec_api
+
+configure_logging()
 
 
 # lifespan rules

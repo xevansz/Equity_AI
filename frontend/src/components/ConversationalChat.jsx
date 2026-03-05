@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Send, Loader, PanelLeftOpen, PanelLeftClose } from 'lucide-react'
-import apiClient from '../api/axios'
+import { sendChat } from '../api/chat'
 import { fetchConversationHistory } from '../api/conversations'
 
 function cleanMarkdown(text = '') {
@@ -80,11 +80,7 @@ const ConversationalChat = ({
     setLoading(true)
 
     try {
-      const res = await apiClient.post('/chat', {
-        query: userMessage,
-        session_id: currentSessionId,
-      })
-      const result = res.data
+      const result = await sendChat(userMessage, currentSessionId)
 
       setMessages((prev) => [
         ...prev,

@@ -4,6 +4,10 @@ from datetime import UTC, datetime
 
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
+from app.logging_config import get_logger
+
+logger = get_logger(__name__)
+
 
 class ConversationMemory:
     def __init__(self, db: AsyncIOMotorDatabase | None) -> None:
@@ -11,7 +15,7 @@ class ConversationMemory:
 
     async def save_message(self, session_id: str, role: str, content: str, user_id: str | None = None) -> None:
         if self.db is None:
-            print(" Database not available, skipping message save")
+            logger.warning("Database not available, skipping message save")
             return
 
         doc: dict = {

@@ -1,3 +1,8 @@
+from app.logging_config import get_logger
+
+logger = get_logger(__name__)
+
+
 def clean_rate_limit(data: dict):
     """Remove Alpha Vantage rate-limit responses"""
     if isinstance(data, dict) and "Information" in data:
@@ -18,7 +23,7 @@ def calculate_top_metrics(financials: dict):
         try:
             return round(a / b, 4) if a is not None and b not in (0, None) else None
         except Exception as e:
-            print(f"Error: {e}")
+            logger.exception("safe_div error: %s", str(e))
             return None
 
     revenue = income.get("totalRevenue")

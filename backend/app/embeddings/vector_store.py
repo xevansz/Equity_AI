@@ -1,6 +1,7 @@
 import hashlib
 
 import chromadb
+from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 
 from app.config import settings
 
@@ -10,7 +11,10 @@ class VectorStore:
 
     def __init__(self):
         self.client = chromadb.PersistentClient(path=settings.CHROMA_PERSIST_DIR)
-        self.collection = self.client.get_or_create_collection("equity_research")
+
+        embedding_fn = SentenceTransformerEmbeddingFunction(model_name=settings.EMBEDDING_MODEL)
+
+        self.collection = self.client.get_or_create_collection(name="equity_research", embedding_function=embedding_fn)
 
     def add_documents(self, documents: list[str], metadatas: list[dict] | None = None) -> None:
         ids = [f"doc_{hashlib.sha256(doc.encode('utf-8')).hexdigest()[:16]}" for doc in documents]

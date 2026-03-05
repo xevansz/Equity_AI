@@ -5,6 +5,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from app.llm.gemini import gemini
 from app.logging_config import get_logger
 from app.services.symbol_cache_service import SymbolCacheService
+from app.utils.normalization import looks_like_ticker
 
 logger = get_logger(__name__)
 
@@ -53,6 +54,12 @@ def normalize_symbol(raw: str) -> str:
 
 async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
     """resolve symbol with caching"""
+
+    # If the user directly provided a ticker, return it immediately
+    if looks_like_ticker(query):
+        logger.info("Query looks like ticker, skipping resolver: %s", query.strip().upper())
+        return query.strip().upper()
+
     cache_service = SymbolCacheService(db)
 
     # search in cache first
@@ -72,7 +79,7 @@ async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
             symbol = normalize_symbol(symbol)
 
             if symbol != "UNKNOWN":
-                await cache_service.cache_symbol(company_name.strip(), symbol)
+                await cache_service.cache_alias(company_name.strip(), symbol)
                 logger.debug("Symbol cached successfully")
             return symbol
 

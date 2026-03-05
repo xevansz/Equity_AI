@@ -1,13 +1,18 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
-class SymbolCache(BaseModel):
-    company_name: str
+class Symbol(BaseModel):
     symbol: str
-    display_name: str
-    aliases: list[str] = Field(default_factory=list)
+    canonical_name: str
+    created_at: datetime
+
+
+class SymbolAlias(BaseModel):
+    symbol: str
+    alias_name: str
+    normalized_alias: str
     created_at: datetime
     last_used: datetime
-    use_count: int = 1
+    use_count: int = 0

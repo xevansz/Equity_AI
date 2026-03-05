@@ -35,10 +35,14 @@ class Database:
     def get_database(self):
         return self.db
 
-    async def create_index_symbol(self):  # Do we need this?
+    async def create_index_symbols(self):
         if self.db is not None:
-            collection = self.db["symbol_cache"]
-            await collection.create_index([("symbol", 1)])
+            await self.db.symbols.create_index("_id")  # _id is already unique by default
+
+    async def create_index_symbol_aliases(self):
+        if self.db is not None:
+            await self.db.symbol_aliases.create_index("normalized_alias", unique=True)
+            await self.db.symbol_aliases.create_index([("symbol", 1), ("normalized_alias", 1)], unique=True)
 
     async def create_index_watchlist(self):
         if self.db is not None:
@@ -73,7 +77,8 @@ async def close_databases():
 
 
 async def create_index_cache():
-    await database.create_index_symbol()
+    await database.create_index_symbols()
+    await database.create_index_symbol_aliases()
     await database.create_index_watchlist()
     await database.create_index_users()
     await database.create_index_conversations()

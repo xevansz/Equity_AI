@@ -4,6 +4,7 @@ import asyncio
 import time
 
 from app.conversational.memory import ConversationMemory
+from app.conversational.query_router import query_router
 from app.conversational.response_generator import response_generator
 from app.embeddings.vector_store import VectorStore
 from app.logging_config import get_logger
@@ -26,9 +27,12 @@ class ChatService:
 
     async def process_query(self, request: ChatRequest) -> ChatResponse:
         query = request.query.strip()
+
+        intent, service_name = query_router.route(query)
+        logger.info("Detected intent=%s routed_to=%s", intent, service_name)
+
         if query in self._cache:
             cached_answer = self._cache[query]
-
             await self._save_conversation(request, cached_answer)
             return ChatResponse(answer=cached_answer, sources=[])
 
@@ -50,7 +54,7 @@ class ChatService:
 
                 self._last_call_time = time.time()
                 logger.info("Calling Gemini")
-                answer = await response_generator.generate_response(query, context)
+                answer = await response_generator.generate_response(query, context, intent=intent)
                 logger.debug("Gemini answer preview: %s", answer[:200])
 
         except Exception as e:

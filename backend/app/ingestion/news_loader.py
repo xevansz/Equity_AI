@@ -87,6 +87,3 @@ class NewsLoader:
             .limit(50)
         ]
         return cached if cached else normalized
-
-
-news_loader = NewsLoader(NewsAPI())

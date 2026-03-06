@@ -8,6 +8,8 @@ logger = get_logger(__name__)
 
 
 class NewsAPI(BaseMCP):
+    CACHE_TTL: float = 60.0  # 1 min — news is time-sensitive
+
     def __init__(self):
         super().__init__("https://newsapi.org/v2", settings.NEWSAPI_KEY)
 

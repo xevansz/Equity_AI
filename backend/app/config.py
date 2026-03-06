@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     # Financial APIs
     ALPHA_VANTAGE_API_KEY: str = ""
     FINNHUB_API_KEY: str = ""
+    SEC_USER_AGENT: str = "EquityAI research-bot contact@example.com"
 
     # News APIs
     NEWSAPI_KEY: str = ""

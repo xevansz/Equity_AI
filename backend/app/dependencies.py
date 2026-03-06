@@ -7,6 +7,7 @@ from app.auth.user_service import UserService
 from app.conversational.memory import ConversationMemory
 from app.database import database
 from app.embeddings.vector_store import VectorStore
+from app.ingestion.financial_loader import FinancialLoader
 from app.ingestion.news_loader import NewsLoader
 from app.ingestion.transcript_loader import TranscriptLoader
 from app.mcp.financial_api import AlphaVantageMCP
@@ -65,12 +66,20 @@ def get_chat_service(
     return ChatService(db, user_id=user_id, vector_store=vector_store)
 
 
-def get_data_service() -> DataService:
-    return DataService()
+def get_financial_loader(request: Request) -> FinancialLoader:
+    av = get_alpha_vantage(request)
+    return FinancialLoader(av)
 
 
-def get_research_service(db: AsyncIOMotorDatabase = Depends(get_database)) -> ResearchService:
-    return ResearchService(db)
+def get_data_service(financial_loader: FinancialLoader = Depends(get_financial_loader)) -> DataService:
+    return DataService(financial_loader)
+
+
+def get_research_service(
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    financial_loader: FinancialLoader = Depends(get_financial_loader),
+) -> ResearchService:
+    return ResearchService(db, financial_loader)
 
 
 def get_news_api(request: Request) -> NewsAPI:

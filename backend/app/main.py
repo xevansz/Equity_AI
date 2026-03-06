@@ -29,6 +29,7 @@ async def lifespan(app: FastAPI):
     # startup
     await init_databases()
     await create_index_cache()
+
     app.state.alpha_vantage = AlphaVantageMCP()
     app.state.news_api = NewsAPI()
     app.state.news_loader = NewsLoader(app.state.news_api)
@@ -38,10 +39,14 @@ async def lifespan(app: FastAPI):
     app.state.warmer_task = asyncio.create_task(
         run_warmer(database.get_database(), app.state.news_loader, app.state.transcript_loader)
     )
+
     yield
+
     # shutdown
-    app.state.warmer_task.cancel()
+    await app.state.warmer_task.cancel()  # TODO: Multiprocessing primitives are not shut down properly
+
     await close_databases()
+
     await app.state.alpha_vantage.close()
     await app.state.news_api.close()
     await app.state.sec_api.close()

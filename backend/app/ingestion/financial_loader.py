@@ -17,6 +17,3 @@ class FinancialLoader:
             "balance_sheet": balance,
             "cash_flow": cash_flow,
         }
-
-
-financial_loader = FinancialLoader(AlphaVantageMCP())

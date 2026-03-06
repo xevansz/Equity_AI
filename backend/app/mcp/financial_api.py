@@ -5,6 +5,8 @@ from app.mcp.base import BaseMCP
 
 
 class AlphaVantageMCP(BaseMCP):
+    CACHE_TTL: float = 300.0  # 5 min — matches Alpha Vantage free-tier rate limit
+
     def __init__(self):
         super().__init__("https://www.alphavantage.co/query", settings.ALPHA_VANTAGE_API_KEY)
 

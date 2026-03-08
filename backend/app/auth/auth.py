@@ -70,7 +70,7 @@ def me(user=Depends(get_current_user)):
 async def forgot_password(
     data: ForgotPasswordRequest, db: AsyncIOMotorDatabase = Depends(get_database)
 ) -> MessageResponse:
-    email = data.email
+    email = data.email.strip().lower()
     user = await db.users.find_one({"email": email})
     if not user:
         raise HTTPException(404, "User not found")
@@ -81,7 +81,9 @@ async def forgot_password(
     otp_doc = OtpDocument(email=email, otp=otp)
     await db.otps.insert_one(otp_doc.model_dump())
 
-    send_email(to_email=email, subject="Your OTP", body=f"Your password reset OTP is: {otp}")
+    send_email(
+        to_email=email, subject="Your OTP", body=f"Your password reset OTP is: {otp}"
+    )
 
     return MessageResponse(message="OTP sent to your email")
 
@@ -93,11 +95,12 @@ async def reset_password(
     db: AsyncIOMotorDatabase = Depends(get_database),
     service: UserService = Depends(get_user_service),
 ) -> MessageResponse:
-    doc = await db.otps.find_one({"email": data.email, "otp": data.otp})
+    email = data.email.strip().lower()
+    doc = await db.otps.find_one({"email": email, "otp": data.otp})
     if not doc:
         raise HTTPException(400, "Invalid or expired OTP")
 
-    await service.update_password(data.email, data.new_password)
+    await service.update_password(email, data.new_password)
 
     await db.otps.delete_one({"_id": doc["_id"]})
     return MessageResponse(message="Password updated successfully")

@@ -10,7 +10,7 @@ from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from app.api import chat, conversations, financial, health, news, research, search, transcripts, watchlist
 from app.auth import auth
 from app.config import settings
-from app.database import close_databases, create_index_cache, database, init_databases
+from app.database import close_databases, create_index, database, init_databases
 from app.embeddings.vector_store import VectorStore
 from app.ingestion.news_loader import NewsLoader
 from app.ingestion.transcript_loader import TranscriptLoader
@@ -28,7 +28,7 @@ configure_logging()
 async def lifespan(app: FastAPI):
     # startup
     await init_databases()
-    await create_index_cache()
+    await create_index()
 
     app.state.alpha_vantage = AlphaVantageMCP()
     app.state.news_api = NewsAPI()

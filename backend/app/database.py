@@ -35,38 +35,32 @@ class Database:
     def get_database(self):
         return self.db
 
-    async def create_index_symbols(self):
+    async def create_index(self):
         if self.db is not None:
-            await self.db.symbols.create_index("_id")  # _id is already unique by default
+            await self.db.watchlist.create_index("user_id")
 
-    async def create_index_symbol_aliases(self):
-        if self.db is not None:
+            # symbol resolver
             await self.db.symbol_aliases.create_index("normalized_alias", unique=True)
             await self.db.symbol_aliases.create_index([("symbol", 1), ("normalized_alias", 1)], unique=True)
 
-    async def create_index_watchlist(self):
-        if self.db is not None:
+            # Watchlist
             await self.db.watchlist.create_index([("user_id", 1), ("symbol", 1)], unique=True)
             # obj = await self.db.watchlist.find({"user_id": user_id}).explain("executionStats")
             # if obg is COLLSCAN we need an index
 
-    async def create_index_users(self):
-        if self.db is not None:
+            # users
             await self.db.users.create_index("email", unique=True)
 
-    async def create_index_conversations(self):
-        if self.db is not None:
-            await self.db.conversations.create_index([("user_id", 1), ("created_at", -1)])
-            await self.db.conversations.create_index("session_id")
+            # conversations
+            await self.db.conversations.create_index([("session_id", 1), ("timestamp", -1)])
 
-    async def create_index_otps(self):
-        if self.db is not None:
+            # otps
             await self.db.otps.create_index("created_at", expireAfterSeconds=600)
             await self.db.otps.create_index("email")
 
-    async def create_index_ingested_documents(self):
-        if self.db is not None:
-            # _id is already unique (stable hash); add compound indexes for fast lookups
+            # Ingested Documents
+            #  _id is already unique (stable hash); add compound indexes for fast lookups
+            await self.db.ingested_documents.create_index([("symbol", 1), ("published_at", -1)])
             await self.db.ingested_documents.create_index([("symbol", 1), ("type", 1), ("published_at", -1)])
             await self.db.ingested_documents.create_index([("symbol", 1), ("type", 1), ("source", 1)])
 
@@ -82,11 +76,5 @@ async def close_databases():
     await database.close()
 
 
-async def create_index_cache():
-    await database.create_index_symbols()
-    await database.create_index_symbol_aliases()
-    await database.create_index_watchlist()
-    await database.create_index_users()
-    await database.create_index_conversations()
-    await database.create_index_otps()
-    await database.create_index_ingested_documents()
+async def create_index():
+    await database.create_index()

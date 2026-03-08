@@ -1,4 +1,3 @@
-# backend/app/auth/auth_router.py
 import os
 import secrets
 
@@ -20,8 +19,8 @@ from app.schemas.user import (
     TokenResponse,
 )
 
-router = APIRouter(tags=["auth"])
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+router = APIRouter(prefix="/api/auth", tags=["auth"])
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 

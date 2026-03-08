@@ -1,4 +1,4 @@
-def analyze_financials(symbol: str, db):
+def analyze_financials(symbol: str):
     return f"""
 Financial Analysis for {symbol}
 

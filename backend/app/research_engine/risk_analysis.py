@@ -1,4 +1,4 @@
-def analyze_risks(symbol: str, db):
+def analyze_risks(symbol: str):
     return f"""
 Risk Assessment for {symbol}
 

@@ -22,7 +22,7 @@ from app.services.data_service import DataService
 
 logger = get_logger(__name__)
 
-router = APIRouter(tags=["search"])
+router = APIRouter(prefix="/api", tags=["search"])
 
 
 @router.post("/search", response_model=SearchResponse)
@@ -57,7 +57,7 @@ async def single_search(
             news_task,
         )
 
-        research_report = generate_equity_report(symbol, db)
+        research_report = generate_equity_report(symbol)
 
         logger.info("News articles fetched: %s", len(news_docs) if news_docs else 0)
 

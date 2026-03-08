@@ -9,7 +9,7 @@ from app.services.data_service import DataService
 
 logger = get_logger(__name__)
 
-router = APIRouter(tags=["financial"])
+router = APIRouter(prefix="/api", tags=["financial"])
 
 
 @router.post("/financial", response_model=FinancialResponse)

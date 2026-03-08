@@ -10,7 +10,7 @@ from app.services.chat_service import ChatService
 
 logger = get_logger(__name__)
 
-router = APIRouter(tags=["chat"])
+router = APIRouter(prefix="/api", tags=["chat"])
 
 
 @router.post("/chat", response_model=ChatResponse)

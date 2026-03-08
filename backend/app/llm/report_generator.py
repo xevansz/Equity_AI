@@ -5,11 +5,11 @@ from app.research_engine.risk_analysis import analyze_risks
 from app.research_engine.valuation_engine import analyze_valuation
 
 
-def generate_equity_report(symbol: str, db):
-    data_cot = analyze_financials(symbol, db)
-    thesis_cot = analyze_growth(symbol, db)
-    valuation = analyze_valuation(symbol, db)
-    risk_cot = analyze_risks(symbol, db)
+def generate_equity_report(symbol: str):
+    data_cot = analyze_financials(symbol)
+    thesis_cot = analyze_growth(symbol)
+    valuation = analyze_valuation(symbol)
+    risk_cot = analyze_risks(symbol)
 
     return {
         "symbol": symbol,

@@ -7,7 +7,7 @@ from app.dependencies import get_current_user, get_database
 from app.models.watchlist import WatchlistItemOut, WatchlistListResponse
 from app.schemas.watchlist import WatchlistCreate
 
-router = APIRouter(tags=["watchlist"])
+router = APIRouter(prefix="/api", tags=["watchlist"])
 
 
 @router.get("/watchlist", response_model=WatchlistListResponse)

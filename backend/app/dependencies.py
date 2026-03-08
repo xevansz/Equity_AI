@@ -15,7 +15,6 @@ from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
-from app.services.research_service import ResearchService
 
 security = HTTPBearer()
 
@@ -73,13 +72,6 @@ def get_financial_loader(request: Request) -> FinancialLoader:
 
 def get_data_service(financial_loader: FinancialLoader = Depends(get_financial_loader)) -> DataService:
     return DataService(financial_loader)
-
-
-def get_research_service(
-    db: AsyncIOMotorDatabase = Depends(get_database),
-    financial_loader: FinancialLoader = Depends(get_financial_loader),
-) -> ResearchService:
-    return ResearchService(db, financial_loader)
 
 
 def get_news_api(request: Request) -> NewsAPI:

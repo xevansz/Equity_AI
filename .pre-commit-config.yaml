@@ -3,17 +3,10 @@ repos:
     hooks:
       - id: ruff
         name: ruff lint
-        entry: bash -c "cd backend && pdm run ruff check . --fix"
+        entry: bash -c "cd backend && pdm run ruff check ."
         language: system
         pass_filenames: false
 
-      - id: ruff-format
-        name: ruff format
-        entry: bash -c "cd backend && pdm run ruff format ."
-        language: system
-        pass_filenames: false
-
-      # - id: mypy
       #   name: mypy
       #   entry: bash -c "cd backend && pdm run python -m mypy ."
       #   language: system

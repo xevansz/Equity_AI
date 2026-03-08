@@ -10,7 +10,7 @@ from app.schemas.research import ResearchRequest, ResearchResponse
 
 logger = get_logger(__name__)
 
-router = APIRouter(tags=["research"])
+router = APIRouter(prefix="/api", tags=["research"])
 
 
 @router.post("/research", response_model=ResearchResponse)

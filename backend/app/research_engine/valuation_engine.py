@@ -1,4 +1,4 @@
-def analyze_valuation(symbol: str, db):
+def analyze_valuation(symbol: str):
     return f"""
 Valuation for {symbol}
 

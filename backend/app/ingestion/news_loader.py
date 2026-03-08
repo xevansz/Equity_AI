@@ -64,13 +64,17 @@ class NewsLoader:
 
         # Upsert new docs (insert if not already present)
         new_ids = [doc.id for doc in normalized]
-        existing_ids = set(
-            d["_id"]
-            async for d in collection.find(
-                {"_id": {"$in": new_ids}},
-                {"_id": 1},
-            )
-        )
+
+        if not new_ids:
+            existing_ids = set()
+        else:
+            existing_ids = {
+                d["_id"]
+                async for d in collection.find(
+                    {"_id": {"$in": new_ids}},
+                    {"_id": 1},
+                )
+            }
 
         to_insert = [doc for doc in normalized if doc.id not in existing_ids]
         if to_insert:

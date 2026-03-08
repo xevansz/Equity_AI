@@ -37,6 +37,9 @@ class ConversationMemory:
         cursor = self.db.conversations.find({"session_id": session_id}).sort("_id", -1).limit(limit)
 
         messages = await cursor.to_list(length=limit)
+        for m in messages:
+            m["_id"] = str(m["_id"])
+
         return list(reversed(messages))
 
     async def get_sessions(self, user_id: str, limit: int = 20) -> list[dict]:
@@ -62,7 +65,7 @@ class ConversationMemory:
         sessions = await cursor.to_list(length=limit)
         return [
             {
-                "session_id": s["_id"],
+                "session_id": str(s["_id"]),
                 "last_message": s["last_message"],
                 "last_timestamp": s["last_timestamp"],
             }

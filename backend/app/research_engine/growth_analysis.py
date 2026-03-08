@@ -1,4 +1,4 @@
-def analyze_growth(symbol: str, db):
+def analyze_growth(symbol: str):
     return f"""
 Growth Thesis for {symbol}
 

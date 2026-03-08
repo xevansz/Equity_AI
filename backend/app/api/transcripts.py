@@ -11,7 +11,7 @@ from app.logging_config import get_logger
 
 logger = get_logger(__name__)
 
-router = APIRouter(tags=["transcripts"])
+router = APIRouter(prefix="/api", tags=["transcripts"])
 
 
 def _current_quarter() -> tuple[int, int]:

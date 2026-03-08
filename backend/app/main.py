@@ -2,13 +2,13 @@ import asyncio
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import APIRouter, FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 
 from app.api import chat, conversations, financial, health, news, research, search, transcripts, watchlist
-from app.auth.auth_router import router as auth_router
+from app.auth import auth
 from app.config import settings
 from app.database import close_databases, create_index_cache, database, init_databases
 from app.embeddings.vector_store import VectorStore
@@ -43,7 +43,12 @@ async def lifespan(app: FastAPI):
     yield
 
     # shutdown
-    await app.state.warmer_task.cancel()  # TODO: Multiprocessing primitives are not shut down properly
+    app.state.warmer_task.cancel()
+
+    try:
+        await app.state.warmer_task
+    except asyncio.CancelledError:
+        pass
 
     await close_databases()
 
@@ -70,8 +75,7 @@ app.add_middleware(
 )
 
 # Routers
-api_router = APIRouter(prefix="/api/v1")
-app.include_router(auth_router)
+app.include_router(auth.router)
 app.include_router(health.router)
 app.include_router(chat.router)
 app.include_router(research.router)

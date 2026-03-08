@@ -6,7 +6,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from app.conversational.memory import ConversationMemory
 from app.dependencies import get_conversation_memory, get_current_user, get_database
 
-router = APIRouter(tags=["conversations"])
+router = APIRouter(prefix="/api", tags=["conversations"])
 
 
 @router.get("/conversations")

@@ -16,8 +16,14 @@ class VectorStore:
 
         self.collection = self.client.get_or_create_collection(name="equity_research", embedding_function=embedding_fn)
 
-    def add_documents(self, documents: list[str], metadatas: list[dict] | None = None) -> None:
-        ids = [f"doc_{hashlib.sha256(doc.encode('utf-8')).hexdigest()[:16]}" for doc in documents]
+    def add_documents(
+        self,
+        documents: list[str],
+        metadatas: list[dict] | None = None,
+        ids: list[str] | None = None,
+    ) -> None:
+        if ids is None:
+            ids = [f"doc_{hashlib.sha256(doc.encode('utf-8')).hexdigest()[:16]}" for doc in documents]
         self.collection.upsert(documents=documents, ids=ids, metadatas=metadatas)
 
     def search(self, query: str, top_k: int | None = None) -> dict:

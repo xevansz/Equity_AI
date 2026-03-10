@@ -9,7 +9,9 @@ from app.database import database
 from app.embeddings.vector_store import VectorStore
 from app.ingestion.financial_loader import FinancialLoader
 from app.ingestion.news_loader import NewsLoader
+from app.ingestion.sec_filing_loader import SECFilingLoader
 from app.ingestion.transcript_loader import TranscriptLoader
+from app.ingestion.vector_ingestion_service import VectorIngestionService
 from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
@@ -107,6 +109,15 @@ def get_sec_api(request: Request) -> SECAPI:
     if client is not None:
         return client
     return SECAPI()
+
+
+def get_sec_filing_loader(request: Request) -> SECFilingLoader:
+    sec_api = get_sec_api(request)
+    return SECFilingLoader(sec_api)
+
+
+def get_vector_ingestion_service() -> VectorIngestionService:
+    return VectorIngestionService()
 
 
 # Admin only

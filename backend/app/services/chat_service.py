@@ -37,25 +37,30 @@ class ChatService:
             return ChatResponse(answer=cached_answer, sources=[])
 
         try:
-            logger.info("Running RAG pipeline")
-            context = await rag_pipeline.run(self.vector_store, query)
-
-            if not context or not context.strip():
-                answer = "No sufficient contextual data found for this query."
+            _RAG_INTENTS = {"research_query", "general_query"}
+            if intent in _RAG_INTENTS:
+                logger.info("Running RAG pipeline (intent=%s)", intent)
+                context = await rag_pipeline.run(self.vector_store, query)
+                if not context or not context.strip():
+                    logger.info("RAG returned no context — proceeding with empty context")
+                    context = ""
+                else:
+                    logger.debug("RAG context preview: %s", context[:200])
             else:
-                logger.debug("RAG context preview: %s", context[:200])
+                logger.info("Skipping RAG for intent=%s (API-only path)", intent)
+                context = ""
 
-                now = time.time()
-                elapsed = now - self._last_call_time
-                if elapsed < self._MIN_INTERVAL_SECONDS:
-                    sleep_time = self._MIN_INTERVAL_SECONDS - elapsed
-                    logger.info("Rate limiting Gemini (sleep=%.2fs)", sleep_time)
-                    await asyncio.sleep(sleep_time)
+            now = time.time()
+            elapsed = now - self._last_call_time
+            if elapsed < self._MIN_INTERVAL_SECONDS:
+                sleep_time = self._MIN_INTERVAL_SECONDS - elapsed
+                logger.info("Rate limiting Gemini (sleep=%.2fs)", sleep_time)
+                await asyncio.sleep(sleep_time)
 
-                self._last_call_time = time.time()
-                logger.info("Calling Gemini")
-                answer = await response_generator.generate_response(query, context, intent=intent)
-                logger.debug("Gemini answer preview: %s", answer[:200])
+            self._last_call_time = time.time()
+            logger.info("Calling Gemini")
+            answer = await response_generator.generate_response(query, context, intent=intent)
+            logger.debug("Gemini answer preview: %s", answer[:200])
 
         except Exception as e:
             logger.exception("LLM/RAG error: %s", repr(e))

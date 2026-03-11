@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { MessageSquare, Plus } from 'lucide-react'
+import { MessageSquare, Plus, Trash2 } from 'lucide-react'
 import ConversationalChat from '../components/ConversationalChat'
-import { fetchConversations } from '../api/conversations'
+import { deleteConversation, fetchConversations } from '../api/conversations'
 
 const ChatPage = () => {
   const [sessions, setSessions] = useState([])
   const [activeSessionId, setActiveSessionId] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+
+  const handleDelete = async (e, session_id) => {
+    e.stopPropagation()
+    await deleteConversation(session_id)
+    setSessions((prev) => prev.filter((s) => s.session_id !== session_id))
+    if (activeSessionId === session_id) setActiveSessionId(null)
+  }
 
   useEffect(() => {
     const load = async () => {
@@ -51,10 +58,10 @@ const ChatPage = () => {
               </p>
             )}
             {sessions.map((s) => (
-              <button
+              <div
                 key={s.session_id}
                 onClick={() => setActiveSessionId(s.session_id)}
-                className={`w-full text-left px-3 py-2 rounded-lg text-sm transition group flex items-start gap-2 ${
+                className={`w-full text-left px-3 py-2 rounded-lg text-sm transition group flex items-start gap-2 cursor-pointer ${
                   activeSessionId === s.session_id
                     ? 'bg-primary/20 text-text'
                     : 'hover:bg-surface text-muted'
@@ -69,7 +76,14 @@ const ChatPage = () => {
                     {formatTime(s.last_timestamp)}
                   </p>
                 </div>
-              </button>
+                <button
+                  onClick={(e) => handleDelete(e, s.session_id)}
+                  className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 text-muted hover:text-error transition"
+                  title="Delete chat"
+                >
+                  <Trash2 size={13} />
+                </button>
+              </div>
             ))}
           </div>
         </aside>

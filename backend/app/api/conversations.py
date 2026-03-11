@@ -28,3 +28,14 @@ async def get_conversation(
 ) -> list[dict]:
     messages = await memory.get_history(session_id=session_id)
     return messages
+
+
+@router.delete("/conversations/{session_id}")
+async def delete_conversation(
+    session_id: str,
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    user: dict = Depends(get_current_user),
+    memory: ConversationMemory = Depends(get_conversation_memory),
+) -> dict:
+    deleted = await memory.delete_session(session_id=session_id, user_id=user["email"])
+    return {"deleted": deleted}

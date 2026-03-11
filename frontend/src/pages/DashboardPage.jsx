@@ -37,7 +37,6 @@ const DashboardPage = () => {
 
         {!loading && data && (
           <div className="mt-8 space-y-4">
-            {/* Add to watchlist button */}
             <div>
               <button
                 onClick={() => add(data.symbol, data.query || data.symbol)}

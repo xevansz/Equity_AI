@@ -72,6 +72,12 @@ class ConversationMemory:
             for s in sessions
         ]
 
+    async def delete_session(self, session_id: str, user_id: str) -> int:
+        if self.db is None:
+            return 0
+        result = await self.db.conversations.delete_many({"session_id": session_id, "user_id": user_id})
+        return result.deleted_count
+
     # TODO: Implete this into get history file
     async def get_context(self, session_id: str, max_messages: int = 6):
         history = await self.get_history(session_id, limit=max_messages)

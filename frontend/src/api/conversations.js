@@ -9,3 +9,8 @@ export const fetchConversationHistory = async (sessionId) => {
   const res = await apiClient.get(`/conversations/${sessionId}`)
   return res.data
 }
+
+export const deleteConversation = async (sessionId) => {
+  const res = await apiClient.delete(`/conversations/${sessionId}`)
+  return res.data
+}

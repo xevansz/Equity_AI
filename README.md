@@ -40,10 +40,8 @@ An LLM-powered real-time knowledge curation system for financial intelligence.
 ---
 
 ## Things to do
-1. **Add nginx reverse proxy** with SSL
 2. **Add API rate limiting** middleware (slowapi or similar)
 3. **Explicit repo layer** isolate persistant logic from services  * ingestion may fetch apis
-4. Build Explicit repo layer
-    * Services(symbolcacheservice) directly calls monogdb
-    * memory probably does DB ops
-5. Add delete chat in conversations. chat page
+    Build Explicit repo layer:
+        * Services(symbolcacheservice) directly calls monogdb
+        * memory probably does DB ops

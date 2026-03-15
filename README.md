@@ -1,31 +1,19 @@
 # EquityAI
 An LLM-powered real-time knowledge curation system for financial intelligence.
 
+## Overview
+## How it works 
+## Installation
+## Equity
+## customizing doc ingestion pipeline 
+## Datasets(Docs)
+## Paper
+## Acknowledgement
+## Citations
+
 ## RAG System (`rag/`)
 
-| Component                       | Status                                                          |
-| ------------------------------- | --------------------------------------------------------------- |
-| `query_expander.py`             | ⚠️ Dead code — kept as placeholder for future multi-query RAG   |
-| `rag_pipeline.py`               | ✅ Wired — runs only for `research_query` / `general_query`     |
-| `retriever.py`                  | ✅ Queries Chroma collection                                    |
-| `context_builder.py`            | ✅ Builds context string from retrieved chunks                  |
-
-### Ingestion Pipeline (`ingestion/`)
-
-| Component                       | Status                                                          |
-| ------------------------------- | --------------------------------------------------------------- |
-| `news_loader.py`                | ✅ Fetches + caches news to Mongo (API-only, not embedded)      |
-| `transcript_loader.py`          | ✅ Fetches + caches earnings transcripts to Mongo               |
-| `sec_filing_loader.py`          | ✅ Fetches latest 10-K/10-Q from EDGAR, caches to Mongo         |
-| `vector_ingestion_service.py`   | ✅ Chunks Mongo docs → upserts into Chroma with stable IDs      |
-| `warmer.py`                     | ✅ Background Mongo cache warmer (news + transcripts)           |
-
-### Admin Ingestion Endpoints
-
-| Endpoint                        | Description                                                     |
-| ------------------------------- | --------------------------------------------------------------- |
-| `POST /api/admin/ingest/{sym}`  | Fetch transcripts + 10-K/10-Q → Mongo → embed into Chroma       |
-| `POST /api/admin/reindex/{sym}` | Re-chunk + re-upsert from Mongo into Chroma (no re-fetch)       |
+`query_expander.py` - ⚠️ Dead code — kept as placeholder for future multi-query RAG
 
 ### Hybrid Routing (`services/chat_service.py`)
 

@@ -2,8 +2,6 @@
 
 > What's implemented, what's a stub, and what's left to build.
 
----
-
 ## Product Vision
 
 **EquityAI** is an LLM-powered real-time knowledge curation system for financial intelligence.
@@ -13,8 +11,6 @@ Three core surfaces:
 2. **Watchlist** — Track favorite stocks with live price cards + market status
 3. **Chat** — Deep-dive conversational research powered by RAG + LLM
 
----
-
 ## Page-by-Page Feature Status
 
 ### 1. Dashboard (`/dashboard`)
@@ -23,21 +19,12 @@ Three core surfaces:
 
 | Feature | Status | Details |
 | --------- | -------- | --------- |
-| Search bar | ✅ Done | Calls unified `/api/search`, resolves company name → ticker via LLM |
-| AI chat answer | ✅ Done | Gemini response shown in "Thesis" tab |
-| Financial data fetch | ✅ Done | Alpha Vantage income statement, balance sheet, cash flow |
-| Key metrics calculation | ✅ Done | Revenue, EPS, ROE, ROA, Operating Margin, D/E, Current Ratio, FCF |
-| Revenue/Profit line chart | ✅ Done | Recharts LineChart, last 5 years annual data |
-| News articles | ✅ Done | NewsAPI fetches latest articles for symbol |
-| Research report tabs | ✅ Done | Thesis / Data / Risk tabs in AnalysisPanel |
-| Raw API response viewer | ✅ Done | JSON dump in left panel (dev tool, should be removed for prod) |
 | **Stock price chart (Groww-style)** | ❌ Missing | No current/historical price data — Alpha Vantage doesn't provide this on free tier. Need a price API (yfinance, Finnhub, or Alpha Vantage TIME_SERIES) |
 | **Price with red/green indicators** | ❌ Missing | No price change data |
 | **30-day / timeframe selector** | ❌ Missing | No time-series data at all |
 | **Market status indicator** | ❌ Missing | No market open/closed detection |
 | **Formatted metric cards** | ❌ Missing | Metrics exist in data but displayed as raw JSON, not as styled cards |
 | **News cards with sentiment** | ❌ Missing | News articles returned raw, no formatting or sentiment scoring |
-| **Add to watchlist button** | ❌ Missing | No way to save stocks from dashboard |
 
 ### 2. Watchlist (`/watchlist`)
 
@@ -45,10 +32,6 @@ Three core surfaces:
 
 | Feature | Status | Details |
 | --------- | -------- | --------- |
-| Watchlist page | ✅ Done | Page exists with `Watchlist` component |
-| Watchlist component | ✅ Done | Renders list of items with symbol, name, price |
-| **Backend watchlist API** | ❌ Missing | No endpoints to add/remove/list watchlist items |
-| **MongoDB watchlist collection** | ❌ Missing | No database storage for user watchlists |
 | **Stock cards with live price** | ❌ Missing | Component accepts props but nothing feeds it data |
 | **Current price fetching** | ❌ Missing | No price API integration |
 | **Market status notice** | ❌ Missing | No market open/closed detection or display |
@@ -61,15 +44,7 @@ Three core surfaces:
 
 | Feature | Status | Details |
 | --------- | -------- | --------- |
-| Chat UI | ✅ Done | Message bubbles, auto-scroll, input bar, send button |
-| Send message → get response | ✅ Done | Calls `/api/search` → gets Gemini answer |
-| Loading indicator | ✅ Done | Spinner while processing |
-| Error handling | ✅ Done | Error messages displayed in chat |
-| Markdown cleaning | ✅ Done | Strips bold/italic/headers from LLM response |
-| In-memory response cache | ✅ Done | Same query returns cached answer |
-| Rate limiting | ✅ Done | 6s minimum between Gemini calls |
-| Conversation memory (backend) | ✅ Done | Messages saved to MongoDB `conversations` collection |
-| **RAG retrieval from knowledge base** | ❌ Not working | ChromaDB is empty — no documents ingested. RAG pipeline runs but returns nothing, so Gemini answers without context |
+ **RAG retrieval from knowledge base** | ❌ Not working | ChromaDB is empty — no documents ingested. RAG pipeline runs but returns nothing, so Gemini answers without context |
 | **Knowledge base ingestion** | ❌ Missing | No pipeline to ingest financial theories, studies, SEC filings, textbooks, etc. |
 | **SEC filing retrieval** | ❌ Missing | SEC API is a stub |
 | **Earnings transcript retrieval** | ❌ Missing | Transcript loader is a stub |
@@ -80,43 +55,11 @@ Three core surfaces:
 | **Intent-based routing** | ❌ Not wired | Intent detector and query router exist but are never called |
 | **Deep financial analysis** | ❌ Stubs | Research engine functions return placeholder text, not real analysis |
 
-### 4. Home Page (`/`)
-
-| Feature | Status | Details |
-| --------- | -------- | --------- |
-| Hero section | ✅ Done | Title, subtitle, CTA buttons |
-| Feature cards | ✅ Done | 4 feature highlights |
-| "Start Researching" button | ✅ Done | Routes to `/chat` if logged in, `/login` if not |
-| "View Demo" button | ⚠️ Placeholder | Button exists but does nothing |
-| Footer | ✅ Done | Shown on home, login, register pages |
-
 ### 5. Authentication
 
 | Feature | Status | Details |
 | --------- | -------- | --------- |
-| Register | ✅ Done | Email + password with validation (8 chars, uppercase, number, special char) |
-| Login | ✅ Done | JWT token stored in localStorage |
-| Auto-login on refresh | ✅ Done | Token validated via `/api/auth/me` on mount |
-| Logout | ✅ Done | Clears token, redirects |
-| Admin login | ✅ Done | Env-based admin bypass |
-| Protected routes | ✅ Done | Redirects to `/login` if not authenticated |
-| Forgot password (backend) | ✅ Done | OTP generation + SMTP email |
-| Reset password (backend) | ✅ Done | OTP verification + password update |
-| **Forgot password (frontend)** | ⚠️ Exists but not routed | `ForgotPassword.jsx` exists, not in App.jsx routes, and doesn't call backend API |
 | **Google OAuth** | ❌ Missing | Config fields exist but no implementation |
-
-### 6. UI/UX
-
-| Feature | Status | Details |
-| --------- | -------- | --------- |
-| Dark/light theme | ✅ Done | CSS variables + ThemeContext + localStorage persistence |
-| Responsive navbar | ✅ Done | Desktop + mobile hamburger menu |
-| Logo routing | ✅ Done | Goes to `/dashboard` when logged in, `/` when not |
-| Loading states | ✅ Done | Spinners on dashboard and chat |
-| Error states | ✅ Done | Error messages on dashboard and chat |
-| **Consistent design system** | ⚠️ Partial | Color tokens defined, but some components use hardcoded colors |
-
----
 
 ## Backend Feature Status
 
@@ -133,16 +76,8 @@ Three core surfaces:
 | `report_generator.py` | Calls the 4 stubs above, returns dict | Should use real data + optionally LLM for narrative |
 
 ### Financial Metrics (`services/financial_metrics.py`)
-- ✅ Calculates 9 real metrics from Alpha Vantage data
 - ⚠️ PE Ratio always `None` (needs market price)
 - These metrics are **the only real calculations** in the entire backend
-
-### Symbol Resolution (`llm/symbol_resolver.py`)
-- ✅ Fully working — LLM extracts ticker from natural language
-- ✅ MongoDB caching with aliases
-- ✅ Fallback to "UNKNOWN"
-
----
 
 ## Features To Build — Prioritized
 
@@ -249,26 +184,15 @@ Three core surfaces:
 21. **Forgot password frontend** — wire to backend OTP flow
 22. **Google OAuth** — implement OAuth flow
 23. **Dashboard data caching** — cache search results until logout
-24. **404 page**
-25. **Proper logging** — replace all print statements
 26. **Error messages** — user-friendly instead of raw exceptions
 27. **Loading skeletons** — better UX than spinners
 
----
-
-## What's Real vs What's Fake
+## What's Fae
 
 A quick reference for what actually computes real data vs returns placeholders:
 
 | Component | Real? |
 |-----------|-------|
-| Gemini LLM responses | ✅ Real (but ungrounded without RAG data) |
-| Symbol resolution | ✅ Real |
-| Alpha Vantage financial statements | ✅ Real |
-| Financial metrics (9 ratios) | ✅ Real |
-| NewsAPI articles | ✅ Real |
-| Revenue/Profit chart | ✅ Real (from Alpha Vantage annual reports) |
-| Auth system | ✅ Real |
 | RAG retrieval | ❌ Empty (no documents in ChromaDB) |
 | Research engine analysis | ❌ Placeholder text |
 | SEC filings | ❌ Stub |
@@ -276,8 +200,6 @@ A quick reference for what actually computes real data vs returns placeholders:
 | Stock prices | ❌ Not implemented |
 | Watchlist | ❌ UI shell only |
 | Conversation history | ❌ Saved but never loaded |
-
----
 
 ## Summary
 

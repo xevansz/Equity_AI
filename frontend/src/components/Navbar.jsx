@@ -1,7 +1,7 @@
 // Navbar.jsx
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { TrendingUp, Menu, X } from 'lucide-react'
+import { TrendingUp, Menu, X, LogOut } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import ThemeToggle from './ThemeToggle'
 import { useSearch } from '../context/SearchContext'
@@ -34,34 +34,35 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center">
             {user ? (
               <>
-                <Link
-                  to="/dashboard"
-                  className="text-text hover:text-primary transition-colors"
-                >
-                  Dashboard
-                </Link>
-                <Link
-                  to="/watchlist"
-                  className="text-text hover:text-primary transition-colors"
-                >
-                  Watchlist
-                </Link>
-                <Link
-                  to="/chat"
-                  className="text-text hover:text-primary transition-colors"
-                >
-                  Chat
-                </Link>
                 <div className="flex items-center gap-4">
+                  <Link
+                    to="/dashboard"
+                    className="text-text hover:text-primary transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/watchlist"
+                    className="text-text hover:text-primary transition-colors"
+                  >
+                    Watchlist
+                  </Link>
+                  <Link
+                    to="/chat"
+                    className="text-text hover:text-primary transition-colors"
+                  >
+                    Chat
+                  </Link>
+                  <span className="text-muted">{user.email.split('@')[0]}</span>
                   <ThemeToggle />
-                  <span className="text-muted">{user.email}</span>
                   <button
                     onClick={handleLogout}
-                    className="px-4 py-2 bg-surface hover:bg-surface/80 rounded-lg transition-colors text-text"
+                    className="bg-surface hover:bg-surface/80 rounded-lg transition-colors text-text flex items-center gap-2"
                   >
+                    <LogOut size={20}></LogOut>
                     Sign Out
                   </button>
                 </div>
@@ -126,7 +127,9 @@ const Navbar = () => {
                     Chat
                   </Link>
                   <div className="pt-4 border-t border-text-muted/10">
-                    <p className="text-muted text-sm mb-3">{user.email}</p>
+                    <p className="text-muted text-sm mb-3">
+                      {user.email.split('@')[0]}
+                    </p>
                     <button
                       onClick={() => {
                         handleLogout()

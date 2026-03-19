@@ -1,4 +1,3 @@
-// src/components/AnalysisPanel.jsx
 import React, { useState } from 'react'
 import FinancialCharts from './FinancialCharts'
 

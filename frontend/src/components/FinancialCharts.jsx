@@ -29,7 +29,7 @@ const FinancialCharts = ({ chartData }) => {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={chartData}
-          margin={{ top: 10, right: 20, left: 40, bottom: 10 }} // ✅ KEY FIX
+          margin={{ top: 10, right: 20, left: 40, bottom: 10 }}
         >
           <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
           <XAxis dataKey="year" />

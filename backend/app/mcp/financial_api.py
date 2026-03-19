@@ -18,3 +18,6 @@ class AlphaVantageMCP(BaseMCP):
 
     async def get_cash_flow(self, symbol: str):
         return await self.get("", {"function": "CASH_FLOW", "symbol": symbol})
+
+    async def get_time_series_daily(self, symbol: str):
+        return await self.get("", {"function": "TIME_SERIES_DAILY", "symbol": symbol, "outputsize": "compact"})

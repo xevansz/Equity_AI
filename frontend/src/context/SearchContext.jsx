@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { createContext, useContext, useState } from 'react'
-import { searchAPI } from '../api/search'
+import { dashboardSearchAPI } from '../api/dashboard'
 
 export const SearchContext = createContext()
 
@@ -27,7 +27,7 @@ export const SearchProvider = ({ children }) => {
       setLoading(true)
       setError(null)
 
-      const result = await searchAPI(searchQuery)
+      const result = await dashboardSearchAPI(searchQuery)
 
       setData(result)
       localStorage.setItem('eq_search_results', JSON.stringify(result))

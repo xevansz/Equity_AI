@@ -57,19 +57,18 @@ const ConversationalChat = ({
     }
   }, [activeSessionId])
 
-  const getOrCreateSessionId = () => {
-    if (sessionId) return sessionId
-    const newId = `session_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
-    setSessionId(newId)
-    onSessionCreated?.(newId)
-    return newId
-  }
-
   const handleSend = async () => {
     if (!input.trim()) return
 
     const userMessage = input
-    const currentSessionId = getOrCreateSessionId()
+    let currentSessionId = sessionId
+
+    if (!currentSessionId) {
+      currentSessionId = `session_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+      setSessionId(currentSessionId)
+      onSessionCreated?.(currentSessionId)
+    }
+
     setInput('')
 
     setMessages((prev) => [

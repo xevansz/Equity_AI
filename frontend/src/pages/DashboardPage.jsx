@@ -1,7 +1,8 @@
 // src/pages/DashboardPage.jsx
 import React from 'react'
 import SearchBar from '../components/SearchBar'
-import AnalysisPanel from '../components/AnalysisPanel'
+import CandlestickChart from '../components/CandlestickChart'
+import NewsPanel from '../components/NewsPanel'
 import { useSearch } from '../context/SearchContext'
 import { useWatchlist } from '../context/WatchlistContext'
 
@@ -36,8 +37,12 @@ const DashboardPage = () => {
         )}
 
         {!loading && data && (
-          <div className="mt-8 space-y-4">
-            <div>
+          <div className="mt-8 space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">{data.symbol}</h2>
+                <p className="text-sm text-muted">Search: {data.query}</p>
+              </div>
               <button
                 onClick={() => add(data.symbol, data.query || data.symbol)}
                 disabled={isInWatchlist}
@@ -51,7 +56,8 @@ const DashboardPage = () => {
               </button>
             </div>
 
-            <AnalysisPanel data={data} />
+            <CandlestickChart stockData={data.stock_data} />
+            <NewsPanel newsData={data.news} />
           </div>
         )}
       </div>

@@ -7,7 +7,18 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 
-from app.api import chat, conversations, financial, health, ingestion, news, research, search, transcripts, watchlist
+from app.api import (
+    chat,
+    conversations,
+    dashboard,
+    financial,
+    health,
+    ingestion,
+    news,
+    research,
+    transcripts,
+    watchlist,
+)
 from app.auth import auth
 from app.config import settings
 from app.database import close_databases, create_index, database, init_databases
@@ -82,7 +93,7 @@ app.include_router(research.router)
 app.include_router(financial.router)
 app.include_router(news.router)
 app.include_router(transcripts.router)
-app.include_router(search.router)
+app.include_router(dashboard.router)
 app.include_router(watchlist.router)
 app.include_router(conversations.router)
 app.include_router(ingestion.router)

@@ -18,6 +18,10 @@ class ConversationMemory:
             logger.warning("Database not available, skipping message save")
             return
 
+        if not content or not content.strip():
+            logger.warning("Skipping empty message")
+            return
+
         doc: dict = {
             "session_id": session_id,
             "role": role,

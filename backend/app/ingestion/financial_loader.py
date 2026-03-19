@@ -17,3 +17,6 @@ class FinancialLoader:
             "balance_sheet": balance,
             "cash_flow": cash_flow,
         }
+
+    async def load_stock_prices(self, symbol: str):
+        return await self._alpha_vantage.get_time_series_daily(symbol)

@@ -18,9 +18,10 @@ export function AuthProvider({ children }) {
   const searchCtx = useContext(SearchContext)
 
   useEffect(() => {
-    // 🚨 No token → do NOT call backend
+    // No token → do NOT call backend
     if (!token) {
       delete axios.defaults.headers.common.Authorization
+      searchCtx?.clearResults()
       setUser(null)
       setLoading(false)
       return

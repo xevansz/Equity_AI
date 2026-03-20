@@ -13,14 +13,15 @@ class NewsAPI(BaseMCP):
     def __init__(self):
         super().__init__("https://newsapi.org/v2", settings.NEWSAPI_KEY)
 
-    async def fetch_news(self, symbol: str, limit: int = 10):
+    async def fetch_news(self, symbol: str, company_name: str, limit: int = 10):
         if not self.api_key:
             return []
         try:
             data = await self.get(
                 "everything",
                 {
-                    "q": symbol,
+                    "q": f'"{company_name}" OR {symbol}',
+                    "searchIn": "title,description",
                     "language": "en",
                     "sortBy": "publishedAt",
                     "pageSize": limit,

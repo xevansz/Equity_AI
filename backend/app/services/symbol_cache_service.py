@@ -11,8 +11,8 @@ class SymbolCacheService:
         self.symbols = db.get_collection("symbols")
         self.aliases = db.get_collection("symbol_aliases")
 
-    async def get_symbol(self, query: str) -> str | None:
-        """Search for symbol via normalized alias lookup."""
+    async def get_symbol(self, query: str) -> tuple[str | None, str | None]:
+        """Search for symbol via normalized alias lookup. Returns (symbol, company_name)."""
         normalized = normalize_company_name(query)
 
         result = await self.aliases.find_one_and_update(
@@ -22,9 +22,13 @@ class SymbolCacheService:
         )
 
         if result:
-            return result["symbol"]
+            symbol = result["symbol"]
+            # Get the canonical company name from symbols collection
+            symbol_doc = await self.symbols.find_one({"_id": symbol})
+            company_name = symbol_doc.get("canonical_name") if symbol_doc else result.get("alias_name")
+            return symbol, company_name
 
-        return None
+        return None, None
 
     async def cache_alias(self, company_name: str, symbol: str, canonical_name: str | None = None):
         """Store a company name alias pointing to symbol.

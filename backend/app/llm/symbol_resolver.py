@@ -52,23 +52,29 @@ def normalize_symbol(raw: str) -> str:
     return "UNKNOWN"
 
 
-async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
-    """resolve symbol with caching"""
-
-    # If the user directly provided a ticker, return it immediately
-    if looks_like_ticker(query):
-        logger.info("Query looks like ticker, skipping resolver: %s", query.strip().upper())
-        return query.strip().upper()
+async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> tuple[str, str]:
+    """Resolve symbol with caching. Returns (symbol, company_name) tuple."""
 
     cache_service = SymbolCacheService(db)
 
-    # search in cache first
-    cached_symbol = await cache_service.get_symbol(query)
-    if cached_symbol:
-        logger.info("Symbol found in cache: %s", cached_symbol)
-        return cached_symbol
+    # If the user directly provided a ticker, return it immediately
+    if looks_like_ticker(query):
+        ticker = query.strip().upper()
+        logger.info("Query looks like ticker, skipping resolver: %s", ticker)
+        # Check if we have company name in cache for this ticker
+        cached_symbol, cached_company = await cache_service.get_symbol(query)
+        if cached_symbol:
+            return cached_symbol, cached_company
+        # No cache hit, return ticker for both (will be used for stock, news will be less specific)
+        return ticker, ticker
 
-    # fallback to LLM if not found in cache
+    # Search in cache first for company name queries
+    cached_symbol, cached_company = await cache_service.get_symbol(query)
+    if cached_symbol and cached_company:
+        logger.info("Symbol found in cache: %s -> %s", cached_symbol, cached_company)
+        return cached_symbol, cached_company
+
+    # Fallback to LLM if not found in cache
     try:
         prompt = SYMBOL_RESOLUTION_PROMPT.format(query=query)
         response = await gemini.generate(prompt)
@@ -80,13 +86,13 @@ async def symbol_resolver(query: str, db: AsyncIOMotorDatabase) -> str:
 
             if symbol != "UNKNOWN":
                 await cache_service.cache_alias(company_name.strip(), symbol)
-                logger.debug("Symbol cached successfully")
-            return symbol
+                logger.debug("Symbol cached successfully: %s -> %s", symbol, company_name.strip())
+            return symbol, company_name.strip()
 
         else:
             logger.info("Symbol not found")
-            return "UNKNOWN"
+            return "UNKNOWN", "UNKNOWN"
 
     except Exception as e:
         logger.exception("Symbol resolution failed: %s", str(e))
-        return "UNKNOWN"
+        return "UNKNOWN", "UNKNOWN"

@@ -47,14 +47,16 @@ class NewsLoader:
     def __init__(self, news_api: NewsAPI):
         self._news_api = news_api
 
-    async def load_news(self, symbol: str, db: AsyncIOMotorDatabase | None = None) -> list[IngestionDocument]:
+    async def load_news(
+        self, symbol: str, company_name: str, db: AsyncIOMotorDatabase | None = None
+    ) -> list[IngestionDocument]:
         """
         Fetch and normalize news for `symbol`.
         - If `db` is provided, new articles are persisted to Mongo and only new ones are returned
           merged with any cached ones (so the response is always the full set).
         - If `db` is None, articles are fetched fresh and normalized without caching.
         """
-        raw_articles = await self._news_api.fetch_news(symbol)
+        raw_articles = await self._news_api.fetch_news(symbol, company_name)
         normalized = [doc for a in raw_articles if (doc := _normalize_article(symbol, a))]
 
         if db is None or not normalized:

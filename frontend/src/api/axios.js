@@ -19,6 +19,8 @@ apiClient.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('token')
       localStorage.removeItem('access_token')
+      localStorage.removeItem('eq_search_query')
+      localStorage.removeItem('eq_search_results')
       window.location.href = '/login'
     }
     return Promise.reject(error)

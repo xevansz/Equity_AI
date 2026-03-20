@@ -10,13 +10,13 @@ import { WatchlistProvider } from './context/WatchlistContext'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
-      <AuthProvider>
-        <SearchProvider>
+      <SearchProvider>
+        <AuthProvider>
           <WatchlistProvider>
             <App />
           </WatchlistProvider>
-        </SearchProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </SearchProvider>
     </ThemeProvider>
   </React.StrictMode>
 )

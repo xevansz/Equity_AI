@@ -39,13 +39,13 @@ async def dashboard_search(
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
 
-    symbol = await symbol_resolver(query, db)
+    symbol, company_name = await symbol_resolver(query, db)
 
     logger.info("Dashboard search called (query=%s symbol=%s)", query, symbol)
 
     try:
         stock_data_task = financial_loader.load_stock_prices(symbol)
-        news_task = news_loader.load_news(symbol, db=db)
+        news_task = news_loader.load_news(symbol, company_name, db=db)
 
         stock_data, news_docs = await asyncio.gather(
             stock_data_task,
@@ -55,7 +55,7 @@ async def dashboard_search(
         logger.info("News articles fetched: %s", len(news_docs) if news_docs else 0)
 
         news_payload = {
-            "symbol": symbol,
+            "company_name": company_name,
             "news": [d.model_dump(exclude={"raw"}) for d in news_docs],
         }
 

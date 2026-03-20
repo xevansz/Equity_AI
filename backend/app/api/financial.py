@@ -28,3 +28,20 @@ async def get_financial_data(
     except Exception as e:
         logger.exception("Financial API error")
         raise HTTPException(status_code=500, detail=str(e)) from e
+
+
+@router.get("/financial/price")
+async def get_stock_price(
+    symbol: str,
+    user: dict = Depends(get_current_user),
+    service: DataService = Depends(get_data_service),
+):
+    """Get current stock price"""
+    try:
+        logger.info("Stock price request: %s", symbol)
+        price_data = await service.get_stock_price(symbol)
+        logger.debug("Stock price loaded: %s", price_data)
+        return price_data
+    except Exception as e:
+        logger.exception("Stock price API error")
+        raise HTTPException(status_code=500, detail=str(e)) from e

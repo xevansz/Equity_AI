@@ -109,7 +109,11 @@ Three core surfaces:
 ### Phase 2: Make Dashboard Useful
 
 6. **Stock price API**
-   - Integrate yfinance or Finnhub for current + historical prices
+   - ✅ Integrated Alpha Vantage (primary) + Finnhub (fallback)
+   - 🔄 **TODO: Add Twelve Data and Yahoo Finance (yfinance) as additional fallback providers**
+     - Twelve Data: 800 calls/day free tier
+     - Yahoo Finance: Unlimited (unofficial API via yfinance library)
+     - Implement round-robin or priority-based provider rotation
    - Backend endpoint: `GET /api/price/{symbol}?range=30d`
 
 7. **Price chart component**

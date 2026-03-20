@@ -53,6 +53,8 @@ async def dashboard_search(
         )
 
         logger.info("News articles fetched: %s", len(news_docs) if news_docs else 0)
+        logger.debug("Stock data keys: %s", list(stock_data.keys()) if stock_data else None)
+        logger.debug("Stock data type: %s", type(stock_data))
 
         news_payload = {
             "company_name": company_name,

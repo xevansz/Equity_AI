@@ -41,6 +41,10 @@ class SECTranscriptProvider(TranscriptProvider):
     def __init__(self):
         self._client = BaseMCP(self._EDGAR_BASE)
 
+    async def close(self):
+        """Cleanup HTTP client resources"""
+        await self._client.close()
+
     async def fetch(self, symbol: str, year: int, quarter: int) -> str | None:
         try:
             return await self._search_edgar(symbol, year, quarter)
@@ -126,6 +130,11 @@ class TranscriptLoader:
     def set_provider(self, provider: TranscriptProvider) -> None:
         """Swap the transcript provider at runtime (e.g. to a paid one)."""
         self._provider = provider
+
+    async def close(self):
+        """Cleanup provider resources"""
+        if hasattr(self._provider, "close"):
+            await self._provider.close()
 
     async def load_transcript(
         self,

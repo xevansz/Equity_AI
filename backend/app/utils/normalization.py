@@ -36,7 +36,7 @@ def normalize_company_name(name: str) -> str:
     return " ".join(tokens)
 
 
-_TICKER_RE = re.compile(r"^[A-Z]{1,6}$")
+_TICKER_RE = re.compile(r"^[A-Z]{1,5}$")
 
 
 def looks_like_ticker(query: str) -> bool:

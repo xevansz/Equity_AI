@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useWatchlist } from '../context/WatchlistContext'
+import apiClient from '../api/axios'
 
 const Watchlist = () => {
   const { items, remove } = useWatchlist()
@@ -16,9 +17,9 @@ const Watchlist = () => {
       try {
         const responses = await Promise.all(
           items.map((item) =>
-            fetch(`/api/financial?symbol=${item.symbol}`).then((res) =>
-              res.json()
-            )
+            apiClient
+              .get(`/financial/price?symbol=${item.symbol}`)
+              .then((res) => res.data)
           )
         )
 

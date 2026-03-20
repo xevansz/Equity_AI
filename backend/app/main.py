@@ -28,6 +28,7 @@ from app.ingestion.transcript_loader import TranscriptLoader
 from app.ingestion.warmer import run_warmer
 from app.logging_config import configure_logging
 from app.mcp.financial_api import AlphaVantageMCP
+from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 
@@ -42,6 +43,7 @@ async def lifespan(app: FastAPI):
     await create_index()
 
     app.state.alpha_vantage = AlphaVantageMCP()
+    app.state.finnhub = FinnhubMCP(settings.FINNHUB_API_KEY) if settings.FINNHUB_API_KEY else None
     app.state.news_api = NewsAPI()
     app.state.news_loader = NewsLoader(app.state.news_api)
     app.state.transcript_loader = TranscriptLoader()
@@ -64,8 +66,11 @@ async def lifespan(app: FastAPI):
     await close_databases()
 
     await app.state.alpha_vantage.close()
+    if app.state.finnhub:
+        await app.state.finnhub.close()
     await app.state.news_api.close()
     await app.state.sec_api.close()
+    await app.state.transcript_loader.close()
 
 
 # FastAPI app

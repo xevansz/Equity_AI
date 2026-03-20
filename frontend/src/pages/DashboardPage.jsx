@@ -1,4 +1,3 @@
-// src/pages/DashboardPage.jsx
 import React from 'react'
 import SearchBar from '../components/SearchBar'
 import CandlestickChart from '../components/CandlestickChart'
@@ -10,7 +9,12 @@ const DashboardPage = () => {
   const { items, add } = useWatchlist()
   const { data, loading, error, query, setQuery, runSearch } = useSearch()
   const isInWatchlist =
-    !!data?.symbol && items.some((item) => item.symbol === data.symbol)
+    !!data?.company_name &&
+    items.some(
+      (item) =>
+        item.company_name?.toLowerCase().trim() ===
+        data.company_name.toLowerCase().trim()
+    )
 
   return (
     <div className="bg-background w-full">
@@ -44,7 +48,9 @@ const DashboardPage = () => {
                 <p className="text-sm text-muted">Search: {data.query}</p>
               </div>
               <button
-                onClick={() => add(data.symbol, data.query || data.symbol)}
+                onClick={() =>
+                  add(data.symbol, data.company_name, data.company_name)
+                }
                 disabled={isInWatchlist}
                 className={`px-4 py-2 rounded-lg transition ${
                   isInWatchlist

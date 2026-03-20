@@ -62,6 +62,7 @@ async def dashboard_search(
         return DashboardSearchResponse(
             query=query,
             symbol=symbol,
+            company_name=company_name,
             stock_data=stock_data if stock_data else {},
             news=news_payload,
         )

@@ -6,3 +6,4 @@ from pydantic import BaseModel
 class WatchlistCreate(BaseModel):
     symbol: str
     name: str
+    company_name: str

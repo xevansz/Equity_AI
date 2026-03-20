@@ -30,6 +30,7 @@ async def get_watchlist(
         WatchlistItemOut(
             symbol=doc["symbol"],
             name=doc["name"],
+            company_name=doc.get("company_name", doc["name"]),
             added_at=doc["added_at"],
         )
         for doc in raw_items
@@ -46,15 +47,25 @@ async def add_to_watchlist(
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ):
+    # Normalize company name for duplicate detection
+    normalized_name = item.company_name.lower().strip()
+
     # don't save duplicates
-    existing = await db.watchlist.find_one({"user_id": user["email"], "symbol": item.symbol})
+    existing = await db.watchlist.find_one(
+        {
+            "user_id": user["email"],
+            "normalized_name": normalized_name,
+        }
+    )
 
     if existing:
-        raise HTTPException(status_code=400, detail="Symbol already in Watchlist")
+        raise HTTPException(status_code=400, detail="Company already in Watchlist")
 
     new_item = {
         "symbol": item.symbol,
         "name": item.name,
+        "company_name": item.company_name,
+        "normalized_name": normalized_name,
         "user_id": user["email"],
         "added_at": datetime.now(UTC),
     }

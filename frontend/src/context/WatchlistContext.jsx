@@ -52,10 +52,10 @@ export const WatchlistProvider = ({ children }) => {
   /**
    * Add symbol
    */
-  const add = async (symbol, name) => {
+  const add = async (symbol, name, company_name) => {
     try {
       setError(null)
-      await addToWatchlist(symbol, name)
+      await addToWatchlist(symbol, name, company_name)
 
       // Optimistic refresh (simple version)
       await fetchWatchlist(true)

@@ -27,9 +27,13 @@ export const fetchWatchlist = async (limit = 20, after = null) => {
 /**
  * Add symbol to watchlist
  */
-export const addToWatchlist = async (symbol, name) => {
+export const addToWatchlist = async (symbol, name, company_name) => {
   try {
-    const response = await apiClient.post(BASE_URL, { symbol, name })
+    const response = await apiClient.post(BASE_URL, {
+      symbol,
+      name,
+      company_name,
+    })
 
     return response.data
   } catch (err) {

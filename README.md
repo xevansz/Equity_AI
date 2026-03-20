@@ -1,4 +1,7 @@
-# EquityAI
+<div align="center">
+    <h1>【 Equity AI 】</h1>
+</div>
+A
 An LLM-powered real-time knowledge curation system for financial intelligence.
 
 ## Overview

@@ -1,7 +1,7 @@
 <div align="center">
     <h1>【 Equity AI 】</h1>
 </div>
-A
+
 An LLM-powered real-time knowledge curation system for financial intelligence.
 
 ## Overview
@@ -44,7 +44,7 @@ FINNHUB_API_KEY=your_finnhub_key
 
 ## Things to do
 1. **Add API rate limiting** middleware (slowapi or similar)
-2. **Explicit repo layer** isolate persistant logic from services  * ingestion may fetch apis
+2. **Explicit repo layer** isolate persistant logic from services. ingestion may fetch apis
     Build Explicit repo layer:
-        * Services(symbolcacheservice) directly calls monogdb
-        * memory probably does DB ops
+        *Services(symbolcacheservice) directly calls monogdb
+        *memory probably does DB ops

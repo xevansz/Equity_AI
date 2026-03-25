@@ -135,8 +135,6 @@ Three core surfaces:
 
 ### Phase 6: Polish & Production
 
-1. **Forgot password frontend** — wire to backend OTP flow
-2. **Google OAuth** — implement OAuth flow
 5. **Loading skeletons** — better UX than spinners
 
 ## What's Fake

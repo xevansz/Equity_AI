@@ -23,13 +23,23 @@ TRANSCRIPT_WARM_INTERVAL = 6 * 3600  # 6 hours
 async def _warm_news(db: AsyncIOMotorDatabase, news_loader: NewsLoader) -> None:
     """Fetch and cache news for all symbols present in the watchlist."""
     try:
-        symbols = await db.watchlist.distinct("symbol")
-        if not symbols:
+        watchlist_items = await db.watchlist.find({}, {"symbol": 1, "company_name": 1, "_id": 0}).to_list(length=None)
+
+        if not watchlist_items:
             return
-        logger.info("Warmer: refreshing news for %d symbol(s)", len(symbols))
-        for symbol in symbols:
+
+        # Deduplicate by symbol, keeping the first company_name seen
+        seen = {}
+        for item in watchlist_items:
+            symbol = item.get("symbol")
+            if symbol and symbol not in seen:
+                seen[symbol] = item.get("company_name", "")
+
+        logger.info("Warmer: refreshing news for %d symbol(s)", len(seen))
+
+        for symbol, company_name in seen.items():
             try:
-                await news_loader.load_news(symbol, db=db)
+                await news_loader.load_news(symbol, company_name, db=db)
             except Exception:
                 logger.exception("Warmer: news refresh failed for %s", symbol)
     except Exception:

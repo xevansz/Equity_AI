@@ -20,7 +20,7 @@ const CandlestickChart = ({ stockData }) => {
         horzLines: { color: '#374151' },
       },
       width: chartContainerRef.current.clientWidth,
-      height: 400,
+      height: 500,
       timeScale: {
         timeVisible: true,
         secondsVisible: false,
@@ -95,8 +95,8 @@ const CandlestickChart = ({ stockData }) => {
   }
 
   return (
-    <div className="bg-surface rounded-lg p-6">
-      <h3 className="text-lg font-semibold mb-4">
+    <div className="bg-surface rounded-lg p-6 pt-4">
+      <h3 className="text-lg font-semibold mb-3">
         Stock Price Chart (Candlestick)
       </h3>
       <div ref={chartContainerRef} />

@@ -21,7 +21,7 @@ const DashboardPage = () => {
     <div className="bg-background w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-4">
           <h1 className="text-3xl font-bold mb-2">Research Dashboard</h1>
           <p className="text-muted">Analyze stocks with AI-powered insights</p>
         </div>
@@ -42,7 +42,7 @@ const DashboardPage = () => {
         )}
 
         {!loading && data && (
-          <div className="mt-8 space-y-6">
+          <div className="mt-5 space-y-6">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold">{data.symbol}</h2>

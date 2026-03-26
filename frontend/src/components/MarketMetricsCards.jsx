@@ -106,6 +106,7 @@ const MarketMetricsCards = ({ marketSnapshot }) => {
             {marketSnapshot.market && (
               <span className="ml-2 px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium">
                 {marketSnapshot.market}
+                {marketSnapshot.status && ` • ${marketSnapshot.status}`}
               </span>
             )}
           </div>

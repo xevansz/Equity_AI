@@ -16,6 +16,7 @@ class MarketSnapshot(BaseModel):
     prev_close: float | None = None
     timestamp: str | None = None
     market: str | None = None
+    status: str | None = None
 
 
 class DashboardSearchResponse(BaseModel):

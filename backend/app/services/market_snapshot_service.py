@@ -1,5 +1,7 @@
 """Market snapshot extraction service"""
 
+from datetime import datetime, time
+
 from app.logging_config import get_logger
 from app.schemas.dashboard import MarketSnapshot
 
@@ -50,6 +52,7 @@ def extract_market_snapshot(stock_data: dict, symbol: str) -> MarketSnapshot | N
             change_percent = (change / prev_close) * 100
 
         market = _infer_market(symbol)
+        status = _determine_market_status(market, latest_date)
 
         return MarketSnapshot(
             price=price,
@@ -62,6 +65,7 @@ def extract_market_snapshot(stock_data: dict, symbol: str) -> MarketSnapshot | N
             prev_close=prev_close,
             timestamp=latest_date,
             market=market,
+            status=status,
         )
     except (KeyError, ValueError, IndexError) as e:
         logger.error("Error extracting market snapshot for %s: %s", symbol, str(e))
@@ -79,3 +83,41 @@ def _infer_market(symbol: str) -> str:
         return symbol.split(".")[-1]
 
     return "US"
+
+
+def _determine_market_status(market: str, timestamp: str | None) -> str | None:
+    """
+    Determine market status based on market and timestamp.
+
+    For US markets, infers open/closed based on US Eastern Time trading hours.
+    For non-US markets, returns None (no inference).
+
+    Args:
+        market: Market identifier (e.g., "US", "NSE", "LSE")
+        timestamp: Latest data timestamp (YYYY-MM-DD format)
+
+    Returns:
+        "Open" or "Closed" for US markets, None for others
+    """
+    if market != "US":
+        return None
+
+    try:
+        now = datetime.now()
+        current_time = now.time()
+        current_weekday = now.weekday()
+
+        market_open = time(9, 30)
+        market_close = time(16, 0)
+
+        if current_weekday >= 5:
+            return "Closed"
+
+        if market_open <= current_time <= market_close:
+            return "Open"
+        else:
+            return "Closed"
+
+    except Exception as e:
+        logger.warning("Error determining market status: %s", str(e))
+        return None

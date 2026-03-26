@@ -2,25 +2,11 @@
 
 > What's implemented, what's a stub, and what's left to build.
 
-## Product Vision
-
-**EquityAI** is an LLM-powered real-time knowledge curation system for financial intelligence.
-
 Three core surfaces:
-1. **Dashboard** — Quick stock overview (price chart, key metrics, news)
 2. **Watchlist** — Track favorite stocks with live price cards + market status
 3. **Chat** — Deep-dive conversational research powered by RAG + LLM
 
 ## Page-by-Page Feature Status
-
-### 1. Dashboard (`/dashboard`)
-
-**Goal**: Search a stock → see a Groww-style price chart (red/green, 30-day), key metrics, significant news, and data from external APIs. Lighthearted, quick-glance view.
-
-| Feature | Status | Details |
-| --------- | -------- | --------- |
-| **Market status indicator** | ❌ Missing | No market open/closed detection |
-| **Formatted metric cards** | ❌ Missing | Metrics exist in data need to be displayed as styled cards |
 
 ### 2. Watchlist (`/watchlist`)
 

@@ -16,6 +16,7 @@ from app.ingestion.news_loader import NewsLoader
 from app.llm.symbol_resolver import symbol_resolver
 from app.logging_config import get_logger
 from app.schemas.dashboard import DashboardSearchRequest, DashboardSearchResponse
+from app.services.market_snapshot_service import extract_market_snapshot
 
 logger = get_logger(__name__)
 
@@ -61,12 +62,15 @@ async def dashboard_search(
             "news": [d.model_dump(exclude={"raw"}) for d in news_docs],
         }
 
+        market_snapshot = extract_market_snapshot(stock_data, symbol)
+
         return DashboardSearchResponse(
             query=query,
             symbol=symbol,
             company_name=company_name,
             stock_data=stock_data if stock_data else {},
             news=news_payload,
+            market_snapshot=market_snapshot,
         )
     except Exception as e:
         logger.exception("Dashboard search API error")

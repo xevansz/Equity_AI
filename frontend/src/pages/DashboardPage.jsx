@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchBar from '../components/SearchBar'
 import CandlestickChart from '../components/CandlestickChart'
+import MarketMetricsCards from '../components/MarketMetricsCards'
 import NewsPanel from '../components/NewsPanel'
 import { useSearch } from '../context/SearchContext'
 import { useWatchlist } from '../context/WatchlistContext'
@@ -63,6 +64,7 @@ const DashboardPage = () => {
             </div>
 
             <CandlestickChart stockData={data.stock_data} />
+            <MarketMetricsCards marketSnapshot={data.market_snapshot} />
             <NewsPanel newsData={data.news} />
           </div>
         )}

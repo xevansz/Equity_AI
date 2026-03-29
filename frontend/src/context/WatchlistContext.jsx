@@ -11,6 +11,7 @@ import {
   addToWatchlist,
   removeFromWatchlist,
 } from '../api/watchlist'
+import { AuthContext } from './AuthContext'
 
 const WatchlistContext = createContext()
 
@@ -20,6 +21,7 @@ export const WatchlistProvider = ({ children }) => {
   const [error, setError] = useState(null)
   const [cursor, setCursor] = useState(null)
   const [hasMore, setHasMore] = useState(true)
+  const { user } = useContext(AuthContext)
 
   /**
    * Fetch watchlist (initial or paginated)
@@ -85,12 +87,14 @@ export const WatchlistProvider = ({ children }) => {
    * Auto-fetch on login
    */
   useEffect(() => {
-    const token =
-      localStorage.getItem('access_token') || localStorage.getItem('token')
-    if (token) {
+    if (user) {
       fetchWatchlist(true)
+    } else {
+      setItems([])
+      setCursor(null)
+      setHasMore(true)
     }
-  }, [])
+  }, [user, fetchWatchlist])
 
   return (
     <WatchlistContext.Provider

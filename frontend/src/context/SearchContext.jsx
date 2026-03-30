@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { createContext, useContext, useState } from 'react'
 import { dashboardSearchAPI } from '../api/dashboard'
 
@@ -7,67 +7,54 @@ export const SearchContext = createContext()
 const CACHE_TTL = 60 * 1000 // 1 minute in milliseconds
 
 export const SearchProvider = ({ children }) => {
-  const [query, setQuery] = useState(() => {
-    const storedQuery = localStorage.getItem('eq_search_query')
-    return storedQuery || ''
-  })
+  const [query, setQuery] = useState('')
   const [data, setData] = useState(() => {
     try {
-      const stored = localStorage.getItem('eq_search_results')
-      const storedTs = localStorage.getItem('eq_search_results_ts')
-      const storedQuery = localStorage.getItem('eq_search_query')
+      const cached = localStorage.getItem('eq_search_cache')
 
-      if (!stored || !storedTs || !storedQuery) {
+      if (!cached) {
         return null
       }
 
-      const cacheAge = Date.now() - Number(storedTs)
+      const { results, timestamp } = JSON.parse(cached)
+      const cacheAge = Date.now() - timestamp
 
       // Clear stale cache on mount
       if (cacheAge > CACHE_TTL) {
-        localStorage.removeItem('eq_search_results')
-        localStorage.removeItem('eq_search_results_ts')
+        localStorage.removeItem('eq_search_cache')
         return null
       }
 
-      return JSON.parse(stored)
+      return results
     } catch {
       // Clear corrupted cache
-      localStorage.removeItem('eq_search_results')
-      localStorage.removeItem('eq_search_results_ts')
+      localStorage.removeItem('eq_search_cache')
       return null
     }
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    localStorage.setItem('eq_search_query', query)
-  }, [query])
-
   const runSearch = async (searchQuery) => {
     if (!searchQuery || searchQuery.trim().length === 0) return
 
     try {
       // Check if we have valid cached results for this query
-      const cachedResults = localStorage.getItem('eq_search_results')
-      const cachedTs = localStorage.getItem('eq_search_results_ts')
-      const cachedQuery = localStorage.getItem('eq_search_query')
+      const cached = localStorage.getItem('eq_search_cache')
 
-      if (cachedResults && cachedTs && cachedQuery) {
-        const cacheAge = Date.now() - Number(cachedTs)
+      if (cached) {
+        const { query: cachedQuery, results, timestamp } = JSON.parse(cached)
+        const cacheAge = Date.now() - timestamp
 
         // Reuse cache if same query and within TTL
         if (cachedQuery === searchQuery && cacheAge <= CACHE_TTL) {
-          const parsedData = JSON.parse(cachedResults)
-          setData(parsedData)
+          setData(results)
           return
         }
 
         // Clear stale or mismatched cache
         if (cacheAge > CACHE_TTL || cachedQuery !== searchQuery) {
-          localStorage.removeItem('eq_search_results')
-          localStorage.removeItem('eq_search_results_ts')
+          localStorage.removeItem('eq_search_cache')
         }
       }
 
@@ -78,8 +65,14 @@ export const SearchProvider = ({ children }) => {
       const result = await dashboardSearchAPI(searchQuery)
 
       setData(result)
-      localStorage.setItem('eq_search_results', JSON.stringify(result))
-      localStorage.setItem('eq_search_results_ts', String(Date.now()))
+
+      // Store query with results and timestamp
+      const cacheObject = {
+        query: searchQuery,
+        results: result,
+        timestamp: Date.now(),
+      }
+      localStorage.setItem('eq_search_cache', JSON.stringify(cacheObject))
     } catch (err) {
       setError(err.message || 'Something went wrong')
     } finally {
@@ -90,9 +83,7 @@ export const SearchProvider = ({ children }) => {
   const clearResults = () => {
     setData(null)
     setQuery('')
-    localStorage.removeItem('eq_search_query')
-    localStorage.removeItem('eq_search_results')
-    localStorage.removeItem('eq_search_results_ts')
+    localStorage.removeItem('eq_search_cache')
   }
 
   return (

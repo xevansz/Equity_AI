@@ -4,7 +4,7 @@ import apiClient from '../api/axios'
 
 const Watchlist = () => {
   const { items, remove } = useWatchlist()
-  const [prices, setPrices] = useState({})
+  const [priceData, setPriceData] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -23,12 +23,16 @@ const Watchlist = () => {
           )
         )
 
-        const priceMap = {}
+        const dataMap = {}
         responses.forEach((data, index) => {
-          priceMap[items[index].symbol] = data?.price ?? null
+          dataMap[items[index].symbol] = {
+            price: data?.price ?? null,
+            market: data?.market ?? null,
+            status: data?.status ?? null,
+          }
         })
 
-        setPrices(priceMap)
+        setPriceData(dataMap)
       } catch (err) {
         console.error('Failed to fetch prices:', err)
       } finally {
@@ -55,14 +59,25 @@ const Watchlist = () => {
           className="p-5 bg-surface rounded-xl shadow-sm flex flex-col justify-between"
         >
           <div>
-            <h2 className="text-lg font-semibold">{item.symbol}</h2>
+            <div className="flex items-center gap-2 mb-1">
+              <h2 className="text-lg font-semibold">{item.symbol}</h2>
+              {!loading && priceData[item.symbol]?.market && (
+                <span className="px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium">
+                  {priceData[item.symbol].market}
+                  {priceData[item.symbol].status &&
+                    ` • ${priceData[item.symbol].status}`}
+                </span>
+              )}
+            </div>
             <p className="text-sm text-muted mb-3">{item.name}</p>
 
             {loading ? (
               <div className="h-6 w-24 bg-gray-300 animate-pulse rounded"></div>
             ) : (
               <p className="text-xl font-bold">
-                {prices[item.symbol] !== null ? `₹${prices[item.symbol]}` : '-'}
+                {priceData[item.symbol]?.price !== null
+                  ? `₹${priceData[item.symbol].price}`
+                  : '-'}
               </p>
             )}
           </div>

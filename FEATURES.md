@@ -8,13 +8,8 @@ Three core surfaces:
 
 ## Page-by-Page Feature Status
 
-### 2. Watchlist (`/watchlist`)
-
-**Goal**: Show saved stocks as small cards with current price. Market status notice at bottom.
-
-| Feature | Status | Details |
-| --------- | -------- | --------- |
-| **Market status notice** | ❌ Missing | No market open/closed detection or display |
+### 1.Dashboard:
+show error when Symbol not found
 
 ### 3. Chat (`/chat`)
 
@@ -27,6 +22,9 @@ Three core surfaces:
 | **Source citations** | ❌ Missing | `sources: []` always returned empty |
 | **Follow-up context** | ❌ Missing | Each message is independent — no conversation context sent to LLM |
 | **Deep financial analysis** | ❌ Stubs | Research engine functions return placeholder text, not real analysis |
+
+* Cursor should stay in the input bar even after sending the message.
+* When viewing old chats search should persist
 
 ## Backend Feature Status
 
@@ -71,7 +69,7 @@ Three core surfaces:
 ### Phase 2: Make Dashboard Useful
 
 1. **Stock price API**
-- Add Twelve Data and Yahoo Finance (yfinance) as additional fallback providers
+- Add Twelve Data and Yahoo Finance (yfinance) as additional fallback providers - add as the primary providers
 - Implement round-robin or priority-based provider rotation
 - Backend endpoint: `GET /api/price/{symbol}?range=30d`
 

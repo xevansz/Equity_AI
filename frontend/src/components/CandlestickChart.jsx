@@ -54,7 +54,7 @@ const CandlestickChart = ({ stockData }) => {
       window.removeEventListener('resize', handleResize)
       chart.remove()
     }
-  }, [])
+  }, [stockData])
 
   useEffect(() => {
     if (
@@ -87,11 +87,7 @@ const CandlestickChart = ({ stockData }) => {
   }, [stockData])
 
   if (!stockData || !stockData['Time Series (Daily)']) {
-    return (
-      <div className="bg-surface rounded-lg p-6">
-        <p className="text-muted">No stock data available</p>
-      </div>
-    )
+    return null
   }
 
   return (

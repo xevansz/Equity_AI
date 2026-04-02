@@ -26,3 +26,5 @@ class DashboardSearchResponse(BaseModel):
     stock_data: dict
     news: dict
     market_snapshot: MarketSnapshot | None = None
+    search_status: str = "ok"
+    message: str | None = None

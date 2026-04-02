@@ -30,6 +30,7 @@ async def dashboard_search(
     user: dict = Depends(get_current_user),
     financial_loader: FinancialLoader = Depends(get_financial_loader),
     news_loader: NewsLoader = Depends(get_news_loader),
+    search_status: str = "ok",
 ) -> DashboardSearchResponse:
     """Dashboard search - returns only stock price data and news (no LLM)"""
     query = request.query
@@ -41,6 +42,17 @@ async def dashboard_search(
         raise HTTPException(status_code=503, detail="Database not available")
 
     symbol, company_name = await symbol_resolver(query, db)
+
+    if symbol == "UNKNOWN" or company_name == "UNKNOWN":
+        return DashboardSearchResponse(
+            query=query,
+            symbol="UNKNOWN",
+            company_name="UNKNOWN",
+            stock_data={},
+            news={"company_name": "", "news": []},
+            market_snapshot=None,
+            search_status="company_not_found",
+        )
 
     logger.info("Dashboard search called (query=%s symbol=%s)", query, symbol)
 
@@ -64,6 +76,9 @@ async def dashboard_search(
 
         market_snapshot = extract_market_snapshot(stock_data, symbol)
 
+        if not stock_data or "Time Series (Daily)" not in stock_data:
+            search_status = "no_stock_data"
+
         return DashboardSearchResponse(
             query=query,
             symbol=symbol,
@@ -71,6 +86,7 @@ async def dashboard_search(
             stock_data=stock_data if stock_data else {},
             news=news_payload,
             market_snapshot=market_snapshot,
+            search_status=search_status,
         )
     except Exception as e:
         logger.exception("Dashboard search API error")

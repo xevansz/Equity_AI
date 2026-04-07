@@ -148,7 +148,6 @@ Fix WebSocket client_id collision risk
 Add proper error logging in global exception handler
 Make SMTP operations async
 
-Add API rate limiting middleware
 Implement repository layer for database access
 Add input validation on all endpoints
 Fix batch search endpoint

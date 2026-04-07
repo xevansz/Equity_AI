@@ -1,6 +1,7 @@
 """News Loader"""
 
 import hashlib
+from typing import Any
 
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
@@ -18,7 +19,16 @@ def _make_id(source: str, url: str) -> str:
     return hashlib.sha256(f"{source}:{url}".encode()).hexdigest()[:24]
 
 
-def _normalize_article(symbol: str, article: dict) -> IngestionDocument | None:
+def _normalize_article(symbol: str, article: dict[str, Any]) -> IngestionDocument | None:
+    """Normalize a news article into an IngestionDocument.
+
+    Args:
+        symbol: Stock symbol
+        article: Raw article data from news API
+
+    Returns:
+        IngestionDocument if article has valid content, None otherwise
+    """
     url = article.get("url") or ""
     title = article.get("title") or ""
     description = article.get("description") or ""
@@ -44,17 +54,32 @@ def _normalize_article(symbol: str, article: dict) -> IngestionDocument | None:
 
 
 class NewsLoader:
-    def __init__(self, news_api: NewsAPI):
+    """Loader for news articles from news APIs."""
+
+    def __init__(self, news_api: NewsAPI) -> None:
+        """Initialize news loader.
+
+        Args:
+            news_api: News API client
+        """
         self._news_api = news_api
 
     async def load_news(
         self, symbol: str, company_name: str, db: AsyncIOMotorDatabase | None = None
     ) -> list[IngestionDocument]:
-        """
-        Fetch and normalize news for `symbol`.
-        - If `db` is provided, new articles are persisted to Mongo and only new ones are returned
-          merged with any cached ones (so the response is always the full set).
-        - If `db` is None, articles are fetched fresh and normalized without caching.
+        """Fetch and normalize news for a symbol.
+
+        If db is provided, new articles are persisted to MongoDB and the response
+        includes both new and cached articles. If db is None, articles are fetched
+        fresh without caching.
+
+        Args:
+            symbol: Stock symbol
+            company_name: Company name for search
+            db: Optional database connection for caching
+
+        Returns:
+            List of normalized news articles
         """
         raw_articles = await self._news_api.fetch_news(symbol, company_name)
         normalized = [doc for a in raw_articles if (doc := _normalize_article(symbol, a))]

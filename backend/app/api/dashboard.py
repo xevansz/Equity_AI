@@ -1,16 +1,13 @@
 """Dashboard API Endpoint"""
 
 import asyncio
+from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
-from app.dependencies import (
-    get_current_user,
-    get_database,
-    get_financial_loader,
-    get_news_loader,
-)
+from app.dependencies import get_current_user, get_database, get_financial_loader, get_news_loader
+from app.exceptions import DatabaseError, ValidationError
 from app.ingestion.financial_loader import FinancialLoader
 from app.ingestion.news_loader import NewsLoader
 from app.llm.symbol_resolver import symbol_resolver
@@ -27,19 +24,34 @@ router = APIRouter(prefix="/api/dashboard", tags=["dashboard"])
 async def dashboard_search(
     request: DashboardSearchRequest,
     db: AsyncIOMotorDatabase = Depends(get_database),
-    user: dict = Depends(get_current_user),
+    user: dict[str, Any] = Depends(get_current_user),
     financial_loader: FinancialLoader = Depends(get_financial_loader),
     news_loader: NewsLoader = Depends(get_news_loader),
     search_status: str = "ok",
 ) -> DashboardSearchResponse:
-    """Dashboard search - returns only stock price data and news (no LLM)"""
+    """Dashboard search - returns only stock price data and news (no LLM).
+
+    Args:
+        request: Dashboard search request with query
+        db: Database connection
+        user: Current authenticated user
+        financial_loader: Financial data loader service
+        news_loader: News loader service
+        search_status: Search status indicator
+
+    Returns:
+        DashboardSearchResponse with stock data and news
+
+    Raises:
+        HTTPException: If validation fails or processing errors occur
+    """
     query = request.query
 
     if not query:
-        raise HTTPException(status_code=400, detail="query is required")
+        raise ValidationError("query is required")
 
     if db is None:
-        raise HTTPException(status_code=503, detail="Database not available")
+        raise DatabaseError("Database not available")
 
     symbol, company_name = await symbol_resolver(query, db)
 
@@ -88,6 +100,12 @@ async def dashboard_search(
             market_snapshot=market_snapshot,
             search_status=search_status,
         )
+    except ValidationError as e:
+        logger.error("Validation error in dashboard search: %s", e.message)
+        raise HTTPException(status_code=400, detail=e.message) from e
+    except DatabaseError as e:
+        logger.error("Database error in dashboard search: %s", e.message)
+        raise HTTPException(status_code=503, detail=e.message) from e
     except Exception as e:
         logger.exception("Dashboard search API error")
         raise HTTPException(status_code=500, detail=str(e)) from e

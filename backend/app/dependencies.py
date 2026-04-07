@@ -1,3 +1,5 @@
+from typing import Any
+
 from fastapi import Depends, HTTPException, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from motor.motor_asyncio import AsyncIOMotorDatabase
@@ -18,20 +20,33 @@ from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
-from app.services.data_service import DataService
+from app.services.stock_price_service import StockPriceService
 
 security = HTTPBearer()
 
 
 # Database
-def get_database():
-    """returns the MongoDB database instance"""
+def get_database() -> AsyncIOMotorDatabase | None:
+    """Get database instance dependency.
+
+    Returns:
+        Database instance or None if not connected
+    """
     return database.get_database()
 
 
-# JWT Auth
-def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    """returns the current user from the JWT token"""
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> dict[str, Any]:
+    """Get current user from JWT token.
+
+    Args:
+        credentials: HTTP authorization credentials with JWT token
+
+    Returns:
+        User payload from JWT token
+
+    Raises:
+        HTTPException: If token is invalid or expired
+    """
     token = credentials.credentials
     payload = verify_token(token)
 
@@ -42,14 +57,38 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
 
 
 def get_user_service(db: AsyncIOMotorDatabase = Depends(get_database)) -> UserService:
+    """Get user service dependency.
+
+    Args:
+        db: Database connection
+
+    Returns:
+        UserService instance
+    """
     return UserService(db)
 
 
 def get_conversation_memory(db: AsyncIOMotorDatabase = Depends(get_database)) -> ConversationMemory:
+    """Get conversation memory dependency.
+
+    Args:
+        db: Database connection
+
+    Returns:
+        ConversationMemory instance
+    """
     return ConversationMemory(db)
 
 
 def get_vector_store(request: Request) -> VectorStore:
+    """Get vector store dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        VectorStore instance
+    """
     client = getattr(request.app.state, "vector_store", None)
     if client is not None:
         return client
@@ -57,6 +96,14 @@ def get_vector_store(request: Request) -> VectorStore:
 
 
 def get_vectorstore_api(request: Request) -> VectorStore:
+    """Get vector store API dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        VectorStore instance
+    """
     return get_vector_store(request)
 
 
@@ -65,58 +112,120 @@ def get_chat_service(
     user: dict = Depends(get_current_user),
     vector_store: VectorStore = Depends(get_vector_store),
 ) -> ChatService:
+    """Get chat service dependency.
+
+    Args:
+        db: Database connection
+        user: Current user
+        vector_store: Vector store instance
+
+    Returns:
+        ChatService instance
+    """
     user_id = user.get("email") if isinstance(user, dict) else None
     return ChatService(db, user_id=user_id, vector_store=vector_store)
 
 
 def get_financial_loader(request: Request) -> FinancialLoader:
-    av = get_alpha_vantage(request)
+    """Get financial loader dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        FinancialLoader instance
+    """
+    av = get_alpha_vantage()
     return FinancialLoader(av, None)
 
 
 def get_data_service(
     request: Request,
     financial_loader: FinancialLoader = Depends(get_financial_loader),
-) -> DataService:
+) -> StockPriceService:
+    """Get data service dependency.
+
+    Args:
+        request: FastAPI request
+        financial_loader: Financial loader instance
+
+    Returns:
+        StockPriceService instance
+    """
     market_dispatcher = get_market_dispatcher(request)
-    return DataService(financial_loader, market_dispatcher)
+    return StockPriceService(financial_loader, market_dispatcher)
 
 
-def get_news_api(request: Request) -> NewsAPI:
-    client = getattr(request.app.state, "news_api", None)
-    if client is not None:
-        return client
+def get_news_api() -> NewsAPI:
+    """Get News API dependency.
+
+    Returns:
+        NewsAPI instance
+    """
     return NewsAPI()
 
 
 def get_news_loader(request: Request) -> NewsLoader:
+    """Get news loader dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        NewsLoader instance
+    """
     loader = getattr(request.app.state, "news_loader", None)
     if loader is not None:
         return loader
-    return NewsLoader(get_news_api(request))
+    return NewsLoader(get_news_api())
 
 
 def get_transcript_loader(request: Request) -> TranscriptLoader:
+    """Get transcript loader dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        TranscriptLoader instance
+    """
     loader = getattr(request.app.state, "transcript_loader", None)
     if loader is not None:
         return loader
     return TranscriptLoader()
 
 
-def get_alpha_vantage(request: Request) -> AlphaVantageMCP:
-    client = getattr(request.app.state, "alpha_vantage", None)
-    if client is not None:
-        return client
+def get_alpha_vantage() -> AlphaVantageMCP:
+    """Get Alpha Vantage MCP dependency.
+
+    Returns:
+        AlphaVantageMCP instance
+    """
     return AlphaVantageMCP()
 
 
 def get_finnhub(request: Request) -> FinnhubMCP | None:
+    """Get Finnhub MCP dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        FinnhubMCP instance or None
+    """
     client = getattr(request.app.state, "finnhub", None)
     return client
 
 
 def get_market_dispatcher(request: Request) -> MarketDataDispatcher:
-    """Get the MarketDataDispatcher from app state"""
+    """Get market data dispatcher dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        MarketDataDispatcher instance
+    """
     dispatcher = getattr(request.app.state, "market_dispatcher", None)
     if dispatcher is not None:
         return dispatcher
@@ -124,25 +233,49 @@ def get_market_dispatcher(request: Request) -> MarketDataDispatcher:
     return MarketDataDispatcher()
 
 
-def get_sec_api(request: Request) -> SECAPI:
-    client = getattr(request.app.state, "sec_api", None)
-    if client is not None:
-        return client
+def get_sec_api() -> SECAPI:
+    """Get SEC API dependency.
+
+    Returns:
+        SECAPI instance
+    """
     return SECAPI()
 
 
 def get_sec_filing_loader(request: Request) -> SECFilingLoader:
-    sec_api = get_sec_api(request)
+    """Get SEC filing loader dependency.
+
+    Args:
+        request: FastAPI request
+
+    Returns:
+        SECFilingLoader instance
+    """
+    sec_api = get_sec_api()
     return SECFilingLoader(sec_api)
 
 
 def get_vector_ingestion_service() -> VectorIngestionService:
+    """Get vector ingestion service dependency.
+
+    Returns:
+        VectorIngestionService instance
+    """
     return VectorIngestionService()
 
 
-# Admin only
-def admin_only(user=Depends(get_current_user)):
-    """returns the current user if they are an admin"""
+def admin_only(user: dict[str, Any] = Depends(get_current_user)) -> dict[str, Any]:
+    """Verify user is an admin.
+
+    Args:
+        user: Current user from JWT token
+
+    Returns:
+        User payload if admin
+
+    Raises:
+        HTTPException: If user is not an admin
+    """
     if user.get("role") != "admin":
         raise HTTPException(status_code=403, detail="Admins only")
     return user

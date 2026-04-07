@@ -1,6 +1,7 @@
 import React from 'react'
 import { useWatchlist } from '../context/WatchlistContext'
 import { useRealtimeWatchlist } from '../hooks/useRealtimeWatchlist'
+import { Skeleton } from './Skeleton'
 
 const Watchlist = () => {
   const { items, remove } = useWatchlist()
@@ -48,8 +49,8 @@ const Watchlist = () => {
 
               {loading && !quote ? (
                 <div className="space-y-2">
-                  <div className="h-7 w-28 bg-gray-300 dark:bg-gray-700 animate-pulse rounded"></div>
-                  <div className="h-4 w-20 bg-gray-300 dark:bg-gray-700 animate-pulse rounded"></div>
+                  <Skeleton className="h-7 w-28" />
+                  <Skeleton className="h-4 w-20" />
                 </div>
               ) : quote ? (
                 <div>

@@ -111,10 +111,6 @@
     - Periodically ingest news articles into ChromaDB
     - Enable RAG to cite recent news
 
-### Phase 6: Polish & Production
-
-5. **Loading skeletons** — better UX than spinners
-
 ## What's Fake
 
 A quick reference for what actually computes real data vs returns placeholders:

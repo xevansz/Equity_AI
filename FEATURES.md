@@ -139,9 +139,7 @@ A quick reference for what actually computes real data vs returns placeholders:
 Recommendations Priority
 
 Fix infinite recursion in API key rotation
-Remove hardcoded admin credentials
 Initialize update_task variable in WebSocket handler
-Add JWT secret validation at startup
 
 Make SMTP operations async
 

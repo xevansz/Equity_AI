@@ -26,7 +26,7 @@ from app.api import (
     ws_stream,
 )
 from app.auth import auth
-from app.config import settings
+from app.config import settings, validate_jwt_secret
 from app.database import close_databases, create_index, database, init_databases
 from app.embeddings.vector_store import VectorStore
 from app.ingestion.news_loader import NewsLoader
@@ -50,6 +50,7 @@ configure_logging()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup
+    validate_jwt_secret()
     await init_databases()
     await create_index()
 

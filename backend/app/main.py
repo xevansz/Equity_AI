@@ -17,7 +17,9 @@ from app.api import (
     news,
     research,
     transcripts,
+    unified_search,
     watchlist,
+    ws_stream,
 )
 from app.auth import auth
 from app.config import settings
@@ -27,6 +29,10 @@ from app.ingestion.news_loader import NewsLoader
 from app.ingestion.transcript_loader import TranscriptLoader
 from app.ingestion.warmer import run_warmer
 from app.logging_config import configure_logging
+from app.market_data.dispatcher import MarketDataDispatcher
+from app.market_data.key_rotator import KeyRotatorRegistry
+from app.market_data.providers.alpha_vantage import AlphaVantageProvider
+from app.market_data.providers.finnhub import FinnhubProvider
 from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
@@ -42,8 +48,31 @@ async def lifespan(app: FastAPI):
     await init_databases()
     await create_index()
 
+    # Initialize legacy MCP providers
     app.state.alpha_vantage = AlphaVantageMCP()
     app.state.finnhub = FinnhubMCP(settings.FINNHUB_API_KEY) if settings.FINNHUB_API_KEY else None
+
+    # Initialize KeyRotatorRegistry for TwelveData and Upstox
+    twelve_data_keys = [k.strip() for k in settings.TWELVE_DATA_API_KEYS.split(",") if k.strip()]
+    upstox_keys = [k.strip() for k in settings.UPSTOX_API_KEYS.split(",") if k.strip()]
+
+    KeyRotatorRegistry.init(
+        twelve_data_keys=twelve_data_keys,
+        twelve_data_limit=800,  # TwelveData free tier: 800 requests/day
+        upstox_keys=upstox_keys,
+        upstox_limit=1000,  # Upstox limit (adjust based on your plan)
+    )
+
+    # Initialize fallback providers
+    alpha_vantage_provider = AlphaVantageProvider(app.state.alpha_vantage)
+    finnhub_provider = FinnhubProvider(app.state.finnhub) if app.state.finnhub else None
+
+    # Initialize MarketDataDispatcher with fallback providers
+    app.state.market_dispatcher = MarketDataDispatcher(
+        alpha_vantage_provider=alpha_vantage_provider,
+        finnhub_provider=finnhub_provider,
+    )
+
     app.state.news_api = NewsAPI()
     app.state.news_loader = NewsLoader(app.state.news_api)
     app.state.transcript_loader = TranscriptLoader()
@@ -102,7 +131,8 @@ app.include_router(dashboard.router)
 app.include_router(watchlist.router)
 app.include_router(conversations.router)
 app.include_router(ingestion.router)
-
+app.include_router(unified_search.router)
+app.include_router(ws_stream.router)
 
 
 # root

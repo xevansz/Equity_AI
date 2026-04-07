@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import CandlestickChart from '../components/CandlestickChart'
 import MarketMetricsCards from '../components/MarketMetricsCards'
 import NewsPanel from '../components/NewsPanel'
 import { useSearch } from '../context/SearchContext'
 import { useWatchlist } from '../context/WatchlistContext'
+import { useRealtimeQuote } from '../hooks/useRealtimeQuote'
 
 const DashboardPage = () => {
   const { items, add } = useWatchlist()
   const { data, loading, error, query, setQuery, runSearch } = useSearch()
+  const [currentSymbol, setCurrentSymbol] = useState(null)
+
+  // Real-time quote updates via WebSocket
+  const { quote: realtimeQuote, connected } = useRealtimeQuote(
+    currentSymbol,
+    data?.market_snapshot?.market || 'US'
+  )
+
+  // Update current symbol when search data changes
+  useEffect(() => {
+    if (data?.symbol) {
+      setCurrentSymbol(data.symbol)
+    }
+  }, [data?.symbol])
+
   const isInWatchlist =
     !!data?.company_name &&
     items.some(
@@ -18,6 +34,24 @@ const DashboardPage = () => {
     )
   const companyNotFound = data?.search_status === 'company_not_found'
   const noStockData = data?.search_status === 'no_stock_data'
+
+  // Merge real-time quote with market snapshot
+  const marketSnapshot = data?.market_snapshot
+    ? {
+        ...data.market_snapshot,
+        ...(realtimeQuote && {
+          price: realtimeQuote.price,
+          change: realtimeQuote.change,
+          change_percent: realtimeQuote.change_percent,
+          volume: realtimeQuote.volume,
+          high: realtimeQuote.high,
+          low: realtimeQuote.low,
+          open: realtimeQuote.open,
+          prev_close: realtimeQuote.prev_close,
+          timestamp: realtimeQuote.timestamp,
+        }),
+      }
+    : null
 
   return (
     <div className="bg-background w-full">
@@ -59,7 +93,15 @@ const DashboardPage = () => {
               <>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-2xl font-bold">{data.symbol}</h2>
+                    <div className="flex items-center gap-3">
+                      <h2 className="text-2xl font-bold">{data.symbol}</h2>
+                      {connected && (
+                        <span className="flex items-center gap-1 px-2 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded text-xs font-medium">
+                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                          Live
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm text-muted">Search: {data.query}</p>
                   </div>
                   <button
@@ -87,7 +129,7 @@ const DashboardPage = () => {
                 )}
 
                 <CandlestickChart stockData={data.stock_data} />
-                <MarketMetricsCards marketSnapshot={data.market_snapshot} />
+                <MarketMetricsCards marketSnapshot={marketSnapshot} />
                 <NewsPanel newsData={data.news} />
               </>
             )}

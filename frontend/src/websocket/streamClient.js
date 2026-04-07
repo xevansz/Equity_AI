@@ -13,7 +13,7 @@
  */
 
 const WS_URL =
-  (import.meta.env.VITE_WS_URL ?? 'ws://localhost:8000') + '/ws/stream'
+  (import.meta.env.VITE_WS_URL ?? 'ws://localhost:8000') + '/api/ws/stream'
 const RECONNECT_DELAY_MS = 3_000
 const MAX_RECONNECT_DELAY = 30_000
 const HEARTBEAT_TIMEOUT = 45_000 // disconnect if no message in 45s

@@ -6,6 +6,8 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
 from app.api import (
     chat,
@@ -37,6 +39,7 @@ from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
+from app.middleware.rate_limit import limiter
 
 configure_logging()
 
@@ -110,6 +113,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Rate limiting
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
@@ -118,6 +125,28 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# Apply rate limiting to all routes
+@app.middleware("http")
+async def rate_limit_middleware(request: Request, call_next):
+    if request.method in ["GET", "HEAD", "OPTIONS"]:
+        limit = "100/minute"
+    else:
+        limit = "60/minute"
+
+    # Apply the rate limit
+    try:
+        await limiter.check_request_limit(request, limit)
+    except RateLimitExceeded:
+        return JSONResponse(
+            status_code=429,
+            content={"detail": "Rate limit exceeded. Please try again later."},
+        )
+
+    response = await call_next(request)
+    return response
+
 
 # Routers
 app.include_router(auth.router)

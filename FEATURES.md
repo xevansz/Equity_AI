@@ -138,7 +138,6 @@ A quick reference for what actually computes real data vs returns placeholders:
 
 Recommendations Priority
 
-Fix infinite recursion in API key rotation
 Initialize update_task variable in WebSocket handler
 
 Make SMTP operations async

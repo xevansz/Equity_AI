@@ -1,6 +1,8 @@
 """Financial Data API"""
 
-from fastapi import APIRouter, Depends, HTTPException
+import re
+
+from fastapi import APIRouter, Depends, HTTPException, Query
 
 from app.dependencies import get_current_user, get_data_service
 from app.logging_config import get_logger
@@ -32,16 +34,22 @@ async def get_financial_data(
 
 @router.get("/financial/price")
 async def get_stock_price(
-    symbol: str,
+    symbol: str = Query(..., min_length=1, max_length=20, description="Stock symbol"),
     user: dict = Depends(get_current_user),
     service: DataService = Depends(get_data_service),
 ):
     """Get current stock price"""
     try:
+        symbol = symbol.strip().upper()
+        if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+            raise HTTPException(status_code=400, detail="Invalid symbol format")
+
         logger.info("Stock price request: %s", symbol)
         price_data = await service.get_stock_price(symbol)
         logger.debug("Stock price loaded: %s", price_data)
         return price_data
+    except HTTPException:
+        raise
     except Exception as e:
         logger.exception("Stock price API error")
         raise HTTPException(status_code=500, detail=str(e)) from e

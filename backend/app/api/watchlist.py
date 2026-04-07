@@ -1,6 +1,7 @@
+import re
 from datetime import UTC, datetime
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Path, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.dependencies import get_current_user, get_database
@@ -12,8 +13,8 @@ router = APIRouter(prefix="/api", tags=["watchlist"])
 
 @router.get("/watchlist", response_model=WatchlistListResponse)
 async def get_watchlist(
-    limit: int = 20,
-    after: datetime | None = Query(None),
+    limit: int = Query(20, ge=1, le=100, description="Number of items to return"),
+    after: datetime | None = Query(None, description="Cursor for pagination"),
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ):
@@ -77,10 +78,14 @@ async def add_to_watchlist(
 
 @router.delete("/watchlist/{symbol}")
 async def remove_from_watchlist(
-    symbol: str,
+    symbol: str = Path(..., min_length=1, max_length=20, description="Stock symbol"),
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ):
+    symbol = symbol.strip().upper()
+    if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+        raise HTTPException(status_code=400, detail="Invalid symbol format")
+
     result = await db.watchlist.delete_one({"user_id": user["email"], "symbol": symbol})
 
     if result.deleted_count == 0:

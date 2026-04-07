@@ -1,8 +1,9 @@
 """Admin Ingestion API — trigger document ingestion and Chroma re-indexing."""
 
+import re
 from datetime import UTC, datetime
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Path
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.dependencies import (
@@ -36,7 +37,7 @@ def _current_and_prev_quarters() -> list[tuple[int, int]]:
 
 @router.post("/ingest/{symbol}")
 async def ingest_symbol(
-    symbol: str,
+    symbol: str = Path(..., min_length=1, max_length=20, description="Stock symbol"),
     db: AsyncIOMotorDatabase = Depends(get_database),
     _admin: dict = Depends(admin_only),
     transcript_loader: TranscriptLoader = Depends(get_transcript_loader),
@@ -48,7 +49,9 @@ async def ingest_symbol(
     Fetch transcripts + latest 10-K/10-Q for *symbol* into MongoDB, then embed all
     ingested docs for that symbol into Chroma. Admin only.
     """
-    symbol = symbol.upper()
+    symbol = symbol.strip().upper()
+    if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+        raise HTTPException(status_code=400, detail="Invalid symbol format")
     logger.info("Admin ingest triggered for %s", symbol)
 
     # 1) Warm transcripts (current + previous quarter)
@@ -89,7 +92,7 @@ async def ingest_symbol(
 
 @router.post("/reindex/{symbol}")
 async def reindex_symbol(
-    symbol: str,
+    symbol: str = Path(..., min_length=1, max_length=20, description="Stock symbol"),
     db: AsyncIOMotorDatabase = Depends(get_database),
     _admin: dict = Depends(admin_only),
     vector_store: VectorStore = Depends(get_vector_store),
@@ -99,7 +102,9 @@ async def reindex_symbol(
     Re-chunk and re-upsert all cached docs for *symbol* into Chroma from MongoDB.
     Does not re-fetch from external APIs. Admin only.
     """
-    symbol = symbol.upper()
+    symbol = symbol.strip().upper()
+    if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+        raise HTTPException(status_code=400, detail="Invalid symbol format")
     logger.info("Admin reindex triggered for %s", symbol)
 
     try:

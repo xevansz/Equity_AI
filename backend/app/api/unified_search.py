@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException, Request
 
 from app.market_data.key_rotator import KeyRotatorRegistry
 from app.schemas.market import Market
-from app.schemas.search import SearchQuery, UnifiedSearchResponse
+from app.schemas.search import BatchSearchRequest, SearchQuery, UnifiedSearchResponse
 from app.utils.market_resolver import resolve_market_from_symbol
 from app.utils.market_utils import get_market_status
 
@@ -73,15 +73,37 @@ async def search_stock(query: SearchQuery, request: Request):
 
 
 @router.post("/batch")
-async def search_batch(queries: list[str]):
+async def search_batch(batch_request: BatchSearchRequest, request: Request):
+    """Batch search for multiple stock symbols.
 
-    tasks = [search_stock(SearchQuery(query=q)) for q in queries[:50]]
+    Args:
+        batch_request: Batch search request with list of queries
+        request: FastAPI request object
+
+    Returns:
+        Dictionary with results and total count
+    """
+    queries = batch_request.queries
+
+    tasks = [search_stock(SearchQuery(query=q), request) for q in queries]
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
 
+    successful_results = []
+    failed_results = []
+
+    for i, result in enumerate(results):
+        if isinstance(result, Exception):
+            failed_results.append({"query": queries[i], "error": str(result)})
+        else:
+            successful_results.append(result)
+
     return {
-        "results": [r for r in results if not isinstance(r, Exception)],
+        "results": successful_results,
+        "failed": failed_results,
         "total": len(queries),
+        "successful": len(successful_results),
+        "failed_count": len(failed_results),
     }
 
 

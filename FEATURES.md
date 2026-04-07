@@ -149,7 +149,6 @@ Add proper error logging in global exception handler
 Make SMTP operations async
 
 Implement repository layer for database access
-Add input validation on all endpoints
-Fix batch search endpoint
+
  
 Implement connection pooling for external APIs

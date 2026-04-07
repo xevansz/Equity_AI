@@ -144,8 +144,6 @@ Initialize update_task variable in WebSocket handler
 Add JWT secret validation at startup
 
 Implement cache eviction in ChatService
-Fix WebSocket client_id collision risk
-Add proper error logging in global exception handler
 Make SMTP operations async
 
 Implement repository layer for database access

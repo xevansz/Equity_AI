@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar'
 import CandlestickChart from '../components/CandlestickChart'
 import MarketMetricsCards from '../components/MarketMetricsCards'
 import NewsPanel from '../components/NewsPanel'
+import { DashboardSkeleton } from '../components/Skeleton'
 import { useSearch } from '../context/SearchContext'
 import { useWatchlist } from '../context/WatchlistContext'
 import { useRealtimeQuote } from '../hooks/useRealtimeQuote'
@@ -64,12 +65,7 @@ const DashboardPage = () => {
 
         <SearchBar query={query} setQuery={setQuery} onSearch={runSearch} />
 
-        {loading && (
-          <div className="mt-8 p-8 bg-surface rounded-lg text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-            <p className="mt-4 text-muted">Analyzing...</p>
-          </div>
-        )}
+        {loading && <DashboardSkeleton />}
 
         {error && (
           <div className="mt-8 p-4 bg-error/10 border border-error/20 rounded-lg">

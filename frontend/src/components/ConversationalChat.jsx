@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Send, Loader, PanelLeftOpen, PanelLeftClose } from 'lucide-react'
+import { Send, PanelLeftOpen, PanelLeftClose } from 'lucide-react'
 import { sendChat } from '../api/chat'
 import { fetchConversationHistory } from '../api/conversations'
+import { ChatMessageSkeleton } from './Skeleton'
 
 function cleanMarkdown(text = '') {
   return text
@@ -151,12 +152,7 @@ const ConversationalChat = ({
           </div>
         ))}
 
-        {loading && (
-          <div className="flex justify-start items-center gap-2">
-            <Loader className="animate-spin w-4 h-4" />
-            <span className="text-sm text-muted">Processing...</span>
-          </div>
-        )}
+        {loading && <ChatMessageSkeleton />}
         <div ref={messagesEndRef} />
       </div>
 

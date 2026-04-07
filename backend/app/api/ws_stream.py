@@ -53,6 +53,7 @@ async def stream_data(ws: WebSocket):
     # Get dispatcher from app state
     dispatcher = ws.app.state.market_dispatcher
 
+    update_task = None
     try:
         # Start background task to send updates
         update_task = asyncio.create_task(send_updates(client_id, dispatcher))

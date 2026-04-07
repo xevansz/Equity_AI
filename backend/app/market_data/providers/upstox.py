@@ -7,12 +7,12 @@ Uses KeyRotatorRegistry for automatic key rotation.
 """
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import httpx
 
 from app.market_data.key_rotator import KeyRotatorRegistry
-from app.schemas.market import MarketDepth, OHLCVPoint, StockQuote, Market
+from app.schemas.market import Market, MarketDepth, OHLCVPoint, StockQuote
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ def _build_instrument_key(symbol: str, exchange: str = "NSE_EQ") -> str:
     return f"{exchange}|{symbol.upper()}"
 
 
-def _auth_headers(key: str) -> Dict[str, str]:
+def _auth_headers(key: str) -> dict[str, str]:
     return {"Authorization": f"Bearer {key}", "Accept": "application/json"}
 
 
@@ -44,7 +44,7 @@ class UpstoxProvider:
     # ------------------------------------------------------------------
 
     @staticmethod
-    async def get_quote(symbol: str, exchange: str = "NSE_EQ") -> Optional[StockQuote]:
+    async def get_quote(symbol: str, exchange: str = "NSE_EQ") -> StockQuote | None:
         """Fetch real-time LTP + OHLC quote for an Indian stock."""
         if not KeyRotatorRegistry.upstox:
             logger.error("[Upstox] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
@@ -116,7 +116,7 @@ class UpstoxProvider:
     # ------------------------------------------------------------------
 
     @staticmethod
-    async def get_market_depth(symbol: str, exchange: str = "NSE_EQ") -> Optional[MarketDepth]:
+    async def get_market_depth(symbol: str, exchange: str = "NSE_EQ") -> MarketDepth | None:
         """
         Fetch top-5 bid/ask order book.
         Returns MarketDepth with buy_orders, sell_orders, buy_pct, sell_pct.
@@ -152,8 +152,8 @@ class UpstoxProvider:
                 q = body["data"].get(instrument_key, {})
                 depth = q.get("depth", {})
 
-                buy_orders: List[Dict] = depth.get("buy", [])[:5]
-                sell_orders: List[Dict] = depth.get("sell", [])[:5]
+                buy_orders: list[dict] = depth.get("buy", [])[:5]
+                sell_orders: list[dict] = depth.get("sell", [])[:5]
 
                 total_buy_qty = sum(o.get("quantity", 0) for o in buy_orders)
                 total_sell_qty = sum(o.get("quantity", 0) for o in sell_orders)
@@ -182,7 +182,7 @@ class UpstoxProvider:
         exchange: str = "NSE_EQ",
         from_date: str = "",
         to_date: str = "",
-    ) -> List[OHLCVPoint]:
+    ) -> list[OHLCVPoint]:
         """
         Fetch historical candles from Upstox.
         interval: 1minute, 30minute, 1day, 1week, 1month
@@ -221,7 +221,7 @@ class UpstoxProvider:
                 resp.raise_for_status()
                 body = resp.json()
 
-                candles: List[Any] = body.get("data", {}).get("candles", [])
+                candles: list[Any] = body.get("data", {}).get("candles", [])
 
                 return [
                     OHLCVPoint(

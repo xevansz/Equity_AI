@@ -10,7 +10,6 @@ const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -40,7 +39,7 @@ const ForgotPassword = () => {
         otp,
         new_password: newPassword,
       })
-      setSuccess(true)
+      setStep('success')
     } catch (err) {
       setError(err.response?.data?.detail || 'Invalid or expired OTP.')
     } finally {
@@ -110,19 +109,19 @@ const ForgotPassword = () => {
             >
               {loading ? 'Resetting...' : 'Reset Password'}
             </button>
-            {success ? (
-              <p className="text-green-500 text-sm">
-                Password reset!{' '}
-                <Link to="/login" className="text-primary hover:underline">
-                  Sign in
-                </Link>
-              </p>
-            ) : (
-              <form onSubmit={handleReset} className="space-y-4">
-                {/* ... rest of form ... */}
-              </form>
-            )}
           </form>
+        )}
+
+        {/* Success message */}
+        {step === 'success' && (
+          <div className="space-y-4">
+            <p className="text-green-500 text-sm">
+              Password reset successfully!{' '}
+              <Link to="/login" className="text-primary hover:underline">
+                Sign in
+              </Link>
+            </p>
+          </div>
         )}
       </div>
     </AuthLayout>

@@ -6,12 +6,12 @@ Uses KeyRotatorRegistry for automatic key rotation on 429 errors.
 """
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import httpx
 
 from app.market_data.key_rotator import KeyRotatorRegistry
-from app.schemas.market import OHLCVPoint, StockQuote, Market
+from app.schemas.market import Market, OHLCVPoint, StockQuote
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ class TwelveDataProvider:
     # ------------------------------------------------------------------
 
     @staticmethod
-    async def get_quote(symbol: str) -> Optional[StockQuote]:
+    async def get_quote(symbol: str) -> StockQuote | None:
         """Fetch real-time quote. Returns None on error."""
         if not KeyRotatorRegistry.twelve_data:
             logger.error("[TwelveData] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
@@ -122,7 +122,7 @@ class TwelveDataProvider:
         symbol: str,
         interval: str = "5min",
         outputsize: int = 100,
-    ) -> List[OHLCVPoint]:
+    ) -> list[OHLCVPoint]:
         """
         Fetch OHLCV time-series.
 
@@ -182,7 +182,7 @@ class TwelveDataProvider:
     # ------------------------------------------------------------------
 
     @staticmethod
-    async def get_fundamentals(symbol: str) -> Dict[str, Any]:
+    async def get_fundamentals(symbol: str) -> dict[str, Any]:
         """Fetch fundamentals. Returns raw dict; caller parses."""
         if not KeyRotatorRegistry.twelve_data:
             logger.error("[TwelveData] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")

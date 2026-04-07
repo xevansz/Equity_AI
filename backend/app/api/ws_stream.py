@@ -8,11 +8,12 @@ Broadcasts:
   - candle: OHLCV candle data
 """
 #app/api/ws_stream.py
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 import asyncio
-import random
 import logging
+import random
 from datetime import datetime
+
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 logger = logging.getLogger(__name__)
 router = APIRouter()

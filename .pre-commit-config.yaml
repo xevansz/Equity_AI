@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: ruff
         name: ruff lint
-        entry: bash -c "cd backend && pdm run ruff check ."
+        entry: bash -c "cd backend && pdm run ruff check . --fix"
         language: system
         pass_filenames: false
 

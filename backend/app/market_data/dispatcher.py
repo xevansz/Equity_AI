@@ -8,7 +8,6 @@ Your existing API routes call ONLY this — they never touch providers directly.
 
 import logging
 import re
-from typing import List, Optional
 
 from app.market_data.providers.twelve_data import TwelveDataProvider
 from app.market_data.providers.upstox import UpstoxProvider
@@ -26,7 +25,7 @@ _INDIAN_SYMBOL_RE = re.compile(
 _INDIAN_EXCHANGES = {"NSE", "BSE", "NSE_EQ", "BSE_EQ"}
 
 
-def detect_market(symbol: str, exchange: Optional[str] = None) -> Market:
+def detect_market(symbol: str, exchange: str | None = None) -> Market:
     """
     Detect market from symbol / exchange hint.
     Priority: explicit exchange > suffix > default US
@@ -59,9 +58,9 @@ class MarketDataDispatcher:
     async def get_quote(
         self,
         symbol: str,
-        market: Optional[Market] = None,
+        market: Market | None = None,
         exchange: str = "NSE_EQ",
-    ) -> Optional[StockQuote]:
+    ) -> StockQuote | None:
         resolved = market or detect_market(symbol, exchange)
 
         if resolved == Market.INDIA:
@@ -77,11 +76,11 @@ class MarketDataDispatcher:
         symbol: str,
         interval: str = "5min",
         outputsize: int = 100,
-        market: Optional[Market] = None,
+        market: Market | None = None,
         exchange: str = "NSE_EQ",
         from_date: str = "",
         to_date: str = "",
-    ) -> List[OHLCVPoint]:
+    ) -> list[OHLCVPoint]:
         resolved = market or detect_market(symbol, exchange)
 
         if resolved == Market.INDIA:
@@ -101,7 +100,7 @@ class MarketDataDispatcher:
         self,
         symbol: str,
         exchange: str = "NSE_EQ",
-    ) -> Optional[MarketDepth]:
+    ) -> MarketDepth | None:
         return await UpstoxProvider.get_market_depth(symbol, exchange)
 
     # ------------------------------------------------------------------
@@ -111,7 +110,7 @@ class MarketDataDispatcher:
     async def get_fundamentals(
         self,
         symbol: str,
-        market: Optional[Market] = None,
+        market: Market | None = None,
     ) -> dict:
         resolved = market or detect_market(symbol)
 
@@ -129,10 +128,10 @@ class MarketDataDispatcher:
 
     async def get_batch_quotes(
         self,
-        symbols: List[str],
-        market: Optional[Market] = None,
+        symbols: list[str],
+        market: Market | None = None,
         exchange: str = "NSE_EQ",
-    ) -> List[Optional[StockQuote]]:
+    ) -> list[StockQuote | None]:
         """Fetch multiple quotes concurrently."""
         import asyncio
 

@@ -2,14 +2,8 @@
 
 > What's implemented, what's a stub, and what's left to build.
 
-Three core surfaces:
-2. **Watchlist** — Track favorite stocks with live price cards + market status
+# Features left
 3. **Chat** — Deep-dive conversational research powered by RAG + LLM
-
-## Page-by-Page Feature Status
-
-### 1.Dashboard:
-show error when Symbol not found
 
 ### 3. Chat (`/chat`)
 

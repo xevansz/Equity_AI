@@ -8,7 +8,6 @@ Plugs into: TwelveDataProvider, UpstoxProvider
 
 import logging
 from datetime import datetime, timedelta
-from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -28,14 +27,14 @@ class APIKeyRotator:
         stats = rotator.get_stats()      # Inspect usage
     """
 
-    def __init__(self, keys: List[str], daily_limit: int, provider_name: str):
+    def __init__(self, keys: list[str], daily_limit: int, provider_name: str):
         self.keys = [k.strip() for k in keys if k and k.strip()]
         self.daily_limit = daily_limit
         self.provider_name = provider_name
 
         self._index: int = 0
-        self._usage: Dict[str, int] = {k: 0 for k in self.keys}
-        self._exhausted: Dict[str, bool] = {k: False for k in self.keys}
+        self._usage: dict[str, int] = {k: 0 for k in self.keys}
+        self._exhausted: dict[str, bool] = {k: False for k in self.keys}
         self._last_reset: datetime = datetime.utcnow()
 
         if not self.keys:
@@ -45,7 +44,7 @@ class APIKeyRotator:
     # Public interface
     # ------------------------------------------------------------------
 
-    def get_key(self) -> Optional[str]:
+    def get_key(self) -> str | None:
         """
         Return the current active API key.
         Automatically rotates to the next available key when needed.
@@ -84,7 +83,7 @@ class APIKeyRotator:
             )
             self._rotate()
 
-    def get_stats(self) -> Dict:
+    def get_stats(self) -> dict:
         return {
             "provider": self.provider_name,
             "total_keys": len(self.keys),
@@ -141,9 +140,9 @@ class KeyRotatorRegistry:
     @classmethod
     def init(
         cls,
-        twelve_data_keys: List[str],
+        twelve_data_keys: list[str],
         twelve_data_limit: int,
-        upstox_keys: List[str],
+        upstox_keys: list[str],
         upstox_limit: int,
     ) -> None:
         cls.twelve_data = APIKeyRotator(twelve_data_keys, twelve_data_limit, "TwelveData")

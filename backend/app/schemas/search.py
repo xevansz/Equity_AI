@@ -1,12 +1,13 @@
-from pydantic import BaseModel, Field
-from typing import List, Optional
 
-from app.schemas.market import Market, Exchange, Interval
+from pydantic import BaseModel, Field
+
+from app.schemas.market import Exchange, Interval, Market
+
 
 class SearchQuery(BaseModel):
     query: str
-    market: Optional[Market] = None
-    exchange: Optional[Exchange] = None
+    market: Market | None = None
+    exchange: Exchange | None = None
     interval: Interval = Interval.FIVE_MIN
     chart_size: int = Field(100, ge=10, le=500)
     include_depth: bool = True
@@ -19,7 +20,7 @@ class UnifiedSearchResponse(BaseModel):
     exchange: Exchange
     market_status: dict
     quote: dict
-    chart: Optional[List[dict]] = None
-    fundamentals: Optional[dict] = None
-    depth: Optional[dict] = None
+    chart: list[dict] | None = None
+    fundamentals: dict | None = None
+    depth: dict | None = None
     processing_time_ms: float

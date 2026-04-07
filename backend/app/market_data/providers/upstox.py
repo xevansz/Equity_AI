@@ -39,17 +39,13 @@ class UpstoxProvider:
     Key management → KeyRotatorRegistry.upstox
     """
 
-    # ------------------------------------------------------------------
-    # Real-time Quote
-    # ------------------------------------------------------------------
-
     @staticmethod
     async def get_quote(symbol: str, exchange: str = "NSE_EQ") -> StockQuote | None:
         """Fetch real-time LTP + OHLC quote for an Indian stock."""
         if not KeyRotatorRegistry.upstox:
             logger.error("[Upstox] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
             return None
-        
+
         key = KeyRotatorRegistry.upstox.get_key()
         if not key:
             logger.error("[Upstox] No available API key.")
@@ -68,7 +64,10 @@ class UpstoxProvider:
                 if resp.status_code == 429:
                     logger.warning("[Upstox] 429 — rotating key.")
                     KeyRotatorRegistry.upstox.mark_exhausted(key)
-                    return await UpstoxProvider.get_quote(symbol, exchange)
+                    if KeyRotatorRegistry.upstox.get_key():
+                        return await UpstoxProvider.get_quote(symbol, exchange)
+                    logger.error("[Upstox] All keys exhausted, cannot retry.")
+                    return None
 
                 if resp.status_code == 401:
                     logger.error(f"[Upstox] 401 Unauthorised — key …{key[-6:]} may be expired.")
@@ -111,10 +110,6 @@ class UpstoxProvider:
                 logger.exception(f"[Upstox] Quote error for {symbol}: {exc}")
                 return None
 
-    # ------------------------------------------------------------------
-    # Market Depth (Order Book)
-    # ------------------------------------------------------------------
-
     @staticmethod
     async def get_market_depth(symbol: str, exchange: str = "NSE_EQ") -> MarketDepth | None:
         """
@@ -124,7 +119,7 @@ class UpstoxProvider:
         if not KeyRotatorRegistry.upstox:
             logger.error("[Upstox] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
             return None
-        
+
         key = KeyRotatorRegistry.upstox.get_key()
         if not key:
             return None
@@ -141,7 +136,10 @@ class UpstoxProvider:
 
                 if resp.status_code == 429:
                     KeyRotatorRegistry.upstox.mark_exhausted(key)
-                    return await UpstoxProvider.get_market_depth(symbol, exchange)
+                    if KeyRotatorRegistry.upstox.get_key():
+                        return await UpstoxProvider.get_market_depth(symbol, exchange)
+                    logger.error("[Upstox] All keys exhausted, cannot retry.")
+                    return None
 
                 resp.raise_for_status()
                 body = resp.json()
@@ -171,10 +169,6 @@ class UpstoxProvider:
                 logger.exception(f"[Upstox] MarketDepth error for {symbol}: {exc}")
                 return None
 
-    # ------------------------------------------------------------------
-    # Historical OHLCV
-    # ------------------------------------------------------------------
-
     @staticmethod
     async def get_historical(
         symbol: str,
@@ -192,7 +186,7 @@ class UpstoxProvider:
         if not KeyRotatorRegistry.upstox:
             logger.error("[Upstox] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
             return []
-        
+
         key = KeyRotatorRegistry.upstox.get_key()
         if not key:
             return []
@@ -203,10 +197,7 @@ class UpstoxProvider:
             from_date = (date.today() - timedelta(days=7)).isoformat()
 
         instrument_key = _build_instrument_key(symbol, exchange)
-        url = (
-            f"{BASE_URL}/historical-candle/"
-            f"{instrument_key}/{interval}/{to_date}/{from_date}"
-        )
+        url = f"{BASE_URL}/historical-candle/{instrument_key}/{interval}/{to_date}/{from_date}"
 
         async with httpx.AsyncClient(timeout=15.0) as client:
             try:
@@ -214,9 +205,10 @@ class UpstoxProvider:
 
                 if resp.status_code == 429:
                     KeyRotatorRegistry.upstox.mark_exhausted(key)
-                    return await UpstoxProvider.get_historical(
-                        symbol, interval, exchange, from_date, to_date
-                    )
+                    if KeyRotatorRegistry.upstox.get_key():
+                        return await UpstoxProvider.get_historical(symbol, interval, exchange, from_date, to_date)
+                    logger.error("[Upstox] All keys exhausted, cannot retry.")
+                    return []
 
                 resp.raise_for_status()
                 body = resp.json()

@@ -30,17 +30,13 @@ class TwelveDataProvider:
         - get_fundamentals() → Dict (raw, parsed by caller)
     """
 
-    # ------------------------------------------------------------------
-    # Quote
-    # ------------------------------------------------------------------
-
     @staticmethod
     async def get_quote(symbol: str) -> StockQuote | None:
         """Fetch real-time quote. Returns None on error."""
         if not KeyRotatorRegistry.twelve_data:
             logger.error("[TwelveData] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
             return None
-        
+
         key = KeyRotatorRegistry.twelve_data.get_key()
         if not key:
             logger.error("[TwelveData] No available API key.")
@@ -56,7 +52,10 @@ class TwelveDataProvider:
                 if resp.status_code == 429:
                     logger.warning("[TwelveData] 429 received — rotating key.")
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
-                    return await TwelveDataProvider.get_quote(symbol)
+                    if KeyRotatorRegistry.twelve_data.get_key():
+                        return await TwelveDataProvider.get_quote(symbol)
+                    logger.error("[TwelveData] All keys exhausted, cannot retry.")
+                    return None
 
                 resp.raise_for_status()
                 data = resp.json()
@@ -71,7 +70,10 @@ class TwelveDataProvider:
                     # explicit rate limit response
                     logger.warning(f"[TwelveData] API error in body: {data.get('message')}")
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
-                    return await TwelveDataProvider.get_quote(symbol)
+                    if KeyRotatorRegistry.twelve_data.get_key():
+                        return await TwelveDataProvider.get_quote(symbol)
+                    logger.error("[TwelveData] All keys exhausted, cannot retry.")
+                    return None
 
                 if data.get("status") == "error":
                     msg = data.get("message", "<no message>")
@@ -90,7 +92,10 @@ class TwelveDataProvider:
                     # any other error we conservatively rotate
                     logger.warning(f"[TwelveData] API error in body: {msg} (rotating key)")
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
-                    return await TwelveDataProvider.get_quote(symbol)
+                    if KeyRotatorRegistry.twelve_data.get_key():
+                        return await TwelveDataProvider.get_quote(symbol)
+                    logger.error("[TwelveData] All keys exhausted, cannot retry.")
+                    return None
 
                 return StockQuote(
                     symbol=data.get("symbol", symbol).upper(),
@@ -113,10 +118,6 @@ class TwelveDataProvider:
                 logger.exception(f"[TwelveData] Unexpected error for {symbol}: {exc}")
                 return None
 
-    # ------------------------------------------------------------------
-    # Time Series
-    # ------------------------------------------------------------------
-
     @staticmethod
     async def get_time_series(
         symbol: str,
@@ -132,7 +133,7 @@ class TwelveDataProvider:
         if not KeyRotatorRegistry.twelve_data:
             logger.error("[TwelveData] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
             return []
-        
+
         key = KeyRotatorRegistry.twelve_data.get_key()
         if not key:
             return []
@@ -150,7 +151,10 @@ class TwelveDataProvider:
 
                 if resp.status_code == 429:
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
-                    return await TwelveDataProvider.get_time_series(symbol, interval, outputsize)
+                    if KeyRotatorRegistry.twelve_data.get_key():
+                        return await TwelveDataProvider.get_time_series(symbol, interval, outputsize)
+                    logger.error("[TwelveData] All keys exhausted, cannot retry.")
+                    return []
 
                 resp.raise_for_status()
                 data = resp.json()
@@ -177,17 +181,13 @@ class TwelveDataProvider:
                 logger.exception(f"[TwelveData] Time-series error for {symbol}: {exc}")
                 return []
 
-    # ------------------------------------------------------------------
-    # Fundamentals (raw dict — parsed by schemas/financial.py)
-    # ------------------------------------------------------------------
-
     @staticmethod
     async def get_fundamentals(symbol: str) -> dict[str, Any]:
         """Fetch fundamentals. Returns raw dict; caller parses."""
         if not KeyRotatorRegistry.twelve_data:
             logger.error("[TwelveData] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
             return {}
-        
+
         key = KeyRotatorRegistry.twelve_data.get_key()
         if not key:
             return {}
@@ -201,7 +201,10 @@ class TwelveDataProvider:
                 )
                 if resp.status_code == 429:
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
-                    return await TwelveDataProvider.get_fundamentals(symbol)
+                    if KeyRotatorRegistry.twelve_data.get_key():
+                        return await TwelveDataProvider.get_fundamentals(symbol)
+                    logger.error("[TwelveData] All keys exhausted, cannot retry.")
+                    return {}
 
                 resp.raise_for_status()
                 return resp.json()

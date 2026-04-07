@@ -59,3 +59,30 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+
+def validate_jwt_secret() -> None:
+    """Validate JWT secret key at startup.
+
+    Raises:
+        ValueError: If JWT_SECRET_KEY is missing or insecure
+    """
+    if not settings.JWT_SECRET_KEY:
+        raise ValueError(
+            "JWT_SECRET_KEY is not set. Please set JWT_SECRET_KEY in your .env file. "
+            "Generate a secure secret with: openssl rand -hex 32"
+        )
+
+    if len(settings.JWT_SECRET_KEY) < 32:
+        raise ValueError(
+            f"JWT_SECRET_KEY is too short ({len(settings.JWT_SECRET_KEY)} characters). "
+            "It must be at least 32 characters for security. "
+            "Generate a secure secret with: openssl rand -hex 32"
+        )
+
+    if settings.JWT_SECRET_KEY in ["changeme", "secret", "test", "dev", "development"]:
+        raise ValueError(
+            "JWT_SECRET_KEY is using a common/insecure value. "
+            "Please use a cryptographically secure random string. "
+            "Generate one with: openssl rand -hex 32"
+        )

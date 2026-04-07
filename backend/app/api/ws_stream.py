@@ -16,6 +16,7 @@ Protocol:
 
 import asyncio
 import logging
+import uuid
 from datetime import datetime
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
@@ -40,7 +41,7 @@ async def stream_data(ws: WebSocket):
     """
     await ws.accept()
 
-    client_id = f"{ws.client.host}:{ws.client.port}" if ws.client else "unknown"
+    client_id = str(uuid.uuid4())
     active_connections[client_id] = {
         "ws": ws,
         "subscriptions": set(),
@@ -52,6 +53,7 @@ async def stream_data(ws: WebSocket):
     # Get dispatcher from app state
     dispatcher = ws.app.state.market_dispatcher
 
+    update_task = None
     try:
         # Start background task to send updates
         update_task = asyncio.create_task(send_updates(client_id, dispatcher))

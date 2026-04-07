@@ -143,7 +143,6 @@ Remove hardcoded admin credentials
 Initialize update_task variable in WebSocket handler
 Add JWT secret validation at startup
 
-Implement cache eviction in ChatService
 Make SMTP operations async
 
 Implement repository layer for database access

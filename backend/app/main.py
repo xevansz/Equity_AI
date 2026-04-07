@@ -1,5 +1,7 @@
 import asyncio
+import logging
 import os
+import traceback
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
@@ -207,6 +209,24 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
 # Generic 500 handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    logger = logging.getLogger(__name__)
+
+    # Log comprehensive error information
+    logger.error(
+        "Unhandled exception occurred",
+        exc_info=exc,
+        extra={
+            "method": request.method,
+            "url": str(request.url),
+            "client_host": request.client.host if request.client else None,
+            "exception_type": type(exc).__name__,
+            "exception_message": str(exc),
+        },
+    )
+
+    # Log full traceback for debugging
+    logger.error(f"Traceback:\n{''.join(traceback.format_exception(type(exc), exc, exc.__traceback__))}")
+
     return JSONResponse(
         status_code=500,
         content={

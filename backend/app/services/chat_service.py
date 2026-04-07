@@ -3,10 +3,13 @@
 import asyncio
 import time
 
+from motor.motor_asyncio import AsyncIOMotorDatabase
+
 from app.conversational.memory import ConversationMemory
 from app.conversational.query_router import query_router
 from app.conversational.response_generator import response_generator
 from app.embeddings.vector_store import VectorStore
+from app.exceptions import LLMError
 from app.logging_config import get_logger
 from app.rag.rag_pipeline import rag_pipeline
 from app.schemas.chat import ChatRequest, ChatResponse
@@ -15,17 +18,41 @@ logger = get_logger(__name__)
 
 
 class ChatService:
-    _cache = {}  # in memory cache
+    """Service for handling conversational chat with equity research."""
 
-    _last_call_time = 0  # rate limiting
-    _MIN_INTERVAL_SECONDS = 6  # change to 60 later
+    _cache: dict[str, str] = {}
+    _last_call_time: float = 0
+    _MIN_INTERVAL_SECONDS: int = 6
 
-    def __init__(self, db, user_id: str | None = None, vector_store: VectorStore | None = None) -> None:
+    def __init__(
+        self,
+        db: AsyncIOMotorDatabase,
+        user_id: str | None = None,
+        vector_store: VectorStore | None = None,
+    ) -> None:
+        """Initialize chat service.
+
+        Args:
+            db: Database connection
+            user_id: Optional user ID for conversation tracking
+            vector_store: Optional vector store instance for RAG
+        """
         self.memory = ConversationMemory(db)
         self.user_id = user_id
         self.vector_store = vector_store or VectorStore()
 
     async def process_query(self, request: ChatRequest) -> ChatResponse:
+        """Process a chat query with RAG and LLM.
+
+        Args:
+            request: Chat request with query and session_id
+
+        Returns:
+            ChatResponse with answer and sources
+
+        Raises:
+            LLMError: If LLM processing fails
+        """
         query = request.query.strip()
 
         intent, service_name = query_router.route(query)
@@ -68,6 +95,7 @@ class ChatService:
                 "WARNING: AI response is temporarily unavailable due to usage limits. "
                 "Financial data and analysis are still available."
             )
+            raise LLMError("LLM processing failed", details={"query": query, "error": str(e)}) from e
 
         self._cache[query] = answer
 
@@ -76,7 +104,12 @@ class ChatService:
         return ChatResponse(answer=answer, sources=[])
 
     async def _save_conversation(self, request: ChatRequest, answer: str) -> None:
-        """Save conversation safely without breaking flow"""
+        """Save conversation safely without breaking flow.
+
+        Args:
+            request: Original chat request
+            answer: Generated answer to save
+        """
         try:
             await self.memory.save_message(request.session_id, "user", request.query, self.user_id)
             await self.memory.save_message(request.session_id, "assistant", answer, self.user_id)

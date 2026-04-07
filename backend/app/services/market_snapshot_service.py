@@ -1,6 +1,7 @@
 """Market snapshot extraction service"""
 
 from datetime import datetime, time
+from typing import Any
 
 from app.logging_config import get_logger
 from app.schemas.dashboard import MarketSnapshot
@@ -8,9 +9,8 @@ from app.schemas.dashboard import MarketSnapshot
 logger = get_logger(__name__)
 
 
-def extract_market_snapshot(stock_data: dict, symbol: str) -> MarketSnapshot | None:
-    """
-    Extract market snapshot from Alpha Vantage time series data.
+def extract_market_snapshot(stock_data: dict[str, Any], symbol: str) -> MarketSnapshot | None:
+    """Extract market snapshot from Alpha Vantage time series data.
 
     Args:
         stock_data: Time series data from Alpha Vantage
@@ -73,11 +73,16 @@ def extract_market_snapshot(stock_data: dict, symbol: str) -> MarketSnapshot | N
 
 
 def _infer_market(symbol: str) -> str:
-    """
-    Infer market from symbol.
+    """Infer market from symbol.
 
     This is a simple heuristic. For more accuracy, you could query
     Alpha Vantage's SYMBOL_SEARCH or maintain a symbol->exchange mapping.
+
+    Args:
+        symbol: Stock symbol
+
+    Returns:
+        Market identifier (e.g., "US", "NSE")
     """
     if "." in symbol:
         return symbol.split(".")[-1]
@@ -86,8 +91,7 @@ def _infer_market(symbol: str) -> str:
 
 
 def _determine_market_status(market: str, timestamp: str | None) -> str | None:
-    """
-    Determine market status based on market and timestamp.
+    """Determine market status based on market and timestamp.
 
     For US markets, infers open/closed based on US Eastern Time trading hours.
     For non-US markets, returns None (no inference).

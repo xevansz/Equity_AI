@@ -1,4 +1,5 @@
 from app.ingestion.financial_loader import FinancialLoader
+from app.market_data.dispatcher import MarketDataDispatcher
 from app.schemas.financial import FinancialResponse
 from app.services.financial_metrics import (
     calculate_top_metrics,
@@ -8,13 +9,17 @@ from app.services.market_snapshot_service import (
     _determine_market_status,
     _infer_market,
 )
-from app.services.stock_price_service import StockPriceService
+from app.utils.market_resolver import resolve_market_from_symbol
 
 
 class DataService:
-    def __init__(self, financial_loader: FinancialLoader, stock_price_service: StockPriceService | None = None):
+    def __init__(
+        self,
+        financial_loader: FinancialLoader,
+        market_dispatcher: MarketDataDispatcher | None = None,
+    ):
         self._financial_loader = financial_loader
-        self._stock_price_service = stock_price_service
+        self._market_dispatcher = market_dispatcher
 
     async def get_financial_data(self, symbol: str):
         financials = await self._financial_loader.load_financials(symbol)
@@ -30,16 +35,27 @@ class DataService:
         return FinancialResponse(symbol=symbol, financials=financials, metrics=metrics)
 
     async def get_stock_price(self, symbol: str):
-        """Get current stock price to show in watchlist items"""
+        """
+        Get current stock price - DEPRECATED: Use WebSocket /api/ws/stream instead
+
+        This method is kept for backward compatibility but clients should migrate
+        to WebSocket for real-time updates.
+        """
+        if self._market_dispatcher:
+            # Use new MarketDataDispatcher
+            market, exchange, clean_symbol = resolve_market_from_symbol(symbol)
+            quote = await self._market_dispatcher.get_quote(clean_symbol, market, exchange.value)
+
+            if quote:
+                return {
+                    "symbol": quote.symbol,
+                    "price": quote.price,
+                    "market": quote.market.value,
+                    "status": "open",  # Could enhance with market_utils.get_market_status
+                }
+
+        # Fallback to old method if dispatcher not available
         market = _infer_market(symbol)
-
-        # Use multi-provider service if available
-        if self._stock_price_service:
-            price = await self._stock_price_service.get_current_price(symbol)
-            status = _determine_market_status(market, None)
-            return {"symbol": symbol, "price": price, "market": market, "status": status}
-
-        # Fallback to direct loader call
         stock_data = await self._financial_loader.load_stock_prices(symbol)
 
         if not stock_data or "Time Series (Daily)" not in stock_data:

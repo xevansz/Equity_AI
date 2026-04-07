@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     # Financial APIs
     ALPHA_VANTAGE_API_KEY: str = ""
     FINNHUB_API_KEY: str = ""
+    TWELVE_DATA_API_KEYS: str = ""  # Comma-separated list of keys for rotation
+    UPSTOX_API_KEYS: str = ""  # Comma-separated list of keys for rotation
     SEC_USER_AGENT: str = "EquityAI research-bot contact@example.com"
 
     # News APIs
@@ -33,8 +35,8 @@ class Settings(BaseSettings):
     JWT_EXPIRE_MINUTES: int = 1440
 
     # Admin
-    ADMIN_EMAIL: str = "muvvalarajeswari69@gmail.com"
-    ADMIN_PASSWORD: str = "Admin@123"
+    ADMIN_EMAIL: str
+    ADMIN_PASSWORD: str
 
     # SMTP
     SMTP_HOST: str = ""

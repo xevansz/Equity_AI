@@ -12,13 +12,13 @@ from app.ingestion.news_loader import NewsLoader
 from app.ingestion.sec_filing_loader import SECFilingLoader
 from app.ingestion.transcript_loader import TranscriptLoader
 from app.ingestion.vector_ingestion_service import VectorIngestionService
+from app.market_data.dispatcher import MarketDataDispatcher
 from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
-from app.services.stock_price_service import StockPriceService
 
 security = HTTPBearer()
 
@@ -71,16 +71,15 @@ def get_chat_service(
 
 def get_financial_loader(request: Request) -> FinancialLoader:
     av = get_alpha_vantage(request)
-    stock_price_service = get_stock_price_service(request)
-    return FinancialLoader(av, stock_price_service)
+    return FinancialLoader(av, None)
 
 
 def get_data_service(
     request: Request,
     financial_loader: FinancialLoader = Depends(get_financial_loader),
 ) -> DataService:
-    stock_price_service = get_stock_price_service(request)
-    return DataService(financial_loader, stock_price_service)
+    market_dispatcher = get_market_dispatcher(request)
+    return DataService(financial_loader, market_dispatcher)
 
 
 def get_news_api(request: Request) -> NewsAPI:
@@ -116,10 +115,13 @@ def get_finnhub(request: Request) -> FinnhubMCP | None:
     return client
 
 
-def get_stock_price_service(request: Request) -> StockPriceService:
-    av = get_alpha_vantage(request)
-    finnhub = get_finnhub(request)
-    return StockPriceService(av, finnhub)
+def get_market_dispatcher(request: Request) -> MarketDataDispatcher:
+    """Get the MarketDataDispatcher from app state"""
+    dispatcher = getattr(request.app.state, "market_dispatcher", None)
+    if dispatcher is not None:
+        return dispatcher
+    # Fallback: create a basic dispatcher without fallback providers
+    return MarketDataDispatcher()
 
 
 def get_sec_api(request: Request) -> SECAPI:

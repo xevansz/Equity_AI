@@ -2,14 +2,8 @@
 
 > What's implemented, what's a stub, and what's left to build.
 
-Three core surfaces:
-2. **Watchlist** — Track favorite stocks with live price cards + market status
+# Features left
 3. **Chat** — Deep-dive conversational research powered by RAG + LLM
-
-## Page-by-Page Feature Status
-
-### 1.Dashboard:
-show error when Symbol not found
 
 ### 3. Chat (`/chat`)
 
@@ -141,3 +135,26 @@ A quick reference for what actually computes real data vs returns placeholders:
 **The #2 gap**: The chat system still lacks grounded sources and follow-up conversational context, so answers are not yet citation-backed or multi-turn aware.
 
 **The #3 gap**: Research engine is all placeholders. The 9 metrics in `financial_metrics.py` are the only real calculations.
+
+Recommendations Priority
+Immediate (Fix Now)
+✅ Fix infinite recursion in API key rotation
+✅ Remove hardcoded admin credentials
+✅ Initialize update_task variable in WebSocket handler
+✅ Add JWT secret validation at startup
+High Priority (This Week)
+✅ Implement cache eviction in ChatService
+✅ Fix WebSocket client_id collision risk
+Add proper error logging in global exception handler
+Make SMTP operations async
+
+
+Medium Priority (This Month)
+ Add API rate limiting middleware
+ Implement repository layer for database access
+ Add input validation on all endpoints
+Fix batch search endpoint
+
+ Refactor error handling for consistency
+ Add comprehensive type hints
+ Implement connection pooling for external APIs

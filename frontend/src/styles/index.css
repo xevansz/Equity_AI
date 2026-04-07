@@ -15,25 +15,26 @@
   --color-secondary: #6f8c7c; /* soft green */
   --color-accent: #7e9cd8; /* wave blue */
 
-  --color-success: #6f894e;
-  --color-warning: #b6927b;
-  --color-error: #c84053;
+  --color-success: #6f894e; /* muted moss/olive green */
+  --color-warning: #b6927b; /* dusty sand / warm beige-brown */
+  --color-error: #c84053; /* muted crimson / soft vermillion */
 }
 
 .dark {
-  --color-background: #181820;
-  --color-surface: #1f1f28;
+  /* Base */
+  --color-background: #181820; /* Deep ink black (Main background) */
+  --color-surface: #1f1f28; /* elevated surface (cards etc) */
 
-  --color-text: #c5c9c5;
-  --color-text-muted: #727169;
+  --color-text: #c5c9c5; /* soft light gray (primary text) */
+  --color-text-muted: #727169; /* desaturated gray (secondary/disabled text) */
 
-  --color-primary: #7aa89f;
-  --color-secondary: #223249;
-  --color-accent: #7e9cd8;
+  --color-primary: #7aa89f; /* jade green (main actions, buttons) */
+  --color-secondary: #223249; /* deep indigo-blue (secondary UI elements) */
+  --color-accent: #7e9cd8; /* muted blue (links, highlights) */
 
-  --color-success: #87a987;
-  --color-warning: #c4b28a;
-  --color-error: #c4746e;
+  --color-success: #87a987; /* moss green (success states) */
+  --color-warning: #c4b28a; /* muted sand/gold (warnings) */
+  --color-error: #c4746e; /* faded red (errors/destructive) */
 }
 
 * {

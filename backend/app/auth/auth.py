@@ -81,9 +81,7 @@ async def forgot_password(
     otp_doc = OtpDocument(email=email, otp=otp)
     await db.otps.insert_one(otp_doc.model_dump())
 
-    send_email(
-        to_email=email, subject="Your OTP", body=f"Your password reset OTP is: {otp}"
-    )
+    await send_email(to_email=email, subject="Your OTP", body=f"Your password reset OTP is: {otp}")
 
     return MessageResponse(message="OTP sent to your email")
 

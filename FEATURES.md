@@ -136,12 +136,6 @@ A quick reference for what actually computes real data vs returns placeholders:
 
 **The #3 gap**: Research engine is all placeholders. The 9 metrics in `financial_metrics.py` are the only real calculations.
 
-Recommendations Priority
-
-Initialize update_task variable in WebSocket handler
-
-Make SMTP operations async
-
 Implement repository layer for database access
 
  

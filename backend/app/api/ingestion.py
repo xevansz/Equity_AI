@@ -1,6 +1,5 @@
 """Admin Ingestion API — trigger document ingestion and Chroma re-indexing."""
 
-import re
 from datetime import UTC, datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Path
@@ -20,6 +19,7 @@ from app.ingestion.transcript_loader import TranscriptLoader
 from app.ingestion.vector_ingestion_service import VectorIngestionService
 from app.logging_config import get_logger
 from app.mcp.sec_api import SECAPI
+from app.utils.validation import normalize_symbol, validate_symbol
 
 logger = get_logger(__name__)
 
@@ -49,8 +49,11 @@ async def ingest_symbol(
     Fetch transcripts + latest 10-K/10-Q for *symbol* into MongoDB, then embed all
     ingested docs for that symbol into Chroma. Admin only.
     """
-    symbol = symbol.strip().upper()
-    if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
+    symbol = normalize_symbol(symbol)
+    if not validate_symbol(symbol):
         raise HTTPException(status_code=400, detail="Invalid symbol format")
     logger.info("Admin ingest triggered for %s", symbol)
 
@@ -102,8 +105,11 @@ async def reindex_symbol(
     Re-chunk and re-upsert all cached docs for *symbol* into Chroma from MongoDB.
     Does not re-fetch from external APIs. Admin only.
     """
-    symbol = symbol.strip().upper()
-    if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
+    symbol = normalize_symbol(symbol)
+    if not validate_symbol(symbol):
         raise HTTPException(status_code=400, detail="Invalid symbol format")
     logger.info("Admin reindex triggered for %s", symbol)
 

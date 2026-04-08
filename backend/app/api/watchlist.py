@@ -1,4 +1,3 @@
-import re
 from datetime import UTC, datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Path, Query
@@ -7,6 +6,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from app.dependencies import get_current_user, get_database
 from app.models.watchlist import WatchlistItemOut, WatchlistListResponse
 from app.schemas.watchlist import WatchlistCreate
+from app.utils.validation import normalize_symbol, validate_symbol
 
 router = APIRouter(prefix="/api", tags=["watchlist"])
 
@@ -18,6 +18,9 @@ async def get_watchlist(
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ):
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
     query: dict = {"user_id": user["email"]}
 
     if after:
@@ -48,6 +51,9 @@ async def add_to_watchlist(
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ):
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
     # Normalize company name for duplicate detection
     normalized_name = item.company_name.lower().strip()
 
@@ -82,8 +88,11 @@ async def remove_from_watchlist(
     db: AsyncIOMotorDatabase = Depends(get_database),
     user: dict = Depends(get_current_user),
 ):
-    symbol = symbol.strip().upper()
-    if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
+    symbol = normalize_symbol(symbol)
+    if not validate_symbol(symbol):
         raise HTTPException(status_code=400, detail="Invalid symbol format")
 
     result = await db.watchlist.delete_one({"user_id": user["email"], "symbol": symbol})

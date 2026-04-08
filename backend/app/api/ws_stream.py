@@ -100,9 +100,14 @@ async def stream_data(ws: WebSocket):
 
 async def send_updates(client_id: str, dispatcher):
     """Background task to send real-time updates to a client"""
-    while client_id in active_connections:
+    while True:
         try:
-            conn = active_connections[client_id]
+            # Use .get() to safely check if connection still exists
+            conn = active_connections.get(client_id)
+            if conn is None:
+                logger.info(f"[WebSocket] Connection {client_id} no longer active, stopping updates")
+                break
+
             ws = conn["ws"]
             subscriptions = conn["subscriptions"]
 
@@ -145,9 +150,11 @@ async def send_updates(client_id: str, dispatcher):
 
                 except Exception as e:
                     logger.error(f"[WebSocket] Error fetching {symbol}: {e}")
-                    await ws.send_json(
-                        {"type": "error", "symbol": symbol, "message": f"Failed to fetch data: {str(e)}"}
-                    )
+                    # Check if connection still exists before sending error
+                    if client_id in active_connections:
+                        await ws.send_json(
+                            {"type": "error", "symbol": symbol, "message": f"Failed to fetch data: {str(e)}"}
+                        )
 
             # Wait before next update (2 seconds for real-time feel)
             await asyncio.sleep(2)

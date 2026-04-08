@@ -20,7 +20,7 @@ from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
-from app.services.stock_price_service import StockPriceService
+from app.services.data_service import DataService
 
 security = HTTPBearer()
 
@@ -135,14 +135,16 @@ def get_financial_loader(request: Request) -> FinancialLoader:
     Returns:
         FinancialLoader instance
     """
-    av = get_alpha_vantage()
+    av = getattr(request.app.state, "alpha_vantage", None)
+    if av is None:
+        av = AlphaVantageMCP()
     return FinancialLoader(av, None)
 
 
 def get_data_service(
     request: Request,
     financial_loader: FinancialLoader = Depends(get_financial_loader),
-) -> StockPriceService:
+) -> DataService:
     """Get data service dependency.
 
     Args:
@@ -150,19 +152,25 @@ def get_data_service(
         financial_loader: Financial loader instance
 
     Returns:
-        StockPriceService instance
+        DataService instance
     """
     market_dispatcher = get_market_dispatcher(request)
-    return StockPriceService(financial_loader, market_dispatcher)
+    return DataService(financial_loader, market_dispatcher)
 
 
-def get_news_api() -> NewsAPI:
+def get_news_api(request: Request) -> NewsAPI:
     """Get News API dependency.
+
+    Args:
+        request: FastAPI request
 
     Returns:
         NewsAPI instance
     """
-    return NewsAPI()
+    news_api = getattr(request.app.state, "news_api", None)
+    if news_api is None:
+        news_api = NewsAPI()
+    return news_api
 
 
 def get_news_loader(request: Request) -> NewsLoader:
@@ -177,7 +185,8 @@ def get_news_loader(request: Request) -> NewsLoader:
     loader = getattr(request.app.state, "news_loader", None)
     if loader is not None:
         return loader
-    return NewsLoader(get_news_api())
+    news_api = get_news_api(request)
+    return NewsLoader(news_api)
 
 
 def get_transcript_loader(request: Request) -> TranscriptLoader:
@@ -195,13 +204,19 @@ def get_transcript_loader(request: Request) -> TranscriptLoader:
     return TranscriptLoader()
 
 
-def get_alpha_vantage() -> AlphaVantageMCP:
+def get_alpha_vantage(request: Request) -> AlphaVantageMCP:
     """Get Alpha Vantage MCP dependency.
+
+    Args:
+        request: FastAPI request
 
     Returns:
         AlphaVantageMCP instance
     """
-    return AlphaVantageMCP()
+    av = getattr(request.app.state, "alpha_vantage", None)
+    if av is None:
+        av = AlphaVantageMCP()
+    return av
 
 
 def get_finnhub(request: Request) -> FinnhubMCP | None:
@@ -233,13 +248,19 @@ def get_market_dispatcher(request: Request) -> MarketDataDispatcher:
     return MarketDataDispatcher()
 
 
-def get_sec_api() -> SECAPI:
+def get_sec_api(request: Request) -> SECAPI:
     """Get SEC API dependency.
+
+    Args:
+        request: FastAPI request
 
     Returns:
         SECAPI instance
     """
-    return SECAPI()
+    sec_api = getattr(request.app.state, "sec_api", None)
+    if sec_api is None:
+        sec_api = SECAPI()
+    return sec_api
 
 
 def get_sec_filing_loader(request: Request) -> SECFilingLoader:
@@ -251,7 +272,7 @@ def get_sec_filing_loader(request: Request) -> SECFilingLoader:
     Returns:
         SECFilingLoader instance
     """
-    sec_api = get_sec_api()
+    sec_api = get_sec_api(request)
     return SECFilingLoader(sec_api)
 
 

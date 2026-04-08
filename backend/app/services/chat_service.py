@@ -11,7 +11,6 @@ from app.conversational.memory import ConversationMemory
 from app.conversational.query_router import query_router
 from app.conversational.response_generator import response_generator
 from app.embeddings.vector_store import VectorStore
-from app.exceptions import LLMError
 from app.logging_config import get_logger
 from app.rag.rag_pipeline import rag_pipeline
 from app.schemas.chat import ChatRequest, ChatResponse
@@ -23,7 +22,7 @@ logger = get_logger(__name__)
 class CacheEntry:
     """Cache entry with value and metadata."""
 
-    value: str
+    value: ChatResponse
     timestamp: float
     access_count: int = 0
 
@@ -31,13 +30,9 @@ class CacheEntry:
 class ChatService:
     """Service for handling conversational chat with equity research."""
 
-    _cache: OrderedDict[str, CacheEntry] = OrderedDict()
-    _last_call_time: float = 0
     _MIN_INTERVAL_SECONDS: int = 6
     _MAX_CACHE_SIZE: int = 100
     _CACHE_TTL_SECONDS: int = 3600
-    _cache_hits: int = 0
-    _cache_misses: int = 0
 
     def __init__(
         self,
@@ -55,6 +50,12 @@ class ChatService:
         self.memory = ConversationMemory(db)
         self.user_id = user_id
         self.vector_store = vector_store or VectorStore()
+
+        # Instance-level cache to prevent sharing between users
+        self._cache: OrderedDict[str, CacheEntry] = OrderedDict()
+        self._last_call_time: float = 0
+        self._cache_hits: int = 0
+        self._cache_misses: int = 0
 
     async def process_query(self, request: ChatRequest) -> ChatResponse:
         """Process a chat query with RAG and LLM.
@@ -77,8 +78,8 @@ class ChatService:
         if cached_entry:
             self._cache_hits += 1
             logger.info("Cache hit for query (hits=%d, misses=%d)", self._cache_hits, self._cache_misses)
-            await self._save_conversation(request, cached_entry.value)
-            return ChatResponse(answer=cached_entry.value, sources=[])
+            await self._save_conversation(request, cached_entry.value.answer)
+            return cached_entry.value
 
         self._cache_misses += 1
 
@@ -114,13 +115,16 @@ class ChatService:
                 "WARNING: AI response is temporarily unavailable due to usage limits. "
                 "Financial data and analysis are still available."
             )
-            raise LLMError("LLM processing failed", details={"query": query, "error": str(e)}) from e
+            response = ChatResponse(answer=answer, sources=[])
+            await self._save_conversation(request, answer)
+            return response
 
-        self._add_to_cache(query, answer)
+        response = ChatResponse(answer=answer, sources=[])
+        self._add_to_cache(query, response)
 
         await self._save_conversation(request, answer)
 
-        return ChatResponse(answer=answer, sources=[])
+        return response
 
     async def _save_conversation(self, request: ChatRequest, answer: str) -> None:
         """Save conversation safely without breaking flow.
@@ -159,12 +163,12 @@ class ChatService:
         self._cache.move_to_end(query)
         return entry
 
-    def _add_to_cache(self, query: str, answer: str) -> None:
+    def _add_to_cache(self, query: str, response: ChatResponse) -> None:
         """Add entry to cache with LRU eviction.
 
         Args:
             query: Query string as key
-            answer: Answer to cache
+            response: ChatResponse to cache
         """
         if len(self._cache) >= self._MAX_CACHE_SIZE:
             evicted_key, evicted_entry = self._cache.popitem(last=False)
@@ -175,7 +179,7 @@ class ChatService:
                 evicted_entry.access_count,
             )
 
-        self._cache[query] = CacheEntry(value=answer, timestamp=time.time())
+        self._cache[query] = CacheEntry(value=response, timestamp=time.time())
         logger.debug("Added to cache: size=%d", len(self._cache))
 
     def _evict_expired_entries(self) -> int:

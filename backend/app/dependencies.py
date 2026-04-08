@@ -16,7 +16,6 @@ from app.ingestion.transcript_loader import TranscriptLoader
 from app.ingestion.vector_ingestion_service import VectorIngestionService
 from app.market_data.dispatcher import MarketDataDispatcher
 from app.mcp.financial_api import AlphaVantageMCP
-from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
@@ -138,7 +137,11 @@ def get_financial_loader(request: Request) -> FinancialLoader:
     av = getattr(request.app.state, "alpha_vantage", None)
     if av is None:
         av = AlphaVantageMCP()
-    return FinancialLoader(av, None)
+
+    # Get MarketDataDispatcher for multi-provider stock price fallback
+    market_dispatcher = get_market_dispatcher(request)
+
+    return FinancialLoader(av, market_dispatcher)
 
 
 def get_data_service(
@@ -202,34 +205,6 @@ def get_transcript_loader(request: Request) -> TranscriptLoader:
     if loader is not None:
         return loader
     return TranscriptLoader()
-
-
-def get_alpha_vantage(request: Request) -> AlphaVantageMCP:
-    """Get Alpha Vantage MCP dependency.
-
-    Args:
-        request: FastAPI request
-
-    Returns:
-        AlphaVantageMCP instance
-    """
-    av = getattr(request.app.state, "alpha_vantage", None)
-    if av is None:
-        av = AlphaVantageMCP()
-    return av
-
-
-def get_finnhub(request: Request) -> FinnhubMCP | None:
-    """Get Finnhub MCP dependency.
-
-    Args:
-        request: FastAPI request
-
-    Returns:
-        FinnhubMCP instance or None
-    """
-    client = getattr(request.app.state, "finnhub", None)
-    return client
 
 
 def get_market_dispatcher(request: Request) -> MarketDataDispatcher:

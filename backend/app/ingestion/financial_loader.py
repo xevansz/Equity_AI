@@ -2,7 +2,10 @@
 
 from typing import Any
 
+from app.logging_config import get_logger
 from app.mcp.financial_api import AlphaVantageMCP
+
+logger = get_logger(__name__)
 
 
 class FinancialLoader:
@@ -13,7 +16,7 @@ class FinancialLoader:
 
         Args:
             alpha_vantage: Alpha Vantage API client
-            stock_price_service: Optional multi-provider stock price service
+            stock_price_service: Optional multi-provider stock price service (MarketDataDispatcher)
         """
         self._alpha_vantage = alpha_vantage
         self._stock_price_service = stock_price_service
@@ -40,12 +43,39 @@ class FinancialLoader:
     async def load_stock_prices(self, symbol: str) -> dict[str, Any]:
         """Load stock price time series for a symbol.
 
+        Uses MarketDataDispatcher if available (multi-provider with fallback),
+        otherwise falls back to direct AlphaVantage API.
+
         Args:
             symbol: Stock symbol
 
         Returns:
-            Time series data dictionary
+            Time series data dictionary in AlphaVantage format
         """
         if self._stock_price_service:
-            return await self._stock_price_service.get_time_series_daily(symbol)
+            try:
+                # Use MarketDataDispatcher for multi-provider fallback
+                chart_data = await self._stock_price_service.get_chart(symbol, interval="1day", outputsize=100)
+
+                if not chart_data:
+                    logger.warning(f"MarketDataDispatcher returned no data for {symbol}, trying AlphaVantage")
+                    return await self._alpha_vantage.get_time_series_daily(symbol)
+
+                # Convert OHLCVPoint list to AlphaVantage format for backward compatibility
+                time_series = {}
+                for point in chart_data:
+                    time_series[point.timestamp] = {
+                        "1. open": str(point.open),
+                        "2. high": str(point.high),
+                        "3. low": str(point.low),
+                        "4. close": str(point.close),
+                        "5. volume": str(point.volume),
+                    }
+
+                return {"Time Series (Daily)": time_series}
+
+            except Exception as e:
+                logger.error(f"Error using MarketDataDispatcher for {symbol}: {e}, falling back to AlphaVantage")
+                return await self._alpha_vantage.get_time_series_daily(symbol)
+
         return await self._alpha_vantage.get_time_series_daily(symbol)

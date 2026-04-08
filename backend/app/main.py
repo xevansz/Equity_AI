@@ -8,8 +8,9 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
-from slowapi import _rate_limit_exceeded_handler
-from slowapi.errors import RateLimitExceeded
+from limits import RateLimitItemPerMinute
+from limits.storage import MemoryStorage
+from limits.strategies import FixedWindowRateLimiter
 
 from app.api import (
     chat,
@@ -41,7 +42,6 @@ from app.mcp.financial_api import AlphaVantageMCP
 from app.mcp.finnhub_api import FinnhubMCP
 from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
-from app.middleware.rate_limit import limiter
 
 configure_logging()
 
@@ -116,9 +116,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Rate limiting
-app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+# Global limiter setup
+storage = MemoryStorage()
+limiter = FixedWindowRateLimiter(storage)
 
 # CORS - configurable origins for production
 allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
@@ -131,25 +131,20 @@ app.add_middleware(
 )
 
 
-# Apply rate limiting to all routes
 @app.middleware("http")
 async def rate_limit_middleware(request: Request, call_next):
+    key = request.client.host  # identity (IP)
+
     if request.method in ["GET", "HEAD", "OPTIONS"]:
-        limit = "100/minute"
+        limit = RateLimitItemPerMinute(100)
     else:
-        limit = "60/minute"
+        limit = RateLimitItemPerMinute(60)
 
-    # Apply the rate limit
-    try:
-        await limiter.check_request_limit(request, limit)
-    except RateLimitExceeded:
-        return JSONResponse(
-            status_code=429,
-            content={"detail": "Rate limit exceeded. Please try again later."},
-        )
+    if not limiter.test(limit, key):
+        return JSONResponse(status_code=429, content={"detail": "Rate limit exceeded"})
 
-    response = await call_next(request)
-    return response
+    limiter.hit(limit, key)
+    return await call_next(request)
 
 
 # Routers

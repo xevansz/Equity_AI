@@ -5,10 +5,21 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:0a8947ef5a347d3fb493abc74d44e39a77c3b1f3bc7fc1b668efe3c770e47050"
+content_hash = "sha256:b0ccb008d0ee57c85231e44333ab58fadedf4ab952c4cbd5bf7345cf373652dd"
 
 [[metadata.targets]]
 requires_python = "==3.12.*"
+
+[[package]]
+name = "aiosmtplib"
+version = "5.1.0"
+requires_python = ">=3.10"
+summary = "asyncio SMTP client"
+groups = ["default"]
+files = [
+    {file = "aiosmtplib-5.1.0-py3-none-any.whl", hash = "sha256:368029440645b486b69db7029208a7a78c6691b90d24a5332ddba35d9109d55b"},
+    {file = "aiosmtplib-5.1.0.tar.gz", hash = "sha256:2504a23b2b63c9de6bc4ea719559a38996dba68f73f6af4eb97be20ee4c5e6c4"},
+]
 
 [[package]]
 name = "annotated-doc"
@@ -2370,20 +2381,6 @@ groups = ["default"]
 files = [
     {file = "six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"},
     {file = "six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"},
-]
-
-[[package]]
-name = "slowapi"
-version = "0.1.9"
-requires_python = ">=3.7,<4.0"
-summary = "A rate limiting extension for Starlette and Fastapi"
-groups = ["default"]
-dependencies = [
-    "limits>=2.3",
-]
-files = [
-    {file = "slowapi-0.1.9-py3-none-any.whl", hash = "sha256:cfad116cfb84ad9d763ee155c1e5c5cbf00b0d47399a769b227865f5df576e36"},
-    {file = "slowapi-0.1.9.tar.gz", hash = "sha256:639192d0f1ca01b1c6d95bf6c71d794c3a9ee189855337b4821f7f457dddad77"},
 ]
 
 [[package]]

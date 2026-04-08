@@ -3,13 +3,12 @@
 from typing import Any
 
 from app.mcp.financial_api import AlphaVantageMCP
-from app.services.stock_price_service import StockPriceService
 
 
 class FinancialLoader:
     """Loader for financial data from various sources."""
 
-    def __init__(self, alpha_vantage: AlphaVantageMCP, stock_price_service: StockPriceService | None = None) -> None:
+    def __init__(self, alpha_vantage: AlphaVantageMCP, stock_price_service: Any | None = None) -> None:
         """Initialize financial loader.
 
         Args:

@@ -1,13 +1,12 @@
 """Financial Data API"""
 
-import re
-
 from fastapi import APIRouter, Depends, HTTPException, Query
 
 from app.dependencies import get_current_user, get_data_service
 from app.logging_config import get_logger
 from app.schemas.financial import FinancialRequest, FinancialResponse
 from app.services.data_service import DataService
+from app.utils.validation import normalize_symbol, validate_symbol
 
 logger = get_logger(__name__)
 
@@ -40,8 +39,8 @@ async def get_stock_price(
 ):
     """Get current stock price"""
     try:
-        symbol = symbol.strip().upper()
-        if not re.match(r"^[A-Z0-9.\-:]+$", symbol):
+        symbol = normalize_symbol(symbol)
+        if not validate_symbol(symbol):
             raise HTTPException(status_code=400, detail="Invalid symbol format")
 
         logger.info("Stock price request: %s", symbol)

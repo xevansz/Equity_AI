@@ -46,10 +46,13 @@ async def login(
     service: UserService = Depends(get_user_service),
 ) -> TokenResponse:
 
-    # Permanent Admin (from .env)
-    if data.email == ADMIN_EMAIL and data.password == ADMIN_PASSWORD:
-        token = create_token({"email": ADMIN_EMAIL, "role": "admin"})
-        return TokenResponse(access_token=token, token_type="bearer")
+    # Permanent Admin (from .env) - use constant-time comparison to prevent timing attacks
+    if ADMIN_EMAIL and ADMIN_PASSWORD:
+        email_match = secrets.compare_digest(data.email, ADMIN_EMAIL)
+        password_match = secrets.compare_digest(data.password, ADMIN_PASSWORD)
+        if email_match and password_match:
+            token = create_token({"email": ADMIN_EMAIL, "role": "admin"})
+            return TokenResponse(access_token=token, token_type="bearer")
 
     user = await service.verify_user(data.email, data.password)
     if not user:

@@ -14,7 +14,7 @@ def calculate_top_metrics(financials: dict):
     """
     Calculate top 10 equity metrics safely
     """
-
+    current_price = financials.get("current_price")
     income = financials.get("income_statement") or {}
     balance = financials.get("balance_sheet") or {}
     cashflow = financials.get("cash_flow") or {}
@@ -47,7 +47,7 @@ def calculate_top_metrics(financials: dict):
         "Debt_to_Equity": safe_div(total_liabilities, total_equity),
         "Current_Ratio": safe_div(current_assets, current_liabilities),
         "Free_Cash_Flow": free_cash_flow,
-        "PE_Ratio": None,  # needs market price (optional)
+        "PE_Ratio": safe_div(current_price, safe_div(net_income, shares_outstanding)),
     }
 
     return metrics

@@ -29,6 +29,16 @@ class DataService:
         financials["balance_sheet"] = clean_rate_limit(financials.get("balance_sheet"))
         financials["cash_flow"] = clean_rate_limit(financials.get("cash_flow"))
 
+        # Fetch current price for PE ratio calculation
+        current_price = None
+        if self._market_dispatcher:
+            market, exchange, clean_symbol = resolve_market_from_symbol(symbol)
+            quote = await self._market_dispatcher.get_quote(clean_symbol, market, exchange.value)
+            if quote:
+                current_price = quote.price
+
+        financials["current_price"] = current_price
+
         # TOP 10
         metrics = calculate_top_metrics(financials)
 

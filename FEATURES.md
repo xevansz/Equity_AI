@@ -34,10 +34,6 @@
 | `risk_analysis.py` | Returns static bullet points | Beta, volatility, leverage-based risk scoring |
 | `report_generator.py` | Calls the 4 stubs above, returns dict | Should use real data + optionally LLM for narrative |
 
-### Financial Metrics (`services/financial_metrics.py`)
-- ⚠️ PE Ratio always `None` (needs market price)
-- These metrics are **the only real calculations** in the entire backend
-
 ## Features To Build — Prioritized
 
 ### Phase 1: Make Core Work (Chat + RAG)
@@ -121,16 +117,6 @@ A quick reference for what actually computes real data vs returns placeholders:
 | Research engine analysis | ❌ Placeholder text |
 | SEC filings | ❌ Stub |
 | Earnings transcripts | ⚠️ Retrieval exists, ingestion/embedding not done |
-
-## Summary
-
-**What works today**: You can log in, search a stock, get a Gemini AI answer (without RAG grounding), see Alpha Vantage financial statements + 9 calculated metrics + a revenue chart + news articles. You can chat with the AI. Dark/light theme works.
-
-**The #1 gap**: The knowledge base is empty. RAG retrieval returns nothing. The AI answers from its own training data, not from curated financial intelligence. **Filling ChromaDB with financial knowledge is the single most impactful thing to do next.**
-
-**The #2 gap**: The chat system still lacks grounded sources and follow-up conversational context, so answers are not yet citation-backed or multi-turn aware.
-
-**The #3 gap**: Research engine is all placeholders. The 9 metrics in `financial_metrics.py` are the only real calculations.
 
 Implement repository layer for database access
 

@@ -12,17 +12,6 @@ repos:
       #   language: system
       #   pass_filenames: false
 
-      - id: check-yaml
-        name: check yaml
-        entry: check-yaml
-        language: system
-        types: [yaml]
-
-      - id: check-added-large-files
-        name: check added large files
-        entry: check-added-large-files
-        language: system
-
       - id: frontend-eslint
         name: frontend eslint
         entry: bash -c "cd frontend && npm run lint:fix"
@@ -41,3 +30,8 @@ repos:
         language: system
         pass_filenames: false
 
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: check-added-large-files

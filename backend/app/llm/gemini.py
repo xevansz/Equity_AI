@@ -17,5 +17,21 @@ class GeminiClient:
         )
         return response.text
 
+    async def generate_conversation(self, messages: list[dict[str, str]]) -> str:
+        """Generate response using multi-turn conversation format.
+
+        Args:
+            messages: List of dicts with 'role' ('user' or 'model') and 'content'
+
+        Returns:
+            Generated response text
+        """
+        contents = [{"role": m["role"], "parts": [{"text": m["content"]}]} for m in messages]
+        response = await self.client.aio.models.generate_content(
+            model=self.model,
+            contents=contents,
+        )
+        return response.text
+
 
 gemini = GeminiClient()

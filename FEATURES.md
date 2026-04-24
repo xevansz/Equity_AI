@@ -49,10 +49,7 @@
    - With documents in ChromaDB, retrieval will actually return context
    - Gemini will answer grounded in real knowledge instead of hallucinating
 
-3. **Add conversation context**
-   - Send last N messages to Gemini so it can do follow-ups
-
-4. **Source citations**
+3. **Source citations**
    - Track which documents were retrieved
    - Display sources in chat UI
 

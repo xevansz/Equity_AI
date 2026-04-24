@@ -74,12 +74,18 @@ class ChatService:
         intent, service_name = query_router.route(query)
         logger.info("Detected intent=%s routed_to=%s", intent, service_name)
 
-        cached_entry = self._get_from_cache(query)
-        if cached_entry:
-            self._cache_hits += 1
-            logger.info("Cache hit for query (hits=%d, misses=%d)", self._cache_hits, self._cache_misses)
-            await self._save_conversation(request, cached_entry.value.answer)
-            return cached_entry.value
+        # Fetch conversation history (before saving current message)
+        history = await self._get_conversation_history(request.session_id)
+        has_history = len(history) > 0
+
+        # Only use cache for first messages (no history) to avoid cross-session leakage
+        if not has_history:
+            cached_entry = self._get_from_cache(query)
+            if cached_entry:
+                self._cache_hits += 1
+                logger.info("Cache hit for query (hits=%d, misses=%d)", self._cache_hits, self._cache_misses)
+                await self._save_conversation(request, cached_entry.value.answer)
+                return cached_entry.value
 
         self._cache_misses += 1
 
@@ -105,8 +111,8 @@ class ChatService:
                 await asyncio.sleep(sleep_time)
 
             self._last_call_time = time.time()
-            logger.info("Calling Gemini")
-            answer = await response_generator.generate_response(query, context, intent=intent)
+            logger.info("Calling Gemini (history=%d messages)", len(history))
+            answer = await response_generator.generate_response(query, context, intent=intent, history=history)
             logger.debug("Gemini answer preview: %s", answer[:200])
 
         except Exception as e:
@@ -120,7 +126,9 @@ class ChatService:
             return response
 
         response = ChatResponse(answer=answer, sources=[])
-        self._add_to_cache(query, response)
+        # Only cache first messages in a session
+        if not has_history:
+            self._add_to_cache(query, response)
 
         await self._save_conversation(request, answer)
 
@@ -138,6 +146,22 @@ class ChatService:
             await self.memory.save_message(request.session_id, "assistant", answer, self.user_id)
         except Exception as e:
             logger.warning("Memory save skipped: %s", repr(e))
+
+    async def _get_conversation_history(self, session_id: str, max_messages: int = 6) -> list[dict]:
+        """Get conversation history for context.
+
+        Args:
+            session_id: Session identifier
+            max_messages: Maximum messages to retrieve (default 6 = 3 turns)
+
+        Returns:
+            List of message dicts with 'role' and 'content'
+        """
+        try:
+            return await self.memory.get_context(session_id, max_messages=max_messages)
+        except Exception as e:
+            logger.warning("Failed to get conversation history: %s", repr(e))
+            return []
 
     def _get_from_cache(self, query: str) -> CacheEntry | None:
         """Get entry from cache if valid.

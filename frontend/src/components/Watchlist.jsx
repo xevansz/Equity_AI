@@ -124,6 +124,32 @@ const Watchlist = () => {
           </div>
         )
       })}
+
+      {/* Market Connection Status Footer */}
+      {(usSymbols.length > 0 || indiaSymbols.length > 0) && (
+        <div className="sm:col-span-2 lg:col-span-3 mt-2 flex flex-wrap items-center gap-3 text-xs text-muted">
+          {usSymbols.length > 0 && (
+            <div className="flex items-center gap-1.5">
+              <span
+                className={`w-2 h-2 rounded-full ${usConnected ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}
+              />
+              <span>
+                US Market {usConnected ? 'Connected' : 'Disconnected'}
+              </span>
+            </div>
+          )}
+          {indiaSymbols.length > 0 && (
+            <div className="flex items-center gap-1.5">
+              <span
+                className={`w-2 h-2 rounded-full ${indiaConnected ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}
+              />
+              <span>
+                India Market {indiaConnected ? 'Connected' : 'Disconnected'}
+              </span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

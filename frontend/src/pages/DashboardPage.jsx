@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
+import MarketStatusBanner from '../components/MarketStatusBanner'
 import LiveAreaChart from '../components/LiveAreaChart'
 import MarketMetricsCards from '../components/MarketMetricsCards'
 import NewsPanel from '../components/NewsPanel'
@@ -79,6 +80,8 @@ const DashboardPage = () => {
           <p className="text-muted">Analyze stocks with AI-powered insights</p>
         </div>
 
+        <MarketStatusBanner />
+
         <SearchBar
           query={query}
           setQuery={setQuery}
@@ -137,11 +140,13 @@ const DashboardPage = () => {
                   </button>
                 </div>
 
-                {noStockData && (
+                {noStockData && !data.intraday_data?.length && (
                   <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                     <p className="text-yellow-600 dark:text-yellow-400">
-                      No stock data available. This may be due to API rate
-                      limits or the symbol may not have recent trading data.
+                      Price metrics unavailable — the daily data provider
+                      returned no results for <strong>{data.symbol}</strong>.
+                      Chart data should be data from intraday provider if
+                      available.
                     </p>
                   </div>
                 )}

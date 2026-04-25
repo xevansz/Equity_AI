@@ -3,12 +3,32 @@ import { useWatchlist } from '../context/WatchlistContext'
 import { useRealtimeWatchlist } from '../hooks/useRealtimeWatchlist'
 import { Skeleton } from './Skeleton'
 
+const inferMarket = (symbol) => (/\.(NS|BO)$/i.test(symbol) ? 'INDIA' : 'US')
+
 const Watchlist = () => {
   const { items, remove } = useWatchlist()
-  const symbols = items.map((item) => item.symbol)
 
-  // Real-time price updates via WebSocket
-  const { quotes, loading, connected } = useRealtimeWatchlist(symbols, 'US')
+  const usSymbols = items
+    .map((i) => i.symbol)
+    .filter((s) => inferMarket(s) === 'US')
+  const indiaSymbols = items
+    .map((i) => i.symbol)
+    .filter((s) => inferMarket(s) === 'INDIA')
+
+  // Real-time price updates via WebSocket — separate subscriptions per market
+  const {
+    quotes: usQuotes,
+    loading: usLoading,
+    connected: usConnected,
+  } = useRealtimeWatchlist(usSymbols, 'US')
+  const {
+    quotes: indiaQuotes,
+    loading: indiaLoading,
+    connected: indiaConnected,
+  } = useRealtimeWatchlist(indiaSymbols, 'INDIA')
+
+  const quotes = { ...usQuotes, ...indiaQuotes }
+  const loading = usLoading && indiaLoading
 
   if (items.length === 0) {
     return (
@@ -24,6 +44,9 @@ const Watchlist = () => {
         const quote = quotes[item.symbol]
         const isPositive = quote?.change > 0
         const isNegative = quote?.change < 0
+        const itemMarket = inferMarket(item.symbol)
+        const isItemConnected =
+          itemMarket === 'INDIA' ? indiaConnected : usConnected
 
         return (
           <div
@@ -33,17 +56,15 @@ const Watchlist = () => {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="text-lg font-semibold">{item.symbol}</h2>
-                {connected && quote && (
+                {isItemConnected && quote && (
                   <span className="flex items-center gap-1 px-2 py-0.5 bg-green-500/10 text-green-600 dark:text-green-400 rounded text-xs font-medium">
                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
                     Live
                   </span>
                 )}
-                {quote?.market && (
-                  <span className="px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium">
-                    {quote.market}
-                  </span>
-                )}
+                <span className="px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium">
+                  {itemMarket}
+                </span>
               </div>
               <p className="text-sm text-muted mb-3">{item.name}</p>
 

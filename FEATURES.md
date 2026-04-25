@@ -53,21 +53,7 @@
    - Track which documents were retrieved
    - Display sources in chat UI
 
-### Phase 2: Make Dashboard Useful
-
-1. **Stock price API**
-- Add Twelve Data and Yahoo Finance (yfinance) as additional fallback providers - add as the primary providers
-- Implement round-robin or priority-based provider rotation
-- Backend endpoint: `GET /api/price/{symbol}?range=30d`
-
-2. **Price chart component**
-- Groww-style area chart with red (down) / green (up) coloring
-
-3. **Market status indicator**
-- Detect if US market is open/closed
-- also, implement indian stocks
-- Show banner on dashboard and watchlist
-
+  
 ### Phase 3: Make Watchlist Work
 
 1. **Watchlist frontend polish**

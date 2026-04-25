@@ -82,16 +82,21 @@ class MarketDataDispatcher:
     ) -> StockQuote | None:
         resolved = market or detect_market(symbol, exchange)
 
-        if resolved == Market.INDIA:
-            return await UpstoxProvider.get_quote(symbol, exchange)
-
-        # US market: try TwelveData first, then fallbacks
-        quote = await TwelveDataProvider.get_quote(symbol)
+        # Try TwelveData first for all markets (primary provider)
+        quote = await TwelveDataProvider.get_quote(symbol, exchange)
         if quote:
             return quote
 
         logger.warning(f"[Dispatcher] TwelveData failed for {symbol}, trying fallbacks")
 
+        # India market fallback: Upstox
+        if resolved == Market.INDIA:
+            quote = await UpstoxProvider.get_quote(symbol, exchange)
+            if quote:
+                logger.info(f"[Dispatcher] Upstox succeeded for {symbol}")
+                return quote
+
+        # US market fallbacks
         # Try AlphaVantage
         if self.alpha_vantage:
             quote = await self.alpha_vantage.get_quote(symbol)
@@ -125,18 +130,22 @@ class MarketDataDispatcher:
     ) -> list[OHLCVPoint]:
         resolved = market or detect_market(symbol, exchange)
 
-        if resolved == Market.INDIA:
-            # Map generic intervals to Upstox format
-            upstox_interval = _map_interval_upstox(interval)
-            return await UpstoxProvider.get_historical(symbol, upstox_interval, exchange, from_date, to_date)
-
-        # US market: try TwelveData first, then fallbacks
-        chart = await TwelveDataProvider.get_time_series(symbol, interval, outputsize)
+        # Try TwelveData first for all markets (primary provider)
+        chart = await TwelveDataProvider.get_time_series(symbol, interval, outputsize, exchange)
         if chart:
             return chart
 
         logger.warning(f"[Dispatcher] TwelveData chart failed for {symbol}, trying fallbacks")
 
+        # India market fallback: Upstox
+        if resolved == Market.INDIA:
+            upstox_interval = _map_interval_upstox(interval)
+            chart = await UpstoxProvider.get_historical(symbol, upstox_interval, exchange, from_date, to_date)
+            if chart:
+                logger.info(f"[Dispatcher] Upstox chart succeeded for {symbol}")
+                return chart
+
+        # US market fallbacks
         # Try AlphaVantage
         if self.alpha_vantage:
             chart = await self.alpha_vantage.get_time_series(symbol, interval, outputsize)

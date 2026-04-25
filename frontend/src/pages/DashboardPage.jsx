@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
-import CandlestickChart from '../components/CandlestickChart'
+import LiveAreaChart from '../components/LiveAreaChart'
 import MarketMetricsCards from '../components/MarketMetricsCards'
 import NewsPanel from '../components/NewsPanel'
 import { DashboardSkeleton } from '../components/Skeleton'
@@ -10,8 +10,24 @@ import { useRealtimeQuote } from '../hooks/useRealtimeQuote'
 
 const DashboardPage = () => {
   const { items, add } = useWatchlist()
-  const { data, loading, error, query, setQuery, runSearch } = useSearch()
+  const {
+    data,
+    loading,
+    error,
+    query,
+    setQuery,
+    market,
+    setMarket,
+    runSearch,
+  } = useSearch()
   const [currentSymbol, setCurrentSymbol] = useState(null)
+
+  // Re-run search when market changes (if there's a query)
+  useEffect(() => {
+    if (query.trim()) {
+      runSearch(query, market)
+    }
+  }, [market])
 
   // Real-time quote updates via WebSocket
   const { quote: realtimeQuote, connected } = useRealtimeQuote(
@@ -63,7 +79,13 @@ const DashboardPage = () => {
           <p className="text-muted">Analyze stocks with AI-powered insights</p>
         </div>
 
-        <SearchBar query={query} setQuery={setQuery} onSearch={runSearch} />
+        <SearchBar
+          query={query}
+          setQuery={setQuery}
+          onSearch={runSearch}
+          market={market}
+          setMarket={setMarket}
+        />
 
         {loading && <DashboardSkeleton />}
 
@@ -124,7 +146,18 @@ const DashboardPage = () => {
                   </div>
                 )}
 
-                <CandlestickChart stockData={data.stock_data} />
+                <LiveAreaChart
+                  symbol={data.symbol}
+                  market={market}
+                  chartData={
+                    data.intraday_data ||
+                    data.stock_data?.['Time Series (Daily)']
+                  }
+                  prevClose={
+                    marketSnapshot?.prev_close ||
+                    marketSnapshot?.price - marketSnapshot?.change
+                  }
+                />
                 <MarketMetricsCards marketSnapshot={marketSnapshot} />
                 <NewsPanel newsData={data.news} />
               </>

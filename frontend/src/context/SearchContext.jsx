@@ -8,6 +8,7 @@ const CACHE_TTL = 60 * 1000 // 1 minute in milliseconds
 
 export const SearchProvider = ({ children }) => {
   const [query, setQuery] = useState('')
+  const [market, setMarket] = useState('US') // 'US' | 'INDIA'
   const [data, setData] = useState(() => {
     try {
       const cached = localStorage.getItem('eq_search_cache')
@@ -35,7 +36,7 @@ export const SearchProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const runSearch = async (searchQuery) => {
+  const runSearch = async (searchQuery, searchMarket = market) => {
     if (!searchQuery || searchQuery.trim().length === 0) return
 
     try {
@@ -43,17 +44,30 @@ export const SearchProvider = ({ children }) => {
       const cached = localStorage.getItem('eq_search_cache')
 
       if (cached) {
-        const { query: cachedQuery, results, timestamp } = JSON.parse(cached)
+        const {
+          query: cachedQuery,
+          cachedMarket,
+          results,
+          timestamp,
+        } = JSON.parse(cached)
         const cacheAge = Date.now() - timestamp
 
-        // Reuse cache if same query and within TTL
-        if (cachedQuery === searchQuery && cacheAge <= CACHE_TTL) {
+        // Reuse cache if same query, same market and within TTL
+        if (
+          cachedQuery === searchQuery &&
+          cachedMarket === searchMarket &&
+          cacheAge <= CACHE_TTL
+        ) {
           setData(results)
           return
         }
 
         // Clear stale or mismatched cache
-        if (cacheAge > CACHE_TTL || cachedQuery !== searchQuery) {
+        if (
+          cacheAge > CACHE_TTL ||
+          cachedQuery !== searchQuery ||
+          cachedMarket !== searchMarket
+        ) {
           localStorage.removeItem('eq_search_cache')
         }
       }
@@ -62,13 +76,14 @@ export const SearchProvider = ({ children }) => {
       setLoading(true)
       setError(null)
 
-      const result = await dashboardSearchAPI(searchQuery)
+      const result = await dashboardSearchAPI(searchQuery, searchMarket)
 
       setData(result)
 
-      // Store query with results and timestamp
+      // Store query, market with results and timestamp
       const cacheObject = {
         query: searchQuery,
+        cachedMarket: searchMarket,
         results: result,
         timestamp: Date.now(),
       }
@@ -91,6 +106,8 @@ export const SearchProvider = ({ children }) => {
       value={{
         query,
         setQuery,
+        market,
+        setMarket,
         data,
         loading,
         error,

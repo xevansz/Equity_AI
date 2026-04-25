@@ -18,6 +18,33 @@ logger = logging.getLogger(__name__)
 BASE_URL = "https://api.twelvedata.com"
 TIMEOUT = 12.0  # seconds
 
+# Exchange code mapping: internal -> TwelveData
+_EXCHANGE_MAP = {
+    "NSE": "XNSE",
+    "NSE_EQ": "XNSE",
+    "BSE": "XBSE",
+    "BSE_EQ": "XBSE",
+    "NASDAQ": "NASDAQ",
+    "NYSE": "NYSE",
+}
+
+
+def _map_exchange(exchange: str | None) -> str | None:
+    """Map internal exchange code to TwelveData format."""
+    if not exchange:
+        return None
+    return _EXCHANGE_MAP.get(exchange.upper(), exchange.upper())
+
+
+def _detect_market_from_exchange(exchange: str | None) -> Market:
+    """Detect market from exchange code."""
+    if not exchange:
+        return Market.US
+    exchange_upper = exchange.upper()
+    if exchange_upper in ("NSE", "NSE_EQ", "BSE", "BSE_EQ"):
+        return Market.INDIA
+    return Market.US
+
 
 class TwelveDataProvider:
     """
@@ -31,7 +58,7 @@ class TwelveDataProvider:
     """
 
     @staticmethod
-    async def get_quote(symbol: str) -> StockQuote | None:
+    async def get_quote(symbol: str, exchange: str | None = None) -> StockQuote | None:
         """Fetch real-time quote. Returns None on error."""
         if not KeyRotatorRegistry.twelve_data:
             logger.error("[TwelveData] KeyRotatorRegistry not initialized. Call init_market_services() at startup.")
@@ -42,7 +69,10 @@ class TwelveDataProvider:
             logger.error("[TwelveData] No available API key.")
             return None
 
-        params = {"symbol": symbol, "apikey": key}
+        params: dict[str, Any] = {"symbol": symbol, "apikey": key}
+        twelve_exchange = _map_exchange(exchange)
+        if twelve_exchange:
+            params["exchange"] = twelve_exchange
 
         async with httpx.AsyncClient(timeout=TIMEOUT) as client:
             try:
@@ -53,7 +83,7 @@ class TwelveDataProvider:
                     logger.warning("[TwelveData] 429 received — rotating key.")
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
                     if KeyRotatorRegistry.twelve_data.get_key():
-                        return await TwelveDataProvider.get_quote(symbol)
+                        return await TwelveDataProvider.get_quote(symbol, exchange)
                     logger.error("[TwelveData] All keys exhausted, cannot retry.")
                     return None
 
@@ -71,7 +101,7 @@ class TwelveDataProvider:
                     logger.warning(f"[TwelveData] API error in body: {data.get('message')}")
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
                     if KeyRotatorRegistry.twelve_data.get_key():
-                        return await TwelveDataProvider.get_quote(symbol)
+                        return await TwelveDataProvider.get_quote(symbol, exchange)
                     logger.error("[TwelveData] All keys exhausted, cannot retry.")
                     return None
 
@@ -93,10 +123,11 @@ class TwelveDataProvider:
                     logger.warning(f"[TwelveData] API error in body: {msg} (rotating key)")
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
                     if KeyRotatorRegistry.twelve_data.get_key():
-                        return await TwelveDataProvider.get_quote(symbol)
+                        return await TwelveDataProvider.get_quote(symbol, exchange)
                     logger.error("[TwelveData] All keys exhausted, cannot retry.")
                     return None
 
+                market = _detect_market_from_exchange(exchange)
                 return StockQuote(
                     symbol=data.get("symbol", symbol).upper(),
                     price=float(data.get("close") or 0),
@@ -108,7 +139,7 @@ class TwelveDataProvider:
                     open=float(data.get("open") or 0),
                     prev_close=float(data.get("previous_close") or 0),
                     timestamp=data.get("datetime", ""),
-                    market=Market.US,
+                    market=market,
                 )
 
             except httpx.TimeoutException:
@@ -123,6 +154,7 @@ class TwelveDataProvider:
         symbol: str,
         interval: str = "5min",
         outputsize: int = 100,
+        exchange: str | None = None,
     ) -> list[OHLCVPoint]:
         """
         Fetch OHLCV time-series.
@@ -138,12 +170,15 @@ class TwelveDataProvider:
         if not key:
             return []
 
-        params = {
+        params: dict[str, Any] = {
             "symbol": symbol,
             "interval": interval,
             "outputsize": outputsize,
             "apikey": key,
         }
+        twelve_exchange = _map_exchange(exchange)
+        if twelve_exchange:
+            params["exchange"] = twelve_exchange
 
         async with httpx.AsyncClient(timeout=15.0) as client:
             try:
@@ -152,7 +187,7 @@ class TwelveDataProvider:
                 if resp.status_code == 429:
                     KeyRotatorRegistry.twelve_data.mark_exhausted(key)
                     if KeyRotatorRegistry.twelve_data.get_key():
-                        return await TwelveDataProvider.get_time_series(symbol, interval, outputsize)
+                        return await TwelveDataProvider.get_time_series(symbol, interval, outputsize, exchange)
                     logger.error("[TwelveData] All keys exhausted, cannot retry.")
                     return []
 

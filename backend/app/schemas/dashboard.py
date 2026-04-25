@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field, field_validator
 
 class DashboardSearchRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=200, description="Search query for company or symbol")
+    market: str = Field(default="US", description="Market: US or INDIA")
 
     @field_validator("query")
     @classmethod
@@ -31,6 +32,7 @@ class DashboardSearchResponse(BaseModel):
     query: str
     company_name: str
     stock_data: dict
+    intraday_data: list = []
     news: dict
     market_snapshot: MarketSnapshot | None = None
     search_status: str = "ok"

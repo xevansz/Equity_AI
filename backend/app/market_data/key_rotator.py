@@ -40,10 +40,7 @@ class APIKeyRotator:
         if not self.keys:
             logger.warning(f"[KeyRotator] No API keys configured for '{provider_name}'")
 
-    # ------------------------------------------------------------------
     # Public interface
-    # ------------------------------------------------------------------
-
     def get_key(self) -> str | None:
         """
         Return the current active API key.
@@ -77,10 +74,7 @@ class APIKeyRotator:
         if key in self._exhausted:
             self._exhausted[key] = True
             self._usage[key] = self.daily_limit
-            logger.warning(
-                f"[KeyRotator:{self.provider_name}] Key …{key[-6:]} force-exhausted. "
-                f"Rotating to next key."
-            )
+            logger.warning(f"[KeyRotator:{self.provider_name}] Key …{key[-6:]} force-exhausted. Rotating to next key.")
             self._rotate()
 
     def get_stats(self) -> dict:
@@ -124,6 +118,7 @@ class APIKeyRotator:
 # Registry — one singleton per provider, shared app-wide
 # ------------------------------------------------------------------
 
+
 class KeyRotatorRegistry:
     """
     Singleton registry: holds one APIKeyRotator per provider.
@@ -134,8 +129,8 @@ class KeyRotatorRegistry:
         key = KeyRotatorRegistry.twelve_data.get_key()
     """
 
-    twelve_data: APIKeyRotator = None   # populated by app startup
-    upstox: APIKeyRotator = None        # populated by app startup
+    twelve_data: APIKeyRotator = None  # populated by app startup
+    upstox: APIKeyRotator = None  # populated by app startup
 
     @classmethod
     def init(

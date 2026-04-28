@@ -59,20 +59,28 @@ class MarketDataDispatcher:
         candles = await dispatcher.get_chart("AAPL", interval="5min")
     """
 
-    def __init__(self, alpha_vantage_provider=None, finnhub_provider=None):
+    def __init__(
+        self,
+        alpha_vantage_provider=None,
+        finnhub_provider=None,
+        twelve_data_provider=None,
+        upstox_provider=None,
+    ):
         """
         Initialize dispatcher with optional fallback providers.
 
         Args:
             alpha_vantage_provider: AlphaVantageProvider instance (fallback for US)
             finnhub_provider: FinnhubProvider instance (fallback for US)
+            twelve_data_provider: TwelveDataProvider instance (primary provider)
+            upstox_provider: UpstoxProvider instance (fallback for India)
         """
+        self.twelve_data = twelve_data_provider or TwelveDataProvider()
+        self.upstox = upstox_provider or UpstoxProvider()
         self.alpha_vantage = alpha_vantage_provider
         self.finnhub = finnhub_provider
 
-    # ------------------------------------------------------------------
     # Quote
-    # ------------------------------------------------------------------
 
     async def get_quote(
         self,
@@ -83,7 +91,7 @@ class MarketDataDispatcher:
         resolved = market or detect_market(symbol, exchange)
 
         # Try TwelveData first for all markets (primary provider)
-        quote = await TwelveDataProvider.get_quote(symbol, exchange)
+        quote = await self.twelve_data.get_quote(symbol, exchange)
         if quote:
             return quote
 
@@ -91,7 +99,7 @@ class MarketDataDispatcher:
 
         # India market fallback: Upstox
         if resolved == Market.INDIA:
-            quote = await UpstoxProvider.get_quote(symbol, exchange)
+            quote = await self.upstox.get_quote(symbol, exchange)
             if quote:
                 logger.info(f"[Dispatcher] Upstox succeeded for {symbol}")
                 return quote
@@ -114,9 +122,7 @@ class MarketDataDispatcher:
         logger.error(f"[Dispatcher] All providers failed for {symbol}")
         return None
 
-    # ------------------------------------------------------------------
     # OHLCV Chart
-    # ------------------------------------------------------------------
 
     async def get_chart(
         self,
@@ -131,7 +137,7 @@ class MarketDataDispatcher:
         resolved = market or detect_market(symbol, exchange)
 
         # Try TwelveData first for all markets (primary provider)
-        chart = await TwelveDataProvider.get_time_series(symbol, interval, outputsize, exchange)
+        chart = await self.twelve_data.get_time_series(symbol, interval, outputsize, exchange)
         if chart:
             return chart
 
@@ -140,7 +146,7 @@ class MarketDataDispatcher:
         # India market fallback: Upstox
         if resolved == Market.INDIA:
             upstox_interval = _map_interval_upstox(interval)
-            chart = await UpstoxProvider.get_historical(symbol, upstox_interval, exchange, from_date, to_date)
+            chart = await self.upstox.get_historical(symbol, upstox_interval, exchange, from_date, to_date)
             if chart:
                 logger.info(f"[Dispatcher] Upstox chart succeeded for {symbol}")
                 return chart
@@ -163,20 +169,16 @@ class MarketDataDispatcher:
         logger.error(f"[Dispatcher] All providers failed for chart {symbol}")
         return []
 
-    # ------------------------------------------------------------------
     # Market Depth  (India only)
-    # ------------------------------------------------------------------
 
     async def get_market_depth(
         self,
         symbol: str,
         exchange: str = "NSE_EQ",
     ) -> MarketDepth | None:
-        return await UpstoxProvider.get_market_depth(symbol, exchange)
+        return await self.upstox.get_market_depth(symbol, exchange)
 
-    # ------------------------------------------------------------------
     # Fundamentals
-    # ------------------------------------------------------------------
 
     async def get_fundamentals(
         self,
@@ -186,16 +188,14 @@ class MarketDataDispatcher:
         resolved = market or detect_market(symbol)
 
         if resolved == Market.US:
-            return await TwelveDataProvider.get_fundamentals(symbol)
+            return await self.twelve_data.get_fundamentals(symbol)
 
         # Indian fundamentals: return empty dict for now
         # Wire to your existing app/api/financial.py when ready
         logger.info(f"[Dispatcher] Indian fundamentals for {symbol} — delegate to financial.py")
         return {}
 
-    # ------------------------------------------------------------------
     # Batch quotes  (for watchlist pages)
-    # ------------------------------------------------------------------
 
     async def get_batch_quotes(
         self,
@@ -210,9 +210,7 @@ class MarketDataDispatcher:
         return list(await asyncio.gather(*tasks))
 
 
-# ------------------------------------------------------------------
 # Interval mapping helper
-# ------------------------------------------------------------------
 
 _INTERVAL_MAP: dict = {
     "1min": "1minute",

@@ -5,8 +5,6 @@
 # Features left
 3. **Chat** — Deep-dive conversational research powered by RAG + LLM
 
-### 3. Chat (`/chat`)
-
 **Goal**: Deep-dive financial research. RAG-powered conversational interface that retrieves from a knowledge base of financial theories, studies, SEC filings, reports, etc. The core product.
 
 | Feature | Status | Details |
@@ -53,11 +51,6 @@
    - Track which documents were retrieved
    - Display sources in chat UI
 
-  
-### Phase 3: Make Watchlist Work
-
-1. **Watchlist frontend polish**
-- Market status notice at bottom
 
 ### Phase 4: Implement Real Research Engine
 
@@ -102,6 +95,3 @@ A quick reference for what actually computes real data vs returns placeholders:
 | Earnings transcripts | ⚠️ Retrieval exists, ingestion/embedding not done |
 
 Implement repository layer for database access
-
- 
-Implement connection pooling for external APIs

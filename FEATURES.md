@@ -93,5 +93,3 @@ A quick reference for what actually computes real data vs returns placeholders:
 | Research engine analysis | ❌ Placeholder text |
 | SEC filings | ❌ Stub |
 | Earnings transcripts | ⚠️ Retrieval exists, ingestion/embedding not done |
-
-Implement repository layer for database access

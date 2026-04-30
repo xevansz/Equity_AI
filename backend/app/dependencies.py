@@ -20,6 +20,7 @@ from app.mcp.news_api import NewsAPI
 from app.mcp.sec_api import SECAPI
 from app.services.chat_service import ChatService
 from app.services.data_service import DataService
+from app.services.watchlist_service import WatchlistService
 
 security = HTTPBearer()
 
@@ -258,6 +259,18 @@ def get_vector_ingestion_service() -> VectorIngestionService:
         VectorIngestionService instance
     """
     return VectorIngestionService()
+
+
+def get_watchlist_service(db: AsyncIOMotorDatabase = Depends(get_database)) -> WatchlistService:
+    """Get watchlist service dependency.
+
+    Args:
+        db: Database connection
+
+    Returns:
+        WatchlistService instance
+    """
+    return WatchlistService(db)
 
 
 def admin_only(user: dict[str, Any] = Depends(get_current_user)) -> dict[str, Any]:

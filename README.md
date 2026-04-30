@@ -8,15 +8,71 @@ An LLM-powered real-time knowledge curation system for financial intelligence.
 ## How it works  
 ## Configuration
 
-Add your API keys to `.env`:
+## Implemented Features
 
-```env
-# Required
-ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key
+### Authentication
+| Feature | Status | Details |
+|---------|--------|---------|
+| User auth (JWT) | ✅ Working | `auth/` module with `get_current_user` dependency |
+| Admin-only endpoints | ✅ Working | `admin_only` dependency guards ingestion API |
 
-# Optional - for fallback support
-FINNHUB_API_KEY=your_finnhub_key
-```
+### Market Data
+| Feature | Status | Details |
+|---------|--------|---------|
+| Stock quote (US + India) | ✅ Working | Unified dispatcher via TwelveData / Upstox |
+| Intraday candlestick chart | ✅ Working | `GET /api/stock`, `dispatcher.get_chart()` |
+| Live WebSocket stream | ✅ Working | `ws_stream.py` — subscribe/unsubscribe per symbol, 2s refresh |
+| Market fundamentals | ✅ Working | `dispatcher.get_fundamentals()` |
+| Market depth (India only) | ✅ Working | `dispatcher.get_market_depth()` |
+| Batch stock search | ✅ Working | `POST /api/batch` — parallel multi-symbol fetch |
+| Auto market detection | ✅ Working | `resolve_market_from_symbol()` in `utils/market_resolver.py` |
+| API key rotation | ✅ Working | `KeyRotatorRegistry` for TwelveData and Upstox |
+| Market status banner | ✅ Working | `get_market_status()` utility |
+
+### Dashboard
+| Feature | Status | Details |
+|---------|--------|---------|
+| Dashboard search | ✅ Working | `POST /api/dashboard/search` — symbol resolver + stock + news in parallel |
+| LLM symbol resolver | ✅ Working | `symbol_resolver.py` uses Gemini to resolve company names to tickers |
+| Market snapshot cards | ✅ Working | `extract_market_snapshot()` in `market_snapshot_service.py` |
+
+### News
+| Feature | Status | Details |
+|---------|--------|---------|
+| News fetching & display | ✅ Working | `NewsLoader` fetches from NewsAPI, stores in MongoDB |
+| News caching (MongoDB) | ✅ Working | Articles upserted into `ingested_documents` collection |
+| News cache warmer | ✅ Working | `warmer.py` background task refreshes news every 15 min for watchlisted symbols |
+
+### Watchlist
+| Feature | Status | Details |
+|---------|--------|---------|
+| Add/remove symbols | ✅ Working | `POST/DELETE /api/watchlist` |
+| Paginated watchlist fetch | ✅ Working | `GET /api/watchlist` with cursor-based pagination |
+
+### Conversational Chat
+| Feature | Status | Details |
+|---------|--------|---------|
+| Chat endpoint | ✅ Working | `POST /api/chat` — routed through `ChatService` |
+| Intent detection | ✅ Working | `intent_detector.py` classifies price/financial/news/research/general |
+| Query routing | ✅ Working | `query_router.py` maps intent → service path |
+| Conversation memory (save) | ✅ Working | `memory.py` persists messages to MongoDB per session |
+| Conversation history (load) | ✅ Working | `GET /api/conversations/{session_id}` |
+| Session listing & deletion | ✅ Working | `GET/DELETE /api/conversations` |
+| **Follow-up context** | ✅ Working | `get_context()` is called and history is passed to Gemini multi-turn |
+| Chat response caching | ✅ Working | LRU cache with TTL (1h, 100 entries) — first messages only to prevent cross-session leakage |
+| Chat UI sidebar | ✅ Working | Session list, new chat, delete chat in `ChatPage.jsx` |
+
+### Document Ingestion Infrastructure
+| Feature | Status | Details |
+|---------|--------|---------|
+| Earnings transcript loader | ✅ Working | `TranscriptLoader` fetches and stores in MongoDB |
+| Transcript cache warmer | ✅ Working | `warmer.py` pre-fetches current + previous quarter every 6h |
+| SEC filing loader (10-K/10-Q) | ✅ Working | `SECFilingLoader` via `sec_api.py` |
+| Admin ingest endpoint | ✅ Working | `POST /api/admin/ingest/{symbol}` — transcripts + SEC filing + embed |
+| Admin reindex endpoint | ✅ Working | `POST /api/admin/reindex/{symbol}` — re-chunks from MongoDB into Chroma |
+| Vector chunker | ✅ Working | `chunker.py` — `chunk_text()` |
+| ChromaDB vector store | ✅ Working | `VectorStore` with `SentenceTransformerEmbeddingFunction` |
+| Document upsert | ✅ Working | `VectorIngestionService._embed_docs()` with chunk-level IDs and metadata |
 
 ## Installation
 ## Equity
